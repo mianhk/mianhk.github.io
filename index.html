@@ -257,6 +257,708 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/05/《cpp primer》ch4表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/05/《cpp primer》ch4表达式/" itemprop="url">
+                  《c++primer》ch4 表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T17:55:33+08:00">
+                2017-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>不管学习什么语言都会有这么一章，不管是c、java、Python，这都是会经历的一章，唉，无奈当时年少无知不止梦想是什么的我每每看到这些的时候都觉得很烦。当再一次翻开c++的这一章的时候，也有这样的感觉，似曾相识燕归来，却又无可奈何花落去。<br>我认为这一章的很多都不是需要太多的去深究，只需要有个大概的概念，然后更多的是在今后的编程过程中，不断的实践自然就知道了，是怎样写的。而且累死一些优先级的问题，更多的时候就像书里建议的那样，一个括号来的简单粗暴实用的多，所以，这章，就记一下实在有违常规的理解的内容吧。</p>
+<h1 id="4-1-基础"><a href="#4-1-基础" class="headerlink" title="4.1 基础"></a>4.1 基础</h1><ul>
+<li>运算对象转换：小整数类型（如bool、char、short等）通常会被提升为较大的整数类型，主要是int。</li>
+<li>左值和右值：一个左值表达式的求值结果时一个对象或者一个函数，以常量对象为代表的某些左值不能作为赋值语句的左侧运算对象。<strong> 简单归纳：当对象被用作右值的时候，用的是对象的值（内容），当对象被用作左值的时候，用的是对象的身份（在内存中的位置） </strong></li>
+<li>左值右值使用原则：需要右值的地方可以用左值代替，但是不能把右值当成左值使用。当一个左值被当成一个右值使用的时候，实际上使用的是它的内容（值  ）</li>
+<li>需要用到左值的地方：<br>1.赋值运算符。需要左值作为其左值运算对象，得到结果仍然是一个左值<br>2.取地址符。返回一个指向该运算对象的指针，这个指针是一个右值<br>3.内置解引用运算符、下标运算符、迭代器解引用运算符、string和vector的下标运算符的求值结果都是左值<br>4.内置类型和迭代器的递增递减运算符作用于左值运算对象，得到的结果是左值。</li>
+<li>关键字decltype中左值和右值的不同</li>
+<li>处理复合表达式的经验：使用括号；如果改变了某个运算对象的值，就不要在表达式的其它地方再使用这个运算对象<h1 id="4-2-算数运算符"><a href="#4-2-算数运算符" class="headerlink" title="4.2 算数运算符"></a>4.2 算数运算符</h1>溢出的情况，值会发生“环绕”<h1 id="4-3-逻辑和关系运算符"><a href="#4-3-逻辑和关系运算符" class="headerlink" title="4.3 逻辑和关系运算符"></a>4.3 逻辑和关系运算符</h1>进行比较运算时除非比较的对象是布尔类型，否则不要使用布尔字面值作为运算对象<h1 id="4-4-赋值运算符"><a href="#4-4-赋值运算符" class="headerlink" title="4.4 赋值运算符"></a>4.4 赋值运算符</h1>赋值运算满足右结合律<br>参与连续赋值的变量必须是相同的类型<h1 id="4-5-递增和递减运算符"><a href="#4-5-递增和递减运算符" class="headerlink" title="4.5 递增和递减运算符"></a>4.5 递增和递减运算符</h1><h1 id="4-6-成员访问运算符"><a href="#4-6-成员访问运算符" class="headerlink" title="4.6 成员访问运算符"></a>4.6 成员访问运算符</h1>解应用运算符的优先级低于点运算符<br>#<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cond?expr1:expr2;</div><div class="line">//输出表达式中使用条件运算符</div><div class="line">cout&lt;&lt;((grade&lt;60)?&quot;fail&quot;:&quot;pass&quot;); //输出pass或者fail</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>条件运算符可以嵌套，一般为了代码的可读性，嵌套不要超过三层。</p>
+<h1 id="4-7-sizeof运算符"><a href="#4-7-sizeof运算符" class="headerlink" title="4.7 sizeof运算符"></a>4.7 sizeof运算符</h1><p>sizeof运算符返回一条表达式或一个类型名字所占的字节数。sizeof运算符满足右结合律，其所得值是一个size_t类型的常量表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sizeof(type)</div><div class="line">sizeof expr</div></pre></td></tr></table></figure></p>
+<h1 id="4-10-逗号运算符"><a href="#4-10-逗号运算符" class="headerlink" title="4.10 逗号运算符"></a>4.10 逗号运算符</h1><p>首先对左侧表达式求值，然后将求值结果丢弃掉。逗号运算符真正的结果是右侧表达式的值。如果右侧运算对象是左值，那么最终的求值结果也是左值。</p>
+<h1 id="4-11-类型转换"><a href="#4-11-类型转换" class="headerlink" title="4.11 类型转换"></a>4.11 类型转换</h1><h2 id="发生隐式类型转换"><a href="#发生隐式类型转换" class="headerlink" title="发生隐式类型转换"></a>发生隐式类型转换</h2><ul>
+<li>比int小的整形值首先提升为较大的整数类型</li>
+<li>条件中，非bool值转为bool值。</li>
+<li>初始化过程中，初始值转化为变量的类型；赋值语句中，右侧运算对象转换成左侧运算对象的类型</li>
+<li>如果算数预算或关系运算对象有多种类型，需要转换成同一种类型。</li>
+<li>函数调用时，也可能发生类型转换<h2 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cast-name&lt;type&gt;(expression)</div><div class="line">cast-name:static_cast,dynamic_cast,const_cast,reinterpret_cast</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>static_cast:任何具有明确定义的类型转换，只要不包含底层const都可以使用。<br>const_cast:只能改变运算对象的底层const<br>dynamic_cast：支持运行时类型识别<br>reinterpret_cast：通常为运算对象的位模式提供较低层次上的重新解释。（使用起来非常危险）</p>
+<p><strong> 尽量避免强制类型转换 </strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/04/《cpp primer》ch2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/04/《cpp primer》ch2/" itemprop="url">
+                  《c++primer》ch2 变量和基本类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-04T17:55:33+08:00">
+                2017-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>ch2 变量和基本类型<br>数据类型决定了程序中数据和操作的意义。</p>
+<h1 id="2-1-基本内置类型"><a href="#2-1-基本内置类型" class="headerlink" title="2.1 基本内置类型"></a>2.1 基本内置类型</h1><p>基本数据类型：<strong> 算数类型  空类型（void） </strong>,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。</p>
+<h2 id="2-1-1-算数类型"><a href="#2-1-1-算数类型" class="headerlink" title="2.1.1 算数类型"></a>2.1.1 算数类型</h2><p>分为整形和浮点型。</p>
+<h3 id="整形："><a href="#整形：" class="headerlink" title="整形："></a>整形：</h3><ul>
+<li>bool:取值为true或者false。</li>
+<li>char：基本的字符类型，一个char的大小与一个机器字节一样。</li>
+<li>wchar_t,char16_t,char32_t<br><strong> rules: </strong>一个int至少和一个short一样大，一个long至少跟一个int一样大，一个long long至少跟一个long一样大。<h3 id="浮点型："><a href="#浮点型：" class="headerlink" title="浮点型："></a>浮点型：</h3></li>
+<li>float：一般一个字，32bit</li>
+<li>double：2个字，64bit</li>
+<li>long double：3或4个字，96或128bit<h3 id="带符号类型和无符号类型"><a href="#带符号类型和无符号类型" class="headerlink" title="带符号类型和无符号类型"></a>带符号类型和无符号类型</h3><h2 id="2-1-2-类型转换"><a href="#2-1-2-类型转换" class="headerlink" title="2.1.2 类型转换"></a>2.1.2 类型转换</h2><h3 id="转换过程："><a href="#转换过程：" class="headerlink" title="转换过程："></a>转换过程：</h3></li>
+<li>非bool到bool：初始为0则为false，其他为true</li>
+<li>bool到非bool：初始值为false则为0，初始值为true为1</li>
+<li>浮点数到整型：仅保留浮点数中的<strong> 小数点部分 </strong></li>
+<li>整数到浮点数：小数部分记为0，如果整数所占的空间超过浮点类型的容量，会报错。</li>
+<li>赋给无符号类型，当超出它表示范围的时候，转换为该无符号类型表示数值总数取模后的余数。</li>
+<li>给带符号的数输出超过范围的值是，结果时<strong> 未定义的 </strong></li>
+</ul>
+</blockquote>
+<p>tips:一般不在算数表达式中使用bool值</p>
+<h3 id="含有无符号类型的表达式"><a href="#含有无符号类型的表达式" class="headerlink" title="含有无符号类型的表达式"></a>含有无符号类型的表达式</h3><p>一般不要混用无符号和有符号的类型，当无符号超过范围时，可能会出现取模的情况，放在循环中，或者计算结果中，会产生无法预计的结果</p>
+<h2 id="2-1-3-字面值常量"><a href="#2-1-3-字面值常量" class="headerlink" title="2.1.3 字面值常量"></a>2.1.3 字面值常量</h2><p>顾名思义，字面值常量一望而知。每个字面值常量对应一种数据类型，字面量常量得形式和值决定了它的数据类型。</p>
+<h3 id="整型和浮点型字面值"><a href="#整型和浮点型字面值" class="headerlink" title="整型和浮点型字面值"></a>整型和浮点型字面值</h3><p>严格来说，十进制字面值不会是负数，通常，负号并不在字面值内，它的作用仅仅是对字面值取负值而已。</p>
+<h3 id="字符和字符串字面值"><a href="#字符和字符串字面值" class="headerlink" title="字符和字符串字面值"></a>字符和字符串字面值</h3><ul>
+<li>char型字面值：由单引号括起来的一个字符</li>
+<li>字符串字面值：由双引号括起来的零个或多个字符<br><strong> Note：字符串字面值的类型实际上是由常量字符组成的数组，编译器在每个字符串的结尾处添加一个空字符（’\0’），字符串的字面值的实际长度比它的内容多1。 </strong><h3 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h3>有两类不能直接使用的字符。不可打印的和特殊含义的字符（单引号，双引号，问号，反斜线），这些情况下需要使用转义字符。<h3 id="指定字面值类型"><a href="#指定字面值类型" class="headerlink" title="指定字面值类型"></a>指定字面值类型</h3>添加一定的前缀和后缀，可以改变整型、浮点型和字符型字面值的默认类型。前缀有：u（Unicode16）、U（Unicode32）、L（宽字符）、u8（UTF-8）。后缀有：u或者U（unsigned）、l或者L（ling）、ll或者LL（long long），f或者F（float）、l或者L（long double）。<h3 id="布尔字面值和指针字面值"><a href="#布尔字面值和指针字面值" class="headerlink" title="布尔字面值和指针字面值"></a>布尔字面值和指针字面值</h3>bool：true、false<br>指针：nullptr<h1 id="2-2-变量"><a href="#2-2-变量" class="headerlink" title="2.2 变量"></a>2.2 变量</h1>对于c++来说，一般“变量”和“对象”可以互换使用。对象时具有某种数据类型的内存空间。<h2 id="2-2-1-变量定义"><a href="#2-2-1-变量定义" class="headerlink" title="2.2.1 变量定义"></a>2.2.1 变量定义</h2>基本形式：类型说明符+一个或多个变量名组成的列表（变量名以逗号分隔）+分号<h3 id="初始值"><a href="#初始值" class="headerlink" title="初始值"></a>初始值</h3>当对象在创建时获得了一个特定的值，称为被初始化了。<strong> 初始化和复制是两个完全不同的操作，注意这个概念很重要 </strong><br>初始化：在创建变量是赋予其一个初始值。<br>复制：把对象的当前值擦除，以一个新的值代替。<h3 id="列表初始化"><a href="#列表初始化" class="headerlink" title="列表初始化"></a>列表初始化</h3>无论是初始化对象还是某些时候为对象赋新值，都可以使用一组又花括号括起来的初始值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int units_sold=0;</div><div class="line">int units_sold=&#123;0&#125;;</div><div class="line">int units_sold&#123;0&#125;;</div><div class="line">int units_sold(0);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="默认初始化"><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h3><p>定义于函数体内的内置类型的对象如果没有初始化，则其值未定义。类的对象如果没有显式的初始化，则其值由类确定。。建议初始化每一个内置类型的变量。</p>
+<h2 id="2-2-2-变量声明与定义的关系"><a href="#2-2-2-变量声明与定义的关系" class="headerlink" title="2.2.2 变量声明与定义的关系"></a>2.2.2 变量声明与定义的关系</h2><p>声明使得名字为程序所知，定义负责创建与名字关联的实体。<br><strong> extern </strong>关键字：如果想声明一个变量而不是定义它，就在变量名前添加extern，而不显示的初始化变量。如果在函数体内部试图初始化一个有extern关键字标记的变量，会引发错误。</p>
+<h2 id="2-2-3-标识符"><a href="#2-2-3-标识符" class="headerlink" title="2.2.3 标识符"></a>2.2.3 标识符</h2><p>用户自定义的标识符中不能出现两个连续的下划线，也不能以下划线紧连大写字母开头。定义在函数体内的标识符不能以下划线开头。</p>
+<h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul>
+<li>标识符要能体现实际含义</li>
+<li>变量名一般小写字母</li>
+<li>自定义的类名一般大写字母开头</li>
+<li>标识符由多个单词组成时，单词应有明显区分，使用下划线<h2 id="2-2-4-名字的作用域"><a href="#2-2-4-名字的作用域" class="headerlink" title="2.2.4 名字的作用域"></a>2.2.4 名字的作用域</h2>当内层出现与外层相同的名字时，使用内层定义的名字。<h1 id="2-3-复合类型"><a href="#2-3-复合类型" class="headerlink" title="2.3 复合类型"></a>2.3 复合类型</h1>复合类型指的是基于其他类型定义的类型。这里介绍两种：引用和指针。<h2 id="2-3-1-引用"><a href="#2-3-1-引用" class="headerlink" title="2.3.1 引用"></a>2.3.1 引用</h2>引用为对象起了另外一个名字，引用；类型引用另外一种类型。通过将生命符写成&amp;d的形式来定义引用类型，其中d是声明的变量名。引用必须初始化。<h3 id="引用即别名"><a href="#引用即别名" class="headerlink" title="引用即别名"></a>引用即别名</h3>引用并不是对象，只是一个已经存在的对象起的另外一个名字。定义了一个引用之后，对其做的所有操作都是在与之绑定的对象上进行的。<br>因为引用本身只是一个别名，不是一个对象，所以不能定义引用的引用。<h3 id="引用的定义"><a href="#引用的定义" class="headerlink" title="引用的定义"></a>引用的定义</h3>除了两种例外的情况，其他所有的引用类型都要与之绑定的对象严格比配。<br>引用只能绑定到对象上，不能绑定到字面值或者某个表达式的计算结果上。<h2 id="2-3-2-指针"><a href="#2-3-2-指针" class="headerlink" title="2.3.2 指针"></a>2.3.2 指针</h2>指针是“指向point to”的另外一种类型的复合引用。指针也实现了对其他对象的间接访问。<br>两者的不同点：</li>
+<li>1.指针本身就是一个对象，允许对指针赋值和拷贝，而且指针的生命周期内可以指向多个不同的对象。</li>
+<li>2.指针无需在定义时赋初值。<h3 id="获取对象的地址"><a href="#获取对象的地址" class="headerlink" title="获取对象的地址"></a>获取对象的地址</h3>指针存放某个对象的地址，要想获取该地址，需要使用取地址符（操作符&amp;）<br>不能定义指向引用的指针（因为引用不是一个对象）。<br>除了两种例外的情况，所有指针的类型都要和它指向的对象严格匹配。<h3 id="指针值"><a href="#指针值" class="headerlink" title="指针值"></a>指针值</h3>指针的值（即地址）应该属于下面四种状态之一：</li>
+<li>1.指向一个对象</li>
+<li>2.指向紧邻对象所占空间的下一个位置</li>
+<li>3.空指针，表示没有指向任何对象。</li>
+<li>4.无效指针，上述之外的其他值。<h3 id="利用指针访问对象"><a href="#利用指针访问对象" class="headerlink" title="利用指针访问对象"></a>利用指针访问对象</h3>如果指针指向了一个对象，允许使用解引用符（操作符*）来访问对象。<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3>空指针不指向任何对象，得到空指针的办法：直接用字面值nullptr初始化指针或者将指针初始化为字面值0来生成空指针。<br><strong> 建议 </strong>：初始化所有指针<h3 id="赋值和指针"><a href="#赋值和指针" class="headerlink" title="赋值和指针"></a>赋值和指针</h3>记住赋值永远改变的是等号左侧的对象。<h3 id="其他指针操作"><a href="#其他指针操作" class="headerlink" title="其他指针操作"></a>其他指针操作</h3>只要一个指针拥有合法值，就能将它用在条件表达式中，只要不为空，条件都为true。<h3 id="void-指针"><a href="#void-指针" class="headerlink" title="void* 指针"></a>void* 指针</h3>void* 是一种特殊的指针类型，可用于存放任意对象的地址。<h2 id="2-3-3-理解复合类型的声明"><a href="#2-3-3-理解复合类型的声明" class="headerlink" title="2.3.3 理解复合类型的声明"></a>2.3.3 理解复合类型的声明</h2>变量的定义包括：一个基本数据类型+一组声明符。基本数据类型只有一个，但是声明符的形式可以不同。<h3 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h3>当有多个修饰符连写在一起的时候，按照逻辑关系解释。<h3 id="指向指针的引用"><a href="#指向指针的引用" class="headerlink" title="指向指针的引用"></a>指向指针的引用</h3>引用本身不是对象，但是指针是对象，所以可以对指针引用。<br>面对一条复杂的指针或引用的声明语句时，从右向左阅读有助于弄清真实含义。<h1 id="2-4-const限定符"><a href="#2-4-const限定符" class="headerlink" title="2.4 const限定符"></a>2.4 const限定符</h1><h3 id="初始化和const"><a href="#初始化和const" class="headerlink" title="初始化和const"></a>初始化和const</h3>const与非const对象的区别就是，const类型的对象执行不改变起内容的操作。如：const int也能像int一样参与算术运算，也能转化为bool值。<h3 id="默认状态下，const对象仅在文件内有效"><a href="#默认状态下，const对象仅在文件内有效" class="headerlink" title="默认状态下，const对象仅在文件内有效"></a>默认状态下，const对象仅在文件内有效</h3>如果想在多个文件之间共享const对象，必须在变量定义之前添加extern关键字。<h2 id="2-4-1-const的引用"><a href="#2-4-1-const的引用" class="headerlink" title="2.4.1 const的引用"></a>2.4.1 const的引用</h2>可以把引用绑定到const对象上，就像绑定到其他对象上一样，称为对常量引用，对常量的引用不能修改它所绑定的对象。<br><strong> 术语：常量引用是对const的引用 </strong>：并不存在常量引用，是对const的引用。<h3 id="初始化和对const的引用"><a href="#初始化和对const的引用" class="headerlink" title="初始化和对const的引用"></a>初始化和对const的引用</h3>引用情况的例外：第一种是，在初始化常量引用时，允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可。尤其允许为一个常量引用绑定非常量的对象、字面值，甚至是个一般表达式。<h3 id="对const的引用可能引用一个非const的对象"><a href="#对const的引用可能引用一个非const的对象" class="headerlink" title="对const的引用可能引用一个非const的对象"></a>对const的引用可能引用一个非const的对象</h3>此种行为是合法的，但是不能通过对const的引用改变对象的值，兑现可以通过其他的方式改变值。<h2 id="2-4-2-指针和const"><a href="#2-4-2-指针和const" class="headerlink" title="2.4.2 指针和const"></a>2.4.2 指针和const</h2>指向常量的指针不能改变其所指对象的值，要想存放常量对象的地址，只能只用指向常量的指针。<br>所谓指向常量的指针和引用，只是自以为指向了一个常量，所以自觉不去改变所指对象的值。<h3 id="const指针"><a href="#const指针" class="headerlink" title="const指针"></a>const指针</h3>*const：不变的是指针的值而不是指向的那个值。采用从右向左的方式阅读，看离最近的符号。<h3 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h3>顶层const表示指针本身是个常量，底层const表示指针指的对象是一个常量。<br>当对象执行拷贝操作时，顶层const不受影响，拷入和拷出的对象必须具有相同的底层const资格，或者两个对象的数据类型必须能够转化。<h2 id="2-4-4-constexpr和常量表达式"><a href="#2-4-4-constexpr和常量表达式" class="headerlink" title="2.4.4 constexpr和常量表达式"></a>2.4.4 constexpr和常量表达式</h2>常量表达式指：值不会改变且在编译过程就能得到计算结果的表达式。（字面值、用常量表达式初始化的const对象）<h3 id="constexpr变量"><a href="#constexpr变量" class="headerlink" title="constexpr变量"></a>constexpr变量</h3>声明为constexpr的变量一定是一个变量，且必须用常量表达式初始化。<h3 id="字面值类型"><a href="#字面值类型" class="headerlink" title="字面值类型"></a>字面值类型</h3><h3 id="指针和constexpr"><a href="#指针和constexpr" class="headerlink" title="指针和constexpr"></a>指针和constexpr</h3>在constexpr如果定义了一个指针，则constexpr只对指针有效，与指针所指的对象无关。<h1 id="2-5-处理类型"><a href="#2-5-处理类型" class="headerlink" title="2.5 处理类型"></a>2.5 处理类型</h1><h2 id="2-5-1-类型别名"><a href="#2-5-1-类型别名" class="headerlink" title="2.5.1 类型别名"></a>2.5.1 类型别名</h2>类型别名是一个名字，是某种类型的同义词。使用方式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">typedef double wages  //wages 是double的别名</div><div class="line">typedef wages base,*p</div><div class="line"></div><div class="line">#别名声明</div><div class="line">using SI=Scales_item;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="指针、常量和类型别名"><a href="#指针、常量和类型别名" class="headerlink" title="指针、常量和类型别名"></a>指针、常量和类型别名</h3><h2 id="2-5-2-auto类型说明符"><a href="#2-5-2-auto类型说明符" class="headerlink" title="2.5.2 auto类型说明符"></a>2.5.2 auto类型说明符</h2><h3 id="复合类型、常量和auto"><a href="#复合类型、常量和auto" class="headerlink" title="复合类型、常量和auto"></a>复合类型、常量和auto</h3><ul>
+<li>引用时的auto，以引用对象的类型作为auto的类型</li>
+<li>auto一般会忽略掉顶层const，底层const会保留下来。</li>
+<li>可以将引用的类型设为auto<h2 id="2-5-3-decltype类型指示符"><a href="#2-5-3-decltype类型指示符" class="headerlink" title="2.5.3 decltype类型指示符"></a>2.5.3 decltype类型指示符</h2>选择并返回操作数的类型，编译器分析表达式并得到类型，但并不实际计算值<h3 id="decltype和引用"><a href="#decltype和引用" class="headerlink" title="decltype和引用"></a>decltype和引用</h3>有些表达式将向decltype返回一个引用类型。如果表达式的内容是解引用操作，则decltype将得到引用类型。<br>解引用指针可以得到指针所指的对象，而且还能给这个对象赋值。<br>decltype和auto的重要区别：decltype的结果类型与表达式形式密切相关。<br><strong> 如果给变量加上一层或多层括号，decltype就会得到引用类型。decltype((val))的结果永远是引用，decltype(val)只有当val本身是一个引用时才是引用。另外，赋值是会产生引用的一类典型表达式，引用的类型就是左值的类型 </strong></li>
+</ul>
+<h1 id="2-6-自定义数据结构"><a href="#2-6-自定义数据结构" class="headerlink" title="2.6 自定义数据结构"></a>2.6 自定义数据结构</h1><h2 id="定义自己的数据结构"><a href="#定义自己的数据结构" class="headerlink" title="定义自己的数据结构"></a>定义自己的数据结构</h2><h2 id="定义自己的头文件"><a href="#定义自己的头文件" class="headerlink" title="定义自己的头文件"></a>定义自己的头文件</h2><h2 id="预处理器"><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/04/《cpp primer》ch3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/04/《cpp primer》ch3/" itemprop="url">
+                  《c++primer》ch3 字符串、向量和数组
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-04T17:55:33+08:00">
+                2017-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第3章-字符串、向量和数组"><a href="#第3章-字符串、向量和数组" class="headerlink" title="第3章 字符串、向量和数组"></a>第3章 字符串、向量和数组</h1><h2 id="3-1-命名空间的using声明"><a href="#3-1-命名空间的using声明" class="headerlink" title="3.1 命名空间的using声明"></a>3.1 命名空间的using声明</h2><h3 id="每个名字都需要独立的using声明"><a href="#每个名字都需要独立的using声明" class="headerlink" title="每个名字都需要独立的using声明"></a>每个名字都需要独立的using声明</h3><h3 id="头文件中不应该包含using声明"><a href="#头文件中不应该包含using声明" class="headerlink" title="头文件中不应该包含using声明"></a>头文件中不应该包含using声明</h3><p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p>
+<h2 id="3-2-标准库类型string"><a href="#3-2-标准库类型string" class="headerlink" title="3.2 标准库类型string"></a>3.2 标准库类型string</h2><h3 id="3-2-1-定义和初始化string对象"><a href="#3-2-1-定义和初始化string对象" class="headerlink" title="3.2.1 定义和初始化string对象"></a>3.2.1 定义和初始化string对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;   //默认初始化</div><div class="line">string s2=s1;  //s2是s1的副本</div><div class="line">string s2(s1); //等价于string s2=s1,s2是s1的副本</div><div class="line">string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符</div><div class="line">string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;</div><div class="line">string s4(n,&apos;c&apos;);  //把s4初始化为连续n个字符c组成的字符串</div></pre></td></tr></table></figure>
+<h3 id="3-2-2-string对象上的操作"><a href="#3-2-2-string对象上的操作" class="headerlink" title="3.2.2 string对象上的操作"></a>3.2.2 string对象上的操作</h3><ul>
+<li>读写string对象</li>
+<li>读取未知数量的string对象</li>
+<li>使用getline读取一整行</li>
+<li>string的empty和size操作<h3 id="string-size-type类型"><a href="#string-size-type类型" class="headerlink" title="string:size_type类型"></a>string:size_type类型</h3>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。<h3 id="比较string对象"><a href="#比较string对象" class="headerlink" title="比较string对象"></a>比较string对象</h3>按字典顺序<h3 id="字面值和string类型相加"><a href="#字面值和string类型相加" class="headerlink" title="字面值和string类型相加"></a>字面值和string类型相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//错误的方式</div><div class="line">string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加</div><div class="line">string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> 字符串字面值与string是不同的类型 </strong></p>
+<h3 id="ex3-3-string类的输入运算和getline函数分别如何处理字符串"><a href="#ex3-3-string类的输入运算和getline函数分别如何处理字符串" class="headerlink" title="ex3.3 string类的输入运算和getline函数分别如何处理字符串"></a>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3><p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止<br>getline函数：从给定的输入流中读取，直到遇到换行符为止。</p>
+<h2 id="3-3-标准库类型vector"><a href="#3-3-标准库类型vector" class="headerlink" title="3.3 标准库类型vector"></a>3.3 标准库类型vector</h2><p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p>
+<h3 id="3-3-1-定义和初始化vector对象"><a href="#3-3-1-定义和初始化vector对象" class="headerlink" title="3.3.1 定义和初始化vector对象"></a>3.3.1 定义和初始化vector对象</h3><ul>
+<li>1.使用拷贝初始化</li>
+<li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li>
+<li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li>
+<li>4.创建指定数量的元素：采用圆括号<h3 id="3-3-2-像vector中添加元素"><a href="#3-3-2-像vector中添加元素" class="headerlink" title="3.3.2 像vector中添加元素"></a>3.3.2 像vector中添加元素</h3>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）<br>不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</li>
+</ul>
+<h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。<br>某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p>
+<h3 id="迭代器的算数运算"><a href="#迭代器的算数运算" class="headerlink" title="迭代器的算数运算"></a>迭代器的算数运算</h3><p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。<br>迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p>
+<h2 id="3-5-数组"><a href="#3-5-数组" class="headerlink" title="3.5 数组"></a>3.5 数组</h2><p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p>
+<h3 id="3-5-1-定义和初始化数组"><a href="#3-5-1-定义和初始化数组" class="headerlink" title="3.5.1 定义和初始化数组"></a>3.5.1 定义和初始化数组</h3><p>数组是一种复合类型，数组的维度必须是一个常量表达式。<br>定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p>
+<h4 id="字符数组的特殊性"><a href="#字符数组的特殊性" class="headerlink" title="字符数组的特殊性"></a>字符数组的特殊性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，没有空字符</div><div class="line">char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，含有显式的空字符</div><div class="line">char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符</div></pre></td></tr></table></figure>
+<h4 id="不允许拷贝和赋值"><a href="#不允许拷贝和赋值" class="headerlink" title="不允许拷贝和赋值"></a>不允许拷贝和赋值</h4><h4 id="复杂的数组声明"><a href="#复杂的数组声明" class="headerlink" title="复杂的数组声明"></a>复杂的数组声明</h4><p><strong> 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int &amp;refs[10]=...  //  错误！不存在数组的引用</div><div class="line">int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组</div><div class="line">int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组</div><div class="line">int *ptrs[10];  //ptrs是一个含有10个整型指针的数组</div></pre></td></tr></table></figure></p>
+<h3 id="3-5-2-访问数组元素"><a href="#3-5-2-访问数组元素" class="headerlink" title="3.5.2 访问数组元素"></a>3.5.2 访问数组元素</h3><ul>
+<li>数组下标为<strong> size_t类型 </strong>，是一种机器相关的无符号类型。<h3 id="3-5-3-指针和数组"><a href="#3-5-3-指针和数组" class="headerlink" title="3.5.3 指针和数组"></a>3.5.3 指针和数组</h3>使用数组的时候编译器一般会把它转化成指针<h4 id="指针也是迭代器"><a href="#指针也是迭代器" class="headerlink" title="指针也是迭代器"></a>指针也是迭代器</h4>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上<h4 id="标准库函数begin和end"><a href="#标准库函数begin和end" class="headerlink" title="标准库函数begin和end"></a>标准库函数begin和end</h4><h3 id="3-5-4-C风格字符串"><a href="#3-5-4-C风格字符串" class="headerlink" title="3.5.4 C风格字符串"></a>3.5.4 C风格字符串</h3>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。<br>C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。<br><strong> 问题：为什么没有指针相加？ </strong><br>指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。<h3 id="3-5-5-与旧代码的接口"><a href="#3-5-5-与旧代码的接口" class="headerlink" title="3.5.5 与旧代码的接口"></a>3.5.5 与旧代码的接口</h3><h4 id="混用string对象和C风格字符串"><a href="#混用string对象和C风格字符串" class="headerlink" title="混用string对象和C风格字符串"></a>混用string对象和C风格字符串</h4></li>
+<li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li>
+<li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。<h4 id="使用数组初始化vector对象"><a href="#使用数组初始化vector对象" class="headerlink" title="使用数组初始化vector对象"></a>使用数组初始化vector对象</h4>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。<h2 id="3-6-多维数组"><a href="#3-6-多维数组" class="headerlink" title="3.6 多维数组"></a>3.6 多维数组</h2>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。<br>当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/04/《cpp primer》ch3字符串、向量、数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/04/《cpp primer》ch3字符串、向量、数组/" itemprop="url">
+                  《c++primer》ch2 变量和基本类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-04T17:55:33+08:00">
+                2017-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第3章-字符串、向量和数组"><a href="#第3章-字符串、向量和数组" class="headerlink" title="第3章 字符串、向量和数组"></a>第3章 字符串、向量和数组</h1><h2 id="3-1-命名空间的using声明"><a href="#3-1-命名空间的using声明" class="headerlink" title="3.1 命名空间的using声明"></a>3.1 命名空间的using声明</h2><h3 id="每个名字都需要独立的using声明"><a href="#每个名字都需要独立的using声明" class="headerlink" title="每个名字都需要独立的using声明"></a>每个名字都需要独立的using声明</h3><h3 id="头文件中不应该包含using声明"><a href="#头文件中不应该包含using声明" class="headerlink" title="头文件中不应该包含using声明"></a>头文件中不应该包含using声明</h3><p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p>
+<h2 id="3-2-标准库类型string"><a href="#3-2-标准库类型string" class="headerlink" title="3.2 标准库类型string"></a>3.2 标准库类型string</h2><h3 id="3-2-1-定义和初始化string对象"><a href="#3-2-1-定义和初始化string对象" class="headerlink" title="3.2.1 定义和初始化string对象"></a>3.2.1 定义和初始化string对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;   //默认初始化</div><div class="line">string s2=s1;  //s2是s1的副本</div><div class="line">string s2(s1); //等价于string s2=s1,s2是s1的副本</div><div class="line">string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符</div><div class="line">string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;</div><div class="line">string s4(n,&apos;c&apos;);  //把s4初始化为连续n个字符c组成的字符串</div></pre></td></tr></table></figure>
+<h3 id="3-2-2-string对象上的操作"><a href="#3-2-2-string对象上的操作" class="headerlink" title="3.2.2 string对象上的操作"></a>3.2.2 string对象上的操作</h3><ul>
+<li>读写string对象</li>
+<li>读取未知数量的string对象</li>
+<li>使用getline读取一整行</li>
+<li>string的empty和size操作<h3 id="string-size-type类型"><a href="#string-size-type类型" class="headerlink" title="string:size_type类型"></a>string:size_type类型</h3>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。<h3 id="比较string对象"><a href="#比较string对象" class="headerlink" title="比较string对象"></a>比较string对象</h3>按字典顺序<h3 id="字面值和string类型相加"><a href="#字面值和string类型相加" class="headerlink" title="字面值和string类型相加"></a>字面值和string类型相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//错误的方式</div><div class="line">string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加</div><div class="line">string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> 字符串字面值与string是不同的类型 </strong></p>
+<h3 id="ex3-3-string类的输入运算和getline函数分别如何处理字符串"><a href="#ex3-3-string类的输入运算和getline函数分别如何处理字符串" class="headerlink" title="ex3.3 string类的输入运算和getline函数分别如何处理字符串"></a>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3><p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止<br>getline函数：从给定的输入流中读取，直到遇到换行符为止。</p>
+<h2 id="3-3-标准库类型vector"><a href="#3-3-标准库类型vector" class="headerlink" title="3.3 标准库类型vector"></a>3.3 标准库类型vector</h2><p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p>
+<h3 id="3-3-1-定义和初始化vector对象"><a href="#3-3-1-定义和初始化vector对象" class="headerlink" title="3.3.1 定义和初始化vector对象"></a>3.3.1 定义和初始化vector对象</h3><ul>
+<li>1.使用拷贝初始化</li>
+<li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li>
+<li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li>
+<li>4.创建指定数量的元素：采用圆括号<h3 id="3-3-2-像vector中添加元素"><a href="#3-3-2-像vector中添加元素" class="headerlink" title="3.3.2 像vector中添加元素"></a>3.3.2 像vector中添加元素</h3>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）<br>不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</li>
+</ul>
+<h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。<br>某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p>
+<h3 id="迭代器的算数运算"><a href="#迭代器的算数运算" class="headerlink" title="迭代器的算数运算"></a>迭代器的算数运算</h3><p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。<br>迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p>
+<h2 id="3-5-数组"><a href="#3-5-数组" class="headerlink" title="3.5 数组"></a>3.5 数组</h2><p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p>
+<h3 id="3-5-1-定义和初始化数组"><a href="#3-5-1-定义和初始化数组" class="headerlink" title="3.5.1 定义和初始化数组"></a>3.5.1 定义和初始化数组</h3><p>数组是一种复合类型，数组的维度必须是一个常量表达式。<br>定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p>
+<h4 id="字符数组的特殊性"><a href="#字符数组的特殊性" class="headerlink" title="字符数组的特殊性"></a>字符数组的特殊性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，没有空字符</div><div class="line">char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，含有显式的空字符</div><div class="line">char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符</div></pre></td></tr></table></figure>
+<h4 id="不允许拷贝和赋值"><a href="#不允许拷贝和赋值" class="headerlink" title="不允许拷贝和赋值"></a>不允许拷贝和赋值</h4><h4 id="复杂的数组声明"><a href="#复杂的数组声明" class="headerlink" title="复杂的数组声明"></a>复杂的数组声明</h4><p><strong> 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int &amp;refs[10]=...  //  错误！不存在数组的引用</div><div class="line">int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组</div><div class="line">int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组</div><div class="line">int *ptrs[10];  //ptrs是一个含有10个整型指针的数组</div></pre></td></tr></table></figure></p>
+<h3 id="3-5-2-访问数组元素"><a href="#3-5-2-访问数组元素" class="headerlink" title="3.5.2 访问数组元素"></a>3.5.2 访问数组元素</h3><ul>
+<li>数组下标为<strong> size_t类型 </strong>，是一种机器相关的无符号类型。<h3 id="3-5-3-指针和数组"><a href="#3-5-3-指针和数组" class="headerlink" title="3.5.3 指针和数组"></a>3.5.3 指针和数组</h3>使用数组的时候编译器一般会把它转化成指针<h4 id="指针也是迭代器"><a href="#指针也是迭代器" class="headerlink" title="指针也是迭代器"></a>指针也是迭代器</h4>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上<h4 id="标准库函数begin和end"><a href="#标准库函数begin和end" class="headerlink" title="标准库函数begin和end"></a>标准库函数begin和end</h4><h3 id="3-5-4-C风格字符串"><a href="#3-5-4-C风格字符串" class="headerlink" title="3.5.4 C风格字符串"></a>3.5.4 C风格字符串</h3>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。<br>C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。<br><strong> 问题：为什么没有指针相加？ </strong><br>指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。<h3 id="3-5-5-与旧代码的接口"><a href="#3-5-5-与旧代码的接口" class="headerlink" title="3.5.5 与旧代码的接口"></a>3.5.5 与旧代码的接口</h3><h4 id="混用string对象和C风格字符串"><a href="#混用string对象和C风格字符串" class="headerlink" title="混用string对象和C风格字符串"></a>混用string对象和C风格字符串</h4></li>
+<li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li>
+<li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。<h4 id="使用数组初始化vector对象"><a href="#使用数组初始化vector对象" class="headerlink" title="使用数组初始化vector对象"></a>使用数组初始化vector对象</h4>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。<h2 id="3-6-多维数组"><a href="#3-6-多维数组" class="headerlink" title="3.6 多维数组"></a>3.6 多维数组</h2>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。<br>当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/简单脚本git一键提交代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,7 +1476,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -785,7 +1487,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
