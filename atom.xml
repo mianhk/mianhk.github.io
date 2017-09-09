@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Mianhk</title>
+  <title>Mianhk&#39;s notes</title>
   
-  <subtitle>Mianhk</subtitle>
+  <subtitle>这个人很懒，什么都不想写</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-09T14:15:45.845Z</updated>
+  <updated>2017-09-09T16:45:56.477Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,40 +17,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>cc</title>
-    <link href="http://yoursite.com/2017/09/09/cc/"/>
-    <id>http://yoursite.com/2017/09/09/cc/</id>
-    <published>2017-09-09T14:15:28.000Z</published>
-    <updated>2017-09-09T14:15:45.845Z</updated>
+    <title>我的书单2017</title>
+    <link href="http://yoursite.com/2017/09/10/9-10/"/>
+    <id>http://yoursite.com/2017/09/10/9-10/</id>
+    <published>2017-09-09T16:40:49.000Z</published>
+    <updated>2017-09-09T16:45:56.477Z</updated>
     
-    <content type="html"><![CDATA[<p>dskjdbnakn m,<br>dasd ,knk,s</p>]]></content>
+    <content type="html"><![CDATA[<p>2017要看完的书，生活总得有一些flag是吧<br><a href="http://item.jd.com/12125924.html" target="_blank" rel="external">《人类简史》尤瓦尔·赫拉利</a><br><a href="http://item.jd.com/12099462.html" target="_blank" rel="external">《未来简史》尤瓦尔·赫拉利</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;dskjdbnakn m,&lt;br&gt;dasd ,knk,s&lt;/p&gt;
-
+        &lt;p&gt;2017要看完的书，生活总得有一些flag是吧&lt;br&gt;&lt;a href=&quot;http://item.jd.com/12125924.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《人类简史》尤瓦尔·赫拉利&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http:/
       
     
     </summary>
     
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-      <category term="娱乐" scheme="http://yoursite.com/tags/%E5%A8%B1%E4%B9%90/"/>
+    
+      <category term="阅读" scheme="http://yoursite.com/tags/%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
   <entry>
-    <title>day6(面向对象3)</title>
-    <link href="http://yoursite.com/2017/09/09/day6-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13/"/>
-    <id>http://yoursite.com/2017/09/09/day6-面向对象3/</id>
-    <published>2017-09-09T04:57:06.000Z</published>
-    <updated>2017-09-09T04:57:06.833Z</updated>
+    <title>Hexo使用总结</title>
+    <link href="http://yoursite.com/2017/09/10/hexo/"/>
+    <id>http://yoursite.com/2017/09/10/hexo/</id>
+    <published>2017-09-09T16:24:59.000Z</published>
+    <updated>2017-09-09T16:40:07.823Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Hexo的使用总结"><a href="#Hexo的使用总结" class="headerlink" title="Hexo的使用总结"></a>Hexo的使用总结</h3><blockquote><p>没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github始终是一个好的选择，于是入了Hexo的坑。。折腾的过程心情总是有些复杂，在激动和mmp之间徘徊，虽然很多问题在wiki和issue里都有，但还是想总结一下自己亲自踩的坑。</p><h5 id="页面中文无法显示的问题"><a href="#页面中文无法显示的问题" class="headerlink" title="页面中文无法显示的问题"></a>页面中文无法显示的问题</h5><p>这种中文问题，基本上都是编码的问题，但是开始各种都没找到原因，改了language里面的配置文件，最后发现是文件的编码，需要改成’无bom的utf-8的编码格式 ‘</p><h5 id="主界面无法显示categories和tags的问题"><a href="#主界面无法显示categories和tags的问题" class="headerlink" title="主界面无法显示categories和tags的问题"></a>主界面无法显示categories和tags的问题</h5><p>这个问题真的是搞的有点久，因为基本上都被人忽略了，也可能很多人都没遇到而我恰好遇到了吧，不懂前端的我只能对于这种玄学问题强行百度了。<br>解决办法：将categories和tags目录下的index文件分别改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">categories:</div><div class="line">type: &quot;categories&quot;</div><div class="line">layout: &quot;categories&quot;</div><div class="line">tags:</div><div class="line">type: &quot;tags&quot;</div><div class="line">layout: &quot;tags&quot;</div></pre></td></tr></table></figure></p></blockquote><p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h3 id=&quot;Hexo的使用总结&quot;&gt;&lt;a href=&quot;#Hexo的使用总结&quot; class=&quot;headerlink&quot; title=&quot;Hexo的使用总结&quot;&gt;&lt;/a&gt;Hexo的使用总结&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实
+      
+    
     </summary>
     
+      <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
@@ -118,6 +131,27 @@
   </entry>
   
   <entry>
+    <title>《c++primer》ch3 字符串、向量和数组</title>
+    <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3/"/>
+    <id>http://yoursite.com/2017/06/04/《cpp primer》ch3/</id>
+    <published>2017-06-04T09:55:33.000Z</published>
+    <updated>2017-09-09T15:42:49.001Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="第3章-字符串、向量和数组"><a href="#第3章-字符串、向量和数组" class="headerlink" title="第3章 字符串、向量和数组"></a>第3章 字符串、向量和数组</h1><h2 id="3-1-命名空间的using声明"><a href="#3-1-命名空间的using声明" class="headerlink" title="3.1 命名空间的using声明"></a>3.1 命名空间的using声明</h2><h3 id="每个名字都需要独立的using声明"><a href="#每个名字都需要独立的using声明" class="headerlink" title="每个名字都需要独立的using声明"></a>每个名字都需要独立的using声明</h3><h3 id="头文件中不应该包含using声明"><a href="#头文件中不应该包含using声明" class="headerlink" title="头文件中不应该包含using声明"></a>头文件中不应该包含using声明</h3><p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p><h2 id="3-2-标准库类型string"><a href="#3-2-标准库类型string" class="headerlink" title="3.2 标准库类型string"></a>3.2 标准库类型string</h2><h3 id="3-2-1-定义和初始化string对象"><a href="#3-2-1-定义和初始化string对象" class="headerlink" title="3.2.1 定义和初始化string对象"></a>3.2.1 定义和初始化string对象</h3><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;   //默认初始化</div><div class="line">string s2=s1;  //s2是s1的副本</div><div class="line">string s2(s1); //等价于string s2=s1,s2是s1的副本</div><div class="line">string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符</div><div class="line">string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;</div><div class="line">string s4(n,&apos;c&apos;);  //把s4初始化为连续n个字符c组成的字符串</div></pre></td></tr></table></figure><h3 id="3-2-2-string对象上的操作"><a href="#3-2-2-string对象上的操作" class="headerlink" title="3.2.2 string对象上的操作"></a>3.2.2 string对象上的操作</h3><ul><li>读写string对象</li><li>读取未知数量的string对象</li><li>使用getline读取一整行</li><li>string的empty和size操作<h3 id="string-size-type类型"><a href="#string-size-type类型" class="headerlink" title="string:size_type类型"></a>string:size_type类型</h3>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。<h3 id="比较string对象"><a href="#比较string对象" class="headerlink" title="比较string对象"></a>比较string对象</h3>按字典顺序<h3 id="字面值和string类型相加"><a href="#字面值和string类型相加" class="headerlink" title="字面值和string类型相加"></a>字面值和string类型相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//错误的方式</div><div class="line">string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加</div><div class="line">string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确</div></pre></td></tr></table></figure></li></ul><p><strong> 字符串字面值与string是不同的类型 </strong></p><h3 id="ex3-3-string类的输入运算和getline函数分别如何处理字符串"><a href="#ex3-3-string类的输入运算和getline函数分别如何处理字符串" class="headerlink" title="ex3.3 string类的输入运算和getline函数分别如何处理字符串"></a>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3><p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止<br>getline函数：从给定的输入流中读取，直到遇到换行符为止。</p><h2 id="3-3-标准库类型vector"><a href="#3-3-标准库类型vector" class="headerlink" title="3.3 标准库类型vector"></a>3.3 标准库类型vector</h2><p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p><h3 id="3-3-1-定义和初始化vector对象"><a href="#3-3-1-定义和初始化vector对象" class="headerlink" title="3.3.1 定义和初始化vector对象"></a>3.3.1 定义和初始化vector对象</h3><ul><li>1.使用拷贝初始化</li><li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li><li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li><li>4.创建指定数量的元素：采用圆括号<h3 id="3-3-2-像vector中添加元素"><a href="#3-3-2-像vector中添加元素" class="headerlink" title="3.3.2 像vector中添加元素"></a>3.3.2 像vector中添加元素</h3>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）<br>不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</li></ul><h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。<br>某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p><h3 id="迭代器的算数运算"><a href="#迭代器的算数运算" class="headerlink" title="迭代器的算数运算"></a>迭代器的算数运算</h3><p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。<br>迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p><h2 id="3-5-数组"><a href="#3-5-数组" class="headerlink" title="3.5 数组"></a>3.5 数组</h2><p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p><h3 id="3-5-1-定义和初始化数组"><a href="#3-5-1-定义和初始化数组" class="headerlink" title="3.5.1 定义和初始化数组"></a>3.5.1 定义和初始化数组</h3><p>数组是一种复合类型，数组的维度必须是一个常量表达式。<br>定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p><h4 id="字符数组的特殊性"><a href="#字符数组的特殊性" class="headerlink" title="字符数组的特殊性"></a>字符数组的特殊性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，没有空字符</div><div class="line">char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，含有显式的空字符</div><div class="line">char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符</div></pre></td></tr></table></figure><h4 id="不允许拷贝和赋值"><a href="#不允许拷贝和赋值" class="headerlink" title="不允许拷贝和赋值"></a>不允许拷贝和赋值</h4><h4 id="复杂的数组声明"><a href="#复杂的数组声明" class="headerlink" title="复杂的数组声明"></a>复杂的数组声明</h4><p><strong> 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int &amp;refs[10]=...  //  错误！不存在数组的引用</div><div class="line">int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组</div><div class="line">int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组</div><div class="line">int *ptrs[10];  //ptrs是一个含有10个整型指针的数组</div></pre></td></tr></table></figure></p><h3 id="3-5-2-访问数组元素"><a href="#3-5-2-访问数组元素" class="headerlink" title="3.5.2 访问数组元素"></a>3.5.2 访问数组元素</h3><ul><li>数组下标为<strong> size_t类型 </strong>，是一种机器相关的无符号类型。<h3 id="3-5-3-指针和数组"><a href="#3-5-3-指针和数组" class="headerlink" title="3.5.3 指针和数组"></a>3.5.3 指针和数组</h3>使用数组的时候编译器一般会把它转化成指针<h4 id="指针也是迭代器"><a href="#指针也是迭代器" class="headerlink" title="指针也是迭代器"></a>指针也是迭代器</h4>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上<h4 id="标准库函数begin和end"><a href="#标准库函数begin和end" class="headerlink" title="标准库函数begin和end"></a>标准库函数begin和end</h4><h3 id="3-5-4-C风格字符串"><a href="#3-5-4-C风格字符串" class="headerlink" title="3.5.4 C风格字符串"></a>3.5.4 C风格字符串</h3>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。<br>C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。<br><strong> 问题：为什么没有指针相加？ </strong><br>指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。<h3 id="3-5-5-与旧代码的接口"><a href="#3-5-5-与旧代码的接口" class="headerlink" title="3.5.5 与旧代码的接口"></a>3.5.5 与旧代码的接口</h3><h4 id="混用string对象和C风格字符串"><a href="#混用string对象和C风格字符串" class="headerlink" title="混用string对象和C风格字符串"></a>混用string对象和C风格字符串</h4></li><li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li><li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。<h4 id="使用数组初始化vector对象"><a href="#使用数组初始化vector对象" class="headerlink" title="使用数组初始化vector对象"></a>使用数组初始化vector对象</h4>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。<h2 id="3-6-多维数组"><a href="#3-6-多维数组" class="headerlink" title="3.6 多维数组"></a>3.6 多维数组</h2>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。<br>当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组</div></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;第3章-字符串、向量和数组&quot;&gt;&lt;a href=&quot;#第3章-字符串、向量和数组&quot; class=&quot;headerlink&quot; title=&quot;第3章 字符串、向量和数组&quot;&gt;&lt;/a&gt;第3章 字符串、向量和数组&lt;/h1&gt;&lt;h2 id=&quot;3-1-命名空间的using声明&quot;&gt;&lt;a href=&quot;#3-1-命名空间的using声明&quot; class=&quot;headerlink&quot; title=&quot;3.1 命名空间的using声明&quot;&gt;&lt;/a&gt;3.1 命名空间的using声明&lt;/h2&gt;&lt;h3 id=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;a href=&quot;#每个名字都需要独立的using声明&quot; class=&quot;headerlink&quot; title=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;/a&gt;每个名字都需要独立的using声明&lt;/h3&gt;&lt;h3 id=&quot;头文件中不应该包含using声明&quot;&gt;&lt;a href=&quot;#头文件中不应该包含using声明&quot; class=&quot;headerlink&quot; title=&quot;头文件中不应该包含using声明&quot;&gt;&lt;/a&gt;头文件中不应该包含using声明&lt;/h3&gt;&lt;p&gt;因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。&lt;/p&gt;
+&lt;h2 id=&quot;3-2-标准库类型string&quot;&gt;&lt;a href=&quot;#3-2-标准库类型string&quot; class=&quot;headerlink&quot; title=&quot;3.2 标准库类型string&quot;&gt;&lt;/a&gt;3.2 标准库类型string&lt;/h2&gt;&lt;h3 id=&quot;3-2-1-定义和初始化string对象&quot;&gt;&lt;a href=&quot;#3-2-1-定义和初始化string对象&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 定义和初始化string对象&quot;&gt;&lt;/a&gt;3.2.1 定义和初始化string对象&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>《c++primer》ch2 变量和基本类型</title>
     <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E5%90%91%E9%87%8F%E3%80%81%E6%95%B0%E7%BB%84/"/>
     <id>http://yoursite.com/2017/06/04/《cpp primer》ch3字符串、向量、数组/</id>
@@ -139,32 +173,11 @@
   </entry>
   
   <entry>
-    <title>《c++primer》ch3 字符串、向量和数组</title>
-    <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3/"/>
-    <id>http://yoursite.com/2017/06/04/《cpp primer》ch3/</id>
-    <published>2017-06-04T09:55:33.000Z</published>
-    <updated>2017-09-08T15:24:52.973Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="第3章-字符串、向量和数组"><a href="#第3章-字符串、向量和数组" class="headerlink" title="第3章 字符串、向量和数组"></a>第3章 字符串、向量和数组</h1><h2 id="3-1-命名空间的using声明"><a href="#3-1-命名空间的using声明" class="headerlink" title="3.1 命名空间的using声明"></a>3.1 命名空间的using声明</h2><h3 id="每个名字都需要独立的using声明"><a href="#每个名字都需要独立的using声明" class="headerlink" title="每个名字都需要独立的using声明"></a>每个名字都需要独立的using声明</h3><h3 id="头文件中不应该包含using声明"><a href="#头文件中不应该包含using声明" class="headerlink" title="头文件中不应该包含using声明"></a>头文件中不应该包含using声明</h3><p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p><h2 id="3-2-标准库类型string"><a href="#3-2-标准库类型string" class="headerlink" title="3.2 标准库类型string"></a>3.2 标准库类型string</h2><h3 id="3-2-1-定义和初始化string对象"><a href="#3-2-1-定义和初始化string对象" class="headerlink" title="3.2.1 定义和初始化string对象"></a>3.2.1 定义和初始化string对象</h3><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;   //默认初始化</div><div class="line">string s2=s1;  //s2是s1的副本</div><div class="line">string s2(s1); //等价于string s2=s1,s2是s1的副本</div><div class="line">string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符</div><div class="line">string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;</div><div class="line">string s4(n,&apos;c&apos;);  //把s4初始化为连续n个字符c组成的字符串</div></pre></td></tr></table></figure><h3 id="3-2-2-string对象上的操作"><a href="#3-2-2-string对象上的操作" class="headerlink" title="3.2.2 string对象上的操作"></a>3.2.2 string对象上的操作</h3><ul><li>读写string对象</li><li>读取未知数量的string对象</li><li>使用getline读取一整行</li><li>string的empty和size操作<h3 id="string-size-type类型"><a href="#string-size-type类型" class="headerlink" title="string:size_type类型"></a>string:size_type类型</h3>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。<h3 id="比较string对象"><a href="#比较string对象" class="headerlink" title="比较string对象"></a>比较string对象</h3>按字典顺序<h3 id="字面值和string类型相加"><a href="#字面值和string类型相加" class="headerlink" title="字面值和string类型相加"></a>字面值和string类型相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//错误的方式</div><div class="line">string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加</div><div class="line">string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确</div></pre></td></tr></table></figure></li></ul><p><strong> 字符串字面值与string是不同的类型 </strong></p><h3 id="ex3-3-string类的输入运算和getline函数分别如何处理字符串"><a href="#ex3-3-string类的输入运算和getline函数分别如何处理字符串" class="headerlink" title="ex3.3 string类的输入运算和getline函数分别如何处理字符串"></a>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3><p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止<br>getline函数：从给定的输入流中读取，直到遇到换行符为止。</p><h2 id="3-3-标准库类型vector"><a href="#3-3-标准库类型vector" class="headerlink" title="3.3 标准库类型vector"></a>3.3 标准库类型vector</h2><p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p><h3 id="3-3-1-定义和初始化vector对象"><a href="#3-3-1-定义和初始化vector对象" class="headerlink" title="3.3.1 定义和初始化vector对象"></a>3.3.1 定义和初始化vector对象</h3><ul><li>1.使用拷贝初始化</li><li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li><li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li><li>4.创建指定数量的元素：采用圆括号<h3 id="3-3-2-像vector中添加元素"><a href="#3-3-2-像vector中添加元素" class="headerlink" title="3.3.2 像vector中添加元素"></a>3.3.2 像vector中添加元素</h3>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）<br>不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</li></ul><h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。<br>某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p><h3 id="迭代器的算数运算"><a href="#迭代器的算数运算" class="headerlink" title="迭代器的算数运算"></a>迭代器的算数运算</h3><p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。<br>迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p><h2 id="3-5-数组"><a href="#3-5-数组" class="headerlink" title="3.5 数组"></a>3.5 数组</h2><p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p><h3 id="3-5-1-定义和初始化数组"><a href="#3-5-1-定义和初始化数组" class="headerlink" title="3.5.1 定义和初始化数组"></a>3.5.1 定义和初始化数组</h3><p>数组是一种复合类型，数组的维度必须是一个常量表达式。<br>定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p><h4 id="字符数组的特殊性"><a href="#字符数组的特殊性" class="headerlink" title="字符数组的特殊性"></a>字符数组的特殊性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，没有空字符</div><div class="line">char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，含有显式的空字符</div><div class="line">char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符</div></pre></td></tr></table></figure><h4 id="不允许拷贝和赋值"><a href="#不允许拷贝和赋值" class="headerlink" title="不允许拷贝和赋值"></a>不允许拷贝和赋值</h4><h4 id="复杂的数组声明"><a href="#复杂的数组声明" class="headerlink" title="复杂的数组声明"></a>复杂的数组声明</h4><p><strong> 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int &amp;refs[10]=...  //  错误！不存在数组的引用</div><div class="line">int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组</div><div class="line">int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组</div><div class="line">int *ptrs[10];  //ptrs是一个含有10个整型指针的数组</div></pre></td></tr></table></figure></p><h3 id="3-5-2-访问数组元素"><a href="#3-5-2-访问数组元素" class="headerlink" title="3.5.2 访问数组元素"></a>3.5.2 访问数组元素</h3><ul><li>数组下标为<strong> size_t类型 </strong>，是一种机器相关的无符号类型。<h3 id="3-5-3-指针和数组"><a href="#3-5-3-指针和数组" class="headerlink" title="3.5.3 指针和数组"></a>3.5.3 指针和数组</h3>使用数组的时候编译器一般会把它转化成指针<h4 id="指针也是迭代器"><a href="#指针也是迭代器" class="headerlink" title="指针也是迭代器"></a>指针也是迭代器</h4>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上<h4 id="标准库函数begin和end"><a href="#标准库函数begin和end" class="headerlink" title="标准库函数begin和end"></a>标准库函数begin和end</h4><h3 id="3-5-4-C风格字符串"><a href="#3-5-4-C风格字符串" class="headerlink" title="3.5.4 C风格字符串"></a>3.5.4 C风格字符串</h3>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。<br>C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。<br><strong> 问题：为什么没有指针相加？ </strong><br>指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。<h3 id="3-5-5-与旧代码的接口"><a href="#3-5-5-与旧代码的接口" class="headerlink" title="3.5.5 与旧代码的接口"></a>3.5.5 与旧代码的接口</h3><h4 id="混用string对象和C风格字符串"><a href="#混用string对象和C风格字符串" class="headerlink" title="混用string对象和C风格字符串"></a>混用string对象和C风格字符串</h4></li><li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li><li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。<h4 id="使用数组初始化vector对象"><a href="#使用数组初始化vector对象" class="headerlink" title="使用数组初始化vector对象"></a>使用数组初始化vector对象</h4>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。<h2 id="3-6-多维数组"><a href="#3-6-多维数组" class="headerlink" title="3.6 多维数组"></a>3.6 多维数组</h2>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。<br>当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组</div></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;第3章-字符串、向量和数组&quot;&gt;&lt;a href=&quot;#第3章-字符串、向量和数组&quot; class=&quot;headerlink&quot; title=&quot;第3章 字符串、向量和数组&quot;&gt;&lt;/a&gt;第3章 字符串、向量和数组&lt;/h1&gt;&lt;h2 id=&quot;3-1-命名空间的using声明&quot;&gt;&lt;a href=&quot;#3-1-命名空间的using声明&quot; class=&quot;headerlink&quot; title=&quot;3.1 命名空间的using声明&quot;&gt;&lt;/a&gt;3.1 命名空间的using声明&lt;/h2&gt;&lt;h3 id=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;a href=&quot;#每个名字都需要独立的using声明&quot; class=&quot;headerlink&quot; title=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;/a&gt;每个名字都需要独立的using声明&lt;/h3&gt;&lt;h3 id=&quot;头文件中不应该包含using声明&quot;&gt;&lt;a href=&quot;#头文件中不应该包含using声明&quot; class=&quot;headerlink&quot; title=&quot;头文件中不应该包含using声明&quot;&gt;&lt;/a&gt;头文件中不应该包含using声明&lt;/h3&gt;&lt;p&gt;因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。&lt;/p&gt;
-&lt;h2 id=&quot;3-2-标准库类型string&quot;&gt;&lt;a href=&quot;#3-2-标准库类型string&quot; class=&quot;headerlink&quot; title=&quot;3.2 标准库类型string&quot;&gt;&lt;/a&gt;3.2 标准库类型string&lt;/h2&gt;&lt;h3 id=&quot;3-2-1-定义和初始化string对象&quot;&gt;&lt;a href=&quot;#3-2-1-定义和初始化string对象&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 定义和初始化string对象&quot;&gt;&lt;/a&gt;3.2.1 定义和初始化string对象&lt;/h3&gt;
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>《c++primer》ch2 变量和基本类型</title>
     <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch2/"/>
     <id>http://yoursite.com/2017/06/04/《cpp primer》ch2/</id>
     <published>2017-06-04T09:55:33.000Z</published>
-    <updated>2017-09-09T09:01:59.411Z</updated>
+    <updated>2017-09-09T15:42:43.345Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>ch2 变量和基本类型<br>数据类型决定了程序中数据和操作的意义。</p><h1 id="2-1-基本内置类型"><a href="#2-1-基本内置类型" class="headerlink" title="2.1 基本内置类型"></a>2.1 基本内置类型</h1><p>基本数据类型：<strong> 算数类型  空类型（void） </strong>,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。<br><a id="more"></a></p><h2 id="2-1-1-算数类型"><a href="#2-1-1-算数类型" class="headerlink" title="2.1.1 算数类型"></a>2.1.1 算数类型</h2><p>分为整形和浮点型。</p><h3 id="整形："><a href="#整形：" class="headerlink" title="整形："></a>整形：</h3><ul><li>bool:取值为true或者false。</li><li>char：基本的字符类型，一个char的大小与一个机器字节一样。</li><li>wchar_t,char16_t,char32_t<br><strong> rules: </strong>一个int至少和一个short一样大，一个long至少跟一个int一样大，一个long long至少跟一个long一样大。</li></ul></blockquote><h3 id="浮点型："><a href="#浮点型：" class="headerlink" title="浮点型："></a>浮点型：</h3><ul><li>float：一般一个字，32bit</li><li>double：2个字，64bit</li><li>long double：3或4个字，96或128bit<h3 id="带符号类型和无符号类型"><a href="#带符号类型和无符号类型" class="headerlink" title="带符号类型和无符号类型"></a>带符号类型和无符号类型</h3><h2 id="2-1-2-类型转换"><a href="#2-1-2-类型转换" class="headerlink" title="2.1.2 类型转换"></a>2.1.2 类型转换</h2><h3 id="转换过程："><a href="#转换过程：" class="headerlink" title="转换过程："></a>转换过程：</h3></li><li>非bool到bool：初始为0则为false，其他为true</li><li>bool到非bool：初始值为false则为0，初始值为true为1</li><li>浮点数到整型：仅保留浮点数中的<strong> 小数点部分 </strong></li><li>整数到浮点数：小数部分记为0，如果整数所占的空间超过浮点类型的容量，会报错。</li><li>赋给无符号类型，当超出它表示范围的时候，转换为该无符号类型表示数值总数取模后的余数。</li><li>给带符号的数输出超过范围的值是，结果时<strong> 未定义的 </strong></li></ul><p>tips:一般不在算数表达式中使用bool值</p><h3 id="含有无符号类型的表达式"><a href="#含有无符号类型的表达式" class="headerlink" title="含有无符号类型的表达式"></a>含有无符号类型的表达式</h3><p>一般不要混用无符号和有符号的类型，当无符号超过范围时，可能会出现取模的情况，放在循环中，或者计算结果中，会产生无法预计的结果</p><h2 id="2-1-3-字面值常量"><a href="#2-1-3-字面值常量" class="headerlink" title="2.1.3 字面值常量"></a>2.1.3 字面值常量</h2><p>顾名思义，字面值常量一望而知。每个字面值常量对应一种数据类型，字面量常量得形式和值决定了它的数据类型。</p><h3 id="整型和浮点型字面值"><a href="#整型和浮点型字面值" class="headerlink" title="整型和浮点型字面值"></a>整型和浮点型字面值</h3><p>严格来说，十进制字面值不会是负数，通常，负号并不在字面值内，它的作用仅仅是对字面值取负值而已。</p><h3 id="字符和字符串字面值"><a href="#字符和字符串字面值" class="headerlink" title="字符和字符串字面值"></a>字符和字符串字面值</h3><ul><li>char型字面值：由单引号括起来的一个字符</li><li>字符串字面值：由双引号括起来的零个或多个字符<br><strong> Note：字符串字面值的类型实际上是由常量字符组成的数组，编译器在每个字符串的结尾处添加一个空字符（’\0’），字符串的字面值的实际长度比它的内容多1。 </strong><h3 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h3>有两类不能直接使用的字符。不可打印的和特殊含义的字符（单引号，双引号，问号，反斜线），这些情况下需要使用转义字符。<h3 id="指定字面值类型"><a href="#指定字面值类型" class="headerlink" title="指定字面值类型"></a>指定字面值类型</h3>添加一定的前缀和后缀，可以改变整型、浮点型和字符型字面值的默认类型。前缀有：u（Unicode16）、U（Unicode32）、L（宽字符）、u8（UTF-8）。后缀有：u或者U（unsigned）、l或者L（ling）、ll或者LL（long long），f或者F（float）、l或者L（long double）。<h3 id="布尔字面值和指针字面值"><a href="#布尔字面值和指针字面值" class="headerlink" title="布尔字面值和指针字面值"></a>布尔字面值和指针字面值</h3>bool：true、false<br>指针：nullptr<h1 id="2-2-变量"><a href="#2-2-变量" class="headerlink" title="2.2 变量"></a>2.2 变量</h1>对于c++来说，一般“变量”和“对象”可以互换使用。对象时具有某种数据类型的内存空间。<h2 id="2-2-1-变量定义"><a href="#2-2-1-变量定义" class="headerlink" title="2.2.1 变量定义"></a>2.2.1 变量定义</h2>基本形式：类型说明符+一个或多个变量名组成的列表（变量名以逗号分隔）+分号<h3 id="初始值"><a href="#初始值" class="headerlink" title="初始值"></a>初始值</h3>当对象在创建时获得了一个特定的值，称为被初始化了。<strong> 初始化和复制是两个完全不同的操作，注意这个概念很重要 </strong><br>初始化：在创建变量是赋予其一个初始值。<br>复制：把对象的当前值擦除，以一个新的值代替。<h3 id="列表初始化"><a href="#列表初始化" class="headerlink" title="列表初始化"></a>列表初始化</h3>无论是初始化对象还是某些时候为对象赋新值，都可以使用一组又花括号括起来的初始值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int units_sold=0;</div><div class="line">int units_sold=&#123;0&#125;;</div><div class="line">int units_sold&#123;0&#125;;</div><div class="line">int units_sold(0);</div></pre></td></tr></table></figure></li></ul><h3 id="默认初始化"><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h3><p>定义于函数体内的内置类型的对象如果没有初始化，则其值未定义。类的对象如果没有显式的初始化，则其值由类确定。。建议初始化每一个内置类型的变量。</p><h2 id="2-2-2-变量声明与定义的关系"><a href="#2-2-2-变量声明与定义的关系" class="headerlink" title="2.2.2 变量声明与定义的关系"></a>2.2.2 变量声明与定义的关系</h2><p>声明使得名字为程序所知，定义负责创建与名字关联的实体。<br><strong> extern </strong>关键字：如果想声明一个变量而不是定义它，就在变量名前添加extern，而不显示的初始化变量。如果在函数体内部试图初始化一个有extern关键字标记的变量，会引发错误。</p><h2 id="2-2-3-标识符"><a href="#2-2-3-标识符" class="headerlink" title="2.2.3 标识符"></a>2.2.3 标识符</h2><p>用户自定义的标识符中不能出现两个连续的下划线，也不能以下划线紧连大写字母开头。定义在函数体内的标识符不能以下划线开头。</p><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul><li>标识符要能体现实际含义</li><li>变量名一般小写字母</li><li>自定义的类名一般大写字母开头</li><li>标识符由多个单词组成时，单词应有明显区分，使用下划线<h2 id="2-2-4-名字的作用域"><a href="#2-2-4-名字的作用域" class="headerlink" title="2.2.4 名字的作用域"></a>2.2.4 名字的作用域</h2>当内层出现与外层相同的名字时，使用内层定义的名字。<h1 id="2-3-复合类型"><a href="#2-3-复合类型" class="headerlink" title="2.3 复合类型"></a>2.3 复合类型</h1>复合类型指的是基于其他类型定义的类型。这里介绍两种：引用和指针。<h2 id="2-3-1-引用"><a href="#2-3-1-引用" class="headerlink" title="2.3.1 引用"></a>2.3.1 引用</h2>引用为对象起了另外一个名字，引用；类型引用另外一种类型。通过将生命符写成&amp;d的形式来定义引用类型，其中d是声明的变量名。引用必须初始化。<h3 id="引用即别名"><a href="#引用即别名" class="headerlink" title="引用即别名"></a>引用即别名</h3>引用并不是对象，只是一个已经存在的对象起的另外一个名字。定义了一个引用之后，对其做的所有操作都是在与之绑定的对象上进行的。<br>因为引用本身只是一个别名，不是一个对象，所以不能定义引用的引用。<h3 id="引用的定义"><a href="#引用的定义" class="headerlink" title="引用的定义"></a>引用的定义</h3>除了两种例外的情况，其他所有的引用类型都要与之绑定的对象严格比配。<br>引用只能绑定到对象上，不能绑定到字面值或者某个表达式的计算结果上。<h2 id="2-3-2-指针"><a href="#2-3-2-指针" class="headerlink" title="2.3.2 指针"></a>2.3.2 指针</h2>指针是“指向point to”的另外一种类型的复合引用。指针也实现了对其他对象的间接访问。<br>两者的不同点：</li><li>1.指针本身就是一个对象，允许对指针赋值和拷贝，而且指针的生命周期内可以指向多个不同的对象。</li><li>2.指针无需在定义时赋初值。<h3 id="获取对象的地址"><a href="#获取对象的地址" class="headerlink" title="获取对象的地址"></a>获取对象的地址</h3>指针存放某个对象的地址，要想获取该地址，需要使用取地址符（操作符&amp;）<br>不能定义指向引用的指针（因为引用不是一个对象）。<br>除了两种例外的情况，所有指针的类型都要和它指向的对象严格匹配。<h3 id="指针值"><a href="#指针值" class="headerlink" title="指针值"></a>指针值</h3>指针的值（即地址）应该属于下面四种状态之一：</li><li>1.指向一个对象</li><li>2.指向紧邻对象所占空间的下一个位置</li><li>3.空指针，表示没有指向任何对象。</li><li>4.无效指针，上述之外的其他值。<h3 id="利用指针访问对象"><a href="#利用指针访问对象" class="headerlink" title="利用指针访问对象"></a>利用指针访问对象</h3>如果指针指向了一个对象，允许使用解引用符（操作符*）来访问对象。<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3>空指针不指向任何对象，得到空指针的办法：直接用字面值nullptr初始化指针或者将指针初始化为字面值0来生成空指针。<br><strong> 建议 </strong>：初始化所有指针<h3 id="赋值和指针"><a href="#赋值和指针" class="headerlink" title="赋值和指针"></a>赋值和指针</h3>记住赋值永远改变的是等号左侧的对象。<h3 id="其他指针操作"><a href="#其他指针操作" class="headerlink" title="其他指针操作"></a>其他指针操作</h3>只要一个指针拥有合法值，就能将它用在条件表达式中，只要不为空，条件都为true。<h3 id="void-指针"><a href="#void-指针" class="headerlink" title="void* 指针"></a>void* 指针</h3>void* 是一种特殊的指针类型，可用于存放任意对象的地址。<h2 id="2-3-3-理解复合类型的声明"><a href="#2-3-3-理解复合类型的声明" class="headerlink" title="2.3.3 理解复合类型的声明"></a>2.3.3 理解复合类型的声明</h2>变量的定义包括：一个基本数据类型+一组声明符。基本数据类型只有一个，但是声明符的形式可以不同。<h3 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h3>当有多个修饰符连写在一起的时候，按照逻辑关系解释。<h3 id="指向指针的引用"><a href="#指向指针的引用" class="headerlink" title="指向指针的引用"></a>指向指针的引用</h3>引用本身不是对象，但是指针是对象，所以可以对指针引用。<br>面对一条复杂的指针或引用的声明语句时，从右向左阅读有助于弄清真实含义。<h1 id="2-4-const限定符"><a href="#2-4-const限定符" class="headerlink" title="2.4 const限定符"></a>2.4 const限定符</h1><h3 id="初始化和const"><a href="#初始化和const" class="headerlink" title="初始化和const"></a>初始化和const</h3>const与非const对象的区别就是，const类型的对象执行不改变起内容的操作。如：const int也能像int一样参与算术运算，也能转化为bool值。<h3 id="默认状态下，const对象仅在文件内有效"><a href="#默认状态下，const对象仅在文件内有效" class="headerlink" title="默认状态下，const对象仅在文件内有效"></a>默认状态下，const对象仅在文件内有效</h3>如果想在多个文件之间共享const对象，必须在变量定义之前添加extern关键字。<h2 id="2-4-1-const的引用"><a href="#2-4-1-const的引用" class="headerlink" title="2.4.1 const的引用"></a>2.4.1 const的引用</h2>可以把引用绑定到const对象上，就像绑定到其他对象上一样，称为对常量引用，对常量的引用不能修改它所绑定的对象。<br><strong> 术语：常量引用是对const的引用 </strong>：并不存在常量引用，是对const的引用。<h3 id="初始化和对const的引用"><a href="#初始化和对const的引用" class="headerlink" title="初始化和对const的引用"></a>初始化和对const的引用</h3>引用情况的例外：第一种是，在初始化常量引用时，允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可。尤其允许为一个常量引用绑定非常量的对象、字面值，甚至是个一般表达式。<h3 id="对const的引用可能引用一个非const的对象"><a href="#对const的引用可能引用一个非const的对象" class="headerlink" title="对const的引用可能引用一个非const的对象"></a>对const的引用可能引用一个非const的对象</h3>此种行为是合法的，但是不能通过对const的引用改变对象的值，兑现可以通过其他的方式改变值。<h2 id="2-4-2-指针和const"><a href="#2-4-2-指针和const" class="headerlink" title="2.4.2 指针和const"></a>2.4.2 指针和const</h2>指向常量的指针不能改变其所指对象的值，要想存放常量对象的地址，只能只用指向常量的指针。<br>所谓指向常量的指针和引用，只是自以为指向了一个常量，所以自觉不去改变所指对象的值。<h3 id="const指针"><a href="#const指针" class="headerlink" title="const指针"></a>const指针</h3>*const：不变的是指针的值而不是指向的那个值。采用从右向左的方式阅读，看离最近的符号。<h3 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h3>顶层const表示指针本身是个常量，底层const表示指针指的对象是一个常量。<br>当对象执行拷贝操作时，顶层const不受影响，拷入和拷出的对象必须具有相同的底层const资格，或者两个对象的数据类型必须能够转化。<h2 id="2-4-4-constexpr和常量表达式"><a href="#2-4-4-constexpr和常量表达式" class="headerlink" title="2.4.4 constexpr和常量表达式"></a>2.4.4 constexpr和常量表达式</h2>常量表达式指：值不会改变且在编译过程就能得到计算结果的表达式。（字面值、用常量表达式初始化的const对象）<h3 id="constexpr变量"><a href="#constexpr变量" class="headerlink" title="constexpr变量"></a>constexpr变量</h3>声明为constexpr的变量一定是一个变量，且必须用常量表达式初始化。<h3 id="字面值类型"><a href="#字面值类型" class="headerlink" title="字面值类型"></a>字面值类型</h3><h3 id="指针和constexpr"><a href="#指针和constexpr" class="headerlink" title="指针和constexpr"></a>指针和constexpr</h3>在constexpr如果定义了一个指针，则constexpr只对指针有效，与指针所指的对象无关。<h1 id="2-5-处理类型"><a href="#2-5-处理类型" class="headerlink" title="2.5 处理类型"></a>2.5 处理类型</h1><h2 id="2-5-1-类型别名"><a href="#2-5-1-类型别名" class="headerlink" title="2.5.1 类型别名"></a>2.5.1 类型别名</h2>类型别名是一个名字，是某种类型的同义词。使用方式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">typedef double wages  //wages 是double的别名</div><div class="line">typedef wages base,*p</div><div class="line"></div><div class="line">#别名声明</div><div class="line">using SI=Scales_item;</div></pre></td></tr></table></figure></li></ul><h3 id="指针、常量和类型别名"><a href="#指针、常量和类型别名" class="headerlink" title="指针、常量和类型别名"></a>指针、常量和类型别名</h3><h2 id="2-5-2-auto类型说明符"><a href="#2-5-2-auto类型说明符" class="headerlink" title="2.5.2 auto类型说明符"></a>2.5.2 auto类型说明符</h2><h3 id="复合类型、常量和auto"><a href="#复合类型、常量和auto" class="headerlink" title="复合类型、常量和auto"></a>复合类型、常量和auto</h3><ul><li>引用时的auto，以引用对象的类型作为auto的类型</li><li>auto一般会忽略掉顶层const，底层const会保留下来。</li><li>可以将引用的类型设为auto<h2 id="2-5-3-decltype类型指示符"><a href="#2-5-3-decltype类型指示符" class="headerlink" title="2.5.3 decltype类型指示符"></a>2.5.3 decltype类型指示符</h2>选择并返回操作数的类型，编译器分析表达式并得到类型，但并不实际计算值<h3 id="decltype和引用"><a href="#decltype和引用" class="headerlink" title="decltype和引用"></a>decltype和引用</h3>有些表达式将向decltype返回一个引用类型。如果表达式的内容是解引用操作，则decltype将得到引用类型。<br>解引用指针可以得到指针所指的对象，而且还能给这个对象赋值。<br>decltype和auto的重要区别：decltype的结果类型与表达式形式密切相关。<br><strong> 如果给变量加上一层或多层括号，decltype就会得到引用类型。decltype((val))的结果永远是引用，decltype(val)只有当val本身是一个引用时才是引用。另外，赋值是会产生引用的一类典型表达式，引用的类型就是左值的类型 </strong></li></ul><h1 id="2-6-自定义数据结构"><a href="#2-6-自定义数据结构" class="headerlink" title="2.6 自定义数据结构"></a>2.6 自定义数据结构</h1><h2 id="定义自己的数据结构"><a href="#定义自己的数据结构" class="headerlink" title="定义自己的数据结构"></a>定义自己的数据结构</h2><h2 id="定义自己的头文件"><a href="#定义自己的头文件" class="headerlink" title="定义自己的头文件"></a>定义自己的头文件</h2><h2 id="预处理器"><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h2>]]></content>
     
@@ -178,8 +191,6 @@
     
       <category term="C++" scheme="http://yoursite.com/categories/C/"/>
     
-      <category term="编程" scheme="http://yoursite.com/categories/C/%E7%BC%96%E7%A8%8B/"/>
-    
     
   </entry>
   
@@ -188,7 +199,7 @@
     <link href="http://yoursite.com/2017/06/01/%E7%AE%80%E5%8D%95%E8%84%9A%E6%9C%ACgit%E4%B8%80%E9%94%AE%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/"/>
     <id>http://yoursite.com/2017/06/01/简单脚本git一键提交代码/</id>
     <published>2017-06-01T10:55:29.000Z</published>
-    <updated>2017-09-07T16:20:45.906Z</updated>
+    <updated>2017-09-09T15:39:24.755Z</updated>
     
     <content type="html"><![CDATA[<hr><blockquote><p>git是我们每天都会使用的工具，但是一般的使用还是直接通过几个简单的命令，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;...&quot;</div><div class="line">git push origin master</div></pre></td></tr></table></figure></p></blockquote><a id="more"></a><p>对于这种简单的步骤，我们每天都会重复无数次，所以巨懒如我就干脆搞个小脚本，直接点一下就提交了。。</p><h2 id="一、Window使用bat脚本一键提交代码"><a href="#一、Window使用bat脚本一键提交代码" class="headerlink" title="一、Window使用bat脚本一键提交代码"></a>一、Window使用bat脚本一键提交代码</h2><p>直接新建文件，保存成.bat格式，编辑如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">title GIT提交批处理——小二三不乌</div><div class="line">color 16</div><div class="line"></div><div class="line"></div><div class="line">echo 开始提交代码到本地仓库</div><div class="line">echo 当前目录是：%cd%</div><div class="line"></div><div class="line">echo 开始添加变更</div><div class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</div><div class="line">git add -A .</div><div class="line">echo 执行结束！</div><div class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</div><div class="line"></div><div class="line">echo;</div><div class="line">echo 提交变更到本地仓库</div><div class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</div><div class="line">set /p declation=输入修改:</div><div class="line">git commit -m &quot;%declation%&quot;</div><div class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</div><div class="line"></div><div class="line">echo;</div><div class="line">echo 将变更情况提交到远程git服务器</div><div class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</div><div class="line">git push origin master</div><div class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</div><div class="line"></div><div class="line">echo;</div><div class="line">echo 批处理执行完毕！</div><div class="line">echo;</div><div class="line"></div><div class="line">pause</div></pre></td></tr></table></figure></p><h2 id="二、编写Python脚本一键提交代码"><a href="#二、编写Python脚本一键提交代码" class="headerlink" title="二、编写Python脚本一键提交代码"></a>二、编写Python脚本一键提交代码</h2><p><strong>额，用Python 好像就比较简单，但是还得cmd输一下，所以还是算了吧。。。 </strong></p>]]></content>
     
@@ -201,7 +212,7 @@
     
     </summary>
     
-      <category term="杂" scheme="http://yoursite.com/categories/%E6%9D%82/"/>
+      <category term="Tips" scheme="http://yoursite.com/categories/Tips/"/>
     
     
   </entry>
@@ -211,7 +222,7 @@
     <link href="http://yoursite.com/2017/05/31/hexo+gitpage/"/>
     <id>http://yoursite.com/2017/05/31/hexo+gitpage/</id>
     <published>2017-05-31T00:55:29.000Z</published>
-    <updated>2017-09-07T16:20:34.693Z</updated>
+    <updated>2017-09-09T15:41:54.626Z</updated>
     
     <content type="html"><![CDATA[<hr><h2 id="如今，各种博客网站都可以让我们随意的写作，但是很多的选择也让我们有时候不知道该怎么选择，而且作为喜欢折腾的程序员来说，自己搭建属于自己的博客当然是一个很好的选择了。可以将文件保存在本地，随时换自己的风格，备份，做一些diy的调整。"><a href="#如今，各种博客网站都可以让我们随意的写作，但是很多的选择也让我们有时候不知道该怎么选择，而且作为喜欢折腾的程序员来说，自己搭建属于自己的博客当然是一个很好的选择了。可以将文件保存在本地，随时换自己的风格，备份，做一些diy的调整。" class="headerlink" title="如今，各种博客网站都可以让我们随意的写作，但是很多的选择也让我们有时候不知道该怎么选择，而且作为喜欢折腾的程序员来说，自己搭建属于自己的博客当然是一个很好的选择了。可以将文件保存在本地，随时换自己的风格，备份，做一些diy的调整。"></a>如今，各种博客网站都可以让我们随意的写作，但是很多的选择也让我们有时候不知道该怎么选择，而且作为喜欢折腾的程序员来说，自己搭建属于自己的博客当然是一个很好的选择了。可以将文件保存在本地，随时换自己的风格，备份，做一些diy的调整。</h2><a id="more"></a><h2 id="一、准备工作，准备需要准备好以下软件："><a href="#一、准备工作，准备需要准备好以下软件：" class="headerlink" title="一、准备工作，准备需要准备好以下软件："></a>一、准备工作，准备需要准备好以下软件：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Node.js环境</div><div class="line">Git</div></pre></td></tr></table></figure><h3 id="1-Windows配置Node-js环境下载Node-js安装文件："><a href="#1-Windows配置Node-js环境下载Node-js安装文件：" class="headerlink" title="1.Windows配置Node.js环境下载Node.js安装文件："></a>1.Windows配置Node.js环境下载Node.js安装文件：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Windows Installer 32-bit</div><div class="line">Windows Installer 64-bit</div></pre></td></tr></table></figure><ul><li><p>根据自己的Windows版本选择相应的安装文件。<br><img src="https://xuanwo.org/imgs/opinion/Nodejs-install.png" alt=""></p></li><li><p>保持默认设置即可，一路Next，安装很快就结束了。 然后我们检查一下是不是要求的组件都安装好了，同时按下Win和R，打开运行窗口：<br><img src="http://upload-images.jianshu.io/upload_images/6054281-bc2e6deb5f394f93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p></li><li>在新打开的窗口中输入cmd，敲击回车，打开命令行界面。（下文将直接用打开命令行来表示以上操作，记住哦~） 在打开的命令行界面中，输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node -v</div><div class="line">npm -v</div></pre></td></tr></table></figure></li></ul><p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。<br>(<a href="https://xuanwo.org/imgs/opinion/Nodejs-test.png" target="_blank" rel="external">https://xuanwo.org/imgs/opinion/Nodejs-test.png</a>)</p><h3 id="2-配置Git环境下载Git安装文件："><a href="#2-配置Git环境下载Git安装文件：" class="headerlink" title="2.配置Git环境下载Git安装文件："></a>2.配置Git环境下载Git安装文件：</h3><p><a href="https://github.com/git-for-windows/git/releases/download/v2.6.3.windows.1/Git-2.6.3-64-bit.exe" target="_blank" rel="external">Git-2.6.3-64-bit.exe</a></p><p>然后就进入了Git的安装界面，如图：<br><img src="https://xuanwo.org/imgs/opinion/Git-install.png" alt=""><br>和Node.js一样，大部分设置都只需要保持默认，但是出于我们操作方便考虑，建议PATH选项按照下图选择：<br><img src="https://xuanwo.org/imgs/opinion/Git-path-setting.png" alt=""></p><blockquote><p>这是对上图的解释，不需要了解请直接跳过 Git的默认设置下，出于安全考虑，只有在Git Bash中才能进行Git的相关操作。按照上图进行的选择，将会使得Git安装程序在系统PATH中加入Git的相关路径，使得你可以在CMD界面下调用Git，不用打开Git Bash了。</p></blockquote><p>一样的，我们来检查一下Git是不是安装正确了，打开命令行，输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version</div></pre></td></tr></table></figure></p><p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。<br><img src="https://xuanwo.org/imgs/opinion/Git-test.png" alt=""></p><h2 id="二、新建仓库"><a href="#二、新建仓库" class="headerlink" title="二、新建仓库"></a>二、新建仓库</h2><h3 id="1-打开https-github-com-，在下图的框中，分别输入自己的用户名，邮箱，密码。"><a href="#1-打开https-github-com-，在下图的框中，分别输入自己的用户名，邮箱，密码。" class="headerlink" title="1.打开https://github.com/，在下图的框中，分别输入自己的用户名，邮箱，密码。"></a>1.打开<a href="https://github.com/，在下图的框中，分别输入自己的用户名，邮箱，密码。" target="_blank" rel="external">https://github.com/，在下图的框中，分别输入自己的用户名，邮箱，密码。</a></h3><h3 id="2-创建代码库登陆之后，点击页面右上角的加号，选择New-repository："><a href="#2-创建代码库登陆之后，点击页面右上角的加号，选择New-repository：" class="headerlink" title="2.创建代码库登陆之后，点击页面右上角的加号，选择New repository："></a>2.创建代码库登陆之后，点击页面右上角的加号，选择New repository：</h3><p>进入代码库创建页面：<br>在Repository name下填写yourname.github.io，Description (optional)下填写一些简单的描述（不写也没有关系），如图所示：<br><img src="https://xuanwo.org/imgs/opinion/Github-new-repo-setting.png" alt=""><br>正确创建之后，你将会看到如下界面：<br><img src="https://xuanwo.org/imgs/opinion/Github-new-repo-look-like.png" alt=""><br>开启gh-pages功能点击界面右侧的Settings，你将会打开这个库的setting页面，向下拖动，直到看见GitHub Pages，如图：<br><img src="https://xuanwo.org/imgs/opinion/Github-pages.png" alt=""><br>点击Automatic page generator，Github将会自动替你创建出一个gh-pages的页面。 如果你的配置没有问题，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了~ 如果yourname.github.io已经可以正常访问了，那么Github一侧的配置已经全部结束了。<br>配置Hexo安装Hexo在自己认为合适的地方创建一个文件夹，然后在文件夹空白处按住Shift+鼠标右键，然后点击在此处打开命令行窗口。（同样要记住啦，下文中会使用在当前目录打开命令行来代指上述的操作）<br>在命令行中输入：<br><code>npm install hexo-cli -g</code><br>然后你将会看到:<br><img src="https://xuanwo.org/imgs/opinion/npm-install-hexo-cli.png" alt=""><br>可能你会看到一个WARN，但是不用担心，这不会影响你的正常使用。 然后输入<br><code>npm install hexo --save</code></p><p>然后你会看到命令行窗口刷了一大堆白字，下面我们来看一看Hexo是不是已经安装好了。 在命令行中输入：<br><code>hexo -v</code></p><p>如果你看到了如图文字，则说明已经安装成功了。<br><img src="https://xuanwo.org/imgs/opinion/hexo-v.png" alt=""><br>初始化Hexo接着上面的操作，输入：<br><code>hexo init</code></p><p>如图：<br><img src="https://xuanwo.org/imgs/opinion/hexo-init.png" alt=""><br>然后输入：<br><code>npm install</code></p><p>之后npm将会自动安装你需要的组件，只需要等待npm操作即可。</p><h2 id="首次体验Hexo"><a href="#首次体验Hexo" class="headerlink" title="首次体验Hexo"></a>首次体验Hexo</h2><p>继续操作，同样是在命令行中，输入：<br><code>hexo g</code></p><p>如图：<br><img src="https://xuanwo.org/imgs/opinion/hexo-g.png" alt=""><br>然后输入：<br><code>hexo s</code></p><p>然后会提示：<br><code>INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.</code></p><p>在浏览器中打开<code>http://localhost:4000/</code>，你将会看到：<br><img src="https://xuanwo.org/imgs/opinion/hexo-first-time.png" alt=""><br>到目前为止，Hexo在本地的配置已经全都结束了。</p><h2 id="使用Hexo"><a href="#使用Hexo" class="headerlink" title="使用Hexo"></a>使用Hexo</h2><blockquote><p>在配置过程中请使用yamllint来保证自己的yaml语法正确<br>修改全局配置文件此段落引用自<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">Hexo官方文档</a><br>您可以在 _config.yml 中修改大部份的配置。</p><h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><p>参数 | 描述<br>title | 网站标题<br>subtitle | 网站副标题<br>description | 网站描述<br>author | 您的名字<br>language | 网站使用的语言<br>timezone | 网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/New_York, Japan, 和 UTC 。</p><h3 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h3><table><thead><tr><th>参数</th><th>描述</th><th>默认值</th></tr></thead><tbody><tr><td>url</td><td>网址</td></tr><tr><td>root</td><td>网站根目录</td><td>permalink文章的 永久链接 格式:year/:month/:day/:title/permalink_default永久链接中各部分的默认值 如果您的网站存放在子目录中，例如 <a href="http://yoursite.com/blog，则请将您的">http://yoursite.com/blog，则请将您的</a> url 设为 <a href="http://yoursite.com/blog">http://yoursite.com/blog</a> 并把 root 设为 /blog/。</td></tr></tbody></table><p>目录参数描述默认值source_dir资源文件夹，这个文件夹用来存放内容。sourcepublic_dir公共文件夹，这个文件夹用于存放生成的站点文件。publictag_dir标签文件夹tagsarchive_dir归档文件夹archivescategory_dir分类文件夹categoriescode_dirInclude code 文件夹`downloads/codei18n_dir国际化（i18n）文件夹:langskip_render跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。 文章参数描述默认值new_post_name新文章的文件名称:title.mddefault_layout预设布局postauto_spacing在中文和英文之间加入空格falsetitlecase把标题转换为 title casefalseexternal_link在新标签中打开链接truefilename_case把文件名称转换为 (1) 小写或 (2) 大写0render_drafts显示草稿falsepost_asset_folder启动 Asset 文件夹falserelative_link把链接改为与根目录的相对位址falsefuture显示未来的文章truehighlight代码块的设置 分类 &amp; 标签参数描述默认值default_category默认分类uncategorizedcategory_map分类别名 tag_map标签别名 日期 / 时间格式Hexo 使用 Moment.js 来解析和显示时间。<br>参数描述默认值date_format日期格式MMM D YYYYtime_format时间格式H:mm:ss分页参数描述默认值per_page每页显示的文章量 (0 = 关闭分页功能)10pagination_dir分页目录page扩展参数描述theme当前主题名称。值为false时禁用主题deploy部署部分的设置配置Deployment首先，你需要为自己配置身份信息，打开命令行，然后输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;yourname&quot;</div><div class="line">git config --global user.email &quot;youremail&quot;</div></pre></td></tr></table></figure></p></blockquote><p>同样在_config.yml文件中，找到Deployment，然后按照如下修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:yourname/yourname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p><p>如果使用git方式进行部署，执行npm install hexo-deployer-git –save来安装所需的插件<br>然后在当前目录打开命令行，输入：<br><code>hexo d</code></p><p>随后按照提示，分别输入自己的Github账号用户名和密码，开始上传。 然后通过<a href="http://yourname.github.io/来访问自己刚刚上传的网站。" target="_blank" rel="external">http://yourname.github.io/来访问自己刚刚上传的网站。</a><br>添加新文章打开Hexo目录下的source文件夹，所有的文章都会以md形式保存在_post文件夹中，只要在_post文件夹中新建md类型的文档，就能在执行hexo g的时候被渲染。 新建的文章头需要添加一些yml信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: hello-world   //在此处添加你的标题。</div><div class="line">date: 2017-5-11 08:55:29   //在此处输入你编辑这篇文章的时间。</div><div class="line">categories: Exercise   //在此处输入这篇文章的分类。</div><div class="line">toc: true    //在此处设定是否开启目录，需要主题支持。</div></pre></td></tr></table></figure></p><h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>如果成功完成了上述的全部步骤，恭喜你，你已经搭建了一个最为简单且基础的博客。但是这个博客还非常简单， 没有个人的定制，操作也比较复杂，下面的进阶技巧将会让你获得对Hexo更为深入的了解。<br>更换主题可以在此处寻找自己喜欢的主题 下载所有的主题文件，保存到Hexo目录下的themes文件夹下。然后在_config.yml文件中修改：</p><h3 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h3><h4 id="Plugins-http-hexo-io-plugins"><a href="#Plugins-http-hexo-io-plugins" class="headerlink" title="Plugins: http://hexo.io/plugins/"></a>Plugins: <a href="http://hexo.io/plugins/" target="_blank" rel="external">http://hexo.io/plugins/</a></h4><h4 id="Themes-http-hexo-io-themes"><a href="#Themes-http-hexo-io-themes" class="headerlink" title="Themes: http://hexo.io/themes/"></a>Themes: <a href="http://hexo.io/themes/" target="_blank" rel="external">http://hexo.io/themes/</a></h4><p>theme: landscape //themes文件夹中对应文件夹的名称</p><p>然后先执行<code>hexo clean</code>，然后重新<code>hexo g</code>，并且<code>hexo d</code>，很快就能看到新主题的效果了~<br>更换域名首先，需要注册一个域名。在中国的话，.cn全都需要进行备案，如果不想备案的话，请注册别的顶级域名，可以使用godaddy或新网或万网中的任意一家，自己权衡价格即可。 然后，我们需要配置一下域名解析。推荐使用DNSPod的服务，比较稳定，解析速度比较快。在域名注册商出修改NS服务器地址为：<br>f1g1ns1.dnspod.net<br>f1g1ns2.dnspod.net</p><p>以新网为例，首先点击域名管理进入管理页面：</p><p>然后点击域名后面的管理：</p><p>进入域名管理的操作界面，点击域名管理，来到域名管理界面：</p><p>点击修改域名DNS，然后选择填写具体信息，在下面的空框中填入DNSPod的NS服务器：</p><p>然后我们进入DNSPod的界面，开始真正进入域名解析的配置= =。在DNSPod中，首先添加域名，然后分别添加如下条目：</p><p>最后，我们对Github进行一下配置。<br>在自己本地的hexo目录下的source文件夹中，新建一个CNAME文件（注意，没有后缀名。），内容为yourdomin.xxx。然后再执行一下hexo d -g，重新上传自己的博客。 在github中打开你自己的库，进入库的setting界面，如果看到了如下提示，说明配置成功了。</p><p>在这一系列的操作中，包括修改NS服务器，设置A解析等等，都需要一定的时间。短则10分钟，长则24小时，最长不会超过72小时。如果超过72小时，请检查自己的配置过程，或者修改自己本地的DNS服务器。</p>]]></content>
     
@@ -222,7 +233,7 @@
     
     </summary>
     
-      <category term="杂" scheme="http://yoursite.com/categories/%E6%9D%82/"/>
+      <category term="Tips" scheme="http://yoursite.com/categories/Tips/"/>
     
     
   </entry>
@@ -232,7 +243,7 @@
     <link href="http://yoursite.com/2017/05/15/%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/05/15/新建博客/</id>
     <published>2017-05-15T11:56:31.000Z</published>
-    <updated>2017-09-08T15:22:15.197Z</updated>
+    <updated>2017-09-09T15:42:22.192Z</updated>
     
     <content type="html"><![CDATA[<h1 id="开博客的第一天–谈学习与博客"><a href="#开博客的第一天–谈学习与博客" class="headerlink" title="开博客的第一天–谈学习与博客"></a>开博客的第一天–谈学习与博客</h1><hr><h4 id="作为一个不是总能坚持一些事情的人，在这个碎片化的时代，每个人都有着自己的事情，学习、工作、生活、吃、玩。也正是很多乱七八糟的包围着我们。作为一个通信工程的学生，我深深的理解并期待互联网给生活带来了超乎想象的便利与良好的生活体验，但是，就像你以为你发现了一个有意思的东西，其实是你被他让你发现了。你是被绑架的可怜的那个。我想说的是，不管是你认真理解的生活，还是学习，是真的能够好好思考才能有自己的东西。"><a href="#作为一个不是总能坚持一些事情的人，在这个碎片化的时代，每个人都有着自己的事情，学习、工作、生活、吃、玩。也正是很多乱七八糟的包围着我们。作为一个通信工程的学生，我深深的理解并期待互联网给生活带来了超乎想象的便利与良好的生活体验，但是，就像你以为你发现了一个有意思的东西，其实是你被他让你发现了。你是被绑架的可怜的那个。我想说的是，不管是你认真理解的生活，还是学习，是真的能够好好思考才能有自己的东西。" class="headerlink" title="作为一个不是总能坚持一些事情的人，在这个碎片化的时代，每个人都有着自己的事情，学习、工作、生活、吃、玩。也正是很多乱七八糟的包围着我们。作为一个通信工程的学生，我深深的理解并期待互联网给生活带来了超乎想象的便利与良好的生活体验，但是，就像你以为你发现了一个有意思的东西，其实是你被他让你发现了。你是被绑架的可怜的那个。我想说的是，不管是你认真理解的生活，还是学习，是真的能够好好思考才能有自己的东西。"></a>作为一个不是总能坚持一些事情的人，在这个碎片化的时代，每个人都有着自己的事情，学习、工作、生活、吃、玩。也正是很多乱七八糟的包围着我们。作为一个通信工程的学生，我深深的理解并期待互联网给生活带来了超乎想象的便利与良好的生活体验，但是，就像你以为你发现了一个有意思的东西，其实是你被他让你发现了。你是被绑架的可怜的那个。我想说的是，不管是你认真理解的生活，还是学习，是真的能够好好思考才能有自己的东西。</h4><p>###<br><a id="more"></a></p><h4 id="那么，怎么才能好好思考呢，首先是要有足够的知识，才能减少信息不对称，才能在看到什么能够知道更多的什么，才能够举一反三。但是你每天还要刷微博，还要看新闻，还要看编程，还要忙老板的事情，想要在一年后想起自己曾经做过什么的小事或者学过的一点东西很难，因为它们大部分都不是在你学习的时候已经打好了标签，写着，一年后的某个中午会用到它，如果真的可以那样倒也还好，我们无非是在学习的时候加个备忘录就好了。"><a href="#那么，怎么才能好好思考呢，首先是要有足够的知识，才能减少信息不对称，才能在看到什么能够知道更多的什么，才能够举一反三。但是你每天还要刷微博，还要看新闻，还要看编程，还要忙老板的事情，想要在一年后想起自己曾经做过什么的小事或者学过的一点东西很难，因为它们大部分都不是在你学习的时候已经打好了标签，写着，一年后的某个中午会用到它，如果真的可以那样倒也还好，我们无非是在学习的时候加个备忘录就好了。" class="headerlink" title="那么，怎么才能好好思考呢，首先是要有足够的知识，才能减少信息不对称，才能在看到什么能够知道更多的什么，才能够举一反三。但是你每天还要刷微博，还要看新闻，还要看编程，还要忙老板的事情，想要在一年后想起自己曾经做过什么的小事或者学过的一点东西很难，因为它们大部分都不是在你学习的时候已经打好了标签，写着，一年后的某个中午会用到它，如果真的可以那样倒也还好，我们无非是在学习的时候加个备忘录就好了。"></a>那么，怎么才能好好思考呢，首先是要有足够的知识，才能减少信息不对称，才能在看到什么能够知道更多的什么，才能够举一反三。但是你每天还要刷微博，还要看新闻，还要看编程，还要忙老板的事情，想要在一年后想起自己曾经做过什么的小事或者学过的一点东西很难，因为它们大部分都不是在你学习的时候已经打好了标签，写着，一年后的某个中午会用到它，如果真的可以那样倒也还好，我们无非是在学习的时候加个备忘录就好了。</h4><p>###</p><h4 id="然后，事情就变成怎样将放弃看剧打游戏时间来学习的东西记下来了，至少更深刻吧。长达十几年学渣生涯告诉我，就是做笔记，可能大学的时候确实太渣了，只能在快要考试的时候再抄一下笔记，或者整理出一份重点才行，那就是多年后翻起来仍然能让你想起来那门课学了什么，在那个时间段学了什么的，更具体的学了什么。而不是模电学过，数电学过，甚至爱装逼的话还能记起来某门专业课考了99-可是这样就算拿出去装逼自己都不记得是什么课，更何况是学了什么呢？"><a href="#然后，事情就变成怎样将放弃看剧打游戏时间来学习的东西记下来了，至少更深刻吧。长达十几年学渣生涯告诉我，就是做笔记，可能大学的时候确实太渣了，只能在快要考试的时候再抄一下笔记，或者整理出一份重点才行，那就是多年后翻起来仍然能让你想起来那门课学了什么，在那个时间段学了什么的，更具体的学了什么。而不是模电学过，数电学过，甚至爱装逼的话还能记起来某门专业课考了99-可是这样就算拿出去装逼自己都不记得是什么课，更何况是学了什么呢？" class="headerlink" title="然后，事情就变成怎样将放弃看剧打游戏时间来学习的东西记下来了，至少更深刻吧。长达十几年学渣生涯告诉我，就是做笔记，可能大学的时候确实太渣了，只能在快要考试的时候再抄一下笔记，或者整理出一份重点才行，那就是多年后翻起来仍然能让你想起来那门课学了什么，在那个时间段学了什么的，更具体的学了什么。而不是模电学过，数电学过，甚至爱装逼的话还能记起来某门专业课考了99.可是这样就算拿出去装逼自己都不记得是什么课，更何况是学了什么呢？"></a>然后，事情就变成怎样将放弃看剧打游戏时间来学习的东西记下来了，至少更深刻吧。长达十几年学渣生涯告诉我，就是做笔记，可能大学的时候确实太渣了，只能在快要考试的时候再抄一下笔记，或者整理出一份重点才行，那就是多年后翻起来仍然能让你想起来那门课学了什么，在那个时间段学了什么的，更具体的学了什么。而不是模电学过，数电学过，甚至爱装逼的话还能记起来某门专业课考了99.可是这样就算拿出去装逼自己都不记得是什么课，更何况是学了什么呢？</h4><p>###</p><h4 id="今天，是我最喜欢的球队，圣安东尼奥马刺队西部总决赛第一场，早上五点多起来看球的时候，发现莱昂纳德受伤了，很伤心。看到网上各种互怼，有那么一瞬间就觉得，当事人都觉得打球比这个更重要，不管能不能上场，接下来的比赛都更重要，何况是我这个只是连个腾讯体育会员都没买的支持者呢。"><a href="#今天，是我最喜欢的球队，圣安东尼奥马刺队西部总决赛第一场，早上五点多起来看球的时候，发现莱昂纳德受伤了，很伤心。看到网上各种互怼，有那么一瞬间就觉得，当事人都觉得打球比这个更重要，不管能不能上场，接下来的比赛都更重要，何况是我这个只是连个腾讯体育会员都没买的支持者呢。" class="headerlink" title="今天，是我最喜欢的球队，圣安东尼奥马刺队西部总决赛第一场，早上五点多起来看球的时候，发现莱昂纳德受伤了，很伤心。看到网上各种互怼，有那么一瞬间就觉得，当事人都觉得打球比这个更重要，不管能不能上场，接下来的比赛都更重要，何况是我这个只是连个腾讯体育会员都没买的支持者呢。"></a>今天，是我最喜欢的球队，圣安东尼奥马刺队西部总决赛第一场，早上五点多起来看球的时候，发现莱昂纳德受伤了，很伤心。看到网上各种互怼，有那么一瞬间就觉得，当事人都觉得打球比这个更重要，不管能不能上场，接下来的比赛都更重要，何况是我这个只是连个腾讯体育会员都没买的支持者呢。</h4><p>###</p><h4 id="所谓开始，我总不觉得需要有什么原因，这个不重要，重要的是永远是以后。最后以马刺队更衣室的一段话开始吧："><a href="#所谓开始，我总不觉得需要有什么原因，这个不重要，重要的是永远是以后。最后以马刺队更衣室的一段话开始吧：" class="headerlink" title="所谓开始，我总不觉得需要有什么原因，这个不重要，重要的是永远是以后。最后以马刺队更衣室的一段话开始吧："></a>所谓开始，我总不觉得需要有什么原因，这个不重要，重要的是永远是以后。最后以马刺队更衣室的一段话开始吧：</h4><blockquote><p> When nothing seems to help,I go and look at a stonecutter hammering away at his rock perhaps a hundred times without as much as a crack showing in it.Yet at the hundred and first blow it will split in two,and I know it was not that blow that did it——but all that had gone before.<br>——Jacob Riis</p></blockquote>]]></content>
     
@@ -243,8 +254,10 @@
     
     </summary>
     
+      <category term="Life" scheme="http://yoursite.com/categories/Life/"/>
     
-      <category term="杂 乱写" scheme="http://yoursite.com/tags/%E6%9D%82-%E4%B9%B1%E5%86%99/"/>
+    
+      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
@@ -253,7 +266,7 @@
     <link href="http://yoursite.com/2017/03/09/day20(IO%E6%B5%812)/"/>
     <id>http://yoursite.com/2017/03/09/day20(IO流2)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:02:04.388Z</updated>
+    <updated>2017-09-09T15:41:35.682Z</updated>
     
     <content type="html"><![CDATA[<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><hr><h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>用来将文件或文件夹封装成对象。<br>方便对文件与文件夹的属性信息进行操作。<br>File对象可以作为参数传递给</p><h2 id="File类的常见方法"><a href="#File类的常见方法" class="headerlink" title="File类的常见方法"></a>File类的常见方法</h2><p>1.创建<br>boolean createNewFile()<br>boolean mkdir()<br>boolean mkdirs()</p><p>2.删除<br> boolean delete()  删除失败返回false<br>void deleteOnExit()  在程序退出时删除文件</p><p>3.判断<br>boolean exists() 文件或目录是否存在。<br>记住在判断文件对象是否是文件或者目录时，必须要先判断该文件对象封装的内容是否存在，通过exists判断。<br>boolean isFile()<br>boolean isDirectory()</p><p>4.获取信息。<br> String getName()<br> String getParent()  该方法返回的是绝对路径中的父目录，如果获取的是相对路径，则返回null。<br> String getPath()<br> File getAbsoluteFile()<br>  long lastModified()<br>long length()</p><h2 id="文件列表"><a href="#文件列表" class="headerlink" title="文件列表"></a>文件列表</h2><p>static File[] listRoots()<br> String[] list() 调用list方法的必须是封装的一个目录。该目录还必须存在。</p><h2 id="列出目录下所有的内容"><a href="#列出目录下所有的内容" class="headerlink" title="列出目录下所有的内容"></a>列出目录下所有的内容</h2><p>递归<br>递归要注意：<br>1.限定条件。<br>2.要注意递归的次数，尽量避免内存溢出。</p><h2 id="删除一个带内容的目录"><a href="#删除一个带内容的目录" class="headerlink" title="删除一个带内容的目录"></a>删除一个带内容的目录</h2><p>删除原理：<br>在Windows中，删除目录从里面往外删除的。既然是从里往外删除，就需要用到递归。</p><h2 id="创建java文件列表"><a href="#创建java文件列表" class="headerlink" title="创建java文件列表"></a>创建java文件列表</h2><h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><p>properties是hashtables的子类，也就是说它具备map集合的特点。而且它里面存储的键值对都是字符串。是集合中和IO技术相结合的集合容器。<br>该对象的特点：可以用于键值对形式的配置文件。</p><p>##IO包中的其他类<br>打印流：该流提供了打印方法，可以将各种数据类型的数据都原样打印。<br>字节打印流<br>PrintStream<br>构造函数可以接收的参数类型。</p><ol><li>file对象。File</li><li>字符串路径</li><li>字节输出流<br>字符打印流<br>PrintWrite</li><li>file对象。File</li><li>字符串路径</li><li>字节输出流</li></ol><h2 id="合并流和切割文件"><a href="#合并流和切割文件" class="headerlink" title="合并流和切割文件"></a>合并流和切割文件</h2>]]></content>
     
@@ -267,30 +280,7 @@
     
     </summary>
     
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day19(IO%E6%B5%81)/"/>
-    <id>http://yoursite.com/2017/03/09/day19(IO流)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:02:00.253Z</updated>
-    
-    <content type="html"><![CDATA[<p>#IO流</p><hr><h2 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="BufferedWriter"></a>BufferedWriter</h2><p>缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。<br>为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。<br>记住只要用到缓冲区，就要记得刷新。<br>其实关闭缓冲区，其实就是在关闭缓冲区的流对象。<br>该缓冲区中提供了一个跨平台的newLine（）</p><h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>为了提高效率，加入缓冲技术。将字符读取流对象作为参数传进缓冲对象的构造函数。<br>readLine方法返回的时候只返回回车符之前的数据内容，并不返回回车符。<br>readLine方法的原理：无论是读取一行，还是读取多个字符，其实最终都是在硬盘上一个个读取。所以最终使用的还是read方法一次读一个的方法。</p><h2 id="MyBufferedReader"><a href="#MyBufferedReader" class="headerlink" title="MyBufferedReader"></a>MyBufferedReader</h2><h2 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h2><p>定义：当想要对已有的对象进行功能增强时，可以定义一个类，将已有对象传入，基于已有的功能，并提供加强功能。那么自定义的该类称为装饰类。<br>装饰类通常会通过构造方法接收被装饰的对象。并基于被装饰的对象的功能，提供更强的功能。</p><h2 id="装饰和继承的区别"><a href="#装饰和继承的区别" class="headerlink" title="装饰和继承的区别"></a>装饰和继承的区别</h2><p>装饰模式比继承要灵活，避免了继承体系臃肿。而且降低了类与类之间的关系。<br>装饰类因为增强已有对象，具备的功能和已有的是相同的，只不过提供了更强的功能。所以装饰类和被装饰类通常都属于一个体系中的。</p><h2 id="LineNumberReader"><a href="#LineNumberReader" class="headerlink" title="LineNumberReader"></a>LineNumberReader</h2><h2 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h2><p>FileReader:<br>FileWriter:<br>字节流：<br>InputStream：<br>OutputStream:</p><h2 id="复制一个图片"><a href="#复制一个图片" class="headerlink" title="复制一个图片"></a>复制一个图片</h2><p>思路：<br>1.用字节读取流对象和图片关联。<br>2.用字节写入流对象创建一个图片文件，用于存储获取到的图片数据。</p><ol><li>通过循环读写，完成数据的存储。</li><li>关闭资源<h2 id="读取转换流"><a href="#读取转换流" class="headerlink" title="读取转换流"></a>读取转换流</h2><h2 id="写入转换流"><a href="#写入转换流" class="headerlink" title="写入转换流"></a>写入转换流</h2><h2 id="流操作的基本规律"><a href="#流操作的基本规律" class="headerlink" title="流操作的基本规律"></a>流操作的基本规律</h2>最痛苦的就是流对象有很多，不知道该用哪一个。<br>通过两个明确来完成。<br>1.明确源和目的。<br> 源：输入流。InputStream   Reader<br> 目的：输出流。OutputStream Writer<br>2.操作的数据是否是纯文本。<br> 是：字符流。<br> 否：字节流。<br>3.当体系明确后，再明确要使用哪个具体的对象。<br>通过设备来进行区分：<br>源设备：内存，硬盘，键盘<br>目的设备：内存，硬盘，控制台。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;#IO流&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;BufferedWriter&quot;&gt;&lt;a href=&quot;#BufferedWriter&quot; class=&quot;headerlink&quot; title=&quot;BufferedWriter&quot;&gt;&lt;/a&gt;BufferedWriter&lt;/h2&gt;&lt;p&gt;缓冲区的出
-      
-    
-    </summary>
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
@@ -302,7 +292,7 @@
     <link href="http://yoursite.com/2017/03/09/day21(IO%E6%B5%813)/"/>
     <id>http://yoursite.com/2017/03/09/day21(IO流3)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:02:08.484Z</updated>
+    <updated>2017-09-09T15:41:39.647Z</updated>
     
     <content type="html"><![CDATA[<p>#IO流（3）</p><hr><h2 id="对象的序列化"><a href="#对象的序列化" class="headerlink" title="对象的序列化"></a>对象的序列化</h2><h2 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h2><h2 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h2><p>该类不是算是IO体系中子类，而是继承自Object。<br>但是它是IO包中的成员，因为它具备读和写功能。颞部封装了一个数组，而且通过指针对数组的元素进行操作。<br>可以通过getFilePointer获取指针位置。同时可以通过seek改变指针位置。<br>其实完成读写的原理就是内部封装了字节输入流和输出流。通过构造函数可以看出，该类只能操作文件。而且操作文件还有模式。<br>该对象的构造函数要操作的文件不存在，会自动创建。如果存在不会覆盖。</p><h2 id="ByteArrayStream"><a href="#ByteArrayStream" class="headerlink" title="ByteArrayStream"></a>ByteArrayStream</h2>]]></content>
     
@@ -317,29 +307,7 @@
     
     </summary>
     
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/"/>
-    <id>http://yoursite.com/2017/03/09/day11(多线程)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:01:08.842Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><hr><p>进程：是一个正在执行中的程序。<br>每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。<br>线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。<br>一个进程中至少有一个线程。<br>java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。<br>扩展：其实更细节说明jvm，jvm启动不止一个线程，还有负责垃圾回收机制的线程。</p><hr><h1 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h1><ol><li>如何在自定义的代码中，自定义一个线程？<br>通过对API的查找，java已经提供了对线程这类事物的描述，就Thread类。<br>创建线程的第一种方式：继承Thread类。<br>步骤：定义类继承Thread；复写Thread类中的run方法；调用线程的start方法。<br>发现运行结果每次都不同。因为多个线程都获取cpu的执行权，CPU执行到谁，谁就运行。（多核除外），cpu在做着快速的切换，以达到看上去是同时运行的效果</li></ol><hr><h1 id="创建线程-run和start的特点"><a href="#创建线程-run和start的特点" class="headerlink" title="创建线程-run和start的特点"></a>创建线程-run和start的特点</h1><p>为什么要覆盖run方法？<br>Thread类用于描述线程。该类定义了一个功能，用于存储线程要运行的代码。该存储功能就是run方法。<br>也就是说Thread类中的run方法，用于存储线程要运行的代码。</p><h1 id="线程运行状态"><a href="#线程运行状态" class="headerlink" title="线程运行状态"></a>线程运行状态</h1><p>原来线程都有自己默认的名称。Thread-编号，该编号从0开始。<br>static Thread currentThread()：获取当前线程对象。<br>getName()：获取线程名称<br>设置线程名称：setName或者构造函数。</p><hr><h1 id="创建线程-runable接口"><a href="#创建线程-runable接口" class="headerlink" title="创建线程-runable接口"></a>创建线程-runable接口</h1><p>创建线程的第二种方式：实现Runable接口<br>步骤：</p><ol><li>定义类实现Runable接口</li><li>覆盖Runable接口中的run方法。  （将线程要运行的代码存放到该run方法中）</li><li>通过Thread类建立线程对象。</li><li>将Runable接口的子类对象作为实际参数传递给Thread类的构造函数。（自定义的run方法所属的对象时Runable接口的子类对象。所以要让线程去指定对象的run方法，就必须明确该run方法所属的对象）</li><li>调用Thread类的start方法开启线程并调用Runable接口子类的run方法。</li></ol><hr><p>实现方式和继承方式有什么区别呢？<br>实现方式：避免了单继承的局限性。在定义线程时，建议使用实现方式。<br>两种方式的区别：<br>继承Thread：线程代码存放在Thread子类的run方法中。<br>实现Runable：线程 代码存在接口的子类的run方法中。</p><hr><h1 id="多线程的安全问题"><a href="#多线程的安全问题" class="headerlink" title="多线程的安全问题"></a>多线程的安全问题</h1><p>多线程运行出现安全问题的原因：<br>当多条语句在操作同一个线程共享数据时，一个线程对多条语句值执行了一部分，还没有执行完，另一个线程参与执行。导致共享数据的错误。<br>解决办法：<br>对多条操作共享数据的语句，只能让一个线程都执行完。在执行过程中，其他线程不可以参与执行。<br>  java对于多线程的安全问题提供了专业的解决方式。<br>同步代码块。<br>synchronized（对象）{需要被同步的代码}<br>对象如同锁。持有锁的线程可以在同步中执行。没有持有锁的线程即使获取cpu的执行权，也进不去，因为没有获取锁。<br>同步的前提：</p><ol><li>必须要有两个或两个以上的线程。</li><li>必须是多个线程使用同一个锁<br>3必须保证同步中只能有一个线程在运行。<br>好处：解决了多线程的安全问题。<br>弊端：多个线程需要判断锁，较为消耗资源。</li></ol><hr><h1 id="多线程-同步函数"><a href="#多线程-同步函数" class="headerlink" title="多线程-同步函数"></a>多线程-同步函数</h1><p><strong>同步函数的锁用的是this。<br>静态同步函数的锁是Class对象</strong></p><hr><h1 id="多线程-死锁"><a href="#多线程-死锁" class="headerlink" title="多线程-死锁"></a>多线程-死锁</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h1&gt;&lt;hr&gt;
-&lt;p&gt;进程：是一个正在执行中的程序。&lt;br&gt;每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。&lt;br&gt;线
-      
-    
-    </summary>
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
@@ -348,22 +316,24 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day5-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/"/>
-    <id>http://yoursite.com/2017/03/09/day5-面向对象2/</id>
+    <link href="http://yoursite.com/2017/03/09/day22(GUI)/"/>
+    <id>http://yoursite.com/2017/03/09/day22(GUI)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T04:59:14.466Z</updated>
+    <updated>2017-09-09T15:41:44.358Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="面向对象编程-二"><a href="#面向对象编程-二" class="headerlink" title="面向对象编程(二)"></a>面向对象编程(二)</h1><ul><li>封装（private）<br>匿名对象使用的方式：只调用一次<br>注意，封装只是私有的一种表现形式。不私有也能封装。</li><li><p>构造函数<br>构造函数和一般函数在写法上有不同<br>构造函数在对象一建立就运行，<br>而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。<br>一个对象建立，构造方法运行</p></li><li><p>构造代码块<br>作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。<br>  和构造函数的区别：<br>  构造代码块是给所有的对象初始化，构造函数是给特定的对象初始化。<br>  构造代码块 中定义的是不同对象共性的特性.</p></li><li><p>this关键字</p></li></ul><ol><li>变量名起的没有意义，可读性非常差</li><li>局部变量和成员变量一样了，局部中有就在局部中使用，没有的话就在成员变量中找,将局部的值赋给成员变量，引出了this关键字</li><li>this:看上去，是用于区分局部变量和成员变量同名的情况</li><li>this到底代表的是什么<br> this：就代表本类的对象，到底代表哪一个呢？<br> this代表它所在函数所在对象的引用<br> 简单说：哪个对象在调用this所在的函数，this就代表哪个对象</li></ol><ul><li>this关键字在构造函数间的调用<br>this语句：用于构造函数间互相调用<br>this语句只能放在构造函数的第一行。因为初始化动作要先执行<br>不允许死循环调用</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="GUI-图形用户界面"><a href="#GUI-图形用户界面" class="headerlink" title="GUI(图形用户界面)"></a>GUI(图形用户界面)</h1><hr><h2 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h2><h3 id="Awt与-Swing"><a href="#Awt与-Swing" class="headerlink" title="Awt与 Swing"></a>Awt与 Swing</h3><p>java.Awt： Abstract Window ToolKit (抽象窗口<br>工具包)，需要调用本地系统方法实现功能。属<br>重量级控件。<br>javax.Swing：在AWT的基础上，建立的一套图<br>形界面系统，其中提供了更多的组件，而且完全<br>由Java实现。增强了移植性，属轻量级控件。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;面向对象编程-二&quot;&gt;&lt;a href=&quot;#面向对象编程-二&quot; class=&quot;headerlink&quot; title=&quot;面向对象编程(二)&quot;&gt;&lt;/a&gt;面向对象编程(二)&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;封装（private）&lt;br&gt;匿名对象使用的方式：只调用一次&lt;br&gt;注意，封
+        &lt;h1 id=&quot;GUI-图形用户界面&quot;&gt;&lt;a href=&quot;#GUI-图形用户界面&quot; class=&quot;headerlink&quot; title=&quot;GUI(图形用户界面)&quot;&gt;&lt;/a&gt;GUI(图形用户界面)&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;GUI&quot;&gt;&lt;a href=&quot;#GUI&quot; class=
       
     
     </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
@@ -372,44 +342,23 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day16(map)/"/>
-    <id>http://yoursite.com/2017/03/09/day16(map)/</id>
+    <link href="http://yoursite.com/2017/03/09/day10(%E5%BC%82%E5%B8%B8%E5%8C%85%E8%AE%BF%E9%97%AE)/"/>
+    <id>http://yoursite.com/2017/03/09/day10(异常包访问)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:01:46.689Z</updated>
+    <updated>2017-09-09T15:40:03.890Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="集合-MAP"><a href="#集合-MAP" class="headerlink" title="集合(MAP)"></a>集合(MAP)</h1><h2 id="Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。"><a href="#Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。" class="headerlink" title="Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。"></a>Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。</h2><ol><li>添加。</li><li>删除。clear()</li><li>判断。</li><li>获取。<br>Map：Hashtable：底层是哈希表数据结构，不能存入null键null值，是线程同步的。<br>HashMap:底层是哈希表数据结构，允许使用null键null值，该集合是不同步的。<br>TreeMap：底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。–和Set很像，其实Set底层就是使用了Map集合。<h2 id="Map子类对象的特点"><a href="#Map子类对象的特点" class="headerlink" title="Map子类对象的特点"></a>Map子类对象的特点</h2><h2 id="Map共性方法"><a href="#Map共性方法" class="headerlink" title="Map共性方法"></a>Map共性方法</h2><h2 id="Map-keySet"><a href="#Map-keySet" class="headerlink" title="Map-keySet"></a>Map-keySet</h2>map集合的两种取出方式：</li><li>keySet：将map中所有的键存入到set集合。因为set具备迭代器。所有可以迭代方式取出所有的键，在根据get方法。获取每一个键对应的值。</li><li>entrySet<br>Set<map.entry<k,v>&gt; entrySet:将Map集合中的映射关系存入了set集合中，而这个关系的数据类型就是：Map.entry。其实Entry也是一个借口，它是Map接口中的一个内部接口。<h2 id="Map练习"><a href="#Map练习" class="headerlink" title="Map练习"></a>Map练习</h2>当发现有映射关系时，可以选择map集合。因为map集合中存放的就是映射关系。<br>什么时候使用map集合？当数据之间存在映射关系时，就要先想map集合<br>##map扩展知识<br>map集合被使用是因为具备映射关系。</map.entry<k,v></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="异常-finally"><a href="#异常-finally" class="headerlink" title="异常-finally"></a>异常-finally</h2><h2 id="异常-处理语句其他格式"><a href="#异常-处理语句其他格式" class="headerlink" title="异常-处理语句其他格式"></a>异常-处理语句其他格式</h2><h2 id="异常-覆盖时的异常特点"><a href="#异常-覆盖时的异常特点" class="headerlink" title="异常-覆盖时的异常特点"></a>异常-覆盖时的异常特点</h2><p>异常在子父类覆盖中的特点：</p><ol><li>子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。</li><li>如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。</li><li>如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。<br> 如果子类方法发生了异常。那么就必须要进行try处理，绝对不能抛。<br>##　异常练习<h2 id="异常–总结"><a href="#异常–总结" class="headerlink" title="异常–总结"></a>异常–总结</h2>是什么：是对问题的描述。将问题进行对象的封装</li></ol><hr><p>异常体系：Throwable<br>                       |–Eroor<br>                |–Exception<br>                    |–RuntimeException<br>异常体系的特点：在异常体系中的所有类以及建立的对象都具备可抛性。也就是说可以被throw和throws关键字所操作。只有异常体系具备这个特点。</p><hr><p>throw和throws的用法：<br>throw：定义在函数内，用于抛出异常对象<br>throws：定义在函数上，用于抛出异常类，可以抛出多个用逗号隔开<br>当函数内有throw抛出异常对象，并未进行try处理。必须要在函数上声明，都在编译失败。<br>注意：除了RuntimeException除外，函数内如果声明的是RuntimeException异常，函数上可以不用声明。</p><hr><p>如果函数声明了异常，调用者需要处理。处理方法可以throws可以try<br>异常有两种：</p><ol><li>编译时被检测异常：该异常在编译时，如果没有处理（没有抛出也没try），编译失败。该异常被标识，代表这可以被处理。</li><li>运行时异常（编译时不检测）：在编译时不需要检测，编译器不检查。该异常的发生，建议不处理，让程序停止。需要对代码进行修正。</li></ol><hr><p>注意：finally中定义的通常是：关闭资源代码。因为资源必须释放。<br>    finally只有一种情况不被执行。当执行到System.exit(0)；finally不被执行</p><hr><p>自定义异常：<br>定义类继承Exception或者RuntimeException</p><ol><li>为了让该自定义类具备可抛性</li><li>让该类具备异常操作的共性方法</li></ol><hr><p>自定义异常好处：按照java面向对象的思想，将程序中出现的特有问题进行封装。</p><ol><li>将问题进行封装</li><li>将问题和代码进行分离，方便于阅读<br>异常处理的原则：</li><li>处理方式有两种：try或者throws</li><li>调用到抛出异常的功能时，抛出几个，就处理几个</li><li>多个catch，父类的catch放在最下面</li><li>catch内，需要定义针对性的处理方式。不要简单的定义printStackTrace输出语句，也不要不写。当捕捉到的异常，本功能处理不了时，可以继续在catch中抛出。  如果该异常处理不了，但并不属于该功能出现的异常。也可以将异常转换后再抛出和该功能相关的异常。  或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，让调用者知道，并处理。也可以捕获异常处理后，转换新的异常。<br>5.</li></ol><hr><p>异常的注意事项：<br>在子类覆盖时：</p><ol><li>子类抛出的异常必须是父类异常的子类或者子集</li><li>如果父类或者接口没有异常抛出时，子类覆盖出现异常，只能try不能抛</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;集合-MAP&quot;&gt;&lt;a href=&quot;#集合-MAP&quot; class=&quot;headerlink&quot; title=&quot;集合(MAP)&quot;&gt;&lt;/a&gt;集合(MAP)&lt;/h1&gt;&lt;h2 id=&quot;Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。&quot;&gt;&lt;a href=&quot;#M
+        &lt;h2 id=&quot;异常-finally&quot;&gt;&lt;a href=&quot;#异常-finally&quot; class=&quot;headerlink&quot; title=&quot;异常-finally&quot;&gt;&lt;/a&gt;异常-finally&lt;/h2&gt;&lt;h2 id=&quot;异常-处理语句其他格式&quot;&gt;&lt;a href=&quot;#异常-处理语句其他格
       
     
     </summary>
     
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day7(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13)/"/>
-    <id>http://yoursite.com/2017/03/09/day7(面向对象3)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:00:44.090Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="面向对象（3）"><a href="#面向对象（3）" class="headerlink" title="面向对象（3）"></a>面向对象（3）</h1><h1 id="（继承，final，抽象类，接口）"><a href="#（继承，final，抽象类，接口）" class="headerlink" title="（继承，final，抽象类，接口）"></a><em>（继承，final，抽象类，接口）</em></h1><hr><h2 id="1-继承（概述）"><a href="#1-继承（概述）" class="headerlink" title="1.继承（概述）"></a>1.继承（概述）</h2><ul><li><strong>继承：</strong></li></ul><p>1.提高了代码的复用性</p><p>2.继承让类与类之间有了关系，有了关系才有了多态的特性。</p><p>注意：千万不要为了获取其他类的功能，简化代码而继承。<br>必须是类与类之间有所属关系才可以继承，所属关系 is a。</p><p><strong>java语言中：java只支持单继承，不支持多继承。</strong></p><p>  因为多继承容易带来安全隐患：当多个父类中定义了相同的功能，当功能内容不同时，子类对象不确定要运行哪一个。<br>  但是java保留了这种机制，并用另一种体现形式来完成表示，多实现。</p><ul><li><strong>java支持多层继承。</strong></li></ul><ul><li><strong>如何使用一个继承体系中的功能？</strong></li></ul><p>想要使用体系，先查阅体系父类的描述，因为父类中定义的是该体系的共性功能。</p><p>通过了解共性功能，就可以知道该体系的基本功能。那么这个体系已经可以基本使用了<br>那么在具体调用时，要创建最子类的对象。<br>因为：1.可能父类不能创建对象 2.创建子类可以使用更多的功能，包括基本的也包括特有的<br>简单的说，就是查阅父类，创建子类</p><h2 id="2-聚集关系"><a href="#2-聚集关系" class="headerlink" title="2.聚集关系"></a>2.聚集关系</h2><p>聚集：has a<br>聚合：<br>组合：</p><p>子父类出现后，类成员的特点<br>类成员：<br>1.变量<br>2.函数<br>3.构造函数</p><h2 id="3-1-子父类中的变量的特点"><a href="#3-1-子父类中的变量的特点" class="headerlink" title="3.1.子父类中的变量的特点"></a>3.1.子父类中的变量的特点</h2><p>如果子类中出现非私有的同名成员变量时，子类要访问本类中的变量，用this<br>super代表的是父类对象的引用</p><h2 id="3-2-子父类中的函数的特点"><a href="#3-2-子父类中的函数的特点" class="headerlink" title="3.2.子父类中的函数的特点"></a>3.2.子父类中的函数的特点</h2><p>当子类和父类中出现一样的函数时，当子类对象调用该函数，会运行子类函数的内容。如同父类的函数被覆盖一样。<br>这种情况是函数的另一个特性：重写（覆盖）<br>当子类继承父类，沿袭了父类的功能，但是功能的内容却和父类不一致。这时没有必要定义新功能，而是使用覆盖特殊，保留父类的功能定义，并重写功能内容。</p><p>覆盖：<br>1.子类覆盖父类，必须保证子类权限大于父类权限，否则编译失败<br>2.静态只能覆盖静态。</p><h2 id="3-3-子父类中构造函数的特点–子类的实例化过程"><a href="#3-3-子父类中构造函数的特点–子类的实例化过程" class="headerlink" title="3.3.子父类中构造函数的特点–子类的实例化过程"></a>3.3.子父类中构造函数的特点–子类的实例化过程</h2><p>重载：只看重名函数的参数列表。<br>重写：子类父类方法要一模一样。</p><p>子父类中的构造函数：<br>在对子类对象进行初始化 时，弗父类的构造函数也会运行，那是因为子类的构造函数第一行默认有一条隐式语句super()；<br>super()：会访问父类中空参数的构造函数。而且子类中所有的构造函数默认第一行都是super()<br>为什么子类一定要访问父类中的构造函数？<br>因为父类中的数据子类可以直接获取，所以子类对象在建立时，需要先查看父类如何对这些数据进行初始化的，所以子类在对象进行初始化时，要先访问一下父类中的构造函数<br>如果要访问父类中指定的构造函数，可以用super语句来指定。</p><p>注意：super语句一定定义在子类构造函数的第一行。</p><ul><li>子类的实例化过程：</li></ul><p>结论：子类所有的构造函数默认都会访问父类中空参数的构造函数，因为子类每一个构造函数的第一行都有一句隐式的super()<br>当父类中没有空的构造函数时，子类必须手动通过super或者this语句形式来指定要访问父类中的构造函数。<br>当然：子类中的构造函数第一行也可以手动指定this语句来访问本类中的构造函数，子类中至少会有一个构造函数会访问父类中的构造函数</p><h2 id="4-final关键字"><a href="#4-final关键字" class="headerlink" title="4.final关键字"></a>4.final关键字</h2><p>final：最终，作为一个修饰符</p><ol><li>可以修饰类，函数，变量</li><li>被final修饰的类不可以被继承,为了避免被继承，被子类复写功能</li><li>被final修饰的方法不可以被复写</li><li>被final修饰的变量是一个常量只能赋值一次，既可以修饰局部变量，也可以修饰成员变量。<br> 在描述事物时，一些数据的出现值是固定的，那么这时为了增强阅读性，都给这值起个名字，方便于阅读，而这个值不需要改变，所以加个final修饰。作为常量：常量的书写规范所有字母都大写，如果由多个单词组成，单词间通过_连接。</li><li>内部类定义在类中的局部位置时，只能访问该局部被final修饰的局部变量。</li></ol><h2 id="5-抽象类"><a href="#5-抽象类" class="headerlink" title="5.抽象类"></a>5.抽象类</h2><p>当多个类中出现相同功能，但是功能的主体不同，这时可以向上抽取，这时只能抽取功能定义，而不抽取功能主题<br>抽象：看不懂<br>抽象类的特点：</p><ol><li>抽象方法一定在抽象类中。</li><li>抽象方法和抽象类都必须被abstract关键字修饰。</li><li>抽象类不可以用new创建对象，因为调用抽象方法没意义。</li><li>抽象类中的方法要被使用，必须由子类复写起所有的抽象方法之后，建立子类对象调用。如果子类只覆盖了部分抽象方法，那么该子类还是一个抽象类。</li></ol><p>抽象类和一般类没有太大的不同。<br>该如何描述事物，就如何描述事物，只不过，该事物出现了一些看不懂的东西。<br>这些不确定的部分，也是该事物的功能，需要明确出现。但是无法定义主体。</p><p>抽象类比一般类多了个抽象函数。就是在类中可以定义抽象方法。<br>抽象类不可以实例化。<br>特殊：抽象类中可以不定义抽象方法，这样做仅仅是为了不让该类建立对象。</p><h2 id="6-模板方法设计模式"><a href="#6-模板方法设计模式" class="headerlink" title="6.模板方法设计模式"></a>6.模板方法设计模式</h2><p>在定义功能时，功能的一部分是确定的，但是有一部分功能时不确定的，而确定的部分在使用不确定的部分，就将不确定的部分暴露出去，</p><h2 id="7-接口"><a href="#7-接口" class="headerlink" title="7.接口"></a>7.接口</h2><ul><li><strong>接口</strong>：初期理解，可以认为是一个特殊的抽象类<br>当抽象类中的方法都是抽象的，那么该类可以通过接口的形式实现<br>class 用于定义类<br>interface 用于定义接口<br>接口定义时，格式特点：</li></ul><ol><li>接口中常见定义：常量，抽象方法。</li><li>接口中的成员都有固定的修饰符。常量：public static final<br>方法：public abstract<br>记住，接口中的成员都是public的<br>接口是不可以创建对象的，因为有抽象方法。<br>需要被子类实现，子类对接口中的抽象方法全部覆盖后，子类才可以实例化。否则子类是一个抽象类</li></ol><ul><li><strong>接口可以被类多实现</strong><br><strong>接口与接口之间可以多继承</strong><h2 id="8-接口的特点"><a href="#8-接口的特点" class="headerlink" title="8.接口的特点"></a>8.接口的特点</h2></li></ul><ol><li>接口是对外暴露的规则</li><li>接口是程序的程序扩展</li><li>接口可以用来多实现</li><li>类与接口之间是实现关系，而且类可以继承一个类的同时实现多个接口</li><li>接口与接口之间可以有继承关系</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;面向对象（3）&quot;&gt;&lt;a href=&quot;#面向对象（3）&quot; class=&quot;headerlink&quot; title=&quot;面向对象（3）&quot;&gt;&lt;/a&gt;面向对象（3）&lt;/h1&gt;&lt;h1 id=&quot;（继承，final，抽象类，接口）&quot;&gt;&lt;a href=&quot;#（继承，final，抽象类，接口
-      
-    
-    </summary>
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
@@ -421,7 +370,7 @@
     <link href="http://yoursite.com/2017/03/09/day8(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A14)/"/>
     <id>http://yoursite.com/2017/03/09/day8(面向对象4)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:00:53.559Z</updated>
+    <updated>2017-09-09T15:39:53.546Z</updated>
     
     <content type="html"><![CDATA[<h1 id="面向对象（4）–多态"><a href="#面向对象（4）–多态" class="headerlink" title="面向对象（4）–多态"></a>面向对象（4）–多态</h1><hr><h2 id="多态概念"><a href="#多态概念" class="headerlink" title="多态概念"></a>多态概念</h2><p>多态：可以理解为事物存在的多种体现形态</p><h2 id="多态的扩展性"><a href="#多态的扩展性" class="headerlink" title="多态的扩展性"></a>多态的扩展性</h2><ol><li>多态的体现<br> 父类的引用指向了自己的子类对象<br> 父类的引用也可以接收自己的子类对象</li><li>多态的前提<br> 必须是类与类之间有关系，要么继承，要么实现。<br> 通常还有一个前提：存在覆盖</li><li>多态的好处<br> 多态的出现大大的提高程序的扩展性</li><li>多态的弊端：<br> 提高了扩展性，但是只能用父类的引用访问父类中的成员</li><li>多态的应用</li></ol><h2 id="多态–转型"><a href="#多态–转型" class="headerlink" title="多态–转型"></a>多态–转型</h2><p>向上转型，向上转型<br>千万不要出现这样的操作，就是将父类对象转换成子类类型。<br>我们能转换的是父类应用指向了自己的子类对象时，该引用可以被提升，也可以被强制转换。<br>多态自始至终都是子类对象在做着变化</p><h2 id="多态成员的特点"><a href="#多态成员的特点" class="headerlink" title="多态成员的特点"></a>多态成员的特点</h2><p>在多态中成员函数的特点：<br>在编译时期：参阅引用型变量所属的类中是否有调用的方法，如果有，编译通过，如果没有，编译失败。<br>在运行时期：参阅对象所属的类中是否有调用的方法。<br>简单总结就是：成员函数在多态调用时，编译看左边，运行看右边。<br>在多态中，成员变量的特点：无论编译还是运行，都参考左边（引用型变量所属的类）。<br>在多态中，静态成员函数的特点：无论编译还是运行，都参考左边（引用型变量所属的类）。</p><h2 id="多态的实例"><a href="#多态的实例" class="headerlink" title="多态的实例"></a>多态的实例</h2><h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2>]]></content>
     
@@ -435,6 +384,8 @@
     
     </summary>
     
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
@@ -442,24 +393,103 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day18(%E5%85%B6%E4%BB%96%E5%AF%B9%E8%B1%A1)/"/>
-    <id>http://yoursite.com/2017/03/09/day18(其他对象)/</id>
+    <link href="http://yoursite.com/2017/03/09/day9(%E5%86%85%E9%83%A8%E7%B1%BB)/"/>
+    <id>http://yoursite.com/2017/03/09/day9(内部类)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:01:56.482Z</updated>
+    <updated>2017-09-09T15:39:58.794Z</updated>
     
-    <content type="html"><![CDATA[<p>#其他对象</p><hr><h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><p>可不可以在jvm启动时，动态加载一些属性信息。</p><p>##Runtime对象<br>该类并没有提供构造函数。说明不可以new 对象，那么会直接想到该类中的方法都是静态的，发现该类中海油非静态方法。<br>说明该类肯定会提供了方法获取本类对象，而且该方法是静态的，并返回值类型是本类类型。<br>由这个特点可以看出该类使用了单例设计模式执行。</p><p>##Date</p><h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><hr><h2 id="内部类访问规则"><a href="#内部类访问规则" class="headerlink" title="内部类访问规则"></a>内部类访问规则</h2><ol><li>内部类可以直接访问外部类中的成员，包括私有<br> 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this</li><li>外部类要访问内部类，必须建立内部类对象。<br> 直接访问内部类中的成员<br>访问格式：<br>当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。<br>比如，private：将内部类在外部类中进行封装。<br> static：内部类就具备static的特性。<br>当内部类被static修饰后，只能直接访问外部类中的static成员，出现了访问局限。<br>在外部其他类中，如何访问内部类的非静态成员呢？<h2 id="内部类定义的原则"><a href="#内部类定义的原则" class="headerlink" title="内部类定义的原则"></a>内部类定义的原则</h2>当描述事物时，事物的内部还有事物，该事物用内部类来描述。因为内部事物在使用外部事物的内容。</li></ol><p>内部类定义在局部时，</p><ol><li>不可以被成员修饰符修饰</li><li>可以直接访问外部类中的成员，因为还持有外部类中的引用。但是不可以访问它所在的局部中的变量，只能访问被final修饰的局部变量  、<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2></li><li>匿名内部类其实就是内部类的简写格式</li><li>定义匿名内部类的前提：内部类必须是继承一个类或者实现接口。</li><li>匿名内部类的格式：new 父类或者接口（）{定义子类的内容}</li><li>其实匿名内部类就是一个匿名子类对象，而且这个对象有点胖。可以理解为带内容的对象</li><li>匿名内部类中定义的方法最多不要超过三个</li></ol><h2 id="异常概述"><a href="#异常概述" class="headerlink" title="异常概述"></a>异常概述</h2><p>异常：就是程序在运行时出现不正常的情况。<br>异常的由来：问题也是现实生活中一个具体的事物，也可以通过java的类的形式进行描述。并封装成对象。其实就是java对不正常情况进行描述后的对象体现<br>对于问题的划分：两种：一种是严重的问题，一种是不严重的问题</p><p>对于严重的，java通过Error类进行描述。<br>对于Error，一般不编写针对性的代码进行处理<br>对于非严重的，java通过Exception类进行描述。（可以使用针对性的处理方式进行处理 ）</p><h2 id="异常try-catch"><a href="#异常try-catch" class="headerlink" title="异常try-catch"></a>异常try-catch</h2><p>异常的处理：java提供了特有的语句进行处理<br>对捕获到的异常对象进行常见的方法操作。<br>String getMessage</p><h2 id="异常声明throws"><a href="#异常声明throws" class="headerlink" title="异常声明throws"></a>异常声明throws</h2><h2 id="多异常处理"><a href="#多异常处理" class="headerlink" title="多异常处理"></a>多异常处理</h2><p>对多异常的处理。</p><ol><li>声明异常时，建议声明更为具体的异常。这样处理的可以更具体。</li><li>对方声明几个异常，就对应有几个catch块。不要定义多余的catch块<br> 如果多个catch块中的异常出现继承关系，父类异常catch块放在最下面<br>建立在进行catch处理时，catch中一定要具体的处理方式。不要简单的定义一句e.peintStackTrace()，也不要简单的就书写一条输出语句。</li></ol><h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>项目中会出现特有的问题，而这些问题并未被java所描述并封装对象。所以对于这些特有的问题可以按照java对问题封装的思想。将特有的问题。进行自定义的异常封装。<br>当在函数内部出现了throw抛出异常对象，那么就必须要给对应的处理动作。<br>要么在内部try catch处理，要么在函数上声明让调用者处理。<br>发现打印的结果中只有异常的名称，缺没有异常的信息。<br>因为自定义的异常并未定义信息。<br>父类中已经把异常信息的操作都完成了。所以子类只要在构造时，将异常信息传递给父类通过super语句。那么直接就可以通过getMessage方法获取自定义的异常。</p><hr><p>自定义异常：必须是自定义类继承Exception。原因是：<br>异常体系有一个特点：因为异常类和异常对象都被抛出。他们都具备可抛性。这个可抛性是Throwable这个体系中的独有特点。只有这个体系中的类和对象才可以被throw和throws操作。</p><h2 id="throws-和throw的区别：throws使用在函数上。throw使用在函数内。"><a href="#throws-和throw的区别：throws使用在函数上。throw使用在函数内。" class="headerlink" title="throws 和throw的区别：throws使用在函数上。throw使用在函数内。"></a>throws 和throw的区别：throws使用在函数上。throw使用在函数内。</h2><p>throws后面跟的异常类，可以跟多个。用逗号隔开。throw后面跟的是异常对象。</p><h2 id="RuntimeException运行时异常。"><a href="#RuntimeException运行时异常。" class="headerlink" title="RuntimeException运行时异常。"></a>RuntimeException运行时异常。</h2><p>如果在函数内抛出该异常，函数上可以不用声明，编译一样通过。<br>如果在函数上声明了该异常。调用者可以不用进行处理。编译一样通过。<br>之所以不用在函数声明，是因为不需要让调用者处理，当该异常发生，希望程序停止。因为在运行时，出现了无法继续运算的情况，希望停止程序后，对代码尽心修正。<br>自定义异常时，如果该异常的发生，无法再继续进行运算，就让自定义异常继承RuntimeException<br>对于异常分两种：</p><ol><li>编译时被检测的异常。</li><li>编译时不被检测的异常（运行时异常。RuntimeException以及其子类）</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;#其他对象&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;System&quot;&gt;&lt;a href=&quot;#System&quot; class=&quot;headerlink&quot; title=&quot;System&quot;&gt;&lt;/a&gt;System&lt;/h2&gt;&lt;p&gt;可不可以在jvm启动时，动态加载一些属性信息。&lt;/p&gt;
-&lt;p&gt;##Run
+        &lt;h1 id=&quot;内部类&quot;&gt;&lt;a href=&quot;#内部类&quot; class=&quot;headerlink&quot; title=&quot;内部类&quot;&gt;&lt;/a&gt;内部类&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;内部类访问规则&quot;&gt;&lt;a href=&quot;#内部类访问规则&quot; class=&quot;headerlink&quot; title=&quot;内部
       
     
     </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多线程</title>
+    <link href="http://yoursite.com/2017/03/09/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/"/>
+    <id>http://yoursite.com/2017/03/09/day11(多线程)/</id>
+    <published>2017-03-09T04:55:17.000Z</published>
+    <updated>2017-09-09T16:11:42.627Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><hr><p>进程：是一个正在执行中的程序。<br>每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。<br>线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。<br>一个进程中至少有一个线程。<br>java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。<br>扩展：其实更细节说明jvm，jvm启动不止一个线程，还有负责垃圾回收机制的线程。</p><hr><h1 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h1><ol><li>如何在自定义的代码中，自定义一个线程？<br>通过对API的查找，java已经提供了对线程这类事物的描述，就Thread类。<br>创建线程的第一种方式：继承Thread类。<br>步骤：定义类继承Thread；复写Thread类中的run方法；调用线程的start方法。<br>发现运行结果每次都不同。因为多个线程都获取cpu的执行权，CPU执行到谁，谁就运行。（多核除外），cpu在做着快速的切换，以达到看上去是同时运行的效果</li></ol><hr><h1 id="创建线程-run和start的特点"><a href="#创建线程-run和start的特点" class="headerlink" title="创建线程-run和start的特点"></a>创建线程-run和start的特点</h1><p>为什么要覆盖run方法？<br>Thread类用于描述线程。该类定义了一个功能，用于存储线程要运行的代码。该存储功能就是run方法。<br>也就是说Thread类中的run方法，用于存储线程要运行的代码。</p><h1 id="线程运行状态"><a href="#线程运行状态" class="headerlink" title="线程运行状态"></a>线程运行状态</h1><p>原来线程都有自己默认的名称。Thread-编号，该编号从0开始。<br>static Thread currentThread()：获取当前线程对象。<br>getName()：获取线程名称<br>设置线程名称：setName或者构造函数。</p><hr><h1 id="创建线程-runable接口"><a href="#创建线程-runable接口" class="headerlink" title="创建线程-runable接口"></a>创建线程-runable接口</h1><p>创建线程的第二种方式：实现Runable接口<br>步骤：</p><ol><li>定义类实现Runable接口</li><li>覆盖Runable接口中的run方法。  （将线程要运行的代码存放到该run方法中）</li><li>通过Thread类建立线程对象。</li><li>将Runable接口的子类对象作为实际参数传递给Thread类的构造函数。（自定义的run方法所属的对象时Runable接口的子类对象。所以要让线程去指定对象的run方法，就必须明确该run方法所属的对象）</li><li>调用Thread类的start方法开启线程并调用Runable接口子类的run方法。</li></ol><hr><p>实现方式和继承方式有什么区别呢？<br>实现方式：避免了单继承的局限性。在定义线程时，建议使用实现方式。<br>两种方式的区别：<br>继承Thread：线程代码存放在Thread子类的run方法中。<br>实现Runable：线程 代码存在接口的子类的run方法中。</p><hr><h1 id="多线程的安全问题"><a href="#多线程的安全问题" class="headerlink" title="多线程的安全问题"></a>多线程的安全问题</h1><p>多线程运行出现安全问题的原因：<br>当多条语句在操作同一个线程共享数据时，一个线程对多条语句值执行了一部分，还没有执行完，另一个线程参与执行。导致共享数据的错误。<br>解决办法：<br>对多条操作共享数据的语句，只能让一个线程都执行完。在执行过程中，其他线程不可以参与执行。<br>  java对于多线程的安全问题提供了专业的解决方式。<br>同步代码块。<br>synchronized（对象）{需要被同步的代码}<br>对象如同锁。持有锁的线程可以在同步中执行。没有持有锁的线程即使获取cpu的执行权，也进不去，因为没有获取锁。<br>同步的前提：</p><ol><li>必须要有两个或两个以上的线程。</li><li>必须是多个线程使用同一个锁<br>3必须保证同步中只能有一个线程在运行。<br>好处：解决了多线程的安全问题。<br>弊端：多个线程需要判断锁，较为消耗资源。</li></ol><hr><h1 id="多线程-同步函数"><a href="#多线程-同步函数" class="headerlink" title="多线程-同步函数"></a>多线程-同步函数</h1><p><strong>同步函数的锁用的是this。<br>静态同步函数的锁是Class对象</strong></p><hr><h1 id="多线程-死锁"><a href="#多线程-死锁" class="headerlink" title="多线程-死锁"></a>多线程-死锁</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;进程：是一个正在执行中的程序。&lt;br&gt;每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。&lt;br&gt;线
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day5(面向对象2)</title>
+    <link href="http://yoursite.com/2017/03/09/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/"/>
+    <id>http://yoursite.com/2017/03/09/day12(多线程-进程间通信)/</id>
+    <published>2017-03-09T04:55:17.000Z</published>
+    <updated>2017-09-09T16:11:36.971Z</updated>
+    
+    <content type="html"><![CDATA[<p>#多进程（二）</p><hr><h2 id="1线程间通信"><a href="#1线程间通信" class="headerlink" title="1线程间通信"></a>1线程间通信</h2><p>线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。</p><p>##2解决安全问题</p><h2 id="3等待唤醒机制"><a href="#3等待唤醒机制" class="headerlink" title="3等待唤醒机制"></a>3等待唤醒机制</h2><p>wait  notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。<br>为什么这些操作线程的方法要定义在Object类中呢？<br>因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一个锁上的等待线程，可以被同一个锁上的notify唤醒。不可以对不同锁中的线程进行唤醒。<br>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法定义在Object类中。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#多进程（二）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;1线程间通信&quot;&gt;&lt;a href=&quot;#1线程间通信&quot; class=&quot;headerlink&quot; title=&quot;1线程间通信&quot;&gt;&lt;/a&gt;1线程间通信&lt;/h2&gt;&lt;p&gt;线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。&lt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day5(面向对象2)</title>
+    <link href="http://yoursite.com/2017/03/09/day13(String)/"/>
+    <id>http://yoursite.com/2017/03/09/day13(String)/</id>
+    <published>2017-03-09T04:55:17.000Z</published>
+    <updated>2017-09-09T15:40:23.222Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h1><hr><h2 id="StringBuffer-是字符串缓冲区。是一个容器，"><a href="#StringBuffer-是字符串缓冲区。是一个容器，" class="headerlink" title="StringBuffer 是字符串缓冲区。是一个容器，"></a>StringBuffer 是字符串缓冲区。是一个容器，</h2><ol><li>而且长度是可变化的。</li><li>可以操作多个数据类型。</li><li>最终会通过toString方法变成字符串<br>C（create）U（update）R（read）D（delete）<br>1.存储<br>StringBuffer append（）：将指定的数据作为参数添加到到已有数据的结尾处<br>StringBuffer insert（index，数据）：可以将数据 插入到数据指定index位置<br>2.删除<br>String<br>3.获取<br>4.修改</li></ol><h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p>java升级的三个因素：<br>1.提高效率<br>2.简化书写<br>3.安全性</p><h2 id="基本数据类型对象包装类"><a href="#基本数据类型对象包装类" class="headerlink" title="基本数据类型对象包装类"></a>基本数据类型对象包装类</h2><p>byte   Byte<br>short  short<br>int Integer<br>long  Long<br>boolean Boolean<br>float Float<br>double  Double<br>char  Character<br>基本数据类型对象包装类的最常见作用：就是用于基本数据类型和字符串类型之间做转换。<br>基本数据类型转成字符串。  基本数据类型+“”或者 基本数据类型.toString(基本数据类型值)<br>字符串转基本类型。基本数据类型包装类 a=Xxx.parseXxx(String)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;StringBuffer&quot;&gt;&lt;a href=&quot;#StringBuffer&quot; class=&quot;headerlink&quot; title=&quot;StringBuffer&quot;&gt;&lt;/a&gt;StringBuffer&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;StringBuffer-是字符串缓冲区
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
