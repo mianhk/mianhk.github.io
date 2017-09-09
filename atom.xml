@@ -226,6 +226,30 @@
   
   <entry>
     <title>day5(面向对象2)</title>
+    <link href="http://yoursite.com/2017/03/09/day20(IO%E6%B5%812)/"/>
+    <id>http://yoursite.com/2017/03/09/day20(IO流2)/</id>
+    <published>2017-03-09T04:55:17.000Z</published>
+    <updated>2017-09-09T05:02:04.388Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><hr><h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>用来将文件或文件夹封装成对象。<br>方便对文件与文件夹的属性信息进行操作。<br>File对象可以作为参数传递给</p><h2 id="File类的常见方法"><a href="#File类的常见方法" class="headerlink" title="File类的常见方法"></a>File类的常见方法</h2><p>1.创建<br>boolean createNewFile()<br>boolean mkdir()<br>boolean mkdirs()</p><p>2.删除<br> boolean delete()  删除失败返回false<br>void deleteOnExit()  在程序退出时删除文件</p><p>3.判断<br>boolean exists() 文件或目录是否存在。<br>记住在判断文件对象是否是文件或者目录时，必须要先判断该文件对象封装的内容是否存在，通过exists判断。<br>boolean isFile()<br>boolean isDirectory()</p><p>4.获取信息。<br> String getName()<br> String getParent()  该方法返回的是绝对路径中的父目录，如果获取的是相对路径，则返回null。<br> String getPath()<br> File getAbsoluteFile()<br>  long lastModified()<br>long length()</p><h2 id="文件列表"><a href="#文件列表" class="headerlink" title="文件列表"></a>文件列表</h2><p>static File[] listRoots()<br> String[] list() 调用list方法的必须是封装的一个目录。该目录还必须存在。</p><h2 id="列出目录下所有的内容"><a href="#列出目录下所有的内容" class="headerlink" title="列出目录下所有的内容"></a>列出目录下所有的内容</h2><p>递归<br>递归要注意：<br>1.限定条件。<br>2.要注意递归的次数，尽量避免内存溢出。</p><h2 id="删除一个带内容的目录"><a href="#删除一个带内容的目录" class="headerlink" title="删除一个带内容的目录"></a>删除一个带内容的目录</h2><p>删除原理：<br>在Windows中，删除目录从里面往外删除的。既然是从里往外删除，就需要用到递归。</p><h2 id="创建java文件列表"><a href="#创建java文件列表" class="headerlink" title="创建java文件列表"></a>创建java文件列表</h2><h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><p>properties是hashtables的子类，也就是说它具备map集合的特点。而且它里面存储的键值对都是字符串。是集合中和IO技术相结合的集合容器。<br>该对象的特点：可以用于键值对形式的配置文件。</p><p>##IO包中的其他类<br>打印流：该流提供了打印方法，可以将各种数据类型的数据都原样打印。<br>字节打印流<br>PrintStream<br>构造函数可以接收的参数类型。</p><ol><li>file对象。File</li><li>字符串路径</li><li>字节输出流<br>字符打印流<br>PrintWrite</li><li>file对象。File</li><li>字符串路径</li><li>字节输出流</li></ol><h2 id="合并流和切割文件"><a href="#合并流和切割文件" class="headerlink" title="合并流和切割文件"></a>合并流和切割文件</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;IO流&quot;&gt;&lt;a href=&quot;#IO流&quot; class=&quot;headerlink&quot; title=&quot;IO流&quot;&gt;&lt;/a&gt;IO流&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;File类&quot;&gt;&lt;a href=&quot;#File类&quot; class=&quot;headerlink&quot; title=&quot;File类&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day5(面向对象2)</title>
     <link href="http://yoursite.com/2017/03/09/day19(IO%E6%B5%81)/"/>
     <id>http://yoursite.com/2017/03/09/day19(IO流)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
@@ -240,30 +264,6 @@
         &lt;p&gt;#IO流&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;BufferedWriter&quot;&gt;&lt;a href=&quot;#BufferedWriter&quot; class=&quot;headerlink&quot; title=&quot;BufferedWriter&quot;&gt;&lt;/a&gt;BufferedWriter&lt;/h2&gt;&lt;p&gt;缓冲区的出
-      
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day20(IO%E6%B5%812)/"/>
-    <id>http://yoursite.com/2017/03/09/day20(IO流2)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T05:02:04.388Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><hr><h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>用来将文件或文件夹封装成对象。<br>方便对文件与文件夹的属性信息进行操作。<br>File对象可以作为参数传递给</p><h2 id="File类的常见方法"><a href="#File类的常见方法" class="headerlink" title="File类的常见方法"></a>File类的常见方法</h2><p>1.创建<br>boolean createNewFile()<br>boolean mkdir()<br>boolean mkdirs()</p><p>2.删除<br> boolean delete()  删除失败返回false<br>void deleteOnExit()  在程序退出时删除文件</p><p>3.判断<br>boolean exists() 文件或目录是否存在。<br>记住在判断文件对象是否是文件或者目录时，必须要先判断该文件对象封装的内容是否存在，通过exists判断。<br>boolean isFile()<br>boolean isDirectory()</p><p>4.获取信息。<br> String getName()<br> String getParent()  该方法返回的是绝对路径中的父目录，如果获取的是相对路径，则返回null。<br> String getPath()<br> File getAbsoluteFile()<br>  long lastModified()<br>long length()</p><h2 id="文件列表"><a href="#文件列表" class="headerlink" title="文件列表"></a>文件列表</h2><p>static File[] listRoots()<br> String[] list() 调用list方法的必须是封装的一个目录。该目录还必须存在。</p><h2 id="列出目录下所有的内容"><a href="#列出目录下所有的内容" class="headerlink" title="列出目录下所有的内容"></a>列出目录下所有的内容</h2><p>递归<br>递归要注意：<br>1.限定条件。<br>2.要注意递归的次数，尽量避免内存溢出。</p><h2 id="删除一个带内容的目录"><a href="#删除一个带内容的目录" class="headerlink" title="删除一个带内容的目录"></a>删除一个带内容的目录</h2><p>删除原理：<br>在Windows中，删除目录从里面往外删除的。既然是从里往外删除，就需要用到递归。</p><h2 id="创建java文件列表"><a href="#创建java文件列表" class="headerlink" title="创建java文件列表"></a>创建java文件列表</h2><h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><p>properties是hashtables的子类，也就是说它具备map集合的特点。而且它里面存储的键值对都是字符串。是集合中和IO技术相结合的集合容器。<br>该对象的特点：可以用于键值对形式的配置文件。</p><p>##IO包中的其他类<br>打印流：该流提供了打印方法，可以将各种数据类型的数据都原样打印。<br>字节打印流<br>PrintStream<br>构造函数可以接收的参数类型。</p><ol><li>file对象。File</li><li>字符串路径</li><li>字节输出流<br>字符打印流<br>PrintWrite</li><li>file对象。File</li><li>字符串路径</li><li>字节输出流</li></ol><h2 id="合并流和切割文件"><a href="#合并流和切割文件" class="headerlink" title="合并流和切割文件"></a>合并流和切割文件</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;IO流&quot;&gt;&lt;a href=&quot;#IO流&quot; class=&quot;headerlink&quot; title=&quot;IO流&quot;&gt;&lt;/a&gt;IO流&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;File类&quot;&gt;&lt;a href=&quot;#File类&quot; class=&quot;headerlink&quot; title=&quot;File类&quot;
       
     
     </summary>
