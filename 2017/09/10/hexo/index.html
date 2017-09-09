@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/10/hexo/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
 <meta property="og:description" content="Hexo的使用总结 没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github始终是一个好的选择，于是入了Hexo的坑。。折腾的过程心情总是有些复杂，在激动和mmp之间徘徊，虽然很多问题在wiki和issue里都有，但还是想总结一下自己亲自踩的坑。 页面中文无法显示的问题这种中文问题，基本上都是编">
-<meta property="og:updated_time" content="2017-09-09T17:03:48.716Z">
+<meta property="og:updated_time" content="2017-09-09T17:06:29.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo使用总结">
 <meta name="twitter:description" content="Hexo的使用总结 没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github始终是一个好的选择，于是入了Hexo的坑。。折腾的过程心情总是有些复杂，在激动和mmp之间徘徊，虽然很多问题在wiki和issue里都有，但还是想总结一下自己亲自踩的坑。 页面中文无法显示的问题这种中文问题，基本上都是编">
@@ -383,7 +383,7 @@
 <h5 id="页面中文无法显示的问题"><a href="#页面中文无法显示的问题" class="headerlink" title="页面中文无法显示的问题"></a>页面中文无法显示的问题</h5><p>这种中文问题，基本上都是编码的问题，但是开始各种都没找到原因，改了language里面的配置文件，最后发现是文件的编码，需要改成’无bom的utf-8的编码格式 ‘</p>
 <h5 id="主界面无法显示categories和tags的问题"><a href="#主界面无法显示categories和tags的问题" class="headerlink" title="主界面无法显示categories和tags的问题"></a>主界面无法显示categories和tags的问题</h5><p>这个问题真的是搞的有点久，因为基本上都被人忽略了，也可能很多人都没遇到而我恰好遇到了吧，不懂前端的我只能对于这种玄学问题强行百度了。<br>解决办法：将categories和tags目录下的index文件分别改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">categories:</div><div class="line">type: &quot;categories&quot;</div><div class="line">layout: &quot;categories&quot;</div><div class="line">tags:</div><div class="line">type: &quot;tags&quot;</div><div class="line">layout: &quot;tags&quot;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。<br><strong> Reference:</strong><br><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">Next主题文档</a></p>
+<p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。<br><strong> Reference: </strong><br><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">Next主题文档</a></p>
 
       
     </div>

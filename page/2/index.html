@@ -883,7 +883,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day10(异常包访问)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day11(多线程)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mianhk">
@@ -902,7 +902,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/day10(异常包访问)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/day11(多线程)/" itemprop="url">多线程</a></h1>
         
 
         <div class="post-meta">
@@ -976,15 +976,12 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
       
         
           
-          异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点：
-
-子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。
-如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。
-如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不
+          多线程
+进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。一个进程中至少有一个线程。java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。扩展：其实更细节说明jvm，jvm
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/day10(异常包访问)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/day11(多线程)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1499,7 +1496,7 @@ java语言中：java只支持单继承，不支持多继承。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day11(多线程)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day18(其他对象)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mianhk">
@@ -1518,7 +1515,7 @@ java语言中：java只支持单继承，不支持多继承。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/day11(多线程)/" itemprop="url">多线程</a></h1>
+                <a class="post-title-link" href="/2017/03/09/day18(其他对象)/" itemprop="url">day5(面向对象2)</a></h1>
         
 
         <div class="post-meta">
@@ -1592,12 +1589,16 @@ java语言中：java只支持单继承，不支持多继承。
       
         
           
-          多线程
-进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。一个进程中至少有一个线程。java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。扩展：其实更细节说明jvm，jvm
-          ...
+          #其他对象
+
+System可不可以在jvm启动时，动态加载一些属性信息。
+##Runtime对象该类并没有提供构造函数。说明不可以new 对象，那么会直接想到该类中的方法都是静态的，发现该类中海油非静态方法。说明该类肯定会提供了方法获取本类对象，而且该方法是静态的，并返回值类型是本类类型。由这个特点可以看出该类使用了单例设计模式执行。
+##Date
+Math
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/day11(多线程)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/day18(其他对象)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1648,7 +1649,7 @@ java语言中：java只支持单继承，不支持多继承。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day12(多线程-进程间通信)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day17(集合4-工具类)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mianhk">
@@ -1667,7 +1668,7 @@ java语言中：java只支持单继承，不支持多继承。
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/day12(多线程-进程间通信)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/day17(集合4-工具类)/" itemprop="url">day5(面向对象2)</a></h1>
         
 
         <div class="post-meta">
@@ -1741,15 +1742,13 @@ java语言中：java只支持单继承，不支持多继承。
       
         
           
-          #多进程（二）
-
-1线程间通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。
-##2解决安全问题
-3等待唤醒机制wait  notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一
+          集合（工具类）
+sortmaxbinarySerch替换反转reserveOrderSynlistArrays用于操作数组的工具类，里面都是静态方法。
+集合变数组1.指定类型的数组到底要定义多长呢？当指定类型的数组长度小于集合的size，那么该方法会创建一个新的数组，长度为集合的size。当指定类型的数组长度小于了集合的size，就不会创建新数组，而是使用传递进来的数组，所以创建一个刚刚好的数组最
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/day12(多线程-进程间通信)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/day17(集合4-工具类)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
