@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。">
-<meta name="keywords" content="java">
+<meta name="description" content="ch14 重载运算与类型转化 当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。 14.1 基本概念重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day5(面向对象2)">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/day9(内部类)/index.html">
+<meta property="og:title" content="《c++primer》ch14 重载运算符和类型转换">
+<meta property="og:url" content="http://yoursite.com/2017/09/14/《cpp primer》ch14/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。">
-<meta property="og:updated_time" content="2017-09-09T15:39:58.794Z">
+<meta property="og:description" content="ch14 重载运算与类型转化 当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。 14.1 基本概念重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。">
+<meta property="og:updated_time" content="2017-09-14T04:51:20.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="day5(面向对象2)">
-<meta name="twitter:description" content="内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。">
+<meta name="twitter:title" content="《c++primer》ch14 重载运算符和类型转换">
+<meta name="twitter:description" content="ch14 重载运算与类型转化 当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。 14.1 基本概念重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/09/day9(内部类)/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/14/《cpp primer》ch14/"/>
 
 
 
 
 
-  <title>day5(面向对象2) | Mianhk's notes</title>
+  <title>《c++primer》ch14 重载运算符和类型转换 | Mianhk's notes</title>
   
 
 
@@ -284,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/day9(内部类)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/14/《cpp primer》ch14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mianhk">
@@ -301,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">day5(面向对象2)</h1>
+          <h1 class="post-title" itemprop="name headline">《c++primer》ch14 重载运算符和类型转换</h1>
         
 
         <div class="post-meta">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
-                2017-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T11:55:33+08:00">
+                2017-09-14
               </time>
             
 
@@ -336,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -409,38 +409,30 @@
       
 
       
-        <h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><hr>
-<h2 id="内部类访问规则"><a href="#内部类访问规则" class="headerlink" title="内部类访问规则"></a>内部类访问规则</h2><ol>
-<li>内部类可以直接访问外部类中的成员，包括私有<br> 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this</li>
-<li>外部类要访问内部类，必须建立内部类对象。<br> 直接访问内部类中的成员<br>访问格式：<br>当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。<br>比如，private：将内部类在外部类中进行封装。<br> static：内部类就具备static的特性。<br>当内部类被static修饰后，只能直接访问外部类中的static成员，出现了访问局限。<br>在外部其他类中，如何访问内部类的非静态成员呢？<h2 id="内部类定义的原则"><a href="#内部类定义的原则" class="headerlink" title="内部类定义的原则"></a>内部类定义的原则</h2>当描述事物时，事物的内部还有事物，该事物用内部类来描述。因为内部事物在使用外部事物的内容。</li>
-</ol>
-<p>内部类定义在局部时，</p>
-<ol>
-<li>不可以被成员修饰符修饰</li>
-<li>可以直接访问外部类中的成员，因为还持有外部类中的引用。但是不可以访问它所在的局部中的变量，只能访问被final修饰的局部变量  、<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2></li>
-<li>匿名内部类其实就是内部类的简写格式</li>
-<li>定义匿名内部类的前提：内部类必须是继承一个类或者实现接口。</li>
-<li>匿名内部类的格式：new 父类或者接口（）{定义子类的内容}</li>
-<li>其实匿名内部类就是一个匿名子类对象，而且这个对象有点胖。可以理解为带内容的对象</li>
-<li>匿名内部类中定义的方法最多不要超过三个</li>
-</ol>
-<h2 id="异常概述"><a href="#异常概述" class="headerlink" title="异常概述"></a>异常概述</h2><p>异常：就是程序在运行时出现不正常的情况。<br>异常的由来：问题也是现实生活中一个具体的事物，也可以通过java的类的形式进行描述。并封装成对象。其实就是java对不正常情况进行描述后的对象体现<br>对于问题的划分：两种：一种是严重的问题，一种是不严重的问题</p>
-<p>对于严重的，java通过Error类进行描述。<br>对于Error，一般不编写针对性的代码进行处理<br>对于非严重的，java通过Exception类进行描述。（可以使用针对性的处理方式进行处理 ）</p>
-<h2 id="异常try-catch"><a href="#异常try-catch" class="headerlink" title="异常try-catch"></a>异常try-catch</h2><p>异常的处理：java提供了特有的语句进行处理<br>对捕获到的异常对象进行常见的方法操作。<br>String getMessage</p>
-<h2 id="异常声明throws"><a href="#异常声明throws" class="headerlink" title="异常声明throws"></a>异常声明throws</h2><h2 id="多异常处理"><a href="#多异常处理" class="headerlink" title="多异常处理"></a>多异常处理</h2><p>对多异常的处理。</p>
-<ol>
-<li>声明异常时，建议声明更为具体的异常。这样处理的可以更具体。</li>
-<li>对方声明几个异常，就对应有几个catch块。不要定义多余的catch块<br> 如果多个catch块中的异常出现继承关系，父类异常catch块放在最下面<br>建立在进行catch处理时，catch中一定要具体的处理方式。不要简单的定义一句e.peintStackTrace()，也不要简单的就书写一条输出语句。</li>
-</ol>
-<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>项目中会出现特有的问题，而这些问题并未被java所描述并封装对象。所以对于这些特有的问题可以按照java对问题封装的思想。将特有的问题。进行自定义的异常封装。<br>当在函数内部出现了throw抛出异常对象，那么就必须要给对应的处理动作。<br>要么在内部try catch处理，要么在函数上声明让调用者处理。<br>发现打印的结果中只有异常的名称，缺没有异常的信息。<br>因为自定义的异常并未定义信息。<br>父类中已经把异常信息的操作都完成了。所以子类只要在构造时，将异常信息传递给父类通过super语句。那么直接就可以通过getMessage方法获取自定义的异常。</p>
-<hr>
-<p>自定义异常：必须是自定义类继承Exception。原因是：<br>异常体系有一个特点：因为异常类和异常对象都被抛出。他们都具备可抛性。这个可抛性是Throwable这个体系中的独有特点。只有这个体系中的类和对象才可以被throw和throws操作。</p>
-<h2 id="throws-和throw的区别：throws使用在函数上。throw使用在函数内。"><a href="#throws-和throw的区别：throws使用在函数上。throw使用在函数内。" class="headerlink" title="throws 和throw的区别：throws使用在函数上。throw使用在函数内。"></a>throws 和throw的区别：throws使用在函数上。throw使用在函数内。</h2><p>throws后面跟的异常类，可以跟多个。用逗号隔开。throw后面跟的是异常对象。</p>
-<h2 id="RuntimeException运行时异常。"><a href="#RuntimeException运行时异常。" class="headerlink" title="RuntimeException运行时异常。"></a>RuntimeException运行时异常。</h2><p>如果在函数内抛出该异常，函数上可以不用声明，编译一样通过。<br>如果在函数上声明了该异常。调用者可以不用进行处理。编译一样通过。<br>之所以不用在函数声明，是因为不需要让调用者处理，当该异常发生，希望程序停止。因为在运行时，出现了无法继续运算的情况，希望停止程序后，对代码尽心修正。<br>自定义异常时，如果该异常的发生，无法再继续进行运算，就让自定义异常继承RuntimeException<br>对于异常分两种：</p>
-<ol>
-<li>编译时被检测的异常。</li>
-<li>编译时不被检测的异常（运行时异常。RuntimeException以及其子类）</li>
-</ol>
+        <h3 id="ch14-重载运算与类型转化"><a href="#ch14-重载运算与类型转化" class="headerlink" title="ch14 重载运算与类型转化"></a>ch14 重载运算与类型转化</h3><blockquote>
+<p>当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。</p>
+<h4 id="14-1-基本概念"><a href="#14-1-基本概念" class="headerlink" title="14.1 基本概念"></a>14.1 基本概念</h4><p>重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。<br>不应该被重载的运算符：逻辑与、逻辑或、逗号运算符、取地址运算符。<br>定义成成员还是非成员的判断：</p>
+<ul>
+<li>赋值、下标、调用、成员访问箭头等运算符必须是类的成员。</li>
+<li>复合赋值运算符一般是类的成员</li>
+<li>递增、递减、解引用等运算符。通常是类的成员</li>
+<li>具有对称性的运算符可能转换任意一端的运算对象。如算数、相等性、关系、位运算符，通常应该是普通的成员函数。<h4 id="14-2-输入输出运算符"><a href="#14-2-输入输出运算符" class="headerlink" title="14.2 输入输出运算符"></a>14.2 输入输出运算符</h4>输出的运算符尽量减少格式化操作，只需要打印信息就可以了。<br>输入输出运算符必须是非成员函数。<br>输入时可能会发生错误，例如：当流含有错误类型的数据时读取可能失败，当读取操作到达文件末尾或者遇到输入流的其他错误时也会失败。所以在输入操作中，输入运算符应该负责读取错误发生时，从错误中恢复。<h4 id="14-3-算术和关系运算符"><a href="#14-3-算术和关系运算符" class="headerlink" title="14.3 算术和关系运算符"></a>14.3 算术和关系运算符</h4>代码的解释：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Sales_data</div><div class="line">operator-(const Sales_data &amp;lhs,const Sales_data &amp;rhs)&#123;</div><div class="line">    Sales_data item=lhs;</div><div class="line">    item-=rhs;  //调用重载的-=运算符来定义。性能相同，只是增加代码的 复用，增加可读性</div><div class="line">    return item;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p><strong> 相等运算符</strong>的定义：如果定义了<code>==</code>，那么这个类也要定义<code>!=</code>（因为对于用户来说，当他们使用了<code>==</code>时，他们应该也希望能使用<code>!=</code>），并且相等运算符和不相等运算符的一个应该把工作委托给另外一个，这样一个预算负责实际比较，另外一个负责调用。<br><strong> 关系运算符</strong>:一般定义了相等运算符后，也会定义关系运算符，特别是<code>&lt;</code>运算符。<br>关系运算符的原则：如果存在唯一逻辑可靠的<code>&lt;</code>定义，就考虑定义<code>&lt;</code>运算符。如果该类同时包含<code>==</code>运算符，则当且仅当<code>&lt;</code>的定义与<code>==</code>产生一致的结果时才定义<code>&lt;</code>运算符。</p>
+<h4 id="14-4-赋值运算符"><a href="#14-4-赋值运算符" class="headerlink" title="14.4 赋值运算符"></a>14.4 赋值运算符</h4><p>赋值运算符<code>=</code>和符合赋值运算符<code>+=</code>，通常都定义为类的成员，并且都应该返回左侧运算对象的引用。</p>
+<h4 id="14-5-下标运算符"><a href="#14-5-下标运算符" class="headerlink" title="14.5 下标运算符"></a>14.5 下标运算符</h4><p>当我们需要按元素在容器中的位置访问元素时，通常定义一个下标运算符<code>operator[]</code>，必须是成员函数。通常会定义两个版本，一个返回普通引用，一个返回常量引用。</p>
+<h4 id="14-6-递增和递减运算符"><a href="#14-6-递增和递减运算符" class="headerlink" title="14.6 递增和递减运算符"></a>14.6 递增和递减运算符</h4><p>后置运算符接受一个额外的（不被使用）int类型的形参，当我们使用后置运算符时，编译器为这个形参提供一个值为0的实参<br>。前置运算符返回递增或者递减后的对象的引用，后置运算符返回对象的原值（即递增或递减之前的原值），返回的是一个值而非引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class StrBlobPtr&#123;</div><div class="line">    public:</div><div class="line">        StrBlobPtr&amp; operator++();  //前置递增运算符</div><div class="line">        StrBlobPtr&amp; operator++(int); //后置递增运算符</div><div class="line">&#125;</div><div class="line">...</div><div class="line">p.operator++(0); //显式的调用后置递增运算符</div><div class="line">p.operator++(); // 显式的调用前置递增运算符</div></pre></td></tr></table></figure></p>
+<h4 id="14-7-成员访问运算符"><a href="#14-7-成员访问运算符" class="headerlink" title="14.7 成员访问运算符"></a>14.7 成员访问运算符</h4><p>箭头运算符必须是类的成员，解引用运算符通常也是类的成员，即使并非必须这么做。<br>箭头运算符永远不能丢掉成员访问的这个基本含义，当我们重载箭头运算符时，可以改变的是从哪个对象中获取成员，而获取成员这一事实永远不变。<br>重载的箭头运算符必须返回类的指针或者自定义了箭头运算符的某个类的对象。</p>
+<h4 id="14-8-函数调用运算符"><a href="#14-8-函数调用运算符" class="headerlink" title="14.8 函数调用运算符"></a>14.8 函数调用运算符</h4><p>如果类重载了函数调用运算符，我们就可以像调用函数一样使用该类的对象。函数调用运算符必须是成员函数，一个类可以定义多个函数运算符，之间用参数的数量和类型进行区分。<br>函数对象通常作为泛型算法的实参<br>lambda表达式：当我们编写了一个lambda后，编译器将该表达式翻译成一个未命名类的未命名对象。在这个类中，含有一个重载的函数调用运算符。捕获的对象相当于类内含有数据成员。是否含有默认/移动构造函数通常视捕获的对象而定。<br>标准库定义了一组表示算数运算符、关系运算符和逻辑运算符的类，每个类分别定义了一个执行命名操作的调用运算符。<br>标准库规定其函数对象对于指针同样适用。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vector&lt;string *&gt; nameTable;</div><div class="line">sort(nameTable.begin(),nameTable.end(),</div><div class="line">[](string *a,string *b)&#123;return a&lt;b&#125;);   //错误，nameTable中的指针之间没有关系，所以&lt;将产生未定义的行为</div><div class="line"></div><div class="line">sort(nameTable.begin(),nameTable.end(),less&lt;string* &gt;()); //正确</div></pre></td></tr></table></figure></p>
+<p>C++中的<strong>  可调用对象</strong>：函数、函数指针、lambda表达式、bind创建的对象、重载了函数调用运算符的类。可调用的对象也有类型。<br>不同类型可能具有相同的调用形式，可以定义一个<strong> 函数表</strong>用于存储指向这些可调用对象的“指针”。<br><strong> 标准库function类型</strong>：是一个模板，当创建具体的function类型时，需要我们提供额外的信息。eg：<code>function&lt;int (int,int)&gt;</code>表示接受2个int、返回1个int的可调用对象。不能直接将重载函数的名字存入function类型的对象中，可存储函数指针而不是函数的名字。</p>
+<h4 id="14-9-重载、类型转换与运算符"><a href="#14-9-重载、类型转换与运算符" class="headerlink" title="14.9 重载、类型转换与运算符"></a>14.9 重载、类型转换与运算符</h4><p><strong> 转换构造函数和类型转换运算符</strong>共同定义了类类型转换，有时也被称作用户定义的类型转换。<br><code>operator type() const; //type表示某种类型</code>因为类型转换运算符是隐式执行的，所以无法传递实参，也不能定义形参。为了避免具有误导性的类型转换，在不存在明显映射关系的时候，应不适用。<br>显式的类型转换运算符。eg:<code>explicit operator int() const;</code>当类型转换运算符是显式的，必须通过显式的强制类型转换才可以。<strong> 如果表达式被用作条件，编译器会显式的自动转换。</strong><br>无论我们什么时候在条件中使用了流对象，都会使用为IO类型定义operator bool。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">struct Integral&#123;</div><div class="line">    operator const int(); //将对象转换成 const int</div><div class="line">    operator int() const; //将对象转换成 int，用的相对较多</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>应该避免使用二义性的类型转换，总体原则：除了显式的向bool类型的转换外，应该尽量避免定义类型转换函数，并且尽可能限制某些看起来显然正确的显式构造函数。<br>错误eg：定义了两种将B类转换为A类的方法，一种使用B的类型转换运算符，一种使用A的以B为参数的构造函数。</p>
+<ul>
+<li>不要另两个类执行相同的类型转换。</li>
+<li>避免转换目标是内置算数类型的类型转换。<br>函数重载的类型匹配：当调用重载函数时，如果两个或多个用户定义的类型转换都提供了可行的匹配，那么这些类型转换被认为一样好。这意味着我们设计的不足。</li>
+</ul>
 
       
     </div>
@@ -490,7 +482,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -503,15 +495,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/14/《cpp primer》ch13/" rel="next" title="《c++primer》ch13 拷贝控制">
+                <i class="fa fa-chevron-left"></i> 《c++primer》ch13 拷贝控制
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/09/day10(异常包访问)/" rel="prev" title="day5(面向对象2)">
-                day5(面向对象2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -690,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类访问规则"><span class="nav-number">1.1.</span> <span class="nav-text">内部类访问规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类定义的原则"><span class="nav-number">1.2.</span> <span class="nav-text">内部类定义的原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.3.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常概述"><span class="nav-number">1.4.</span> <span class="nav-text">异常概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常try-catch"><span class="nav-number">1.5.</span> <span class="nav-text">异常try-catch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常声明throws"><span class="nav-number">1.6.</span> <span class="nav-text">异常声明throws</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多异常处理"><span class="nav-number">1.7.</span> <span class="nav-text">多异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义异常"><span class="nav-number">1.8.</span> <span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws-和throw的区别：throws使用在函数上。throw使用在函数内。"><span class="nav-number">1.9.</span> <span class="nav-text">throws 和throw的区别：throws使用在函数上。throw使用在函数内。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RuntimeException运行时异常。"><span class="nav-number">1.10.</span> <span class="nav-text">RuntimeException运行时异常。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ch14-重载运算与类型转化"><span class="nav-number">1.</span> <span class="nav-text">ch14 重载运算与类型转化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#14-1-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">14.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-2-输入输出运算符"><span class="nav-number">1.2.</span> <span class="nav-text">14.2 输入输出运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-3-算术和关系运算符"><span class="nav-number">1.3.</span> <span class="nav-text">14.3 算术和关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-4-赋值运算符"><span class="nav-number">1.4.</span> <span class="nav-text">14.4 赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-5-下标运算符"><span class="nav-number">1.5.</span> <span class="nav-text">14.5 下标运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-6-递增和递减运算符"><span class="nav-number">1.6.</span> <span class="nav-text">14.6 递增和递减运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-7-成员访问运算符"><span class="nav-number">1.7.</span> <span class="nav-text">14.7 成员访问运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-8-函数调用运算符"><span class="nav-number">1.8.</span> <span class="nav-text">14.8 函数调用运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-9-重载、类型转换与运算符"><span class="nav-number">1.9.</span> <span class="nav-text">14.9 重载、类型转换与运算符</span></a></li></ol></li></ol></div>
             
 
           </div>
