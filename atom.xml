@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-14T05:01:05.585Z</updated>
+  <updated>2017-09-19T04:47:39.315Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>《c++primer》ch13 拷贝控制</title>
-    <link href="http://yoursite.com/2017/09/14/%E3%80%8Acpp%20primer%E3%80%8Bch13/"/>
-    <id>http://yoursite.com/2017/09/14/《cpp primer》ch13/</id>
-    <published>2017-09-14T03:55:33.000Z</published>
-    <updated>2017-09-14T05:01:05.585Z</updated>
+    <title>ch16-notes</title>
+    <link href="http://yoursite.com/2017/09/19/ch16-notes/"/>
+    <id>http://yoursite.com/2017/09/19/ch16-notes/</id>
+    <published>2017-09-19T04:47:04.000Z</published>
+    <updated>2017-09-19T04:47:39.315Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="ch13-拷贝控制"><a href="#ch13-拷贝控制" class="headerlink" title="ch13 拷贝控制"></a>ch13 拷贝控制</h3><p>通过定义的五种特殊的</p><h4 id="13-1-拷贝、赋值、销毁"><a href="#13-1-拷贝、赋值、销毁" class="headerlink" title="13.1 拷贝、赋值、销毁"></a>13.1 拷贝、赋值、销毁</h4><h4 id="13-6-对象移动"><a href="#13-6-对象移动" class="headerlink" title="13.6 对象移动"></a>13.6 对象移动</h4><p>在旧标准的标准库中，容器中所保存的类必须是可以拷贝的，新标准中，可以在容器中保存不可拷贝的类型，只要他们能够被移动就可以。</p><h5 id="13-6-1-右值引用"><a href="#13-6-1-右值引用" class="headerlink" title="13.6.1 右值引用"></a>13.6.1 右值引用</h5><p>通过&amp;&amp;来获得右值引用，意为绑定到右值的引用。<br><strong> 重要性质：只能绑定到一个将要销毁的对象。</strong><br><strong> 所引用的对象将要被销毁，该对象没有其他用户</strong><br>– 左值引用：返回左值引用的函数，赋值、下标、解引用、前置递增/递减运算符。<br>– 右值引用：返回非引用的函数，算数、关系、位以及后置递增/递减运算符。<br>区分的方法：一个区分左值与右值的便捷方法是：看能不能对表达式取地址，如果能，则为左值，否则为右值。<a href="http://blog.csdn.net/yapian8/article/details/42341307" target="_blank" rel="external">右值引用比较</a></p><p><strong> move函数(utility头文件中)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int &amp;&amp;rr3=std::move(rr1);  //相当于告诉编译器，我们希望像处理右值一样处理左值rr1。</div><div class="line">                           //调用move后，除了赋值和销毁rr1外不会再使用它</div><div class="line">                           //使用move直接用std::move</div></pre></td></tr></table></figure></p><h6 id="移动构造函数和移动赋值运算符"><a href="#移动构造函数和移动赋值运算符" class="headerlink" title="移动构造函数和移动赋值运算符"></a>移动构造函数和移动赋值运算符</h6><p>目的：让类支持移动操作。<br>移动构造函数：第一个参数是一个该类类型的右值引用，任何其他额外的参数都要有默认实参。不需要分配新内存，直接接管原来的内存。不会跑异常，不抛出异常的移动构造函数和移动赋值运算符必须标记为noexcept。（原因是标准库很多对于存在异常的处理方式，例如vector）<br>移动赋值运算符：首先要处理自赋值的情况。（为什么检查自赋值？因为右值可能是move调用返回的结果，不能在使用右侧运算符对象之前释放左侧运算对象的资源。）<br><strong> 如果类有拷贝构造函数和拷贝赋值运算符，没有定义移动操作时，编译器不会为其分配默认的移动操作，而是会采用对应的拷贝进行代替。如果没有定义任何的拷贝操作，才会为其合成移动构造函数或移动赋值运算符。</strong><br>移动操作不会被隐式的定义为删除的操作,定义为删除元素的原则：</p><ul><li>有类成员定义了自己的拷贝构造函数且未定义移动构造函数，或有类成员未定义自己的拷贝构造函数且编译器不能为其合成默认移动构造函数</li><li>有类成员的移动构造函数或移动赋值运算符被定义为删除的或不可访问的</li><li>类的析构函数被定义为删除的</li><li>有类成员是const的或是引用</li></ul><p>三/五法则：<br>通常，拥有一个资源的类，必须定义拷贝构造函数、拷贝赋值运算符、析构函数才能工作，而由于大量的拷贝会影响资源的额外开销，定义移动构造函数和移动赋值运算符可以避免此类问题。</p><h5 id="13-6-1-右值引用和成员函数"><a href="#13-6-1-右值引用和成员函数" class="headerlink" title="13.6.1 右值引用和成员函数"></a>13.6.1 右值引用和成员函数</h5><p>区分移动和拷贝的重载函数通常有一个版本接受<code>const T&amp;</code>，另一个版本接受一个<code>T&amp;&amp;</code>。很多时候它们看起来调用的是一个函数，通常它们内部的构造也很接近，有一点差别。我们可以根据实参的类型进行判断，我们用的是左值和右值区分调用的版本。<br>有的时候我们想要避免对右值进行赋值（在旧的标准中是有可能发生的，并且新的标准为了向后兼容没有禁止），可以在参数列表后放置一个<strong> 引用限定符</strong>。还可以通过使用<code>&amp;</code>或者<code>&amp;&amp;</code>指出指向一个左值或者一个右值。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Foo&#123;</div><div class="line">    public:</div><div class="line">        Foo &amp;operator=(const Foo&amp;) &amp;; //只能向可修改的左值赋值。</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>引用限定符可以区分重载版本，如同const可以用来区分一个成员函数的重载版本。一般当我们定义两个或两个以上的具有相同名字和相同参数列表的成员函数，就必须对所有函数加上引用限定符，或者都不加。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Foo&#123;</div><div class="line">    public:</div><div class="line">        Foo sorted() &amp;&amp;;</div><div class="line">        Foo sorted() const; //错误，需要加上引用限定符</div><div class="line">        /////////////////</div><div class="line">        Foo sorted(Comp*);</div><div class="line">        Foo sorted(Comp*) const; //正确，两个版本都没有引用限定符</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="ch16-模板与泛型编程"><a href="#ch16-模板与泛型编程" class="headerlink" title="ch16 模板与泛型编程"></a>ch16 模板与泛型编程</h3><p>泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。</p><h4 id="16-1-定义模板"><a href="#16-1-定义模板" class="headerlink" title="16.1 定义模板"></a>16.1 定义模板</h4><p>模板程序应该尽量减少对实参类型的要求。<br>模板的头文件通常包括声明和定义。<br>模板直到实例化时才生成代码。<br>泛型编程的一个目标就是另算法是“通用的”-适合于不同类型。所有标准库容器都定义了<code>==</code>和<code>!=</code>，但只有少数定义了<code>&lt;</code>运算符。因此尽量使用<code>!=</code>而不是<code>&lt;</code>。<br><strong> 类模板</strong>用来生成类的蓝图，一个类模板的每个实例都形成一个独立的类。默认情况下，对于一个实例化了的类模板，其成员只有在使用时才被实例化。在类模板的作用域类，我们可以直接使用模板名而不必指定模板实参。<br>如果一个类模板包含一个非模板友元，则友元被授权可以访问所有模板实例。如果友元自身是模板，类可以授权给 所有友元模板实例，也可以只授权给特定实例。<br>当我们希望通知编译器一个名字表示类型时，必须使用关键字<code>typename</code>，而不能使用<code>class</code>。<br><strong> 成员模板</strong>：一个类（不管是模板类还是普通类）可以包含本身是模板的成员函数。这些成员函数被称为成员模板。成员模板不能是虚函数。<br>控制实例化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">extern template class Blob&lt;string&gt;;  //声明，遇到extern模板声明时，编译器不会在本文件中生成实例化代码。，对于一个给定的实例化版本，可以有多个extern声明，但只能有一个定义。</div><div class="line">template int compare(const int&amp;,const int&amp;); //定义</div></pre></td></tr></table></figure></p><h4 id="16-2-模板实参推断"><a href="#16-2-模板实参推断" class="headerlink" title="16.2 模板实参推断"></a>16.2 模板实参推断</h4><p>将实参传递给带模板类型的函数形参时，能够自动应用的类型转换只有const转换及数组或函数到指针的转换。<br>一个模板类型参数可以用作多个函数形参的类型。由于只允许有限的几种类型转换，因此传递给这些形参的实参必须具有相同的类型。<br>如果函数参数类型不是模板参数，则可以进行正常的类型转换。<br><strong> 显式模板实参</strong>按由左至右的顺序与对应的模板参数匹配。</p><h4 id="16-3-重载与模板"><a href="#16-3-重载与模板" class="headerlink" title="16.3 重载与模板"></a>16.3 重载与模板</h4><h4 id="16-4-可变参数模板"><a href="#16-4-可变参数模板" class="headerlink" title="16.4 可变参数模板"></a>16.4 可变参数模板</h4><h4 id="16-5-模板特例化"><a href="#16-5-模板特例化" class="headerlink" title="16.5 模板特例化"></a>16.5 模板特例化</h4>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;ch13-拷贝控制&quot;&gt;&lt;a href=&quot;#ch13-拷贝控制&quot; class=&quot;headerlink&quot; title=&quot;ch13 拷贝控制&quot;&gt;&lt;/a&gt;ch13 拷贝控制&lt;/h3&gt;&lt;p&gt;通过定义的五种特殊的&lt;/p&gt;
-&lt;h4 id=&quot;13-1-拷贝、赋值、销毁&quot;&gt;&lt;a h
+        &lt;h3 id=&quot;ch16-模板与泛型编程&quot;&gt;&lt;a href=&quot;#ch16-模板与泛型编程&quot; class=&quot;headerlink&quot; title=&quot;ch16 模板与泛型编程&quot;&gt;&lt;/a&gt;ch16 模板与泛型编程&lt;/h3&gt;&lt;p&gt;泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ch15-notes</title>
+    <link href="http://yoursite.com/2017/09/19/ch15-notes/"/>
+    <id>http://yoursite.com/2017/09/19/ch15-notes/</id>
+    <published>2017-09-19T04:44:24.000Z</published>
+    <updated>2017-09-19T04:45:12.417Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="ch15-面向对象程序设计"><a href="#ch15-面向对象程序设计" class="headerlink" title="ch15 面向对象程序设计"></a>ch15 面向对象程序设计</h3><blockquote><p>面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。</p></blockquote><h4 id="15-1-OOP：概述"><a href="#15-1-OOP：概述" class="headerlink" title="15.1 OOP：概述"></a>15.1 OOP：概述</h4><h4 id="15-2-定义基类和派生类"><a href="#15-2-定义基类和派生类" class="headerlink" title="15.2 定义基类和派生类"></a>15.2 定义基类和派生类</h4><p>基类希望派生类进行覆盖的函数，通常将其定义为<strong> 虚函数</strong>，另一种是基类希望派生类继承但不要改变的函数。<br><code>protected</code>访问运算符：派生类可以访问，但是其他用户无法访问。<br>定义派生类：通过访问说明符控制派生类从基类继承而来的成员是否对派生类可见。<br>如果派生类没有覆盖其基类中的某个虚函数，则该虚函数的行为跟其他类一样，派生类会直接继承其在基类中的版本。<br>派生类到基类的转换。这可以让我们把派生类对象或者派生类对象的引用用在需要基类引用的地方，也可以把派生类指针用在需要基类指针的地方。但是，这里会出现一个问题，当我们使用基类的指针或者引用时，就不知道这个所绑定的对象到底是基类还是派生类了。<br>派生类构造函数。必须使用基类的构造函数初始化。（每个类控制自己的初始化过程。）<br>每个类定义各自的接口，派生类要遵循基类的接口。<br>如果基类中定义了静态成员，则在整个继承体系中只存在唯一的定义，不管定义了多少遍，都只存在唯一的实例。<br>对派生类的声明，不需要包含派生列表。<br>当我们不想让类被继承的时候，可以使用<code>final</code>关键字，跟在类名之后。<br>表达式的<strong> 静态类型</strong>在编译时是已知的，是变量声明时或者表达式生成式生成的类型。<strong> 动态类型</strong>则是变量或表达式表示的内存中的对象的类型。因此，基类的指针或引用的静态类型可能与动态类型不一致。<br>派生类向基类的自动类型转换只对指针和引用有效，在类型之间不存在这样的转换。当我们用一个派生类对象初始化或给一个基类对象赋值时，只有该派生类的对象中的基类部分会被拷贝、移动或赋值，派生类部分则会被忽略掉。</p><h4 id="15-3-虚函数"><a href="#15-3-虚函数" class="headerlink" title="15.3 虚函数"></a>15.3 虚函数</h4><p>我们必须为每一个虚函数提供定义，因为连编译器也无法确定到底使用的是哪一个虚函数。<br>如果我们在派生类中覆盖了某个虚函数时，可以再次使用<code>virtual</code>指出该函数的性质，但实际上并不一定要这么做。因为某个函数被声明成虚函数，则在所有的派生类中都是虚函数。</p><h4 id="15-4-抽象基类"><a href="#15-4-抽象基类" class="headerlink" title="15.4 抽象基类"></a>15.4 抽象基类</h4><p>在函数体声明的语句的分号前使用<code>=0</code>可以将一个函数声明为纯虚函数。<br>含有纯虚函数的类是抽象基类。抽象基类负责定义接口，后续的其他类负责覆盖该接口。我们不能直接创建一个抽象基类的对象。GCC的编译器中可能前面还是要加上<code>virtual</code><br><strong> 重构</strong>：重构负责重新设计类的体系以便将操作和/或数据从一个类移动到另一个类中。</p><h4 id="15-5-访问控制与继承"><a href="#15-5-访问控制与继承" class="headerlink" title="15.5 访问控制与继承"></a>15.5 访问控制与继承</h4><p>protected:对于类的用户来说是不可访问的，对于派生类的成员和友元来说是可访问的。但是只能通过<strong> 派生类对象</strong>来访问，<strong> 派生类</strong>对于一个基类中受保护的成员是无法访问的。<br>派生类向基类的转换：只有当D公有的继承B时，<strong> 用户代码</strong>才能使用基类向派生类的转换。无论D以什么方式继承B，D的成员函数和友元都能使用派生类向基类的转换。如果D继承B的方式是公有的或受保护的，则D的派生类可以使用D向B的类型转换。<br>友元关系不能继承。基类的友元在访问派生类成员时不具有特殊性，派生类的友元也不能随意访问基类的成员。<br>派生类可以使用<code>using</code>为那些可以访问的名字提供声明，以改变这些名字在它的派生类中的可访问性。</p><h4 id="15-6-继承中的类作用域"><a href="#15-6-继承中的类作用域" class="headerlink" title="15.6 继承中的类作用域"></a>15.6 继承中的类作用域</h4><p>每个类定义自己的作用域，当存在继承关系时，派生类的作用域嵌套在其基类的作用域之内。<br>当名字相同时，派生类的成员将隐藏基类的成员。基类可以通过<strong> 作用域运算符</strong>来使用隐藏的成员。一般情况下，我们应该不会这么使用，所以，平时继承类尽量不要覆盖继承而来的虚函数以外的基类的名字。<br><strong> 名字查找先于类型检查</strong>：如果派生类的成员与基类中的某个成员同名，则派生类将在其作用域内隐藏该基类成员。一旦编译器查找到名字后，不管形参列表是否相同，都不会再继续查找，这也是我们需要在覆盖虚函数时，保证形参列表是相同的。<br><code>using</code>声明语句指定一个名字而不是形参列表，所以我们在基类中使用一个<code>using</code>就可以把该函数的所有重载实例添加到派生类作用域中，派生类只需要定义特有的函数即可。</p><h4 id="15-7-构造函数与拷贝控制"><a href="#15-7-构造函数与拷贝控制" class="headerlink" title="15.7 构造函数与拷贝控制"></a>15.7 构造函数与拷贝控制</h4><p>位于继承体系中的类也需要控制当其对象执行一系列操作时发生怎样的行为：包括创建、移动、拷贝、赋值和销毁。<br>一般讲基类中的析构函数定义为虚函数，这样，继承体系中的派生类都会是虚析构函数，否则，若基类中的析构函数不是虚函数，则delete一个指向派生类对象的基类指针将产生未定义的行为。<br>虚析构函数将组织合成移动操作。<br>和普通成员的using声明不同，构造函数的using声明不会改变该构造函数的访问级别。<br>using声明语句不能指定explicit或constexpr。<br>当一个基类构造函数含有默认实参时，这些实参并不会被继承。派生类将获得多个继承的构造函数，其中每个构造函数分别省略掉一个含有默认实参的形参。</p><h4 id="15-8-容器与继承"><a href="#15-8-容器与继承" class="headerlink" title="15.8 容器与继承"></a>15.8 容器与继承</h4><p>容器不能直接存放继承体系中的对象，通常采用间接存储的方式。因为当我们把基类存储到一个容器中，当存入派生类对象，实际存入的只是派生类中基类的部分，显然不符合我们的需要。所以我们希望在具有继承关系的对象时，实际上存储的是基类的指针。（最好使用智能指针）</p><h4 id="15-9-文本查询程序再探"><a href="#15-9-文本查询程序再探" class="headerlink" title="15.9 文本查询程序再探"></a>15.9 文本查询程序再探</h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;ch15-面向对象程序设计&quot;&gt;&lt;a href=&quot;#ch15-面向对象程序设计&quot; class=&quot;headerlink&quot; title=&quot;ch15 面向对象程序设计&quot;&gt;&lt;/a&gt;ch15 面向对象程序设计&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;面向对象三个基本概念：数据
       
     
     </summary>
@@ -57,6 +82,32 @@
       
         &lt;h3 id=&quot;ch14-重载运算与类型转化&quot;&gt;&lt;a href=&quot;#ch14-重载运算与类型转化&quot; class=&quot;headerlink&quot; title=&quot;ch14 重载运算与类型转化&quot;&gt;&lt;/a&gt;ch14 重载运算与类型转化&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;当运算符作用于类的
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《c++primer》ch13 拷贝控制</title>
+    <link href="http://yoursite.com/2017/09/14/%E3%80%8Acpp%20primer%E3%80%8Bch13/"/>
+    <id>http://yoursite.com/2017/09/14/《cpp primer》ch13/</id>
+    <published>2017-09-14T03:55:33.000Z</published>
+    <updated>2017-09-14T05:01:05.585Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="ch13-拷贝控制"><a href="#ch13-拷贝控制" class="headerlink" title="ch13 拷贝控制"></a>ch13 拷贝控制</h3><p>通过定义的五种特殊的</p><h4 id="13-1-拷贝、赋值、销毁"><a href="#13-1-拷贝、赋值、销毁" class="headerlink" title="13.1 拷贝、赋值、销毁"></a>13.1 拷贝、赋值、销毁</h4><h4 id="13-6-对象移动"><a href="#13-6-对象移动" class="headerlink" title="13.6 对象移动"></a>13.6 对象移动</h4><p>在旧标准的标准库中，容器中所保存的类必须是可以拷贝的，新标准中，可以在容器中保存不可拷贝的类型，只要他们能够被移动就可以。</p><h5 id="13-6-1-右值引用"><a href="#13-6-1-右值引用" class="headerlink" title="13.6.1 右值引用"></a>13.6.1 右值引用</h5><p>通过&amp;&amp;来获得右值引用，意为绑定到右值的引用。<br><strong> 重要性质：只能绑定到一个将要销毁的对象。</strong><br><strong> 所引用的对象将要被销毁，该对象没有其他用户</strong><br>– 左值引用：返回左值引用的函数，赋值、下标、解引用、前置递增/递减运算符。<br>– 右值引用：返回非引用的函数，算数、关系、位以及后置递增/递减运算符。<br>区分的方法：一个区分左值与右值的便捷方法是：看能不能对表达式取地址，如果能，则为左值，否则为右值。<a href="http://blog.csdn.net/yapian8/article/details/42341307" target="_blank" rel="external">右值引用比较</a></p><p><strong> move函数(utility头文件中)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int &amp;&amp;rr3=std::move(rr1);  //相当于告诉编译器，我们希望像处理右值一样处理左值rr1。</div><div class="line">                           //调用move后，除了赋值和销毁rr1外不会再使用它</div><div class="line">                           //使用move直接用std::move</div></pre></td></tr></table></figure></p><h6 id="移动构造函数和移动赋值运算符"><a href="#移动构造函数和移动赋值运算符" class="headerlink" title="移动构造函数和移动赋值运算符"></a>移动构造函数和移动赋值运算符</h6><p>目的：让类支持移动操作。<br>移动构造函数：第一个参数是一个该类类型的右值引用，任何其他额外的参数都要有默认实参。不需要分配新内存，直接接管原来的内存。不会跑异常，不抛出异常的移动构造函数和移动赋值运算符必须标记为noexcept。（原因是标准库很多对于存在异常的处理方式，例如vector）<br>移动赋值运算符：首先要处理自赋值的情况。（为什么检查自赋值？因为右值可能是move调用返回的结果，不能在使用右侧运算符对象之前释放左侧运算对象的资源。）<br><strong> 如果类有拷贝构造函数和拷贝赋值运算符，没有定义移动操作时，编译器不会为其分配默认的移动操作，而是会采用对应的拷贝进行代替。如果没有定义任何的拷贝操作，才会为其合成移动构造函数或移动赋值运算符。</strong><br>移动操作不会被隐式的定义为删除的操作,定义为删除元素的原则：</p><ul><li>有类成员定义了自己的拷贝构造函数且未定义移动构造函数，或有类成员未定义自己的拷贝构造函数且编译器不能为其合成默认移动构造函数</li><li>有类成员的移动构造函数或移动赋值运算符被定义为删除的或不可访问的</li><li>类的析构函数被定义为删除的</li><li>有类成员是const的或是引用</li></ul><p>三/五法则：<br>通常，拥有一个资源的类，必须定义拷贝构造函数、拷贝赋值运算符、析构函数才能工作，而由于大量的拷贝会影响资源的额外开销，定义移动构造函数和移动赋值运算符可以避免此类问题。</p><h5 id="13-6-1-右值引用和成员函数"><a href="#13-6-1-右值引用和成员函数" class="headerlink" title="13.6.1 右值引用和成员函数"></a>13.6.1 右值引用和成员函数</h5><p>区分移动和拷贝的重载函数通常有一个版本接受<code>const T&amp;</code>，另一个版本接受一个<code>T&amp;&amp;</code>。很多时候它们看起来调用的是一个函数，通常它们内部的构造也很接近，有一点差别。我们可以根据实参的类型进行判断，我们用的是左值和右值区分调用的版本。<br>有的时候我们想要避免对右值进行赋值（在旧的标准中是有可能发生的，并且新的标准为了向后兼容没有禁止），可以在参数列表后放置一个<strong> 引用限定符</strong>。还可以通过使用<code>&amp;</code>或者<code>&amp;&amp;</code>指出指向一个左值或者一个右值。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Foo&#123;</div><div class="line">    public:</div><div class="line">        Foo &amp;operator=(const Foo&amp;) &amp;; //只能向可修改的左值赋值。</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>引用限定符可以区分重载版本，如同const可以用来区分一个成员函数的重载版本。一般当我们定义两个或两个以上的具有相同名字和相同参数列表的成员函数，就必须对所有函数加上引用限定符，或者都不加。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Foo&#123;</div><div class="line">    public:</div><div class="line">        Foo sorted() &amp;&amp;;</div><div class="line">        Foo sorted() const; //错误，需要加上引用限定符</div><div class="line">        /////////////////</div><div class="line">        Foo sorted(Comp*);</div><div class="line">        Foo sorted(Comp*) const; //正确，两个版本都没有引用限定符</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;ch13-拷贝控制&quot;&gt;&lt;a href=&quot;#ch13-拷贝控制&quot; class=&quot;headerlink&quot; title=&quot;ch13 拷贝控制&quot;&gt;&lt;/a&gt;ch13 拷贝控制&lt;/h3&gt;&lt;p&gt;通过定义的五种特殊的&lt;/p&gt;
+&lt;h4 id=&quot;13-1-拷贝、赋值、销毁&quot;&gt;&lt;a h
       
     
     </summary>
@@ -189,30 +240,6 @@
   </entry>
   
   <entry>
-    <title>《c++primer》ch2 变量和基本类型</title>
-    <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch2/"/>
-    <id>http://yoursite.com/2017/06/04/《cpp primer》ch2/</id>
-    <published>2017-06-04T09:55:33.000Z</published>
-    <updated>2017-09-09T17:03:10.030Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>ch2 变量和基本类型<br>数据类型决定了程序中数据和操作的意义。</p><h1 id="2-1-基本内置类型"><a href="#2-1-基本内置类型" class="headerlink" title="2.1 基本内置类型"></a>2.1 基本内置类型</h1><p>基本数据类型：<strong> 算数类型  空类型（void） </strong>,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。<br><a id="more"></a></p><h2 id="2-1-1-算数类型"><a href="#2-1-1-算数类型" class="headerlink" title="2.1.1 算数类型"></a>2.1.1 算数类型</h2><p>分为整形和浮点型。</p><h3 id="整形："><a href="#整形：" class="headerlink" title="整形："></a>整形：</h3><ul><li>bool:取值为true或者false。</li><li>char：基本的字符类型，一个char的大小与一个机器字节一样。</li><li>wchar_t,char16_t,char32_t<br><strong> rules: </strong>一个int至少和一个short一样大，一个long至少跟一个int一样大，一个long long至少跟一个long一样大。</li></ul></blockquote><h3 id="浮点型："><a href="#浮点型：" class="headerlink" title="浮点型："></a>浮点型：</h3><ul><li>float：一般一个字，32bit</li><li>double：2个字，64bit</li><li>long double：3或4个字，96或128bit<h3 id="带符号类型和无符号类型"><a href="#带符号类型和无符号类型" class="headerlink" title="带符号类型和无符号类型"></a>带符号类型和无符号类型</h3><h2 id="2-1-2-类型转换"><a href="#2-1-2-类型转换" class="headerlink" title="2.1.2 类型转换"></a>2.1.2 类型转换</h2><h3 id="转换过程："><a href="#转换过程：" class="headerlink" title="转换过程："></a>转换过程：</h3></li><li>非bool到bool：初始为0则为false，其他为true</li><li>bool到非bool：初始值为false则为0，初始值为true为1</li><li>浮点数到整型：仅保留浮点数中的<strong> 小数点部分 </strong></li><li>整数到浮点数：小数部分记为0，如果整数所占的空间超过浮点类型的容量，会报错。</li><li>赋给无符号类型，当超出它表示范围的时候，转换为该无符号类型表示数值总数取模后的余数。</li><li>给带符号的数输出超过范围的值是，结果时<strong> 未定义的 </strong></li></ul><p>tips:一般不在算数表达式中使用bool值</p><h3 id="含有无符号类型的表达式"><a href="#含有无符号类型的表达式" class="headerlink" title="含有无符号类型的表达式"></a>含有无符号类型的表达式</h3><p>一般不要混用无符号和有符号的类型，当无符号超过范围时，可能会出现取模的情况，放在循环中，或者计算结果中，会产生无法预计的结果</p><h2 id="2-1-3-字面值常量"><a href="#2-1-3-字面值常量" class="headerlink" title="2.1.3 字面值常量"></a>2.1.3 字面值常量</h2><p>顾名思义，字面值常量一望而知。每个字面值常量对应一种数据类型，字面量常量得形式和值决定了它的数据类型。</p><h3 id="整型和浮点型字面值"><a href="#整型和浮点型字面值" class="headerlink" title="整型和浮点型字面值"></a>整型和浮点型字面值</h3><p>严格来说，十进制字面值不会是负数，通常，负号并不在字面值内，它的作用仅仅是对字面值取负值而已。</p><h3 id="字符和字符串字面值"><a href="#字符和字符串字面值" class="headerlink" title="字符和字符串字面值"></a>字符和字符串字面值</h3><ul><li>char型字面值：由单引号括起来的一个字符</li><li>字符串字面值：由双引号括起来的零个或多个字符<br><strong> Note：字符串字面值的类型实际上是由常量字符组成的数组，编译器在每个字符串的结尾处添加一个空字符（’\0’），字符串的字面值的实际长度比它的内容多1。 </strong><h3 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h3>有两类不能直接使用的字符。不可打印的和特殊含义的字符（单引号，双引号，问号，反斜线），这些情况下需要使用转义字符。<h3 id="指定字面值类型"><a href="#指定字面值类型" class="headerlink" title="指定字面值类型"></a>指定字面值类型</h3>添加一定的前缀和后缀，可以改变整型、浮点型和字符型字面值的默认类型。前缀有：u（Unicode16）、U（Unicode32）、L（宽字符）、u8（UTF-8）。后缀有：u或者U（unsigned）、l或者L（ling）、ll或者LL（long long），f或者F（float）、l或者L（long double）。<h3 id="布尔字面值和指针字面值"><a href="#布尔字面值和指针字面值" class="headerlink" title="布尔字面值和指针字面值"></a>布尔字面值和指针字面值</h3>bool：true、false<br>指针：nullptr<h1 id="2-2-变量"><a href="#2-2-变量" class="headerlink" title="2.2 变量"></a>2.2 变量</h1>对于c++来说，一般“变量”和“对象”可以互换使用。对象时具有某种数据类型的内存空间。<h2 id="2-2-1-变量定义"><a href="#2-2-1-变量定义" class="headerlink" title="2.2.1 变量定义"></a>2.2.1 变量定义</h2>基本形式：类型说明符+一个或多个变量名组成的列表（变量名以逗号分隔）+分号<h3 id="初始值"><a href="#初始值" class="headerlink" title="初始值"></a>初始值</h3>当对象在创建时获得了一个特定的值，称为被初始化了。<strong> 初始化和复制是两个完全不同的操作，注意这个概念很重要 </strong><br>初始化：在创建变量是赋予其一个初始值。<br>复制：把对象的当前值擦除，以一个新的值代替。<h3 id="列表初始化"><a href="#列表初始化" class="headerlink" title="列表初始化"></a>列表初始化</h3>无论是初始化对象还是某些时候为对象赋新值，都可以使用一组又花括号括起来的初始值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int units_sold=0;</div><div class="line">int units_sold=&#123;0&#125;;</div><div class="line">int units_sold&#123;0&#125;;</div><div class="line">int units_sold(0);</div></pre></td></tr></table></figure></li></ul><h3 id="默认初始化"><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h3><p>定义于函数体内的内置类型的对象如果没有初始化，则其值未定义。类的对象如果没有显式的初始化，则其值由类确定。。建议初始化每一个内置类型的变量。</p><h2 id="2-2-2-变量声明与定义的关系"><a href="#2-2-2-变量声明与定义的关系" class="headerlink" title="2.2.2 变量声明与定义的关系"></a>2.2.2 变量声明与定义的关系</h2><p>声明使得名字为程序所知，定义负责创建与名字关联的实体。<br><strong> extern </strong>关键字：如果想声明一个变量而不是定义它，就在变量名前添加extern，而不显示的初始化变量。如果在函数体内部试图初始化一个有extern关键字标记的变量，会引发错误。</p><h2 id="2-2-3-标识符"><a href="#2-2-3-标识符" class="headerlink" title="2.2.3 标识符"></a>2.2.3 标识符</h2><p>用户自定义的标识符中不能出现两个连续的下划线，也不能以下划线紧连大写字母开头。定义在函数体内的标识符不能以下划线开头。</p><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul><li>标识符要能体现实际含义</li><li>变量名一般小写字母</li><li>自定义的类名一般大写字母开头</li><li>标识符由多个单词组成时，单词应有明显区分，使用下划线<h2 id="2-2-4-名字的作用域"><a href="#2-2-4-名字的作用域" class="headerlink" title="2.2.4 名字的作用域"></a>2.2.4 名字的作用域</h2>当内层出现与外层相同的名字时，使用内层定义的名字。<h1 id="2-3-复合类型"><a href="#2-3-复合类型" class="headerlink" title="2.3 复合类型"></a>2.3 复合类型</h1>复合类型指的是基于其他类型定义的类型。这里介绍两种：引用和指针。<h2 id="2-3-1-引用"><a href="#2-3-1-引用" class="headerlink" title="2.3.1 引用"></a>2.3.1 引用</h2>引用为对象起了另外一个名字，引用；类型引用另外一种类型。通过将生命符写成&amp;d的形式来定义引用类型，其中d是声明的变量名。引用必须初始化。<h3 id="引用即别名"><a href="#引用即别名" class="headerlink" title="引用即别名"></a>引用即别名</h3>引用并不是对象，只是一个已经存在的对象起的另外一个名字。定义了一个引用之后，对其做的所有操作都是在与之绑定的对象上进行的。<br>因为引用本身只是一个别名，不是一个对象，所以不能定义引用的引用。<h3 id="引用的定义"><a href="#引用的定义" class="headerlink" title="引用的定义"></a>引用的定义</h3>除了两种例外的情况，其他所有的引用类型都要与之绑定的对象严格比配。<br>引用只能绑定到对象上，不能绑定到字面值或者某个表达式的计算结果上。<h2 id="2-3-2-指针"><a href="#2-3-2-指针" class="headerlink" title="2.3.2 指针"></a>2.3.2 指针</h2>指针是“指向point to”的另外一种类型的复合引用。指针也实现了对其他对象的间接访问。<br>两者的不同点：</li><li>1.指针本身就是一个对象，允许对指针赋值和拷贝，而且指针的生命周期内可以指向多个不同的对象。</li><li>2.指针无需在定义时赋初值。<h3 id="获取对象的地址"><a href="#获取对象的地址" class="headerlink" title="获取对象的地址"></a>获取对象的地址</h3>指针存放某个对象的地址，要想获取该地址，需要使用取地址符（操作符&amp;）<br>不能定义指向引用的指针（因为引用不是一个对象）。<br>除了两种例外的情况，所有指针的类型都要和它指向的对象严格匹配。<h3 id="指针值"><a href="#指针值" class="headerlink" title="指针值"></a>指针值</h3>指针的值（即地址）应该属于下面四种状态之一：</li><li>1.指向一个对象</li><li>2.指向紧邻对象所占空间的下一个位置</li><li>3.空指针，表示没有指向任何对象。</li><li>4.无效指针，上述之外的其他值。<h3 id="利用指针访问对象"><a href="#利用指针访问对象" class="headerlink" title="利用指针访问对象"></a>利用指针访问对象</h3>如果指针指向了一个对象，允许使用解引用符（操作符*）来访问对象。<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3>空指针不指向任何对象，得到空指针的办法：直接用字面值nullptr初始化指针或者将指针初始化为字面值0来生成空指针。<br><strong> 建议 </strong>：初始化所有指针<h3 id="赋值和指针"><a href="#赋值和指针" class="headerlink" title="赋值和指针"></a>赋值和指针</h3>记住赋值永远改变的是等号左侧的对象。<h3 id="其他指针操作"><a href="#其他指针操作" class="headerlink" title="其他指针操作"></a>其他指针操作</h3>只要一个指针拥有合法值，就能将它用在条件表达式中，只要不为空，条件都为true。<h3 id="void-指针"><a href="#void-指针" class="headerlink" title="void* 指针"></a>void* 指针</h3>void* 是一种特殊的指针类型，可用于存放任意对象的地址。<h2 id="2-3-3-理解复合类型的声明"><a href="#2-3-3-理解复合类型的声明" class="headerlink" title="2.3.3 理解复合类型的声明"></a>2.3.3 理解复合类型的声明</h2>变量的定义包括：一个基本数据类型+一组声明符。基本数据类型只有一个，但是声明符的形式可以不同。<h3 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h3>当有多个修饰符连写在一起的时候，按照逻辑关系解释。<h3 id="指向指针的引用"><a href="#指向指针的引用" class="headerlink" title="指向指针的引用"></a>指向指针的引用</h3>引用本身不是对象，但是指针是对象，所以可以对指针引用。<br>面对一条复杂的指针或引用的声明语句时，从右向左阅读有助于弄清真实含义。<h1 id="2-4-const限定符"><a href="#2-4-const限定符" class="headerlink" title="2.4 const限定符"></a>2.4 const限定符</h1><h3 id="初始化和const"><a href="#初始化和const" class="headerlink" title="初始化和const"></a>初始化和const</h3>const与非const对象的区别就是，const类型的对象执行不改变起内容的操作。如：const int也能像int一样参与算术运算，也能转化为bool值。<h3 id="默认状态下，const对象仅在文件内有效"><a href="#默认状态下，const对象仅在文件内有效" class="headerlink" title="默认状态下，const对象仅在文件内有效"></a>默认状态下，const对象仅在文件内有效</h3>如果想在多个文件之间共享const对象，必须在变量定义之前添加extern关键字。<h2 id="2-4-1-const的引用"><a href="#2-4-1-const的引用" class="headerlink" title="2.4.1 const的引用"></a>2.4.1 const的引用</h2>可以把引用绑定到const对象上，就像绑定到其他对象上一样，称为对常量引用，对常量的引用不能修改它所绑定的对象。<br><strong> 术语：常量引用是对const的引用 </strong>：并不存在常量引用，是对const的引用。<h3 id="初始化和对const的引用"><a href="#初始化和对const的引用" class="headerlink" title="初始化和对const的引用"></a>初始化和对const的引用</h3>引用情况的例外：第一种是，在初始化常量引用时，允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可。尤其允许为一个常量引用绑定非常量的对象、字面值，甚至是个一般表达式。<h3 id="对const的引用可能引用一个非const的对象"><a href="#对const的引用可能引用一个非const的对象" class="headerlink" title="对const的引用可能引用一个非const的对象"></a>对const的引用可能引用一个非const的对象</h3>此种行为是合法的，但是不能通过对const的引用改变对象的值，兑现可以通过其他的方式改变值。<h2 id="2-4-2-指针和const"><a href="#2-4-2-指针和const" class="headerlink" title="2.4.2 指针和const"></a>2.4.2 指针和const</h2>指向常量的指针不能改变其所指对象的值，要想存放常量对象的地址，只能只用指向常量的指针。<br>所谓指向常量的指针和引用，只是自以为指向了一个常量，所以自觉不去改变所指对象的值。<h3 id="const指针"><a href="#const指针" class="headerlink" title="const指针"></a>const指针</h3>*const：不变的是指针的值而不是指向的那个值。采用从右向左的方式阅读，看离最近的符号。<h3 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h3>顶层const表示指针本身是个常量，底层const表示指针指的对象是一个常量。<br>当对象执行拷贝操作时，顶层const不受影响，拷入和拷出的对象必须具有相同的底层const资格，或者两个对象的数据类型必须能够转化。<h2 id="2-4-4-constexpr和常量表达式"><a href="#2-4-4-constexpr和常量表达式" class="headerlink" title="2.4.4 constexpr和常量表达式"></a>2.4.4 constexpr和常量表达式</h2>常量表达式指：值不会改变且在编译过程就能得到计算结果的表达式。（字面值、用常量表达式初始化的const对象）<h3 id="constexpr变量"><a href="#constexpr变量" class="headerlink" title="constexpr变量"></a>constexpr变量</h3>声明为constexpr的变量一定是一个变量，且必须用常量表达式初始化。<h3 id="字面值类型"><a href="#字面值类型" class="headerlink" title="字面值类型"></a>字面值类型</h3><h3 id="指针和constexpr"><a href="#指针和constexpr" class="headerlink" title="指针和constexpr"></a>指针和constexpr</h3>在constexpr如果定义了一个指针，则constexpr只对指针有效，与指针所指的对象无关。<h1 id="2-5-处理类型"><a href="#2-5-处理类型" class="headerlink" title="2.5 处理类型"></a>2.5 处理类型</h1><h2 id="2-5-1-类型别名"><a href="#2-5-1-类型别名" class="headerlink" title="2.5.1 类型别名"></a>2.5.1 类型别名</h2>类型别名是一个名字，是某种类型的同义词。使用方式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">typedef double wages  //wages 是double的别名</div><div class="line">typedef wages base,*p</div><div class="line"></div><div class="line">#别名声明</div><div class="line">using SI=Scales_item;</div></pre></td></tr></table></figure></li></ul><h3 id="指针、常量和类型别名"><a href="#指针、常量和类型别名" class="headerlink" title="指针、常量和类型别名"></a>指针、常量和类型别名</h3><h2 id="2-5-2-auto类型说明符"><a href="#2-5-2-auto类型说明符" class="headerlink" title="2.5.2 auto类型说明符"></a>2.5.2 auto类型说明符</h2><h3 id="复合类型、常量和auto"><a href="#复合类型、常量和auto" class="headerlink" title="复合类型、常量和auto"></a>复合类型、常量和auto</h3><ul><li>引用时的auto，以引用对象的类型作为auto的类型</li><li>auto一般会忽略掉顶层const，底层const会保留下来。</li><li>可以将引用的类型设为auto<h2 id="2-5-3-decltype类型指示符"><a href="#2-5-3-decltype类型指示符" class="headerlink" title="2.5.3 decltype类型指示符"></a>2.5.3 decltype类型指示符</h2>选择并返回操作数的类型，编译器分析表达式并得到类型，但并不实际计算值<h3 id="decltype和引用"><a href="#decltype和引用" class="headerlink" title="decltype和引用"></a>decltype和引用</h3>有些表达式将向decltype返回一个引用类型。如果表达式的内容是解引用操作，则decltype将得到引用类型。<br>解引用指针可以得到指针所指的对象，而且还能给这个对象赋值。<br>decltype和auto的重要区别：decltype的结果类型与表达式形式密切相关。<br><strong> 如果给变量加上一层或多层括号，decltype就会得到引用类型。decltype((val))的结果永远是引用，decltype(val)只有当val本身是一个引用时才是引用。另外，赋值是会产生引用的一类典型表达式，引用的类型就是左值的类型 </strong></li></ul><h1 id="2-6-自定义数据结构"><a href="#2-6-自定义数据结构" class="headerlink" title="2.6 自定义数据结构"></a>2.6 自定义数据结构</h1><h2 id="定义自己的数据结构"><a href="#定义自己的数据结构" class="headerlink" title="定义自己的数据结构"></a>定义自己的数据结构</h2><h2 id="定义自己的头文件"><a href="#定义自己的头文件" class="headerlink" title="定义自己的头文件"></a>定义自己的头文件</h2><h2 id="预处理器"><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;ch2 变量和基本类型&lt;br&gt;数据类型决定了程序中数据和操作的意义。&lt;/p&gt;
-&lt;h1 id=&quot;2-1-基本内置类型&quot;&gt;&lt;a href=&quot;#2-1-基本内置类型&quot; class=&quot;headerlink&quot; title=&quot;2.1 基本内置类型&quot;&gt;&lt;/a&gt;2.1 基本内置类型&lt;/h1&gt;&lt;p&gt;基本数据类型：&lt;strong&gt; 算数类型  空类型（void） &lt;/strong&gt;,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>《c++primer》ch3 字符串、向量和数组</title>
     <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3/"/>
     <id>http://yoursite.com/2017/06/04/《cpp primer》ch3/</id>
@@ -248,6 +275,30 @@
     
       &lt;h1 id=&quot;第3章-字符串、向量和数组&quot;&gt;&lt;a href=&quot;#第3章-字符串、向量和数组&quot; class=&quot;headerlink&quot; title=&quot;第3章 字符串、向量和数组&quot;&gt;&lt;/a&gt;第3章 字符串、向量和数组&lt;/h1&gt;&lt;h2 id=&quot;3-1-命名空间的using声明&quot;&gt;&lt;a href=&quot;#3-1-命名空间的using声明&quot; class=&quot;headerlink&quot; title=&quot;3.1 命名空间的using声明&quot;&gt;&lt;/a&gt;3.1 命名空间的using声明&lt;/h2&gt;&lt;h3 id=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;a href=&quot;#每个名字都需要独立的using声明&quot; class=&quot;headerlink&quot; title=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;/a&gt;每个名字都需要独立的using声明&lt;/h3&gt;&lt;h3 id=&quot;头文件中不应该包含using声明&quot;&gt;&lt;a href=&quot;#头文件中不应该包含using声明&quot; class=&quot;headerlink&quot; title=&quot;头文件中不应该包含using声明&quot;&gt;&lt;/a&gt;头文件中不应该包含using声明&lt;/h3&gt;&lt;p&gt;因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。&lt;/p&gt;
 &lt;h2 id=&quot;3-2-标准库类型string&quot;&gt;&lt;a href=&quot;#3-2-标准库类型string&quot; class=&quot;headerlink&quot; title=&quot;3.2 标准库类型string&quot;&gt;&lt;/a&gt;3.2 标准库类型string&lt;/h2&gt;&lt;h3 id=&quot;3-2-1-定义和初始化string对象&quot;&gt;&lt;a href=&quot;#3-2-1-定义和初始化string对象&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 定义和初始化string对象&quot;&gt;&lt;/a&gt;3.2.1 定义和初始化string对象&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《c++primer》ch2 变量和基本类型</title>
+    <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch2/"/>
+    <id>http://yoursite.com/2017/06/04/《cpp primer》ch2/</id>
+    <published>2017-06-04T09:55:33.000Z</published>
+    <updated>2017-09-09T17:03:10.030Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>ch2 变量和基本类型<br>数据类型决定了程序中数据和操作的意义。</p><h1 id="2-1-基本内置类型"><a href="#2-1-基本内置类型" class="headerlink" title="2.1 基本内置类型"></a>2.1 基本内置类型</h1><p>基本数据类型：<strong> 算数类型  空类型（void） </strong>,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。<br><a id="more"></a></p><h2 id="2-1-1-算数类型"><a href="#2-1-1-算数类型" class="headerlink" title="2.1.1 算数类型"></a>2.1.1 算数类型</h2><p>分为整形和浮点型。</p><h3 id="整形："><a href="#整形：" class="headerlink" title="整形："></a>整形：</h3><ul><li>bool:取值为true或者false。</li><li>char：基本的字符类型，一个char的大小与一个机器字节一样。</li><li>wchar_t,char16_t,char32_t<br><strong> rules: </strong>一个int至少和一个short一样大，一个long至少跟一个int一样大，一个long long至少跟一个long一样大。</li></ul></blockquote><h3 id="浮点型："><a href="#浮点型：" class="headerlink" title="浮点型："></a>浮点型：</h3><ul><li>float：一般一个字，32bit</li><li>double：2个字，64bit</li><li>long double：3或4个字，96或128bit<h3 id="带符号类型和无符号类型"><a href="#带符号类型和无符号类型" class="headerlink" title="带符号类型和无符号类型"></a>带符号类型和无符号类型</h3><h2 id="2-1-2-类型转换"><a href="#2-1-2-类型转换" class="headerlink" title="2.1.2 类型转换"></a>2.1.2 类型转换</h2><h3 id="转换过程："><a href="#转换过程：" class="headerlink" title="转换过程："></a>转换过程：</h3></li><li>非bool到bool：初始为0则为false，其他为true</li><li>bool到非bool：初始值为false则为0，初始值为true为1</li><li>浮点数到整型：仅保留浮点数中的<strong> 小数点部分 </strong></li><li>整数到浮点数：小数部分记为0，如果整数所占的空间超过浮点类型的容量，会报错。</li><li>赋给无符号类型，当超出它表示范围的时候，转换为该无符号类型表示数值总数取模后的余数。</li><li>给带符号的数输出超过范围的值是，结果时<strong> 未定义的 </strong></li></ul><p>tips:一般不在算数表达式中使用bool值</p><h3 id="含有无符号类型的表达式"><a href="#含有无符号类型的表达式" class="headerlink" title="含有无符号类型的表达式"></a>含有无符号类型的表达式</h3><p>一般不要混用无符号和有符号的类型，当无符号超过范围时，可能会出现取模的情况，放在循环中，或者计算结果中，会产生无法预计的结果</p><h2 id="2-1-3-字面值常量"><a href="#2-1-3-字面值常量" class="headerlink" title="2.1.3 字面值常量"></a>2.1.3 字面值常量</h2><p>顾名思义，字面值常量一望而知。每个字面值常量对应一种数据类型，字面量常量得形式和值决定了它的数据类型。</p><h3 id="整型和浮点型字面值"><a href="#整型和浮点型字面值" class="headerlink" title="整型和浮点型字面值"></a>整型和浮点型字面值</h3><p>严格来说，十进制字面值不会是负数，通常，负号并不在字面值内，它的作用仅仅是对字面值取负值而已。</p><h3 id="字符和字符串字面值"><a href="#字符和字符串字面值" class="headerlink" title="字符和字符串字面值"></a>字符和字符串字面值</h3><ul><li>char型字面值：由单引号括起来的一个字符</li><li>字符串字面值：由双引号括起来的零个或多个字符<br><strong> Note：字符串字面值的类型实际上是由常量字符组成的数组，编译器在每个字符串的结尾处添加一个空字符（’\0’），字符串的字面值的实际长度比它的内容多1。 </strong><h3 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h3>有两类不能直接使用的字符。不可打印的和特殊含义的字符（单引号，双引号，问号，反斜线），这些情况下需要使用转义字符。<h3 id="指定字面值类型"><a href="#指定字面值类型" class="headerlink" title="指定字面值类型"></a>指定字面值类型</h3>添加一定的前缀和后缀，可以改变整型、浮点型和字符型字面值的默认类型。前缀有：u（Unicode16）、U（Unicode32）、L（宽字符）、u8（UTF-8）。后缀有：u或者U（unsigned）、l或者L（ling）、ll或者LL（long long），f或者F（float）、l或者L（long double）。<h3 id="布尔字面值和指针字面值"><a href="#布尔字面值和指针字面值" class="headerlink" title="布尔字面值和指针字面值"></a>布尔字面值和指针字面值</h3>bool：true、false<br>指针：nullptr<h1 id="2-2-变量"><a href="#2-2-变量" class="headerlink" title="2.2 变量"></a>2.2 变量</h1>对于c++来说，一般“变量”和“对象”可以互换使用。对象时具有某种数据类型的内存空间。<h2 id="2-2-1-变量定义"><a href="#2-2-1-变量定义" class="headerlink" title="2.2.1 变量定义"></a>2.2.1 变量定义</h2>基本形式：类型说明符+一个或多个变量名组成的列表（变量名以逗号分隔）+分号<h3 id="初始值"><a href="#初始值" class="headerlink" title="初始值"></a>初始值</h3>当对象在创建时获得了一个特定的值，称为被初始化了。<strong> 初始化和复制是两个完全不同的操作，注意这个概念很重要 </strong><br>初始化：在创建变量是赋予其一个初始值。<br>复制：把对象的当前值擦除，以一个新的值代替。<h3 id="列表初始化"><a href="#列表初始化" class="headerlink" title="列表初始化"></a>列表初始化</h3>无论是初始化对象还是某些时候为对象赋新值，都可以使用一组又花括号括起来的初始值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int units_sold=0;</div><div class="line">int units_sold=&#123;0&#125;;</div><div class="line">int units_sold&#123;0&#125;;</div><div class="line">int units_sold(0);</div></pre></td></tr></table></figure></li></ul><h3 id="默认初始化"><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h3><p>定义于函数体内的内置类型的对象如果没有初始化，则其值未定义。类的对象如果没有显式的初始化，则其值由类确定。。建议初始化每一个内置类型的变量。</p><h2 id="2-2-2-变量声明与定义的关系"><a href="#2-2-2-变量声明与定义的关系" class="headerlink" title="2.2.2 变量声明与定义的关系"></a>2.2.2 变量声明与定义的关系</h2><p>声明使得名字为程序所知，定义负责创建与名字关联的实体。<br><strong> extern </strong>关键字：如果想声明一个变量而不是定义它，就在变量名前添加extern，而不显示的初始化变量。如果在函数体内部试图初始化一个有extern关键字标记的变量，会引发错误。</p><h2 id="2-2-3-标识符"><a href="#2-2-3-标识符" class="headerlink" title="2.2.3 标识符"></a>2.2.3 标识符</h2><p>用户自定义的标识符中不能出现两个连续的下划线，也不能以下划线紧连大写字母开头。定义在函数体内的标识符不能以下划线开头。</p><h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ul><li>标识符要能体现实际含义</li><li>变量名一般小写字母</li><li>自定义的类名一般大写字母开头</li><li>标识符由多个单词组成时，单词应有明显区分，使用下划线<h2 id="2-2-4-名字的作用域"><a href="#2-2-4-名字的作用域" class="headerlink" title="2.2.4 名字的作用域"></a>2.2.4 名字的作用域</h2>当内层出现与外层相同的名字时，使用内层定义的名字。<h1 id="2-3-复合类型"><a href="#2-3-复合类型" class="headerlink" title="2.3 复合类型"></a>2.3 复合类型</h1>复合类型指的是基于其他类型定义的类型。这里介绍两种：引用和指针。<h2 id="2-3-1-引用"><a href="#2-3-1-引用" class="headerlink" title="2.3.1 引用"></a>2.3.1 引用</h2>引用为对象起了另外一个名字，引用；类型引用另外一种类型。通过将生命符写成&amp;d的形式来定义引用类型，其中d是声明的变量名。引用必须初始化。<h3 id="引用即别名"><a href="#引用即别名" class="headerlink" title="引用即别名"></a>引用即别名</h3>引用并不是对象，只是一个已经存在的对象起的另外一个名字。定义了一个引用之后，对其做的所有操作都是在与之绑定的对象上进行的。<br>因为引用本身只是一个别名，不是一个对象，所以不能定义引用的引用。<h3 id="引用的定义"><a href="#引用的定义" class="headerlink" title="引用的定义"></a>引用的定义</h3>除了两种例外的情况，其他所有的引用类型都要与之绑定的对象严格比配。<br>引用只能绑定到对象上，不能绑定到字面值或者某个表达式的计算结果上。<h2 id="2-3-2-指针"><a href="#2-3-2-指针" class="headerlink" title="2.3.2 指针"></a>2.3.2 指针</h2>指针是“指向point to”的另外一种类型的复合引用。指针也实现了对其他对象的间接访问。<br>两者的不同点：</li><li>1.指针本身就是一个对象，允许对指针赋值和拷贝，而且指针的生命周期内可以指向多个不同的对象。</li><li>2.指针无需在定义时赋初值。<h3 id="获取对象的地址"><a href="#获取对象的地址" class="headerlink" title="获取对象的地址"></a>获取对象的地址</h3>指针存放某个对象的地址，要想获取该地址，需要使用取地址符（操作符&amp;）<br>不能定义指向引用的指针（因为引用不是一个对象）。<br>除了两种例外的情况，所有指针的类型都要和它指向的对象严格匹配。<h3 id="指针值"><a href="#指针值" class="headerlink" title="指针值"></a>指针值</h3>指针的值（即地址）应该属于下面四种状态之一：</li><li>1.指向一个对象</li><li>2.指向紧邻对象所占空间的下一个位置</li><li>3.空指针，表示没有指向任何对象。</li><li>4.无效指针，上述之外的其他值。<h3 id="利用指针访问对象"><a href="#利用指针访问对象" class="headerlink" title="利用指针访问对象"></a>利用指针访问对象</h3>如果指针指向了一个对象，允许使用解引用符（操作符*）来访问对象。<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3>空指针不指向任何对象，得到空指针的办法：直接用字面值nullptr初始化指针或者将指针初始化为字面值0来生成空指针。<br><strong> 建议 </strong>：初始化所有指针<h3 id="赋值和指针"><a href="#赋值和指针" class="headerlink" title="赋值和指针"></a>赋值和指针</h3>记住赋值永远改变的是等号左侧的对象。<h3 id="其他指针操作"><a href="#其他指针操作" class="headerlink" title="其他指针操作"></a>其他指针操作</h3>只要一个指针拥有合法值，就能将它用在条件表达式中，只要不为空，条件都为true。<h3 id="void-指针"><a href="#void-指针" class="headerlink" title="void* 指针"></a>void* 指针</h3>void* 是一种特殊的指针类型，可用于存放任意对象的地址。<h2 id="2-3-3-理解复合类型的声明"><a href="#2-3-3-理解复合类型的声明" class="headerlink" title="2.3.3 理解复合类型的声明"></a>2.3.3 理解复合类型的声明</h2>变量的定义包括：一个基本数据类型+一组声明符。基本数据类型只有一个，但是声明符的形式可以不同。<h3 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h3>当有多个修饰符连写在一起的时候，按照逻辑关系解释。<h3 id="指向指针的引用"><a href="#指向指针的引用" class="headerlink" title="指向指针的引用"></a>指向指针的引用</h3>引用本身不是对象，但是指针是对象，所以可以对指针引用。<br>面对一条复杂的指针或引用的声明语句时，从右向左阅读有助于弄清真实含义。<h1 id="2-4-const限定符"><a href="#2-4-const限定符" class="headerlink" title="2.4 const限定符"></a>2.4 const限定符</h1><h3 id="初始化和const"><a href="#初始化和const" class="headerlink" title="初始化和const"></a>初始化和const</h3>const与非const对象的区别就是，const类型的对象执行不改变起内容的操作。如：const int也能像int一样参与算术运算，也能转化为bool值。<h3 id="默认状态下，const对象仅在文件内有效"><a href="#默认状态下，const对象仅在文件内有效" class="headerlink" title="默认状态下，const对象仅在文件内有效"></a>默认状态下，const对象仅在文件内有效</h3>如果想在多个文件之间共享const对象，必须在变量定义之前添加extern关键字。<h2 id="2-4-1-const的引用"><a href="#2-4-1-const的引用" class="headerlink" title="2.4.1 const的引用"></a>2.4.1 const的引用</h2>可以把引用绑定到const对象上，就像绑定到其他对象上一样，称为对常量引用，对常量的引用不能修改它所绑定的对象。<br><strong> 术语：常量引用是对const的引用 </strong>：并不存在常量引用，是对const的引用。<h3 id="初始化和对const的引用"><a href="#初始化和对const的引用" class="headerlink" title="初始化和对const的引用"></a>初始化和对const的引用</h3>引用情况的例外：第一种是，在初始化常量引用时，允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可。尤其允许为一个常量引用绑定非常量的对象、字面值，甚至是个一般表达式。<h3 id="对const的引用可能引用一个非const的对象"><a href="#对const的引用可能引用一个非const的对象" class="headerlink" title="对const的引用可能引用一个非const的对象"></a>对const的引用可能引用一个非const的对象</h3>此种行为是合法的，但是不能通过对const的引用改变对象的值，兑现可以通过其他的方式改变值。<h2 id="2-4-2-指针和const"><a href="#2-4-2-指针和const" class="headerlink" title="2.4.2 指针和const"></a>2.4.2 指针和const</h2>指向常量的指针不能改变其所指对象的值，要想存放常量对象的地址，只能只用指向常量的指针。<br>所谓指向常量的指针和引用，只是自以为指向了一个常量，所以自觉不去改变所指对象的值。<h3 id="const指针"><a href="#const指针" class="headerlink" title="const指针"></a>const指针</h3>*const：不变的是指针的值而不是指向的那个值。采用从右向左的方式阅读，看离最近的符号。<h3 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h3>顶层const表示指针本身是个常量，底层const表示指针指的对象是一个常量。<br>当对象执行拷贝操作时，顶层const不受影响，拷入和拷出的对象必须具有相同的底层const资格，或者两个对象的数据类型必须能够转化。<h2 id="2-4-4-constexpr和常量表达式"><a href="#2-4-4-constexpr和常量表达式" class="headerlink" title="2.4.4 constexpr和常量表达式"></a>2.4.4 constexpr和常量表达式</h2>常量表达式指：值不会改变且在编译过程就能得到计算结果的表达式。（字面值、用常量表达式初始化的const对象）<h3 id="constexpr变量"><a href="#constexpr变量" class="headerlink" title="constexpr变量"></a>constexpr变量</h3>声明为constexpr的变量一定是一个变量，且必须用常量表达式初始化。<h3 id="字面值类型"><a href="#字面值类型" class="headerlink" title="字面值类型"></a>字面值类型</h3><h3 id="指针和constexpr"><a href="#指针和constexpr" class="headerlink" title="指针和constexpr"></a>指针和constexpr</h3>在constexpr如果定义了一个指针，则constexpr只对指针有效，与指针所指的对象无关。<h1 id="2-5-处理类型"><a href="#2-5-处理类型" class="headerlink" title="2.5 处理类型"></a>2.5 处理类型</h1><h2 id="2-5-1-类型别名"><a href="#2-5-1-类型别名" class="headerlink" title="2.5.1 类型别名"></a>2.5.1 类型别名</h2>类型别名是一个名字，是某种类型的同义词。使用方式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">typedef double wages  //wages 是double的别名</div><div class="line">typedef wages base,*p</div><div class="line"></div><div class="line">#别名声明</div><div class="line">using SI=Scales_item;</div></pre></td></tr></table></figure></li></ul><h3 id="指针、常量和类型别名"><a href="#指针、常量和类型别名" class="headerlink" title="指针、常量和类型别名"></a>指针、常量和类型别名</h3><h2 id="2-5-2-auto类型说明符"><a href="#2-5-2-auto类型说明符" class="headerlink" title="2.5.2 auto类型说明符"></a>2.5.2 auto类型说明符</h2><h3 id="复合类型、常量和auto"><a href="#复合类型、常量和auto" class="headerlink" title="复合类型、常量和auto"></a>复合类型、常量和auto</h3><ul><li>引用时的auto，以引用对象的类型作为auto的类型</li><li>auto一般会忽略掉顶层const，底层const会保留下来。</li><li>可以将引用的类型设为auto<h2 id="2-5-3-decltype类型指示符"><a href="#2-5-3-decltype类型指示符" class="headerlink" title="2.5.3 decltype类型指示符"></a>2.5.3 decltype类型指示符</h2>选择并返回操作数的类型，编译器分析表达式并得到类型，但并不实际计算值<h3 id="decltype和引用"><a href="#decltype和引用" class="headerlink" title="decltype和引用"></a>decltype和引用</h3>有些表达式将向decltype返回一个引用类型。如果表达式的内容是解引用操作，则decltype将得到引用类型。<br>解引用指针可以得到指针所指的对象，而且还能给这个对象赋值。<br>decltype和auto的重要区别：decltype的结果类型与表达式形式密切相关。<br><strong> 如果给变量加上一层或多层括号，decltype就会得到引用类型。decltype((val))的结果永远是引用，decltype(val)只有当val本身是一个引用时才是引用。另外，赋值是会产生引用的一类典型表达式，引用的类型就是左值的类型 </strong></li></ul><h1 id="2-6-自定义数据结构"><a href="#2-6-自定义数据结构" class="headerlink" title="2.6 自定义数据结构"></a>2.6 自定义数据结构</h1><h2 id="定义自己的数据结构"><a href="#定义自己的数据结构" class="headerlink" title="定义自己的数据结构"></a>定义自己的数据结构</h2><h2 id="定义自己的头文件"><a href="#定义自己的头文件" class="headerlink" title="定义自己的头文件"></a>定义自己的头文件</h2><h2 id="预处理器"><a href="#预处理器" class="headerlink" title="预处理器"></a>预处理器</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;ch2 变量和基本类型&lt;br&gt;数据类型决定了程序中数据和操作的意义。&lt;/p&gt;
+&lt;h1 id=&quot;2-1-基本内置类型&quot;&gt;&lt;a href=&quot;#2-1-基本内置类型&quot; class=&quot;headerlink&quot; title=&quot;2.1 基本内置类型&quot;&gt;&lt;/a&gt;2.1 基本内置类型&lt;/h1&gt;&lt;p&gt;基本数据类型：&lt;strong&gt; 算数类型  空类型（void） &lt;/strong&gt;,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。&lt;br&gt;
     
     </summary>
     
@@ -327,19 +378,19 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day22(GUI)/"/>
-    <id>http://yoursite.com/2017/03/09/day22(GUI)/</id>
+    <link href="http://yoursite.com/2017/03/09/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/"/>
+    <id>http://yoursite.com/2017/03/09/day17(集合4-工具类)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T15:41:44.358Z</updated>
+    <updated>2017-09-09T15:41:22.825Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="GUI-图形用户界面"><a href="#GUI-图形用户界面" class="headerlink" title="GUI(图形用户界面)"></a>GUI(图形用户界面)</h1><hr><h2 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h2><h3 id="Awt与-Swing"><a href="#Awt与-Swing" class="headerlink" title="Awt与 Swing"></a>Awt与 Swing</h3><p>java.Awt： Abstract Window ToolKit (抽象窗口<br>工具包)，需要调用本地系统方法实现功能。属<br>重量级控件。<br>javax.Swing：在AWT的基础上，建立的一套图<br>形界面系统，其中提供了更多的组件，而且完全<br>由Java实现。增强了移植性，属轻量级控件。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="集合（工具类）"><a href="#集合（工具类）" class="headerlink" title="集合（工具类）"></a>集合（工具类）</h1><hr><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><h2 id="max"><a href="#max" class="headerlink" title="max"></a>max</h2><h2 id="binarySerch"><a href="#binarySerch" class="headerlink" title="binarySerch"></a>binarySerch</h2><h2 id="替换反转"><a href="#替换反转" class="headerlink" title="替换反转"></a>替换反转</h2><h2 id="reserveOrder"><a href="#reserveOrder" class="headerlink" title="reserveOrder"></a>reserveOrder</h2><h2 id="Synlist"><a href="#Synlist" class="headerlink" title="Synlist"></a>Synlist</h2><h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><p>用于操作数组的工具类，里面都是静态方法。</p><h2 id="集合变数组"><a href="#集合变数组" class="headerlink" title="集合变数组"></a>集合变数组</h2><p>1.指定类型的数组到底要定义多长呢？<br>当指定类型的数组长度小于集合的size，那么该方法会创建一个新的数组，长度为集合的size。当指定类型的数组长度小于了集合的size，就不会创建新数组，而是使用传递进来的数组，所以创建一个刚刚好的数组最优。<br>2.为什么要将集合变数组？<br>为了限定对元素的操作。</p><p>##增强for循环</p><p>##可变参数<br>方法的可变参数注意：<br>可变参数一定要定义在参数列表的最后面。</p><p>##静态导入<br>当类名方法重名时，需要指定具体的包名。<br>当方法重名时，指定具备所属的对象或者类</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;GUI-图形用户界面&quot;&gt;&lt;a href=&quot;#GUI-图形用户界面&quot; class=&quot;headerlink&quot; title=&quot;GUI(图形用户界面)&quot;&gt;&lt;/a&gt;GUI(图形用户界面)&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;GUI&quot;&gt;&lt;a href=&quot;#GUI&quot; class=
+        &lt;h1 id=&quot;集合（工具类）&quot;&gt;&lt;a href=&quot;#集合（工具类）&quot; class=&quot;headerlink&quot; title=&quot;集合（工具类）&quot;&gt;&lt;/a&gt;集合（工具类）&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;sort&quot;&gt;&lt;a href=&quot;#sort&quot; class=&quot;headerlink&quot;
       
     
     </summary>
@@ -353,44 +404,19 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day5-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/"/>
-    <id>http://yoursite.com/2017/03/09/day5-面向对象2/</id>
+    <link href="http://yoursite.com/2017/03/09/day15(%E9%9B%86%E5%90%88%E7%B1%BB2)/"/>
+    <id>http://yoursite.com/2017/03/09/day15(集合类2)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T15:54:43.958Z</updated>
+    <updated>2017-09-09T15:40:32.161Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="面向对象编程-二"><a href="#面向对象编程-二" class="headerlink" title="面向对象编程(二)"></a>面向对象编程(二)</h1><ul><li>封装（private）<br>匿名对象使用的方式：只调用一次<br>注意，封装只是私有的一种表现形式。不私有也能封装。</li><li><p>构造函数<br>构造函数和一般函数在写法上有不同<br>构造函数在对象一建立就运行，<br>而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。<br>一个对象建立，构造方法运行</p></li><li><p>构造代码块<br>作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。<br>  和构造函数的区别：<br>  构造代码块是给所有的对象初始化，构造函数是给特定的对象初始化。<br>  构造代码块 中定义的是不同对象共性的特性.</p></li><li><p>this关键字</p></li></ul><ol><li>变量名起的没有意义，可读性非常差</li><li>局部变量和成员变量一样了，局部中有就在局部中使用，没有的话就在成员变量中找,将局部的值赋给成员变量，引出了this关键字</li><li>this:看上去，是用于区分局部变量和成员变量同名的情况</li><li>this到底代表的是什么<br> this：就代表本类的对象，到底代表哪一个呢？<br> this代表它所在函数所在对象的引用<br> 简单说：哪个对象在调用this所在的函数，this就代表哪个对象</li></ol><ul><li>this关键字在构造函数间的调用<br>this语句：用于构造函数间互相调用<br>this语句只能放在构造函数的第一行。因为初始化动作要先执行<br>不允许死循环调用</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="集合框架2"><a href="#集合框架2" class="headerlink" title="集合框架2"></a>集合框架2</h1><hr><p>##set<br>set：无序，不可以重复元素。<br>hashset：数据结构是哈希表，线程非同步的，保证元素唯一性的原理，判断元素的hashCode值是否相同。如果相同，判断equals<br>TreeSet：可以对set集合中的元素进行排序。<br>底层数据结构是二叉树。保证元素唯一性的依据：compareTo return 0<br>往TreeSet集合中存储自定义对象学生。想按照学生的年龄进行排序。<br>记住：排序时，当主要条件相同时，一定判断一下次要条件。</p><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>TreeSet排序的第一种方式：让元素自身具备比较性。元素需要事项compareable接口，覆盖compareTo方法。这种方式也称为元素的自然顺序，或者叫做默认顺序。<br>TreeSet排序的第二种方式：当元素自身不具备比较性时，或者具备的比较性不是锁需要的。这时就需要让集合自身具备比较性。在集合初始化时，就有了比较方式。<br>当元素自身不具备比较性，或者具备的比较性不是所需要的。这时需要让容器自身具备比较性，定义了比较器，将比较器对象作为参数传递给TreeSet集合的构造函数。<br>当两种排序都存在时，以比较器为主。定义一个类实现Comparator接口，覆盖compare方法。</p><h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>JDK1.5之后出现的新特性，用于解决安全问题，是一个安全机制。<br>好处：</p><ol><li>将运行时期出现问题转移到编译时期，便于程序员解决。</li><li>避免了强制转换的麻烦。<br>泛型格式：通过&lt;&gt;来定义要操作的引用数据类型<br>在使用java提供的对象时，什么时候写泛型？<br>通常在集合框架中很常见，只要见到&lt;&gt;就要定义泛型。其实&lt;&gt;就是用来接收类型的。当使用集合时，将集合中的要存储的数据类型放到&lt;&gt;中即可。<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2>泛型类：带泛型的类。<br>当类中要操作的引用数据类型不确定的时候，早期定义Object来完成扩展，现在定义泛型完成扩展。<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2>泛型类定义的泛型，在整个类中有效，如果被方法使用，那么泛型类的对象没明确要操作的具体类型后，所有要操作的类型就已经固定了。为了让不同方法可以操作不同类型，而且类型还不确定，那么可以将泛型定义到方法上。<h2 id="静态方法泛型"><a href="#静态方法泛型" class="headerlink" title="静态方法泛型"></a>静态方法泛型</h2>特殊之处是：静态方法不可以访问类上定义的泛型，如果静态方法操作的引用数据类型不确定，可以将泛型定义在方法上。<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><h2 id="泛型限定"><a href="#泛型限定" class="headerlink" title="泛型限定"></a>泛型限定</h2>？： 通配符，也可以理解为占位符。<br>泛型的限定： ？ extends E：可以接收E类型或者E的子类型。上限<pre><code>？ super E：可以接收E类型或者E的父类型。下限</code></pre></li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;面向对象编程-二&quot;&gt;&lt;a href=&quot;#面向对象编程-二&quot; class=&quot;headerlink&quot; title=&quot;面向对象编程(二)&quot;&gt;&lt;/a&gt;面向对象编程(二)&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;封装（private）&lt;br&gt;匿名对象使用的方式：只调用一次&lt;br&gt;注意，封
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day10(%E5%BC%82%E5%B8%B8%E5%8C%85%E8%AE%BF%E9%97%AE)/"/>
-    <id>http://yoursite.com/2017/03/09/day10(异常包访问)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T15:40:03.890Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="异常-finally"><a href="#异常-finally" class="headerlink" title="异常-finally"></a>异常-finally</h2><h2 id="异常-处理语句其他格式"><a href="#异常-处理语句其他格式" class="headerlink" title="异常-处理语句其他格式"></a>异常-处理语句其他格式</h2><h2 id="异常-覆盖时的异常特点"><a href="#异常-覆盖时的异常特点" class="headerlink" title="异常-覆盖时的异常特点"></a>异常-覆盖时的异常特点</h2><p>异常在子父类覆盖中的特点：</p><ol><li>子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。</li><li>如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。</li><li>如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。<br> 如果子类方法发生了异常。那么就必须要进行try处理，绝对不能抛。<br>##　异常练习<h2 id="异常–总结"><a href="#异常–总结" class="headerlink" title="异常–总结"></a>异常–总结</h2>是什么：是对问题的描述。将问题进行对象的封装</li></ol><hr><p>异常体系：Throwable<br>                       |–Eroor<br>                |–Exception<br>                    |–RuntimeException<br>异常体系的特点：在异常体系中的所有类以及建立的对象都具备可抛性。也就是说可以被throw和throws关键字所操作。只有异常体系具备这个特点。</p><hr><p>throw和throws的用法：<br>throw：定义在函数内，用于抛出异常对象<br>throws：定义在函数上，用于抛出异常类，可以抛出多个用逗号隔开<br>当函数内有throw抛出异常对象，并未进行try处理。必须要在函数上声明，都在编译失败。<br>注意：除了RuntimeException除外，函数内如果声明的是RuntimeException异常，函数上可以不用声明。</p><hr><p>如果函数声明了异常，调用者需要处理。处理方法可以throws可以try<br>异常有两种：</p><ol><li>编译时被检测异常：该异常在编译时，如果没有处理（没有抛出也没try），编译失败。该异常被标识，代表这可以被处理。</li><li>运行时异常（编译时不检测）：在编译时不需要检测，编译器不检查。该异常的发生，建议不处理，让程序停止。需要对代码进行修正。</li></ol><hr><p>注意：finally中定义的通常是：关闭资源代码。因为资源必须释放。<br>    finally只有一种情况不被执行。当执行到System.exit(0)；finally不被执行</p><hr><p>自定义异常：<br>定义类继承Exception或者RuntimeException</p><ol><li>为了让该自定义类具备可抛性</li><li>让该类具备异常操作的共性方法</li></ol><hr><p>自定义异常好处：按照java面向对象的思想，将程序中出现的特有问题进行封装。</p><ol><li>将问题进行封装</li><li>将问题和代码进行分离，方便于阅读<br>异常处理的原则：</li><li>处理方式有两种：try或者throws</li><li>调用到抛出异常的功能时，抛出几个，就处理几个</li><li>多个catch，父类的catch放在最下面</li><li>catch内，需要定义针对性的处理方式。不要简单的定义printStackTrace输出语句，也不要不写。当捕捉到的异常，本功能处理不了时，可以继续在catch中抛出。  如果该异常处理不了，但并不属于该功能出现的异常。也可以将异常转换后再抛出和该功能相关的异常。  或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，让调用者知道，并处理。也可以捕获异常处理后，转换新的异常。<br>5.</li></ol><hr><p>异常的注意事项：<br>在子类覆盖时：</p><ol><li>子类抛出的异常必须是父类异常的子类或者子集</li><li>如果父类或者接口没有异常抛出时，子类覆盖出现异常，只能try不能抛</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;异常-finally&quot;&gt;&lt;a href=&quot;#异常-finally&quot; class=&quot;headerlink&quot; title=&quot;异常-finally&quot;&gt;&lt;/a&gt;异常-finally&lt;/h2&gt;&lt;h2 id=&quot;异常-处理语句其他格式&quot;&gt;&lt;a href=&quot;#异常-处理语句其他格
+        &lt;h1 id=&quot;集合框架2&quot;&gt;&lt;a href=&quot;#集合框架2&quot; class=&quot;headerlink&quot; title=&quot;集合框架2&quot;&gt;&lt;/a&gt;集合框架2&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;##set&lt;br&gt;set：无序，不可以重复元素。&lt;br&gt;hashset：数据结构是哈希表，线程非同步的，保
       
     
     </summary>
@@ -404,19 +430,18 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day8(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A14)/"/>
-    <id>http://yoursite.com/2017/03/09/day8(面向对象4)/</id>
+    <link href="http://yoursite.com/2017/03/09/day16(map)/"/>
+    <id>http://yoursite.com/2017/03/09/day16(map)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T15:39:53.546Z</updated>
+    <updated>2017-09-09T15:40:36.545Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="面向对象（4）–多态"><a href="#面向对象（4）–多态" class="headerlink" title="面向对象（4）–多态"></a>面向对象（4）–多态</h1><hr><h2 id="多态概念"><a href="#多态概念" class="headerlink" title="多态概念"></a>多态概念</h2><p>多态：可以理解为事物存在的多种体现形态</p><h2 id="多态的扩展性"><a href="#多态的扩展性" class="headerlink" title="多态的扩展性"></a>多态的扩展性</h2><ol><li>多态的体现<br> 父类的引用指向了自己的子类对象<br> 父类的引用也可以接收自己的子类对象</li><li>多态的前提<br> 必须是类与类之间有关系，要么继承，要么实现。<br> 通常还有一个前提：存在覆盖</li><li>多态的好处<br> 多态的出现大大的提高程序的扩展性</li><li>多态的弊端：<br> 提高了扩展性，但是只能用父类的引用访问父类中的成员</li><li>多态的应用</li></ol><h2 id="多态–转型"><a href="#多态–转型" class="headerlink" title="多态–转型"></a>多态–转型</h2><p>向上转型，向上转型<br>千万不要出现这样的操作，就是将父类对象转换成子类类型。<br>我们能转换的是父类应用指向了自己的子类对象时，该引用可以被提升，也可以被强制转换。<br>多态自始至终都是子类对象在做着变化</p><h2 id="多态成员的特点"><a href="#多态成员的特点" class="headerlink" title="多态成员的特点"></a>多态成员的特点</h2><p>在多态中成员函数的特点：<br>在编译时期：参阅引用型变量所属的类中是否有调用的方法，如果有，编译通过，如果没有，编译失败。<br>在运行时期：参阅对象所属的类中是否有调用的方法。<br>简单总结就是：成员函数在多态调用时，编译看左边，运行看右边。<br>在多态中，成员变量的特点：无论编译还是运行，都参考左边（引用型变量所属的类）。<br>在多态中，静态成员函数的特点：无论编译还是运行，都参考左边（引用型变量所属的类）。</p><h2 id="多态的实例"><a href="#多态的实例" class="headerlink" title="多态的实例"></a>多态的实例</h2><h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="集合-MAP"><a href="#集合-MAP" class="headerlink" title="集合(MAP)"></a>集合(MAP)</h1><h2 id="Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。"><a href="#Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。" class="headerlink" title="Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。"></a>Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。</h2><ol><li>添加。</li><li>删除。clear()</li><li>判断。</li><li>获取。<br>Map：Hashtable：底层是哈希表数据结构，不能存入null键null值，是线程同步的。<br>HashMap:底层是哈希表数据结构，允许使用null键null值，该集合是不同步的。<br>TreeMap：底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。–和Set很像，其实Set底层就是使用了Map集合。<h2 id="Map子类对象的特点"><a href="#Map子类对象的特点" class="headerlink" title="Map子类对象的特点"></a>Map子类对象的特点</h2><h2 id="Map共性方法"><a href="#Map共性方法" class="headerlink" title="Map共性方法"></a>Map共性方法</h2><h2 id="Map-keySet"><a href="#Map-keySet" class="headerlink" title="Map-keySet"></a>Map-keySet</h2>map集合的两种取出方式：</li><li>keySet：将map中所有的键存入到set集合。因为set具备迭代器。所有可以迭代方式取出所有的键，在根据get方法。获取每一个键对应的值。</li><li>entrySet<br>Set<map.entry<k,v>&gt; entrySet:将Map集合中的映射关系存入了set集合中，而这个关系的数据类型就是：Map.entry。其实Entry也是一个借口，它是Map接口中的一个内部接口。<h2 id="Map练习"><a href="#Map练习" class="headerlink" title="Map练习"></a>Map练习</h2>当发现有映射关系时，可以选择map集合。因为map集合中存放的就是映射关系。<br>什么时候使用map集合？当数据之间存在映射关系时，就要先想map集合<br>##map扩展知识<br>map集合被使用是因为具备映射关系。</map.entry<k,v></li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;面向对象（4）–多态&quot;&gt;&lt;a href=&quot;#面向对象（4）–多态&quot; class=&quot;headerlink&quot; title=&quot;面向对象（4）–多态&quot;&gt;&lt;/a&gt;面向对象（4）–多态&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;多态概念&quot;&gt;&lt;a href=&quot;#多态概念&quot; class=
+        &lt;h1 id=&quot;集合-MAP&quot;&gt;&lt;a href=&quot;#集合-MAP&quot; class=&quot;headerlink&quot; title=&quot;集合(MAP)&quot;&gt;&lt;/a&gt;集合(MAP)&lt;/h1&gt;&lt;h2 id=&quot;Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。&quot;&gt;&lt;a href=&quot;#M
       
     
     </summary>
@@ -455,47 +480,20 @@
   </entry>
   
   <entry>
-    <title>多线程</title>
-    <link href="http://yoursite.com/2017/03/09/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/"/>
-    <id>http://yoursite.com/2017/03/09/day11(多线程)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T16:11:42.627Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><hr><p>进程：是一个正在执行中的程序。<br>每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。<br>线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。<br>一个进程中至少有一个线程。<br>java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。<br>扩展：其实更细节说明jvm，jvm启动不止一个线程，还有负责垃圾回收机制的线程。</p><hr><h1 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h1><ol><li>如何在自定义的代码中，自定义一个线程？<br>通过对API的查找，java已经提供了对线程这类事物的描述，就Thread类。<br>创建线程的第一种方式：继承Thread类。<br>步骤：定义类继承Thread；复写Thread类中的run方法；调用线程的start方法。<br>发现运行结果每次都不同。因为多个线程都获取cpu的执行权，CPU执行到谁，谁就运行。（多核除外），cpu在做着快速的切换，以达到看上去是同时运行的效果</li></ol><hr><h1 id="创建线程-run和start的特点"><a href="#创建线程-run和start的特点" class="headerlink" title="创建线程-run和start的特点"></a>创建线程-run和start的特点</h1><p>为什么要覆盖run方法？<br>Thread类用于描述线程。该类定义了一个功能，用于存储线程要运行的代码。该存储功能就是run方法。<br>也就是说Thread类中的run方法，用于存储线程要运行的代码。</p><h1 id="线程运行状态"><a href="#线程运行状态" class="headerlink" title="线程运行状态"></a>线程运行状态</h1><p>原来线程都有自己默认的名称。Thread-编号，该编号从0开始。<br>static Thread currentThread()：获取当前线程对象。<br>getName()：获取线程名称<br>设置线程名称：setName或者构造函数。</p><hr><h1 id="创建线程-runable接口"><a href="#创建线程-runable接口" class="headerlink" title="创建线程-runable接口"></a>创建线程-runable接口</h1><p>创建线程的第二种方式：实现Runable接口<br>步骤：</p><ol><li>定义类实现Runable接口</li><li>覆盖Runable接口中的run方法。  （将线程要运行的代码存放到该run方法中）</li><li>通过Thread类建立线程对象。</li><li>将Runable接口的子类对象作为实际参数传递给Thread类的构造函数。（自定义的run方法所属的对象时Runable接口的子类对象。所以要让线程去指定对象的run方法，就必须明确该run方法所属的对象）</li><li>调用Thread类的start方法开启线程并调用Runable接口子类的run方法。</li></ol><hr><p>实现方式和继承方式有什么区别呢？<br>实现方式：避免了单继承的局限性。在定义线程时，建议使用实现方式。<br>两种方式的区别：<br>继承Thread：线程代码存放在Thread子类的run方法中。<br>实现Runable：线程 代码存在接口的子类的run方法中。</p><hr><h1 id="多线程的安全问题"><a href="#多线程的安全问题" class="headerlink" title="多线程的安全问题"></a>多线程的安全问题</h1><p>多线程运行出现安全问题的原因：<br>当多条语句在操作同一个线程共享数据时，一个线程对多条语句值执行了一部分，还没有执行完，另一个线程参与执行。导致共享数据的错误。<br>解决办法：<br>对多条操作共享数据的语句，只能让一个线程都执行完。在执行过程中，其他线程不可以参与执行。<br>  java对于多线程的安全问题提供了专业的解决方式。<br>同步代码块。<br>synchronized（对象）{需要被同步的代码}<br>对象如同锁。持有锁的线程可以在同步中执行。没有持有锁的线程即使获取cpu的执行权，也进不去，因为没有获取锁。<br>同步的前提：</p><ol><li>必须要有两个或两个以上的线程。</li><li>必须是多个线程使用同一个锁<br>3必须保证同步中只能有一个线程在运行。<br>好处：解决了多线程的安全问题。<br>弊端：多个线程需要判断锁，较为消耗资源。</li></ol><hr><h1 id="多线程-同步函数"><a href="#多线程-同步函数" class="headerlink" title="多线程-同步函数"></a>多线程-同步函数</h1><p><strong>同步函数的锁用的是this。<br>静态同步函数的锁是Class对象</strong></p><hr><h1 id="多线程-死锁"><a href="#多线程-死锁" class="headerlink" title="多线程-死锁"></a>多线程-死锁</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h1&gt;&lt;hr&gt;
-&lt;p&gt;进程：是一个正在执行中的程序。&lt;br&gt;每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。&lt;br&gt;线
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/"/>
-    <id>http://yoursite.com/2017/03/09/day12(多线程-进程间通信)/</id>
+    <link href="http://yoursite.com/2017/03/09/day14(%E9%9B%86%E5%90%88%E7%B1%BB)/"/>
+    <id>http://yoursite.com/2017/03/09/day14(集合类)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T16:11:36.971Z</updated>
+    <updated>2017-09-09T15:40:27.354Z</updated>
     
-    <content type="html"><![CDATA[<p>#多进程（二）</p><hr><h2 id="1线程间通信"><a href="#1线程间通信" class="headerlink" title="1线程间通信"></a>1线程间通信</h2><p>线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。</p><p>##2解决安全问题</p><h2 id="3等待唤醒机制"><a href="#3等待唤醒机制" class="headerlink" title="3等待唤醒机制"></a>3等待唤醒机制</h2><p>wait  notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。<br>为什么这些操作线程的方法要定义在Object类中呢？<br>因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一个锁上的等待线程，可以被同一个锁上的notify唤醒。不可以对不同锁中的线程进行唤醒。<br>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法定义在Object类中。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><hr><h2 id="集合框架（体系概述）"><a href="#集合框架（体系概述）" class="headerlink" title="集合框架（体系概述）"></a>集合框架（体系概述）</h2><p>为什么出现集合类？<br>数组是固定长度的，集合是可变长度的。<br>为什么出现这么多的容器？<br>因为每一个容器对数据的存储方式都有不同。这个存储方式称之为：数据结构。</p><p>##集合框架（共性方法）</p><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>什么是迭代器？<br>其实就是集合中元素的取出方式。<br>把取出方式定义在集合的内部，这样取出方式就可以直接访问集合内容的元素。那么取出方式就被定义成了内部类。而每一个容器的结构数据不同，所以取出的动作细节也不一样。但是都有共性内容：判断和取出。那么可以将这些共性抽取。</p><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="List集合共性方法"><a href="#List集合共性方法" class="headerlink" title="List集合共性方法"></a>List集合共性方法</h3><p>List：元素是有序的，元素可以重复，因为该集合体系有索引。<br>Set：元素是无序的，不能重复。<br>List：特有方法：凡是可以操作角标的方法都是该体系特有的方法。<br>增：add addAll<br>删： remove<br>改：set<br>查：get subList listIterator</p><h3 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h3><p>在迭代器时，只能用迭代器的方法操作元素，可是Iterator方法是有限的，只能对元素进行判断，取出，删除的操作，如果想要其他的操作如添加，修改等，就需要使用其子接口，ListIterator。<br>该接口只能通过List集合的ListIterator方法获取。</p><h3 id="List集合具体对象的特点"><a href="#List集合具体对象的特点" class="headerlink" title="List集合具体对象的特点"></a>List集合具体对象的特点</h3><p>List：<br>ArrayList：底层的数据结构使用的是数组，查找很快，但是增删稍慢 （可变长度的）<br>Linkedlist：底层使用的是链表数据结构。特点是增删速度很快，查询稍慢<br>Vector：底层是数组数据结构。线程同步，被ArrayList替代了 ，现在一般不用了。枚举是Vector特有的取出方式。发现枚举和迭代器很像。其实枚举和迭代是一样的。因为枚举的名称以及方法的名称都过长。所以被迭代器取代了。</p><h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>LinkedList特有方法：addFirst(),addLast(),getFirst(),getLast(),removeFirst(),removeLast()<br>JDK1.6出现了替代方法。<br>offerFriest  peekFirst poolFirst<br>堆栈：先进后出<br>队列： 先进先出 FIFO<br>List集合判断元素是否相同，依据的是元素的equals方法。</p><p>##set<br>set：元素是无序（存入和取出的顺序不一定一致）<br>set集合的功能和collection是一致的。<br>HashSet：底层数据结构是哈希表。HashSet是如何保证元素的唯一性的呢？是通过元素的两个方法。hashCode和equals来完成。如果元素的HashCode值相同，才会判断equals是否为true，如果元素的hashCode不同，不会判断equals。<br>注意：对于判断元素是否存在，以及删除等操作，依赖的方法是元素的hashcode和equals方法。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;#多进程（二）&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;1线程间通信&quot;&gt;&lt;a href=&quot;#1线程间通信&quot; class=&quot;headerlink&quot; title=&quot;1线程间通信&quot;&gt;&lt;/a&gt;1线程间通信&lt;/h2&gt;&lt;p&gt;线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。&lt;
+        &lt;h1 id=&quot;集合类&quot;&gt;&lt;a href=&quot;#集合类&quot; class=&quot;headerlink&quot; title=&quot;集合类&quot;&gt;&lt;/a&gt;集合类&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;集合框架（体系概述）&quot;&gt;&lt;a href=&quot;#集合框架（体系概述）&quot; class=&quot;headerlink&quot; tit
       
     
     </summary>
