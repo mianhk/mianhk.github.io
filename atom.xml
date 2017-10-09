@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-09T17:03:39.052Z</updated>
+  <updated>2017-10-09T12:26:10.093Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《effective C++》from line 1 to line 12</title>
+    <link href="http://yoursite.com/2017/10/09/effective-cpp-1/"/>
+    <id>http://yoursite.com/2017/10/09/effective-cpp-1/</id>
+    <published>2017-10-09T11:16:31.000Z</published>
+    <updated>2017-10-09T12:26:10.093Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="《effective-C-》from-line-1-to-line-12"><a href="#《effective-C-》from-line-1-to-line-12" class="headerlink" title="《effective C++》from line 1 to line 12"></a>《effective C++》from line 1 to line 12</h3><blockquote><p>前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。</p></blockquote><h4 id="L1-C-是一个语言联邦。"><a href="#L1-C-是一个语言联邦。" class="headerlink" title="L1:C++是一个语言联邦。"></a>L1:C++是一个语言联邦。</h4><p>包含着最初的以c语言为基础的C，面向对象的C++，C++的泛型编程，以及STL。在我们使用的过程中，可能会穿插，但是我们需要根据不同的情况使用不同的策略。</p><h4 id="L2：代替-define"><a href="#L2：代替-define" class="headerlink" title="L2：代替#define"></a>L2：代替#define</h4><p><code>#define</code>是在编译之前，也就是预处理的阶段就会被替换，这样我们在调试程序的时候看到的就是被替换的数字，会给别人甚至是之后调试的我们自己带来理解上的困难。另外，预处理器的工作是，直接把define的内容进行替换，当我们在define中写的表达式，并且在接下来使用的时候，可能产生无法理解的结果。所以当我们使用不想改变的常量时，使用<code>const</code>代替<code>#define</code>。<br>我们还可以使用<code>enum</code>来代替<code>#define</code>。这样显得会更接近一些，因为<code>enum</code>和<code>#define</code>一样，同时也不会被pointer或reference指向。<br>使用<code>inline</code>函数。</p><h4 id="L3-尽量使用const"><a href="#L3-尽量使用const" class="headerlink" title="L3:尽量使用const"></a>L3:尽量使用const</h4><p>这是一个很好理解的问题，就像你把东西给别人用，不想让别人动的地方就加一个<code>const</code>不让别人动一样。。。<br>具体的体现为：指针，不想被改变的变量，迭代器，成员函数等等。<br>我们可能还会为一个函数定义<code>const</code>和<code>非const</code>版本。</p><h4 id="L4：在使用对象前先初始化"><a href="#L4：在使用对象前先初始化" class="headerlink" title="L4：在使用对象前先初始化"></a>L4：在使用对象前先初始化</h4><p>嗯，记住。</p><h4 id="L5：了解c-会默认编写并调用哪些函数"><a href="#L5：了解c-会默认编写并调用哪些函数" class="headerlink" title="L5：了解c++会默认编写并调用哪些函数"></a>L5：了解c++会默认编写并调用哪些函数</h4><p>在面向对象编程时，记住三五法则。构造函数、拷贝构造函数、拷贝赋值运算符、移动赋值运算符、析构函数。记住这几个函数的作用，其在什么时候会被使用，如果没有的时候，系统会不会为我们生成。我们需不需要系统为我们生成。</p><h4 id="L6：不想编译器默认生成的函数，应该明确拒绝"><a href="#L6：不想编译器默认生成的函数，应该明确拒绝" class="headerlink" title="L6：不想编译器默认生成的函数，应该明确拒绝"></a>L6：不想编译器默认生成的函数，应该明确拒绝</h4><p>比如我们不希望编译器为我们生成默认的函数，我们应该将其定义为删除的或者定义为<code>private</code>的，也可以定义类似于uncopyable类似的base class。</p><h4 id="L7：为多态的基类声明virtual析构函数"><a href="#L7：为多态的基类声明virtual析构函数" class="headerlink" title="L7：为多态的基类声明virtual析构函数"></a>L7：为多态的基类声明virtual析构函数</h4><p>通常我们希望派生类覆盖或重写的函数，定义为virtual函数。析构函数作为对象被销毁时调用的函数，如果不是虚函数，那么可能在销毁的时候只会销毁基类的部分，局部销毁，造成资源泄露。</p><h4 id="L8：不要让异常逃离析构函数"><a href="#L8：不要让异常逃离析构函数" class="headerlink" title="L8：不要让异常逃离析构函数"></a>L8：不要让异常逃离析构函数</h4><p>析构函数绝对不要吐出异常，当遇到异常的时候应该捕捉任何异常，然后吞下或结束程序。<br>如果需要对某个操作函数运行期间抛出的异常做出反应，应该提供一个普通的函数执行操作，而不是在析构函数中。</p><h4 id="L9：绝不在构造和析构过程中调用virtual函数"><a href="#L9：绝不在构造和析构过程中调用virtual函数" class="headerlink" title="L9：绝不在构造和析构过程中调用virtual函数"></a>L9：绝不在构造和析构过程中调用virtual函数</h4><p>构造和析构过程中，调用virtual函数的对象可能还没有产生，也就是派生类的对象，此时会产生未定义的行为。</p><h4 id="L10：另operator-返回一个reference-to-this"><a href="#L10：另operator-返回一个reference-to-this" class="headerlink" title="L10：另operator=返回一个reference to *this"></a>L10：另operator=返回一个reference to *this</h4><p>并不强制，只是为了防止一些调皮的调用者使用：<code>x=y=z=15</code>这样的操作。</p><h4 id="L11：在operator-中处理自赋值的情况"><a href="#L11：在operator-中处理自赋值的情况" class="headerlink" title="L11：在operator=中处理自赋值的情况"></a>L11：在operator=中处理自赋值的情况</h4><p>确定任何函数如果操作一个以上的对象，而其中多个对象是同一个对象时，行为仍然正确。</p><h4 id="L12：复制对象时不忘每一个成分"><a href="#L12：复制对象时不忘每一个成分" class="headerlink" title="L12：复制对象时不忘每一个成分"></a>L12：复制对象时不忘每一个成分</h4><p>Copying函数应该确保复制对象内的所有成员变量和所有base class成分。<br>不要使用一个copying函数实现另一个copying函数，而是创建一个新的函数避免代码重复。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;《effective-C-》from-line-1-to-line-12&quot;&gt;&lt;a href=&quot;#《effective-C-》from-line-1-to-line-12&quot; class=&quot;headerlink&quot; title=&quot;《effective C++》from 
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>《c++primer》ch6 函数</title>
@@ -116,32 +141,6 @@
   </entry>
   
   <entry>
-    <title>《c++primer》ch14 重载运算符和类型转换</title>
-    <link href="http://yoursite.com/2017/09/14/%E3%80%8Acpp%20primer%E3%80%8Bch14/"/>
-    <id>http://yoursite.com/2017/09/14/《cpp primer》ch14/</id>
-    <published>2017-09-14T03:55:33.000Z</published>
-    <updated>2017-09-14T04:56:40.750Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="ch14-重载运算与类型转化"><a href="#ch14-重载运算与类型转化" class="headerlink" title="ch14 重载运算与类型转化"></a>ch14 重载运算与类型转化</h3><blockquote><p>当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。</p><h4 id="14-1-基本概念"><a href="#14-1-基本概念" class="headerlink" title="14.1 基本概念"></a>14.1 基本概念</h4><p>重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。<br>不应该被重载的运算符：逻辑与、逻辑或、逗号运算符、取地址运算符。<br>定义成成员还是非成员的判断：</p><ul><li>赋值、下标、调用、成员访问箭头等运算符必须是类的成员。</li><li>复合赋值运算符一般是类的成员</li><li>递增、递减、解引用等运算符。通常是类的成员</li><li>具有对称性的运算符可能转换任意一端的运算对象。如算数、相等性、关系、位运算符，通常应该是普通的成员函数。<h4 id="14-2-输入输出运算符"><a href="#14-2-输入输出运算符" class="headerlink" title="14.2 输入输出运算符"></a>14.2 输入输出运算符</h4>输出的运算符尽量减少格式化操作，只需要打印信息就可以了。<br>输入输出运算符必须是非成员函数。<br>输入时可能会发生错误，例如：当流含有错误类型的数据时读取可能失败，当读取操作到达文件末尾或者遇到输入流的其他错误时也会失败。所以在输入操作中，输入运算符应该负责读取错误发生时，从错误中恢复。<h4 id="14-3-算术和关系运算符"><a href="#14-3-算术和关系运算符" class="headerlink" title="14.3 算术和关系运算符"></a>14.3 算术和关系运算符</h4>代码的解释：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Sales_data</div><div class="line">operator-(const Sales_data &amp;lhs,const Sales_data &amp;rhs)&#123;</div><div class="line">    Sales_data item=lhs;</div><div class="line">    item-=rhs;  //调用重载的-=运算符来定义。性能相同，只是增加代码的 复用，增加可读性</div><div class="line">    return item;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ul></blockquote><p><strong> 相等运算符</strong>的定义：如果定义了<code>==</code>，那么这个类也要定义<code>!=</code>（因为对于用户来说，当他们使用了<code>==</code>时，他们应该也希望能使用<code>!=</code>），并且相等运算符和不相等运算符的一个应该把工作委托给另外一个，这样一个预算负责实际比较，另外一个负责调用。<br><strong> 关系运算符</strong>:一般定义了相等运算符后，也会定义关系运算符，特别是<code>&lt;</code>运算符。<br>关系运算符的原则：如果存在唯一逻辑可靠的<code>&lt;</code>定义，就考虑定义<code>&lt;</code>运算符。如果该类同时包含<code>==</code>运算符，则当且仅当<code>&lt;</code>的定义与<code>==</code>产生一致的结果时才定义<code>&lt;</code>运算符。</p><h4 id="14-4-赋值运算符"><a href="#14-4-赋值运算符" class="headerlink" title="14.4 赋值运算符"></a>14.4 赋值运算符</h4><p>赋值运算符<code>=</code>和符合赋值运算符<code>+=</code>，通常都定义为类的成员，并且都应该返回左侧运算对象的引用。</p><h4 id="14-5-下标运算符"><a href="#14-5-下标运算符" class="headerlink" title="14.5 下标运算符"></a>14.5 下标运算符</h4><p>当我们需要按元素在容器中的位置访问元素时，通常定义一个下标运算符<code>operator[]</code>，必须是成员函数。通常会定义两个版本，一个返回普通引用，一个返回常量引用。</p><h4 id="14-6-递增和递减运算符"><a href="#14-6-递增和递减运算符" class="headerlink" title="14.6 递增和递减运算符"></a>14.6 递增和递减运算符</h4><p>后置运算符接受一个额外的（不被使用）int类型的形参，当我们使用后置运算符时，编译器为这个形参提供一个值为0的实参<br>。前置运算符返回递增或者递减后的对象的引用，后置运算符返回对象的原值（即递增或递减之前的原值），返回的是一个值而非引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class StrBlobPtr&#123;</div><div class="line">    public:</div><div class="line">        StrBlobPtr&amp; operator++();  //前置递增运算符</div><div class="line">        StrBlobPtr&amp; operator++(int); //后置递增运算符</div><div class="line">&#125;</div><div class="line">...</div><div class="line">p.operator++(0); //显式的调用后置递增运算符</div><div class="line">p.operator++(); // 显式的调用前置递增运算符</div></pre></td></tr></table></figure></p><h4 id="14-7-成员访问运算符"><a href="#14-7-成员访问运算符" class="headerlink" title="14.7 成员访问运算符"></a>14.7 成员访问运算符</h4><p>箭头运算符必须是类的成员，解引用运算符通常也是类的成员，即使并非必须这么做。<br>箭头运算符永远不能丢掉成员访问的这个基本含义，当我们重载箭头运算符时，可以改变的是从哪个对象中获取成员，而获取成员这一事实永远不变。<br>重载的箭头运算符必须返回类的指针或者自定义了箭头运算符的某个类的对象。</p><h4 id="14-8-函数调用运算符"><a href="#14-8-函数调用运算符" class="headerlink" title="14.8 函数调用运算符"></a>14.8 函数调用运算符</h4><p>如果类重载了函数调用运算符，我们就可以像调用函数一样使用该类的对象。函数调用运算符必须是成员函数，一个类可以定义多个函数运算符，之间用参数的数量和类型进行区分。<br>函数对象通常作为泛型算法的实参<br>lambda表达式：当我们编写了一个lambda后，编译器将该表达式翻译成一个未命名类的未命名对象。在这个类中，含有一个重载的函数调用运算符。捕获的对象相当于类内含有数据成员。是否含有默认/移动构造函数通常视捕获的对象而定。<br>标准库定义了一组表示算数运算符、关系运算符和逻辑运算符的类，每个类分别定义了一个执行命名操作的调用运算符。<br>标准库规定其函数对象对于指针同样适用。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vector&lt;string *&gt; nameTable;</div><div class="line">sort(nameTable.begin(),nameTable.end(),</div><div class="line">[](string *a,string *b)&#123;return a&lt;b&#125;);   //错误，nameTable中的指针之间没有关系，所以&lt;将产生未定义的行为</div><div class="line"></div><div class="line">sort(nameTable.begin(),nameTable.end(),less&lt;string* &gt;()); //正确</div></pre></td></tr></table></figure></p><p>C++中的<strong>  可调用对象</strong>：函数、函数指针、lambda表达式、bind创建的对象、重载了函数调用运算符的类。可调用的对象也有类型。<br>不同类型可能具有相同的调用形式，可以定义一个<strong> 函数表</strong>用于存储指向这些可调用对象的“指针”。<br><strong> 标准库function类型</strong>：是一个模板，当创建具体的function类型时，需要我们提供额外的信息。eg：<code>function&lt;int (int,int)&gt;</code>表示接受2个int、返回1个int的可调用对象。不能直接将重载函数的名字存入function类型的对象中，可存储函数指针而不是函数的名字。</p><h4 id="14-9-重载、类型转换与运算符"><a href="#14-9-重载、类型转换与运算符" class="headerlink" title="14.9 重载、类型转换与运算符"></a>14.9 重载、类型转换与运算符</h4><p><strong> 转换构造函数和类型转换运算符</strong>共同定义了类类型转换，有时也被称作用户定义的类型转换。<br><code>operator type() const; //type表示某种类型</code>因为类型转换运算符是隐式执行的，所以无法传递实参，也不能定义形参。为了避免具有误导性的类型转换，在不存在明显映射关系的时候，应不适用。<br>显式的类型转换运算符。eg:<code>explicit operator int() const;</code>当类型转换运算符是显式的，必须通过显式的强制类型转换才可以。<strong> 如果表达式被用作条件，编译器会显式的自动转换。</strong><br>无论我们什么时候在条件中使用了流对象，都会使用为IO类型定义operator bool。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">struct Integral&#123;</div><div class="line">    operator const int(); //将对象转换成 const int</div><div class="line">    operator int() const; //将对象转换成 int，用的相对较多</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>应该避免使用二义性的类型转换，总体原则：除了显式的向bool类型的转换外，应该尽量避免定义类型转换函数，并且尽可能限制某些看起来显然正确的显式构造函数。<br>错误eg：定义了两种将B类转换为A类的方法，一种使用B的类型转换运算符，一种使用A的以B为参数的构造函数。</p><ul><li>不要另两个类执行相同的类型转换。</li><li>避免转换目标是内置算数类型的类型转换。<br>函数重载的类型匹配：当调用重载函数时，如果两个或多个用户定义的类型转换都提供了可行的匹配，那么这些类型转换被认为一样好。这意味着我们设计的不足。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;ch14-重载运算与类型转化&quot;&gt;&lt;a href=&quot;#ch14-重载运算与类型转化&quot; class=&quot;headerlink&quot; title=&quot;ch14 重载运算与类型转化&quot;&gt;&lt;/a&gt;ch14 重载运算与类型转化&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;当运算符作用于类的
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>《c++primer》ch13 拷贝控制</title>
     <link href="http://yoursite.com/2017/09/14/%E3%80%8Acpp%20primer%E3%80%8Bch13/"/>
     <id>http://yoursite.com/2017/09/14/《cpp primer》ch13/</id>
@@ -156,6 +155,32 @@
       
         &lt;h3 id=&quot;ch13-拷贝控制&quot;&gt;&lt;a href=&quot;#ch13-拷贝控制&quot; class=&quot;headerlink&quot; title=&quot;ch13 拷贝控制&quot;&gt;&lt;/a&gt;ch13 拷贝控制&lt;/h3&gt;&lt;p&gt;通过定义的五种特殊的&lt;/p&gt;
 &lt;h4 id=&quot;13-1-拷贝、赋值、销毁&quot;&gt;&lt;a h
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《c++primer》ch14 重载运算符和类型转换</title>
+    <link href="http://yoursite.com/2017/09/14/%E3%80%8Acpp%20primer%E3%80%8Bch14/"/>
+    <id>http://yoursite.com/2017/09/14/《cpp primer》ch14/</id>
+    <published>2017-09-14T03:55:33.000Z</published>
+    <updated>2017-09-14T04:56:40.750Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="ch14-重载运算与类型转化"><a href="#ch14-重载运算与类型转化" class="headerlink" title="ch14 重载运算与类型转化"></a>ch14 重载运算与类型转化</h3><blockquote><p>当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。</p><h4 id="14-1-基本概念"><a href="#14-1-基本概念" class="headerlink" title="14.1 基本概念"></a>14.1 基本概念</h4><p>重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。<br>不应该被重载的运算符：逻辑与、逻辑或、逗号运算符、取地址运算符。<br>定义成成员还是非成员的判断：</p><ul><li>赋值、下标、调用、成员访问箭头等运算符必须是类的成员。</li><li>复合赋值运算符一般是类的成员</li><li>递增、递减、解引用等运算符。通常是类的成员</li><li>具有对称性的运算符可能转换任意一端的运算对象。如算数、相等性、关系、位运算符，通常应该是普通的成员函数。<h4 id="14-2-输入输出运算符"><a href="#14-2-输入输出运算符" class="headerlink" title="14.2 输入输出运算符"></a>14.2 输入输出运算符</h4>输出的运算符尽量减少格式化操作，只需要打印信息就可以了。<br>输入输出运算符必须是非成员函数。<br>输入时可能会发生错误，例如：当流含有错误类型的数据时读取可能失败，当读取操作到达文件末尾或者遇到输入流的其他错误时也会失败。所以在输入操作中，输入运算符应该负责读取错误发生时，从错误中恢复。<h4 id="14-3-算术和关系运算符"><a href="#14-3-算术和关系运算符" class="headerlink" title="14.3 算术和关系运算符"></a>14.3 算术和关系运算符</h4>代码的解释：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Sales_data</div><div class="line">operator-(const Sales_data &amp;lhs,const Sales_data &amp;rhs)&#123;</div><div class="line">    Sales_data item=lhs;</div><div class="line">    item-=rhs;  //调用重载的-=运算符来定义。性能相同，只是增加代码的 复用，增加可读性</div><div class="line">    return item;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ul></blockquote><p><strong> 相等运算符</strong>的定义：如果定义了<code>==</code>，那么这个类也要定义<code>!=</code>（因为对于用户来说，当他们使用了<code>==</code>时，他们应该也希望能使用<code>!=</code>），并且相等运算符和不相等运算符的一个应该把工作委托给另外一个，这样一个预算负责实际比较，另外一个负责调用。<br><strong> 关系运算符</strong>:一般定义了相等运算符后，也会定义关系运算符，特别是<code>&lt;</code>运算符。<br>关系运算符的原则：如果存在唯一逻辑可靠的<code>&lt;</code>定义，就考虑定义<code>&lt;</code>运算符。如果该类同时包含<code>==</code>运算符，则当且仅当<code>&lt;</code>的定义与<code>==</code>产生一致的结果时才定义<code>&lt;</code>运算符。</p><h4 id="14-4-赋值运算符"><a href="#14-4-赋值运算符" class="headerlink" title="14.4 赋值运算符"></a>14.4 赋值运算符</h4><p>赋值运算符<code>=</code>和符合赋值运算符<code>+=</code>，通常都定义为类的成员，并且都应该返回左侧运算对象的引用。</p><h4 id="14-5-下标运算符"><a href="#14-5-下标运算符" class="headerlink" title="14.5 下标运算符"></a>14.5 下标运算符</h4><p>当我们需要按元素在容器中的位置访问元素时，通常定义一个下标运算符<code>operator[]</code>，必须是成员函数。通常会定义两个版本，一个返回普通引用，一个返回常量引用。</p><h4 id="14-6-递增和递减运算符"><a href="#14-6-递增和递减运算符" class="headerlink" title="14.6 递增和递减运算符"></a>14.6 递增和递减运算符</h4><p>后置运算符接受一个额外的（不被使用）int类型的形参，当我们使用后置运算符时，编译器为这个形参提供一个值为0的实参<br>。前置运算符返回递增或者递减后的对象的引用，后置运算符返回对象的原值（即递增或递减之前的原值），返回的是一个值而非引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class StrBlobPtr&#123;</div><div class="line">    public:</div><div class="line">        StrBlobPtr&amp; operator++();  //前置递增运算符</div><div class="line">        StrBlobPtr&amp; operator++(int); //后置递增运算符</div><div class="line">&#125;</div><div class="line">...</div><div class="line">p.operator++(0); //显式的调用后置递增运算符</div><div class="line">p.operator++(); // 显式的调用前置递增运算符</div></pre></td></tr></table></figure></p><h4 id="14-7-成员访问运算符"><a href="#14-7-成员访问运算符" class="headerlink" title="14.7 成员访问运算符"></a>14.7 成员访问运算符</h4><p>箭头运算符必须是类的成员，解引用运算符通常也是类的成员，即使并非必须这么做。<br>箭头运算符永远不能丢掉成员访问的这个基本含义，当我们重载箭头运算符时，可以改变的是从哪个对象中获取成员，而获取成员这一事实永远不变。<br>重载的箭头运算符必须返回类的指针或者自定义了箭头运算符的某个类的对象。</p><h4 id="14-8-函数调用运算符"><a href="#14-8-函数调用运算符" class="headerlink" title="14.8 函数调用运算符"></a>14.8 函数调用运算符</h4><p>如果类重载了函数调用运算符，我们就可以像调用函数一样使用该类的对象。函数调用运算符必须是成员函数，一个类可以定义多个函数运算符，之间用参数的数量和类型进行区分。<br>函数对象通常作为泛型算法的实参<br>lambda表达式：当我们编写了一个lambda后，编译器将该表达式翻译成一个未命名类的未命名对象。在这个类中，含有一个重载的函数调用运算符。捕获的对象相当于类内含有数据成员。是否含有默认/移动构造函数通常视捕获的对象而定。<br>标准库定义了一组表示算数运算符、关系运算符和逻辑运算符的类，每个类分别定义了一个执行命名操作的调用运算符。<br>标准库规定其函数对象对于指针同样适用。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vector&lt;string *&gt; nameTable;</div><div class="line">sort(nameTable.begin(),nameTable.end(),</div><div class="line">[](string *a,string *b)&#123;return a&lt;b&#125;);   //错误，nameTable中的指针之间没有关系，所以&lt;将产生未定义的行为</div><div class="line"></div><div class="line">sort(nameTable.begin(),nameTable.end(),less&lt;string* &gt;()); //正确</div></pre></td></tr></table></figure></p><p>C++中的<strong>  可调用对象</strong>：函数、函数指针、lambda表达式、bind创建的对象、重载了函数调用运算符的类。可调用的对象也有类型。<br>不同类型可能具有相同的调用形式，可以定义一个<strong> 函数表</strong>用于存储指向这些可调用对象的“指针”。<br><strong> 标准库function类型</strong>：是一个模板，当创建具体的function类型时，需要我们提供额外的信息。eg：<code>function&lt;int (int,int)&gt;</code>表示接受2个int、返回1个int的可调用对象。不能直接将重载函数的名字存入function类型的对象中，可存储函数指针而不是函数的名字。</p><h4 id="14-9-重载、类型转换与运算符"><a href="#14-9-重载、类型转换与运算符" class="headerlink" title="14.9 重载、类型转换与运算符"></a>14.9 重载、类型转换与运算符</h4><p><strong> 转换构造函数和类型转换运算符</strong>共同定义了类类型转换，有时也被称作用户定义的类型转换。<br><code>operator type() const; //type表示某种类型</code>因为类型转换运算符是隐式执行的，所以无法传递实参，也不能定义形参。为了避免具有误导性的类型转换，在不存在明显映射关系的时候，应不适用。<br>显式的类型转换运算符。eg:<code>explicit operator int() const;</code>当类型转换运算符是显式的，必须通过显式的强制类型转换才可以。<strong> 如果表达式被用作条件，编译器会显式的自动转换。</strong><br>无论我们什么时候在条件中使用了流对象，都会使用为IO类型定义operator bool。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">struct Integral&#123;</div><div class="line">    operator const int(); //将对象转换成 const int</div><div class="line">    operator int() const; //将对象转换成 int，用的相对较多</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>应该避免使用二义性的类型转换，总体原则：除了显式的向bool类型的转换外，应该尽量避免定义类型转换函数，并且尽可能限制某些看起来显然正确的显式构造函数。<br>错误eg：定义了两种将B类转换为A类的方法，一种使用B的类型转换运算符，一种使用A的以B为参数的构造函数。</p><ul><li>不要另两个类执行相同的类型转换。</li><li>避免转换目标是内置算数类型的类型转换。<br>函数重载的类型匹配：当调用重载函数时，如果两个或多个用户定义的类型转换都提供了可行的匹配，那么这些类型转换被认为一样好。这意味着我们设计的不足。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;ch14-重载运算与类型转化&quot;&gt;&lt;a href=&quot;#ch14-重载运算与类型转化&quot; class=&quot;headerlink&quot; title=&quot;ch14 重载运算与类型转化&quot;&gt;&lt;/a&gt;ch14 重载运算与类型转化&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;当运算符作用于类的
       
     
     </summary>
@@ -265,6 +290,29 @@
   </entry>
   
   <entry>
+    <title>《c++primer》ch3 字符串、向量和数组</title>
+    <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3/"/>
+    <id>http://yoursite.com/2017/06/04/《cpp primer》ch3/</id>
+    <published>2017-06-04T09:55:33.000Z</published>
+    <updated>2017-09-09T17:03:23.163Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="第3章-字符串、向量和数组"><a href="#第3章-字符串、向量和数组" class="headerlink" title="第3章 字符串、向量和数组"></a>第3章 字符串、向量和数组</h1><h2 id="3-1-命名空间的using声明"><a href="#3-1-命名空间的using声明" class="headerlink" title="3.1 命名空间的using声明"></a>3.1 命名空间的using声明</h2><h3 id="每个名字都需要独立的using声明"><a href="#每个名字都需要独立的using声明" class="headerlink" title="每个名字都需要独立的using声明"></a>每个名字都需要独立的using声明</h3><h3 id="头文件中不应该包含using声明"><a href="#头文件中不应该包含using声明" class="headerlink" title="头文件中不应该包含using声明"></a>头文件中不应该包含using声明</h3><p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p><h2 id="3-2-标准库类型string"><a href="#3-2-标准库类型string" class="headerlink" title="3.2 标准库类型string"></a>3.2 标准库类型string</h2><h3 id="3-2-1-定义和初始化string对象"><a href="#3-2-1-定义和初始化string对象" class="headerlink" title="3.2.1 定义和初始化string对象"></a>3.2.1 定义和初始化string对象</h3><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;   //默认初始化</div><div class="line">string s2=s1;  //s2是s1的副本</div><div class="line">string s2(s1); //等价于string s2=s1,s2是s1的副本</div><div class="line">string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符</div><div class="line">string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;</div><div class="line">string s4(n,&apos;c&apos;);  //把s4初始化为连续n个字符c组成的字符串</div></pre></td></tr></table></figure><h3 id="3-2-2-string对象上的操作"><a href="#3-2-2-string对象上的操作" class="headerlink" title="3.2.2 string对象上的操作"></a>3.2.2 string对象上的操作</h3><ul><li>读写string对象</li><li>读取未知数量的string对象</li><li>使用getline读取一整行</li><li>string的empty和size操作<h3 id="string-size-type类型"><a href="#string-size-type类型" class="headerlink" title="string:size_type类型"></a>string:size_type类型</h3>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。<h3 id="比较string对象"><a href="#比较string对象" class="headerlink" title="比较string对象"></a>比较string对象</h3>按字典顺序<h3 id="字面值和string类型相加"><a href="#字面值和string类型相加" class="headerlink" title="字面值和string类型相加"></a>字面值和string类型相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//错误的方式</div><div class="line">string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加</div><div class="line">string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确</div></pre></td></tr></table></figure></li></ul><p><strong> 字符串字面值与string是不同的类型 </strong></p><h3 id="ex3-3-string类的输入运算和getline函数分别如何处理字符串"><a href="#ex3-3-string类的输入运算和getline函数分别如何处理字符串" class="headerlink" title="ex3.3 string类的输入运算和getline函数分别如何处理字符串"></a>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3><p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止<br>getline函数：从给定的输入流中读取，直到遇到换行符为止。</p><h2 id="3-3-标准库类型vector"><a href="#3-3-标准库类型vector" class="headerlink" title="3.3 标准库类型vector"></a>3.3 标准库类型vector</h2><p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p><h3 id="3-3-1-定义和初始化vector对象"><a href="#3-3-1-定义和初始化vector对象" class="headerlink" title="3.3.1 定义和初始化vector对象"></a>3.3.1 定义和初始化vector对象</h3><ul><li>1.使用拷贝初始化</li><li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li><li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li><li>4.创建指定数量的元素：采用圆括号<h3 id="3-3-2-像vector中添加元素"><a href="#3-3-2-像vector中添加元素" class="headerlink" title="3.3.2 像vector中添加元素"></a>3.3.2 像vector中添加元素</h3>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）<br>不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</li></ul><h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。<br>某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p><h3 id="迭代器的算数运算"><a href="#迭代器的算数运算" class="headerlink" title="迭代器的算数运算"></a>迭代器的算数运算</h3><p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。<br>迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p><h2 id="3-5-数组"><a href="#3-5-数组" class="headerlink" title="3.5 数组"></a>3.5 数组</h2><p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p><h3 id="3-5-1-定义和初始化数组"><a href="#3-5-1-定义和初始化数组" class="headerlink" title="3.5.1 定义和初始化数组"></a>3.5.1 定义和初始化数组</h3><p>数组是一种复合类型，数组的维度必须是一个常量表达式。<br>定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p><h4 id="字符数组的特殊性"><a href="#字符数组的特殊性" class="headerlink" title="字符数组的特殊性"></a>字符数组的特殊性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，没有空字符</div><div class="line">char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，含有显式的空字符</div><div class="line">char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符</div></pre></td></tr></table></figure><h4 id="不允许拷贝和赋值"><a href="#不允许拷贝和赋值" class="headerlink" title="不允许拷贝和赋值"></a>不允许拷贝和赋值</h4><h4 id="复杂的数组声明"><a href="#复杂的数组声明" class="headerlink" title="复杂的数组声明"></a>复杂的数组声明</h4><p><strong> 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int &amp;refs[10]=...  //  错误！不存在数组的引用</div><div class="line">int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组</div><div class="line">int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组</div><div class="line">int *ptrs[10];  //ptrs是一个含有10个整型指针的数组</div></pre></td></tr></table></figure></p><h3 id="3-5-2-访问数组元素"><a href="#3-5-2-访问数组元素" class="headerlink" title="3.5.2 访问数组元素"></a>3.5.2 访问数组元素</h3><ul><li>数组下标为<strong> size_t类型 </strong>，是一种机器相关的无符号类型。<h3 id="3-5-3-指针和数组"><a href="#3-5-3-指针和数组" class="headerlink" title="3.5.3 指针和数组"></a>3.5.3 指针和数组</h3>使用数组的时候编译器一般会把它转化成指针<h4 id="指针也是迭代器"><a href="#指针也是迭代器" class="headerlink" title="指针也是迭代器"></a>指针也是迭代器</h4>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上<h4 id="标准库函数begin和end"><a href="#标准库函数begin和end" class="headerlink" title="标准库函数begin和end"></a>标准库函数begin和end</h4><h3 id="3-5-4-C风格字符串"><a href="#3-5-4-C风格字符串" class="headerlink" title="3.5.4 C风格字符串"></a>3.5.4 C风格字符串</h3>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。<br>C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。<br><strong> 问题：为什么没有指针相加？ </strong><br>指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。<h3 id="3-5-5-与旧代码的接口"><a href="#3-5-5-与旧代码的接口" class="headerlink" title="3.5.5 与旧代码的接口"></a>3.5.5 与旧代码的接口</h3><h4 id="混用string对象和C风格字符串"><a href="#混用string对象和C风格字符串" class="headerlink" title="混用string对象和C风格字符串"></a>混用string对象和C风格字符串</h4></li><li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li><li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。<h4 id="使用数组初始化vector对象"><a href="#使用数组初始化vector对象" class="headerlink" title="使用数组初始化vector对象"></a>使用数组初始化vector对象</h4>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。<h2 id="3-6-多维数组"><a href="#3-6-多维数组" class="headerlink" title="3.6 多维数组"></a>3.6 多维数组</h2>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。<br>当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组</div></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;第3章-字符串、向量和数组&quot;&gt;&lt;a href=&quot;#第3章-字符串、向量和数组&quot; class=&quot;headerlink&quot; title=&quot;第3章 字符串、向量和数组&quot;&gt;&lt;/a&gt;第3章 字符串、向量和数组&lt;/h1&gt;&lt;h2 id=&quot;3-1-命名空间的using声明&quot;&gt;&lt;a href=&quot;#3-1-命名空间的using声明&quot; class=&quot;headerlink&quot; title=&quot;3.1 命名空间的using声明&quot;&gt;&lt;/a&gt;3.1 命名空间的using声明&lt;/h2&gt;&lt;h3 id=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;a href=&quot;#每个名字都需要独立的using声明&quot; class=&quot;headerlink&quot; title=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;/a&gt;每个名字都需要独立的using声明&lt;/h3&gt;&lt;h3 id=&quot;头文件中不应该包含using声明&quot;&gt;&lt;a href=&quot;#头文件中不应该包含using声明&quot; class=&quot;headerlink&quot; title=&quot;头文件中不应该包含using声明&quot;&gt;&lt;/a&gt;头文件中不应该包含using声明&lt;/h3&gt;&lt;p&gt;因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。&lt;/p&gt;
+&lt;h2 id=&quot;3-2-标准库类型string&quot;&gt;&lt;a href=&quot;#3-2-标准库类型string&quot; class=&quot;headerlink&quot; title=&quot;3.2 标准库类型string&quot;&gt;&lt;/a&gt;3.2 标准库类型string&lt;/h2&gt;&lt;h3 id=&quot;3-2-1-定义和初始化string对象&quot;&gt;&lt;a href=&quot;#3-2-1-定义和初始化string对象&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 定义和初始化string对象&quot;&gt;&lt;/a&gt;3.2.1 定义和初始化string对象&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《c++primer》ch2 变量和基本类型</title>
     <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E5%90%91%E9%87%8F%E3%80%81%E6%95%B0%E7%BB%84/"/>
     <id>http://yoursite.com/2017/06/04/《cpp primer》ch3字符串、向量、数组/</id>
@@ -301,29 +349,6 @@
       &lt;blockquote&gt;
 &lt;p&gt;ch2 变量和基本类型&lt;br&gt;数据类型决定了程序中数据和操作的意义。&lt;/p&gt;
 &lt;h1 id=&quot;2-1-基本内置类型&quot;&gt;&lt;a href=&quot;#2-1-基本内置类型&quot; class=&quot;headerlink&quot; title=&quot;2.1 基本内置类型&quot;&gt;&lt;/a&gt;2.1 基本内置类型&lt;/h1&gt;&lt;p&gt;基本数据类型：&lt;strong&gt; 算数类型  空类型（void） &lt;/strong&gt;,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《c++primer》ch3 字符串、向量和数组</title>
-    <link href="http://yoursite.com/2017/06/04/%E3%80%8Acpp%20primer%E3%80%8Bch3/"/>
-    <id>http://yoursite.com/2017/06/04/《cpp primer》ch3/</id>
-    <published>2017-06-04T09:55:33.000Z</published>
-    <updated>2017-09-09T17:03:23.163Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="第3章-字符串、向量和数组"><a href="#第3章-字符串、向量和数组" class="headerlink" title="第3章 字符串、向量和数组"></a>第3章 字符串、向量和数组</h1><h2 id="3-1-命名空间的using声明"><a href="#3-1-命名空间的using声明" class="headerlink" title="3.1 命名空间的using声明"></a>3.1 命名空间的using声明</h2><h3 id="每个名字都需要独立的using声明"><a href="#每个名字都需要独立的using声明" class="headerlink" title="每个名字都需要独立的using声明"></a>每个名字都需要独立的using声明</h3><h3 id="头文件中不应该包含using声明"><a href="#头文件中不应该包含using声明" class="headerlink" title="头文件中不应该包含using声明"></a>头文件中不应该包含using声明</h3><p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p><h2 id="3-2-标准库类型string"><a href="#3-2-标准库类型string" class="headerlink" title="3.2 标准库类型string"></a>3.2 标准库类型string</h2><h3 id="3-2-1-定义和初始化string对象"><a href="#3-2-1-定义和初始化string对象" class="headerlink" title="3.2.1 定义和初始化string对象"></a>3.2.1 定义和初始化string对象</h3><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">string s1;   //默认初始化</div><div class="line">string s2=s1;  //s2是s1的副本</div><div class="line">string s2(s1); //等价于string s2=s1,s2是s1的副本</div><div class="line">string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符</div><div class="line">string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;</div><div class="line">string s4(n,&apos;c&apos;);  //把s4初始化为连续n个字符c组成的字符串</div></pre></td></tr></table></figure><h3 id="3-2-2-string对象上的操作"><a href="#3-2-2-string对象上的操作" class="headerlink" title="3.2.2 string对象上的操作"></a>3.2.2 string对象上的操作</h3><ul><li>读写string对象</li><li>读取未知数量的string对象</li><li>使用getline读取一整行</li><li>string的empty和size操作<h3 id="string-size-type类型"><a href="#string-size-type类型" class="headerlink" title="string:size_type类型"></a>string:size_type类型</h3>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。<h3 id="比较string对象"><a href="#比较string对象" class="headerlink" title="比较string对象"></a>比较string对象</h3>按字典顺序<h3 id="字面值和string类型相加"><a href="#字面值和string类型相加" class="headerlink" title="字面值和string类型相加"></a>字面值和string类型相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//错误的方式</div><div class="line">string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加</div><div class="line">string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确</div></pre></td></tr></table></figure></li></ul><p><strong> 字符串字面值与string是不同的类型 </strong></p><h3 id="ex3-3-string类的输入运算和getline函数分别如何处理字符串"><a href="#ex3-3-string类的输入运算和getline函数分别如何处理字符串" class="headerlink" title="ex3.3 string类的输入运算和getline函数分别如何处理字符串"></a>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3><p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止<br>getline函数：从给定的输入流中读取，直到遇到换行符为止。</p><h2 id="3-3-标准库类型vector"><a href="#3-3-标准库类型vector" class="headerlink" title="3.3 标准库类型vector"></a>3.3 标准库类型vector</h2><p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p><h3 id="3-3-1-定义和初始化vector对象"><a href="#3-3-1-定义和初始化vector对象" class="headerlink" title="3.3.1 定义和初始化vector对象"></a>3.3.1 定义和初始化vector对象</h3><ul><li>1.使用拷贝初始化</li><li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li><li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li><li>4.创建指定数量的元素：采用圆括号<h3 id="3-3-2-像vector中添加元素"><a href="#3-3-2-像vector中添加元素" class="headerlink" title="3.3.2 像vector中添加元素"></a>3.3.2 像vector中添加元素</h3>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）<br>不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</li></ul><h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。<br>某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p><h3 id="迭代器的算数运算"><a href="#迭代器的算数运算" class="headerlink" title="迭代器的算数运算"></a>迭代器的算数运算</h3><p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。<br>迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p><h2 id="3-5-数组"><a href="#3-5-数组" class="headerlink" title="3.5 数组"></a>3.5 数组</h2><p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p><h3 id="3-5-1-定义和初始化数组"><a href="#3-5-1-定义和初始化数组" class="headerlink" title="3.5.1 定义和初始化数组"></a>3.5.1 定义和初始化数组</h3><p>数组是一种复合类型，数组的维度必须是一个常量表达式。<br>定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p><h4 id="字符数组的特殊性"><a href="#字符数组的特殊性" class="headerlink" title="字符数组的特殊性"></a>字符数组的特殊性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，没有空字符</div><div class="line">char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;;  //列表初始化，含有显式的空字符</div><div class="line">char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符</div></pre></td></tr></table></figure><h4 id="不允许拷贝和赋值"><a href="#不允许拷贝和赋值" class="headerlink" title="不允许拷贝和赋值"></a>不允许拷贝和赋值</h4><h4 id="复杂的数组声明"><a href="#复杂的数组声明" class="headerlink" title="复杂的数组声明"></a>复杂的数组声明</h4><p><strong> 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int &amp;refs[10]=...  //  错误！不存在数组的引用</div><div class="line">int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组</div><div class="line">int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组</div><div class="line">int *ptrs[10];  //ptrs是一个含有10个整型指针的数组</div></pre></td></tr></table></figure></p><h3 id="3-5-2-访问数组元素"><a href="#3-5-2-访问数组元素" class="headerlink" title="3.5.2 访问数组元素"></a>3.5.2 访问数组元素</h3><ul><li>数组下标为<strong> size_t类型 </strong>，是一种机器相关的无符号类型。<h3 id="3-5-3-指针和数组"><a href="#3-5-3-指针和数组" class="headerlink" title="3.5.3 指针和数组"></a>3.5.3 指针和数组</h3>使用数组的时候编译器一般会把它转化成指针<h4 id="指针也是迭代器"><a href="#指针也是迭代器" class="headerlink" title="指针也是迭代器"></a>指针也是迭代器</h4>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上<h4 id="标准库函数begin和end"><a href="#标准库函数begin和end" class="headerlink" title="标准库函数begin和end"></a>标准库函数begin和end</h4><h3 id="3-5-4-C风格字符串"><a href="#3-5-4-C风格字符串" class="headerlink" title="3.5.4 C风格字符串"></a>3.5.4 C风格字符串</h3>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。<br>C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。<br><strong> 问题：为什么没有指针相加？ </strong><br>指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。<h3 id="3-5-5-与旧代码的接口"><a href="#3-5-5-与旧代码的接口" class="headerlink" title="3.5.5 与旧代码的接口"></a>3.5.5 与旧代码的接口</h3><h4 id="混用string对象和C风格字符串"><a href="#混用string对象和C风格字符串" class="headerlink" title="混用string对象和C风格字符串"></a>混用string对象和C风格字符串</h4></li><li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li><li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。<h4 id="使用数组初始化vector对象"><a href="#使用数组初始化vector对象" class="headerlink" title="使用数组初始化vector对象"></a>使用数组初始化vector对象</h4>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。<h2 id="3-6-多维数组"><a href="#3-6-多维数组" class="headerlink" title="3.6 多维数组"></a>3.6 多维数组</h2>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。<br>当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组</div></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;第3章-字符串、向量和数组&quot;&gt;&lt;a href=&quot;#第3章-字符串、向量和数组&quot; class=&quot;headerlink&quot; title=&quot;第3章 字符串、向量和数组&quot;&gt;&lt;/a&gt;第3章 字符串、向量和数组&lt;/h1&gt;&lt;h2 id=&quot;3-1-命名空间的using声明&quot;&gt;&lt;a href=&quot;#3-1-命名空间的using声明&quot; class=&quot;headerlink&quot; title=&quot;3.1 命名空间的using声明&quot;&gt;&lt;/a&gt;3.1 命名空间的using声明&lt;/h2&gt;&lt;h3 id=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;a href=&quot;#每个名字都需要独立的using声明&quot; class=&quot;headerlink&quot; title=&quot;每个名字都需要独立的using声明&quot;&gt;&lt;/a&gt;每个名字都需要独立的using声明&lt;/h3&gt;&lt;h3 id=&quot;头文件中不应该包含using声明&quot;&gt;&lt;a href=&quot;#头文件中不应该包含using声明&quot; class=&quot;headerlink&quot; title=&quot;头文件中不应该包含using声明&quot;&gt;&lt;/a&gt;头文件中不应该包含using声明&lt;/h3&gt;&lt;p&gt;因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。&lt;/p&gt;
-&lt;h2 id=&quot;3-2-标准库类型string&quot;&gt;&lt;a href=&quot;#3-2-标准库类型string&quot; class=&quot;headerlink&quot; title=&quot;3.2 标准库类型string&quot;&gt;&lt;/a&gt;3.2 标准库类型string&lt;/h2&gt;&lt;h3 id=&quot;3-2-1-定义和初始化string对象&quot;&gt;&lt;a href=&quot;#3-2-1-定义和初始化string对象&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 定义和初始化string对象&quot;&gt;&lt;/a&gt;3.2.1 定义和初始化string对象&lt;/h3&gt;
     
     </summary>
     
@@ -428,57 +453,6 @@
   
   <entry>
     <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day7(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13)/"/>
-    <id>http://yoursite.com/2017/03/09/day7(面向对象3)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T15:39:48.522Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="面向对象（3）"><a href="#面向对象（3）" class="headerlink" title="面向对象（3）"></a>面向对象（3）</h1><h1 id="（继承，final，抽象类，接口）"><a href="#（继承，final，抽象类，接口）" class="headerlink" title="（继承，final，抽象类，接口）"></a><em>（继承，final，抽象类，接口）</em></h1><hr><h2 id="1-继承（概述）"><a href="#1-继承（概述）" class="headerlink" title="1.继承（概述）"></a>1.继承（概述）</h2><ul><li><strong>继承：</strong></li></ul><p>1.提高了代码的复用性</p><p>2.继承让类与类之间有了关系，有了关系才有了多态的特性。</p><p>注意：千万不要为了获取其他类的功能，简化代码而继承。<br>必须是类与类之间有所属关系才可以继承，所属关系 is a。</p><p><strong>java语言中：java只支持单继承，不支持多继承。</strong></p><p>  因为多继承容易带来安全隐患：当多个父类中定义了相同的功能，当功能内容不同时，子类对象不确定要运行哪一个。<br>  但是java保留了这种机制，并用另一种体现形式来完成表示，多实现。</p><ul><li><strong>java支持多层继承。</strong></li></ul><ul><li><strong>如何使用一个继承体系中的功能？</strong></li></ul><p>想要使用体系，先查阅体系父类的描述，因为父类中定义的是该体系的共性功能。</p><p>通过了解共性功能，就可以知道该体系的基本功能。那么这个体系已经可以基本使用了<br>那么在具体调用时，要创建最子类的对象。<br>因为：1.可能父类不能创建对象 2.创建子类可以使用更多的功能，包括基本的也包括特有的<br>简单的说，就是查阅父类，创建子类</p><h2 id="2-聚集关系"><a href="#2-聚集关系" class="headerlink" title="2.聚集关系"></a>2.聚集关系</h2><p>聚集：has a<br>聚合：<br>组合：</p><p>子父类出现后，类成员的特点<br>类成员：<br>1.变量<br>2.函数<br>3.构造函数</p><h2 id="3-1-子父类中的变量的特点"><a href="#3-1-子父类中的变量的特点" class="headerlink" title="3.1.子父类中的变量的特点"></a>3.1.子父类中的变量的特点</h2><p>如果子类中出现非私有的同名成员变量时，子类要访问本类中的变量，用this<br>super代表的是父类对象的引用</p><h2 id="3-2-子父类中的函数的特点"><a href="#3-2-子父类中的函数的特点" class="headerlink" title="3.2.子父类中的函数的特点"></a>3.2.子父类中的函数的特点</h2><p>当子类和父类中出现一样的函数时，当子类对象调用该函数，会运行子类函数的内容。如同父类的函数被覆盖一样。<br>这种情况是函数的另一个特性：重写（覆盖）<br>当子类继承父类，沿袭了父类的功能，但是功能的内容却和父类不一致。这时没有必要定义新功能，而是使用覆盖特殊，保留父类的功能定义，并重写功能内容。</p><p>覆盖：<br>1.子类覆盖父类，必须保证子类权限大于父类权限，否则编译失败<br>2.静态只能覆盖静态。</p><h2 id="3-3-子父类中构造函数的特点–子类的实例化过程"><a href="#3-3-子父类中构造函数的特点–子类的实例化过程" class="headerlink" title="3.3.子父类中构造函数的特点–子类的实例化过程"></a>3.3.子父类中构造函数的特点–子类的实例化过程</h2><p>重载：只看重名函数的参数列表。<br>重写：子类父类方法要一模一样。</p><p>子父类中的构造函数：<br>在对子类对象进行初始化 时，弗父类的构造函数也会运行，那是因为子类的构造函数第一行默认有一条隐式语句super()；<br>super()：会访问父类中空参数的构造函数。而且子类中所有的构造函数默认第一行都是super()<br>为什么子类一定要访问父类中的构造函数？<br>因为父类中的数据子类可以直接获取，所以子类对象在建立时，需要先查看父类如何对这些数据进行初始化的，所以子类在对象进行初始化时，要先访问一下父类中的构造函数<br>如果要访问父类中指定的构造函数，可以用super语句来指定。</p><p>注意：super语句一定定义在子类构造函数的第一行。</p><ul><li>子类的实例化过程：</li></ul><p>结论：子类所有的构造函数默认都会访问父类中空参数的构造函数，因为子类每一个构造函数的第一行都有一句隐式的super()<br>当父类中没有空的构造函数时，子类必须手动通过super或者this语句形式来指定要访问父类中的构造函数。<br>当然：子类中的构造函数第一行也可以手动指定this语句来访问本类中的构造函数，子类中至少会有一个构造函数会访问父类中的构造函数</p><h2 id="4-final关键字"><a href="#4-final关键字" class="headerlink" title="4.final关键字"></a>4.final关键字</h2><p>final：最终，作为一个修饰符</p><ol><li>可以修饰类，函数，变量</li><li>被final修饰的类不可以被继承,为了避免被继承，被子类复写功能</li><li>被final修饰的方法不可以被复写</li><li>被final修饰的变量是一个常量只能赋值一次，既可以修饰局部变量，也可以修饰成员变量。<br> 在描述事物时，一些数据的出现值是固定的，那么这时为了增强阅读性，都给这值起个名字，方便于阅读，而这个值不需要改变，所以加个final修饰。作为常量：常量的书写规范所有字母都大写，如果由多个单词组成，单词间通过_连接。</li><li>内部类定义在类中的局部位置时，只能访问该局部被final修饰的局部变量。</li></ol><h2 id="5-抽象类"><a href="#5-抽象类" class="headerlink" title="5.抽象类"></a>5.抽象类</h2><p>当多个类中出现相同功能，但是功能的主体不同，这时可以向上抽取，这时只能抽取功能定义，而不抽取功能主题<br>抽象：看不懂<br>抽象类的特点：</p><ol><li>抽象方法一定在抽象类中。</li><li>抽象方法和抽象类都必须被abstract关键字修饰。</li><li>抽象类不可以用new创建对象，因为调用抽象方法没意义。</li><li>抽象类中的方法要被使用，必须由子类复写起所有的抽象方法之后，建立子类对象调用。如果子类只覆盖了部分抽象方法，那么该子类还是一个抽象类。</li></ol><p>抽象类和一般类没有太大的不同。<br>该如何描述事物，就如何描述事物，只不过，该事物出现了一些看不懂的东西。<br>这些不确定的部分，也是该事物的功能，需要明确出现。但是无法定义主体。</p><p>抽象类比一般类多了个抽象函数。就是在类中可以定义抽象方法。<br>抽象类不可以实例化。<br>特殊：抽象类中可以不定义抽象方法，这样做仅仅是为了不让该类建立对象。</p><h2 id="6-模板方法设计模式"><a href="#6-模板方法设计模式" class="headerlink" title="6.模板方法设计模式"></a>6.模板方法设计模式</h2><p>在定义功能时，功能的一部分是确定的，但是有一部分功能时不确定的，而确定的部分在使用不确定的部分，就将不确定的部分暴露出去，</p><h2 id="7-接口"><a href="#7-接口" class="headerlink" title="7.接口"></a>7.接口</h2><ul><li><strong>接口</strong>：初期理解，可以认为是一个特殊的抽象类<br>当抽象类中的方法都是抽象的，那么该类可以通过接口的形式实现<br>class 用于定义类<br>interface 用于定义接口<br>接口定义时，格式特点：</li></ul><ol><li>接口中常见定义：常量，抽象方法。</li><li>接口中的成员都有固定的修饰符。常量：public static final<br>方法：public abstract<br>记住，接口中的成员都是public的<br>接口是不可以创建对象的，因为有抽象方法。<br>需要被子类实现，子类对接口中的抽象方法全部覆盖后，子类才可以实例化。否则子类是一个抽象类</li></ol><ul><li><strong>接口可以被类多实现</strong><br><strong>接口与接口之间可以多继承</strong><h2 id="8-接口的特点"><a href="#8-接口的特点" class="headerlink" title="8.接口的特点"></a>8.接口的特点</h2></li></ul><ol><li>接口是对外暴露的规则</li><li>接口是程序的程序扩展</li><li>接口可以用来多实现</li><li>类与接口之间是实现关系，而且类可以继承一个类的同时实现多个接口</li><li>接口与接口之间可以有继承关系</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;面向对象（3）&quot;&gt;&lt;a href=&quot;#面向对象（3）&quot; class=&quot;headerlink&quot; title=&quot;面向对象（3）&quot;&gt;&lt;/a&gt;面向对象（3）&lt;/h1&gt;&lt;h1 id=&quot;（继承，final，抽象类，接口）&quot;&gt;&lt;a href=&quot;#（继承，final，抽象类，接口
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
-    <link href="http://yoursite.com/2017/03/09/day9(%E5%86%85%E9%83%A8%E7%B1%BB)/"/>
-    <id>http://yoursite.com/2017/03/09/day9(内部类)/</id>
-    <published>2017-03-09T04:55:17.000Z</published>
-    <updated>2017-09-09T15:39:58.794Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><hr><h2 id="内部类访问规则"><a href="#内部类访问规则" class="headerlink" title="内部类访问规则"></a>内部类访问规则</h2><ol><li>内部类可以直接访问外部类中的成员，包括私有<br> 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this</li><li>外部类要访问内部类，必须建立内部类对象。<br> 直接访问内部类中的成员<br>访问格式：<br>当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。<br>比如，private：将内部类在外部类中进行封装。<br> static：内部类就具备static的特性。<br>当内部类被static修饰后，只能直接访问外部类中的static成员，出现了访问局限。<br>在外部其他类中，如何访问内部类的非静态成员呢？<h2 id="内部类定义的原则"><a href="#内部类定义的原则" class="headerlink" title="内部类定义的原则"></a>内部类定义的原则</h2>当描述事物时，事物的内部还有事物，该事物用内部类来描述。因为内部事物在使用外部事物的内容。</li></ol><p>内部类定义在局部时，</p><ol><li>不可以被成员修饰符修饰</li><li>可以直接访问外部类中的成员，因为还持有外部类中的引用。但是不可以访问它所在的局部中的变量，只能访问被final修饰的局部变量  、<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2></li><li>匿名内部类其实就是内部类的简写格式</li><li>定义匿名内部类的前提：内部类必须是继承一个类或者实现接口。</li><li>匿名内部类的格式：new 父类或者接口（）{定义子类的内容}</li><li>其实匿名内部类就是一个匿名子类对象，而且这个对象有点胖。可以理解为带内容的对象</li><li>匿名内部类中定义的方法最多不要超过三个</li></ol><h2 id="异常概述"><a href="#异常概述" class="headerlink" title="异常概述"></a>异常概述</h2><p>异常：就是程序在运行时出现不正常的情况。<br>异常的由来：问题也是现实生活中一个具体的事物，也可以通过java的类的形式进行描述。并封装成对象。其实就是java对不正常情况进行描述后的对象体现<br>对于问题的划分：两种：一种是严重的问题，一种是不严重的问题</p><p>对于严重的，java通过Error类进行描述。<br>对于Error，一般不编写针对性的代码进行处理<br>对于非严重的，java通过Exception类进行描述。（可以使用针对性的处理方式进行处理 ）</p><h2 id="异常try-catch"><a href="#异常try-catch" class="headerlink" title="异常try-catch"></a>异常try-catch</h2><p>异常的处理：java提供了特有的语句进行处理<br>对捕获到的异常对象进行常见的方法操作。<br>String getMessage</p><h2 id="异常声明throws"><a href="#异常声明throws" class="headerlink" title="异常声明throws"></a>异常声明throws</h2><h2 id="多异常处理"><a href="#多异常处理" class="headerlink" title="多异常处理"></a>多异常处理</h2><p>对多异常的处理。</p><ol><li>声明异常时，建议声明更为具体的异常。这样处理的可以更具体。</li><li>对方声明几个异常，就对应有几个catch块。不要定义多余的catch块<br> 如果多个catch块中的异常出现继承关系，父类异常catch块放在最下面<br>建立在进行catch处理时，catch中一定要具体的处理方式。不要简单的定义一句e.peintStackTrace()，也不要简单的就书写一条输出语句。</li></ol><h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>项目中会出现特有的问题，而这些问题并未被java所描述并封装对象。所以对于这些特有的问题可以按照java对问题封装的思想。将特有的问题。进行自定义的异常封装。<br>当在函数内部出现了throw抛出异常对象，那么就必须要给对应的处理动作。<br>要么在内部try catch处理，要么在函数上声明让调用者处理。<br>发现打印的结果中只有异常的名称，缺没有异常的信息。<br>因为自定义的异常并未定义信息。<br>父类中已经把异常信息的操作都完成了。所以子类只要在构造时，将异常信息传递给父类通过super语句。那么直接就可以通过getMessage方法获取自定义的异常。</p><hr><p>自定义异常：必须是自定义类继承Exception。原因是：<br>异常体系有一个特点：因为异常类和异常对象都被抛出。他们都具备可抛性。这个可抛性是Throwable这个体系中的独有特点。只有这个体系中的类和对象才可以被throw和throws操作。</p><h2 id="throws-和throw的区别：throws使用在函数上。throw使用在函数内。"><a href="#throws-和throw的区别：throws使用在函数上。throw使用在函数内。" class="headerlink" title="throws 和throw的区别：throws使用在函数上。throw使用在函数内。"></a>throws 和throw的区别：throws使用在函数上。throw使用在函数内。</h2><p>throws后面跟的异常类，可以跟多个。用逗号隔开。throw后面跟的是异常对象。</p><h2 id="RuntimeException运行时异常。"><a href="#RuntimeException运行时异常。" class="headerlink" title="RuntimeException运行时异常。"></a>RuntimeException运行时异常。</h2><p>如果在函数内抛出该异常，函数上可以不用声明，编译一样通过。<br>如果在函数上声明了该异常。调用者可以不用进行处理。编译一样通过。<br>之所以不用在函数声明，是因为不需要让调用者处理，当该异常发生，希望程序停止。因为在运行时，出现了无法继续运算的情况，希望停止程序后，对代码尽心修正。<br>自定义异常时，如果该异常的发生，无法再继续进行运算，就让自定义异常继承RuntimeException<br>对于异常分两种：</p><ol><li>编译时被检测的异常。</li><li>编译时不被检测的异常（运行时异常。RuntimeException以及其子类）</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;内部类&quot;&gt;&lt;a href=&quot;#内部类&quot; class=&quot;headerlink&quot; title=&quot;内部类&quot;&gt;&lt;/a&gt;内部类&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;内部类访问规则&quot;&gt;&lt;a href=&quot;#内部类访问规则&quot; class=&quot;headerlink&quot; title=&quot;内部
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day5(面向对象2)</title>
     <link href="http://yoursite.com/2017/03/09/day8(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A14)/"/>
     <id>http://yoursite.com/2017/03/09/day8(面向对象4)/</id>
     <published>2017-03-09T04:55:17.000Z</published>
@@ -492,6 +466,32 @@
       
         &lt;h1 id=&quot;面向对象（4）–多态&quot;&gt;&lt;a href=&quot;#面向对象（4）–多态&quot; class=&quot;headerlink&quot; title=&quot;面向对象（4）–多态&quot;&gt;&lt;/a&gt;面向对象（4）–多态&lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&quot;多态概念&quot;&gt;&lt;a href=&quot;#多态概念&quot; class=
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day5(面向对象2)</title>
+    <link href="http://yoursite.com/2017/03/09/day20(IO%E6%B5%812)/"/>
+    <id>http://yoursite.com/2017/03/09/day20(IO流2)/</id>
+    <published>2017-03-09T04:55:17.000Z</published>
+    <updated>2017-09-09T15:41:35.682Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><hr><h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>用来将文件或文件夹封装成对象。<br>方便对文件与文件夹的属性信息进行操作。<br>File对象可以作为参数传递给</p><h2 id="File类的常见方法"><a href="#File类的常见方法" class="headerlink" title="File类的常见方法"></a>File类的常见方法</h2><p>1.创建<br>boolean createNewFile()<br>boolean mkdir()<br>boolean mkdirs()</p><p>2.删除<br> boolean delete()  删除失败返回false<br>void deleteOnExit()  在程序退出时删除文件</p><p>3.判断<br>boolean exists() 文件或目录是否存在。<br>记住在判断文件对象是否是文件或者目录时，必须要先判断该文件对象封装的内容是否存在，通过exists判断。<br>boolean isFile()<br>boolean isDirectory()</p><p>4.获取信息。<br> String getName()<br> String getParent()  该方法返回的是绝对路径中的父目录，如果获取的是相对路径，则返回null。<br> String getPath()<br> File getAbsoluteFile()<br>  long lastModified()<br>long length()</p><h2 id="文件列表"><a href="#文件列表" class="headerlink" title="文件列表"></a>文件列表</h2><p>static File[] listRoots()<br> String[] list() 调用list方法的必须是封装的一个目录。该目录还必须存在。</p><h2 id="列出目录下所有的内容"><a href="#列出目录下所有的内容" class="headerlink" title="列出目录下所有的内容"></a>列出目录下所有的内容</h2><p>递归<br>递归要注意：<br>1.限定条件。<br>2.要注意递归的次数，尽量避免内存溢出。</p><h2 id="删除一个带内容的目录"><a href="#删除一个带内容的目录" class="headerlink" title="删除一个带内容的目录"></a>删除一个带内容的目录</h2><p>删除原理：<br>在Windows中，删除目录从里面往外删除的。既然是从里往外删除，就需要用到递归。</p><h2 id="创建java文件列表"><a href="#创建java文件列表" class="headerlink" title="创建java文件列表"></a>创建java文件列表</h2><h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h2><p>properties是hashtables的子类，也就是说它具备map集合的特点。而且它里面存储的键值对都是字符串。是集合中和IO技术相结合的集合容器。<br>该对象的特点：可以用于键值对形式的配置文件。</p><p>##IO包中的其他类<br>打印流：该流提供了打印方法，可以将各种数据类型的数据都原样打印。<br>字节打印流<br>PrintStream<br>构造函数可以接收的参数类型。</p><ol><li>file对象。File</li><li>字符串路径</li><li>字节输出流<br>字符打印流<br>PrintWrite</li><li>file对象。File</li><li>字符串路径</li><li>字节输出流</li></ol><h2 id="合并流和切割文件"><a href="#合并流和切割文件" class="headerlink" title="合并流和切割文件"></a>合并流和切割文件</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;IO流&quot;&gt;&lt;a href=&quot;#IO流&quot; class=&quot;headerlink&quot; title=&quot;IO流&quot;&gt;&lt;/a&gt;IO流&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;File类&quot;&gt;&lt;a href=&quot;#File类&quot; class=&quot;headerlink&quot; title=&quot;File类&quot;
       
     
     </summary>
