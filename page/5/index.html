@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day10(异常包访问)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day11(多线程)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mianhk">
@@ -304,7 +304,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/java/day10(异常包访问)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/java/day11(多线程)/" itemprop="url">多线程</a></h1>
         
 
         <div class="post-meta">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:03+08:00">
-                2017-09-09
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-10T00:11:42+08:00">
+                2017-09-10
               </time>
             
           </span>
@@ -390,15 +390,12 @@
       
         
           
-          异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点：
-
-子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。
-如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。
-如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不
+          多线程
+进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。一个进程中至少有一个线程。java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。扩展：其实更细节说明jvm，jvm
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/java/day10(异常包访问)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/java/day11(多线程)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -449,7 +446,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day13(String)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day18(其他对象)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mianhk">
@@ -468,7 +465,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/java/day13(String)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/java/day18(其他对象)/" itemprop="url">day5(面向对象2)</a></h1>
         
 
         <div class="post-meta">
@@ -496,7 +493,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:27+08:00">
                 2017-09-09
               </time>
             
@@ -554,15 +551,16 @@
       
         
           
-          StringBuffer
-StringBuffer 是字符串缓冲区。是一个容器，
-而且长度是可变化的。
-可以操作多个数据类型。
-最终会通过toString方法变成字符串C（create）U（update）R（read）D（delete）1.存储StringBuffer append（）：将指定的数据作为参数添加到到已有数据的结尾处StringBuffer insert（index，数据）：可以将数
-          ...
+          #其他对象
+
+System可不可以在jvm启动时，动态加载一些属性信息。
+##Runtime对象该类并没有提供构造函数。说明不可以new 对象，那么会直接想到该类中的方法都是静态的，发现该类中海油非静态方法。说明该类肯定会提供了方法获取本类对象，而且该方法是静态的，并返回值类型是本类类型。由这个特点可以看出该类使用了单例设计模式执行。
+##Date
+Math
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/java/day13(String)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/java/day18(其他对象)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
