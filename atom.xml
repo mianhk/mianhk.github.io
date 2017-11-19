@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Mianhk&#39;s notes</title>
   
-  <subtitle>这个人很懒，什么都不想写</subtitle>
+  <subtitle>这个人很懒，动不动就不想写</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Mianhk</name>
+    <name>mianhk</name>
     
   </author>
   
