@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="T2：二维数组的查找 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回  二叉树是觉得很烦的东西了，比链表复杂很多倍">
+<meta name="description" content="T4：重建二叉树 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,">
 <meta name="keywords" content="C++ 剑指offer 牛客网">
 <meta property="og:type" content="article">
 <meta property="og:title" content="牛客网-剑指offer-2">
 <meta property="og:url" content="http://yoursite.com/2017/10/27/刷题/牛客网-剑指offer-2/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="T2：二维数组的查找 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回  二叉树是觉得很烦的东西了，比链表复杂很多倍">
+<meta property="og:description" content="T4：重建二叉树 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-27T14:03:44.819Z">
+<meta property="og:updated_time" content="2017-11-19T13:11:31.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="牛客网-剑指offer-2">
-<meta name="twitter:description" content="T2：二维数组的查找 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回  二叉树是觉得很烦的东西了，比链表复杂很多倍">
+<meta name="twitter:description" content="T4：重建二叉树 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,">
 
 
 
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-27T22:03:44+08:00">
-                2017-10-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-19T21:11:31+08:00">
+                2017-11-19
               </time>
             
           </span>
@@ -391,10 +391,18 @@
       
 
       
-        <h4 id="T2：二维数组的查找"><a href="#T2：二维数组的查找" class="headerlink" title="T2：二维数组的查找"></a>T2：二维数组的查找</h4><blockquote>
-<p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回</p>
+        <h4 id="T4：重建二叉树"><a href="#T4：重建二叉树" class="headerlink" title="T4：重建二叉树"></a>T4：重建二叉树</h4><blockquote>
+<p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
 </blockquote>
-<p>二叉树是觉得很烦的东西了，比链表复杂很多倍</p>
+<p>二叉树是觉得很烦的东西了，比链表复杂很多，看着头都有点疼啊，但是没办法，生活就是这样，只有把不会的会了才会进步，怕的变得不怕才能越来越厉害。<br>常规的理解一下：二叉树的遍历序列分为三种：前序遍历、中序遍历和后序遍历。这样叫是根据根节点相对于其左右子节点而言的。所以很容易知道三种遍历序列的特点，比如对于前序遍历而言，第一个就是根节点，对于中序遍历，根节点的左边必然是左子树，右边为右子树。所以首先可以根据两个序列确定根节点，然后把两个序列都分别分为两个序列，两个左右子树的前序遍历和两个左右子树的后序遍历。于是便可以采用递归的方式分别对左右子树进行处理了。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    TreeNode* reConstructBinaryTree(vector&lt;int&gt; pre,vector&lt;int&gt; vin) &#123;</div><div class="line">        if(pre.size()==0||vin.size()==0||pre.size()!=vin.size())</div><div class="line">            return nullptr;</div><div class="line">        TreeNode *root=new TreeNode(pre[0]);</div><div class="line">        vector&lt;int&gt; pre1,pre2,vin1,vin2;</div><div class="line">        int i=0;</div><div class="line">        for(;i!=vin.size();++i)&#123;</div><div class="line">            if(root-&gt;val==vin[i])&#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //if(i==0)</div><div class="line">            //root-&gt;left=nullptr;</div><div class="line">        //else if(i==vin.size()-1)</div><div class="line">            //root-&gt;right=nullptr;</div><div class="line">        //else&#123;</div><div class="line">        for(int j=0;j&lt;i;++j)&#123;</div><div class="line">            pre1.push_back(pre[1+j]);</div><div class="line">            vin1.push_back(vin[j]);</div><div class="line">            &#125;</div><div class="line">        for(int j=i+1;j&lt;vin.size();++j)&#123;</div><div class="line">            pre2.push_back(pre[j]);</div><div class="line">            vin2.push_back(vin[j]);</div><div class="line">            &#125;</div><div class="line">        root-&gt;left=reConstructBinaryTree(pre1,vin1);</div><div class="line">        root-&gt;right=reConstructBinaryTree(pre2,vin2);</div><div class="line">        //&#125;</div><div class="line"></div><div class="line">        return root;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="T5-用两个栈实现队列"><a href="#T5-用两个栈实现队列" class="headerlink" title="T5:用两个栈实现队列"></a>T5:用两个栈实现队列</h4><blockquote>
+<p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p>
+</blockquote>
+<p>对于这种简单的结构，实现起来可能还是比较简单一点，主要还是思考的过程，通过队列和栈的特点进行分析。队列是一个先进先出的结构，而栈是一个先进后出的结构。显然当我们把数据push到第一个栈，每次数据pop都把第一个栈的全部数据先放到第二个栈当中，然后再pop，肯定就达到了先入先出的目的了。<br>另外需要的是代码的编写。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    void push(int node) &#123;</div><div class="line">        stack1.push(node);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int pop() &#123;</div><div class="line">        if(stack2.size()&lt;=0)&#123;</div><div class="line">            while(stack1.size()&gt;0)&#123;</div><div class="line">                int temp=stack1.top();</div><div class="line">                stack1.pop();</div><div class="line">                stack2.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int result=stack2.top();</div><div class="line">        stack2.pop();</div><div class="line"></div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">private:</div><div class="line">    stack&lt;int&gt; stack1;</div><div class="line">    stack&lt;int&gt; stack2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="T6：旋转数组的最小数字"><a href="#T6：旋转数组的最小数字" class="headerlink" title="T6：旋转数组的最小数字"></a>T6：旋转数组的最小数字</h4><blockquote>
+<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</p>
+</blockquote>
+<p>对于数组或者双链表的问题，很多时候我们都可以采用<strong> 双指针</strong>的方法来解决，这通常能减小难度，就像这题，首先我们需要注意的是，旋转数组的特点，旋转之前是一个非递减排序，所以旋转之后必然是前面一个非递减排序加上后半部分的一个非递增排序。很容易想到的是，采用前后两个指针，根据两个指针中间的点的值，可以确定这个数组中最小的值在前半部分还是后半部分，然后移动某一指针到中间节点，知道两个指针之间相差1，就可以确定最小值。<br>然而，看题目还存在一个问题，就是题目所说的是一个非递减排序，而并非递增序列。（这就需要我们认真审题了），可以想到，如果出现了特殊的情况，例如存在几个相等值，导致左右两个指针和中间值都相同的时候，我们只能通过最原始的办法一个个进行判断了。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int minNumberInRotateArray(vector&lt;int&gt; rotateArray) &#123;</div><div class="line">        if(rotateArray.size()&lt;=0)</div><div class="line">            return 0;</div><div class="line">        int index1=0;</div><div class="line">        int index2=rotateArray.size()-1;</div><div class="line">        int indexMid=index1;</div><div class="line">        while(rotateArray[index1]&gt;=rotateArray[index2])&#123;</div><div class="line">            if(index2-index1==1)&#123;</div><div class="line">                indexMid=index2;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            indexMid=index1+(index2-index1)/2;</div><div class="line">            if(rotateArray[index1]==rotateArray[indexMid]&amp;&amp;</div><div class="line">               rotateArray[indexMid]==rotateArray[index2])</div><div class="line">                return MinInorder(rotateArray);</div><div class="line">            if(rotateArray[indexMid]&gt;=rotateArray[index1])</div><div class="line">                index1=indexMid;</div><div class="line">            else if(rotateArray[indexMid]&lt;=rotateArray[index2])</div><div class="line">                index2=indexMid;</div><div class="line">        &#125;</div><div class="line">        return rotateArray[indexMid];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int MinInorder(vector&lt;int&gt; rotateArray)&#123;</div><div class="line">        int result=rotateArray[0];</div><div class="line">        int index2=rotateArray[1];</div><div class="line">        while(index2!=rotateArray.size())&#123;</div><div class="line">            if(result&gt;rotateArray[index2])</div><div class="line">                result=rotateArray[index2++];</div><div class="line">            else</div><div class="line">               ++index2;</div><div class="line">               &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -546,7 +554,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -660,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#T2：二维数组的查找"><span class="nav-number">1.</span> <span class="nav-text">T2：二维数组的查找</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#T4：重建二叉树"><span class="nav-number">1.</span> <span class="nav-text">T4：重建二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T5-用两个栈实现队列"><span class="nav-number">2.</span> <span class="nav-text">T5:用两个栈实现队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T6：旋转数组的最小数字"><span class="nav-number">3.</span> <span class="nav-text">T6：旋转数组的最小数字</span></a></li></ol></div>
             
 
           </div>

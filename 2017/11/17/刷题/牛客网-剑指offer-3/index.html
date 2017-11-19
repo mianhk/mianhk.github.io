@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="C++," />
+  <meta name="keywords" content="C++ 剑指offer 牛客网," />
 
 
 
@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="ch14 重载运算与类型转化 当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。">
-<meta name="keywords" content="C++">
+<meta name="description" content="T7：斐波那契数列 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&amp;lt;=39  斐波那契数列是很常用的数列，也是很简单的递归能够解决的，但是当n稍微大一点的时候，复杂度都让人无法接受。例如：1234567long long Fi(int n)&amp;#123;    if(n==0)        return 0;    if(n==1)        retur">
+<meta name="keywords" content="C++ 剑指offer 牛客网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《c++primer》ch14 重载运算符和类型转换">
-<meta property="og:url" content="http://yoursite.com/2017/09/14/cpp/cpp-primer/《cpp primer》ch14/index.html">
+<meta property="og:title" content="牛客网-剑指offer-2">
+<meta property="og:url" content="http://yoursite.com/2017/11/17/刷题/牛客网-剑指offer-3/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="ch14 重载运算与类型转化 当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。">
+<meta property="og:description" content="T7：斐波那契数列 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&amp;lt;=39  斐波那契数列是很常用的数列，也是很简单的递归能够解决的，但是当n稍微大一点的时候，复杂度都让人无法接受。例如：1234567long long Fi(int n)&amp;#123;    if(n==0)        return 0;    if(n==1)        retur">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-14T12:41:34.367Z">
+<meta property="og:updated_time" content="2017-11-19T13:30:13.573Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《c++primer》ch14 重载运算符和类型转换">
-<meta name="twitter:description" content="ch14 重载运算与类型转化 当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。">
+<meta name="twitter:title" content="牛客网-剑指offer-2">
+<meta name="twitter:description" content="T7：斐波那契数列 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&amp;lt;=39  斐波那契数列是很常用的数列，也是很简单的递归能够解决的，但是当n稍微大一点的时候，复杂度都让人无法接受。例如：1234567long long Fi(int n)&amp;#123;    if(n==0)        return 0;    if(n==1)        retur">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/14/cpp/cpp-primer/《cpp primer》ch14/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/17/刷题/牛客网-剑指offer-3/"/>
 
 
 
 
 
-  <title>《c++primer》ch14 重载运算符和类型转换 | Mianhk's notes</title>
+  <title>牛客网-剑指offer-2 | Mianhk's notes</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/14/cpp/cpp-primer/《cpp primer》ch14/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/17/刷题/牛客网-剑指offer-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《c++primer》ch14 重载运算符和类型转换</h1>
+          <h1 class="post-title" itemprop="name headline">牛客网-剑指offer-2</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T11:55:33+08:00">
-                2017-09-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-17T19:50:52+08:00">
+                2017-11-17
               </time>
             
 
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T20:41:34+08:00">
-                2017-11-14
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-19T21:30:13+08:00">
+                2017-11-19
               </time>
             
           </span>
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题</span>
                   </a>
                 </span>
 
@@ -391,32 +391,19 @@
       
 
       
-        <h3 id="ch14-重载运算与类型转化"><a href="#ch14-重载运算与类型转化" class="headerlink" title="ch14 重载运算与类型转化"></a>ch14 重载运算与类型转化</h3><blockquote>
-<p>当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。</p>
+        <h4 id="T7：斐波那契数列"><a href="#T7：斐波那契数列" class="headerlink" title="T7：斐波那契数列"></a>T7：斐波那契数列</h4><blockquote>
+<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。<br>n&lt;=39</p>
 </blockquote>
-<a id="more"></a>
-<h4 id="14-1-基本概念"><a href="#14-1-基本概念" class="headerlink" title="14.1 基本概念"></a>14.1 基本概念</h4><p>重载的运算符是特殊的函数：由operator关键字加上要定义的运算符号共同组成。作为函数，也包含返回类型、参数列表和函数体。参数列表个数与该运算符作用的算数对象数量一样多。<br>不应该被重载的运算符：逻辑与、逻辑或、逗号运算符、取地址运算符。<br>定义成成员还是非成员的判断：</p>
-<ul>
-<li>赋值、下标、调用、成员访问箭头等运算符必须是类的成员。</li>
-<li>复合赋值运算符一般是类的成员</li>
-<li>递增、递减、解引用等运算符。通常是类的成员</li>
-<li>具有对称性的运算符可能转换任意一端的运算对象。如算数、相等性、关系、位运算符，通常应该是普通的成员函数。</li>
-</ul>
-<h4 id="14-2-输入输出运算符"><a href="#14-2-输入输出运算符" class="headerlink" title="14.2 输入输出运算符"></a>14.2 输入输出运算符</h4><p>输出的运算符尽量减少格式化操作，只需要打印信息就可以了。<br>输入输出运算符必须是非成员函数。<br>输入时可能会发生错误，例如：当流含有错误类型的数据时读取可能失败，当读取操作到达文件末尾或者遇到输入流的其他错误时也会失败。所以在输入操作中，输入运算符应该负责读取错误发生时，从错误中恢复。</p>
-<h4 id="14-3-算术和关系运算符"><a href="#14-3-算术和关系运算符" class="headerlink" title="14.3 算术和关系运算符"></a>14.3 算术和关系运算符</h4><p>代码的解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Sales_data</div><div class="line">operator-(const Sales_data &amp;lhs,const Sales_data &amp;rhs)&#123;</div><div class="line">    Sales_data item=lhs;</div><div class="line">    item-=rhs;  //调用重载的-=运算符来定义。性能相同，只是增加代码的 复用，增加可读性</div><div class="line">    return item;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong> 相等运算符</strong>的定义：如果定义了<code>==</code>，那么这个类也要定义<code>!=</code>（因为对于用户来说，当他们使用了<code>==</code>时，他们应该也希望能使用<code>!=</code>），并且相等运算符和不相等运算符的一个应该把工作委托给另外一个，这样一个预算负责实际比较，另外一个负责调用。<br><strong> 关系运算符</strong>:一般定义了相等运算符后，也会定义关系运算符，特别是<code>&lt;</code>运算符。<br>关系运算符的原则：如果存在唯一逻辑可靠的<code>&lt;</code>定义，就考虑定义<code>&lt;</code>运算符。如果该类同时包含<code>==</code>运算符，则当且仅当<code>&lt;</code>的定义与<code>==</code>产生一致的结果时才定义<code>&lt;</code>运算符。</p>
-<h4 id="14-4-赋值运算符"><a href="#14-4-赋值运算符" class="headerlink" title="14.4 赋值运算符"></a>14.4 赋值运算符</h4><p>赋值运算符<code>=</code>和符合赋值运算符<code>+=</code>，通常都定义为类的成员，并且都应该返回左侧运算对象的引用。</p>
-<h4 id="14-5-下标运算符"><a href="#14-5-下标运算符" class="headerlink" title="14.5 下标运算符"></a>14.5 下标运算符</h4><p>当我们需要按元素在容器中的位置访问元素时，通常定义一个下标运算符<code>operator[]</code>，必须是成员函数。通常会定义两个版本，一个返回普通引用，一个返回常量引用。</p>
-<h4 id="14-6-递增和递减运算符"><a href="#14-6-递增和递减运算符" class="headerlink" title="14.6 递增和递减运算符"></a>14.6 递增和递减运算符</h4><p>后置运算符接受一个额外的（不被使用）int类型的形参，当我们使用后置运算符时，编译器为这个形参提供一个值为0的实参<br>。前置运算符返回递增或者递减后的对象的引用，后置运算符返回对象的原值（即递增或递减之前的原值），返回的是一个值而非引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class StrBlobPtr&#123;</div><div class="line">    public:</div><div class="line">        StrBlobPtr&amp; operator++();  //前置递增运算符</div><div class="line">        StrBlobPtr&amp; operator++(int); //后置递增运算符</div><div class="line">&#125;</div><div class="line">...</div><div class="line">p.operator++(0); //显式的调用后置递增运算符</div><div class="line">p.operator++(); // 显式的调用前置递增运算符</div></pre></td></tr></table></figure></p>
-<h4 id="14-7-成员访问运算符"><a href="#14-7-成员访问运算符" class="headerlink" title="14.7 成员访问运算符"></a>14.7 成员访问运算符</h4><p>箭头运算符必须是类的成员，解引用运算符通常也是类的成员，即使并非必须这么做。<br>箭头运算符永远不能丢掉成员访问的这个基本含义，当我们重载箭头运算符时，可以改变的是从哪个对象中获取成员，而获取成员这一事实永远不变。<br>重载的箭头运算符必须返回类的指针或者自定义了箭头运算符的某个类的对象。</p>
-<h4 id="14-8-函数调用运算符"><a href="#14-8-函数调用运算符" class="headerlink" title="14.8 函数调用运算符"></a>14.8 函数调用运算符</h4><p>如果类重载了函数调用运算符，我们就可以像调用函数一样使用该类的对象。函数调用运算符必须是成员函数，一个类可以定义多个函数运算符，之间用参数的数量和类型进行区分。<br>函数对象通常作为泛型算法的实参<br>lambda表达式：当我们编写了一个lambda后，编译器将该表达式翻译成一个未命名类的未命名对象。在这个类中，含有一个重载的函数调用运算符。捕获的对象相当于类内含有数据成员。是否含有默认/移动构造函数通常视捕获的对象而定。<br>标准库定义了一组表示算数运算符、关系运算符和逻辑运算符的类，每个类分别定义了一个执行命名操作的调用运算符。<br>标准库规定其函数对象对于指针同样适用。eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vector&lt;string *&gt; nameTable;</div><div class="line">sort(nameTable.begin(),nameTable.end(),</div><div class="line">[](string *a,string *b)&#123;return a&lt;b&#125;);   //错误，nameTable中的指针之间没有关系，所以&lt;将产生未定义的行为</div><div class="line"></div><div class="line">sort(nameTable.begin(),nameTable.end(),less&lt;string* &gt;()); //正确</div></pre></td></tr></table></figure></p>
-<p>C++中的<strong>  可调用对象</strong>：函数、函数指针、lambda表达式、bind创建的对象、重载了函数调用运算符的类。可调用的对象也有类型。<br>不同类型可能具有相同的调用形式，可以定义一个<strong> 函数表</strong>用于存储指向这些可调用对象的“指针”。<br><strong> 标准库function类型</strong>：是一个模板，当创建具体的function类型时，需要我们提供额外的信息。eg：<code>function&lt;int (int,int)&gt;</code>表示接受2个int、返回1个int的可调用对象。不能直接将重载函数的名字存入function类型的对象中，可存储函数指针而不是函数的名字。</p>
-<h4 id="14-9-重载、类型转换与运算符"><a href="#14-9-重载、类型转换与运算符" class="headerlink" title="14.9 重载、类型转换与运算符"></a>14.9 重载、类型转换与运算符</h4><p><strong> 转换构造函数和类型转换运算符</strong>共同定义了类类型转换，有时也被称作用户定义的类型转换。<br><code>operator type() const; //type表示某种类型</code>因为类型转换运算符是隐式执行的，所以无法传递实参，也不能定义形参。为了避免具有误导性的类型转换，在不存在明显映射关系的时候，应不适用。<br>显式的类型转换运算符。eg:<code>explicit operator int() const;</code>当类型转换运算符是显式的，必须通过显式的强制类型转换才可以。<strong> 如果表达式被用作条件，编译器会显式的自动转换。</strong><br>无论我们什么时候在条件中使用了流对象，都会使用为IO类型定义operator bool。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">struct Integral&#123;</div><div class="line">    operator const int(); //将对象转换成 const int</div><div class="line">    operator int() const; //将对象转换成 int，用的相对较多</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>应该避免使用二义性的类型转换，总体原则：除了显式的向bool类型的转换外，应该尽量避免定义类型转换函数，并且尽可能限制某些看起来显然正确的显式构造函数。<br>错误eg：定义了两种将B类转换为A类的方法，一种使用B的类型转换运算符，一种使用A的以B为参数的构造函数。</p>
-<ul>
-<li>不要另两个类执行相同的类型转换。</li>
-<li>避免转换目标是内置算数类型的类型转换。<br>函数重载的类型匹配：当调用重载函数时，如果两个或多个用户定义的类型转换都提供了可行的匹配，那么这些类型转换被认为一样好。这意味着我们设计的不足。</li>
-</ul>
+<p>斐波那契数列是很常用的数列，也是很简单的递归能够解决的，但是当n稍微大一点的时候，复杂度都让人无法接受。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">long long Fi(int n)&#123;</div><div class="line">    if(n==0)</div><div class="line">        return 0;</div><div class="line">    if(n==1)</div><div class="line">        return 1;</div><div class="line">    return Fi(n-1)+Fi(n-2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样出现的问题主要是在递归的过程中会出现很多重复的计算，比如我们每次计算第n个的时候，都需要重新计算前面的n-1和n-2，这样每个值其实都会被计算两遍。简单的处理是：从下往上开始算，从第0个一直算到第n个。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int Fibonacci(int n) &#123;</div><div class="line">        if(n&lt;=0)</div><div class="line">            return 0;</div><div class="line">        if(n==1||n==2)</div><div class="line">            return 1;</div><div class="line">        int newNum=1;</div><div class="line">        int oneNum=1,twoNum=1;</div><div class="line">        for(int i=3;i&lt;=n;++i)&#123;</div><div class="line">            newNum=oneNum+twoNum;</div><div class="line">            oneNum=twoNum;</div><div class="line">            twoNum=newNum;</div><div class="line">        &#125;</div><div class="line">        return newNum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="T8：跳台阶"><a href="#T8：跳台阶" class="headerlink" title="T8：跳台阶"></a>T8：跳台阶</h4><blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+</blockquote>
+<p>该类问题其实就是斐波那契数列的应用：考虑第一次跳的情况，如果第一跳1级，那么后面就是n种情况，如果第一次跳2级，后面就是n-2种，于是：<code>f(n)=f(n-1)+f(n-2)</code>；同理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int jumpFloor(int number) &#123;</div><div class="line">        if(number&lt;=0)</div><div class="line">            return 0;</div><div class="line">        int result=0;</div><div class="line">        if(number==1)</div><div class="line">            return 1;</div><div class="line">        int first_step=1;</div><div class="line">        int second_step=1;</div><div class="line">        while(number&gt;=2)&#123;</div><div class="line">            --number;</div><div class="line">            result=first_step+second_step;</div><div class="line">            first_step=second_step;</div><div class="line">            second_step=result;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="T9：变态跳台阶"><a href="#T9：变态跳台阶" class="headerlink" title="T9：变态跳台阶"></a>T9：变态跳台阶</h4><blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+</blockquote>
+<p>同样的分析：1.把第n级和第n-1级看成一级，则有：f(n-1)种；2.把第n级和第n-1级分开，则到n-1级有：f(n-1)，n-1级到第n级只有一种，所以加起来是：2*f(n-1)<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int jumpFloorII(int number) &#123;</div><div class="line">        if(number&lt;=0)</div><div class="line">            return 0;</div><div class="line">        int result=1;</div><div class="line">        if(number==1)</div><div class="line">            return 1;</div><div class="line">        for(int i=1;i&lt;=number-1;++i)&#123;</div><div class="line">            result*=2;</div><div class="line">            &#125;</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -466,7 +453,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C++</a>
+            <a href="/tags/C-剑指offer-牛客网/" rel="tag"># C++ 剑指offer 牛客网</a>
           
         </div>
       
@@ -479,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/14/cpp/cpp-primer/《cpp primer》ch13/" rel="next" title="《c++primer》ch13 拷贝控制">
-                <i class="fa fa-chevron-left"></i> 《c++primer》ch13 拷贝控制
+              <a href="/2017/11/17/linux-learn-2/" rel="next" title="linux-learn-2">
+                <i class="fa fa-chevron-left"></i> linux-learn-2
               </a>
             
           </div>
@@ -488,10 +475,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/19/cpp/cpp-primer/ch15-notes/" rel="prev" title="《c++primer》ch15-面向对象程序设计">
-                《c++primer》ch15-面向对象程序设计 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -682,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ch14-重载运算与类型转化"><span class="nav-number">1.</span> <span class="nav-text">ch14 重载运算与类型转化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#14-1-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">14.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-2-输入输出运算符"><span class="nav-number">1.2.</span> <span class="nav-text">14.2 输入输出运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-3-算术和关系运算符"><span class="nav-number">1.3.</span> <span class="nav-text">14.3 算术和关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-4-赋值运算符"><span class="nav-number">1.4.</span> <span class="nav-text">14.4 赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-5-下标运算符"><span class="nav-number">1.5.</span> <span class="nav-text">14.5 下标运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-6-递增和递减运算符"><span class="nav-number">1.6.</span> <span class="nav-text">14.6 递增和递减运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-7-成员访问运算符"><span class="nav-number">1.7.</span> <span class="nav-text">14.7 成员访问运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-8-函数调用运算符"><span class="nav-number">1.8.</span> <span class="nav-text">14.8 函数调用运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-9-重载、类型转换与运算符"><span class="nav-number">1.9.</span> <span class="nav-text">14.9 重载、类型转换与运算符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#T7：斐波那契数列"><span class="nav-number">1.</span> <span class="nav-text">T7：斐波那契数列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T8：跳台阶"><span class="nav-number">2.</span> <span class="nav-text">T8：跳台阶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T9：变态跳台阶"><span class="nav-number">3.</span> <span class="nav-text">T9：变态跳台阶</span></a></li></ol></div>
             
 
           </div>

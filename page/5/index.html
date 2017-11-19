@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day13(String)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day15(集合类2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -304,7 +304,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/java/day13(String)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/java/day15(集合类2)/" itemprop="url">day5(面向对象2)</a></h1>
         
 
         <div class="post-meta">
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:32+08:00">
                 2017-09-09
               </time>
             
@@ -390,15 +390,175 @@
       
         
           
-          StringBuffer
-StringBuffer 是字符串缓冲区。是一个容器，
-而且长度是可变化的。
-可以操作多个数据类型。
-最终会通过toString方法变成字符串C（create）U（update）R（read）D（delete）1.存储StringBuffer append（）：将指定的数据作为参数添加到到已有数据的结尾处StringBuffer insert（index，数据）：可以将数
+          集合框架2
+##setset：无序，不可以重复元素。hashset：数据结构是哈希表，线程非同步的，保证元素唯一性的原理，判断元素的hashCode值是否相同。如果相同，判断equalsTreeSet：可以对set集合中的元素进行排序。底层数据结构是二叉树。保证元素唯一性的依据：compareTo return 0往TreeSet集合中存储自定义对象学生。想按照学生的年龄进行排序。记住：排序时，当
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/java/day13(String)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/java/day15(集合类2)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day19(IO流)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/09/java/day19(IO流)/" itemprop="url">day5(面向对象2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:31+08:00">
+                2017-09-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #IO流
+
+BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（）
+BufferedReader为了提高效率，加
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/09/java/day19(IO流)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -650,7 +810,7 @@ StringBuffer 是字符串缓冲区。是一个容器，
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
