@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-15T03:00:21.172Z</updated>
+  <updated>2017-11-17T01:12:40.275Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,23 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>STL-0</title>
-    <link href="http://yoursite.com/2017/11/15/STL-0/"/>
-    <id>http://yoursite.com/2017/11/15/STL-0/</id>
-    <published>2017-11-15T02:59:47.000Z</published>
-    <updated>2017-11-15T03:00:21.172Z</updated>
+    <title>linux-learn-2</title>
+    <link href="http://yoursite.com/2017/11/17/linux-learn-2/"/>
+    <id>http://yoursite.com/2017/11/17/linux-learn-2/</id>
+    <published>2017-11-17T01:09:42.000Z</published>
+    <updated>2017-11-17T01:12:40.275Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="STL简介"><a href="#STL简介" class="headerlink" title="STL简介"></a>STL简介</h4>]]></content>
+    <content type="html"><![CDATA[<h4 id="文件I-O"><a href="#文件I-O" class="headerlink" title="文件I/O"></a>文件I/O</h4><h5 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h5><h5 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h5><h5 id="open"><a href="#open" class="headerlink" title="open"></a>open</h5>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h4 id=&quot;STL简介&quot;&gt;&lt;a href=&quot;#STL简介&quot; class=&quot;headerlink&quot; title=&quot;STL简介&quot;&gt;&lt;/a&gt;STL简介&lt;/h4&gt;
+        &lt;h4 id=&quot;文件I-O&quot;&gt;&lt;a href=&quot;#文件I-O&quot; class=&quot;headerlink&quot; title=&quot;文件I/O&quot;&gt;&lt;/a&gt;文件I/O&lt;/h4&gt;&lt;h5 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引
       
     
     </summary>
     
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
@@ -73,18 +77,16 @@
     <link href="http://yoursite.com/2017/11/12/%E7%94%9F%E6%B4%BB/%E6%88%91%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/"/>
     <id>http://yoursite.com/2017/11/12/生活/我看的电影/</id>
     <published>2017-11-12T12:27:30.000Z</published>
-    <updated>2017-11-14T12:30:21.749Z</updated>
+    <updated>2017-11-19T11:34:07.264Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><h5 id="记录我看的电影"><a href="#记录我看的电影" class="headerlink" title="记录我看的电影"></a>记录我看的电影</h5><ul><li><a href="">幸福终点站</a></li><li><a href="">加勒比海盗</a></li><li><a href="">速度与激情8</a></li><li><a href="">百万美元宝贝( Million Dollor baby)</a></li><li><a href="">陪安东尼度过漫长岁月</a></li><li><a href="">看不见的客人</a></li><li><a href="">致命ID</a></li><li><a href="">雷神3</a></li><li><a href="">罗生门（日本）</a></li><li><a href="">心迷宫</a></li><li><a href="">情遇曼哈顿</a></li><li><a href="">复仇者联盟</a></li></ul><h5 id="记录看的电视剧"><a href="#记录看的电视剧" class="headerlink" title="记录看的电视剧"></a>记录看的电视剧</h5><blockquote><p>电视剧看的不多，但是一看就要看完啊。等不了啊</p></blockquote><ul><li><a href="">权力的游戏s7</a></li><li><a href="">白夜追凶</a></li><li><a href="">无证之罪</a></li><li><a href="">激战玄武门（纪录片）</a></li><li><a href="">Justice（公开课）</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="记录我看的电影"><a href="#记录我看的电影" class="headerlink" title="记录我看的电影"></a>记录我看的电影</h2><h3 id="东方快车谋杀案-1974"><a href="#东方快车谋杀案-1974" class="headerlink" title="东方快车谋杀案(1974)"></a>东方快车谋杀案(1974)</h3><p><a href="http://www.imdb.com/title/tt0071877/" target="_blank" rel="external">IMDI 7.3分</a> <strong> /</strong><a href="https://movie.douban.com/subject/1292699/" target="_blank" rel="external">豆瓣 8.3分</a><br>能拿奥斯卡的一般特性，就像一般艺术到最后所反映的，除了一个完整的故事，精彩的剧情，还有整个电影对人物、风情、地域以及社会环境等的刻画，传达人性或这个世界我们需要的思考。这种深度，国产电影离别人几十年前的电影都相差甚远。想起冯小刚说的，中国电影拍不好，是因为中国的观众不行，我觉得观众始终是很少的一部分，因为更多的时候、其实观众不知道他们喜欢的究竟是什么，因为更好看的永远在后面，这就是电影行业的责任了。<br>再说这个电影吧，剧情的丰富就不必说了，从开头的各种铺垫，让我们在看到各种人物性格，国家的特点等，产生各种怀疑的时候，案件就开始了，于是现在看起来有点搞笑的主人公就开始了表演，整个审问和查找线索的过程让人敬佩，直到慢慢开始跟着他产生新的怀疑。。<br>在主人公宣布结果之前，我也似乎猜到了一点，他最后给了大家选择，这是大家都希望的，看到大家开始香槟庆祝的时候，我不禁在想，这样的结果，究竟是应该的吗？如果这样的谋杀也可以，法律又怎么会进步。<br>说到这里，又不禁想起来最近的江歌的事件，我只是在新闻上看到了，对此也表示很遗憾。不过在网上却各种签名投票之类的沸沸扬扬，诚然，在这种时候我们需要帮助受害者的家人，也想让罪人得到应有的报应，但这样可能真的不是最好的办法。就像规则可能有时候会有缺陷，但是如果每次都因为特殊事件让它临时违背，那跟没有也没区别。</p><h3 id="幸福终点站-2004"><a href="#幸福终点站-2004" class="headerlink" title="幸福终点站(2004)"></a>幸福终点站(2004)</h3><p><a href="http://www.imdb.com/title/tt0362227/" target="_blank" rel="external">IMDI 7.3分</a> <strong> /</strong><a href="https://movie.douban.com/subject/1292274/" target="_blank" rel="external">豆瓣 8.6分</a></p><h3 id="加勒比海盗5：死无对证"><a href="#加勒比海盗5：死无对证" class="headerlink" title="加勒比海盗5：死无对证"></a>加勒比海盗5：死无对证</h3><p><a href="http://www.imdb.com/title/tt1790809/" target="_blank" rel="external">IMDI 6.7分</a> <strong> /</strong><a href="https://movie.douban.com/subject/6311303/" target="_blank" rel="external">豆瓣 7.2分</a></p><h3 id="速度与激情8"><a href="#速度与激情8" class="headerlink" title="速度与激情8"></a>速度与激情8</h3><p><a href="http://www.imdb.com/title/tt0362227/" target="_blank" rel="external">IMDI 6.8分</a> <strong> /</strong><a href="https://movie.douban.com/subject/26260853/" target="_blank" rel="external">豆瓣 7.1分</a></p><h3 id="百万美元宝贝-Million-Dollor-baby"><a href="#百万美元宝贝-Million-Dollor-baby" class="headerlink" title="百万美元宝贝( Million Dollor baby)"></a>百万美元宝贝( Million Dollor baby)</h3><h3 id="陪安东尼度过漫长岁月"><a href="#陪安东尼度过漫长岁月" class="headerlink" title="陪安东尼度过漫长岁月"></a>陪安东尼度过漫长岁月</h3><h3 id="看不见的客人"><a href="#看不见的客人" class="headerlink" title="看不见的客人"></a>看不见的客人</h3><p><a href="http://www.imdb.com/title/tt4857264/" target="_blank" rel="external">IMDI 8.1分</a> <strong> /</strong><a href="https://movie.douban.com/subject/26580232/" target="_blank" rel="external">豆瓣 8.7分</a></p><h3 id="致命ID"><a href="#致命ID" class="headerlink" title="致命ID"></a>致命ID</h3><h3 id="雷神3"><a href="#雷神3" class="headerlink" title="雷神3"></a>雷神3</h3><h3 id="罗生门（日本）"><a href="#罗生门（日本）" class="headerlink" title="罗生门（日本）"></a>罗生门（日本）</h3><h3 id="心迷宫"><a href="#心迷宫" class="headerlink" title="心迷宫"></a>心迷宫</h3><h3 id="情遇曼哈顿"><a href="#情遇曼哈顿" class="headerlink" title="情遇曼哈顿"></a>情遇曼哈顿</h3><h3 id="复仇者联盟"><a href="#复仇者联盟" class="headerlink" title="复仇者联盟"></a>复仇者联盟</h3><h2 id="记录看的电视剧"><a href="#记录看的电视剧" class="headerlink" title="记录看的电视剧"></a>记录看的电视剧</h2><blockquote><p>电视剧看的不多，但是一看就要看完啊。等不了啊</p></blockquote><h3 id="权力的游戏s7"><a href="#权力的游戏s7" class="headerlink" title="权力的游戏s7"></a>权力的游戏s7<a href=""></a></h3><h3 id="白夜追凶"><a href="#白夜追凶" class="headerlink" title="白夜追凶"></a>白夜追凶<a href=""></a></h3><h3 id="无证之罪"><a href="#无证之罪" class="headerlink" title="无证之罪"></a>无证之罪<a href=""></a></h3><h3 id="激战玄武门（纪录片）"><a href="#激战玄武门（纪录片）" class="headerlink" title="激战玄武门（纪录片）"></a>激战玄武门（纪录片）<a href=""></a></h3><h3 id="Justice（公开课）"><a href="#Justice（公开课）" class="headerlink" title="Justice（公开课）"></a>Justice（公开课）<a href=""></a></h3>]]></content>
     
     <summary type="html">
     
       
       
         &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h5 id=&quot;记录我看的电影&quot;&gt;&lt;a href=&quot;#记录我看的电影&quot; class=&quot;headerlink&quot; title=&quot;记录我看的电影&quot;&gt;&lt;/a&gt;记录我看的电影&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;幸福终点站&lt;/a&gt;&lt;/li&gt;
-
+&lt;h2 id=&quot;记录我看的电影&quot;&gt;&lt;a href=&quot;#记录我看的电影&quot; class=&quot;headerlink&quot; title=&quot;记录我看的电影&quot;&gt;&lt;/a&gt;记录我看的电影&lt;/h2&gt;&lt;h3 id=&quot;东方快车谋杀案-1974&quot;&gt;&lt;a href=&quot;#东方快
       
     
     </summary>
@@ -437,9 +439,9 @@
     <link href="http://yoursite.com/2017/09/10/%E5%B7%A5%E5%85%B7/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/09/10/工具/hexo使用总结/</id>
     <published>2017-09-09T16:24:59.000Z</published>
-    <updated>2017-11-14T12:56:50.247Z</updated>
+    <updated>2017-11-19T11:00:50.983Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Hexo的使用总结"><a href="#Hexo的使用总结" class="headerlink" title="Hexo的使用总结"></a>Hexo的使用总结</h3><blockquote><p>没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github始终是一个好的选择，于是入了Hexo的坑。。折腾的过程心情总是有些复杂，在激动和mmp之间徘徊，虽然很多问题在wiki和issue里都有，但还是想总结一下自己亲自踩的坑。</p></blockquote><a id="more"></a><h5 id="页面中文无法显示的问题"><a href="#页面中文无法显示的问题" class="headerlink" title="页面中文无法显示的问题"></a>页面中文无法显示的问题</h5><p>这种中文问题，基本上都是编码的问题，但是开始各种都没找到原因，改了language里面的配置文件，最后发现是文件的编码，需要改成’无bom的utf-8的编码格式 ‘</p><h5 id="主界面无法显示categories和tags的问题"><a href="#主界面无法显示categories和tags的问题" class="headerlink" title="主界面无法显示categories和tags的问题"></a>主界面无法显示categories和tags的问题</h5><p>这个问题真的是搞的有点久，因为基本上都被人忽略了，也可能很多人都没遇到而我恰好遇到了吧，不懂前端的我只能对于这种玄学问题强行百度了。<br>解决办法：将categories和tags目录下的index文件分别改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">categories:</div><div class="line">type: &quot;categories&quot;</div><div class="line">layout: &quot;categories&quot;</div><div class="line">tags:</div><div class="line">type: &quot;tags&quot;</div><div class="line">layout: &quot;tags&quot;</div></pre></td></tr></table></figure></p><p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。<br><strong> Reference: </strong><br><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">Next主题文档</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Hexo的使用总结"><a href="#Hexo的使用总结" class="headerlink" title="Hexo的使用总结"></a>Hexo的使用总结</h3><blockquote><p>没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github始终是一个好的选择，于是入了Hexo的坑。。折腾的过程心情总是有些复杂，在激动和mmp之间徘徊，虽然很多问题在wiki和issue里都有，但还是想总结一下自己亲自踩的坑。</p></blockquote><a id="more"></a><h5 id="页面中文无法显示的问题"><a href="#页面中文无法显示的问题" class="headerlink" title="页面中文无法显示的问题"></a>页面中文无法显示的问题</h5><p>这种中文问题，基本上都是编码的问题，但是开始各种都没找到原因，改了language里面的配置文件，最后发现是文件的编码，需要改成’无bom的utf-8的编码格式 ‘</p><h5 id="主界面无法显示categories和tags的问题"><a href="#主界面无法显示categories和tags的问题" class="headerlink" title="主界面无法显示categories和tags的问题"></a>主界面无法显示categories和tags的问题</h5><p>这个问题真的是搞的有点久，因为基本上都被人忽略了，也可能很多人都没遇到而我恰好遇到了吧，不懂前端的我只能对于这种玄学问题强行百度了。<br>解决办法：将categories和tags目录下的index文件分别改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">categories:</div><div class="line">type: &quot;categories&quot;</div><div class="line">layout: &quot;categories&quot;</div><div class="line">tags:</div><div class="line">type: &quot;tags&quot;</div><div class="line">layout: &quot;tags&quot;</div></pre></td></tr></table></figure></p><p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。</p><h5 id="绑定gitpages到自己的域名"><a href="#绑定gitpages到自己的域名" class="headerlink" title="绑定gitpages到自己的域名"></a>绑定gitpages到自己的域名</h5><p>打开<a href="https://education.github.com/" target="_blank" rel="external">学生包</a>，通过教育邮箱申请之后，可以在package中找到那么namecheap，注册通过GitHub进入，可以直接申请域名，会自动绑定到我们的gitpage，不过还需要一点点修改，就是把cname的www改成我们的gitpage页面，就可以了。。</p><h5 id="采用coding和gitpages双部署"><a href="#采用coding和gitpages双部署" class="headerlink" title="采用coding和gitpages双部署"></a>采用coding和gitpages双部署</h5><p>采用双部署的原因是国内访问github的速度有时候太感人了，有些人直接打不开，搞得有点尴尬，于是看到了网上所说的双部署，将默认的国内地址解析到coding的pages服务上，其他的绑定到gitpage上，这样国内的访问速度就快了。<br>具体的coding pages的搭建就不写了，在coding网站中建好仓库后，在我们本地的config文件后面的push repository 加上coding page仓库的地址就可以了。<br>具体的cname记录和A记录如下图：<br><a href=""></a><br><strong> Reference: </strong><br><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">Next主题文档</a><br><a href="http://blog.csdn.net/dengnanyi/article/details/53969684" target="_blank" rel="external">绑定到coding</a></p>]]></content>
     
     <summary type="html">
     
