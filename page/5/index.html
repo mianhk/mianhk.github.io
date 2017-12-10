@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day21(IO流3)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day12(多线程-进程间通信)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -313,7 +313,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/java/day21(IO流3)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/java/day12(多线程-进程间通信)/" itemprop="url">day5(面向对象2)</a></h1>
         
 
         <div class="post-meta">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:39+08:00">
-                2017-09-09
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-10T00:11:36+08:00">
+                2017-09-10
               </time>
             
           </span>
@@ -399,13 +399,15 @@
       
         
           
-          #IO流（3）
+          #多进程（二）
 
-对象的序列化管道流RandomAccessFile该类不是算是IO体系中子类，而是继承自Object。但是它是IO包中的成员，因为它具备读和写功能。颞部封装了一个数组，而且通过指针对数组的元素进行操作。可以通过getFilePointer获取指针位置。同时可以通过seek改变指针位置。其实完成读写的原理就是内部封装了字节输入流和输出流。通过构造函数可以看出，该类只能操作文件。而且
+1线程间通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。
+##2解决安全问题
+3等待唤醒机制wait  notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/java/day21(IO流3)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/java/day12(多线程-进程间通信)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -952,7 +954,7 @@ BufferedReader为了提高效率，加
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day10(异常包访问)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day11(多线程)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -971,7 +973,7 @@ BufferedReader为了提高效率，加
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/java/day10(异常包访问)/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/java/day11(多线程)/" itemprop="url">多线程</a></h1>
         
 
         <div class="post-meta">
@@ -999,8 +1001,8 @@ BufferedReader为了提高效率，加
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:03+08:00">
-                2017-09-09
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-10T00:11:42+08:00">
+                2017-09-10
               </time>
             
           </span>
@@ -1057,15 +1059,12 @@ BufferedReader为了提高效率，加
       
         
           
-          异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点：
-
-子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。
-如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。
-如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不
+          多线程
+进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。一个进程中至少有一个线程。java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。扩展：其实更细节说明jvm，jvm
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/java/day10(异常包访问)/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/java/day11(多线程)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
