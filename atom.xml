@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-10T13:57:38.301Z</updated>
+  <updated>2018-01-10T14:01:03.445Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-15-3Sum</title>
+    <link href="http://yoursite.com/2018/01/10/LeetCode-15-3Sum/"/>
+    <id>http://yoursite.com/2018/01/10/LeetCode-15-3Sum/</id>
+    <published>2018-01-10T13:57:08.000Z</published>
+    <updated>2018-01-10T14:01:03.445Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a>15. 3Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Note: The solution set must not contain duplicate triplets.</div><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure><p>同之前的2sum差不多，计算两个的和的方式是：为了避免重复，重新用一个set容器，解决重复的问题。但是这里的情况是，重复的一个数字是可以出现的，而且是三个数字相加的和，所以我们没法用之前的处理办法。<br>很容易想到的办法是，先让一个指针向前走，然后对之后的数字搜索，为了减少搜索的复杂度，我们可以先将数组进行排序，先排序后搜索，可以从<br><figure class="highlight plain"><figcaption><span>```的复杂度减小到```nlog(n) ```，所以采用先排序。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">然而这里需要注意的是，需要判断数组中有相同数字的情况。虽然结果中允许有相同的数字出现，但不允许出现完全相同的两个结果，所以需要处理这种情况。</div><div class="line">具体的代码如下：</div></pre></td></tr></table></figure></p><p>class Solution {<br>public:<br>    vector<vector<int>&gt; threeSum(vector<int>&amp; nums) {<br>        vector<vector<int>&gt; res;<br>        if(nums.size()&lt;=0)<br>            return res;<br>        sort(nums.begin(),nums.end());<br>        for(int i=0;i<nums.size()&&nums[i]<=0;++i){ int="" j="i+1,k=nums.size()-1;" while(j<k){="" if(nums[i]+nums[j]+nums[k]<0)="" j++;="" else="" if(nums[i]+nums[j]+nums[k]="">0)<br>                        –k;<br>                    else if(nums[i]+nums[j]+nums[k]==0){<br>                        vector<int> temp(3,0);<br>                        temp[0]=nums[i];<br>                        temp[1]=nums[j];<br>                        temp[2]=nums[k];<br>                        res.push_back(temp);<br>                        while(k&gt;j&amp;&amp;nums[k]==temp[2]) //去除k的重复<br>                            k–;<br>                        while(k&gt;j&amp;&amp;nums[j]==temp[1]) //去除j的重复<br>                            j++;<br>                    }<br>                }<br>                while(i+1&lt;nums.size()&amp;&amp;nums[i+1]==nums[i])  //去除i的重复<br>                    i++;<br>            }<br>        return res;<br>    }<br>};<br>```</int></nums.size()&&nums[i]<=0;++i){></vector<int></int></vector<int></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;15-3Sum&quot;&gt;&lt;a href=&quot;#15-3Sum&quot; class=&quot;headerlink&quot; title=&quot;15. 3Sum&quot;&gt;&lt;/a&gt;15. 3Sum&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Given an array S of n integers, are
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-15-3Sum</title>
@@ -269,6 +297,31 @@
   </entry>
   
   <entry>
+    <title>Linux学习-文件I/O</title>
+    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
+    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
+    <published>2017-11-12T11:33:00.000Z</published>
+    <updated>2018-01-03T12:47:15.303Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux学习1-Linux的基本命令（1）</title>
     <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-1/"/>
     <id>http://yoursite.com/2017/11/12/Linux/linux-learn-1/</id>
@@ -285,31 +338,6 @@
 &lt;p&gt;Linux的命令比较多，而且后台开发的时候基本操作服务器的时候都是采用命令行，当然不需要所有的都一次掌握，但是很多重要的用的多的还是需要掌握，不需要直接去记，还是需要多用才会熟练&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5 id=&quot;shell相关&quot;
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux学习-文件I/O</title>
-    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
-    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
-    <published>2017-11-12T11:33:00.000Z</published>
-    <updated>2018-01-03T12:47:15.303Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
       
     
     </summary>
@@ -515,34 +543,6 @@
       
         &lt;p&gt;泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。&lt;/p&gt;
 &lt;h4 id=&quot;16-1-定义模板&quot;&gt;&lt;a href=&quot;#16-1-定义模板&quot; class=&quot;headerlink&quot; title=&quot;16.1 
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《c++primer》ch15-面向对象程序设计</title>
-    <link href="http://yoursite.com/2017/09/19/cpp/cpp-primer/ch15-notes/"/>
-    <id>http://yoursite.com/2017/09/19/cpp/cpp-primer/ch15-notes/</id>
-    <published>2017-09-19T04:44:24.000Z</published>
-    <updated>2017-11-14T12:36:35.325Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。</p></blockquote><h4 id="15-1-OOP：概述"><a href="#15-1-OOP：概述" class="headerlink" title="15.1 OOP：概述"></a>15.1 OOP：概述</h4><h4 id="15-2-定义基类和派生类"><a href="#15-2-定义基类和派生类" class="headerlink" title="15.2 定义基类和派生类"></a>15.2 定义基类和派生类</h4><p>基类希望派生类进行覆盖的函数，通常将其定义为<strong> 虚函数</strong>，另一种是基类希望派生类继承但不要改变的函数。<br><code>protected</code>访问运算符：派生类可以访问，但是其他用户无法访问。<br>定义派生类：通过访问说明符控制派生类从基类继承而来的成员是否对派生类可见。<br>如果派生类没有覆盖其基类中的某个虚函数，则该虚函数的行为跟其他类一样，派生类会直接继承其在基类中的版本。<br>派生类到基类的转换。这可以让我们把派生类对象或者派生类对象的引用用在需要基类引用的地方，也可以把派生类指针用在需要基类指针的地方。但是，这里会出现一个问题，当我们使用基类的指针或者引用时，就不知道这个所绑定的对象到底是基类还是派生类了。<br>派生类构造函数。必须使用基类的构造函数初始化。（每个类控制自己的初始化过程。）<br>每个类定义各自的接口，派生类要遵循基类的接口。<br>如果基类中定义了静态成员，则在整个继承体系中只存在唯一的定义，不管定义了多少遍，都只存在唯一的实例。<br>对派生类的声明，不需要包含派生列表。<br>当我们不想让类被继承的时候，可以使用<code>final</code>关键字，跟在类名之后。<br>表达式的<strong> 静态类型</strong>在编译时是已知的，是变量声明时或者表达式生成式生成的类型。<strong> 动态类型</strong>则是变量或表达式表示的内存中的对象的类型。因此，基类的指针或引用的静态类型可能与动态类型不一致。<br>派生类向基类的自动类型转换只对指针和引用有效，在类型之间不存在这样的转换。当我们用一个派生类对象初始化或给一个基类对象赋值时，只有该派生类的对象中的基类部分会被拷贝、移动或赋值，派生类部分则会被忽略掉。</p><h4 id="15-3-虚函数"><a href="#15-3-虚函数" class="headerlink" title="15.3 虚函数"></a>15.3 虚函数</h4><p>我们必须为每一个虚函数提供定义，因为连编译器也无法确定到底使用的是哪一个虚函数。<br>如果我们在派生类中覆盖了某个虚函数时，可以再次使用<code>virtual</code>指出该函数的性质，但实际上并不一定要这么做。因为某个函数被声明成虚函数，则在所有的派生类中都是虚函数。</p><h4 id="15-4-抽象基类"><a href="#15-4-抽象基类" class="headerlink" title="15.4 抽象基类"></a>15.4 抽象基类</h4><p>在函数体声明的语句的分号前使用<code>=0</code>可以将一个函数声明为纯虚函数。<br>含有纯虚函数的类是抽象基类。抽象基类负责定义接口，后续的其他类负责覆盖该接口。我们不能直接创建一个抽象基类的对象。GCC的编译器中可能前面还是要加上<code>virtual</code><br><strong> 重构</strong>：重构负责重新设计类的体系以便将操作和/或数据从一个类移动到另一个类中。</p><h4 id="15-5-访问控制与继承"><a href="#15-5-访问控制与继承" class="headerlink" title="15.5 访问控制与继承"></a>15.5 访问控制与继承</h4><p>protected:对于类的用户来说是不可访问的，对于派生类的成员和友元来说是可访问的。但是只能通过<strong> 派生类对象</strong>来访问，<strong> 派生类</strong>对于一个基类中受保护的成员是无法访问的。<br>派生类向基类的转换：只有当D公有的继承B时，<strong> 用户代码</strong>才能使用基类向派生类的转换。无论D以什么方式继承B，D的成员函数和友元都能使用派生类向基类的转换。如果D继承B的方式是公有的或受保护的，则D的派生类可以使用D向B的类型转换。<br>友元关系不能继承。基类的友元在访问派生类成员时不具有特殊性，派生类的友元也不能随意访问基类的成员。<br>派生类可以使用<code>using</code>为那些可以访问的名字提供声明，以改变这些名字在它的派生类中的可访问性。</p><h4 id="15-6-继承中的类作用域"><a href="#15-6-继承中的类作用域" class="headerlink" title="15.6 继承中的类作用域"></a>15.6 继承中的类作用域</h4><p>每个类定义自己的作用域，当存在继承关系时，派生类的作用域嵌套在其基类的作用域之内。<br>当名字相同时，派生类的成员将隐藏基类的成员。基类可以通过<strong> 作用域运算符</strong>来使用隐藏的成员。一般情况下，我们应该不会这么使用，所以，平时继承类尽量不要覆盖继承而来的虚函数以外的基类的名字。<br><strong> 名字查找先于类型检查</strong>：如果派生类的成员与基类中的某个成员同名，则派生类将在其作用域内隐藏该基类成员。一旦编译器查找到名字后，不管形参列表是否相同，都不会再继续查找，这也是我们需要在覆盖虚函数时，保证形参列表是相同的。<br><code>using</code>声明语句指定一个名字而不是形参列表，所以我们在基类中使用一个<code>using</code>就可以把该函数的所有重载实例添加到派生类作用域中，派生类只需要定义特有的函数即可。</p><h4 id="15-7-构造函数与拷贝控制"><a href="#15-7-构造函数与拷贝控制" class="headerlink" title="15.7 构造函数与拷贝控制"></a>15.7 构造函数与拷贝控制</h4><p>位于继承体系中的类也需要控制当其对象执行一系列操作时发生怎样的行为：包括创建、移动、拷贝、赋值和销毁。<br>一般讲基类中的析构函数定义为虚函数，这样，继承体系中的派生类都会是虚析构函数，否则，若基类中的析构函数不是虚函数，则delete一个指向派生类对象的基类指针将产生未定义的行为。<br>虚析构函数将组织合成移动操作。<br>和普通成员的using声明不同，构造函数的using声明不会改变该构造函数的访问级别。<br>using声明语句不能指定explicit或constexpr。<br>当一个基类构造函数含有默认实参时，这些实参并不会被继承。派生类将获得多个继承的构造函数，其中每个构造函数分别省略掉一个含有默认实参的形参。</p><h4 id="15-8-容器与继承"><a href="#15-8-容器与继承" class="headerlink" title="15.8 容器与继承"></a>15.8 容器与继承</h4><p>容器不能直接存放继承体系中的对象，通常采用间接存储的方式。因为当我们把基类存储到一个容器中，当存入派生类对象，实际存入的只是派生类中基类的部分，显然不符合我们的需要。所以我们希望在具有继承关系的对象时，实际上存储的是基类的指针。（最好使用智能指针）</p><h4 id="15-9-文本查询程序再探"><a href="#15-9-文本查询程序再探" class="headerlink" title="15.9 文本查询程序再探"></a>15.9 文本查询程序再探</h4>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;15-1-OOP：概述&quot;&gt;&lt;a href=&quot;#15-1-OOP：概述&quot; class=&quot;head
       
     
     </summary>
