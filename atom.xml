@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-10T14:01:03.445Z</updated>
+  <updated>2018-01-11T12:53:19.236Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/01/10/LeetCode-15-3Sum/"/>
     <id>http://yoursite.com/2018/01/10/LeetCode-15-3Sum/</id>
     <published>2018-01-10T13:57:08.000Z</published>
-    <updated>2018-01-10T14:01:03.445Z</updated>
+    <updated>2018-01-11T12:53:19.236Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a>15. 3Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Note: The solution set must not contain duplicate triplets.</div><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure><p>同之前的2sum差不多，计算两个的和的方式是：为了避免重复，重新用一个set容器，解决重复的问题。但是这里的情况是，重复的一个数字是可以出现的，而且是三个数字相加的和，所以我们没法用之前的处理办法。<br>很容易想到的办法是，先让一个指针向前走，然后对之后的数字搜索，为了减少搜索的复杂度，我们可以先将数组进行排序，先排序后搜索，可以从<br><figure class="highlight plain"><figcaption><span>```的复杂度减小到```nlog(n) ```，所以采用先排序。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">然而这里需要注意的是，需要判断数组中有相同数字的情况。虽然结果中允许有相同的数字出现，但不允许出现完全相同的两个结果，所以需要处理这种情况。</div><div class="line">具体的代码如下：</div></pre></td></tr></table></figure></p><p>class Solution {<br>public:<br>    vector<vector<int>&gt; threeSum(vector<int>&amp; nums) {<br>        vector<vector<int>&gt; res;<br>        if(nums.size()&lt;=0)<br>            return res;<br>        sort(nums.begin(),nums.end());<br>        for(int i=0;i<nums.size()&&nums[i]<=0;++i){ int="" j="i+1,k=nums.size()-1;" while(j<k){="" if(nums[i]+nums[j]+nums[k]<0)="" j++;="" else="" if(nums[i]+nums[j]+nums[k]="">0)<br>                        –k;<br>                    else if(nums[i]+nums[j]+nums[k]==0){<br>                        vector<int> temp(3,0);<br>                        temp[0]=nums[i];<br>                        temp[1]=nums[j];<br>                        temp[2]=nums[k];<br>                        res.push_back(temp);<br>                        while(k&gt;j&amp;&amp;nums[k]==temp[2]) //去除k的重复<br>                            k–;<br>                        while(k&gt;j&amp;&amp;nums[j]==temp[1]) //去除j的重复<br>                            j++;<br>                    }<br>                }<br>                while(i+1&lt;nums.size()&amp;&amp;nums[i+1]==nums[i])  //去除i的重复<br>                    i++;<br>            }<br>        return res;<br>    }<br>};<br>```</int></nums.size()&&nums[i]<=0;++i){></vector<int></int></vector<int></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a>15. 3Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Note: The solution set must not contain duplicate triplets.</div><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure><p>同之前的2sum差不多，计算两个的和的方式是：为了避免重复，重新用一个set容器，解决重复的问题。但是这里的情况是，重复的一个数字是可以出现的，而且是三个数字相加的和，所以我们没法用之前的处理办法。<br>很容易想到的办法是，先让一个指针向前走，然后对之后的数字搜索，为了减少搜索的复杂度，我们可以先将数组进行排序，先排序后搜索，可以从 <figure class="highlight plain"><figcaption><span>```的复杂度减小到```nlog(n) ``` ，所以采用先排序。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">然而这里需要注意的是，需要判断数组中有相同数字的情况。虽然结果中允许有相同的数字出现，但不允许出现完全相同的两个结果，所以需要处理这种情况。</div><div class="line">具体的代码如下：</div></pre></td></tr></table></figure></p><p>class Solution {<br>public:<br>    vector<vector<int>&gt; threeSum(vector<int>&amp; nums) {<br>        vector<vector<int>&gt; res;<br>        if(nums.size()&lt;=0)<br>            return res;<br>        sort(nums.begin(),nums.end());<br>        for(int i=0;i<nums.size()&&nums[i]<=0;++i){ int="" j="i+1,k=nums.size()-1;" while(j<k){="" if(nums[i]+nums[j]+nums[k]<0)="" j++;="" else="" if(nums[i]+nums[j]+nums[k]="">0)<br>                        –k;<br>                    else if(nums[i]+nums[j]+nums[k]==0){<br>                        vector<int> temp(3,0);<br>                        temp[0]=nums[i];<br>                        temp[1]=nums[j];<br>                        temp[2]=nums[k];<br>                        res.push_back(temp);<br>                        while(k&gt;j&amp;&amp;nums[k]==temp[2]) //去除k的重复<br>                            k–;<br>                        while(k&gt;j&amp;&amp;nums[j]==temp[1]) //去除j的重复<br>                            j++;<br>                    }<br>                }<br>                while(i+1&lt;nums.size()&amp;&amp;nums[i+1]==nums[i])  //去除i的重复<br>                    i++;<br>            }<br>        return res;<br>    }<br>};<br>```</int></nums.size()&&nums[i]<=0;++i){></vector<int></int></vector<int></p>]]></content>
     
     <summary type="html">
     
@@ -45,13 +45,13 @@
   </entry>
   
   <entry>
-    <title>LeetCode-15-3Sum</title>
+    <title>LeetCode-15-3Sum&amp;&amp;4Sum</title>
     <link href="http://yoursite.com/2018/01/10/%E5%88%B7%E9%A2%98/LeetCode-15-3Sum/"/>
     <id>http://yoursite.com/2018/01/10/刷题/LeetCode-15-3Sum/</id>
     <published>2018-01-10T13:57:08.000Z</published>
-    <updated>2018-01-10T13:57:38.301Z</updated>
+    <updated>2018-01-11T12:57:17.386Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a>15. 3Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Note: The solution set must not contain duplicate triplets.</div><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure><p>同之前的2sum差不多，计算两个的和的方式是：为了避免重复，重新用一个set容器，解决重复的问题。但是这里的情况是，重复的一个数字是可以出现的，而且是三个数字相加的和，所以我们没法用之前的处理办法。<br>很容易想到的办法是，先让一个指针向前走，然后对之后的数字搜索，为了减少搜索的复杂度，我们可以先将数组进行排序，先排序后搜索，可以从<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">然而这里需要注意的是，需要判断数组中有相同数字的情况。虽然结果中允许有相同的数字出现，但不允许出现完全相同的两个结果，所以需要处理这种情况。</div><div class="line">具体的代码如下：</div></pre></td></tr></table></figure></p><p>class Solution {<br>public:<br>    vector<vector<int>&gt; threeSum(vector<int>&amp; nums) {<br>        vector<vector<int>&gt; res;<br>        if(nums.size()&lt;=0)<br>            return res;<br>        sort(nums.begin(),nums.end());<br>        for(int i=0;i<nums.size()&&nums[i]<=0;++i){ int="" j="i+1,k=nums.size()-1;" while(j<k){="" if(nums[i]+nums[j]+nums[k]<0)="" j++;="" else="" if(nums[i]+nums[j]+nums[k]="">0)<br>                        –k;<br>                    else if(nums[i]+nums[j]+nums[k]==0){<br>                        vector<int> temp(3,0);<br>                        temp[0]=nums[i];<br>                        temp[1]=nums[j];<br>                        temp[2]=nums[k];<br>                        res.push_back(temp);<br>                        while(k&gt;j&amp;&amp;nums[k]==temp[2]) //去除k的重复<br>                            k–;<br>                        while(k&gt;j&amp;&amp;nums[j]==temp[1]) //去除j的重复<br>                            j++;<br>                    }<br>                }<br>                while(i+1&lt;nums.size()&amp;&amp;nums[i+1]==nums[i])  //去除i的重复<br>                    i++;<br>            }<br>        return res;<br>    }<br>};<br>```</int></nums.size()&&nums[i]<=0;++i){></vector<int></int></vector<int></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a>15. 3Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Note: The solution set must not contain duplicate triplets.</div><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure><p>同之前的2sum差不多，计算两个的和的方式是：为了避免重复，重新用一个set容器，解决重复的问题。但是这里的情况是，重复的一个数字是可以出现的，而且是三个数字相加的和，所以我们没法用之前的处理办法。</p><p>很容易想到的办法是，先让一个指针向前走，然后对之后的数字搜索，为了减少搜索的复杂度，我们可以先将数组进行排序，先排序后搜索，可以从O(n^2)的复杂度减小到nlog(n)，所以采用先排序。</p><p>然而这里需要注意的是，需要判断数组中有相同数字的情况。虽然结果中允许有相同的数字出现，但不允许出现完全相同的两个结果，所以需要处理这种情况。<br>具体的代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; res;</div><div class="line">        if(nums.size()&lt;=0)</div><div class="line">            return res;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        for(int i=0;i&lt;nums.size()&amp;&amp;nums[i]&lt;=0;++i)&#123;</div><div class="line">            int j=i+1,k=nums.size()-1;</div><div class="line">            while(j&lt;k)&#123;</div><div class="line">                    if(nums[i]+nums[j]+nums[k]&lt;0)</div><div class="line">                        j++;</div><div class="line">                    else if(nums[i]+nums[j]+nums[k]&gt;0)</div><div class="line">                        --k;</div><div class="line">                    else if(nums[i]+nums[j]+nums[k]==0)&#123;</div><div class="line">                        vector&lt;int&gt; temp(3,0);</div><div class="line">                        temp[0]=nums[i];</div><div class="line">                        temp[1]=nums[j];</div><div class="line">                        temp[2]=nums[k];</div><div class="line">                        res.push_back(temp);</div><div class="line">                        while(k&gt;j&amp;&amp;nums[k]==temp[2]) //去除k的重复</div><div class="line">                            k--;</div><div class="line">                        while(k&gt;j&amp;&amp;nums[j]==temp[1]) //去除j的重复</div><div class="line">                            j++;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                while(i+1&lt;nums.size()&amp;&amp;nums[i+1]==nums[i])  //去除i的重复</div><div class="line">                    i++;</div><div class="line">            &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><h3 id="18-4Sum"><a href="#18-4Sum" class="headerlink" title="18. 4Sum"></a>18. 4Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p></blockquote><p><strong>Note </strong>: The solution set must not contain duplicate quadruplets.</p><p>其实跟前面的3sum解决的办法是一样的，无非这里为了减少一点复杂度，借用了一下大家使用的方法。，在每次遍历的时候进行一点判断，以减少循环的次数。代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;vector&lt;int&gt;&gt; fourSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; res;</div><div class="line">        int n=nums.size();</div><div class="line">        if(n&lt;4)</div><div class="line">            return res;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        for(int i=0;i&lt;n-3;++i)&#123;</div><div class="line">            if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) continue;</div><div class="line">            if(nums[i]+nums[i+1]+nums[i+2]+nums[i+3]&gt;target) break;</div><div class="line">            if(nums[i]+nums[n-1]+nums[n-2]+nums[n-3]&lt;target) continue;</div><div class="line">            for(int j=i+1;j&lt;nums.size()-2;++j)&#123;</div><div class="line">                if(j&gt;i+1&amp;&amp;nums[j]==nums[j-1]) continue;</div><div class="line">                if(nums[i]+nums[j]+nums[j+1]+nums[j+2]&gt;target) break;</div><div class="line">                if(nums[i]+nums[j]+nums[n-2]+nums[n-1]&lt;target) continue;</div><div class="line">                int begin=j+1,end=n-1;</div><div class="line">                while(begin&lt;end)&#123;</div><div class="line">                    int sum=nums[i]+nums[j]+nums[begin]+nums[end];</div><div class="line">                    if(sum&gt;target)</div><div class="line">                        --end;</div><div class="line">                    else if(sum&lt;target)</div><div class="line">                        ++begin;</div><div class="line">                    if(sum==target)&#123;</div><div class="line">                        vector&lt;int&gt; temp(4,0);</div><div class="line">                        temp[0]=nums[i];</div><div class="line">                        temp[1]=nums[j];</div><div class="line">                        temp[2]=nums[begin];</div><div class="line">                        temp[3]=nums[end];</div><div class="line">                        res.push_back(temp);</div><div class="line">                        while(begin&lt;end&amp;&amp;temp[2]==nums[begin])</div><div class="line">                            ++begin;</div><div class="line">                        while(begin&lt;end&amp;&amp;temp[3]==nums[end])</div><div class="line">                            --end;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">         return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -59,6 +59,33 @@
       
         &lt;h3 id=&quot;15-3Sum&quot;&gt;&lt;a href=&quot;#15-3Sum&quot; class=&quot;headerlink&quot; title=&quot;15. 3Sum&quot;&gt;&lt;/a&gt;15. 3Sum&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;Given an array S of n integers, are
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-8-String to Integer (atoi)</title>
+    <link href="http://yoursite.com/2018/01/09/LeetCode-8-String-to-Integer-atoi/"/>
+    <id>http://yoursite.com/2018/01/09/LeetCode-8-String-to-Integer-atoi/</id>
+    <published>2018-01-09T14:24:41.000Z</published>
+    <updated>2018-01-11T12:53:41.423Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8.String to Integer (atoi)"></a>8.String to Integer (atoi)</h3><blockquote><p>Implement atoi to convert a string to an integer.</p></blockquote><p>讲字符串转化为整型。当然过程很简单，但是需要考虑的乱七八糟的情况很多，空格和正负号之类的。提交了一百次，终于过了，但是看到别人的代码还是很气呀，还是得多写才行，但是起码写的慢慢有感觉了是吧。<br>总体思路基本都是差不多的：<br>1.循环字符串，从第一个开始不为空的字符开始判断，如果是正负号，则只能有一个正负号，进行标记，数字开始。<br>2.数字开始之后，出现空格或者字母，返回已经生成的整型。<br>3.当数字大于最大的整数或者小于最小的整数的时候，应该将其置为最大或者最小。所以这里应该将结果定义为long long int ，不然当加到INT_MAX的时候，会自动+1，置为INT_MIN，应该避免这样的情况。<br>这里贴一下自己改的乱七八糟的代码吧，实在很气呀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int myAtoi(string str) &#123;</div><div class="line">        int flag=1;</div><div class="line">        long long int res=0;</div><div class="line">        int begin=-1;</div><div class="line">        for(int i=0;i&lt;str.size();++i)&#123;</div><div class="line">            if(str[i]==&apos;-&apos;||str[i]==&apos;+&apos;)&#123;</div><div class="line">                if(begin!=-1)</div><div class="line">                    return 0;</div><div class="line">                begin=i;</div><div class="line">                flag=str[i]==&apos;-&apos;?-1:1;</div><div class="line">            &#125;</div><div class="line">            else if(str[i]&gt;=&apos;0&apos;&amp;&amp;str[i]&lt;=&apos;9&apos;)&#123;</div><div class="line">                begin=i;</div><div class="line">                res=res*10+str[i]-48;</div><div class="line">                if(res*flag&gt;INT_MAX)</div><div class="line">                    return INT_MAX;</div><div class="line">                if(res*flag&lt;INT_MIN)</div><div class="line">                    return INT_MIN;</div><div class="line">            &#125;</div><div class="line">            else if(str[i]==&apos; &apos;)&#123;</div><div class="line">                if(begin!=-1)</div><div class="line">                    return res*flag;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                return res*flag;</div><div class="line">        &#125;</div><div class="line">        return res*flag;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><p>提交一看，这个时间还有点问题，就懒得自己再改了，思路都是一样的吧，就直接贴过来学习一下了，即使我觉得写的也一般呀。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int myAtoi(string str) &#123;</div><div class="line">        int i = 0;</div><div class="line">        long long res = 0;</div><div class="line">        if(str.size() == 0)</div><div class="line">            return res;</div><div class="line"></div><div class="line">        while(i &lt; str.size() &amp;&amp; str[i] == &apos; &apos;)</div><div class="line">            i++;</div><div class="line"></div><div class="line">        int flag = 1;</div><div class="line">        if(str[i] == &apos;+&apos;)</div><div class="line">            i++;</div><div class="line">        else if(str[i] == &apos;-&apos;)</div><div class="line">        &#123;</div><div class="line">            flag = -1;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        while(str[i] &gt;= &apos;0&apos; &amp;&amp; str[i] &lt;= &apos;9&apos;)</div><div class="line">        &#123;</div><div class="line">            res = res * 10 + str[i] - &apos;0&apos;;</div><div class="line">            i++;</div><div class="line">        if(res * flag &gt;= INT_MAX)</div><div class="line">            return INT_MAX;</div><div class="line">        if(res * flag &lt;= INT_MIN)</div><div class="line">            return INT_MIN;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        return res * flag;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;8-String-to-Integer-atoi&quot;&gt;&lt;a href=&quot;#8-String-to-Integer-atoi&quot; class=&quot;headerlink&quot; title=&quot;8.String to Integer (atoi)&quot;&gt;&lt;/a&gt;8.String to 
       
     
     </summary>
@@ -297,31 +324,6 @@
   </entry>
   
   <entry>
-    <title>Linux学习-文件I/O</title>
-    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
-    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
-    <published>2017-11-12T11:33:00.000Z</published>
-    <updated>2018-01-03T12:47:15.303Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux学习1-Linux的基本命令（1）</title>
     <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-1/"/>
     <id>http://yoursite.com/2017/11/12/Linux/linux-learn-1/</id>
@@ -338,6 +340,31 @@
 &lt;p&gt;Linux的命令比较多，而且后台开发的时候基本操作服务器的时候都是采用命令行，当然不需要所有的都一次掌握，但是很多重要的用的多的还是需要掌握，不需要直接去记，还是需要多用才会熟练&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5 id=&quot;shell相关&quot;
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux学习-文件I/O</title>
+    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
+    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
+    <published>2017-11-12T11:33:00.000Z</published>
+    <updated>2018-01-03T12:47:15.303Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
       
     
     </summary>
@@ -525,32 +552,6 @@
     
     
       <category term="杂想" scheme="http://yoursite.com/tags/%E6%9D%82%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《c++primer》ch16 模板与泛型编程</title>
-    <link href="http://yoursite.com/2017/09/19/cpp/cpp-primer/ch16-notes/"/>
-    <id>http://yoursite.com/2017/09/19/cpp/cpp-primer/ch16-notes/</id>
-    <published>2017-09-19T04:47:04.000Z</published>
-    <updated>2017-11-14T12:36:54.894Z</updated>
-    
-    <content type="html"><![CDATA[<p>泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。</p><h4 id="16-1-定义模板"><a href="#16-1-定义模板" class="headerlink" title="16.1 定义模板"></a>16.1 定义模板</h4><p>模板程序应该尽量减少对实参类型的要求。<br>模板的头文件通常包括声明和定义。<br>模板直到实例化时才生成代码。<br>泛型编程的一个目标就是另算法是“通用的”-适合于不同类型。所有标准库容器都定义了<code>==</code>和<code>!=</code>，但只有少数定义了<code>&lt;</code>运算符。因此尽量使用<code>!=</code>而不是<code>&lt;</code>。<br><strong> 类模板</strong>用来生成类的蓝图，一个类模板的每个实例都形成一个独立的类。默认情况下，对于一个实例化了的类模板，其成员只有在使用时才被实例化。在类模板的作用域类，我们可以直接使用模板名而不必指定模板实参。<br>如果一个类模板包含一个非模板友元，则友元被授权可以访问所有模板实例。如果友元自身是模板，类可以授权给 所有友元模板实例，也可以只授权给特定实例。<br>当我们希望通知编译器一个名字表示类型时，必须使用关键字<code>typename</code>，而不能使用<code>class</code>。<br><strong> 成员模板</strong>：一个类（不管是模板类还是普通类）可以包含本身是模板的成员函数。这些成员函数被称为成员模板。成员模板不能是虚函数。<br>控制实例化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">extern template class Blob&lt;string&gt;;  //声明，遇到extern模板声明时，编译器不会在本文件中生成实例化代码。，对于一个给定的实例化版本，可以有多个extern声明，但只能有一个定义。</div><div class="line">template int compare(const int&amp;,const int&amp;); //定义</div></pre></td></tr></table></figure></p><h4 id="16-2-模板实参推断"><a href="#16-2-模板实参推断" class="headerlink" title="16.2 模板实参推断"></a>16.2 模板实参推断</h4><p>将实参传递给带模板类型的函数形参时，能够自动应用的类型转换只有const转换及数组或函数到指针的转换。<br>一个模板类型参数可以用作多个函数形参的类型。由于只允许有限的几种类型转换，因此传递给这些形参的实参必须具有相同的类型。<br>如果函数参数类型不是模板参数，则可以进行正常的类型转换。<br><strong> 显式模板实参</strong>按由左至右的顺序与对应的模板参数匹配。</p><h4 id="16-3-重载与模板"><a href="#16-3-重载与模板" class="headerlink" title="16.3 重载与模板"></a>16.3 重载与模板</h4><h4 id="16-4-可变参数模板"><a href="#16-4-可变参数模板" class="headerlink" title="16.4 可变参数模板"></a>16.4 可变参数模板</h4><h4 id="16-5-模板特例化"><a href="#16-5-模板特例化" class="headerlink" title="16.5 模板特例化"></a>16.5 模板特例化</h4>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。&lt;/p&gt;
-&lt;h4 id=&quot;16-1-定义模板&quot;&gt;&lt;a href=&quot;#16-1-定义模板&quot; class=&quot;headerlink&quot; title=&quot;16.1 
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
