@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-11T12:53:19.236Z</updated>
+  <updated>2018-01-12T09:28:43.262Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,101 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>LeetCode-15-3Sum</title>
-    <link href="http://yoursite.com/2018/01/10/LeetCode-15-3Sum/"/>
-    <id>http://yoursite.com/2018/01/10/LeetCode-15-3Sum/</id>
-    <published>2018-01-10T13:57:08.000Z</published>
-    <updated>2018-01-11T12:53:19.236Z</updated>
+    <title>LeetCode-32-Longest-Valid-Parentheses</title>
+    <link href="http://yoursite.com/2018/01/12/LeetCode-32-Longest-Valid-Parentheses/"/>
+    <id>http://yoursite.com/2018/01/12/LeetCode-32-Longest-Valid-Parentheses/</id>
+    <published>2018-01-12T09:28:31.000Z</published>
+    <updated>2018-01-12T09:28:43.262Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a>15. 3Sum</h3><blockquote><p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Note: The solution set must not contain duplicate triplets.</div><div class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</div><div class="line"></div><div class="line">A solution set is:</div><div class="line">[</div><div class="line">  [-1, 0, 1],</div><div class="line">  [-1, -1, 2]</div><div class="line">]</div></pre></td></tr></table></figure><p>同之前的2sum差不多，计算两个的和的方式是：为了避免重复，重新用一个set容器，解决重复的问题。但是这里的情况是，重复的一个数字是可以出现的，而且是三个数字相加的和，所以我们没法用之前的处理办法。<br>很容易想到的办法是，先让一个指针向前走，然后对之后的数字搜索，为了减少搜索的复杂度，我们可以先将数组进行排序，先排序后搜索，可以从 <figure class="highlight plain"><figcaption><span>```的复杂度减小到```nlog(n) ``` ，所以采用先排序。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">然而这里需要注意的是，需要判断数组中有相同数字的情况。虽然结果中允许有相同的数字出现，但不允许出现完全相同的两个结果，所以需要处理这种情况。</div><div class="line">具体的代码如下：</div></pre></td></tr></table></figure></p><p>class Solution {<br>public:<br>    vector<vector<int>&gt; threeSum(vector<int>&amp; nums) {<br>        vector<vector<int>&gt; res;<br>        if(nums.size()&lt;=0)<br>            return res;<br>        sort(nums.begin(),nums.end());<br>        for(int i=0;i<nums.size()&&nums[i]<=0;++i){ int="" j="i+1,k=nums.size()-1;" while(j<k){="" if(nums[i]+nums[j]+nums[k]<0)="" j++;="" else="" if(nums[i]+nums[j]+nums[k]="">0)<br>                        –k;<br>                    else if(nums[i]+nums[j]+nums[k]==0){<br>                        vector<int> temp(3,0);<br>                        temp[0]=nums[i];<br>                        temp[1]=nums[j];<br>                        temp[2]=nums[k];<br>                        res.push_back(temp);<br>                        while(k&gt;j&amp;&amp;nums[k]==temp[2]) //去除k的重复<br>                            k–;<br>                        while(k&gt;j&amp;&amp;nums[j]==temp[1]) //去除j的重复<br>                            j++;<br>                    }<br>                }<br>                while(i+1&lt;nums.size()&amp;&amp;nums[i+1]==nums[i])  //去除i的重复<br>                    i++;<br>            }<br>        return res;<br>    }<br>};<br>```</int></nums.size()&&nums[i]<=0;++i){></vector<int></int></vector<int></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="LeetCode-32-Longest-Valid-Parentheses"><a href="#LeetCode-32-Longest-Valid-Parentheses" class="headerlink" title="LeetCode-32-Longest-Valid-Parentheses"></a>LeetCode-32-Longest-Valid-Parentheses</h3><blockquote><p>Given a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.<br>For “(()”, the longest valid parentheses substring is “()”, which has length = 2.<br>Another example is “)()())”, where the longest valid parentheses substring is “()()”, which has length = 4.</p></blockquote><p>表示这是一道没有看懂题目的题，看到题目的难度是hard，但是自己的想法很简答，以为直接一个栈就可以了。。 too young啊</p><p>提交之后才知道，原来还要解决类似<code>()((()))</code>这类问题，所以这是一个动态规划的问题啊。<br>昨天看了一下动态规划，我们首先要构建D数组，如下所示的<code>vector longest</code>，负责存下当前第i个的长度。需要考虑的情况如下。<br>只有当s[i]为<code>)</code>时，才需要判断，如果它的左边是<code>(</code>或者<code>)</code>的情况。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int longestValidParentheses(string s) &#123;</div><div class="line">        if(s.length()&lt;=1)</div><div class="line">            return 0;</div><div class="line">        vector&lt;int &gt; longest(s.size(),0);</div><div class="line">        int curMax=0;</div><div class="line">        for(int i=1;i&lt;s.length();++i)&#123;</div><div class="line">            if(s[i]==&apos;)&apos;)&#123;</div><div class="line">                if(s[i-1]==&apos;(&apos;)&#123;</div><div class="line">                    longest[i]=(i-2&gt;=0?(longest[i-2]+2):2);</div><div class="line">                    curMax=curMax&gt;longest[i]?curMax:longest[i];</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    if(i-longest[i-1]-1&gt;=0&amp;&amp;s[i-longest[i-1]-1]==&apos;(&apos;)&#123;</div><div class="line">                        longest[i]=longest[i-1]+2+((i-longest[i-1]-2&gt;=0)?longest[i-longest[i-1]-2]:0);</div><div class="line">                        curMax=curMax&gt;longest[i]?curMax:longest[i];</div><div class="line">                    &#125;</div><div class="line">            &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return curMax;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;15-3Sum&quot;&gt;&lt;a href=&quot;#15-3Sum&quot; class=&quot;headerlink&quot; title=&quot;15. 3Sum&quot;&gt;&lt;/a&gt;15. 3Sum&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;Given an array S of n integers, are
+        &lt;h3 id=&quot;LeetCode-32-Longest-Valid-Parentheses&quot;&gt;&lt;a href=&quot;#LeetCode-32-Longest-Valid-Parentheses&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-32-Longes
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-31-Next-Permutation</title>
+    <link href="http://yoursite.com/2018/01/12/LeetCode-31-Next-Permutation/"/>
+    <id>http://yoursite.com/2018/01/12/LeetCode-31-Next-Permutation/</id>
+    <published>2018-01-12T09:26:20.000Z</published>
+    <updated>2018-01-12T09:28:10.982Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-31-Next-Permutation"><a href="#LeetCode-31-Next-Permutation" class="headerlink" title="LeetCode-31-Next-Permutation"></a>LeetCode-31-Next-Permutation</h3><blockquote><p>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.<br>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).<br>The replacement must be in-place, do not allocate extra memory.</p></blockquote><p>这个排序主要是有两种情况，一个是类似于<code>3 1 2</code>这样的情况，直接从后往前找到第一个<code>nums[i]&lt;nums[i-1]</code>的，然后把<code>i</code>记下来，再与后面第一个小于<code>i</code>的<code>k</code>调换顺序之后，对<code>i</code>后面的进行反转排序就好了。<br>另一种情况是：已经反转成功了，类似<code>3 2 1</code>，需要直接置为最开始的状态，处理方式是，依旧从后往前找<code>i</code>,如果没有找到的话，就可以直接将序列反转即可。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        int k=-1;</div><div class="line">        for(int i=nums.size()-2;i&gt;=0;--i)&#123;</div><div class="line">            if(nums[i]&lt;nums[i+1])&#123;</div><div class="line">                k=i;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(k==-1)&#123;</div><div class="line">            reverse(nums.begin(),nums.end());</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        int l=0;</div><div class="line">        for(int i=nums.size()-1;i&gt;k;--i)&#123;</div><div class="line">            if(nums[i]&gt;nums[k])&#123;</div><div class="line">                l=i;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        swap(nums[l],nums[k]);</div><div class="line">        reverse(nums.begin()+k+1,nums.end());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-31-Next-Permutation&quot;&gt;&lt;a href=&quot;#LeetCode-31-Next-Permutation&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-31-Next-Permutation&quot;&gt;&lt;/a&gt;Le
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-19-Remove-Nth-Node-From-End-of-List</title>
+    <link href="http://yoursite.com/2018/01/12/LeetCode-19-Remove-Nth-Node-From-End-of-List/"/>
+    <id>http://yoursite.com/2018/01/12/LeetCode-19-Remove-Nth-Node-From-End-of-List/</id>
+    <published>2018-01-12T09:25:23.000Z</published>
+    <updated>2018-01-12T09:26:00.647Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Given a linked list, remove the nth node from the end of list and return its head.<br>For example,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</div><div class="line"></div><div class="line">   After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</div></pre></td></tr></table></figure></p></blockquote><p>这个题目之前在剑指offer上就有，记得当时的方法是：采用两个指针，首先判断n的大小是否比链表的长度要大，大的话直接返回。否则采用一前一后两个指针，两个指针相差n，当前面的指针到链表末尾时，后面的指针所在的位置就是要删除的位置了。</p><p>当然，这是个很好的方法，不过看了一下后面的答案，以及前天看到的一个有点不是很明白的一个答案，才知道大家都用的是二级指针，二级指针的好处是，可以直接记住链表的头节点，而不至于总是去判断。这样显得对指针的理解就不一样了。可以看看下面的这篇文章。</p><p><a href="http://blogread.cn/it/article/6243?f=wb" target="_blank" rel="external">Linus：利用二级指针删除单向链表</a></p><p>下面是代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;</div><div class="line">        ListNode **t1=&amp;head,*t2=head; //这样head一直指向的是头节点</div><div class="line">        for(int i=0;i&lt;n;++i)&#123;</div><div class="line">            t2=t2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while(t2!=nullptr)&#123;</div><div class="line">            t1=&amp;((*t1)-&gt;next);</div><div class="line">            t2=t2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        *t1=(*t1)-&gt;next; //删除找到的节点</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><p>无奈每次提交总是有群禽兽比我的快那么多啊，我的12ms，别人的6ms。。</p><p>不过别人的代码一看好像也还好，思路都是差不多的，就是一些细节的地方注意的比较好，看来还得好好弄啊。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;</div><div class="line">        int counter = 0;</div><div class="line">        if(!head || !n) &#123;</div><div class="line">            return head;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ListNode *p = head;</div><div class="line">        ListNode **pp = &amp;head;</div><div class="line">        while(p &amp;&amp; n) &#123;</div><div class="line">            p = p-&gt;next;</div><div class="line">            n--;</div><div class="line">        &#125;</div><div class="line">        while(p) &#123;</div><div class="line">            p = p-&gt;next;</div><div class="line">            pp = &amp;((*pp)-&gt;next);</div><div class="line">        &#125;</div><div class="line">        ListNode *temp = *pp;</div><div class="line">        *pp = temp-&gt;next;</div><div class="line">        delete(temp);</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Given a linked list, remove the nth node from the end of list and return its head.&lt;br&gt;For example,&lt;br&gt;&lt;figure class=&quot;highlig
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-23-Merge-k-Sorted-Lists</title>
+    <link href="http://yoursite.com/2018/01/11/%E5%88%B7%E9%A2%98/LeetCode-23-Merge-k-Sorted-Lists/"/>
+    <id>http://yoursite.com/2018/01/11/刷题/LeetCode-23-Merge-k-Sorted-Lists/</id>
+    <published>2018-01-11T14:23:23.000Z</published>
+    <updated>2018-01-11T14:24:55.824Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a>23. Merge k Sorted Lists</h3><blockquote><p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p></blockquote><p>这个题乍一看只是对链表的一个排序，因为是很多个链表，所以很简单的想法就是将整个数组里面的两个链表分别进行排序。两个两个互相排序之后就能排好。这里用的是递归。当vector中的元素大于1说明还没有排完。<br>直接一下就AC了，但是一看detail，果然时间有点长。运行时间内93ms，看到别人的只需要20+。。<br>还是先记一下自己的代码 吧。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* merge2List(ListNode* lList,ListNode* rList)&#123;</div><div class="line">        if(lList==nullptr)</div><div class="line">            return rList;</div><div class="line">        if(rList==nullptr)</div><div class="line">            return lList;</div><div class="line">        if(lList-&gt;val&lt;rList-&gt;val)&#123;</div><div class="line">            lList-&gt;next=merge2List(lList-&gt;next,rList);</div><div class="line">            return lList;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            rList-&gt;next=merge2List(lList,rList-&gt;next);</div><div class="line">            return rList;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) &#123;</div><div class="line">        if(lists.size()==0)</div><div class="line">            return nullptr;</div><div class="line">        while(lists.size()&gt;1)&#123;</div><div class="line">            lists.push_back(merge2List(lists[0],lists[1]));</div><div class="line">            lists.erase(lists.begin());</div><div class="line">            lists.erase(lists.begin());</div><div class="line">        &#125;</div><div class="line">        return lists[0];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p> 看了一下别人的代码，用了优先队列，进行排序，没有重新写了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">    class Cmp</div><div class="line">    &#123;</div><div class="line">    public:</div><div class="line">        bool operator() (ListNode *a, ListNode *b) const</div><div class="line">        &#123;</div><div class="line">            return a-&gt;val &gt; b-&gt;val;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">public:</div><div class="line">    ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) &#123;</div><div class="line">        priority_queue&lt;ListNode *, vector&lt;ListNode *&gt;, Cmp&gt; pq;</div><div class="line">        ListNode *head = NULL;</div><div class="line">        ListNode *cur = NULL;</div><div class="line">        int k = lists.size();</div><div class="line">        if(k == 0)</div><div class="line">        &#123;</div><div class="line">            return NULL;</div><div class="line">        &#125;</div><div class="line">        for(ListNode *list: lists)</div><div class="line">        &#123;</div><div class="line">            if(list != NULL)</div><div class="line">            &#123;</div><div class="line">                pq.push(list);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        while( !pq.empty() )</div><div class="line">        &#123;</div><div class="line">            ListNode *next = pq.top();</div><div class="line">            pq.pop();</div><div class="line">            if(next-&gt;next != NULL)</div><div class="line">            &#123;</div><div class="line">                pq.push(next-&gt;next);</div><div class="line">            &#125;</div><div class="line">            next-&gt;next = NULL;</div><div class="line">            if(head == NULL)</div><div class="line">            &#123;</div><div class="line">                head = next;</div><div class="line">                cur = head;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">                cur-&gt;next = next;</div><div class="line">                cur = cur-&gt;next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;23-Merge-k-Sorted-Lists&quot;&gt;&lt;a href=&quot;#23-Merge-k-Sorted-Lists&quot; class=&quot;headerlink&quot; title=&quot;23. Merge k Sorted Lists&quot;&gt;&lt;/a&gt;23. Merge k Sort
       
     
     </summary>
@@ -59,33 +140,6 @@
       
         &lt;h3 id=&quot;15-3Sum&quot;&gt;&lt;a href=&quot;#15-3Sum&quot; class=&quot;headerlink&quot; title=&quot;15. 3Sum&quot;&gt;&lt;/a&gt;15. 3Sum&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;Given an array S of n integers, are
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-8-String to Integer (atoi)</title>
-    <link href="http://yoursite.com/2018/01/09/LeetCode-8-String-to-Integer-atoi/"/>
-    <id>http://yoursite.com/2018/01/09/LeetCode-8-String-to-Integer-atoi/</id>
-    <published>2018-01-09T14:24:41.000Z</published>
-    <updated>2018-01-11T12:53:41.423Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8.String to Integer (atoi)"></a>8.String to Integer (atoi)</h3><blockquote><p>Implement atoi to convert a string to an integer.</p></blockquote><p>讲字符串转化为整型。当然过程很简单，但是需要考虑的乱七八糟的情况很多，空格和正负号之类的。提交了一百次，终于过了，但是看到别人的代码还是很气呀，还是得多写才行，但是起码写的慢慢有感觉了是吧。<br>总体思路基本都是差不多的：<br>1.循环字符串，从第一个开始不为空的字符开始判断，如果是正负号，则只能有一个正负号，进行标记，数字开始。<br>2.数字开始之后，出现空格或者字母，返回已经生成的整型。<br>3.当数字大于最大的整数或者小于最小的整数的时候，应该将其置为最大或者最小。所以这里应该将结果定义为long long int ，不然当加到INT_MAX的时候，会自动+1，置为INT_MIN，应该避免这样的情况。<br>这里贴一下自己改的乱七八糟的代码吧，实在很气呀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int myAtoi(string str) &#123;</div><div class="line">        int flag=1;</div><div class="line">        long long int res=0;</div><div class="line">        int begin=-1;</div><div class="line">        for(int i=0;i&lt;str.size();++i)&#123;</div><div class="line">            if(str[i]==&apos;-&apos;||str[i]==&apos;+&apos;)&#123;</div><div class="line">                if(begin!=-1)</div><div class="line">                    return 0;</div><div class="line">                begin=i;</div><div class="line">                flag=str[i]==&apos;-&apos;?-1:1;</div><div class="line">            &#125;</div><div class="line">            else if(str[i]&gt;=&apos;0&apos;&amp;&amp;str[i]&lt;=&apos;9&apos;)&#123;</div><div class="line">                begin=i;</div><div class="line">                res=res*10+str[i]-48;</div><div class="line">                if(res*flag&gt;INT_MAX)</div><div class="line">                    return INT_MAX;</div><div class="line">                if(res*flag&lt;INT_MIN)</div><div class="line">                    return INT_MIN;</div><div class="line">            &#125;</div><div class="line">            else if(str[i]==&apos; &apos;)&#123;</div><div class="line">                if(begin!=-1)</div><div class="line">                    return res*flag;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                return res*flag;</div><div class="line">        &#125;</div><div class="line">        return res*flag;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><p>提交一看，这个时间还有点问题，就懒得自己再改了，思路都是一样的吧，就直接贴过来学习一下了，即使我觉得写的也一般呀。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int myAtoi(string str) &#123;</div><div class="line">        int i = 0;</div><div class="line">        long long res = 0;</div><div class="line">        if(str.size() == 0)</div><div class="line">            return res;</div><div class="line"></div><div class="line">        while(i &lt; str.size() &amp;&amp; str[i] == &apos; &apos;)</div><div class="line">            i++;</div><div class="line"></div><div class="line">        int flag = 1;</div><div class="line">        if(str[i] == &apos;+&apos;)</div><div class="line">            i++;</div><div class="line">        else if(str[i] == &apos;-&apos;)</div><div class="line">        &#123;</div><div class="line">            flag = -1;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        while(str[i] &gt;= &apos;0&apos; &amp;&amp; str[i] &lt;= &apos;9&apos;)</div><div class="line">        &#123;</div><div class="line">            res = res * 10 + str[i] - &apos;0&apos;;</div><div class="line">            i++;</div><div class="line">        if(res * flag &gt;= INT_MAX)</div><div class="line">            return INT_MAX;</div><div class="line">        if(res * flag &lt;= INT_MIN)</div><div class="line">            return INT_MIN;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        return res * flag;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;8-String-to-Integer-atoi&quot;&gt;&lt;a href=&quot;#8-String-to-Integer-atoi&quot; class=&quot;headerlink&quot; title=&quot;8.String to Integer (atoi)&quot;&gt;&lt;/a&gt;8.String to 
       
     
     </summary>
@@ -155,8 +209,8 @@
   
   <entry>
     <title>牛客网-剑指offer-11</title>
-    <link href="http://yoursite.com/2017/12/03/%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%89%91%E6%8C%87offer-11/"/>
-    <id>http://yoursite.com/2017/12/03/牛客网-剑指offer-11/</id>
+    <link href="http://yoursite.com/2017/12/03/%E5%88%B7%E9%A2%98/%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%89%91%E6%8C%87offer-11/"/>
+    <id>http://yoursite.com/2017/12/03/刷题/牛客网-剑指offer-11/</id>
     <published>2017-12-03T12:44:21.000Z</published>
     <updated>2017-12-03T14:00:32.524Z</updated>
     
@@ -185,8 +239,8 @@
   
   <entry>
     <title>牛客网-剑指offer-10</title>
-    <link href="http://yoursite.com/2017/12/01/%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%89%91%E6%8C%87offer-10/"/>
-    <id>http://yoursite.com/2017/12/01/牛客网-剑指offer-10/</id>
+    <link href="http://yoursite.com/2017/12/01/%E5%88%B7%E9%A2%98/%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%89%91%E6%8C%87offer-10/"/>
+    <id>http://yoursite.com/2017/12/01/刷题/牛客网-剑指offer-10/</id>
     <published>2017-12-01T13:11:56.000Z</published>
     <updated>2017-12-03T14:00:30.996Z</updated>
     
@@ -324,6 +378,31 @@
   </entry>
   
   <entry>
+    <title>Linux学习-文件I/O</title>
+    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
+    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
+    <published>2017-11-12T11:33:00.000Z</published>
+    <updated>2018-01-03T12:47:15.303Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux学习1-Linux的基本命令（1）</title>
     <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-1/"/>
     <id>http://yoursite.com/2017/11/12/Linux/linux-learn-1/</id>
@@ -340,31 +419,6 @@
 &lt;p&gt;Linux的命令比较多，而且后台开发的时候基本操作服务器的时候都是采用命令行，当然不需要所有的都一次掌握，但是很多重要的用的多的还是需要掌握，不需要直接去记，还是需要多用才会熟练&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5 id=&quot;shell相关&quot;
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux学习-文件I/O</title>
-    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
-    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
-    <published>2017-11-12T11:33:00.000Z</published>
-    <updated>2018-01-03T12:47:15.303Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
       
     
     </summary>
@@ -499,59 +553,6 @@
     
     
       <category term="C++ 剑指offer 牛客网" scheme="http://yoursite.com/tags/C-%E5%89%91%E6%8C%87offer-%E7%89%9B%E5%AE%A2%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《effective C++》from line 1 to line 12</title>
-    <link href="http://yoursite.com/2017/10/09/cpp/effective-cpp-1/"/>
-    <id>http://yoursite.com/2017/10/09/cpp/effective-cpp-1/</id>
-    <published>2017-10-09T11:16:31.000Z</published>
-    <updated>2017-11-14T12:34:49.605Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。</p></blockquote><h4 id="L1-C-是一个语言联邦。"><a href="#L1-C-是一个语言联邦。" class="headerlink" title="L1:C++是一个语言联邦。"></a>L1:C++是一个语言联邦。</h4><p>包含着最初的以c语言为基础的C，面向对象的C++，C++的泛型编程，以及STL。在我们使用的过程中，可能会穿插，但是我们需要根据不同的情况使用不同的策略。</p><h4 id="L2：代替-define"><a href="#L2：代替-define" class="headerlink" title="L2：代替#define"></a>L2：代替#define</h4><p><code>#define</code>是在编译之前，也就是预处理的阶段就会被替换，这样我们在调试程序的时候看到的就是被替换的数字，会给别人甚至是之后调试的我们自己带来理解上的困难。另外，预处理器的工作是，直接把define的内容进行替换，当我们在define中写的表达式，并且在接下来使用的时候，可能产生无法理解的结果。所以当我们使用不想改变的常量时，使用<code>const</code>代替<code>#define</code>。<br>我们还可以使用<code>enum</code>来代替<code>#define</code>。这样显得会更接近一些，因为<code>enum</code>和<code>#define</code>一样，同时也不会被pointer或reference指向。<br>使用<code>inline</code>函数。</p><h4 id="L3-尽量使用const"><a href="#L3-尽量使用const" class="headerlink" title="L3:尽量使用const"></a>L3:尽量使用const</h4><p>这是一个很好理解的问题，就像你把东西给别人用，不想让别人动的地方就加一个<code>const</code>不让别人动一样。。。<br>具体的体现为：指针，不想被改变的变量，迭代器，成员函数等等。<br>我们可能还会为一个函数定义<code>const</code>和<code>非const</code>版本。</p><h4 id="L4：在使用对象前先初始化"><a href="#L4：在使用对象前先初始化" class="headerlink" title="L4：在使用对象前先初始化"></a>L4：在使用对象前先初始化</h4><p>嗯，记住。</p><h4 id="L5：了解c-会默认编写并调用哪些函数"><a href="#L5：了解c-会默认编写并调用哪些函数" class="headerlink" title="L5：了解c++会默认编写并调用哪些函数"></a>L5：了解c++会默认编写并调用哪些函数</h4><p>在面向对象编程时，记住三五法则。构造函数、拷贝构造函数、拷贝赋值运算符、移动赋值运算符、析构函数。记住这几个函数的作用，其在什么时候会被使用，如果没有的时候，系统会不会为我们生成。我们需不需要系统为我们生成。</p><h4 id="L6：不想编译器默认生成的函数，应该明确拒绝"><a href="#L6：不想编译器默认生成的函数，应该明确拒绝" class="headerlink" title="L6：不想编译器默认生成的函数，应该明确拒绝"></a>L6：不想编译器默认生成的函数，应该明确拒绝</h4><p>比如我们不希望编译器为我们生成默认的函数，我们应该将其定义为删除的或者定义为<code>private</code>的，也可以定义类似于uncopyable类似的base class。</p><h4 id="L7：为多态的基类声明virtual析构函数"><a href="#L7：为多态的基类声明virtual析构函数" class="headerlink" title="L7：为多态的基类声明virtual析构函数"></a>L7：为多态的基类声明virtual析构函数</h4><p>通常我们希望派生类覆盖或重写的函数，定义为virtual函数。析构函数作为对象被销毁时调用的函数，如果不是虚函数，那么可能在销毁的时候只会销毁基类的部分，局部销毁，造成资源泄露。</p><h4 id="L8：不要让异常逃离析构函数"><a href="#L8：不要让异常逃离析构函数" class="headerlink" title="L8：不要让异常逃离析构函数"></a>L8：不要让异常逃离析构函数</h4><p>析构函数绝对不要吐出异常，当遇到异常的时候应该捕捉任何异常，然后吞下或结束程序。<br>如果需要对某个操作函数运行期间抛出的异常做出反应，应该提供一个普通的函数执行操作，而不是在析构函数中。</p><h4 id="L9：绝不在构造和析构过程中调用virtual函数"><a href="#L9：绝不在构造和析构过程中调用virtual函数" class="headerlink" title="L9：绝不在构造和析构过程中调用virtual函数"></a>L9：绝不在构造和析构过程中调用virtual函数</h4><p>构造和析构过程中，调用virtual函数的对象可能还没有产生，也就是派生类的对象，此时会产生未定义的行为。</p><h4 id="L10：另operator-返回一个reference-to-this"><a href="#L10：另operator-返回一个reference-to-this" class="headerlink" title="L10：另operator=返回一个reference to *this"></a>L10：另operator=返回一个reference to *this</h4><p>并不强制，只是为了防止一些调皮的调用者使用：<code>x=y=z=15</code>这样的操作。</p><h4 id="L11：在operator-中处理自赋值的情况"><a href="#L11：在operator-中处理自赋值的情况" class="headerlink" title="L11：在operator=中处理自赋值的情况"></a>L11：在operator=中处理自赋值的情况</h4><p>确定任何函数如果操作一个以上的对象，而其中多个对象是同一个对象时，行为仍然正确。</p><h4 id="L12：复制对象时不忘每一个成分"><a href="#L12：复制对象时不忘每一个成分" class="headerlink" title="L12：复制对象时不忘每一个成分"></a>L12：复制对象时不忘每一个成分</h4><p>Copying函数应该确保复制对象内的所有成员变量和所有base class成分。<br>不要使用一个copying函数实现另一个copying函数，而是创建一个新的函数避免代码重复。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;L1-C-是一个语言联邦。&quot;&gt;&lt;a 
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不知道怎么开的船？</title>
-    <link href="http://yoursite.com/2017/09/25/%E7%94%9F%E6%B4%BB/%E4%B8%8D%E7%9F%A5%E9%81%93%E6%80%8E%E4%B9%88%E5%BC%80%E7%9A%84%E8%88%B9/"/>
-    <id>http://yoursite.com/2017/09/25/生活/不知道怎么开的船/</id>
-    <published>2017-09-25T15:36:13.000Z</published>
-    <updated>2017-11-12T12:54:26.689Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="2017-9-25-记录学习"><a href="#2017-9-25-记录学习" class="headerlink" title="2017-9-25 记录学习"></a>2017-9-25 记录学习</h3><h4 id="额，打开sublime，打出来第一个-号，下意识的想打include，笑了自己两秒钟，好像这几天看来，就这句写的最熟练吧。"><a href="#额，打开sublime，打出来第一个-号，下意识的想打include，笑了自己两秒钟，好像这几天看来，就这句写的最熟练吧。" class="headerlink" title="额，打开sublime，打出来第一个#号，下意识的想打include，笑了自己两秒钟，好像这几天看来，就这句写的最熟练吧。"></a>额，打开sublime，打出来第一个#号，下意识的想打include，笑了自己两秒钟，好像这几天看来，就这句写的最熟练吧。</h4><p>最近开始再一次准备看数据结构和算法，再一次，是不能再跟闹着玩的一次了。看着实验室最近找工作的师兄师姐，一边心疼他们，一边更心疼明年的自己。所以我也想到了也许很好的办法，不如抓紧时间现在先好好学习，头疼起来了，心就不疼了吧。<br>断断续续看完了c++ primer，加上之前看过一些数据结构，但是当我打开牛客网第一题的时候还是觉得自己像个傻逼，于是按照我通常的习惯，换了第二题，觉得更傻逼了。于是还是先打开书看看了。。<br>看看书啊，又刷刷题啊，自己还是经常在骂自己和夸自己和强行夸自己这几种有限状态中跳来跳去。<br>晚上，刷到那个链表翻转的题目，又是好久没搞出来，各种数组越界。明明只是就那么几个指针而已，反复看了好几遍。当方法论出了问题的时候，有的时候会忍不住怀疑世界观。作为一个还是对这个世界充满疑惑和兴趣的青年，我好奇地又在网上搜了一遍：C++学什么，C++怎么学，C++学习路线。。于是一晚上又没了，留下一份写有听过好多遍名字的书的TXT文档，一如一个多月前的某一个晚上。。<br>可能距离我们找工作也有快一年吧，时间说长不长，说短不短吧。其实我觉得能担心的可能一直不是时间，而是利用时间。<br>先写一下接下来一段时间的任务吧，不要又乱跑了：</p><ul><li>《Effictive C++》认真看，主线</li><li>有空看数据结构，刷题，不随便放弃题目。搞懂会写，写好了为止</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;2017-9-25-记录学习&quot;&gt;&lt;a href=&quot;#2017-9-25-记录学习&quot; class=&quot;headerlink&quot; title=&quot;2017-9-25 记录学习&quot;&gt;&lt;/a&gt;2017-9-25 记录学习&lt;/h3&gt;&lt;h4 id=&quot;额，打开sublime，打出来第一
-      
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="杂想" scheme="http://yoursite.com/tags/%E6%9D%82%E6%83%B3/"/>
     
   </entry>
   
