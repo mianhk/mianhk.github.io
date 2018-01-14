@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="C++,LeetCode," />
 
 
 
@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。">
-<meta name="keywords" content="java">
+<meta name="description" content="LeetCode-34-Search-for-a-Range Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.Your algorithm’s runtime complexity must be in the or">
+<meta name="keywords" content="C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day5(面向对象2)">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/java/day9(内部类)/index.html">
+<meta property="og:title" content="LeetCode-34-Search-for-a-Range">
+<meta property="og:url" content="http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。">
+<meta property="og:description" content="LeetCode-34-Search-for-a-Range Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.Your algorithm’s runtime complexity must be in the or">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-09T15:39:58.794Z">
+<meta property="og:updated_time" content="2018-01-14T13:53:13.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="day5(面向对象2)">
-<meta name="twitter:description" content="内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。">
+<meta name="twitter:title" content="LeetCode-34-Search-for-a-Range">
+<meta name="twitter:description" content="LeetCode-34-Search-for-a-Range Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.Your algorithm’s runtime complexity must be in the or">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/09/java/day9(内部类)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/"/>
 
 
 
 
 
-  <title>day5(面向对象2) | Mianhk's notes</title>
+  <title>LeetCode-34-Search-for-a-Range | Mianhk's notes</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day9(内部类)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">day5(面向对象2)</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-34-Search-for-a-Range</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
-                2017-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T21:52:38+08:00">
+                2018-01-14
               </time>
             
 
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:39:58+08:00">
-                2017-09-09
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-14T21:53:13+08:00">
+                2018-01-14
               </time>
             
           </span>
@@ -358,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题</span>
                   </a>
                 </span>
 
@@ -400,38 +400,12 @@
       
 
       
-        <h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><hr>
-<h2 id="内部类访问规则"><a href="#内部类访问规则" class="headerlink" title="内部类访问规则"></a>内部类访问规则</h2><ol>
-<li>内部类可以直接访问外部类中的成员，包括私有<br> 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this</li>
-<li>外部类要访问内部类，必须建立内部类对象。<br> 直接访问内部类中的成员<br>访问格式：<br>当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。<br>比如，private：将内部类在外部类中进行封装。<br> static：内部类就具备static的特性。<br>当内部类被static修饰后，只能直接访问外部类中的static成员，出现了访问局限。<br>在外部其他类中，如何访问内部类的非静态成员呢？<h2 id="内部类定义的原则"><a href="#内部类定义的原则" class="headerlink" title="内部类定义的原则"></a>内部类定义的原则</h2>当描述事物时，事物的内部还有事物，该事物用内部类来描述。因为内部事物在使用外部事物的内容。</li>
-</ol>
-<p>内部类定义在局部时，</p>
-<ol>
-<li>不可以被成员修饰符修饰</li>
-<li>可以直接访问外部类中的成员，因为还持有外部类中的引用。但是不可以访问它所在的局部中的变量，只能访问被final修饰的局部变量  、<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2></li>
-<li>匿名内部类其实就是内部类的简写格式</li>
-<li>定义匿名内部类的前提：内部类必须是继承一个类或者实现接口。</li>
-<li>匿名内部类的格式：new 父类或者接口（）{定义子类的内容}</li>
-<li>其实匿名内部类就是一个匿名子类对象，而且这个对象有点胖。可以理解为带内容的对象</li>
-<li>匿名内部类中定义的方法最多不要超过三个</li>
-</ol>
-<h2 id="异常概述"><a href="#异常概述" class="headerlink" title="异常概述"></a>异常概述</h2><p>异常：就是程序在运行时出现不正常的情况。<br>异常的由来：问题也是现实生活中一个具体的事物，也可以通过java的类的形式进行描述。并封装成对象。其实就是java对不正常情况进行描述后的对象体现<br>对于问题的划分：两种：一种是严重的问题，一种是不严重的问题</p>
-<p>对于严重的，java通过Error类进行描述。<br>对于Error，一般不编写针对性的代码进行处理<br>对于非严重的，java通过Exception类进行描述。（可以使用针对性的处理方式进行处理 ）</p>
-<h2 id="异常try-catch"><a href="#异常try-catch" class="headerlink" title="异常try-catch"></a>异常try-catch</h2><p>异常的处理：java提供了特有的语句进行处理<br>对捕获到的异常对象进行常见的方法操作。<br>String getMessage</p>
-<h2 id="异常声明throws"><a href="#异常声明throws" class="headerlink" title="异常声明throws"></a>异常声明throws</h2><h2 id="多异常处理"><a href="#多异常处理" class="headerlink" title="多异常处理"></a>多异常处理</h2><p>对多异常的处理。</p>
-<ol>
-<li>声明异常时，建议声明更为具体的异常。这样处理的可以更具体。</li>
-<li>对方声明几个异常，就对应有几个catch块。不要定义多余的catch块<br> 如果多个catch块中的异常出现继承关系，父类异常catch块放在最下面<br>建立在进行catch处理时，catch中一定要具体的处理方式。不要简单的定义一句e.peintStackTrace()，也不要简单的就书写一条输出语句。</li>
-</ol>
-<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>项目中会出现特有的问题，而这些问题并未被java所描述并封装对象。所以对于这些特有的问题可以按照java对问题封装的思想。将特有的问题。进行自定义的异常封装。<br>当在函数内部出现了throw抛出异常对象，那么就必须要给对应的处理动作。<br>要么在内部try catch处理，要么在函数上声明让调用者处理。<br>发现打印的结果中只有异常的名称，缺没有异常的信息。<br>因为自定义的异常并未定义信息。<br>父类中已经把异常信息的操作都完成了。所以子类只要在构造时，将异常信息传递给父类通过super语句。那么直接就可以通过getMessage方法获取自定义的异常。</p>
-<hr>
-<p>自定义异常：必须是自定义类继承Exception。原因是：<br>异常体系有一个特点：因为异常类和异常对象都被抛出。他们都具备可抛性。这个可抛性是Throwable这个体系中的独有特点。只有这个体系中的类和对象才可以被throw和throws操作。</p>
-<h2 id="throws-和throw的区别：throws使用在函数上。throw使用在函数内。"><a href="#throws-和throw的区别：throws使用在函数上。throw使用在函数内。" class="headerlink" title="throws 和throw的区别：throws使用在函数上。throw使用在函数内。"></a>throws 和throw的区别：throws使用在函数上。throw使用在函数内。</h2><p>throws后面跟的异常类，可以跟多个。用逗号隔开。throw后面跟的是异常对象。</p>
-<h2 id="RuntimeException运行时异常。"><a href="#RuntimeException运行时异常。" class="headerlink" title="RuntimeException运行时异常。"></a>RuntimeException运行时异常。</h2><p>如果在函数内抛出该异常，函数上可以不用声明，编译一样通过。<br>如果在函数上声明了该异常。调用者可以不用进行处理。编译一样通过。<br>之所以不用在函数声明，是因为不需要让调用者处理，当该异常发生，希望程序停止。因为在运行时，出现了无法继续运算的情况，希望停止程序后，对代码尽心修正。<br>自定义异常时，如果该异常的发生，无法再继续进行运算，就让自定义异常继承RuntimeException<br>对于异常分两种：</p>
-<ol>
-<li>编译时被检测的异常。</li>
-<li>编译时不被检测的异常（运行时异常。RuntimeException以及其子类）</li>
-</ol>
+        <h3 id="LeetCode-34-Search-for-a-Range"><a href="#LeetCode-34-Search-for-a-Range" class="headerlink" title="LeetCode-34-Search-for-a-Range"></a>LeetCode-34-Search-for-a-Range</h3><blockquote>
+<p>Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.<br>Your algorithm’s runtime complexity must be in the order of O(log n).<br>  If the target is not found in the array, return [-1, -1].</p>
+</blockquote>
+<p>在一个排序的数组中找到出现这个值的起点和重点。很容易想到的是二分查找了。复杂度为<code>nlog(n)</code>。思路如下，先二分查找，找到下界，如果下界lo的值不等于target时，直接返回{-1，-1}，否则，直接将下界添加到res中。之后重置上界，同样的方法搜索上界。注意到，<strong>由于每次循环中，我们只考虑了一个界，所以只有一个界能mid+1，否则就会出现相等的也被else处理了。写的时候就是这个问题没有考虑好，折腾了很久。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; searchRange(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res=&#123;-1,-1&#125;;</div><div class="line">        if(nums.size()&lt;=0)</div><div class="line">            return res;</div><div class="line">        int lo=0,hi=nums.size()-1;</div><div class="line">        while(lo&lt;hi)&#123;  //找下界</div><div class="line">            int mid=(lo+hi)/2;</div><div class="line">            if(nums[mid]&lt;target)</div><div class="line">                lo=mid+1;</div><div class="line">            else</div><div class="line">                hi=mid;</div><div class="line">        &#125;</div><div class="line">        if((nums[lo]!=target))&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">            res[0]=lo;</div><div class="line">        hi=nums.size()-1;</div><div class="line">        while(lo&lt;hi)&#123;  //找上界</div><div class="line">            int mid=(lo+hi)/2+1;</div><div class="line">            if(nums[mid]&gt;target)</div><div class="line">                hi=mid-1;</div><div class="line">            else</div><div class="line">                lo=mid;</div><div class="line">        &#125;</div><div class="line">        res[1]=hi;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>当然还看到有用stl的方法的，直接用lower_bound()和upper_bound()函数，速度要快一些。虽然觉得stl应该也是一样的原理写的吧。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; searchRange(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        if (nums.empty()) return&#123; -1, -1 &#125;;</div><div class="line"></div><div class="line">    auto iter1 = lower_bound(nums.begin(), nums.end(), target);</div><div class="line">    auto iter2 = upper_bound(nums.begin(), nums.end(), target);</div><div class="line"></div><div class="line">    if (iter1 == nums.end()) return&#123; -1, -1 &#125;;</div><div class="line"></div><div class="line">    if ((*iter1) != target) return&#123; -1, -1 &#125;;</div><div class="line">    vector&lt;int&gt; tmp(2, 0);</div><div class="line">    tmp[0] = iter1 - nums.begin();</div><div class="line"></div><div class="line">    --iter2;</div><div class="line">    tmp[1] = iter2 - nums.begin();</div><div class="line">    return tmp;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -481,7 +455,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -494,14 +470,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/12/LeetCode-32-Longest-Valid-Parentheses/" rel="next" title="LeetCode-32-Longest-Valid-Parentheses">
+                <i class="fa fa-chevron-left"></i> LeetCode-32-Longest-Valid-Parentheses
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/09/java/day15(集合类2)/" rel="prev" title="day5(面向对象2)">
-                day5(面向对象2) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/14/LeetCode-36-Valid-Sudoku/" rel="prev" title="LeetCode-36-Valid-Sudoku">
+                LeetCode-36-Valid-Sudoku <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -693,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类访问规则"><span class="nav-number">1.1.</span> <span class="nav-text">内部类访问规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类定义的原则"><span class="nav-number">1.2.</span> <span class="nav-text">内部类定义的原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.3.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常概述"><span class="nav-number">1.4.</span> <span class="nav-text">异常概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常try-catch"><span class="nav-number">1.5.</span> <span class="nav-text">异常try-catch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常声明throws"><span class="nav-number">1.6.</span> <span class="nav-text">异常声明throws</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多异常处理"><span class="nav-number">1.7.</span> <span class="nav-text">多异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义异常"><span class="nav-number">1.8.</span> <span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws-和throw的区别：throws使用在函数上。throw使用在函数内。"><span class="nav-number">1.9.</span> <span class="nav-text">throws 和throw的区别：throws使用在函数上。throw使用在函数内。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RuntimeException运行时异常。"><span class="nav-number">1.10.</span> <span class="nav-text">RuntimeException运行时异常。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-34-Search-for-a-Range"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-34-Search-for-a-Range</span></a></li></ol></div>
             
 
           </div>

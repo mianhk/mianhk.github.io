@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-12T09:28:43.262Z</updated>
+  <updated>2018-01-14T13:54:13.643Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-36-Valid-Sudoku</title>
+    <link href="http://yoursite.com/2018/01/14/LeetCode-36-Valid-Sudoku/"/>
+    <id>http://yoursite.com/2018/01/14/LeetCode-36-Valid-Sudoku/</id>
+    <published>2018-01-14T13:53:42.000Z</published>
+    <updated>2018-01-14T13:54:13.643Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-36-Valid-Sudoku"><a href="#LeetCode-36-Valid-Sudoku" class="headerlink" title="LeetCode-36-Valid-Sudoku"></a>LeetCode-36-Valid-Sudoku</h3><blockquote><p>Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.<br>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.<br><a href="http://img.blog.csdn.net/20160530213836839" target="_blank" rel="external"></a></p></blockquote><p>判断一个二维数组是不是数独数组。要求是：同行同列，斜对角不能有相同的数组，这里需要定义三个数组，当然参考了一下讨论区一个大神的代码。采用行列，竖列和斜列。其中比较惊艳的是k=i/3*3+j/3;这里可以直接得到斜对角的元素。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</div><div class="line">        int used1[9][9]=&#123;0&#125;,used2[9][9]=&#123;0&#125;,used3[9][9]=&#123;0&#125;;</div><div class="line">        for(int i=0;i&lt;board.size();++i)&#123;</div><div class="line">            for(int j=0;j&lt;board[i].size();++j)&#123;</div><div class="line">                if(board[i][j]!=&apos;.&apos;)&#123;</div><div class="line">                    int num=board[i][j]-&apos;0&apos;-1,k=i/3*3+j/3;</div><div class="line">                    if(used1[i][num]||used2[j][num]||used3[k][num])</div><div class="line">                        return false;</div><div class="line">                    used1[i][num]=used2[j][num]=used3[k][num]=1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><h4 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h4><p><a href="http://blog.csdn.net/u012050154/article/details/51541380" target="_blank" rel="external">http://blog.csdn.net/u012050154/article/details/51541380</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-36-Valid-Sudoku&quot;&gt;&lt;a href=&quot;#LeetCode-36-Valid-Sudoku&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-36-Valid-Sudoku&quot;&gt;&lt;/a&gt;LeetCode-36-Va
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-34-Search-for-a-Range</title>
+    <link href="http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/"/>
+    <id>http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/</id>
+    <published>2018-01-14T13:52:38.000Z</published>
+    <updated>2018-01-14T13:53:13.474Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-34-Search-for-a-Range"><a href="#LeetCode-34-Search-for-a-Range" class="headerlink" title="LeetCode-34-Search-for-a-Range"></a>LeetCode-34-Search-for-a-Range</h3><blockquote><p>Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.<br>Your algorithm’s runtime complexity must be in the order of O(log n).<br>  If the target is not found in the array, return [-1, -1].</p></blockquote><p>在一个排序的数组中找到出现这个值的起点和重点。很容易想到的是二分查找了。复杂度为<code>nlog(n)</code>。思路如下，先二分查找，找到下界，如果下界lo的值不等于target时，直接返回{-1，-1}，否则，直接将下界添加到res中。之后重置上界，同样的方法搜索上界。注意到，<strong>由于每次循环中，我们只考虑了一个界，所以只有一个界能mid+1，否则就会出现相等的也被else处理了。写的时候就是这个问题没有考虑好，折腾了很久。</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; searchRange(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res=&#123;-1,-1&#125;;</div><div class="line">        if(nums.size()&lt;=0)</div><div class="line">            return res;</div><div class="line">        int lo=0,hi=nums.size()-1;</div><div class="line">        while(lo&lt;hi)&#123;  //找下界</div><div class="line">            int mid=(lo+hi)/2;</div><div class="line">            if(nums[mid]&lt;target)</div><div class="line">                lo=mid+1;</div><div class="line">            else</div><div class="line">                hi=mid;</div><div class="line">        &#125;</div><div class="line">        if((nums[lo]!=target))&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">            res[0]=lo;</div><div class="line">        hi=nums.size()-1;</div><div class="line">        while(lo&lt;hi)&#123;  //找上界</div><div class="line">            int mid=(lo+hi)/2+1;</div><div class="line">            if(nums[mid]&gt;target)</div><div class="line">                hi=mid-1;</div><div class="line">            else</div><div class="line">                lo=mid;</div><div class="line">        &#125;</div><div class="line">        res[1]=hi;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p>当然还看到有用stl的方法的，直接用lower_bound()和upper_bound()函数，速度要快一些。虽然觉得stl应该也是一样的原理写的吧。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; searchRange(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        if (nums.empty()) return&#123; -1, -1 &#125;;</div><div class="line"></div><div class="line">    auto iter1 = lower_bound(nums.begin(), nums.end(), target);</div><div class="line">    auto iter2 = upper_bound(nums.begin(), nums.end(), target);</div><div class="line"></div><div class="line">    if (iter1 == nums.end()) return&#123; -1, -1 &#125;;</div><div class="line"></div><div class="line">    if ((*iter1) != target) return&#123; -1, -1 &#125;;</div><div class="line">    vector&lt;int&gt; tmp(2, 0);</div><div class="line">    tmp[0] = iter1 - nums.begin();</div><div class="line"></div><div class="line">    --iter2;</div><div class="line">    tmp[1] = iter2 - nums.begin();</div><div class="line">    return tmp;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-34-Search-for-a-Range&quot;&gt;&lt;a href=&quot;#LeetCode-34-Search-for-a-Range&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-34-Search-for-a-Range&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-32-Longest-Valid-Parentheses</title>
@@ -354,16 +408,16 @@
     <link href="http://yoursite.com/2017/11/12/%E7%94%9F%E6%B4%BB/%E6%88%91%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/"/>
     <id>http://yoursite.com/2017/11/12/生活/我看的电影/</id>
     <published>2017-11-12T12:27:30.000Z</published>
-    <updated>2018-01-03T12:33:34.782Z</updated>
+    <updated>2018-01-14T13:58:18.137Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><h2 id="记录我看的电影"><a href="#记录我看的电影" class="headerlink" title="记录我看的电影"></a>记录我看的电影</h2><h3 id="羞羞的铁拳"><a href="#羞羞的铁拳" class="headerlink" title="羞羞的铁拳"></a>羞羞的铁拳</h3><p>真的，啥玩意？</p><h3 id="嘉年华"><a href="#嘉年华" class="headerlink" title="嘉年华"></a>嘉年华</h3><p>值得一看的电影。</p><h3 id="机器之血"><a href="#机器之血" class="headerlink" title="机器之血"></a>机器之血</h3><p>估计可能是成龙演的吧，毕竟61岁了，还这么拼，总让人觉得有点厉害了。但是电影从剧情到演员到画面，真的没有一点合格的吧，浪费时间了啊。</p><h3 id="无证之罪（1957）"><a href="#无证之罪（1957）" class="headerlink" title="无证之罪（1957）"></a>无证之罪（1957）</h3><h3 id="缝纫机乐队（2017）"><a href="#缝纫机乐队（2017）" class="headerlink" title="缝纫机乐队（2017）"></a>缝纫机乐队（2017）</h3><p>毕竟睿思一周热门啊，还是忍不住下下来看了一下。记得之前大鹏各种微博之类的请大家去看看，不过评分依然很低。所以看的时候本来也没有那么期待。看完之后觉得也没有那么烂吧，想起之前看的大鹏的煎饼侠，也不知道除了搞笑之外还记起来什么了。不过这个好像好了很多，因为我想以后可能不会记得这个有多搞笑，但应该会记得讲了个什么故事。<br>虽然电影对于大鹏来说可能有着特别的意义或者怎样，但是我看的时候还是觉得一如很多的国产电影，剧情不够瞎搞笑凑，然后就为了搞笑又加了很多无聊的东西，让剧情更烂了。所以这个也是这样，但是在最后强催的泪点环节，还是能够感觉到大鹏想告诉大家的东西，或者说是他对生活，对他自己的生活的一个理解？但是不重要是吗？电影可以就像一个人，但应该是我们发自肺腑的感叹，而不是要你用电影之外的话来告诉我们。就好像你做了一道菜，一定要在我们吃的时候加上旁白告诉我们现在吃的是什么，那可能不一定难吃，但一定不优秀。</p><h3 id="寻梦环游记（2017）-date：2017-12-2"><a href="#寻梦环游记（2017）-date：2017-12-2" class="headerlink" title="寻梦环游记（2017） date：2017-12-2"></a>寻梦环游记（2017） date：2017-12-2</h3><p>额，要不是评分实在太高了，我也不会去看个说是动画片的电影吧，很少见出来一周的电影还9.5分的，但是确实值得高分。</p><p>不愧是迪士尼啊，效果非常棒不说了。整个剧情，跟一些非常优秀的电影一样，塑造了一个存在于人们想象中有可能很合理的新世界，在那里，有很多匪夷所思却又言之合理的事情。然后在这个世界里出现了与现实有联系的矛盾。当然最后问题的解决，又给人现实很简单纯粹的思考。比如在这里，塑造了亡灵的世界，如果死了的人真的被人遗忘，就会真的死亡。你在现实里追逐梦想最终被人记住的，在亡灵的世界也可以活的风光，就像梦想可能不被理解，但是实现了一定很值得一样。最后的大反转又让人回归，家人是最重要的，即使你有梦想，也没必要去牺牲这些。简单的道理，但是如果像我这么说就很没意思了，所以，这就是我们为什么会喜欢优秀的电影了吧。</p><h3 id="天才枪手-2017"><a href="#天才枪手-2017" class="headerlink" title="天才枪手(2017)"></a>天才枪手(2017)</h3><p><a href="http://www.imdb.com/title/tt6788942/" target="_blank" rel="external">IMDI 8.2分</a> <strong> /</strong><a href="https://movie.douban.com/subject/27024903/" target="_blank" rel="external">豆瓣 8.3分</a><br>好吧，8分多纯粹就是看了个热闹啊。简直就像告诉你，优秀的人作弊都比人优秀啊，即使感觉满屏幕的bug也依然很没文化的wokaowokao了。。</p><h3 id="东方快车谋杀案-1974"><a href="#东方快车谋杀案-1974" class="headerlink" title="东方快车谋杀案(1974)"></a>东方快车谋杀案(1974)</h3><p><a href="http://www.imdb.com/title/tt0071877/" target="_blank" rel="external">IMDI 7.3分</a> <strong> /</strong><a href="https://movie.douban.com/subject/1292699/" target="_blank" rel="external">豆瓣 8.3分</a><br>能拿奥斯卡的一般特性，就像一般艺术到最后所反映的，除了一个完整的故事，精彩的剧情，还有整个电影对人物、风情、地域以及社会环境等的刻画，传达人性或这个世界我们需要的思考。这种深度，国产电影离别人几十年前的电影都相差甚远。想起冯小刚说的，中国电影拍不好，是因为中国的观众不行，我觉得观众始终是很少的一部分，因为更多的时候、其实观众不知道他们喜欢的究竟是什么，因为更好看的永远在后面，这就是电影行业的责任了。<br>再说这个电影吧，剧情的丰富就不必说了，从开头的各种铺垫，让我们在看到各种人物性格，国家的特点等，产生各种怀疑的时候，案件就开始了，于是现在看起来有点搞笑的主人公就开始了表演，整个审问和查找线索的过程让人敬佩，直到慢慢开始跟着他产生新的怀疑。。<br>在主人公宣布结果之前，我也似乎猜到了一点，他最后给了大家选择，这是大家都希望的，看到大家开始香槟庆祝的时候，我不禁在想，这样的结果，究竟是应该的吗？如果这样的谋杀也可以，法律又怎么会进步。<br>说到这里，又不禁想起来最近的江歌的事件，我只是在新闻上看到了，对此也表示很遗憾。不过在网上却各种签名投票之类的沸沸扬扬，诚然，在这种时候我们需要帮助受害者的家人，也想让罪人得到应有的报应，但这样可能真的不是最好的办法。就像规则可能有时候会有缺陷，但是如果每次都因为特殊事件让它临时违背，那跟没有也没区别。</p><h3 id="幸福终点站-2004"><a href="#幸福终点站-2004" class="headerlink" title="幸福终点站(2004)"></a>幸福终点站(2004)</h3><p><a href="http://www.imdb.com/title/tt0362227/" target="_blank" rel="external">IMDI 7.3分</a> <strong> /</strong><a href="https://movie.douban.com/subject/1292274/" target="_blank" rel="external">豆瓣 8.6分</a></p><h3 id="加勒比海盗5：死无对证"><a href="#加勒比海盗5：死无对证" class="headerlink" title="加勒比海盗5：死无对证"></a>加勒比海盗5：死无对证</h3><p><a href="http://www.imdb.com/title/tt1790809/" target="_blank" rel="external">IMDI 6.7分</a> <strong> /</strong><a href="https://movie.douban.com/subject/6311303/" target="_blank" rel="external">豆瓣 7.2分</a></p><h3 id="速度与激情8"><a href="#速度与激情8" class="headerlink" title="速度与激情8"></a>速度与激情8</h3><p><a href="http://www.imdb.com/title/tt0362227/" target="_blank" rel="external">IMDI 6.8分</a> <strong> /</strong><a href="https://movie.douban.com/subject/26260853/" target="_blank" rel="external">豆瓣 7.1分</a></p><h3 id="百万美元宝贝-Million-Dollor-baby"><a href="#百万美元宝贝-Million-Dollor-baby" class="headerlink" title="百万美元宝贝( Million Dollor baby)"></a>百万美元宝贝( Million Dollor baby)</h3><h3 id="陪安东尼度过漫长岁月"><a href="#陪安东尼度过漫长岁月" class="headerlink" title="陪安东尼度过漫长岁月"></a>陪安东尼度过漫长岁月</h3><h3 id="看不见的客人"><a href="#看不见的客人" class="headerlink" title="看不见的客人"></a>看不见的客人</h3><p><a href="http://www.imdb.com/title/tt4857264/" target="_blank" rel="external">IMDI 8.1分</a> <strong> /</strong><a href="https://movie.douban.com/subject/26580232/" target="_blank" rel="external">豆瓣 8.7分</a></p><h3 id="致命ID"><a href="#致命ID" class="headerlink" title="致命ID"></a>致命ID</h3><h3 id="雷神3"><a href="#雷神3" class="headerlink" title="雷神3"></a>雷神3</h3><h3 id="罗生门（日本）"><a href="#罗生门（日本）" class="headerlink" title="罗生门（日本）"></a>罗生门（日本）</h3><h3 id="心迷宫"><a href="#心迷宫" class="headerlink" title="心迷宫"></a>心迷宫</h3><h3 id="情遇曼哈顿"><a href="#情遇曼哈顿" class="headerlink" title="情遇曼哈顿"></a>情遇曼哈顿</h3><h3 id="复仇者联盟"><a href="#复仇者联盟" class="headerlink" title="复仇者联盟"></a>复仇者联盟</h3><h2 id="记录看的电视剧"><a href="#记录看的电视剧" class="headerlink" title="记录看的电视剧"></a>记录看的电视剧</h2><blockquote><p>电视剧看的不多，但是一看就要看完啊。等不了啊</p></blockquote><h3 id="权力的游戏s7"><a href="#权力的游戏s7" class="headerlink" title="权力的游戏s7"></a>权力的游戏s7<a href=""></a></h3><h3 id="白夜追凶"><a href="#白夜追凶" class="headerlink" title="白夜追凶"></a>白夜追凶<a href=""></a></h3><h3 id="无证之罪"><a href="#无证之罪" class="headerlink" title="无证之罪"></a>无证之罪<a href=""></a></h3><h3 id="激战玄武门（纪录片）"><a href="#激战玄武门（纪录片）" class="headerlink" title="激战玄武门（纪录片）"></a>激战玄武门（纪录片）<a href=""></a></h3><h3 id="Justice（公开课）"><a href="#Justice（公开课）" class="headerlink" title="Justice（公开课）"></a>Justice（公开课）<a href=""></a></h3>]]></content>
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="记录我看的电影"><a href="#记录我看的电影" class="headerlink" title="记录我看的电影"></a>记录我看的电影</h2><h3 id="银翼杀手2049"><a href="#银翼杀手2049" class="headerlink" title="银翼杀手2049"></a>银翼杀手2049</h3><h3 id="羞羞的铁拳"><a href="#羞羞的铁拳" class="headerlink" title="羞羞的铁拳"></a>羞羞的铁拳</h3><p>真的，啥玩意？</p><h3 id="嘉年华"><a href="#嘉年华" class="headerlink" title="嘉年华"></a>嘉年华</h3><p>值得一看的电影。</p><h3 id="机器之血"><a href="#机器之血" class="headerlink" title="机器之血"></a>机器之血</h3><p>估计可能是成龙演的吧，毕竟61岁了，还这么拼，总让人觉得有点厉害了。但是电影从剧情到演员到画面，真的没有一点合格的吧，浪费时间了啊。</p><h3 id="无证之罪（1957）"><a href="#无证之罪（1957）" class="headerlink" title="无证之罪（1957）"></a>无证之罪（1957）</h3><h3 id="缝纫机乐队（2017）"><a href="#缝纫机乐队（2017）" class="headerlink" title="缝纫机乐队（2017）"></a>缝纫机乐队（2017）</h3><p>毕竟睿思一周热门啊，还是忍不住下下来看了一下。记得之前大鹏各种微博之类的请大家去看看，不过评分依然很低。所以看的时候本来也没有那么期待。看完之后觉得也没有那么烂吧，想起之前看的大鹏的煎饼侠，也不知道除了搞笑之外还记起来什么了。不过这个好像好了很多，因为我想以后可能不会记得这个有多搞笑，但应该会记得讲了个什么故事。<br>虽然电影对于大鹏来说可能有着特别的意义或者怎样，但是我看的时候还是觉得一如很多的国产电影，剧情不够瞎搞笑凑，然后就为了搞笑又加了很多无聊的东西，让剧情更烂了。所以这个也是这样，但是在最后强催的泪点环节，还是能够感觉到大鹏想告诉大家的东西，或者说是他对生活，对他自己的生活的一个理解？但是不重要是吗？电影可以就像一个人，但应该是我们发自肺腑的感叹，而不是要你用电影之外的话来告诉我们。就好像你做了一道菜，一定要在我们吃的时候加上旁白告诉我们现在吃的是什么，那可能不一定难吃，但一定不优秀。</p><h3 id="寻梦环游记（2017）-date：2017-12-2"><a href="#寻梦环游记（2017）-date：2017-12-2" class="headerlink" title="寻梦环游记（2017） date：2017-12-2"></a>寻梦环游记（2017） date：2017-12-2</h3><p>额，要不是评分实在太高了，我也不会去看个说是动画片的电影吧，很少见出来一周的电影还9.5分的，但是确实值得高分。</p><p>不愧是迪士尼啊，效果非常棒不说了。整个剧情，跟一些非常优秀的电影一样，塑造了一个存在于人们想象中有可能很合理的新世界，在那里，有很多匪夷所思却又言之合理的事情。然后在这个世界里出现了与现实有联系的矛盾。当然最后问题的解决，又给人现实很简单纯粹的思考。比如在这里，塑造了亡灵的世界，如果死了的人真的被人遗忘，就会真的死亡。你在现实里追逐梦想最终被人记住的，在亡灵的世界也可以活的风光，就像梦想可能不被理解，但是实现了一定很值得一样。最后的大反转又让人回归，家人是最重要的，即使你有梦想，也没必要去牺牲这些。简单的道理，但是如果像我这么说就很没意思了，所以，这就是我们为什么会喜欢优秀的电影了吧。</p><h3 id="天才枪手-2017"><a href="#天才枪手-2017" class="headerlink" title="天才枪手(2017)"></a>天才枪手(2017)</h3><p><a href="http://www.imdb.com/title/tt6788942/" target="_blank" rel="external">IMDI 8.2分</a> <strong> /</strong><a href="https://movie.douban.com/subject/27024903/" target="_blank" rel="external">豆瓣 8.3分</a><br>好吧，8分多纯粹就是看了个热闹啊。简直就像告诉你，优秀的人作弊都比人优秀啊，即使感觉满屏幕的bug也依然很没文化的wokaowokao了。。</p><h3 id="东方快车谋杀案-1974"><a href="#东方快车谋杀案-1974" class="headerlink" title="东方快车谋杀案(1974)"></a>东方快车谋杀案(1974)</h3><p><a href="http://www.imdb.com/title/tt0071877/" target="_blank" rel="external">IMDI 7.3分</a> <strong> /</strong><a href="https://movie.douban.com/subject/1292699/" target="_blank" rel="external">豆瓣 8.3分</a><br>能拿奥斯卡的一般特性，就像一般艺术到最后所反映的，除了一个完整的故事，精彩的剧情，还有整个电影对人物、风情、地域以及社会环境等的刻画，传达人性或这个世界我们需要的思考。这种深度，国产电影离别人几十年前的电影都相差甚远。想起冯小刚说的，中国电影拍不好，是因为中国的观众不行，我觉得观众始终是很少的一部分，因为更多的时候、其实观众不知道他们喜欢的究竟是什么，因为更好看的永远在后面，这就是电影行业的责任了。<br>再说这个电影吧，剧情的丰富就不必说了，从开头的各种铺垫，让我们在看到各种人物性格，国家的特点等，产生各种怀疑的时候，案件就开始了，于是现在看起来有点搞笑的主人公就开始了表演，整个审问和查找线索的过程让人敬佩，直到慢慢开始跟着他产生新的怀疑。。<br>在主人公宣布结果之前，我也似乎猜到了一点，他最后给了大家选择，这是大家都希望的，看到大家开始香槟庆祝的时候，我不禁在想，这样的结果，究竟是应该的吗？如果这样的谋杀也可以，法律又怎么会进步。<br>说到这里，又不禁想起来最近的江歌的事件，我只是在新闻上看到了，对此也表示很遗憾。不过在网上却各种签名投票之类的沸沸扬扬，诚然，在这种时候我们需要帮助受害者的家人，也想让罪人得到应有的报应，但这样可能真的不是最好的办法。就像规则可能有时候会有缺陷，但是如果每次都因为特殊事件让它临时违背，那跟没有也没区别。</p><h3 id="幸福终点站-2004"><a href="#幸福终点站-2004" class="headerlink" title="幸福终点站(2004)"></a>幸福终点站(2004)</h3><p><a href="http://www.imdb.com/title/tt0362227/" target="_blank" rel="external">IMDI 7.3分</a> <strong> /</strong><a href="https://movie.douban.com/subject/1292274/" target="_blank" rel="external">豆瓣 8.6分</a></p><h3 id="加勒比海盗5：死无对证"><a href="#加勒比海盗5：死无对证" class="headerlink" title="加勒比海盗5：死无对证"></a>加勒比海盗5：死无对证</h3><p><a href="http://www.imdb.com/title/tt1790809/" target="_blank" rel="external">IMDI 6.7分</a> <strong> /</strong><a href="https://movie.douban.com/subject/6311303/" target="_blank" rel="external">豆瓣 7.2分</a></p><h3 id="速度与激情8"><a href="#速度与激情8" class="headerlink" title="速度与激情8"></a>速度与激情8</h3><p><a href="http://www.imdb.com/title/tt0362227/" target="_blank" rel="external">IMDI 6.8分</a> <strong> /</strong><a href="https://movie.douban.com/subject/26260853/" target="_blank" rel="external">豆瓣 7.1分</a></p><h3 id="百万美元宝贝-Million-Dollor-baby"><a href="#百万美元宝贝-Million-Dollor-baby" class="headerlink" title="百万美元宝贝( Million Dollor baby)"></a>百万美元宝贝( Million Dollor baby)</h3><h3 id="陪安东尼度过漫长岁月"><a href="#陪安东尼度过漫长岁月" class="headerlink" title="陪安东尼度过漫长岁月"></a>陪安东尼度过漫长岁月</h3><h3 id="看不见的客人"><a href="#看不见的客人" class="headerlink" title="看不见的客人"></a>看不见的客人</h3><p><a href="http://www.imdb.com/title/tt4857264/" target="_blank" rel="external">IMDI 8.1分</a> <strong> /</strong><a href="https://movie.douban.com/subject/26580232/" target="_blank" rel="external">豆瓣 8.7分</a></p><h3 id="致命ID"><a href="#致命ID" class="headerlink" title="致命ID"></a>致命ID</h3><h3 id="雷神3"><a href="#雷神3" class="headerlink" title="雷神3"></a>雷神3</h3><h3 id="罗生门（日本）"><a href="#罗生门（日本）" class="headerlink" title="罗生门（日本）"></a>罗生门（日本）</h3><h3 id="心迷宫"><a href="#心迷宫" class="headerlink" title="心迷宫"></a>心迷宫</h3><h3 id="情遇曼哈顿"><a href="#情遇曼哈顿" class="headerlink" title="情遇曼哈顿"></a>情遇曼哈顿</h3><h3 id="复仇者联盟"><a href="#复仇者联盟" class="headerlink" title="复仇者联盟"></a>复仇者联盟</h3><h2 id="记录看的电视剧"><a href="#记录看的电视剧" class="headerlink" title="记录看的电视剧"></a>记录看的电视剧</h2><blockquote><p>电视剧看的不多，但是一看就要看完啊。等不了啊</p></blockquote><h3 id="权力的游戏s7"><a href="#权力的游戏s7" class="headerlink" title="权力的游戏s7"></a>权力的游戏s7<a href=""></a></h3><h3 id="白夜追凶"><a href="#白夜追凶" class="headerlink" title="白夜追凶"></a>白夜追凶<a href=""></a></h3><h3 id="无证之罪"><a href="#无证之罪" class="headerlink" title="无证之罪"></a>无证之罪<a href=""></a></h3><h3 id="激战玄武门（纪录片）"><a href="#激战玄武门（纪录片）" class="headerlink" title="激战玄武门（纪录片）"></a>激战玄武门（纪录片）<a href=""></a></h3><h3 id="Justice（公开课）"><a href="#Justice（公开课）" class="headerlink" title="Justice（公开课）"></a>Justice（公开课）<a href=""></a></h3>]]></content>
     
     <summary type="html">
     
       
       
         &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;记录我看的电影&quot;&gt;&lt;a href=&quot;#记录我看的电影&quot; class=&quot;headerlink&quot; title=&quot;记录我看的电影&quot;&gt;&lt;/a&gt;记录我看的电影&lt;/h2&gt;&lt;h3 id=&quot;羞羞的铁拳&quot;&gt;&lt;a href=&quot;#羞羞的铁拳&quot; cla
+&lt;h2 id=&quot;记录我看的电影&quot;&gt;&lt;a href=&quot;#记录我看的电影&quot; class=&quot;headerlink&quot; title=&quot;记录我看的电影&quot;&gt;&lt;/a&gt;记录我看的电影&lt;/h2&gt;&lt;h3 id=&quot;银翼杀手2049&quot;&gt;&lt;a href=&quot;#银翼杀手204
       
     
     </summary>
@@ -374,31 +428,6 @@
       <category term="记录" scheme="http://yoursite.com/tags/%E8%AE%B0%E5%BD%95/"/>
     
       <category term="娱乐" scheme="http://yoursite.com/tags/%E5%A8%B1%E4%B9%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux学习-文件I/O</title>
-    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
-    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
-    <published>2017-11-12T11:33:00.000Z</published>
-    <updated>2018-01-03T12:47:15.303Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -419,6 +448,31 @@
 &lt;p&gt;Linux的命令比较多，而且后台开发的时候基本操作服务器的时候都是采用命令行，当然不需要所有的都一次掌握，但是很多重要的用的多的还是需要掌握，不需要直接去记，还是需要多用才会熟练&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5 id=&quot;shell相关&quot;
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux 后台开发" scheme="http://yoursite.com/tags/Linux-%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux学习-文件I/O</title>
+    <link href="http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/"/>
+    <id>http://yoursite.com/2017/11/12/Linux/linux-learn-2-file-IO/</id>
+    <published>2017-11-12T11:33:00.000Z</published>
+    <updated>2018-01-03T12:47:15.303Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>一个进程默认打开三个文件描述符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">STDIN_FILENO 0</div><div class="line">STDOUT_FILENO 1</div><div class="line">STDERR_FILENO 2</div></pre></td></tr></table></figure></p><p>新打开文件返回文件描述符表中未使用的最小文件描述符。<br><strong>open函数 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/stat.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">int open(const char *pathname, int flags);</div><div class="line">int open(const char *pathname, int flags, mode_t mode);</div><div class="line">返回值：成功返回新分配的文件描述符，出错返回-1并设置errno</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h3&gt;&lt;h4 id=&quot;文件描述符&quot;&gt;&lt;a href=&quot;#文件描述符&quot; class=&quot;headerlink&quot; title=&quot;文件描述符&quot;&gt;
       
     
     </summary>
@@ -493,58 +547,6 @@
       
         &lt;h4 id=&quot;T4：重建二叉树&quot;&gt;&lt;a href=&quot;#T4：重建二叉树&quot; class=&quot;headerlink&quot; title=&quot;T4：重建二叉树&quot;&gt;&lt;/a&gt;T4：重建二叉树&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++ 剑指offer 牛客网" scheme="http://yoursite.com/tags/C-%E5%89%91%E6%8C%87offer-%E7%89%9B%E5%AE%A2%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>win7下安装Ubuntu双系统</title>
-    <link href="http://yoursite.com/2017/10/22/%E5%B7%A5%E5%85%B7/win7%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://yoursite.com/2017/10/22/工具/win7下安装Ubuntu双系统/</id>
-    <published>2017-10-22T14:37:21.000Z</published>
-    <updated>2017-11-14T12:56:09.815Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>学(xian)习(de)所(dan)需(teng)，觉得一个虚拟机确实装的Ubuntu确实有点烦了，除了没有一个系统那样直接用起来爽以外，总觉得感受不到一个纯正的系统。而且虚拟机有时候懒得开了就算了。但是又舍不得直接把我换了固态之后就没有换过的系统直接换掉，毕竟我已经不是那个年轻的爱折腾的22岁的小伙子了，我23了。。于是就看着教程和xjbg装了双系统。同时的难度是，我的固态硬盘里放的系统，但是又不想把系统直接放在固态硬盘，只是希望通过固态启动一下，然后把其他的目录放在机械硬盘中</p></blockquote><h5 id="Win7准备"><a href="#Win7准备" class="headerlink" title="Win7准备"></a>Win7准备</h5><p>双系统的准备主要就是硬盘了，毕竟这么多学习资料是吧。。总还是要谨慎一点的。因为win7和linux系统的磁盘格式不一样，所以我们不能直接在win7里面分好磁盘。这里的工作是：将固态硬盘压缩300MB空间，作为Ubuntu的<code>/boot</code>分区，以供系统启动用。另外在机械硬盘中分出80GB空间，作为其他的<code>/</code>和<code>swap</code>分区。</p><h5 id="通过U盘做系统盘"><a href="#通过U盘做系统盘" class="headerlink" title="通过U盘做系统盘"></a>通过U盘做系统盘</h5><p>使用工具UtralISO，将下载好的Ubuntu系统，通过正常的模式写入到U盘中(这个随便百度一下就有了，经常装系统的这个就差不多知道了)</p><h5 id="重启装系统"><a href="#重启装系统" class="headerlink" title="重启装系统"></a>重启装系统</h5><p>首先还是熟悉的修改bios，按一下各种类似<code>F2</code>之类的键，进入BIOS设置，将启动项第一位改成U盘，然后重启。。<br>之后就是进去装系统了，主要是选磁盘的时候，把 固态硬盘中的未分配空间格式化为<code>/boot</code>，然后其他的机械硬盘中的，按照需要格式化为<code>/</code>和<code>/swap</code>,之后等着装完就好了。</p><h5 id="修改启动选项"><a href="#修改启动选项" class="headerlink" title="修改启动选项"></a>修改启动选项</h5><p>系统装完之后就要重启进入新系统了，这是惊喜而又刺激的发现，Ubuntu真好看，但是我的Win7去哪儿了。不过装了一百遍系统的我知道肯定还是个引导的问题，在网上找到了解决办法。在Ubuntu中输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo gedit /etc/default/grub</div><div class="line">#修改</div><div class="line">GRUB_DEFAULT=0 为：GRUB_DEFAULT=4</div><div class="line">#更新grub</div><div class="line">sudo update-grub</div><div class="line">在终端中找到：</div><div class="line">found win7...</div><div class="line">就说明win7引导被找到了，重启可以开始愉快的用了</div></pre></td></tr></table></figure></p><h6 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h6><p><a href="http://m.jb51.net/article/110288.htm" target="_blank" rel="external">http://m.jb51.net/article/110288.htm</a><br><a href="https://jingyan.baidu.com/article/e4d08ffdace06e0fd2f60d39.html" target="_blank" rel="external">https://jingyan.baidu.com/article/e4d08ffdace06e0fd2f60d39.html</a><br><a href="http://www.jianshu.com/p/c6750e459a94" target="_blank" rel="external">http://www.jianshu.com/p/c6750e459a94</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;学(xian)习(de)所(dan)需(teng)，觉得一个虚拟机确实装的Ubuntu确实有点烦了，除了没有一个系统那样直接用起来爽以外，总觉得感受不到一个纯正的系统。而且虚拟机有时候懒得开了就算了。但是又舍不得直接把我换了固态之后就没有换过的系统
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>牛客网刷题总结-剑指offer(1)</title>
-    <link href="http://yoursite.com/2017/10/15/%E5%88%B7%E9%A2%98/%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%89%91%E6%8C%87offer-1/"/>
-    <id>http://yoursite.com/2017/10/15/刷题/牛客网-剑指offer-1/</id>
-    <published>2017-10-15T13:26:46.000Z</published>
-    <updated>2017-10-15T13:54:34.891Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>说在前面：刷题真的是一件残酷的事情，就好比以前大学的时候只剩两天就考试了，刚刚看了一遍就开始先做题一样的感觉，面对无数的套路，幸运的时候还能庆幸自己能发现他们的套路。。<br>刷题的开始总是艰难的，希望有一天我能以上帝视角看清这些芸芸众生的时候，还能想起来当年我不止一次的一道题怼了一晚上照样白怼。</p></blockquote><h4 id="T1：二维数组的查找"><a href="#T1：二维数组的查找" class="headerlink" title="T1：二维数组的查找"></a>T1：二维数组的查找</h4><blockquote><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p></blockquote><p>这里一般的思路肯定是，从行或者列开始找，根据递增的顺序，找到行或者列之后再判断列或者行，知道找到为止。最好的方法是，从左下角或者右上角开始找。原因是：这样的一行和一列的顺序是不一样的，这样我们找一行的时候没有就可以直接找下一行，充分利用递增的顺序，减少循环的次数。<br>其他的就是循环的写法了，关于数组，一定注意的是不要越界，这真的是我的痛啊，日常越界一百遍。<em>^</em>^_<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool Find(int target, vector&lt;vector&lt;int&gt; &gt; array) &#123;</div><div class="line">        bool found=false;</div><div class="line">        if(array.size()==0 ||array[0].size()==0)</div><div class="line">            return found;</div><div class="line">        for(int i=array[0].size()-1;i&gt;=0;--i)&#123;</div><div class="line">            if(target&gt;=array[0][i])&#123;</div><div class="line">                for(int j=0;j!=array.size();++j)&#123;</div><div class="line">                    if(target==array[j][i])</div><div class="line">                        found=true;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                continue;</div><div class="line">        &#125;</div><div class="line">        return found;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><h4 id="T2：替换空格"><a href="#T2：替换空格" class="headerlink" title="T2：替换空格"></a>T2：替换空格</h4><blockquote><p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p></blockquote><p>替换的过程是，先找到这个空格，正常想法是，从前往后找，然后遇到就开始替换。但是注意到<em>对于一般题目，最直观的解法总不是最好的</em>，都是需要多从<strong>时间复杂度和空间复杂度想一想</strong>。就这个题目而言，直接从前往后替换，因为替换后的字符比原来多2个，所以每次替换我们都需要将后面的字符串向后移2个，这无疑会增加复杂度。一个很好的办法是：先统计空格的个数，计算出替换后的字符串长度，然后从后往前开始替换，这样就减少了移动的复杂度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void replaceSpace(char *str,int length) &#123;</div><div class="line">        if(length&lt;=0)</div><div class="line">            return;</div><div class="line">        int move_length=0;</div><div class="line">        int original_length=0;</div><div class="line">        for(int i=0;str[i]!=&apos;\0&apos;;++i)&#123;</div><div class="line">            ++original_length;</div><div class="line">            if(str[i]==&apos; &apos;)</div><div class="line">                ++move_length;</div><div class="line">        &#125;</div><div class="line">        int new_length=original_length+2*move_length;</div><div class="line">        if(new_length&gt;length)</div><div class="line">            return;</div><div class="line">        str[new_length]=&apos;\0&apos;;</div><div class="line">        while(original_length&gt;0)&#123;</div><div class="line">            --original_length;</div><div class="line">            if(str[original_length]==&apos; &apos;)&#123;</div><div class="line">                str[--new_length]=&apos;0&apos;;</div><div class="line">                str[--new_length]=&apos;2&apos;;</div><div class="line">                str[--new_length]=&apos;%&apos;;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                str[--new_length]=str[original_length];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><h4 id="T3-从尾到头打印链表"><a href="#T3-从尾到头打印链表" class="headerlink" title="T3:从尾到头打印链表"></a>T3:从尾到头打印链表</h4><blockquote><p>输入一个链表，从尾到头打印链表每个节点的值。</p></blockquote><p>链表我们一般都是从头到尾处理的，要从尾到头打印，这里想到一个数据结构：<strong>栈</strong>，后入先出的特点。从头到尾遍历链表，并把节点的值存入栈中，再从栈一一弹出即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  struct ListNode &#123;</div><div class="line">*        int val;</div><div class="line">*        struct ListNode *next;</div><div class="line">*        ListNode(int x) :</div><div class="line">*              val(x), next(NULL) &#123;</div><div class="line">*        &#125;</div><div class="line">*  &#125;;</div><div class="line">*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; printListFromTailToHead(ListNode* head) &#123;</div><div class="line">        stack&lt;int&gt; stack;</div><div class="line">        vector&lt;int&gt; result;</div><div class="line">        while(head!=nullptr)&#123;</div><div class="line">            stack.push(head-&gt;val);</div><div class="line">            head=head-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while(stack.size()!=0)&#123;</div><div class="line">            result.push_back(stack.top());</div><div class="line">            stack.pop();</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;说在前面：刷题真的是一件残酷的事情，就好比以前大学的时候只剩两天就考试了，刚刚看了一遍就开始先做题一样的感觉，面对无数的套路，幸运的时候还能庆幸自己能发现他们的套路。。&lt;br&gt;刷题的开始总是艰难的，希望有一天我能以上帝视角看清这些芸芸众生的时候，还
       
     
     </summary>
