@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="Linux 后台开发," />
 
 
 
@@ -96,18 +96,24 @@
 
 
 
-<meta name="description" content="#IO流  BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（） BufferedReader为了提高效率，加">
-<meta name="keywords" content="java">
+<meta name="description" content="Linux修改用户名和所属组腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_^  ^_ 更改用户名修改sudoers文件因为之后的操作，直接进入root用户操作。将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题1vi /etc/s">
+<meta name="keywords" content="Linux 后台开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day5(面向对象2)">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/java/day19(IO流)/index.html">
+<meta property="og:title" content="Linux修改用户名和所属组">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/Linux修改用户名和所属组/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="#IO流  BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（） BufferedReader为了提高效率，加">
+<meta property="og:description" content="Linux修改用户名和所属组腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_^  ^_ 更改用户名修改sudoers文件因为之后的操作，直接进入root用户操作。将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题1vi /etc/s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-09T15:41:31.928Z">
+<meta property="og:image" content="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true">
+<meta property="og:image" content="https://github.com/mianhk/image-save/blob/master/Linux/001/002.jpg?raw=true">
+<meta property="og:image" content="https://github.com/mianhk/image-save/blob/master/Linux/001/003.jpg?raw=true">
+<meta property="og:image" content="https://github.com/mianhk/image-save/blob/master/Linux/001/004.jpg?raw=true">
+<meta property="og:image" content="https://github.com/mianhk/image-save/blob/master/Linux/001/005.jpg?raw=true">
+<meta property="og:updated_time" content="2018-01-17T11:50:32.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="day5(面向对象2)">
-<meta name="twitter:description" content="#IO流  BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（） BufferedReader为了提高效率，加">
+<meta name="twitter:title" content="Linux修改用户名和所属组">
+<meta name="twitter:description" content="Linux修改用户名和所属组腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_^  ^_ 更改用户名修改sudoers文件因为之后的操作，直接进入root用户操作。将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题1vi /etc/s">
+<meta name="twitter:image" content="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true">
 
 
 
@@ -136,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/09/java/day19(IO流)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/Linux修改用户名和所属组/"/>
 
 
 
 
 
-  <title>day5(面向对象2) | Mianhk's notes</title>
+  <title>Linux修改用户名和所属组 | Mianhk's notes</title>
   
 
 
@@ -294,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day19(IO流)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/Linux修改用户名和所属组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -311,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">day5(面向对象2)</h1>
+          <h1 class="post-title" itemprop="name headline">Linux修改用户名和所属组</h1>
         
 
         <div class="post-meta">
@@ -323,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
-                2017-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T19:48:22+08:00">
+                2018-01-17
               </time>
             
 
@@ -339,8 +345,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:31+08:00">
-                2017-09-09
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-17T19:50:32+08:00">
+                2018-01-17
               </time>
             
           </span>
@@ -358,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -400,18 +406,18 @@
       
 
       
-        <p>#IO流</p>
-<hr>
-<h2 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="BufferedWriter"></a>BufferedWriter</h2><p>缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。<br>为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。<br>记住只要用到缓冲区，就要记得刷新。<br>其实关闭缓冲区，其实就是在关闭缓冲区的流对象。<br>该缓冲区中提供了一个跨平台的newLine（）</p>
-<h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>为了提高效率，加入缓冲技术。将字符读取流对象作为参数传进缓冲对象的构造函数。<br>readLine方法返回的时候只返回回车符之前的数据内容，并不返回回车符。<br>readLine方法的原理：无论是读取一行，还是读取多个字符，其实最终都是在硬盘上一个个读取。所以最终使用的还是read方法一次读一个的方法。</p>
-<h2 id="MyBufferedReader"><a href="#MyBufferedReader" class="headerlink" title="MyBufferedReader"></a>MyBufferedReader</h2><h2 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h2><p>定义：当想要对已有的对象进行功能增强时，可以定义一个类，将已有对象传入，基于已有的功能，并提供加强功能。那么自定义的该类称为装饰类。<br>装饰类通常会通过构造方法接收被装饰的对象。并基于被装饰的对象的功能，提供更强的功能。</p>
-<h2 id="装饰和继承的区别"><a href="#装饰和继承的区别" class="headerlink" title="装饰和继承的区别"></a>装饰和继承的区别</h2><p>装饰模式比继承要灵活，避免了继承体系臃肿。而且降低了类与类之间的关系。<br>装饰类因为增强已有对象，具备的功能和已有的是相同的，只不过提供了更强的功能。所以装饰类和被装饰类通常都属于一个体系中的。</p>
-<h2 id="LineNumberReader"><a href="#LineNumberReader" class="headerlink" title="LineNumberReader"></a>LineNumberReader</h2><h2 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h2><p>FileReader:<br>FileWriter:<br>字节流：<br>InputStream：<br>OutputStream:</p>
-<h2 id="复制一个图片"><a href="#复制一个图片" class="headerlink" title="复制一个图片"></a>复制一个图片</h2><p>思路：<br>1.用字节读取流对象和图片关联。<br>2.用字节写入流对象创建一个图片文件，用于存储获取到的图片数据。</p>
-<ol>
-<li>通过循环读写，完成数据的存储。</li>
-<li>关闭资源<h2 id="读取转换流"><a href="#读取转换流" class="headerlink" title="读取转换流"></a>读取转换流</h2><h2 id="写入转换流"><a href="#写入转换流" class="headerlink" title="写入转换流"></a>写入转换流</h2><h2 id="流操作的基本规律"><a href="#流操作的基本规律" class="headerlink" title="流操作的基本规律"></a>流操作的基本规律</h2>最痛苦的就是流对象有很多，不知道该用哪一个。<br>通过两个明确来完成。<br>1.明确源和目的。<br> 源：输入流。InputStream   Reader<br> 目的：输出流。OutputStream Writer<br>2.操作的数据是否是纯文本。<br> 是：字符流。<br> 否：字节流。<br>3.当体系明确后，再明确要使用哪个具体的对象。<br>通过设备来进行区分：<br>源设备：内存，硬盘，键盘<br>目的设备：内存，硬盘，控制台。</li>
-</ol>
+        <h3 id="Linux修改用户名和所属组"><a href="#Linux修改用户名和所属组" class="headerlink" title="Linux修改用户名和所属组"></a>Linux修改用户名和所属组</h3><p>腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_<em>^ </em> ^_</p>
+<h4 id="更改用户名"><a href="#更改用户名" class="headerlink" title="更改用户名"></a>更改用户名</h4><h5 id="修改sudoers文件"><a href="#修改sudoers文件" class="headerlink" title="修改sudoers文件"></a>修改sudoers文件</h5><p>因为之后的操作，直接进入root用户操作。<br>将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sudoers</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true" alt=""></p>
+<h5 id="修改shadow文件"><a href="#修改shadow文件" class="headerlink" title="修改shadow文件"></a>修改shadow文件</h5><p>shadow文件存储与登陆有关的内容，格式如下：<br>username: passwd: lastchg: min: max: warn: inactive: expire: flag<br>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:<br>警告时间:不活动时间:失效时间:标志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadow</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/002.jpg?raw=true" alt=""></p>
+<h5 id="修改开始目录"><a href="#修改开始目录" class="headerlink" title="修改开始目录"></a>修改开始目录</h5><p>每个用户都有一个家目录，远程登录的时候就会进入家目录。包含用户相关配置信息,例如：<img src="https://github.com/mianhk/image-save/blob/master/Linux/001/003.jpg?raw=true" alt=""><br>现在直接将这个家目录修改就好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv ubuntu mianhk  # ubuntu 原来的目录</div></pre></td></tr></table></figure></p>
+<h5 id="修改passwd文件"><a href="#修改passwd文件" class="headerlink" title="修改passwd文件"></a>修改passwd文件</h5><p>passwd的文件格式是：<br>用户名: 密码 : uid  : gid :用户描述：主目录：登陆shell<br>需要将用户描述和主目录都改成新的，不然无法读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/passwd</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/004.jpg?raw=true" alt=""></p>
+<h5 id="修改所属组"><a href="#修改所属组" class="headerlink" title="修改所属组"></a>修改所属组</h5><p>其实这里的修改，只需要将所有原来的ubuntu所属的组替换为mianhk即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/group</div></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/005.jpg?raw=true" alt=""></p>
+<h5 id="删除ubuntu"><a href="#删除ubuntu" class="headerlink" title="删除ubuntu"></a>删除ubuntu</h5><p>再次进入/etc/sudoers 中，讲ubuntu删除</p>
+<h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><p>　</p>
 
       
     </div>
@@ -461,7 +467,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/Linux-后台开发/" rel="tag"># Linux 后台开发</a>
           
         </div>
       
@@ -474,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/09/java/day7(面向对象3)/" rel="next" title="day5(面向对象2)">
-                <i class="fa fa-chevron-left"></i> day5(面向对象2)
+              <a href="/2018/01/14/LeetCode-36-Valid-Sudoku/" rel="next" title="LeetCode-36-Valid-Sudoku">
+                <i class="fa fa-chevron-left"></i> LeetCode-36-Valid-Sudoku
               </a>
             
           </div>
@@ -483,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/09/java/day22(GUI)/" rel="prev" title="day5(面向对象2)">
-                day5(面向对象2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -677,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BufferedWriter"><span class="nav-number">1.</span> <span class="nav-text">BufferedWriter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BufferedReader"><span class="nav-number">2.</span> <span class="nav-text">BufferedReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBufferedReader"><span class="nav-number">3.</span> <span class="nav-text">MyBufferedReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰设计模式"><span class="nav-number">4.</span> <span class="nav-text">装饰设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰和继承的区别"><span class="nav-number">5.</span> <span class="nav-text">装饰和继承的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LineNumberReader"><span class="nav-number">6.</span> <span class="nav-text">LineNumberReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符流和字节流"><span class="nav-number">7.</span> <span class="nav-text">字符流和字节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制一个图片"><span class="nav-number">8.</span> <span class="nav-text">复制一个图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取转换流"><span class="nav-number">9.</span> <span class="nav-text">读取转换流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入转换流"><span class="nav-number">10.</span> <span class="nav-text">写入转换流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流操作的基本规律"><span class="nav-number">11.</span> <span class="nav-text">流操作的基本规律</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux修改用户名和所属组"><span class="nav-number">1.</span> <span class="nav-text">Linux修改用户名和所属组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更改用户名"><span class="nav-number">1.1.</span> <span class="nav-text">更改用户名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改sudoers文件"><span class="nav-number">1.1.1.</span> <span class="nav-text">修改sudoers文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改shadow文件"><span class="nav-number">1.1.2.</span> <span class="nav-text">修改shadow文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改开始目录"><span class="nav-number">1.1.3.</span> <span class="nav-text">修改开始目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改passwd文件"><span class="nav-number">1.1.4.</span> <span class="nav-text">修改passwd文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改所属组"><span class="nav-number">1.1.5.</span> <span class="nav-text">修改所属组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除ubuntu"><span class="nav-number">1.1.6.</span> <span class="nav-text">删除ubuntu</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重启"><span class="nav-number">1.1.7.</span> <span class="nav-text">重启</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
