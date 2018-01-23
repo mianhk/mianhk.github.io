@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-23T13:41:25.564Z</updated>
+  <updated>2018-01-23T14:26:39.614Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>服务器-Nginx安装和基本配置</title>
+    <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/01/23/服务器-Nginx安装和基本配置/</id>
+    <published>2018-01-23T14:25:21.000Z</published>
+    <updated>2018-01-23T14:26:39.614Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="服务器-Nginx安装和基本配置"><a href="#服务器-Nginx安装和基本配置" class="headerlink" title="服务器-Nginx安装和基本配置"></a>服务器-Nginx安装和基本配置</h3><h4 id="Nginx的安装"><a href="#Nginx的安装" class="headerlink" title="Nginx的安装"></a>Nginx的安装</h4><p>没有看书上，直接在ubuntu输了一个nginx，大概是ubuntu的支持比较好，直接提醒可以安装，于是就毫不客气的装了一下就启动了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nginx</div><div class="line">sudo /etc/init.d/nginx start</div></pre></td></tr></table></figure></p><p>接下来直接在浏览器里面打开，就能看到hello,Nginx这样欣慰 的界面了。</p><p>之后能够在文件夹<code>/etc</code>中看到我们的配置的文件：<br><img src="https://github.com/mianhk/image-save/blob/master/server/001/001.jpg?raw=true" alt=""><br>在<code>var/www/html</code>文件夹中能看到<code>index.html</code>文件，即是我们的主页文件。<br><strong>这里没有采用源码的方式安装，其实是觉得没有必要了。 </strong></p><h4 id="Nginx的启停"><a href="#Nginx的启停" class="headerlink" title="Nginx的启停"></a>Nginx的启停</h4><p>刚刚已经直接开启了Nginx了，其实关就更简单了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/nginx stop  #停止nginx</div><div class="line">sudo /etc/init.d/nginx restart # 重启nginx</div></pre></td></tr></table></figure></p><p>这里需要注意的是nginx的平滑重启：Nginx服务进程接受到信号后，首先读取新的Nginx的配置文件，如果新的配置文件语法正确，则启动新的Nginx服务，然后平缓的关闭旧的服务进程。否则，仍然使用旧的Nginx进程提供服务。</p><h4 id="Nginx服务器的升级"><a href="#Nginx服务器的升级" class="headerlink" title="Nginx服务器的升级"></a>Nginx服务器的升级</h4><p>平滑升级：Nginx服务接收到USR2信号后，首先将旧的nginx.pid文件（如果配置文件中更改过名字，也是相同的过程）添加后缀<code>.oldbin</code>，变为nginx.pid.oldbin文件；之后执行新版本Nginx服务器的二进制文件启动服务。如果新的服务启动成功，系统中将有新旧两个Nginx服务共同提供Web服务。之后，需要像旧的Nginx服务进程发送WINCH信号，使旧的Nginx服务平滑停止，并删除nginx.pid.oldbin文件。在发送WINCH信号之前，可以随时停止新的Nginx服务。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;服务器-Nginx安装和基本配置&quot;&gt;&lt;a href=&quot;#服务器-Nginx安装和基本配置&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx安装和基本配置&quot;&gt;&lt;/a&gt;服务器-Nginx安装和基本配置&lt;/h3&gt;&lt;h4 id=&quot;Nginx的安装&quot;
+      
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>服务器-初识Nginx</title>
@@ -518,37 +543,6 @@
     
     
       <category term="C++ 剑指offer 牛客网" scheme="http://yoursite.com/tags/C-%E5%89%91%E6%8C%87offer-%E7%89%9B%E5%AE%A2%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的专业书阅读</title>
-    <link href="http://yoursite.com/2017/11/12/%E7%94%9F%E6%B4%BB/%E6%88%91%E7%9A%84%E4%B8%93%E4%B8%9A%E4%B9%A6/"/>
-    <id>http://yoursite.com/2017/11/12/生活/我的专业书/</id>
-    <published>2017-11-12T12:47:37.000Z</published>
-    <updated>2017-11-14T12:07:24.668Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><ul><li>《Python核心编程》 ed2</li><li>《C++　Primer 》ed5</li><li>《STL 源码剖析》</li><li>《Effective C++》</li><li>《Unix 网络编程》卷一</li><li>《Unix 网络编程》卷二</li><li>《Unix 环境高级编程》</li><li>《Linux多线程服务端编程》陈硕</li><li>《TCP/IP详解》卷一</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;《Python核心编程》 ed2&lt;/li&gt;
-&lt;li&gt;《C++　Primer 》ed5&lt;/li&gt;
-&lt;li&gt;《STL 源码剖析》&lt;/li&gt;
-&lt;li&gt;《Effective C++》&lt;/li&gt;
-&lt;li&gt;《Unix 网络编程》卷一&lt;/l
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
