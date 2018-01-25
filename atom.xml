@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-25T03:53:45.158Z</updated>
+  <updated>2018-01-25T12:45:24.879Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,107 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Leetcode-48-Rotate-Image</title>
+    <link href="http://yoursite.com/2018/01/25/Leetcode-48-Rotate-Image/"/>
+    <id>http://yoursite.com/2018/01/25/Leetcode-48-Rotate-Image/</id>
+    <published>2018-01-25T12:44:32.000Z</published>
+    <updated>2018-01-25T12:45:24.879Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode-48-Rotate-Image</title>
+    <link href="http://yoursite.com/2018/01/25/%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
+    <id>http://yoursite.com/2018/01/25/刷题/Leetcode-48-Rotate-Image/</id>
+    <published>2018-01-25T12:44:32.000Z</published>
+    <updated>2018-01-25T12:44:40.209Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>服务器-Nginx设计架构</title>
+    <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx设计架构/</id>
+    <published>2018-01-25T08:37:48.000Z</published>
+    <updated>2018-01-25T08:38:08.860Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="服务器-Nginx设计架构"><a href="#服务器-Nginx设计架构" class="headerlink" title="服务器-Nginx设计架构"></a>服务器-Nginx设计架构</h3><h4 id="Nginx服务器架构"><a href="#Nginx服务器架构" class="headerlink" title="Nginx服务器架构"></a>Nginx服务器架构</h4><p>Nginx服务器启动后，产生一个主进程，主进程执行一系列工作后产生一个或多个工作进程。</p><p>如下图所示：Nginx服务器的结构大致分为主进程、工作进程、后端服务器和缓存。<br><img src="https://github.com/mianhk/image-save/blob/master/server/003/001.png?raw=true" alt=""></p><ul><li>主进程主要进行：Nginx配置文件解析、数据结构初始化、模块配置和注册、信号处理、网络监听生成、工作进程生成和管理。</li><li>工作进程主要进行：进程初始化、模块调用和请求处理等。</li><li>缓存索引重建及管理进程：cache模块，主要由缓存索引重建和缓存索引管理两类进程完成。缓存索引重建是在Nginx服务启动一段时间后由主进程生成，在缓存元数据重建完成后自动退出。主要工作是：根据本地磁盘上的缓存文件在内存中建立索引元数据库，启动后对本地磁盘上存放缓存文件的目录结构进行扫描，检查内存中已有的缓存你数据元是否正确，并更新索引元数据库；缓存索引管理进程一般存在于主进程的整个生命周期，负责对缓存索引进行管理。主要负责对元数据是否过期做出判断。</li></ul><h4 id="进程交互"><a href="#进程交互" class="headerlink" title="进程交互"></a>进程交互</h4><h5 id="Master-worker交互"><a href="#Master-worker交互" class="headerlink" title="Master-worker交互"></a>Master-worker交互</h5><p>主进程会建立一张工作进程表，存放所有未退出的，主进程通过一个单向管道向工作进程发送指令等信息。</p><h5 id="Worker-Worker交互"><a href="#Worker-Worker交互" class="headerlink" title="Worker-Worker交互"></a>Worker-Worker交互</h5><p>工作进程之间的交互，首先要得到彼此的信息，建立管道通信。当工作进程w1需要向w2发送指令时，首先在主进程给它的其他工作进程信息中找到w2的进程ID，然后将正确的指令写入指向w2的通道。w2捕捉到管道中的时间后，解析指令并采取相应的措施。完成worker之间的交互</p><h4 id="Run-Loops时间处理循环模型"><a href="#Run-Loops时间处理循环模型" class="headerlink" title="Run Loops时间处理循环模型"></a>Run Loops时间处理循环模型</h4><p>Run Loops指的是进程内部用来不停的调配工作，对事件进行循环处理的一种模型。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;服务器-Nginx设计架构&quot;&gt;&lt;a href=&quot;#服务器-Nginx设计架构&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx设计架构&quot;&gt;&lt;/a&gt;服务器-Nginx设计架构&lt;/h3&gt;&lt;h4 id=&quot;Nginx服务器架构&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器-Nginx的事件驱动模型</title>
+    <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx的事件驱动模型/</id>
+    <published>2018-01-25T07:49:39.000Z</published>
+    <updated>2018-01-25T07:49:59.138Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="服务器-Nginx的事件驱动模型"><a href="#服务器-Nginx的事件驱动模型" class="headerlink" title="服务器-Nginx的事件驱动模型"></a>服务器-Nginx的事件驱动模型</h2><h3 id="什么是事件驱动模型"><a href="#什么是事件驱动模型" class="headerlink" title="什么是事件驱动模型"></a>什么是事件驱动模型</h3><p>事件驱动概念：在持续的事物管理过程中，由当前时间节点上出现的事件引起的调用可用资源执行相关任务，解决问题，防止事物堆积的一种策略。<br>一般由：事件收集器、事件发送器和事件处理器组成。</p><h3 id="事件驱动处理库"><a href="#事件驱动处理库" class="headerlink" title="事件驱动处理库"></a>事件驱动处理库</h3><p>又称为多路IO复用方法：主要包括以下几种：</p><h4 id="select库"><a href="#select库" class="headerlink" title="select库"></a>select库</h4><ol><li>创建所关注事件的描述符集合，每个描述符，可以关注读事件、写事件以及异常发生事件。</li><li>调用底层的select函数，等待事件发生。</li><li>轮询所有事件描述符集合中的每一个事件描述符，检查是否有相应的事件发生，如果有，就进行处理。<h4 id="poll库"><a href="#poll库" class="headerlink" title="poll库"></a>poll库</h4>Linux下平台的基本事件驱动模型。基本工作方式与select库相同。<br>区别在于：select库需要为读事件、写事件和异常事件分别创建一个描述符集合，因此在最后轮询的时候，需要分别轮询三个集合。而poll库只需要创建一个集合。轮询的时候同时检查三种事件是否发生。<h4 id="epoll库"><a href="#epoll库" class="headerlink" title="epoll库"></a>epoll库</h4>Nginx服务器支持的高性能事件驱动库。主要的改动是：把描述符列表的管理交由内核负责，一旦有某种事件发生，内核把发生的事件的描述列表通知给进程，这样就避免了轮询整个描述符列表。</li><li>epoll库通过相关调用通知内核创建一个有N个描述符的事件列表。然后给这些描述符设置关注的事件，并添加到内核的事件列表中去。</li><li>完成设置之后，epoll库就开始等待内核通知事件发生。一旦发生，内核将发生事件的描述符上报给epoll库。<h4 id="rtsig模型"><a href="#rtsig模型" class="headerlink" title="rtsig模型"></a>rtsig模型</h4>Real-time signal，实时信号。使用rtsig时，工作进程会通过系统内核建立一个rtsig队列用于存放标记事件发生的信号。每个事件发生时，系统内核就会产生一个信号存放在rtsig队列中等待工作进程的处理。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;服务器-Nginx的事件驱动模型&quot;&gt;&lt;a href=&quot;#服务器-Nginx的事件驱动模型&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx的事件驱动模型&quot;&gt;&lt;/a&gt;服务器-Nginx的事件驱动模型&lt;/h2&gt;&lt;h3 id=&quot;什么是事件驱动模型
+      
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>服务器-Nginx的Web请求处理机制</title>
-    <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84Web%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://yoursite.com/2018/01/25/服务器-Nginx的Web请求处理机制/</id>
+    <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84Web%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/"/>
+    <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx的Web请求处理机制/</id>
     <published>2018-01-25T03:53:23.000Z</published>
     <updated>2018-01-25T03:53:45.158Z</updated>
     
@@ -43,8 +141,8 @@
   
   <entry>
     <title>服务器-Nginx模块化结构</title>
-    <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2018/01/25/服务器-Nginx模块化结构/</id>
+    <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx模块化结构/</id>
     <published>2018-01-25T03:52:30.000Z</published>
     <updated>2018-01-25T03:53:06.499Z</updated>
     
@@ -68,8 +166,8 @@
   
   <entry>
     <title>服务器-Nginx-一个简单的例子</title>
-    <link href="http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
-    <id>http://yoursite.com/2018/01/24/服务器-Nginx-一个简单的例子/</id>
+    <link href="http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
+    <id>http://yoursite.com/2018/01/24/服务器/服务器-Nginx-一个简单的例子/</id>
     <published>2018-01-24T14:41:26.000Z</published>
     <updated>2018-01-25T00:52:41.581Z</updated>
     
@@ -93,8 +191,8 @@
   
   <entry>
     <title>服务器-Nginx基础配置</title>
-    <link href="http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/01/24/服务器-Nginx基础配置/</id>
+    <link href="http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/01/24/服务器/服务器-Nginx基础配置/</id>
     <published>2018-01-24T12:50:05.000Z</published>
     <updated>2018-01-24T12:50:37.024Z</updated>
     
@@ -118,8 +216,8 @@
   
   <entry>
     <title>服务器-Nginx安装和基本配置</title>
-    <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/01/23/服务器-Nginx安装和基本配置/</id>
+    <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/01/23/服务器/服务器-Nginx安装和基本配置/</id>
     <published>2018-01-23T14:25:21.000Z</published>
     <updated>2018-01-23T14:26:39.614Z</updated>
     
@@ -143,8 +241,8 @@
   
   <entry>
     <title>服务器-初识Nginx</title>
-    <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%88%9D%E8%AF%86Nginx/"/>
-    <id>http://yoursite.com/2018/01/23/服务器-初识Nginx/</id>
+    <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%88%9D%E8%AF%86Nginx/"/>
+    <id>http://yoursite.com/2018/01/23/服务器/服务器-初识Nginx/</id>
     <published>2018-01-23T13:39:44.000Z</published>
     <updated>2018-01-23T13:41:25.564Z</updated>
     
@@ -168,8 +266,8 @@
   
   <entry>
     <title>Linux用户管理</title>
-    <link href="http://yoursite.com/2018/01/23/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
-    <id>http://yoursite.com/2018/01/23/Linux用户管理/</id>
+    <link href="http://yoursite.com/2018/01/23/Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2018/01/23/Linux/Linux用户管理/</id>
     <published>2018-01-23T13:04:16.000Z</published>
     <updated>2018-01-23T13:05:01.699Z</updated>
     
@@ -193,8 +291,8 @@
   
   <entry>
     <title>腾讯云服务器Linux挖比特币</title>
-    <link href="http://yoursite.com/2018/01/19/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/"/>
-    <id>http://yoursite.com/2018/01/19/腾讯云服务器Linux挖比特币/</id>
+    <link href="http://yoursite.com/2018/01/19/%E7%94%9F%E6%B4%BB/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/"/>
+    <id>http://yoursite.com/2018/01/19/生活/腾讯云服务器Linux挖比特币/</id>
     <published>2018-01-19T14:56:59.000Z</published>
     <updated>2018-01-19T14:57:56.617Z</updated>
     
@@ -218,8 +316,8 @@
   
   <entry>
     <title>Linux修改用户名和所属组</title>
-    <link href="http://yoursite.com/2018/01/17/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
-    <id>http://yoursite.com/2018/01/17/Linux修改用户名和所属组/</id>
+    <link href="http://yoursite.com/2018/01/17/Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
+    <id>http://yoursite.com/2018/01/17/Linux/Linux修改用户名和所属组/</id>
     <published>2018-01-17T11:48:22.000Z</published>
     <updated>2018-01-17T11:50:32.127Z</updated>
     
@@ -243,8 +341,8 @@
   
   <entry>
     <title>LeetCode-36-Valid-Sudoku</title>
-    <link href="http://yoursite.com/2018/01/14/LeetCode-36-Valid-Sudoku/"/>
-    <id>http://yoursite.com/2018/01/14/LeetCode-36-Valid-Sudoku/</id>
+    <link href="http://yoursite.com/2018/01/14/%E5%88%B7%E9%A2%98/LeetCode-36-Valid-Sudoku/"/>
+    <id>http://yoursite.com/2018/01/14/刷题/LeetCode-36-Valid-Sudoku/</id>
     <published>2018-01-14T13:53:42.000Z</published>
     <updated>2018-01-14T13:54:13.643Z</updated>
     
@@ -270,8 +368,8 @@
   
   <entry>
     <title>LeetCode-34-Search-for-a-Range</title>
-    <link href="http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/"/>
-    <id>http://yoursite.com/2018/01/14/LeetCode-34-Search-for-a-Range/</id>
+    <link href="http://yoursite.com/2018/01/14/%E5%88%B7%E9%A2%98/LeetCode-34-Search-for-a-Range/"/>
+    <id>http://yoursite.com/2018/01/14/刷题/LeetCode-34-Search-for-a-Range/</id>
     <published>2018-01-14T13:52:38.000Z</published>
     <updated>2018-01-14T13:53:13.474Z</updated>
     
@@ -297,8 +395,8 @@
   
   <entry>
     <title>LeetCode-32-Longest-Valid-Parentheses</title>
-    <link href="http://yoursite.com/2018/01/12/LeetCode-32-Longest-Valid-Parentheses/"/>
-    <id>http://yoursite.com/2018/01/12/LeetCode-32-Longest-Valid-Parentheses/</id>
+    <link href="http://yoursite.com/2018/01/12/%E5%88%B7%E9%A2%98/LeetCode-32-Longest-Valid-Parentheses/"/>
+    <id>http://yoursite.com/2018/01/12/刷题/LeetCode-32-Longest-Valid-Parentheses/</id>
     <published>2018-01-12T09:28:31.000Z</published>
     <updated>2018-01-12T09:28:43.262Z</updated>
     
@@ -324,8 +422,8 @@
   
   <entry>
     <title>LeetCode-31-Next-Permutation</title>
-    <link href="http://yoursite.com/2018/01/12/LeetCode-31-Next-Permutation/"/>
-    <id>http://yoursite.com/2018/01/12/LeetCode-31-Next-Permutation/</id>
+    <link href="http://yoursite.com/2018/01/12/%E5%88%B7%E9%A2%98/LeetCode-31-Next-Permutation/"/>
+    <id>http://yoursite.com/2018/01/12/刷题/LeetCode-31-Next-Permutation/</id>
     <published>2018-01-12T09:26:20.000Z</published>
     <updated>2018-01-12T09:28:10.982Z</updated>
     
@@ -351,8 +449,8 @@
   
   <entry>
     <title>LeetCode-19-Remove-Nth-Node-From-End-of-List</title>
-    <link href="http://yoursite.com/2018/01/12/LeetCode-19-Remove-Nth-Node-From-End-of-List/"/>
-    <id>http://yoursite.com/2018/01/12/LeetCode-19-Remove-Nth-Node-From-End-of-List/</id>
+    <link href="http://yoursite.com/2018/01/12/%E5%88%B7%E9%A2%98/LeetCode-19-Remove-Nth-Node-From-End-of-List/"/>
+    <id>http://yoursite.com/2018/01/12/刷题/LeetCode-19-Remove-Nth-Node-From-End-of-List/</id>
     <published>2018-01-12T09:25:23.000Z</published>
     <updated>2018-01-12T09:26:00.647Z</updated>
     
@@ -381,33 +479,6 @@
     <title>LeetCode-23-Merge-k-Sorted-Lists</title>
     <link href="http://yoursite.com/2018/01/11/%E5%88%B7%E9%A2%98/LeetCode-23-Merge-k-Sorted-Lists/"/>
     <id>http://yoursite.com/2018/01/11/刷题/LeetCode-23-Merge-k-Sorted-Lists/</id>
-    <published>2018-01-11T14:23:23.000Z</published>
-    <updated>2018-01-11T14:24:55.824Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a>23. Merge k Sorted Lists</h3><blockquote><p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p></blockquote><p>这个题乍一看只是对链表的一个排序，因为是很多个链表，所以很简单的想法就是将整个数组里面的两个链表分别进行排序。两个两个互相排序之后就能排好。这里用的是递归。当vector中的元素大于1说明还没有排完。<br>直接一下就AC了，但是一看detail，果然时间有点长。运行时间内93ms，看到别人的只需要20+。。<br>还是先记一下自己的代码 吧。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* merge2List(ListNode* lList,ListNode* rList)&#123;</div><div class="line">        if(lList==nullptr)</div><div class="line">            return rList;</div><div class="line">        if(rList==nullptr)</div><div class="line">            return lList;</div><div class="line">        if(lList-&gt;val&lt;rList-&gt;val)&#123;</div><div class="line">            lList-&gt;next=merge2List(lList-&gt;next,rList);</div><div class="line">            return lList;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            rList-&gt;next=merge2List(lList,rList-&gt;next);</div><div class="line">            return rList;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) &#123;</div><div class="line">        if(lists.size()==0)</div><div class="line">            return nullptr;</div><div class="line">        while(lists.size()&gt;1)&#123;</div><div class="line">            lists.push_back(merge2List(lists[0],lists[1]));</div><div class="line">            lists.erase(lists.begin());</div><div class="line">            lists.erase(lists.begin());</div><div class="line">        &#125;</div><div class="line">        return lists[0];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p> 看了一下别人的代码，用了优先队列，进行排序，没有重新写了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">    class Cmp</div><div class="line">    &#123;</div><div class="line">    public:</div><div class="line">        bool operator() (ListNode *a, ListNode *b) const</div><div class="line">        &#123;</div><div class="line">            return a-&gt;val &gt; b-&gt;val;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">public:</div><div class="line">    ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) &#123;</div><div class="line">        priority_queue&lt;ListNode *, vector&lt;ListNode *&gt;, Cmp&gt; pq;</div><div class="line">        ListNode *head = NULL;</div><div class="line">        ListNode *cur = NULL;</div><div class="line">        int k = lists.size();</div><div class="line">        if(k == 0)</div><div class="line">        &#123;</div><div class="line">            return NULL;</div><div class="line">        &#125;</div><div class="line">        for(ListNode *list: lists)</div><div class="line">        &#123;</div><div class="line">            if(list != NULL)</div><div class="line">            &#123;</div><div class="line">                pq.push(list);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        while( !pq.empty() )</div><div class="line">        &#123;</div><div class="line">            ListNode *next = pq.top();</div><div class="line">            pq.pop();</div><div class="line">            if(next-&gt;next != NULL)</div><div class="line">            &#123;</div><div class="line">                pq.push(next-&gt;next);</div><div class="line">            &#125;</div><div class="line">            next-&gt;next = NULL;</div><div class="line">            if(head == NULL)</div><div class="line">            &#123;</div><div class="line">                head = next;</div><div class="line">                cur = head;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">                cur-&gt;next = next;</div><div class="line">                cur = cur-&gt;next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;23-Merge-k-Sorted-Lists&quot;&gt;&lt;a href=&quot;#23-Merge-k-Sorted-Lists&quot; class=&quot;headerlink&quot; title=&quot;23. Merge k Sorted Lists&quot;&gt;&lt;/a&gt;23. Merge k Sort
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-23-Merge-k-Sorted-Lists</title>
-    <link href="http://yoursite.com/2018/01/11/LeetCode-23-Merge-k-Sorted-Lists/"/>
-    <id>http://yoursite.com/2018/01/11/LeetCode-23-Merge-k-Sorted-Lists/</id>
     <published>2018-01-11T14:23:23.000Z</published>
     <updated>2018-01-23T13:05:09.518Z</updated>
     
@@ -456,90 +527,6 @@
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-8-String to Integer (atoi)</title>
-    <link href="http://yoursite.com/2018/01/09/%E5%88%B7%E9%A2%98/LeetCode-8-String-to-Integer-atoi/"/>
-    <id>http://yoursite.com/2018/01/09/刷题/LeetCode-8-String-to-Integer-atoi/</id>
-    <published>2018-01-09T14:24:41.000Z</published>
-    <updated>2018-01-09T14:34:23.939Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8.String to Integer (atoi)"></a>8.String to Integer (atoi)</h3><blockquote><p>Implement atoi to convert a string to an integer.</p></blockquote><p>讲字符串转化为整型。当然过程很简单，但是需要考虑的乱七八糟的情况很多，空格和正负号之类的。提交了一百次，终于过了，但是看到别人的代码还是很气呀，还是得多写才行，但是起码写的慢慢有感觉了是吧。<br>总体思路基本都是差不多的：<br>1.循环字符串，从第一个开始不为空的字符开始判断，如果是正负号，则只能有一个正负号，进行标记，数字开始。<br>2.数字开始之后，出现空格或者字母，返回已经生成的整型。<br>3.当数字大于最大的整数或者小于最小的整数的时候，应该将其置为最大或者最小。所以这里应该将结果定义为long long int ，不然当加到INT_MAX的时候，会自动+1，置为INT_MIN，应该避免这样的情况。<br>这里贴一下自己改的乱七八糟的代码吧，实在很气呀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int myAtoi(string str) &#123;</div><div class="line">        int flag=1;</div><div class="line">        long long int res=0;</div><div class="line">        int begin=-1;</div><div class="line">        for(int i=0;i&lt;str.size();++i)&#123;</div><div class="line">            if(str[i]==&apos;-&apos;||str[i]==&apos;+&apos;)&#123;</div><div class="line">                if(begin!=-1)</div><div class="line">                    return 0;</div><div class="line">                begin=i;</div><div class="line">                flag=str[i]==&apos;-&apos;?-1:1;</div><div class="line">            &#125;</div><div class="line">            else if(str[i]&gt;=&apos;0&apos;&amp;&amp;str[i]&lt;=&apos;9&apos;)&#123;</div><div class="line">                begin=i;</div><div class="line">                res=res*10+str[i]-48;</div><div class="line">                if(res*flag&gt;INT_MAX)</div><div class="line">                    return INT_MAX;</div><div class="line">                if(res*flag&lt;INT_MIN)</div><div class="line">                    return INT_MIN;</div><div class="line">            &#125;</div><div class="line">            else if(str[i]==&apos; &apos;)&#123;</div><div class="line">                if(begin!=-1)</div><div class="line">                    return res*flag;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                return res*flag;</div><div class="line">        &#125;</div><div class="line">        return res*flag;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><p>提交一看，这个时间还有点问题，就懒得自己再改了，思路都是一样的吧，就直接贴过来学习一下了，即使我觉得写的也一般呀。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int myAtoi(string str) &#123;</div><div class="line">        int i = 0;</div><div class="line">        long long res = 0;</div><div class="line">        if(str.size() == 0)</div><div class="line">            return res;</div><div class="line"></div><div class="line">        while(i &lt; str.size() &amp;&amp; str[i] == &apos; &apos;)</div><div class="line">            i++;</div><div class="line"></div><div class="line">        int flag = 1;</div><div class="line">        if(str[i] == &apos;+&apos;)</div><div class="line">            i++;</div><div class="line">        else if(str[i] == &apos;-&apos;)</div><div class="line">        &#123;</div><div class="line">            flag = -1;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        while(str[i] &gt;= &apos;0&apos; &amp;&amp; str[i] &lt;= &apos;9&apos;)</div><div class="line">        &#123;</div><div class="line">            res = res * 10 + str[i] - &apos;0&apos;;</div><div class="line">            i++;</div><div class="line">        if(res * flag &gt;= INT_MAX)</div><div class="line">            return INT_MAX;</div><div class="line">        if(res * flag &lt;= INT_MIN)</div><div class="line">            return INT_MIN;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        return res * flag;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;8-String-to-Integer-atoi&quot;&gt;&lt;a href=&quot;#8-String-to-Integer-atoi&quot; class=&quot;headerlink&quot; title=&quot;8.String to Integer (atoi)&quot;&gt;&lt;/a&gt;8.String to 
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>精剪生活</title>
-    <link href="http://yoursite.com/2017/12/10/cut-life/"/>
-    <id>http://yoursite.com/2017/12/10/cut-life/</id>
-    <published>2017-12-10T11:57:26.000Z</published>
-    <updated>2017-12-10T12:49:29.976Z</updated>
-    
-    <content type="html"><![CDATA[<p>好像从小的时候开始，拥有各种感兴趣的事情或者不只是好好学习就像一种美德一样充斥于我们与同龄人的自己的生活中。就像小时候打的弹珠和后面看的小说乒乓球和dota一样。哦，对，应该说是合群，或者是接地气，就是所有与同龄人正常社交所需的娱乐活动吧。所以作为一个老师口中活泼开朗的学生，这些我基本都有，可能玩的不一定好，但是so what，只要不是像“那些只爱学习的同学”一样，好像都够了。</p><p>于是，也不知道什么时候就慢慢形成了广泛的娱乐活动了。直到现在，想起自己好像啥都能参与，就像篮球里能够从1打到5的那种全能型选手，不一定有机会上场，但总是差不多合格一样。<br>想一下现在自己的娱乐：</p><ul><li>打球？篮球、羽毛球、乒乓球，都可以打一些。虽然现在打篮球确实少了很多了，一个是宿舍就我一个人去，这样就很多时候懒得去了。羽毛球呢，总觉得要是四个人比较好，但是又对天气有些要求。还有乒乓球，需要有个水平不是很厉害还愿意跟我 打的了。。。</li><li>打麻将？这个简直是好约啊，四个人可以动脑或者不动脑的室内活动，主动或者三缺一的要求，都是相当的容易，这种活动还一般安排在吃饭的后边，就像你有时候也没法拒绝吃饱之后某个茶楼的茶一样，因为即使回去也还是睡觉是吧，而且自己总是告诉自己不要把生命浪费在床上。</li><li>各种吃饭？是的，忘了多少个睡到十点的周末，大家在一边互相催着起床一边讨论中午吃什么，于是由简单的黄焖鸡变成了鸡公煲，自助、火锅。。然后就是一个白天很快就过去了。</li><li>打游戏？简直是不可或缺的一部分啊。好像之前一年已经很少玩了。直到暑假开始玩的一个垃圾手游，轩辕传奇，几乎每天要花一个多小时的时间吧，想了一下，占据了我基本每天吃完午饭到睡觉之前和晚上回到宿舍到上床的一段时间。这段时间本来就不是很长，但是却被我用的看起来更紧张了。还有偶尔同学们约的王者荣耀，我基本自己都没有打过。还有最近的荒野行动，也是周末晚上或者正好十点多的上午才会有的娱乐。</li><li>看书？当然，我还是愿意把这个算进去。毕竟看的一些闲书，不能说没用，但确实是一种娱乐了吧。占据了上床到睡觉之前的不玩手机的时间，这个时间可能更短了。</li><li>然后，实验室玩手机？这个就不多说了，想想每天的手机电量吧。</li><li>乱七八糟的折腾？额，年轻的特征吗。。没意思的东西还是少弄点了吧</li></ul><p>这样看的话其实生活好像也很正常的，但是却是感觉每天，或者周末都很忙，忙了还不知道自己干了啥。有些难受。而且这好像也是自己写的第二篇这种苦恼了，上一次也是觉得这样的周末，但是两周过去了，好像还没有好多少，可能周末确实适合这么过，但是显然不是现在。<br>接下来需要做的，就是精简生活了，不是什么活动都需要参加的是吧，也不是什么都需要自己关注的是吧，也不用总是活在一个中心。<strong> 先专注做好自己现在该做的事情，或者先想想？</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;好像从小的时候开始，拥有各种感兴趣的事情或者不只是好好学习就像一种美德一样充斥于我们与同龄人的自己的生活中。就像小时候打的弹珠和后面看的小说乒乓球和dota一样。哦，对，应该说是合群，或者是接地气，就是所有与同龄人正常社交所需的娱乐活动吧。所以作为一个老师口中活泼开朗的学生
-      
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="杂想" scheme="http://yoursite.com/tags/%E6%9D%82%E6%83%B3/"/>
-    
-      <category term="记录" scheme="http://yoursite.com/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>牛客网-剑指offer-11</title>
-    <link href="http://yoursite.com/2017/12/03/%E5%88%B7%E9%A2%98/%E7%89%9B%E5%AE%A2%E7%BD%91-%E5%89%91%E6%8C%87offer-11/"/>
-    <id>http://yoursite.com/2017/12/03/刷题/牛客网-剑指offer-11/</id>
-    <published>2017-12-03T12:44:21.000Z</published>
-    <updated>2017-12-03T14:00:32.524Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="T31：把数组排成最小的数"><a href="#T31：把数组排成最小的数" class="headerlink" title="T31：把数组排成最小的数"></a>T31：把数组排成最小的数</h4><blockquote><p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。</p></blockquote><p>这里想到的是，要对数组里面的所有数进行一个排序：不只是排长度，还要排最高位的大小。于是可以通过c++的STL的排序，通过自己定义的一个谓语比较函数。在这个比较函数里，把整数转成string进行比较，但是想到string的长度不一样的话也没法比较字符的大小了。所以分别将两个数加在一起，前后顺序不同，这样string的长度就一样了，比较的就是顺序了。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    string PrintMinNumber(vector&lt;int&gt; numbers) &#123;</div><div class="line">        string result;</div><div class="line">        sort(numbers.begin(),numbers.end(),cmp);</div><div class="line">        for(int i=0;i!=numbers.size();++i)&#123;</div><div class="line">            result+=to_string(numbers[i]);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    static bool cmp(int a,int b)&#123;</div><div class="line">        string A=to_string(a)+to_string(b);</div><div class="line">        string B=to_string(b)+to_string(a);</div><div class="line">        return A&lt;B;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><h4 id="T32：丑数"><a href="#T32：丑数" class="headerlink" title="T32：丑数"></a>T32：丑数</h4><blockquote><p>把只包含因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</p></blockquote><p>要求出第N个丑数，显然就要求到这N个，所以就要把所有的找出来嘛。简单的办法，就是2,3，5的倍数，但是这些倍数出来的丑数的顺序，这时候需要排序。显然不能直接对所有的都排序，那复杂度就太大了。这里一种考虑就是：比如，对于一次倍数的计算，如果2的倍数比原来的都大，那么3和5的倍数显然只会更大了。所以可以通过记录下此时分别为2,3,5倍数三个值，这样就可以减少比较的次数了。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int GetUglyNumber_Solution(int index) &#123;</div><div class="line">        if(index==0)</div><div class="line">            return 0;  //解决边界条件</div><div class="line">        vector&lt;int&gt; result(index);</div><div class="line">        result[0]=1;</div><div class="line">        int x=0,y=0,z=0,i;</div><div class="line">        for(i=1;i&lt;index;i++)&#123;</div><div class="line">            result[i]=min(result[x]*2,min(result[y]*3,result[z]*5));</div><div class="line">            if(result[i]==result[x]*2)</div><div class="line">                x++;</div><div class="line">            if(result[i]==result[y]*3)</div><div class="line">                y++;</div><div class="line">            if(result[i]==result[z]*5)</div><div class="line">                z++;</div><div class="line">        &#125;</div><div class="line">        return result[index-1];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><h4 id="T33：第一个只出现一次的字符"><a href="#T33：第一个只出现一次的字符" class="headerlink" title="T33：第一个只出现一次的字符"></a>T33：第一个只出现一次的字符</h4><blockquote><p>在一个字符串(1&lt;=字符串长度&lt;=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置</p></blockquote><p>很容易想到的一种复杂度为O(n)的算法是采用哈希表，遍历一次，将出现的字符放在键中，出现一次即在值中加1。第二次遍历，直接查找该键对应的值，第一个为1的输出即可。当然，这里由于是字符，所以可以直接采用数组的形式。<strong> 一定要记得对数组进行初始化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int FirstNotRepeatingChar(string str) &#123;</div><div class="line">        if(str.size()==0)</div><div class="line">            return -1;        //处理边界条件</div><div class="line">        int res[256]=&#123;0&#125;;  //局部变量，一定要初始化啊</div><div class="line">        int i=0;</div><div class="line">        for(;i!=str.size();++i)&#123;</div><div class="line">            res[(int)str[i]]++;</div><div class="line">        &#125;</div><div class="line">        for(i=0;i!=str.size();++i)&#123;</div><div class="line">            if(res[(int)str[i]]==1)</div><div class="line">                return i;</div><div class="line">        &#125;</div><div class="line">        return str.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;T31：把数组排成最小的数&quot;&gt;&lt;a href=&quot;#T31：把数组排成最小的数&quot; class=&quot;headerlink&quot; title=&quot;T31：把数组排成最小的数&quot;&gt;&lt;/a&gt;T31：把数组排成最小的数&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;输入一个正整数数组，把数组
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="剑指offer" scheme="http://yoursite.com/tags/%E5%89%91%E6%8C%87offer/"/>
-    
-      <category term="牛客网" scheme="http://yoursite.com/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/"/>
     
   </entry>
   
