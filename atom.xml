@@ -96,7 +96,7 @@
     <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/"/>
     <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx设计架构/</id>
     <published>2018-01-25T08:37:48.000Z</published>
-    <updated>2018-01-25T08:38:08.860Z</updated>
+    <updated>2018-01-25T13:50:54.202Z</updated>
     
     <content type="html"><![CDATA[<h3 id="服务器-Nginx设计架构"><a href="#服务器-Nginx设计架构" class="headerlink" title="服务器-Nginx设计架构"></a>服务器-Nginx设计架构</h3><h4 id="Nginx服务器架构"><a href="#Nginx服务器架构" class="headerlink" title="Nginx服务器架构"></a>Nginx服务器架构</h4><p>Nginx服务器启动后，产生一个主进程，主进程执行一系列工作后产生一个或多个工作进程。</p><p>如下图所示：Nginx服务器的结构大致分为主进程、工作进程、后端服务器和缓存。<br><img src="https://github.com/mianhk/image-save/blob/master/server/003/001.png?raw=true" alt=""></p><ul><li>主进程主要进行：Nginx配置文件解析、数据结构初始化、模块配置和注册、信号处理、网络监听生成、工作进程生成和管理。</li><li>工作进程主要进行：进程初始化、模块调用和请求处理等。</li><li>缓存索引重建及管理进程：cache模块，主要由缓存索引重建和缓存索引管理两类进程完成。缓存索引重建是在Nginx服务启动一段时间后由主进程生成，在缓存元数据重建完成后自动退出。主要工作是：根据本地磁盘上的缓存文件在内存中建立索引元数据库，启动后对本地磁盘上存放缓存文件的目录结构进行扫描，检查内存中已有的缓存你数据元是否正确，并更新索引元数据库；缓存索引管理进程一般存在于主进程的整个生命周期，负责对缓存索引进行管理。主要负责对元数据是否过期做出判断。</li></ul><h4 id="进程交互"><a href="#进程交互" class="headerlink" title="进程交互"></a>进程交互</h4><h5 id="Master-worker交互"><a href="#Master-worker交互" class="headerlink" title="Master-worker交互"></a>Master-worker交互</h5><p>主进程会建立一张工作进程表，存放所有未退出的，主进程通过一个单向管道向工作进程发送指令等信息。</p><h5 id="Worker-Worker交互"><a href="#Worker-Worker交互" class="headerlink" title="Worker-Worker交互"></a>Worker-Worker交互</h5><p>工作进程之间的交互，首先要得到彼此的信息，建立管道通信。当工作进程w1需要向w2发送指令时，首先在主进程给它的其他工作进程信息中找到w2的进程ID，然后将正确的指令写入指向w2的通道。w2捕捉到管道中的时间后，解析指令并采取相应的措施。完成worker之间的交互</p><h4 id="Run-Loops时间处理循环模型"><a href="#Run-Loops时间处理循环模型" class="headerlink" title="Run Loops时间处理循环模型"></a>Run Loops时间处理循环模型</h4><p>Run Loops指的是进程内部用来不停的调配工作，对事件进行循环处理的一种模型。</p>]]></content>
     
@@ -112,7 +112,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -121,7 +125,7 @@
     <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9E%8B/"/>
     <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx的事件驱动模型/</id>
     <published>2018-01-25T07:49:39.000Z</published>
-    <updated>2018-01-25T07:49:59.138Z</updated>
+    <updated>2018-01-25T13:50:41.970Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务器-Nginx的事件驱动模型"><a href="#服务器-Nginx的事件驱动模型" class="headerlink" title="服务器-Nginx的事件驱动模型"></a>服务器-Nginx的事件驱动模型</h2><h3 id="什么是事件驱动模型"><a href="#什么是事件驱动模型" class="headerlink" title="什么是事件驱动模型"></a>什么是事件驱动模型</h3><p>事件驱动概念：在持续的事物管理过程中，由当前时间节点上出现的事件引起的调用可用资源执行相关任务，解决问题，防止事物堆积的一种策略。<br>一般由：事件收集器、事件发送器和事件处理器组成。</p><h3 id="事件驱动处理库"><a href="#事件驱动处理库" class="headerlink" title="事件驱动处理库"></a>事件驱动处理库</h3><p>又称为多路IO复用方法：主要包括以下几种：</p><h4 id="select库"><a href="#select库" class="headerlink" title="select库"></a>select库</h4><ol><li>创建所关注事件的描述符集合，每个描述符，可以关注读事件、写事件以及异常发生事件。</li><li>调用底层的select函数，等待事件发生。</li><li>轮询所有事件描述符集合中的每一个事件描述符，检查是否有相应的事件发生，如果有，就进行处理。<h4 id="poll库"><a href="#poll库" class="headerlink" title="poll库"></a>poll库</h4>Linux下平台的基本事件驱动模型。基本工作方式与select库相同。<br>区别在于：select库需要为读事件、写事件和异常事件分别创建一个描述符集合，因此在最后轮询的时候，需要分别轮询三个集合。而poll库只需要创建一个集合。轮询的时候同时检查三种事件是否发生。<h4 id="epoll库"><a href="#epoll库" class="headerlink" title="epoll库"></a>epoll库</h4>Nginx服务器支持的高性能事件驱动库。主要的改动是：把描述符列表的管理交由内核负责，一旦有某种事件发生，内核把发生的事件的描述列表通知给进程，这样就避免了轮询整个描述符列表。</li><li>epoll库通过相关调用通知内核创建一个有N个描述符的事件列表。然后给这些描述符设置关注的事件，并添加到内核的事件列表中去。</li><li>完成设置之后，epoll库就开始等待内核通知事件发生。一旦发生，内核将发生事件的描述符上报给epoll库。<h4 id="rtsig模型"><a href="#rtsig模型" class="headerlink" title="rtsig模型"></a>rtsig模型</h4>Real-time signal，实时信号。使用rtsig时，工作进程会通过系统内核建立一个rtsig队列用于存放标记事件发生的信号。每个事件发生时，系统内核就会产生一个信号存放在rtsig队列中等待工作进程的处理。</li></ol>]]></content>
     
@@ -137,7 +141,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -146,7 +154,7 @@
     <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84Web%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/"/>
     <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx的Web请求处理机制/</id>
     <published>2018-01-25T03:53:23.000Z</published>
-    <updated>2018-01-25T03:53:45.158Z</updated>
+    <updated>2018-01-25T13:50:37.362Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务器-Nginx的Web请求处理机制"><a href="#服务器-Nginx的Web请求处理机制" class="headerlink" title="服务器-Nginx的Web请求处理机制"></a>服务器-Nginx的Web请求处理机制</h2><h3 id="并行处理请求的三种方式"><a href="#并行处理请求的三种方式" class="headerlink" title="并行处理请求的三种方式"></a>并行处理请求的三种方式</h3><p>web服务器和客户端是一对多的关系，所以web服务器要能同时为多个客户端提供服务。一般有三种方式：多进程方式、多线程方式和异步方式。</p><h4 id="多进程方式"><a href="#多进程方式" class="headerlink" title="多进程方式"></a>多进程方式</h4><p>服务器每接收到一个客户端时，就由服务器主进程生成一个子进程与该客户端交互 ，直到连接断开，子进程结束。</p><ul><li>优点：设计和实现相对简单、子进程之间相互独立，处理客户端请求的过程彼此不干扰，一个有问题不会影响其他的。保证了稳定性。子进程退出时，资源会被系统回收，不会留下垃圾。</li><li>缺点：每生成一个子进程，都要进行内存复制的操作，在资源和时间上会有额外的开销。<br>Apache采用的“预生成进程”可以稍微解决大并发请求，但是本质是多进程，无法解决多并发的问题。<h5 id="多线程方式"><a href="#多线程方式" class="headerlink" title="多线程方式"></a>多线程方式</h5>服务器每接收到一个客户端时，会由服务器主进程派生一个线程出来和该客户端进行交互。</li><li>优点：产生一个线程的开销要小于一个进程，比较规范，利于协作。</li><li>缺点：多个线程在一个内存空间中，彼此互相影响，对内存的管理增加了出错的风险。<h4 id="异步方式"><a href="#异步方式" class="headerlink" title="异步方式"></a>异步方式</h4><h5 id="同步、异步与阻塞、非阻塞"><a href="#同步、异步与阻塞、非阻塞" class="headerlink" title="同步、异步与阻塞、非阻塞"></a>同步、异步与阻塞、非阻塞</h5><strong>同步和异步描述的是通信模式的概念</strong><br>同步：发送方发送请求后，需要等待接收到接收方发回的响应后，才接着发送下一个请求。所有的请求在服务器端得到同步，发送方和接收方对请求的处理步调是一致的。<br>异步：发送方发送请求后，不等待接收方响应这个请求，就继续发送下一个请求。所有来自发送方的请求形成一个队列，接收方处理完后通知发送方。</li></ul><p><strong>阻塞和非阻塞描述的是进程处理调用的方式，在网络通信中，主要指的是网络套接字socket的阻塞和非阻塞方式，socket实质上就是IO操作</strong><br>阻塞：调用结果返回之前，当前的线程从运行状态被挂起，一直等到调用结果返回之后，才进入就绪状态，获取CPU继续执行。<br>非阻塞：调用结果返回之前，线程不会被挂起，而是立即返回执行下一个周期。</p><p>所以共有四种方式：</p><ul><li>同步阻塞：发送方发送请求后，一直等待响应；接收方处理请求时不能立即等到结果的时候，就会一直等待返回结果，才响应发送方，期间不能执行任何其他工作。</li><li>同步非阻塞：发送方发送请求后，一直等待响应；接收方处理请求时不能立即等到结果的时候，就会立即返回，去做别的事情，但是由于没有得到结果，也不响应发送方，发送方一直等待。</li><li>异步阻塞：发送方发送请求后，不等待响应；接收方处理请求时不能立即等到结果的时候，就会一直等待返回结果，才响应发送方，期间不能执行任何其他工作。</li><li>异步非阻塞：发送方发送请求后，不等待响应；接收方处理请求时不能立即等到结果的时候，就会立即返回，去做别的事情，但是由于没有得到结果，也不响应发送方，发送方一直等待。</li></ul><h5 id="Nginx如何处理请求"><a href="#Nginx如何处理请求" class="headerlink" title="Nginx如何处理请求"></a>Nginx如何处理请求</h5><p>Nginx采用的是异步非阻塞的方式。采用Master-work模型（其实实际也有single的单进程模式，但是性能较差，很少使用）。每个工作进程采用异步非阻塞的方式。<br>Nginx服务器的工作进程调用IO后，就去进行其他工作，当IO调用返回，会通知工作进程。接下来就是怎么通知给工作进程了。</p>]]></content>
     
@@ -162,7 +170,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -171,7 +183,7 @@
     <link href="http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/"/>
     <id>http://yoursite.com/2018/01/25/服务器/服务器-Nginx模块化结构/</id>
     <published>2018-01-25T03:52:30.000Z</published>
-    <updated>2018-01-25T03:53:06.499Z</updated>
+    <updated>2018-01-25T13:50:50.499Z</updated>
     
     <content type="html"><![CDATA[<h3 id="服务器-Nginx模块化结构"><a href="#服务器-Nginx模块化结构" class="headerlink" title="服务器-Nginx模块化结构"></a>服务器-Nginx模块化结构</h3><p>习惯上将Nginx分为：核心模块、标准模块、可选HTTP模块、邮件服务模块和第三方模块五大类。</p><h4 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h4><p>包含对两部分功能的支持：</p><ul><li>主体功能：进程管理、权限控制、错误日志记录、配置解析等</li><li>用于响应请求必需的功能：事件驱动机制、正则表达式解析等<h4 id="标准HTTP模块"><a href="#标准HTTP模块" class="headerlink" title="标准HTTP模块"></a>标准HTTP模块</h4>对应基本的HTTP服务<h4 id="可选HTTP模块"><a href="#可选HTTP模块" class="headerlink" title="可选HTTP模块"></a>可选HTTP模块</h4>快速编译中默认不编译，需要使用的话需要自己加上–with-XXX的参数声明。<h4 id="邮件服务模块"><a href="#邮件服务模块" class="headerlink" title="邮件服务模块"></a>邮件服务模块</h4>Nginx的主要服务之一，快速编译时也不会编译<h4 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h4></li></ul>]]></content>
     
@@ -187,7 +199,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -196,7 +212,7 @@
     <link href="http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
     <id>http://yoursite.com/2018/01/24/服务器/服务器-Nginx-一个简单的例子/</id>
     <published>2018-01-24T14:41:26.000Z</published>
-    <updated>2018-01-25T00:52:41.581Z</updated>
+    <updated>2018-01-25T13:50:57.798Z</updated>
     
     <content type="html"><![CDATA[<h3 id="服务器-Nginx-一个简单的例子"><a href="#服务器-Nginx-一个简单的例子" class="headerlink" title="服务器-Nginx-一个简单的例子"></a>服务器-Nginx-一个简单的例子</h3><p>直接贴一个几经磨难的简单的例子吧，虽然简单，但是有些不理解的地方，就出了很多错，但是因为这些错误，在对nginx理解稍微深刻了那么一点点的同时，对Linux的操作好像也有了一点进步啊。才知道为什么大家的命令都那么长，而我总是一步步慢慢的来了，一方面不熟，另一方面确实操作的不够多啊。</p><h4 id="配置细节"><a href="#配置细节" class="headerlink" title="配置细节"></a>配置细节</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">user mianhk;</div><div class="line">worker_processes 3;</div><div class="line">pid /run/nginx.pid;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    use epoll;</div><div class="line">    #worker_connections 768;</div><div class="line">    worker_connections 768;</div><div class="line">    # multi_accept on;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Basic Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    sendfile on;</div><div class="line">    #tcp_nopush on;</div><div class="line">    #tcp_nodelay on;</div><div class="line">    keepalive_timeout 65;</div><div class="line">    types_hash_max_size 2048;</div><div class="line">    # server_tokens off;</div><div class="line"></div><div class="line">    # server_names_hash_bucket_size 64;</div><div class="line">    # server_name_in_redirect off;</div><div class="line"></div><div class="line">    include /etc/nginx/mime.types;</div><div class="line">    default_type application/octet-stream;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # SSL Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    #ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</div><div class="line">    #ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Logging Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    access_log /var/log/nginx/access.log;</div><div class="line">    error_log /var/log/nginx/error.log;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Gzip Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    gzip on;</div><div class="line">    gzip_disable &quot;msie6&quot;;</div><div class="line"></div><div class="line">    # gzip_vary on;</div><div class="line">    # gzip_proxied any;</div><div class="line">    # gzip_comp_level 6;</div><div class="line">    # gzip_buffers 16 8k;</div><div class="line">    # gzip_http_version 1.1;</div><div class="line">    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Virtual Host Configs</div><div class="line">    ##</div><div class="line">    ## 配置虚拟主机1</div><div class="line">    server &#123;</div><div class="line">        listen        8081;   #监听端口</div><div class="line">        server_name   myServer1;</div><div class="line">        access_log  var/myweb/server1/log/access_log;  #配置日志存放路径</div><div class="line">        error_page 404 /404.thml;   # 错误界面</div><div class="line"></div><div class="line">        location /server1/location1 &#123; #配置/server1/location1请求的location</div><div class="line">            root /var/myweb;</div><div class="line">            index index.svr1-loc1.htm;</div><div class="line">        &#125;</div><div class="line">        location /server1/location2 &#123;  #配置/server1/location2请求的location</div><div class="line">            root /var/myweb;</div><div class="line">            index index.svr1-locl2.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    server &#123;   #配置虚拟主机myServer2</div><div class="line">        listen     8082;</div><div class="line">        server_name 192.168.1.31;</div><div class="line">        access_log var/myweb/server2/log/access_log;</div><div class="line">        error_page 404 /404.thml;  #对错误页面定向</div><div class="line"></div><div class="line">        location /server2/location1 &#123;</div><div class="line">            root /var/myweb;</div><div class="line">            index index.svr2-loc1.htm;</div><div class="line">        &#125;</div><div class="line">        location /svr2/loc2 &#123;</div><div class="line">            alias /myweb/server2/location2/;  #对location的URI进行更改</div><div class="line">            index index.svr2-locl2.htm;</div><div class="line">        &#125;</div><div class="line">        location = /404.html &#123;  #配置错误页面转向</div><div class="line">            root /var/myweb;</div><div class="line">            index 404.html;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    #include /etc/nginx/conf.d/*.conf;</div><div class="line">    #include /etc/nginx/sites-enabled/*;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>在浏览器中输入：<code>http://111.230.231.95:8081/server1/location1/</code><img src="https://github.com/mianhk/image-save/blob/master/server/002/001.jpg?raw=true" alt=""><br>输入<code>http://111.230.231.95:8082/server2/location1/</code>显示：<br><img src="https://github.com/mianhk/image-save/blob/master/server/002/002.jpg?raw=true" alt=""></p><h4 id="出现的问题分析"><a href="#出现的问题分析" class="headerlink" title="出现的问题分析"></a>出现的问题分析</h4><ul><li><p>root目录的位置：<br>原来root的目录虽然写的是/var/myweb，但是实际发现位置是 在<code>/usr/share/nginx</code>下面，所以需要拷过去，具体这个位置是在哪里设置的，因为已经把所有其他的include都关掉了，所以可能是ubuntu下安装之后的默认目录，就像默认监听的80端口的页面其实在<code>var/www/html</code>下面一样。 导致出了各种莫名其妙的错误啊:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">root@VM-95-58-ubuntu:/etc/nginx# systemctl status nginx.service</div><div class="line">● nginx.service - A high performance web server and a reverse proxy server</div><div class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</div><div class="line">   Active: failed (Result: exit-code) since Wed 2018-01-24 22:05:09 CST; 1s ago</div><div class="line">  Process: 32576 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code</div><div class="line">  Process: 21311 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</div><div class="line">  Process: 3307 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=1/FAI</div><div class="line"> Main PID: 21314 (code=exited, status=0/SUCCESS)</div><div class="line"></div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: Starting A high performance web server and a reverse proxy server.</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu nginx[3307]: nginx: [emerg] open() &quot;/usr/share/nginx/var/myweb/server1/log/acc</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu nginx[3307]: nginx: configuration file /etc/nginx/nginx.conf test failed</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: nginx.service: Control process exited, code=exited status=1</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: Failed to start A high performance web server and a reverse proxy</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: nginx.service: Unit entered failed state.</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: nginx.service: Failed with result &apos;exit-code&apos;.</div></pre></td></tr></table></figure></li><li><p>另一个就是关于config文件的格式，一定要仔细写，需要加分号，然后就是最后的<code>/</code>，对于nginx的配置来说，是意义重大的，后面可能会说到这个问题，但是现在还是要写上。</p></li><li>刚刚测试，好像发现这里还有其他的问题，比如我的location2好像打不开啊，尴尬，明天再看看出了什么问题。。</li></ul>]]></content>
     
@@ -212,7 +228,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -221,7 +241,7 @@
     <link href="http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2018/01/24/服务器/服务器-Nginx基础配置/</id>
     <published>2018-01-24T12:50:05.000Z</published>
-    <updated>2018-01-24T12:50:37.024Z</updated>
+    <updated>2018-01-25T13:50:46.067Z</updated>
     
     <content type="html"><![CDATA[<h3 id="服务器-Nginx基础配置"><a href="#服务器-Nginx基础配置" class="headerlink" title="服务器-Nginx基础配置"></a>服务器-Nginx基础配置</h3><h4 id="nginx-conf文件结构"><a href="#nginx-conf文件结构" class="headerlink" title="nginx.conf文件结构"></a>nginx.conf文件结构</h4><p>Nginx的默认配置文件为：<code>nginx.conf</code>，文件一共由三个部分组成，分别为：<code>全局块、events块、http块</code>在<code>http块</code>中，包含http全局块，多个server块。在每个<code>server块</code>中，可以包含多个server块和location块。</p><p>同一模块中嵌套的配置块。各个之间不存在次序关系，也就是是同时生效的。另外，在高一等级的配置可能会被更内层括号内的设置覆盖，这个其实跟我们的继承或者函数中差不多。</p><ul><li>全局块：（从配置文件开始到events的一部分）主要影响Nginx服务器整体运行的配置指令 ，顾名思义，能够作用于全局。</li><li>evevts块：主要影响Nginx服务器与用户的网络连接。这部分对Nginx服务器性能影响较大。</li><li>http块：代理、缓存和日志定义等绝大部分功能和第三方模块的配置都在这部分。由于http块包括server块，这里用http全局块表示不包含server块的部分。</li><li>server块：和“虚拟主机”密切联系。利用虚拟主机技术可以避免为每一个要用运行的网站提供单独的Nginx服务器，也不需要为每个网站对应一组nginx进程。一个http块中可以包含多个server块，每个server块相当于一个虚拟主机，它内部可以有多台主机联合提供服务，一起对外提供在逻辑上的一组服务（或网站）。server全局块一般配置的是：虚拟主机的监听配置和本虚拟主机的名称和IP配置。</li><li>location块：location块其实是server块的一个指令，主要作用是：基于Nginx服务器接收到的字符串，对除虚拟主机名称外的字符串进行匹配，对特定的请求进行处理、地址定向、数据缓存和应答控制等功能。</li></ul><h4 id="详细配置分析"><a href="#详细配置分析" class="headerlink" title="详细配置分析"></a>详细配置分析</h4><p>接下来是一个详细解释的配置的设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">                                     #全局块开始</div><div class="line">user user [group];                       #可以开启nginx服务的用户名user和所对应的group（可选）</div><div class="line">#user nobody nobody;         #注释或者nobody可以表示任何人都能启动</div><div class="line">worker_processes number|auto;               #开启的工作进程的数量，auto则会根据系统自动</div><div class="line">pid /run/nginx.pid;                  #存储进程pid的文件，记得不止要加上路径，还要加上文件名，并且开启服务的用户需要对该文件有权限</div><div class="line"></div><div class="line">events &#123;                             #events块</div><div class="line">    worker_connections 768;          #每一个工作进程能开启的最大连接个数：总的连接个数total=worker_processes*worker_connections</div><div class="line">    # accept_mutex on;     #设置网络连接的序列化，解决“惊群”的问题（当一个网络连接到来时，多个睡眠进程被唤醒，影响系统性能）</div><div class="line">    # multi_accept on;  #允许接受多个网络连接</div><div class="line">    #use method;  #时间驱动模型的选择:select|poll|kqueue|epoll|rtsig|/dev/poll|eventport</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;                               #http块</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Basic Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    sendfile on;</div><div class="line">    tcp_nopush on;</div><div class="line">    tcp_nodelay on;</div><div class="line">    keepalive_timeout 65;   #连接超时时间</div><div class="line">    #keepalive_requests number; #单连接请求数上限</div><div class="line">    types_hash_max_size 2048;</div><div class="line">    # server_tokens off;</div><div class="line"></div><div class="line">    # server_names_hash_bucket_size 64;</div><div class="line">    # server_name_in_redirect off;</div><div class="line"></div><div class="line">    include /etc/nginx/mime.types;   #MIME-types存储了媒体资源的类型</div><div class="line">    default_type application/octet-stream; #处理前端请求的MIME类型，可在http、server、location中定义</div><div class="line"></div><div class="line">    ##</div><div class="line">    # SSL Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</div><div class="line">    ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Logging Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    access_log /var/log/nginx/access.log;  # 日志存放文件名，该指令可以在全局块、http块和server块中，作用域不同</div><div class="line">    error_log /var/log/nginx/error.log;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Gzip Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    gzip on;</div><div class="line">    gzip_disable &quot;msie6&quot;;</div><div class="line"></div><div class="line">    # gzip_vary on;</div><div class="line">    # gzip_proxied any;</div><div class="line">    # gzip_comp_level 6;</div><div class="line">    # gzip_buffers 16 8k;</div><div class="line">    # gzip_http_version 1.1;</div><div class="line">    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Virtual Host Configs</div><div class="line">    ##</div><div class="line"></div><div class="line">    include /etc/nginx/conf.d/*.conf;   # include 引入配置文件，支持相对路径</div><div class="line">    include /etc/nginx/sites-enabled/*;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>]]></content>
     
@@ -237,7 +257,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -246,7 +270,7 @@
     <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2018/01/23/服务器/服务器-Nginx安装和基本配置/</id>
     <published>2018-01-23T14:25:21.000Z</published>
-    <updated>2018-01-23T14:26:39.614Z</updated>
+    <updated>2018-01-25T13:50:33.659Z</updated>
     
     <content type="html"><![CDATA[<h3 id="服务器-Nginx安装和基本配置"><a href="#服务器-Nginx安装和基本配置" class="headerlink" title="服务器-Nginx安装和基本配置"></a>服务器-Nginx安装和基本配置</h3><h4 id="Nginx的安装"><a href="#Nginx的安装" class="headerlink" title="Nginx的安装"></a>Nginx的安装</h4><p>没有看书上，直接在ubuntu输了一个nginx，大概是ubuntu的支持比较好，直接提醒可以安装，于是就毫不客气的装了一下就启动了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nginx</div><div class="line">sudo /etc/init.d/nginx start</div></pre></td></tr></table></figure></p><p>接下来直接在浏览器里面打开，就能看到hello,Nginx这样欣慰 的界面了。</p><p>之后能够在文件夹<code>/etc</code>中看到我们的配置的文件：<br><img src="https://github.com/mianhk/image-save/blob/master/server/001/001.jpg?raw=true" alt=""><br>在<code>var/www/html</code>文件夹中能看到<code>index.html</code>文件，即是我们的主页文件。<br><strong>这里没有采用源码的方式安装，其实是觉得没有必要了。 </strong></p><h4 id="Nginx的启停"><a href="#Nginx的启停" class="headerlink" title="Nginx的启停"></a>Nginx的启停</h4><p>刚刚已经直接开启了Nginx了，其实关就更简单了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/nginx stop  #停止nginx</div><div class="line">sudo /etc/init.d/nginx restart # 重启nginx</div></pre></td></tr></table></figure></p><p>这里需要注意的是nginx的平滑重启：Nginx服务进程接受到信号后，首先读取新的Nginx的配置文件，如果新的配置文件语法正确，则启动新的Nginx服务，然后平缓的关闭旧的服务进程。否则，仍然使用旧的Nginx进程提供服务。</p><h4 id="Nginx服务器的升级"><a href="#Nginx服务器的升级" class="headerlink" title="Nginx服务器的升级"></a>Nginx服务器的升级</h4><p>平滑升级：Nginx服务接收到USR2信号后，首先将旧的nginx.pid文件（如果配置文件中更改过名字，也是相同的过程）添加后缀<code>.oldbin</code>，变为nginx.pid.oldbin文件；之后执行新版本Nginx服务器的二进制文件启动服务。如果新的服务启动成功，系统中将有新旧两个Nginx服务共同提供Web服务。之后，需要像旧的Nginx服务进程发送WINCH信号，使旧的Nginx服务平滑停止，并删除nginx.pid.oldbin文件。在发送WINCH信号之前，可以随时停止新的Nginx服务。</p>]]></content>
     
@@ -262,7 +286,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
@@ -271,7 +299,7 @@
     <link href="http://yoursite.com/2018/01/23/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%88%9D%E8%AF%86Nginx/"/>
     <id>http://yoursite.com/2018/01/23/服务器/服务器-初识Nginx/</id>
     <published>2018-01-23T13:39:44.000Z</published>
-    <updated>2018-01-23T13:41:25.564Z</updated>
+    <updated>2018-01-25T13:51:01.635Z</updated>
     
     <content type="html"><![CDATA[<h3 id="初识Nginx"><a href="#初识Nginx" class="headerlink" title="初识Nginx"></a>初识Nginx</h3><h4 id="Nginx的历史"><a href="#Nginx的历史" class="headerlink" title="Nginx的历史"></a>Nginx的历史</h4><p>Netcraft公司，1994年在英国成立。</p><h4 id="常见服务器"><a href="#常见服务器" class="headerlink" title="常见服务器"></a>常见服务器</h4><ul><li>Apache服务器：目前最广泛使用的web服务器，由于使用了以“进程”为基础的结构，会消耗更多的系统开支。因此通常对Apache web进行扩容的时候，是增加服务器或者扩充集群节点而不是增加处理器。</li><li>Microsoft IIS：微软的，付费软件，部署成本较高。</li><li>Tomcat服务器：最初Sun公司开发，是官方推荐的Servlet和JSP容器，在中小型系统和并发访问用户不是很多的时候，可以作为轻量级应用服务器。一般应用中，通常作为Apache服务器的扩展部分，为运行JSP页面和Servlet提供服务，提供的Servlet容器是Tomcat的默认模式。Tomcat也具有处理HTML页面的功能，只是处理静态页面的能力不如Apache服务器。</li><li>Lighttpd服务器：德国开源的一个轻量级web服务器，它专门针对高性能网站，提供一种安全、快速、兼容性良好并且灵活的Web Server的环境。同时有非常低的内存开销、CPU占用率低、模块丰富。  但是最为轻量服务器，与Apache这种大型服务器相比还有差距。</li><li>Nginx</li></ul><h4 id="Nginx的功能特性"><a href="#Nginx的功能特性" class="headerlink" title="Nginx的功能特性"></a>Nginx的功能特性</h4><h5 id="基本的HTTP服务："><a href="#基本的HTTP服务：" class="headerlink" title="基本的HTTP服务："></a>基本的HTTP服务：</h5><ul><li>作为HTTP代理服务器和反向代理服务器</li><li>支持通过缓存加速访问</li><li>完成简单的负载均衡和容错</li><li>支持包过滤</li><li>支持SSL<h5 id="高级HTTP服务："><a href="#高级HTTP服务：" class="headerlink" title="高级HTTP服务："></a>高级HTTP服务：</h5></li><li>进行自定义配置</li><li>支持虚拟主机</li><li>支持URL重定向</li><li>支持网络监控</li><li>支持流媒体传输<h5 id="邮件服务："><a href="#邮件服务：" class="headerlink" title="邮件服务："></a>邮件服务：</h5></li><li>支持IMAP/POP3代理服务</li><li>支持内部SMTP代理服务</li></ul><h4 id="常用功能"><a href="#常用功能" class="headerlink" title="常用功能"></a>常用功能</h4><h5 id="HTTP代理和反向代理"><a href="#HTTP代理和反向代理" class="headerlink" title="HTTP代理和反向代理"></a>HTTP代理和反向代理</h5><p>在反向代理服务方面，Nginx服务器转发前端请求性能稳定，并且后端转发与业务配置相互分离，配置相当灵活。</p><h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p>负载均衡：一是将单一的重负载分担到多个网络节点做并行处理，每个节点处理结束后将结果汇总返回给用户；二是讲大量的前端并发访问或数据流量分担到多个后端网络节点上分别处理，有效减少前端用户等待响应的时间。Nginx服务器的负载均衡主要是对大量的前端访问和流量进行分流，以保证前端用户的访问效率。</p><p>Nginx服务器的负载均衡策略可以划分为两类：</p><ul><li>内置策略：轮询、加权轮询和IP hash</li><li>扩展策略：通过第三方模块实现，常见：url hash、fair</li></ul><h5 id="Web缓存"><a href="#Web缓存" class="headerlink" title="Web缓存"></a>Web缓存</h5>]]></content>
     
@@ -287,7 +315,11 @@
       <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="后台开发 Linux Nginx" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91-Linux-Nginx/"/>
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
     
   </entry>
   
