@@ -4,8 +4,48 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84Web%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2018-01-25T03:53:45.158Z</lastmod>
+    <data>
+        <display>
+        <title>服务器-Nginx的Web请求处理机制</title>
+        <pubTime>2018-01-25T03:53:23.000Z</pubTime>
+        
+        <tag>后台开发 Linux Nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/01/25/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2018-01-25T03:53:06.499Z</lastmod>
+    <data>
+        <display>
+        <title>服务器-Nginx模块化结构</title>
+        <pubTime>2018-01-25T03:52:30.000Z</pubTime>
+        
+        <tag>后台开发 Linux Nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/01/24/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/</loc>
-    <lastmod>2018-01-24T14:41:43.295Z</lastmod>
+    <lastmod>2018-01-25T00:52:41.581Z</lastmod>
     <data>
         <display>
         <title>服务器-Nginx-一个简单的例子</title>
