@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/14-%E5%88%B7%E9%A2%98/LeetCode-36-Valid-Sudoku/</loc>
+    
+    <lastmod>2018-01-26T09:04:37.938Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/26-LeetCode-52-N-Queens-II/</loc>
+    
+    <lastmod>2018-01-26T09:01:53.307Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/26-LeetCode-51-N-Queens/</loc>
     
     <lastmod>2018-01-26T02:13:12.159Z</lastmod>
@@ -173,13 +187,6 @@
     <loc>http://yoursite.com/12-%E7%94%9F%E6%B4%BB/%E6%88%91%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/</loc>
     
     <lastmod>2018-01-14T13:58:18.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/14-%E5%88%B7%E9%A2%98/LeetCode-36-Valid-Sudoku/</loc>
-    
-    <lastmod>2018-01-14T13:54:13.643Z</lastmod>
     
   </url>
   

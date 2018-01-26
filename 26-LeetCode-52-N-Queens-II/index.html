@@ -96,20 +96,18 @@
 
 
 
-<meta name="description" content="LeetCode-36-Valid-Sudoku Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.  判断一个">
+<meta name="description" content="LeetCode-52-N-Queens-II Follow up for N-Queens problem.Now, instead outputting board configurations, return the total number of distinct solutions.  只返回N皇后问题结果的种数。因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135">
 <meta name="keywords" content="C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-36-Valid-Sudoku">
-<meta property="og:url" content="http://yoursite.com/14-刷题/LeetCode-36-Valid-Sudoku/index.html">
+<meta property="og:title" content="LeetCode-52-N-Queens-II">
+<meta property="og:url" content="http://yoursite.com/26-LeetCode-52-N-Queens-II/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="LeetCode-36-Valid-Sudoku Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.  判断一个">
+<meta property="og:description" content="LeetCode-52-N-Queens-II Follow up for N-Queens problem.Now, instead outputting board configurations, return the total number of distinct solutions.  只返回N皇后问题结果的种数。因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/mianhk/image-save/blob/master/exams/001/001.jpg?raw=true">
-<meta property="og:updated_time" content="2018-01-26T09:04:37.938Z">
+<meta property="og:updated_time" content="2018-01-26T09:01:53.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-36-Valid-Sudoku">
-<meta name="twitter:description" content="LeetCode-36-Valid-Sudoku Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.  判断一个">
-<meta name="twitter:image" content="https://github.com/mianhk/image-save/blob/master/exams/001/001.jpg?raw=true">
+<meta name="twitter:title" content="LeetCode-52-N-Queens-II">
+<meta name="twitter:description" content="LeetCode-52-N-Queens-II Follow up for N-Queens problem.Now, instead outputting board configurations, return the total number of distinct solutions.  只返回N皇后问题结果的种数。因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135">
 
 
 
@@ -138,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/14-刷题/LeetCode-36-Valid-Sudoku/"/>
+  <link rel="canonical" href="http://yoursite.com/26-LeetCode-52-N-Queens-II/"/>
 
 
 
 
 
-  <title>LeetCode-36-Valid-Sudoku | Mianhk's notes</title>
+  <title>LeetCode-52-N-Queens-II | Mianhk's notes</title>
   
 
 
@@ -296,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/14-刷题/LeetCode-36-Valid-Sudoku/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/26-LeetCode-52-N-Queens-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -313,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-36-Valid-Sudoku</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-52-N-Queens-II</h1>
         
 
         <div class="post-meta">
@@ -325,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T21:53:42+08:00">
-                2018-01-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T17:00:24+08:00">
+                2018-01-26
               </time>
             
 
@@ -341,7 +339,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-26T17:04:37+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-26T17:01:53+08:00">
                 2018-01-26
               </time>
             
@@ -402,12 +400,12 @@
       
 
       
-        <h3 id="LeetCode-36-Valid-Sudoku"><a href="#LeetCode-36-Valid-Sudoku" class="headerlink" title="LeetCode-36-Valid-Sudoku"></a>LeetCode-36-Valid-Sudoku</h3><blockquote>
-<p>Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.<br>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.<br><img src="https://github.com/mianhk/image-save/blob/master/exams/001/001.jpg?raw=true" alt=""></p>
+        <h3 id="LeetCode-52-N-Queens-II"><a href="#LeetCode-52-N-Queens-II" class="headerlink" title="LeetCode-52-N-Queens-II"></a>LeetCode-52-N-Queens-II</h3><blockquote>
+<p>Follow up for N-Queens problem.<br>Now, instead outputting board configurations, return the total number of distinct solutions.</p>
 </blockquote>
-<p>判断一个二维数组是不是数独数组。要求是：同行同列，斜对角不能有相同的数组，这里需要定义三个数组，当然参考了一下讨论区一个大神的代码。采用行列，竖列和斜列。其中比较惊艳的是k=i/3*3+j/3;这里可以直接得到斜对角的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</div><div class="line">        int used1[9][9]=&#123;0&#125;,used2[9][9]=&#123;0&#125;,used3[9][9]=&#123;0&#125;;</div><div class="line">        for(int i=0;i&lt;board.size();++i)&#123;</div><div class="line">            for(int j=0;j&lt;board[i].size();++j)&#123;</div><div class="line">                if(board[i][j]!=&apos;.&apos;)&#123;</div><div class="line">                    int num=board[i][j]-&apos;0&apos;-1,k=i/3*3+j/3;</div><div class="line">                    if(used1[i][num]||used2[j][num]||used3[k][num])</div><div class="line">                        return false;</div><div class="line">                    used1[i][num]=used2[j][num]=used3[k][num]=1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h4><p><a href="http://blog.csdn.net/u012050154/article/details/51541380" target="_blank" rel="external">http://blog.csdn.net/u012050154/article/details/51541380</a></p>
+<p>只返回N皇后问题结果的种数。<br>因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135度方向的值即可。依然采用递归的方式，这里需要注意的是，由于是对列递归，所以需要考虑的是行，斜45度，斜135度，本来是要维护一个一维数组和两个二维数组，但是想到二维数组的特征，可以改为维护三个一维数组，这两个一维数组保存的是将二维数组展开的信息。甚至是一波操作改为共维护两个一维数组也可以。<br>接下来是代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int totalNQueens(int n) &#123;</div><div class="line">        vector&lt;int&gt; rows(n),d1(2*n-1),d2(2*n-1);</div><div class="line">        return find(n,n,0,rows,d1,d2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int find(int n,int left,int i,vector&lt;int&gt;&amp; rows,vector&lt;int&gt;&amp; d1,vector&lt;int&gt;&amp; d2)&#123;</div><div class="line">        if(left==0)</div><div class="line">            return 1;</div><div class="line">        int j,sum=0;</div><div class="line">        for(j=0;j&lt;n;++j)&#123;</div><div class="line">            if(rows[j]||d1[i+j]||d2[n-1+i-j])</div><div class="line">                continue;</div><div class="line">            rows[j]=d1[i+j]=d2[n-1+i-j]=1;</div><div class="line">            sum+=find(n,left-1,i+1,rows,d1,d2);</div><div class="line">            rows[j]=d1[i+j]=d2[n-1+i-j]=0;</div><div class="line">        &#125;</div><div class="line">        return sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>看了一下别人的好像确实快一点，毕竟0ms啊，也贴一下别人的代码吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int totalNQueens(int n) &#123;</div><div class="line">        bool flag[5*n] = &#123;false&#125;;</div><div class="line">        int num = 0;</div><div class="line">        dfs(num,flag,0,n);</div><div class="line">        return num;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void dfs(int&amp; num, bool* flag, int row, int n)&#123;</div><div class="line">        if(row == n)&#123;</div><div class="line">            ++num;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        for(int i = 0; i&lt;n;i++)&#123;</div><div class="line">            if(!flag[i] &amp;&amp; !flag[row+i+n] &amp;&amp; !flag[4*n + row - i])&#123;</div><div class="line">                flag[i] = 1;</div><div class="line">                flag[row+i+n] = 1;</div><div class="line">                flag[4*n + row - i] = 1;</div><div class="line">                dfs(num,flag,row+1,n);</div><div class="line">                flag[i] = 0;</div><div class="line">                flag[row+i+n] = 0;</div><div class="line">                flag[4*n + row - i] = 0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h4><p><a href="https://discuss.leetcode.com/topic/13617/accepted-4ms-c-solution-use-backtracking-and-bitmask-easy-understand" target="_blank" rel="external">https://discuss.leetcode.com/topic/13617/accepted-4ms-c-solution-use-backtracking-and-bitmask-easy-understand</a></p>
 
       
     </div>
@@ -472,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/14-刷题/LeetCode-34-Search-for-a-Range/" rel="next" title="LeetCode-34-Search-for-a-Range">
-                <i class="fa fa-chevron-left"></i> LeetCode-34-Search-for-a-Range
+              <a href="/26-LeetCode-51-N-Queens/" rel="next" title="LeetCode-51-N-Queens">
+                <i class="fa fa-chevron-left"></i> LeetCode-51-N-Queens
               </a>
             
           </div>
@@ -481,10 +479,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/17-Linux/Linux修改用户名和所属组/" rel="prev" title="Linux修改用户名和所属组">
-                Linux修改用户名和所属组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -663,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-36-Valid-Sudoku"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-36-Valid-Sudoku</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-number">1.1.</span> <span class="nav-text">reference:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-52-N-Queens-II"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-52-N-Queens-II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-number">1.1.</span> <span class="nav-text">reference:</span></a></li></ol></li></ol></div>
             
 
           </div>
