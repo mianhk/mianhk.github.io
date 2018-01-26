@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mianhk's notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。  L1:C++是一个语言联邦。包含着最初的以c语言为基础的C，面向对象的C++，C++的泛型编程，以及STL。在我们使用的过程中，可能会穿插，但是我们需要根据不同的情况使用不同的策略。 L2：代替#define#define是在编译之前，">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《effective C++》from line 1 to line 12">
+<meta property="og:url" content="http://yoursite.com/09-cpp/effective-cpp-1/index.html">
+<meta property="og:site_name" content="Mianhk&#39;s notes">
+<meta property="og:description" content="前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。  L1:C++是一个语言联邦。包含着最初的以c语言为基础的C，面向对象的C++，C++的泛型编程，以及STL。在我们使用的过程中，可能会穿插，但是我们需要根据不同的情况使用不同的策略。 L2：代替#define#define是在编译之前，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-14T12:34:49.605Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《effective C++》from line 1 to line 12">
+<meta name="twitter:description" content="前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。  L1:C++是一个语言联邦。包含着最初的以c语言为基础的C，面向对象的C++，C++的泛型编程，以及STL。在我们使用的过程中，可能会穿插，但是我们需要根据不同的情况使用不同的策略。 L2：代替#define#define是在编译之前，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/09-cpp/effective-cpp-1/"/>
+
+
+
+
+
+  <title>《effective C++》from line 1 to line 12 | Mianhk's notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-106121016-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mianhk's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">这个人很懒，动不动就不想写</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-cpp/effective-cpp-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《effective C++》from line 1 to line 12</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T19:16:31+08:00">
+                2017-10-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T20:34:49+08:00">
+                2017-11-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这里大体总结一下。</p>
+</blockquote>
+<h4 id="L1-C-是一个语言联邦。"><a href="#L1-C-是一个语言联邦。" class="headerlink" title="L1:C++是一个语言联邦。"></a>L1:C++是一个语言联邦。</h4><p>包含着最初的以c语言为基础的C，面向对象的C++，C++的泛型编程，以及STL。在我们使用的过程中，可能会穿插，但是我们需要根据不同的情况使用不同的策略。</p>
+<h4 id="L2：代替-define"><a href="#L2：代替-define" class="headerlink" title="L2：代替#define"></a>L2：代替#define</h4><p><code>#define</code>是在编译之前，也就是预处理的阶段就会被替换，这样我们在调试程序的时候看到的就是被替换的数字，会给别人甚至是之后调试的我们自己带来理解上的困难。另外，预处理器的工作是，直接把define的内容进行替换，当我们在define中写的表达式，并且在接下来使用的时候，可能产生无法理解的结果。所以当我们使用不想改变的常量时，使用<code>const</code>代替<code>#define</code>。<br>我们还可以使用<code>enum</code>来代替<code>#define</code>。这样显得会更接近一些，因为<code>enum</code>和<code>#define</code>一样，同时也不会被pointer或reference指向。<br>使用<code>inline</code>函数。</p>
+<h4 id="L3-尽量使用const"><a href="#L3-尽量使用const" class="headerlink" title="L3:尽量使用const"></a>L3:尽量使用const</h4><p>这是一个很好理解的问题，就像你把东西给别人用，不想让别人动的地方就加一个<code>const</code>不让别人动一样。。。<br>具体的体现为：指针，不想被改变的变量，迭代器，成员函数等等。<br>我们可能还会为一个函数定义<code>const</code>和<code>非const</code>版本。</p>
+<h4 id="L4：在使用对象前先初始化"><a href="#L4：在使用对象前先初始化" class="headerlink" title="L4：在使用对象前先初始化"></a>L4：在使用对象前先初始化</h4><p>嗯，记住。</p>
+<h4 id="L5：了解c-会默认编写并调用哪些函数"><a href="#L5：了解c-会默认编写并调用哪些函数" class="headerlink" title="L5：了解c++会默认编写并调用哪些函数"></a>L5：了解c++会默认编写并调用哪些函数</h4><p>在面向对象编程时，记住三五法则。构造函数、拷贝构造函数、拷贝赋值运算符、移动赋值运算符、析构函数。记住这几个函数的作用，其在什么时候会被使用，如果没有的时候，系统会不会为我们生成。我们需不需要系统为我们生成。</p>
+<h4 id="L6：不想编译器默认生成的函数，应该明确拒绝"><a href="#L6：不想编译器默认生成的函数，应该明确拒绝" class="headerlink" title="L6：不想编译器默认生成的函数，应该明确拒绝"></a>L6：不想编译器默认生成的函数，应该明确拒绝</h4><p>比如我们不希望编译器为我们生成默认的函数，我们应该将其定义为删除的或者定义为<code>private</code>的，也可以定义类似于uncopyable类似的base class。</p>
+<h4 id="L7：为多态的基类声明virtual析构函数"><a href="#L7：为多态的基类声明virtual析构函数" class="headerlink" title="L7：为多态的基类声明virtual析构函数"></a>L7：为多态的基类声明virtual析构函数</h4><p>通常我们希望派生类覆盖或重写的函数，定义为virtual函数。析构函数作为对象被销毁时调用的函数，如果不是虚函数，那么可能在销毁的时候只会销毁基类的部分，局部销毁，造成资源泄露。</p>
+<h4 id="L8：不要让异常逃离析构函数"><a href="#L8：不要让异常逃离析构函数" class="headerlink" title="L8：不要让异常逃离析构函数"></a>L8：不要让异常逃离析构函数</h4><p>析构函数绝对不要吐出异常，当遇到异常的时候应该捕捉任何异常，然后吞下或结束程序。<br>如果需要对某个操作函数运行期间抛出的异常做出反应，应该提供一个普通的函数执行操作，而不是在析构函数中。</p>
+<h4 id="L9：绝不在构造和析构过程中调用virtual函数"><a href="#L9：绝不在构造和析构过程中调用virtual函数" class="headerlink" title="L9：绝不在构造和析构过程中调用virtual函数"></a>L9：绝不在构造和析构过程中调用virtual函数</h4><p>构造和析构过程中，调用virtual函数的对象可能还没有产生，也就是派生类的对象，此时会产生未定义的行为。</p>
+<h4 id="L10：另operator-返回一个reference-to-this"><a href="#L10：另operator-返回一个reference-to-this" class="headerlink" title="L10：另operator=返回一个reference to *this"></a>L10：另operator=返回一个reference to *this</h4><p>并不强制，只是为了防止一些调皮的调用者使用：<code>x=y=z=15</code>这样的操作。</p>
+<h4 id="L11：在operator-中处理自赋值的情况"><a href="#L11：在operator-中处理自赋值的情况" class="headerlink" title="L11：在operator=中处理自赋值的情况"></a>L11：在operator=中处理自赋值的情况</h4><p>确定任何函数如果操作一个以上的对象，而其中多个对象是同一个对象时，行为仍然正确。</p>
+<h4 id="L12：复制对象时不忘每一个成分"><a href="#L12：复制对象时不忘每一个成分" class="headerlink" title="L12：复制对象时不忘每一个成分"></a>L12：复制对象时不忘每一个成分</h4><p>Copying函数应该确保复制对象内的所有成员变量和所有base class成分。<br>不要使用一个copying函数实现另一个copying函数，而是创建一个新的函数避免代码重复。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="mianhk wechat" style="width: 200px; max-width: 100%;"/>
+    <div>不关注一下怎么知道有多好看呢</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>来都来了，请我喝点啥吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="mianhk WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/25-生活/不知道怎么开的船/" rel="next" title="不知道怎么开的船？">
+                <i class="fa fa-chevron-left"></i> 不知道怎么开的船？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/15-刷题/牛客网-剑指offer-1/" rel="prev" title="牛客网刷题总结-剑指offer(1)">
+                牛客网刷题总结-剑指offer(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="mianhk" />
+          <p class="site-author-name" itemprop="name">mianhk</p>
+           
+              <p class="site-description motion-element" itemprop="description">余国聪</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mianhk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/3024507693/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              不是特别强烈的推荐
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://x-nicolo.github.io" title="肖洒的博客" target="_blank">肖洒的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#L1-C-是一个语言联邦。"><span class="nav-number">1.</span> <span class="nav-text">L1:C++是一个语言联邦。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L2：代替-define"><span class="nav-number">2.</span> <span class="nav-text">L2：代替#define</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L3-尽量使用const"><span class="nav-number">3.</span> <span class="nav-text">L3:尽量使用const</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L4：在使用对象前先初始化"><span class="nav-number">4.</span> <span class="nav-text">L4：在使用对象前先初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L5：了解c-会默认编写并调用哪些函数"><span class="nav-number">5.</span> <span class="nav-text">L5：了解c++会默认编写并调用哪些函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L6：不想编译器默认生成的函数，应该明确拒绝"><span class="nav-number">6.</span> <span class="nav-text">L6：不想编译器默认生成的函数，应该明确拒绝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L7：为多态的基类声明virtual析构函数"><span class="nav-number">7.</span> <span class="nav-text">L7：为多态的基类声明virtual析构函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L8：不要让异常逃离析构函数"><span class="nav-number">8.</span> <span class="nav-text">L8：不要让异常逃离析构函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L9：绝不在构造和析构过程中调用virtual函数"><span class="nav-number">9.</span> <span class="nav-text">L9：绝不在构造和析构过程中调用virtual函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L10：另operator-返回一个reference-to-this"><span class="nav-number">10.</span> <span class="nav-text">L10：另operator=返回一个reference to *this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L11：在operator-中处理自赋值的情况"><span class="nav-number">11.</span> <span class="nav-text">L11：在operator=中处理自赋值的情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L12：复制对象时不忘每一个成分"><span class="nav-number">12.</span> <span class="nav-text">L12：复制对象时不忘每一个成分</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mianhk</span>
+</div>
+
+
+<div class="powered-by">
+  powerd by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Hosted By 
+  <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

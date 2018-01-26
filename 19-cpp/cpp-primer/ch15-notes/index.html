@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mianhk's notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。  15.1 OOP：概述15.2 定义基类和派生类基类希望派生类进行覆盖的函数，通常将其定义为 虚函数，另一种是基类希望派生类继承但不要改变的函数。protected访问运算符：派生类可以访问，但是其他用户无法访问。定义派生类：通过访问说明符控制派生类从基类继承而来的成员是否对派生类可见。如果派">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《c++primer》ch15-面向对象程序设计">
+<meta property="og:url" content="http://yoursite.com/19-cpp/cpp-primer/ch15-notes/index.html">
+<meta property="og:site_name" content="Mianhk&#39;s notes">
+<meta property="og:description" content="面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。  15.1 OOP：概述15.2 定义基类和派生类基类希望派生类进行覆盖的函数，通常将其定义为 虚函数，另一种是基类希望派生类继承但不要改变的函数。protected访问运算符：派生类可以访问，但是其他用户无法访问。定义派生类：通过访问说明符控制派生类从基类继承而来的成员是否对派生类可见。如果派">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-14T12:36:35.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《c++primer》ch15-面向对象程序设计">
+<meta name="twitter:description" content="面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。  15.1 OOP：概述15.2 定义基类和派生类基类希望派生类进行覆盖的函数，通常将其定义为 虚函数，另一种是基类希望派生类继承但不要改变的函数。protected访问运算符：派生类可以访问，但是其他用户无法访问。定义派生类：通过访问说明符控制派生类从基类继承而来的成员是否对派生类可见。如果派">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/19-cpp/cpp-primer/ch15-notes/"/>
+
+
+
+
+
+  <title>《c++primer》ch15-面向对象程序设计 | Mianhk's notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-106121016-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mianhk's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">这个人很懒，动不动就不想写</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/19-cpp/cpp-primer/ch15-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《c++primer》ch15-面向对象程序设计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T12:44:24+08:00">
+                2017-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T20:36:35+08:00">
+                2017-11-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。</p>
+</blockquote>
+<h4 id="15-1-OOP：概述"><a href="#15-1-OOP：概述" class="headerlink" title="15.1 OOP：概述"></a>15.1 OOP：概述</h4><h4 id="15-2-定义基类和派生类"><a href="#15-2-定义基类和派生类" class="headerlink" title="15.2 定义基类和派生类"></a>15.2 定义基类和派生类</h4><p>基类希望派生类进行覆盖的函数，通常将其定义为<strong> 虚函数</strong>，另一种是基类希望派生类继承但不要改变的函数。<br><code>protected</code>访问运算符：派生类可以访问，但是其他用户无法访问。<br>定义派生类：通过访问说明符控制派生类从基类继承而来的成员是否对派生类可见。<br>如果派生类没有覆盖其基类中的某个虚函数，则该虚函数的行为跟其他类一样，派生类会直接继承其在基类中的版本。<br>派生类到基类的转换。这可以让我们把派生类对象或者派生类对象的引用用在需要基类引用的地方，也可以把派生类指针用在需要基类指针的地方。但是，这里会出现一个问题，当我们使用基类的指针或者引用时，就不知道这个所绑定的对象到底是基类还是派生类了。<br>派生类构造函数。必须使用基类的构造函数初始化。（每个类控制自己的初始化过程。）<br>每个类定义各自的接口，派生类要遵循基类的接口。<br>如果基类中定义了静态成员，则在整个继承体系中只存在唯一的定义，不管定义了多少遍，都只存在唯一的实例。<br>对派生类的声明，不需要包含派生列表。<br>当我们不想让类被继承的时候，可以使用<code>final</code>关键字，跟在类名之后。<br>表达式的<strong> 静态类型</strong>在编译时是已知的，是变量声明时或者表达式生成式生成的类型。<strong> 动态类型</strong>则是变量或表达式表示的内存中的对象的类型。因此，基类的指针或引用的静态类型可能与动态类型不一致。<br>派生类向基类的自动类型转换只对指针和引用有效，在类型之间不存在这样的转换。当我们用一个派生类对象初始化或给一个基类对象赋值时，只有该派生类的对象中的基类部分会被拷贝、移动或赋值，派生类部分则会被忽略掉。</p>
+<h4 id="15-3-虚函数"><a href="#15-3-虚函数" class="headerlink" title="15.3 虚函数"></a>15.3 虚函数</h4><p>我们必须为每一个虚函数提供定义，因为连编译器也无法确定到底使用的是哪一个虚函数。<br>如果我们在派生类中覆盖了某个虚函数时，可以再次使用<code>virtual</code>指出该函数的性质，但实际上并不一定要这么做。因为某个函数被声明成虚函数，则在所有的派生类中都是虚函数。</p>
+<h4 id="15-4-抽象基类"><a href="#15-4-抽象基类" class="headerlink" title="15.4 抽象基类"></a>15.4 抽象基类</h4><p>在函数体声明的语句的分号前使用<code>=0</code>可以将一个函数声明为纯虚函数。<br>含有纯虚函数的类是抽象基类。抽象基类负责定义接口，后续的其他类负责覆盖该接口。我们不能直接创建一个抽象基类的对象。GCC的编译器中可能前面还是要加上<code>virtual</code><br><strong> 重构</strong>：重构负责重新设计类的体系以便将操作和/或数据从一个类移动到另一个类中。</p>
+<h4 id="15-5-访问控制与继承"><a href="#15-5-访问控制与继承" class="headerlink" title="15.5 访问控制与继承"></a>15.5 访问控制与继承</h4><p>protected:对于类的用户来说是不可访问的，对于派生类的成员和友元来说是可访问的。但是只能通过<strong> 派生类对象</strong>来访问，<strong> 派生类</strong>对于一个基类中受保护的成员是无法访问的。<br>派生类向基类的转换：只有当D公有的继承B时，<strong> 用户代码</strong>才能使用基类向派生类的转换。无论D以什么方式继承B，D的成员函数和友元都能使用派生类向基类的转换。如果D继承B的方式是公有的或受保护的，则D的派生类可以使用D向B的类型转换。<br>友元关系不能继承。基类的友元在访问派生类成员时不具有特殊性，派生类的友元也不能随意访问基类的成员。<br>派生类可以使用<code>using</code>为那些可以访问的名字提供声明，以改变这些名字在它的派生类中的可访问性。</p>
+<h4 id="15-6-继承中的类作用域"><a href="#15-6-继承中的类作用域" class="headerlink" title="15.6 继承中的类作用域"></a>15.6 继承中的类作用域</h4><p>每个类定义自己的作用域，当存在继承关系时，派生类的作用域嵌套在其基类的作用域之内。<br>当名字相同时，派生类的成员将隐藏基类的成员。基类可以通过<strong> 作用域运算符</strong>来使用隐藏的成员。一般情况下，我们应该不会这么使用，所以，平时继承类尽量不要覆盖继承而来的虚函数以外的基类的名字。<br><strong> 名字查找先于类型检查</strong>：如果派生类的成员与基类中的某个成员同名，则派生类将在其作用域内隐藏该基类成员。一旦编译器查找到名字后，不管形参列表是否相同，都不会再继续查找，这也是我们需要在覆盖虚函数时，保证形参列表是相同的。<br><code>using</code>声明语句指定一个名字而不是形参列表，所以我们在基类中使用一个<code>using</code>就可以把该函数的所有重载实例添加到派生类作用域中，派生类只需要定义特有的函数即可。</p>
+<h4 id="15-7-构造函数与拷贝控制"><a href="#15-7-构造函数与拷贝控制" class="headerlink" title="15.7 构造函数与拷贝控制"></a>15.7 构造函数与拷贝控制</h4><p>位于继承体系中的类也需要控制当其对象执行一系列操作时发生怎样的行为：包括创建、移动、拷贝、赋值和销毁。<br>一般讲基类中的析构函数定义为虚函数，这样，继承体系中的派生类都会是虚析构函数，否则，若基类中的析构函数不是虚函数，则delete一个指向派生类对象的基类指针将产生未定义的行为。<br>虚析构函数将组织合成移动操作。<br>和普通成员的using声明不同，构造函数的using声明不会改变该构造函数的访问级别。<br>using声明语句不能指定explicit或constexpr。<br>当一个基类构造函数含有默认实参时，这些实参并不会被继承。派生类将获得多个继承的构造函数，其中每个构造函数分别省略掉一个含有默认实参的形参。</p>
+<h4 id="15-8-容器与继承"><a href="#15-8-容器与继承" class="headerlink" title="15.8 容器与继承"></a>15.8 容器与继承</h4><p>容器不能直接存放继承体系中的对象，通常采用间接存储的方式。因为当我们把基类存储到一个容器中，当存入派生类对象，实际存入的只是派生类中基类的部分，显然不符合我们的需要。所以我们希望在具有继承关系的对象时，实际上存储的是基类的指针。（最好使用智能指针）</p>
+<h4 id="15-9-文本查询程序再探"><a href="#15-9-文本查询程序再探" class="headerlink" title="15.9 文本查询程序再探"></a>15.9 文本查询程序再探</h4>
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="mianhk wechat" style="width: 200px; max-width: 100%;"/>
+    <div>不关注一下怎么知道有多好看呢</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>来都来了，请我喝点啥吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="mianhk WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/14-cpp/cpp-primer/《cpp primer》ch14/" rel="next" title="《c++primer》ch14 重载运算符和类型转换">
+                <i class="fa fa-chevron-left"></i> 《c++primer》ch14 重载运算符和类型转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/19-cpp/cpp-primer/ch16-notes/" rel="prev" title="《c++primer》ch16 模板与泛型编程">
+                《c++primer》ch16 模板与泛型编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="mianhk" />
+          <p class="site-author-name" itemprop="name">mianhk</p>
+           
+              <p class="site-description motion-element" itemprop="description">余国聪</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mianhk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/3024507693/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              不是特别强烈的推荐
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://x-nicolo.github.io" title="肖洒的博客" target="_blank">肖洒的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#15-1-OOP：概述"><span class="nav-number">1.</span> <span class="nav-text">15.1 OOP：概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-2-定义基类和派生类"><span class="nav-number">2.</span> <span class="nav-text">15.2 定义基类和派生类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-3-虚函数"><span class="nav-number">3.</span> <span class="nav-text">15.3 虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-4-抽象基类"><span class="nav-number">4.</span> <span class="nav-text">15.4 抽象基类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-5-访问控制与继承"><span class="nav-number">5.</span> <span class="nav-text">15.5 访问控制与继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-6-继承中的类作用域"><span class="nav-number">6.</span> <span class="nav-text">15.6 继承中的类作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-7-构造函数与拷贝控制"><span class="nav-number">7.</span> <span class="nav-text">15.7 构造函数与拷贝控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-8-容器与继承"><span class="nav-number">8.</span> <span class="nav-text">15.8 容器与继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-9-文本查询程序再探"><span class="nav-number">9.</span> <span class="nav-text">15.9 文本查询程序再探</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mianhk</span>
+</div>
+
+
+<div class="powered-by">
+  powerd by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Hosted By 
+  <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
