@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-25T13:44:58.138Z</updated>
+  <updated>2018-01-26T02:13:12.159Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-51-N-Queens</title>
+    <link href="http://yoursite.com/2018/01/26/LeetCode-51-N-Queens/"/>
+    <id>http://yoursite.com/2018/01/26/LeetCode-51-N-Queens/</id>
+    <published>2018-01-26T02:12:49.000Z</published>
+    <updated>2018-01-26T02:13:12.159Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-51-N-Queens"><a href="#LeetCode-51-N-Queens" class="headerlink" title="LeetCode-51-N-Queens"></a>LeetCode-51-N-Queens</h3><p>经典的N皇后问题，重点是全排列的问题，但是这里由于N皇后的不重复行、列、斜的要求，在排列的过程中，比如从行开始排列，只能保证同行不重复，所以需要引入isValid函数。通过判断列，左斜、右斜是否重复。</p><p>需要注意的是：关于全排列递归的写法，要更加熟练掌握才行，并且能完全理解，能够在不同的情况中灵活运用。其基本思想还是：固定前面的某个数字，不短的对后面进行交换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isValid(vector&lt;string&gt;&amp; queen, int row,int col,int n)&#123;</div><div class="line">        for(int i=0;i&lt;row;++i)&#123;</div><div class="line">            if(queen[i][col]==&apos;Q&apos;)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        for(int i=row-1,j=col-1;i&gt;=0&amp;&amp;j&gt;=0;--i,--j)&#123;</div><div class="line">            if(queen[i][j]==&apos;Q&apos;)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        for(int i=row-1,j=col+1;i&gt;=0&amp;&amp;j&lt;n;--i,++j)&#123;</div><div class="line">            if(queen[i][j]==&apos;Q&apos;)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    void recurse(vector&lt;string&gt;&amp; queen,vector&lt;vector&lt;string&gt;&gt;&amp; res,int row,int n)&#123;</div><div class="line">        if(row==n)&#123;</div><div class="line">            res.push_back(queen);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        for(int col=0;col!=n;++col)&#123;</div><div class="line">            if(isValid(queen,row,col,n))&#123;</div><div class="line">                queen[row][col]=&apos;Q&apos;;</div><div class="line">                recurse(queen,res,row+1,n);</div><div class="line">                queen[row][col]=&apos;.&apos;;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    vector&lt;vector&lt;string&gt;&gt; solveNQueens(int n) &#123;</div><div class="line">        vector&lt;vector&lt;string&gt;&gt; res;</div><div class="line">        vector&lt;string&gt; queen(n,string(n,&apos;.&apos;));</div><div class="line">        recurse(queen,res,0,n);</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-51-N-Queens&quot;&gt;&lt;a href=&quot;#LeetCode-51-N-Queens&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-51-N-Queens&quot;&gt;&lt;/a&gt;LeetCode-51-N-Queens&lt;/h3&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-49-Group-Anagrams</title>
@@ -377,10 +404,10 @@
   
   <entry>
     <title>Linux修改用户名和所属组</title>
-    <link href="http://yoursite.com/2018/01/17/Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
-    <id>http://yoursite.com/2018/01/17/Linux/Linux修改用户名和所属组/</id>
+    <link href="http://yoursite.com/2018/01/17/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
+    <id>http://yoursite.com/2018/01/17/Linux修改用户名和所属组/</id>
     <published>2018-01-17T11:48:22.000Z</published>
-    <updated>2018-01-25T13:46:11.250Z</updated>
+    <updated>2018-01-25T13:45:34.419Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Linux修改用户名和所属组"><a href="#Linux修改用户名和所属组" class="headerlink" title="Linux修改用户名和所属组"></a>Linux修改用户名和所属组</h3><p>腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_<em>^ </em> ^_</p><h4 id="更改用户名"><a href="#更改用户名" class="headerlink" title="更改用户名"></a>更改用户名</h4><h5 id="修改sudoers文件"><a href="#修改sudoers文件" class="headerlink" title="修改sudoers文件"></a>修改sudoers文件</h5><p>因为之后的操作，直接进入root用户操作。<br>将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sudoers</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true" alt=""></p><h5 id="修改shadow文件"><a href="#修改shadow文件" class="headerlink" title="修改shadow文件"></a>修改shadow文件</h5><p>shadow文件存储与登陆有关的内容，格式如下：<br>username: passwd: lastchg: min: max: warn: inactive: expire: flag<br>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:<br>警告时间:不活动时间:失效时间:标志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadow</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/002.jpg?raw=true" alt=""></p><h5 id="修改开始目录"><a href="#修改开始目录" class="headerlink" title="修改开始目录"></a>修改开始目录</h5><p>每个用户都有一个家目录，远程登录的时候就会进入家目录。包含用户相关配置信息,例如：<img src="https://github.com/mianhk/image-save/blob/master/Linux/001/003.jpg?raw=true" alt=""><br>现在直接将这个家目录修改就好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv ubuntu mianhk  # ubuntu 原来的目录</div></pre></td></tr></table></figure></p><h5 id="修改passwd文件"><a href="#修改passwd文件" class="headerlink" title="修改passwd文件"></a>修改passwd文件</h5><p>passwd的文件格式是：<br>用户名: 密码 : uid  : gid :用户描述：主目录：登陆shell<br>需要将用户描述和主目录都改成新的，不然无法读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/passwd</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/004.jpg?raw=true" alt=""></p><h5 id="修改所属组"><a href="#修改所属组" class="headerlink" title="修改所属组"></a>修改所属组</h5><p>其实这里的修改，只需要将所有原来的ubuntu所属的组替换为mianhk即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/group</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/005.jpg?raw=true" alt=""></p><h5 id="删除ubuntu"><a href="#删除ubuntu" class="headerlink" title="删除ubuntu"></a>删除ubuntu</h5><p>再次进入/etc/sudoers 中，讲ubuntu删除</p><h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><p>　</p>]]></content>
     
@@ -404,10 +431,10 @@
   
   <entry>
     <title>Linux修改用户名和所属组</title>
-    <link href="http://yoursite.com/2018/01/17/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
-    <id>http://yoursite.com/2018/01/17/Linux修改用户名和所属组/</id>
+    <link href="http://yoursite.com/2018/01/17/Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
+    <id>http://yoursite.com/2018/01/17/Linux/Linux修改用户名和所属组/</id>
     <published>2018-01-17T11:48:22.000Z</published>
-    <updated>2018-01-25T13:45:34.419Z</updated>
+    <updated>2018-01-25T13:46:11.250Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Linux修改用户名和所属组"><a href="#Linux修改用户名和所属组" class="headerlink" title="Linux修改用户名和所属组"></a>Linux修改用户名和所属组</h3><p>腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_<em>^ </em> ^_</p><h4 id="更改用户名"><a href="#更改用户名" class="headerlink" title="更改用户名"></a>更改用户名</h4><h5 id="修改sudoers文件"><a href="#修改sudoers文件" class="headerlink" title="修改sudoers文件"></a>修改sudoers文件</h5><p>因为之后的操作，直接进入root用户操作。<br>将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sudoers</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true" alt=""></p><h5 id="修改shadow文件"><a href="#修改shadow文件" class="headerlink" title="修改shadow文件"></a>修改shadow文件</h5><p>shadow文件存储与登陆有关的内容，格式如下：<br>username: passwd: lastchg: min: max: warn: inactive: expire: flag<br>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:<br>警告时间:不活动时间:失效时间:标志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadow</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/002.jpg?raw=true" alt=""></p><h5 id="修改开始目录"><a href="#修改开始目录" class="headerlink" title="修改开始目录"></a>修改开始目录</h5><p>每个用户都有一个家目录，远程登录的时候就会进入家目录。包含用户相关配置信息,例如：<img src="https://github.com/mianhk/image-save/blob/master/Linux/001/003.jpg?raw=true" alt=""><br>现在直接将这个家目录修改就好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv ubuntu mianhk  # ubuntu 原来的目录</div></pre></td></tr></table></figure></p><h5 id="修改passwd文件"><a href="#修改passwd文件" class="headerlink" title="修改passwd文件"></a>修改passwd文件</h5><p>passwd的文件格式是：<br>用户名: 密码 : uid  : gid :用户描述：主目录：登陆shell<br>需要将用户描述和主目录都改成新的，不然无法读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/passwd</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/004.jpg?raw=true" alt=""></p><h5 id="修改所属组"><a href="#修改所属组" class="headerlink" title="修改所属组"></a>修改所属组</h5><p>其实这里的修改，只需要将所有原来的ubuntu所属的组替换为mianhk即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/group</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/005.jpg?raw=true" alt=""></p><h5 id="删除ubuntu"><a href="#删除ubuntu" class="headerlink" title="删除ubuntu"></a>删除ubuntu</h5><p>再次进入/etc/sudoers 中，讲ubuntu删除</p><h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><p>　</p>]]></content>
     
@@ -524,34 +551,6 @@
       
       
         &lt;h3 id=&quot;LeetCode-31-Next-Permutation&quot;&gt;&lt;a href=&quot;#LeetCode-31-Next-Permutation&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-31-Next-Permutation&quot;&gt;&lt;/a&gt;Le
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-19-Remove-Nth-Node-From-End-of-List</title>
-    <link href="http://yoursite.com/2018/01/12/%E5%88%B7%E9%A2%98/LeetCode-19-Remove-Nth-Node-From-End-of-List/"/>
-    <id>http://yoursite.com/2018/01/12/刷题/LeetCode-19-Remove-Nth-Node-From-End-of-List/</id>
-    <published>2018-01-12T09:25:23.000Z</published>
-    <updated>2018-01-12T09:26:00.647Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Given a linked list, remove the nth node from the end of list and return its head.<br>For example,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</div><div class="line"></div><div class="line">   After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</div></pre></td></tr></table></figure></p></blockquote><p>这个题目之前在剑指offer上就有，记得当时的方法是：采用两个指针，首先判断n的大小是否比链表的长度要大，大的话直接返回。否则采用一前一后两个指针，两个指针相差n，当前面的指针到链表末尾时，后面的指针所在的位置就是要删除的位置了。</p><p>当然，这是个很好的方法，不过看了一下后面的答案，以及前天看到的一个有点不是很明白的一个答案，才知道大家都用的是二级指针，二级指针的好处是，可以直接记住链表的头节点，而不至于总是去判断。这样显得对指针的理解就不一样了。可以看看下面的这篇文章。</p><p><a href="http://blogread.cn/it/article/6243?f=wb" target="_blank" rel="external">Linus：利用二级指针删除单向链表</a></p><p>下面是代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;</div><div class="line">        ListNode **t1=&amp;head,*t2=head; //这样head一直指向的是头节点</div><div class="line">        for(int i=0;i&lt;n;++i)&#123;</div><div class="line">            t2=t2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while(t2!=nullptr)&#123;</div><div class="line">            t1=&amp;((*t1)-&gt;next);</div><div class="line">            t2=t2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        *t1=(*t1)-&gt;next; //删除找到的节点</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><p>无奈每次提交总是有群禽兽比我的快那么多啊，我的12ms，别人的6ms。。</p><p>不过别人的代码一看好像也还好，思路都是差不多的，就是一些细节的地方注意的比较好，看来还得好好弄啊。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;</div><div class="line">        int counter = 0;</div><div class="line">        if(!head || !n) &#123;</div><div class="line">            return head;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ListNode *p = head;</div><div class="line">        ListNode **pp = &amp;head;</div><div class="line">        while(p &amp;&amp; n) &#123;</div><div class="line">            p = p-&gt;next;</div><div class="line">            n--;</div><div class="line">        &#125;</div><div class="line">        while(p) &#123;</div><div class="line">            p = p-&gt;next;</div><div class="line">            pp = &amp;((*pp)-&gt;next);</div><div class="line">        &#125;</div><div class="line">        ListNode *temp = *pp;</div><div class="line">        *pp = temp-&gt;next;</div><div class="line">        delete(temp);</div><div class="line">        return head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;Given a linked list, remove the nth node from the end of list and return its head.&lt;br&gt;For example,&lt;br&gt;&lt;figure class=&quot;highlig
       
     
     </summary>

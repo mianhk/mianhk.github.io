@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day5-面向对象2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day16(map)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -313,7 +313,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/09/java/day5-面向对象2/" itemprop="url">day5(面向对象2)</a></h1>
+                <a class="post-title-link" href="/2017/03/09/java/day16(map)/" itemprop="url">day5(面向对象2)</a></h1>
         
 
         <div class="post-meta">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:54:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:36+08:00">
                 2017-09-09
               </time>
             
@@ -399,15 +399,176 @@
       
         
           
-          面向对象编程(二)
-封装（private）匿名对象使用的方式：只调用一次注意，封装只是私有的一种表现形式。不私有也能封装。
-构造函数构造函数和一般函数在写法上有不同构造函数在对象一建立就运行，而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。一个对象建立，构造方法运行
-
-构造代码块作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。  和构造函数的区别：  构造代码块是给所
+          集合(MAP)Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。
+添加。
+删除。clear()
+判断。
+获取。Map：Hashtable：底层是哈希表数据结构，不能存入null键null值，是线程同步的。HashMap:底层是哈希表数据结构，允许使用null键null值，该集合是不同步的。TreeMap：底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。–和S
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/09/java/day5-面向对象2/#more" rel="contents">
+            <a class="btn" href="/2017/03/09/java/day16(map)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/java/day15(集合类2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/09/java/day15(集合类2)/" itemprop="url">day5(面向对象2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:32+08:00">
+                2017-09-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          集合框架2
+##setset：无序，不可以重复元素。hashset：数据结构是哈希表，线程非同步的，保证元素唯一性的原理，判断元素的hashCode值是否相同。如果相同，判断equalsTreeSet：可以对set集合中的元素进行排序。底层数据结构是二叉树。保证元素唯一性的依据：compareTo return 0往TreeSet集合中存储自定义对象学生。想按照学生的年龄进行排序。记住：排序时，当
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/09/java/day15(集合类2)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -495,7 +656,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">72</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -570,24 +731,12 @@
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              强烈推荐
+              不是特别强烈的推荐
             </div>
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="https://bbs.hupu.com/spurs" title="Hupu-spurs" target="_blank">Hupu-spurs</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
                   <a href="https://x-nicolo.github.io" title="肖洒的博客" target="_blank">肖洒的博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://luodw.cc/" title="罗道文的博客" target="_blank">罗道文的博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://youbingchenyoubing.leanote.com/" title="陈友兵的博客" target="_blank">陈友兵的博客</a>
                 </li>
               
             </ul>
@@ -615,7 +764,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2016 - 
   <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
