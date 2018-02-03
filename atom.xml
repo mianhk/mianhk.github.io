@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-26T09:01:53.307Z</updated>
+  <updated>2018-02-03T05:46:02.715Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,116 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>evolution-of-webArchitecture</title>
+    <link href="http://yoursite.com/03-evolution-of-webArchitecture/"/>
+    <id>http://yoursite.com/03-evolution-of-webArchitecture/</id>
+    <published>2018-02-03T05:43:26.000Z</published>
+    <updated>2018-02-03T05:46:02.715Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="大型网站架构技术-演化"><a href="#大型网站架构技术-演化" class="headerlink" title="大型网站架构技术-演化"></a>大型网站架构技术-演化</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul><li>高并发、大流量</li><li>高可用</li><li>海量数据</li><li>用户分布广泛、网络情况复杂</li><li>安全环境恶劣：易受攻击</li><li>需求变化快、发布频繁：为了快速适应市场</li><li>渐进式发展：逐渐进步发展<h2 id="发展历程"><a href="#发展历程" class="headerlink" title="发展历程"></a>发展历程</h2><h3 id="初始阶段"><a href="#初始阶段" class="headerlink" title="初始阶段"></a>初始阶段</h3>应用程序、数据库、文件等所有资源都在一台服务器上。一般是在一台廉价的服务器上采用LAMP这种免费资源。<h3 id="应用服务和数据服务分离"><a href="#应用服务和数据服务分离" class="headerlink" title="应用服务和数据服务分离"></a>应用服务和数据服务分离</h3>采用三台服务器分别承担自己的角色。<h3 id="使用缓存改善网站的性能"><a href="#使用缓存改善网站的性能" class="headerlink" title="使用缓存改善网站的性能"></a>使用缓存改善网站的性能</h3>二八定律：80%的业务访问集中在20%的数据上，为了减少数据库的访问压力，可以将一些数据放到缓存服务器上，这样可以提高整个网站的数据访问速度。<br>一般分为两种：</li><li>缓存在应用服务器上的本地缓存：访问速度快，但缓存的数据有限；</li><li>缓存在专门的分布式缓存服务器上的远程缓存：可以采用分布式缓存。<h3 id="采用应用服务器改善网站并发处理能力"><a href="#采用应用服务器改善网站并发处理能力" class="headerlink" title="采用应用服务器改善网站并发处理能力"></a>采用应用服务器改善网站并发处理能力</h3>当应用服务器处理不了较多的并发请求时，可以增加一台服务器分担原有的服务器的访问，在前面加一个负载均衡服务器。<h3 id="数据库读写分离"><a href="#数据库读写分离" class="headerlink" title="数据库读写分离"></a>数据库读写分离</h3>虽然采用了缓存，但有一些<strong>读操作和一部分写操作</strong>还是会落到数据库上。一般采用主从备份的数据库，写操作可以在主数据库中进行，读操作在从数据库中读取。<h3 id="使用反向代理和CDN加速网站响应"><a href="#使用反向代理和CDN加速网站响应" class="headerlink" title="使用反向代理和CDN加速网站响应"></a>使用反向代理和CDN加速网站响应</h3>加速用户的访问。基本原理都是缓存，CDN是部署在网络提供商的机房，反向代理部署在网站的中心机房。对于反向代理，用户首先访问的是反向代理服务器，如果反向代理服务器中缓存着资源，就直接返回给用户。<h3 id="使用分布式文件系统和分布式数据库系统"><a href="#使用分布式文件系统和分布式数据库系统" class="headerlink" title="使用分布式文件系统和分布式数据库系统"></a>使用分布式文件系统和分布式数据库系统</h3>持续增长的业务，单一的服务器满足不了要求的时候，一头牛拉不动的时候，不要企图换一头更厉害的牛，而是考虑再加一头牛一起拉。<h3 id="使用NoSQL和搜索引擎"><a href="#使用NoSQL和搜索引擎" class="headerlink" title="使用NoSQL和搜索引擎"></a>使用NoSQL和搜索引擎</h3>网站业务越来越复杂，对数据存储和检索的需求也越来越复杂，需要采用一些非关系数据库技术和非数据库查询技术如搜索引擎。<h3 id="业务拆分"><a href="#业务拆分" class="headerlink" title="业务拆分"></a>业务拆分</h3>分而治之<h3 id="分布式服务"><a href="#分布式服务" class="headerlink" title="分布式服务"></a>分布式服务</h3></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;大型网站架构技术-演化&quot;&gt;&lt;a href=&quot;#大型网站架构技术-演化&quot; class=&quot;headerlink&quot; title=&quot;大型网站架构技术-演化&quot;&gt;&lt;/a&gt;大型网站架构技术-演化&lt;/h1&gt;&lt;h2 id=&quot;特点&quot;&gt;&lt;a href=&quot;#特点&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="大型网站技术" scheme="http://yoursite.com/tags/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-56and57-Merge-Intervals</title>
+    <link href="http://yoursite.com/30-LeetCode-56-Merge-Intervals/"/>
+    <id>http://yoursite.com/30-LeetCode-56-Merge-Intervals/</id>
+    <published>2018-01-30T08:00:00.000Z</published>
+    <updated>2018-01-30T13:40:39.136Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-56-Merge-Intervals"><a href="#LeetCode-56-Merge-Intervals" class="headerlink" title="LeetCode-56-Merge-Intervals"></a>LeetCode-56-Merge-Intervals</h3><blockquote><p>Given a collection of intervals, merge all overlapping intervals.<br>For example,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Given [1,3],[2,6],[8,10],[15,18],</div><div class="line">return [1,6],[8,10],[15,18].</div></pre></td></tr></table></figure></p></blockquote><p>如例子中所示，每个数组的前后分别表示开始和结束，工作是合并有重叠的数组。例如，由于[1,3]和[2,6]有重叠，故直接改为[1,6]后输出。<br>想法还是比较简单的，因为输入的并不一定是给好的按照开始，所以需要先对输入以开始的值排序。首先在结果数组中写入第一个，只有遍历进行判断，分为两种情况：</p><ol><li>如果某一interval的开始比结果数组中的结尾要大，显然不会有重叠，直接写入到结果数组中即可；</li><li>某一interval的开始比结果数组中的结尾要大，必然有重叠，此时还需要判断结束位置的大小。</li></ol><p>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;Interval&gt; merge(vector&lt;Interval&gt;&amp; intervals) &#123;</div><div class="line">        vector&lt;Interval&gt; res;</div><div class="line">        if(intervals.size()&lt;=0)</div><div class="line">            return res;</div><div class="line">        sort(intervals.begin(),intervals.end(),[](Interval a,Interval b)&#123;return a.start&lt;b.start;&#125;);</div><div class="line">        res.push_back(intervals[0]);</div><div class="line">        for(int i=1;i&lt;intervals.size();++i)&#123;</div><div class="line">            if(res.back().end&lt;intervals[i].start) res.push_back(intervals[i]);</div><div class="line">            else&#123;</div><div class="line">                res.back().end=max(res.back().end,intervals[i].end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><h3 id="57-Insert-Interval"><a href="#57-Insert-Interval" class="headerlink" title="57-Insert-Interval"></a>57-Insert-Interval</h3><blockquote><p>Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).<br>You may assume that the intervals were initially sorted according to their start times.</p></blockquote><p>题目改为向一个已经重叠的数组中加入新加入一个。需要做的是判断所处的位置，插入进去后还要删掉，值得注意的是这个删掉值的时候，vector的迭代器会发生变化，即有些会失效，所以最好的做法是，先插入，把需要的插入都插入之后再删除。</p><p>另外还有一个值得注意的是，排序搜索的谓语，使用的是<code>a.end&lt;b.start</code>，而不是之前的<code>a.start&lt;b.start</code> ，原因是需要找到一个范围，将newINterval夹在中间的一个范围。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</div><div class="line">        if(intervals.size()&lt;=0)&#123;</div><div class="line">            intervals.push_back(newInterval);</div><div class="line">            return intervals;</div><div class="line">        &#125;</div><div class="line">        auto range=equal_range(intervals.begin(),intervals.end(),newInterval,[](Interval a,Interval b)&#123;return a.end&lt;b.start;&#125;);</div><div class="line">        auto iter1=range.first,iter2=range.second;</div><div class="line">        if(iter1==iter2)</div><div class="line">            intervals.insert(iter1,newInterval);</div><div class="line">        else&#123;</div><div class="line">            iter2--;</div><div class="line">            iter2-&gt;start=min(newInterval.start,iter1-&gt;start);</div><div class="line">            iter2-&gt;end=max(newInterval.end,iter2-&gt;end);</div><div class="line">            intervals.erase(iter1,iter2);</div><div class="line">        &#125;</div><div class="line">        return intervals;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-56-Merge-Intervals&quot;&gt;&lt;a href=&quot;#LeetCode-56-Merge-Intervals&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-56-Merge-Intervals&quot;&gt;&lt;/a&gt;LeetC
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-55-Jump-Game</title>
+    <link href="http://yoursite.com/30-LeetCode-55-Jump-Game/"/>
+    <id>http://yoursite.com/30-LeetCode-55-Jump-Game/</id>
+    <published>2018-01-30T07:39:55.000Z</published>
+    <updated>2018-01-30T07:40:45.325Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-55-Jump-Game"><a href="#LeetCode-55-Jump-Game" class="headerlink" title="LeetCode-55-Jump-Game"></a>LeetCode-55-Jump-Game</h3><blockquote><p>Given an array of non-negative integers, you are initially positioned at the first index of the array.<br>Each element in the array represents your maximum jump length at that position.<br>Determine if you are able to reach the last index.</p></blockquote><p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [2,3,1,1,4], return true.</div><div class="line"></div><div class="line">A = [3,2,1,0,4], return false.</div></pre></td></tr></table></figure></p><p>由题可知，数组的位置表示从该位置可以像前跳的步数，看最终能否跳到结尾。乍一看，这像是一个动态规划的问题，dp数组内存储每一个位置能够走的最远的位置，但是仔细一想，又是没有必要的，因为最终的目的不是为了判断哪一个位置能走的更远，而是能否到达最后一个位置。<br>能到达最后一个位置的必要条件，显然一个就是能从某一位置继续往前走，而不会断。例如：<code>[3,2,1,0,4]</code>，我们都能走到第4个位置，但是却无法继续往前走，故到不了最后一个。所以代码可以做一个判断。<br>另一个需要考虑的问题是：在从前往后遍历的过程中，维护哪一个变量？显然这个变量记录的是我们能走的最远的距离，如果这个距离走的更远就更新，直到不能继续往前走，此时判断能否到终点。</p><p>贴上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool canJump(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        int i=0;</div><div class="line">        for(int reach=0;i&lt;nums.size()&amp;&amp;i&lt;=reach;++i)</div><div class="line">            reach=max(reach,i+nums[i]);</div><div class="line">        return i==nums.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-55-Jump-Game&quot;&gt;&lt;a href=&quot;#LeetCode-55-Jump-Game&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-55-Jump-Game&quot;&gt;&lt;/a&gt;LeetCode-55-Jump-Game&lt;/
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-53-Maximum-Subarray</title>
+    <link href="http://yoursite.com/26-LeetCode-53-Maximum-Subarray/"/>
+    <id>http://yoursite.com/26-LeetCode-53-Maximum-Subarray/</id>
+    <published>2018-01-26T09:57:03.000Z</published>
+    <updated>2018-01-26T09:57:24.389Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-53-Maximum-Subarray"><a href="#LeetCode-53-Maximum-Subarray" class="headerlink" title="LeetCode-53-Maximum-Subarray"></a>LeetCode-53-Maximum-Subarray</h2><blockquote><p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.<br>For example, given the array [-2,1,-3,4,-1,2,1,-5,4],<br>the contiguous subarray [4,-1,2,1] has the largest sum = 6.</p></blockquote><p>最长子序列，又是一个动态规划的问题，关于动态规划，我们最主要的是要维护DP数组，这个问题以前还有点不理解，感觉主要的还是思想，只要知道这是一个动态规划的问题，解决动态规划的一般方法掌握了，其他的就都是细节了。</p><p>最近刷算法题，不得不想到的是以前的数学，数学是逻辑性可能更强的东西，尚且需要多做练习才行，何况算法了。当然现在慢慢的感觉就是，以前看到很多题完全没有头绪，现在很多大概是能分清是想考啥了，也会想着主动去选择相应的数据结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        vector&lt;int&gt; dp(nums.size(),0);</div><div class="line">        dp[0]=nums[0];</div><div class="line">        int res=dp[0];</div><div class="line">        for(int i=1;i&lt;nums.size();++i)&#123;</div><div class="line">            dp[i]=nums[i]+(dp[i-1]&gt;0?dp[i-1]:0);</div><div class="line">            res=max(dp[i],res);</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;LeetCode-53-Maximum-Subarray&quot;&gt;&lt;a href=&quot;#LeetCode-53-Maximum-Subarray&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-53-Maximum-Subarray&quot;&gt;&lt;/a&gt;Le
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-52-N-Queens-II</title>
@@ -99,27 +209,6 @@
   
   <entry>
     <title>Leetcode-48-Rotate-Image</title>
-    <link href="http://yoursite.com/25-%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
-    <id>http://yoursite.com/25-刷题/Leetcode-48-Rotate-Image/</id>
-    <published>2018-01-25T12:44:32.000Z</published>
-    <updated>2018-01-25T12:44:40.209Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode-48-Rotate-Image</title>
     <link href="http://yoursite.com/25-Leetcode-48-Rotate-Image/"/>
     <id>http://yoursite.com/25-Leetcode-48-Rotate-Image/</id>
     <published>2018-01-25T12:44:32.000Z</published>
@@ -142,6 +231,27 @@
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode-48-Rotate-Image</title>
+    <link href="http://yoursite.com/25-%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
+    <id>http://yoursite.com/25-刷题/Leetcode-48-Rotate-Image/</id>
+    <published>2018-01-25T12:44:32.000Z</published>
+    <updated>2018-01-25T12:44:40.209Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
+      
+    
+    </summary>
+    
     
   </entry>
   
@@ -453,114 +563,6 @@
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux修改用户名和所属组</title>
-    <link href="http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
-    <id>http://yoursite.com/17-Linux/Linux修改用户名和所属组/</id>
-    <published>2018-01-17T11:48:22.000Z</published>
-    <updated>2018-01-25T13:46:11.250Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Linux修改用户名和所属组"><a href="#Linux修改用户名和所属组" class="headerlink" title="Linux修改用户名和所属组"></a>Linux修改用户名和所属组</h3><p>腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_<em>^ </em> ^_</p><h4 id="更改用户名"><a href="#更改用户名" class="headerlink" title="更改用户名"></a>更改用户名</h4><h5 id="修改sudoers文件"><a href="#修改sudoers文件" class="headerlink" title="修改sudoers文件"></a>修改sudoers文件</h5><p>因为之后的操作，直接进入root用户操作。<br>将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sudoers</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true" alt=""></p><h5 id="修改shadow文件"><a href="#修改shadow文件" class="headerlink" title="修改shadow文件"></a>修改shadow文件</h5><p>shadow文件存储与登陆有关的内容，格式如下：<br>username: passwd: lastchg: min: max: warn: inactive: expire: flag<br>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:<br>警告时间:不活动时间:失效时间:标志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadow</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/002.jpg?raw=true" alt=""></p><h5 id="修改开始目录"><a href="#修改开始目录" class="headerlink" title="修改开始目录"></a>修改开始目录</h5><p>每个用户都有一个家目录，远程登录的时候就会进入家目录。包含用户相关配置信息,例如：<img src="https://github.com/mianhk/image-save/blob/master/Linux/001/003.jpg?raw=true" alt=""><br>现在直接将这个家目录修改就好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv ubuntu mianhk  # ubuntu 原来的目录</div></pre></td></tr></table></figure></p><h5 id="修改passwd文件"><a href="#修改passwd文件" class="headerlink" title="修改passwd文件"></a>修改passwd文件</h5><p>passwd的文件格式是：<br>用户名: 密码 : uid  : gid :用户描述：主目录：登陆shell<br>需要将用户描述和主目录都改成新的，不然无法读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/passwd</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/004.jpg?raw=true" alt=""></p><h5 id="修改所属组"><a href="#修改所属组" class="headerlink" title="修改所属组"></a>修改所属组</h5><p>其实这里的修改，只需要将所有原来的ubuntu所属的组替换为mianhk即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/group</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/005.jpg?raw=true" alt=""></p><h5 id="删除ubuntu"><a href="#删除ubuntu" class="headerlink" title="删除ubuntu"></a>删除ubuntu</h5><p>再次进入/etc/sudoers 中，讲ubuntu删除</p><h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><p>　</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Linux修改用户名和所属组&quot;&gt;&lt;a href=&quot;#Linux修改用户名和所属组&quot; class=&quot;headerlink&quot; title=&quot;Linux修改用户名和所属组&quot;&gt;&lt;/a&gt;Linux修改用户名和所属组&lt;/h3&gt;&lt;p&gt;腾讯云的云服务器的，初始的用户名和主机名都是
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-36-Valid-Sudoku</title>
-    <link href="http://yoursite.com/14-%E5%88%B7%E9%A2%98/LeetCode-36-Valid-Sudoku/"/>
-    <id>http://yoursite.com/14-刷题/LeetCode-36-Valid-Sudoku/</id>
-    <published>2018-01-14T13:53:42.000Z</published>
-    <updated>2018-01-26T09:04:37.938Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="LeetCode-36-Valid-Sudoku"><a href="#LeetCode-36-Valid-Sudoku" class="headerlink" title="LeetCode-36-Valid-Sudoku"></a>LeetCode-36-Valid-Sudoku</h3><blockquote><p>Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.<br>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.<br><img src="https://github.com/mianhk/image-save/blob/master/exams/001/001.jpg?raw=true" alt=""></p></blockquote><p>判断一个二维数组是不是数独数组。要求是：同行同列，斜对角不能有相同的数组，这里需要定义三个数组，当然参考了一下讨论区一个大神的代码。采用行列，竖列和斜列。其中比较惊艳的是k=i/3*3+j/3;这里可以直接得到斜对角的元素。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</div><div class="line">        int used1[9][9]=&#123;0&#125;,used2[9][9]=&#123;0&#125;,used3[9][9]=&#123;0&#125;;</div><div class="line">        for(int i=0;i&lt;board.size();++i)&#123;</div><div class="line">            for(int j=0;j&lt;board[i].size();++j)&#123;</div><div class="line">                if(board[i][j]!=&apos;.&apos;)&#123;</div><div class="line">                    int num=board[i][j]-&apos;0&apos;-1,k=i/3*3+j/3;</div><div class="line">                    if(used1[i][num]||used2[j][num]||used3[k][num])</div><div class="line">                        return false;</div><div class="line">                    used1[i][num]=used2[j][num]=used3[k][num]=1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><h4 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h4><p><a href="http://blog.csdn.net/u012050154/article/details/51541380" target="_blank" rel="external">http://blog.csdn.net/u012050154/article/details/51541380</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;LeetCode-36-Valid-Sudoku&quot;&gt;&lt;a href=&quot;#LeetCode-36-Valid-Sudoku&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-36-Valid-Sudoku&quot;&gt;&lt;/a&gt;LeetCode-36-Va
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-34-Search-for-a-Range</title>
-    <link href="http://yoursite.com/14-%E5%88%B7%E9%A2%98/LeetCode-34-Search-for-a-Range/"/>
-    <id>http://yoursite.com/14-刷题/LeetCode-34-Search-for-a-Range/</id>
-    <published>2018-01-14T13:52:38.000Z</published>
-    <updated>2018-01-14T13:53:13.474Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="LeetCode-34-Search-for-a-Range"><a href="#LeetCode-34-Search-for-a-Range" class="headerlink" title="LeetCode-34-Search-for-a-Range"></a>LeetCode-34-Search-for-a-Range</h3><blockquote><p>Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.<br>Your algorithm’s runtime complexity must be in the order of O(log n).<br>  If the target is not found in the array, return [-1, -1].</p></blockquote><p>在一个排序的数组中找到出现这个值的起点和重点。很容易想到的是二分查找了。复杂度为<code>nlog(n)</code>。思路如下，先二分查找，找到下界，如果下界lo的值不等于target时，直接返回{-1，-1}，否则，直接将下界添加到res中。之后重置上界，同样的方法搜索上界。注意到，<strong>由于每次循环中，我们只考虑了一个界，所以只有一个界能mid+1，否则就会出现相等的也被else处理了。写的时候就是这个问题没有考虑好，折腾了很久。</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; searchRange(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res=&#123;-1,-1&#125;;</div><div class="line">        if(nums.size()&lt;=0)</div><div class="line">            return res;</div><div class="line">        int lo=0,hi=nums.size()-1;</div><div class="line">        while(lo&lt;hi)&#123;  //找下界</div><div class="line">            int mid=(lo+hi)/2;</div><div class="line">            if(nums[mid]&lt;target)</div><div class="line">                lo=mid+1;</div><div class="line">            else</div><div class="line">                hi=mid;</div><div class="line">        &#125;</div><div class="line">        if((nums[lo]!=target))&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">            res[0]=lo;</div><div class="line">        hi=nums.size()-1;</div><div class="line">        while(lo&lt;hi)&#123;  //找上界</div><div class="line">            int mid=(lo+hi)/2+1;</div><div class="line">            if(nums[mid]&gt;target)</div><div class="line">                hi=mid-1;</div><div class="line">            else</div><div class="line">                lo=mid;</div><div class="line">        &#125;</div><div class="line">        res[1]=hi;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p>当然还看到有用stl的方法的，直接用lower_bound()和upper_bound()函数，速度要快一些。虽然觉得stl应该也是一样的原理写的吧。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; searchRange(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        if (nums.empty()) return&#123; -1, -1 &#125;;</div><div class="line"></div><div class="line">    auto iter1 = lower_bound(nums.begin(), nums.end(), target);</div><div class="line">    auto iter2 = upper_bound(nums.begin(), nums.end(), target);</div><div class="line"></div><div class="line">    if (iter1 == nums.end()) return&#123; -1, -1 &#125;;</div><div class="line"></div><div class="line">    if ((*iter1) != target) return&#123; -1, -1 &#125;;</div><div class="line">    vector&lt;int&gt; tmp(2, 0);</div><div class="line">    tmp[0] = iter1 - nums.begin();</div><div class="line"></div><div class="line">    --iter2;</div><div class="line">    tmp[1] = iter2 - nums.begin();</div><div class="line">    return tmp;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;LeetCode-34-Search-for-a-Range&quot;&gt;&lt;a href=&quot;#LeetCode-34-Search-for-a-Range&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-34-Search-for-a-Range&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-32-Longest-Valid-Parentheses</title>
-    <link href="http://yoursite.com/12-%E5%88%B7%E9%A2%98/LeetCode-32-Longest-Valid-Parentheses/"/>
-    <id>http://yoursite.com/12-刷题/LeetCode-32-Longest-Valid-Parentheses/</id>
-    <published>2018-01-12T09:28:31.000Z</published>
-    <updated>2018-01-12T09:28:43.262Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="LeetCode-32-Longest-Valid-Parentheses"><a href="#LeetCode-32-Longest-Valid-Parentheses" class="headerlink" title="LeetCode-32-Longest-Valid-Parentheses"></a>LeetCode-32-Longest-Valid-Parentheses</h3><blockquote><p>Given a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.<br>For “(()”, the longest valid parentheses substring is “()”, which has length = 2.<br>Another example is “)()())”, where the longest valid parentheses substring is “()()”, which has length = 4.</p></blockquote><p>表示这是一道没有看懂题目的题，看到题目的难度是hard，但是自己的想法很简答，以为直接一个栈就可以了。。 too young啊</p><p>提交之后才知道，原来还要解决类似<code>()((()))</code>这类问题，所以这是一个动态规划的问题啊。<br>昨天看了一下动态规划，我们首先要构建D数组，如下所示的<code>vector longest</code>，负责存下当前第i个的长度。需要考虑的情况如下。<br>只有当s[i]为<code>)</code>时，才需要判断，如果它的左边是<code>(</code>或者<code>)</code>的情况。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int longestValidParentheses(string s) &#123;</div><div class="line">        if(s.length()&lt;=1)</div><div class="line">            return 0;</div><div class="line">        vector&lt;int &gt; longest(s.size(),0);</div><div class="line">        int curMax=0;</div><div class="line">        for(int i=1;i&lt;s.length();++i)&#123;</div><div class="line">            if(s[i]==&apos;)&apos;)&#123;</div><div class="line">                if(s[i-1]==&apos;(&apos;)&#123;</div><div class="line">                    longest[i]=(i-2&gt;=0?(longest[i-2]+2):2);</div><div class="line">                    curMax=curMax&gt;longest[i]?curMax:longest[i];</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    if(i-longest[i-1]-1&gt;=0&amp;&amp;s[i-longest[i-1]-1]==&apos;(&apos;)&#123;</div><div class="line">                        longest[i]=longest[i-1]+2+((i-longest[i-1]-2&gt;=0)?longest[i-longest[i-1]-2]:0);</div><div class="line">                        curMax=curMax&gt;longest[i]?curMax:longest[i];</div><div class="line">                    &#125;</div><div class="line">            &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return curMax;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;LeetCode-32-Longest-Valid-Parentheses&quot;&gt;&lt;a href=&quot;#LeetCode-32-Longest-Valid-Parentheses&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-32-Longes
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
   </entry>
   
