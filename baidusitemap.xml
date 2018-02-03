@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://yoursite.com/03-evolution-of-webArchitecture/</loc>
+    <lastmod>2018-02-03T08:47:20.556Z</lastmod>
+    <data>
+        <display>
+        <title>大型网站架构技术-演化</title>
+        <pubTime>2018-02-03T05:43:26.000Z</pubTime>
+        
+        <tag>后台开发</tag>
+         
+        <tag>大型网站技术</tag>
+         
+        <tag>架构</tag>
+         
+         
+           
+             
+              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/03-architecture-model-of-web-architecture/</loc>
     <lastmod>2018-02-03T08:40:02.588Z</lastmod>
     <data>
@@ -43,30 +67,6 @@
            
              
               <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/03-evolution-of-webArchitecture/</loc>
-    <lastmod>2018-02-03T05:46:32.820Z</lastmod>
-    <data>
-        <display>
-        <title>大型网站架构技术-演化</title>
-        <pubTime>2018-02-03T05:43:26.000Z</pubTime>
-        
-        <tag>后台开发</tag>
-         
-        <tag>大型网站技术</tag>
-         
-        <tag>架构</tag>
-         
-         
-           
-             
-              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
           
         </display>
     </data>
