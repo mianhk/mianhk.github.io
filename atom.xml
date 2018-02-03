@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-03T05:46:32.820Z</updated>
+  <updated>2018-02-03T08:40:02.588Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大型网站架构技术-架构模式</title>
+    <link href="http://yoursite.com/03-architecture-model-of-web-architecture/"/>
+    <id>http://yoursite.com/03-architecture-model-of-web-architecture/</id>
+    <published>2018-02-03T08:39:27.000Z</published>
+    <updated>2018-02-03T08:40:02.588Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="大型网站架构技术-架构模式"><a href="#大型网站架构技术-架构模式" class="headerlink" title="大型网站架构技术-架构模式"></a>大型网站架构技术-架构模式</h2><p>模式的关键在于模式的可重复性。<br><a id="more"></a></p><blockquote><p>每一个模式描述了一个在我们周围不断变化重复发生的问题及该问题解决方案的核心。这样就能一次次的使用该方案而不必做重复的工作。</p></blockquote><p>这是经过很多个实践，被很多网站重复使用而逐渐形成大型网站架构模式：</p><h3 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h3><p>将系统再横向维度上切成几个部分，每个部分负责一部分相对单一的职责。就好比平时一份工作比较多的时候，团队中大家各自负责自己擅长的那一部分。大型网站中一般分为三层：</p><ul><li>应用层：负责具体业务和视图展示。</li><li>服务层：为应用层提供服务支持。</li><li>数据层：提供数据存储访问服务。如数据库、缓存、文件、搜索引擎等。<br>需要注意的是：这个分层是逻辑的，并不一定要部署在不同的服务器上，可能会根据业务调整。<h3 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h3>对业务进行横向切分。比如应用层：分为购物、论坛、搜索等。<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3>一台服务器解决不了的时候，就采用分布式解决一下。<br>分为：分布式应用和服务，分布式静态资源，分布式数据和存储，分布式计算。<h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3>使用分布式已经将分层和分割后的模块独立部署，但是对于用户集中访问的模块，可能还需要将独立部署的服务器集群化（多台服务器部署相同的应用构成一个集群），再通过一个负载均衡服务器对外提供服务。<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3>缓存是改善软件性能的第一手段。</li><li>CDN：讲内容部署在离用户最近的网络服务商，用户请求的时候，可以直接访问网络服务商缓存的静态资源，所以会很快。</li><li>反向代理：用户请求到网站的数据中心时，最先访问的是反向代理服务器，这里会缓存网站的静态资源。</li><li>本地缓存：应用服务器本地缓存的热点数据，可以在本机内存中直接访问，不需要访问数据库。</li><li>分布式缓存：数据量非常庞大时，需要的内存不是单机能承受的。因此还需要分布式缓存<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3>业务之间的消息传递不是同步调用，而是将一个业务操作分成多个阶段，每个阶段之间通过共享数据的方式异步进行协作。<br>在单一服务器内部：采用<strong>多线程共享队列</strong>的方式实现异步。在分布式系统中：多个服务器集群通过分布式消息队列实现异步，分布式消息队列可以看做内存的分布式部署。</li></ul><p>分布式消息队列的特性：网站扩展新功能便利，提高系统可用性，加快网站响应速度，消除并发访问高峰。</p><h3 id="冗余"><a href="#冗余" class="headerlink" title="冗余"></a>冗余</h3><p>备份嘛，较少的机器可能坏的时间不长，但是小概率时间试验的次数过多的话就基本是必然事件了。</p><h3 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h3><p>主要集中在运维方面，包括：发布过程自动化、自动化代码管理、自动化测试、自动化安全监测、自动化部署。对于运行中：自动化监控、自动化报警、自动化失效转移、自动化失效恢复、自动化降级、自动化分配资源。</p><h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><p>密码和手机验证码；加密；网站验证码。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;大型网站架构技术-架构模式&quot;&gt;&lt;a href=&quot;#大型网站架构技术-架构模式&quot; class=&quot;headerlink&quot; title=&quot;大型网站架构技术-架构模式&quot;&gt;&lt;/a&gt;大型网站架构技术-架构模式&lt;/h2&gt;&lt;p&gt;模式的关键在于模式的可重复性。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="大型网站技术" scheme="http://yoursite.com/tags/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>大型网站架构技术-演化</title>
@@ -209,6 +235,27 @@
   
   <entry>
     <title>Leetcode-48-Rotate-Image</title>
+    <link href="http://yoursite.com/25-%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
+    <id>http://yoursite.com/25-刷题/Leetcode-48-Rotate-Image/</id>
+    <published>2018-01-25T12:44:32.000Z</published>
+    <updated>2018-01-25T12:44:40.209Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode-48-Rotate-Image</title>
     <link href="http://yoursite.com/25-Leetcode-48-Rotate-Image/"/>
     <id>http://yoursite.com/25-Leetcode-48-Rotate-Image/</id>
     <published>2018-01-25T12:44:32.000Z</published>
@@ -231,27 +278,6 @@
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode-48-Rotate-Image</title>
-    <link href="http://yoursite.com/25-%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
-    <id>http://yoursite.com/25-刷题/Leetcode-48-Rotate-Image/</id>
-    <published>2018-01-25T12:44:32.000Z</published>
-    <updated>2018-01-25T12:44:40.209Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
-      
-    
-    </summary>
-    
     
   </entry>
   
@@ -536,33 +562,6 @@
     
     
       <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux修改用户名和所属组</title>
-    <link href="http://yoursite.com/17-Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/"/>
-    <id>http://yoursite.com/17-Linux修改用户名和所属组/</id>
-    <published>2018-01-17T11:48:22.000Z</published>
-    <updated>2018-01-25T13:45:34.419Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Linux修改用户名和所属组"><a href="#Linux修改用户名和所属组" class="headerlink" title="Linux修改用户名和所属组"></a>Linux修改用户名和所属组</h3><p>腾讯云的云服务器的，初始的用户名和主机名都是分配的。主机名其实还好了，用户名总是一个ubuntu有点看的不爽，正好看到了用户管理，就在这准备改一下，mianhk显然是一个更好一点的选择是吧。_<em>^ </em> ^_</p><h4 id="更改用户名"><a href="#更改用户名" class="headerlink" title="更改用户名"></a>更改用户名</h4><h5 id="修改sudoers文件"><a href="#修改sudoers文件" class="headerlink" title="修改sudoers文件"></a>修改sudoers文件</h5><p>因为之后的操作，直接进入root用户操作。<br>将要改的名字提前赋予较高的权限，防止修改下面文件的过程中出现权限不足的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sudoers</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/001.jpg?raw=true" alt=""></p><h5 id="修改shadow文件"><a href="#修改shadow文件" class="headerlink" title="修改shadow文件"></a>修改shadow文件</h5><p>shadow文件存储与登陆有关的内容，格式如下：<br>username: passwd: lastchg: min: max: warn: inactive: expire: flag<br>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:<br>警告时间:不活动时间:失效时间:标志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadow</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/002.jpg?raw=true" alt=""></p><h5 id="修改开始目录"><a href="#修改开始目录" class="headerlink" title="修改开始目录"></a>修改开始目录</h5><p>每个用户都有一个家目录，远程登录的时候就会进入家目录。包含用户相关配置信息,例如：<img src="https://github.com/mianhk/image-save/blob/master/Linux/001/003.jpg?raw=true" alt=""><br>现在直接将这个家目录修改就好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv ubuntu mianhk  # ubuntu 原来的目录</div></pre></td></tr></table></figure></p><h5 id="修改passwd文件"><a href="#修改passwd文件" class="headerlink" title="修改passwd文件"></a>修改passwd文件</h5><p>passwd的文件格式是：<br>用户名: 密码 : uid  : gid :用户描述：主目录：登陆shell<br>需要将用户描述和主目录都改成新的，不然无法读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/passwd</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/004.jpg?raw=true" alt=""></p><h5 id="修改所属组"><a href="#修改所属组" class="headerlink" title="修改所属组"></a>修改所属组</h5><p>其实这里的修改，只需要将所有原来的ubuntu所属的组替换为mianhk即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/group</div></pre></td></tr></table></figure></p><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/001/005.jpg?raw=true" alt=""></p><h5 id="删除ubuntu"><a href="#删除ubuntu" class="headerlink" title="删除ubuntu"></a>删除ubuntu</h5><p>再次进入/etc/sudoers 中，讲ubuntu删除</p><h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><p>　</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Linux修改用户名和所属组&quot;&gt;&lt;a href=&quot;#Linux修改用户名和所属组&quot; class=&quot;headerlink&quot; title=&quot;Linux修改用户名和所属组&quot;&gt;&lt;/a&gt;Linux修改用户名和所属组&lt;/h3&gt;&lt;p&gt;腾讯云的云服务器的，初始的用户名和主机名都是
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
