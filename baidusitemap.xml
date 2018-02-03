@@ -4,11 +4,33 @@
 
     
   <url>
-    <loc>http://yoursite.com/03-evolution-of-webArchitecture/</loc>
-    <lastmod>2018-02-03T05:46:02.715Z</lastmod>
+    <loc>http://yoursite.com/12-%E7%94%9F%E6%B4%BB/%E6%88%91%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/</loc>
+    <lastmod>2018-02-03T07:59:53.355Z</lastmod>
     <data>
         <display>
-        <title>evolution-of-webArchitecture</title>
+        <title>我看的电影</title>
+        <pubTime>2017-11-12T12:27:30.000Z</pubTime>
+        
+        <tag>记录</tag>
+         
+        <tag>娱乐</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/03-evolution-of-webArchitecture/</loc>
+    <lastmod>2018-02-03T05:46:32.820Z</lastmod>
+    <data>
+        <display>
+        <title>大型网站架构技术-演化</title>
         <pubTime>2018-02-03T05:43:26.000Z</pubTime>
         
         <tag>后台开发</tag>
@@ -672,28 +694,6 @@
            
              
               <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/12-%E7%94%9F%E6%B4%BB/%E6%88%91%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/</loc>
-    <lastmod>2018-01-14T13:58:18.137Z</lastmod>
-    <data>
-        <display>
-        <title>我看的电影</title>
-        <pubTime>2017-11-12T12:27:30.000Z</pubTime>
-        
-        <tag>记录</tag>
-         
-        <tag>娱乐</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
