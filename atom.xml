@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-03T08:40:02.588Z</updated>
+  <updated>2018-03-15T14:52:39.050Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux的fork使用</title>
+    <link href="http://yoursite.com/15-Linux%E7%9A%84fork%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/15-Linux的fork使用/</id>
+    <published>2018-03-15T14:48:01.000Z</published>
+    <updated>2018-03-15T14:52:39.050Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux的fork使用"><a href="#Linux的fork使用" class="headerlink" title="Linux的fork使用"></a>Linux的fork使用</h2><blockquote><p>fork函数可以算是Linux里有点不好明白的函数了，调用一次，返回两次，虽然在平时的写法中，有基本固定的写法，但是有时候看起来还是有些让人头疼的。这里就把关于fork函数好好整理一下</p><h3 id="函数介绍"><a href="#函数介绍" class="headerlink" title="函数介绍"></a>函数介绍</h3><p><strong>功能</strong>：fork函数是从一个已经存在的进程中创建一个新的进程，新的进程称为子进程，原来的进程称为父进程。<br><strong>参数</strong>：无<br><strong>返回值</strong>：<br>成功：子进程中返回 0，父进程中返回子进程 ID。pid_t，为无符号整型。<br>失败：返回 -1。</p></blockquote><p>失败的两个主要原因是：<br>1）当前的进程数已经达到了系统规定的上限，这时 errno 的值被设置为 EAGAIN。<br>2）系统内存不足，这时 errno 的值被设置为 ENOMEM。</p><h3 id="测试的例子"><a href="#测试的例子" class="headerlink" title="测试的例子"></a>测试的例子</h3><p>下面是一个简单的创建子进程的例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;sys/types.h&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    int pid=1;</div><div class="line">    pid=fork();</div><div class="line">    if(0==pid)&#123; //pid为0，表示为子进程</div><div class="line">        cout&lt;&lt;&quot;我是子进程，我的pid是：&quot;&lt;&lt;getpid()&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    else if(pid&gt;0)&#123; //pid&gt;0表示父进程，此时返回值为子进程的pid</div><div class="line">        cout&lt;&lt;&quot;我是父进程，我的pid是&quot;&lt;&lt;getpid()&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    else &#123;  //fork 失败</div><div class="line">        cout&lt;&lt;&quot;fork失败&quot;&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure><p>从上面的例子可以看出，fork函数会有两个返回值，一个是在子进程中返回0,一个是在父进程中返回子进程的pid。因此在编程过程中，需要判断这个值的返回值来判断当前是父进程还是子进程。</p><h3 id="fork进程的原理"><a href="#fork进程的原理" class="headerlink" title="fork进程的原理"></a>fork进程的原理</h3><p>使用 fork() 函数得到的子进程是父进程的一个复制品，它从父进程处继承了整个进程的地址空间：包括进程上下文（进程执行活动全过程的静态描述）、进程堆栈、打开的文件描述符、信号控制设定、进程优先级、进程组号等。子进程所独有的只有它的进程号，计时器等（只有小量信息）。因此，使用 fork()函数的代价是很大的。<br><img src="https://github.com/mianhk/image-save/blob/master/Linux/003/001.jpg?raw=true" alt=""></p><h3 id="日常使用fork"><a href="#日常使用fork" class="headerlink" title="日常使用fork"></a>日常使用fork</h3><p>简单来说， 一个进程调用 fork() 函数后，系统先给新的进程分配资源，例如存储数据和代码的空间。然后把原来的进程的所有值都复制到新的新进程中，只有少数值与原来的进程的值不同。相当于克隆了一个自己。</p><p>实际上，更准确来说，Linux 的 fork() 使用是通过写时拷贝 (copy- on-write) 实现。写时拷贝是一种可以推迟甚至避免拷贝数据的技术。内核此时并不复制整个进程的地址空间，而是让父子进程共享同一个地址空间。只用在需要写入的时候才会复制地址空间，从而使各个进行拥有各自的地址空间。也就是说，资源的复制是在<strong>需要写入的时候才会进行，在此之前，只有以只读方式共享</strong>。</p><p>子进程是父进程的一个复制品，可以简单认为父子进程的代码一样的。一般来说，在 fork() 之后是父进程先执行还是子进程先执行是不确定的。这取决于内核所使用的调度算法。</p><p>因此，在实际的使用过程中，一般都需要对fork()的返回值进行判断，看我们操作的是父进程还是子进程。</p><h4 id="一般的操作：同时创建多个子进程"><a href="#一般的操作：同时创建多个子进程" class="headerlink" title="一般的操作：同时创建多个子进程"></a>一般的操作：同时创建多个子进程</h4><p>不对的例子:父进程会生成 n(n+1)/2+1个子进程，N 为循环次数，本例中共有 7 个子进程， 但实际上只有 3 个是父进程产生的，其余都为子进程 fork（）出来的。父进程fork了3个进程，第一个子进程执行完之后又fork了2个进程，第2个子进程fork了1个进程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">int main()&#123;</div><div class="line">    pid_t p1,p2;</div><div class="line">    int i;</div><div class="line">    int N=100;</div><div class="line">    for(int i=0;i&lt;=N;++i)&#123;</div><div class="line">        if((p1=fork())==0)&#123;</div><div class="line">            cout&lt;&lt;&quot;子进程1：&quot;&lt;&lt;getpid()&lt;&lt;endl;</div><div class="line">            //return 0;  //很关键的地方，为什么需要返回呢</div><div class="line">        &#125;</div><div class="line">        wait(p1,NULL,0); //父进程等待p1子进程执行后才能继续fork其他子进程</div><div class="line">        cout&lt;&lt;&quot;这是父进程: &quot;&lt;&lt;getpid()&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>正确的使用Linux中的用fork()由一个父进程创建同时多个子进程 的格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">int main()&#123;</div><div class="line">    pid_t p1,p2;</div><div class="line">    int i;</div><div class="line">    int N=100;</div><div class="line">    for(int i=0;i&lt;=N;++i)&#123;</div><div class="line">        status=fork();</div><div class="line">        if(status==0||status==1) break;//每次循环时，如果发现是子进程就直接从创建子进程的循环中跳出来，不让你进入循环，这样就保证了每次只有父进程来做循环创建子进程的工作</div><div class="line">        if (status == -1)</div><div class="line">        &#123;</div><div class="line">          //error</div><div class="line">        &#125;</div><div class="line">        else if (status == 0) //每个子进程都会执行的代码</div><div class="line"></div><div class="line">        &#123;</div><div class="line">          //sub process</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">          //parent process</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><h3 id="无聊的问题"><a href="#无聊的问题" class="headerlink" title="无聊的问题"></a>无聊的问题</h3><p>1.下面的程序，不算 main这个进程自身，到底创建了多少个进程啊？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int main(int argc, char* argv[])</div><div class="line">&#123;</div><div class="line">   fork();</div><div class="line">   fork() &amp;&amp; fork() || fork();</div><div class="line">   fork();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>每fork一次就翻倍<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  fork(); //2个</div><div class="line">   fork() &amp;&amp; fork() || fork();</div><div class="line">//A&amp;&amp;B||C</div><div class="line">//A为假，跳过B，判断C-----------------------2</div><div class="line">//A为真，判断B，若B为真，跳过C-----------1</div><div class="line">//若B为假，判断C ------------2</div><div class="line">   fork(); //2</div></pre></td></tr></table></figure></p><p>总共有：<br>2<em>(2+1+2)</em>2=20<br>不算自己的话有20-1=19个</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Linux的fork使用&quot;&gt;&lt;a href=&quot;#Linux的fork使用&quot; class=&quot;headerlink&quot; title=&quot;Linux的fork使用&quot;&gt;&lt;/a&gt;Linux的fork使用&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;fork函数可以算是Linux里有
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-60-Permutation-Sequence</title>
+    <link href="http://yoursite.com/06-LeetCode-60-Permutation-Sequence/"/>
+    <id>http://yoursite.com/06-LeetCode-60-Permutation-Sequence/</id>
+    <published>2018-02-06T09:32:24.000Z</published>
+    <updated>2018-02-06T09:32:57.716Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LeetCode-60-Permutation-Sequence"><a href="#LeetCode-60-Permutation-Sequence" class="headerlink" title="LeetCode-60-Permutation-Sequence"></a>LeetCode-60-Permutation-Sequence</h3><blockquote><p>The set [1,2,3,…,n] contains a total of n! unique permutations.<br>By listing and labeling all of the permutations in order,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">We get the following sequence (ie, for n = 3):</div><div class="line"></div><div class="line">&quot;123&quot;</div><div class="line">&quot;132&quot;</div><div class="line">&quot;213&quot;</div><div class="line">&quot;231&quot;</div><div class="line">&quot;312&quot;</div><div class="line">&quot;321&quot;</div><div class="line">Given n and k, return the kth permutation sequence.</div></pre></td></tr></table></figure></p></blockquote><p>同样是排列 组合的问题，这次不需要打印所有的排列了，只需要按照排列的顺序打印出第k个，很显然，思路不会是列出所有的排列，然后找第k个打印出来是吧。</p><p>观察来看，以<code>1,2,3,4</code>为例，有<code>4*3*2*1=24</code>种排列，其中根据排列的顺序，按照第一个数字可以分为以下4种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1 * * *</div><div class="line"></div><div class="line">2 * * *</div><div class="line"></div><div class="line">3 1 2 4</div><div class="line">3 1 4 2</div><div class="line">3 2 1 4</div><div class="line">3 2 4 1</div><div class="line">3 4 1 2</div><div class="line">3 4 2 1</div><div class="line"></div><div class="line">4 * * *</div><div class="line">#### 方法一</div></pre></td></tr></table></figure></p><ul><li><p>第一个数<br>可以看出，当k=14时，第一个数字为3,这个是可以通过计算的。由于是从1开始的，取k=13；<code>index=k/(n-1)!=13/3!=2</code>，于是可以知道第一个数是3。那么第二个数字呢?</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1+permutation(2,4)</div><div class="line">2+permutation(1,4)</div><div class="line">4+permutation(1,2)</div></pre></td></tr></table></figure></li><li><p>第二个数<br>可以根据:<code>k=k-index_pre*(n-1)!=13-2*3!=1</code>;<br><code>index=k/(n-2)!=1/(4-2)!=0</code>于是第二个数为1。</p></li><li>第三个数<br>接下来就只剩下2和4了，继续:<code>k=k-index_pre*(n-2)!=1-0*(4-2)!=1</code>,  <code>index=k/(n-3)!=1/(4-3)!=1</code>在此处表示为4.之后再确定最后一个:</li><li>第四个数<br><code>k=k-index_pre*(n-4)!=1-1*(4-4)=0</code>;<br><code>index=k/(n-4)!=0/(4-4)!=0</code> 故第四个数为2</li></ul><p>到了这里，思路就比较清晰了。我们需要做的是从第一个一直到最后一个的循环，每次选出一个数，但是还需要将该数从原来的数组中剔除掉，因为前面选过的后面就不能排列了。</p><h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>其实原理差不多，也还是根据排列的规律。只不过算的方法不一样。</p><ol><li>j=i+k/(n-i)!;</li><li>删除s[j];</li><li>k=k%(n-i);</li><li>s[i]=s[j];<br>代码如下：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    string getPermutation(int n, int k) &#123;</div><div class="line">        if(n&lt;=0)</div><div class="line">            return &quot; &quot;;</div><div class="line">        int i,j,f=1;</div><div class="line">        string s(n,&apos;0&apos;);</div><div class="line">        for(i=1;i&lt;=n;i++)&#123;</div><div class="line">            f*=i;</div><div class="line">            s[i-1]+=i;</div><div class="line">        &#125;</div><div class="line">        for(i=0,k--;i&lt;n;++i)&#123;</div><div class="line">            f/=n-i;</div><div class="line">            j=i+k/f;</div><div class="line">            char c=s[j];</div><div class="line">            for(;j&gt;i;j--)</div><div class="line">                s[j]=s[j-1];</div><div class="line">            k%=f;</div><div class="line">            s[i]=c;</div><div class="line">        &#125;</div><div class="line">        return s;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;LeetCode-60-Permutation-Sequence&quot;&gt;&lt;a href=&quot;#LeetCode-60-Permutation-Sequence&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-60-Permutation-Sequ
+      
+    
+    </summary>
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>大型网站架构技术-架构模式</title>
@@ -236,27 +291,6 @@
   
   <entry>
     <title>Leetcode-48-Rotate-Image</title>
-    <link href="http://yoursite.com/25-%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
-    <id>http://yoursite.com/25-刷题/Leetcode-48-Rotate-Image/</id>
-    <published>2018-01-25T12:44:32.000Z</published>
-    <updated>2018-01-25T12:44:40.209Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode-48-Rotate-Image</title>
     <link href="http://yoursite.com/25-Leetcode-48-Rotate-Image/"/>
     <id>http://yoursite.com/25-Leetcode-48-Rotate-Image/</id>
     <published>2018-01-25T12:44:32.000Z</published>
@@ -279,6 +313,27 @@
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode-48-Rotate-Image</title>
+    <link href="http://yoursite.com/25-%E5%88%B7%E9%A2%98/Leetcode-48-Rotate-Image/"/>
+    <id>http://yoursite.com/25-刷题/Leetcode-48-Rotate-Image/</id>
+    <published>2018-01-25T12:44:32.000Z</published>
+    <updated>2018-01-25T12:44:40.209Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
+      
+    
+    </summary>
+    
     
   </entry>
   
@@ -511,58 +566,6 @@
       <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
     
       <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux用户管理</title>
-    <link href="http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
-    <id>http://yoursite.com/23-Linux/Linux用户管理/</id>
-    <published>2018-01-23T13:04:16.000Z</published>
-    <updated>2018-01-25T13:46:14.926Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Linux账户管理"><a href="#Linux账户管理" class="headerlink" title="Linux账户管理"></a>Linux账户管理</h3><h4 id="新建账户（ubuntu）"><a href="#新建账户（ubuntu）" class="headerlink" title="新建账户（ubuntu）"></a>新建账户（ubuntu）</h4><p>新建账户比较简单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">useradd mianhk1  #mianhk1为账户名</div></pre></td></tr></table></figure></p><p>之后可以在三个文件夹看到新账户的信息：<br><img src="https://github.com/mianhk/image-save/blob/master/Linux/002/001.jpg?raw=true" alt=""><br>此时可以看到，shadow文件中，第二个存密码的位置是一个!,此时新建的账户还没有密码，当然也可以看到home目录下没有mianhk1的文件夹，此时需要先改密码。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">passwd mianhk1 #修改密码</div></pre></td></tr></table></figure><p><img src="https://github.com/mianhk/image-save/blob/master/Linux/002/002.jpg?raw=true" alt=""><br>这时候就能看到shadow文件中保存的密码了，同时，也能在home目录下看到miahk1的文件夹了。但是此时切换到mianhk1账户时，看到的仍然是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mianhk1@VM-95-58-ubuntu:/home$ ls</div><div class="line">mianhk  mianhk1</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div></pre></td></tr></table></figure></p><p>这个原因其实是无法建立bash的一些文件，原因在上图中可以看到，因为我们没有指定系统的默认bash。通过修改之后，添加默认的bash还是出现了下列的问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[sudo] password for mianhk1:</div><div class="line">mianhk1 is not in the sudoers file.  This incident will be reported.</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div><div class="line">bash: history: /home/mianhk1/.bash_history: cannot create: Permission denied</div></pre></td></tr></table></figure></p><p>原因还没有权限，用root用户看了一下，发现原来mianhk1的所有者原来是root用户，直接修改拥有者和用户权限吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chown mianhk1 mianhk1  #修改拥有者用户</div><div class="line">chgrp mianhk1 mianhk1  #修改拥有组</div><div class="line">chmod +040 mianhk1     #修改文件夹权限</div></pre></td></tr></table></figure></p><p>之后可以通过命令查看生成的账户的信息了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">root@VM-95-58-ubuntu:/home# useradd -D</div><div class="line">GROUP=100           #用户组</div><div class="line">HOME=/home          #用户家目录的位置</div><div class="line">INACTIVE=-1         #密码失效日，在 shadow 内的第 7 栏</div><div class="line">EXPIRE=             #账号失效日，在 shadow 内的第 8 栏</div><div class="line">SHELL=/bin/sh       #预设的shell</div><div class="line">SKEL=/etc/skel      #用户家目录的内容数据参考目录</div><div class="line">CREATE_MAIL_SPOOL=no#是否主动帮使用者建立邮件信箱(mailbox)</div></pre></td></tr></table></figure></p><p>之后看了一下centos的，发现根本直接新建就好使了啊，<strong>^_^</strong>尴尬</p><p>中间还出了个很尴尬的事情，一不小心删了/etc/passwd 文件。。<br>没事，想想这么重要的文件肯定会有备份的，果然是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/passwd- /etc/passwd</div></pre></td></tr></table></figure></p><h4 id="删除账户"><a href="#删除账户" class="headerlink" title="删除账户"></a>删除账户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">deluser mianhk1  #mianhk1 为账户的名字</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Linux账户管理&quot;&gt;&lt;a href=&quot;#Linux账户管理&quot; class=&quot;headerlink&quot; title=&quot;Linux账户管理&quot;&gt;&lt;/a&gt;Linux账户管理&lt;/h3&gt;&lt;h4 id=&quot;新建账户（ubuntu）&quot;&gt;&lt;a href=&quot;#新建账户（ubuntu）&quot;
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯云服务器Linux挖比特币</title>
-    <link href="http://yoursite.com/19-%E7%94%9F%E6%B4%BB/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/"/>
-    <id>http://yoursite.com/19-生活/腾讯云服务器Linux挖比特币/</id>
-    <published>2018-01-19T14:56:59.000Z</published>
-    <updated>2018-01-19T14:57:56.617Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="腾讯云服务器Linux挖比特币"><a href="#腾讯云服务器Linux挖比特币" class="headerlink" title="腾讯云服务器Linux挖比特币"></a>腾讯云服务器Linux挖比特币</h3><p>毕竟又是一个周五的下午，有点等着放假，就想起来现在的挖矿，虽然现在挖矿都是专门的矿机或者是显卡之类的。但是经过计算，好像自己挖的话连电费都不够，就想试试云服务器可不可以，虽然CPU做这种傻瓜的计算问题可能不如专门的器件是吧。<br>这是我的ubuntu服务器的。</p><ul><li>注册一个矿池账号，推荐<a href="https://www.f2pool.com/" target="_blank" rel="external">https://www.f2pool.com/</a></li><li>通过ssh连接远程服务器</li><li><p>下载挖矿工具<br>这里别人推荐的地址可能有问题，或者我这个之后也会升级，所以可以直接去官网下载最新的推荐的版本就行。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://downloads.sourceforge.net/project/cpuminer/pooler-cpuminer-2.5.0-linux-x86_64.tar.gz</div></pre></td></tr></table></figure></li><li><p>解压</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar xvzf ooler-cpuminer-2.5.0-linux-x86_64.tar.gz</div></pre></td></tr></table></figure></li><li><p>nohup命令后台一直运行<br>注意：不同的端口对应不同的币，一个用户名可以在后面例如：mianhk.001，mianhk.002代表不同的矿机。userpass后面是账户名和密码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 以下不同的地址对应的是不同的矿</div><div class="line">nohup ./minerd -a scrypt -o stratum+tcp://stratum.f2pool.com:3333 --userpass=账号:密码 &amp;</div><div class="line"></div><div class="line">nohup ./minerd -a scrypt -o stratum+tcp://xmr.f2pool.com:13531 --userpass=账号:密码 &amp;</div><div class="line"></div><div class="line">nohup ./minerd -a scrypt -o stratum+tcp://zec.f2pool.com:3357 --userpass=账号:密码 &amp;</div></pre></td></tr></table></figure></li></ul><p>之后，就可以打开日志文件看到在挖矿了。我们还需要在网站填上自己的比特币钱包地址。但是这个挖的数目确实有点小啊<br>  <img src="https://github.com/mianhk/image-save/blob/master/tools/001/001.png?raw=true" alt=""></p><p>之后打开腾讯云服务器可以看到CPU已经跑满了啊。<br><img src="https://github.com/mianhk/image-save/blob/master/tools/001/002.png?raw=true" alt=""></p><p>然后之后就看到网上说云服务器跑的太满的话，会被封的，那就把CPU限制一下吧。<br>步骤如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install cpulimit</div><div class="line">top  # 查看pid</div><div class="line">cpulimit -p pid -l n  # n是限制的值</div></pre></td></tr></table></figure></p><p><strong>下面是centos的，因为有两台服务器，但是centos放的是vpn，平时还没装过软件呢</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install epel-release</div><div class="line">yum install cpulimit</div><div class="line">top  # 查看pid</div><div class="line">cpulimit -p pid -l n  # n是限制的值</div></pre></td></tr></table></figure></p><p>限制之后，就能明显的看到CPU占用没有满了：<br><img src="https://github.com/mianhk/image-save/blob/master/tools/001/003.jpg?raw=true" alt=""><br><img src="https://github.com/mianhk/image-save/blob/master/tools/001/004.jpg?raw=true" alt=""></p><p>哈哈，就当玩玩吧，多了解一下区块链，总得跟上节奏吧，虽然已经有点晚了的样子</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;腾讯云服务器Linux挖比特币&quot;&gt;&lt;a href=&quot;#腾讯云服务器Linux挖比特币&quot; class=&quot;headerlink&quot; title=&quot;腾讯云服务器Linux挖比特币&quot;&gt;&lt;/a&gt;腾讯云服务器Linux挖比特币&lt;/h3&gt;&lt;p&gt;毕竟又是一个周五的下午，有点等着放假
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
