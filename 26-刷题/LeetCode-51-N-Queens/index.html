@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="LeetCode-52-N-Queens-II Follow up for N-Queens problem.Now, instead outputting board configurations, return the total number of distinct solutions.  只返回N皇后问题结果的种数。因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135">
+<meta name="description" content="LeetCode-51-N-Queens经典的N皇后问题，重点是全排列的问题，但是这里由于N皇后的不重复行、列、斜的要求，在排列的过程中，比如从行开始排列，只能保证同行不重复，所以需要引入isValid函数。通过判断列，左斜、右斜是否重复。 需要注意的是：关于全排列递归的写法，要更加熟练掌握才行，并且能完全理解，能够在不同的情况中灵活运用。其基本思想还是：固定前面的某个数字，不短的对后面进行交换。">
 <meta name="keywords" content="C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-52-N-Queens-II">
-<meta property="og:url" content="http://yoursite.com/26-LeetCode-52-N-Queens-II/index.html">
+<meta property="og:title" content="LeetCode-51-N-Queens">
+<meta property="og:url" content="http://yoursite.com/26-刷题/LeetCode-51-N-Queens/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="LeetCode-52-N-Queens-II Follow up for N-Queens problem.Now, instead outputting board configurations, return the total number of distinct solutions.  只返回N皇后问题结果的种数。因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135">
+<meta property="og:description" content="LeetCode-51-N-Queens经典的N皇后问题，重点是全排列的问题，但是这里由于N皇后的不重复行、列、斜的要求，在排列的过程中，比如从行开始排列，只能保证同行不重复，所以需要引入isValid函数。通过判断列，左斜、右斜是否重复。 需要注意的是：关于全排列递归的写法，要更加熟练掌握才行，并且能完全理解，能够在不同的情况中灵活运用。其基本思想还是：固定前面的某个数字，不短的对后面进行交换。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-26T09:01:53.307Z">
+<meta property="og:updated_time" content="2018-01-26T02:13:12.159Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-52-N-Queens-II">
-<meta name="twitter:description" content="LeetCode-52-N-Queens-II Follow up for N-Queens problem.Now, instead outputting board configurations, return the total number of distinct solutions.  只返回N皇后问题结果的种数。因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135">
+<meta name="twitter:title" content="LeetCode-51-N-Queens">
+<meta name="twitter:description" content="LeetCode-51-N-Queens经典的N皇后问题，重点是全排列的问题，但是这里由于N皇后的不重复行、列、斜的要求，在排列的过程中，比如从行开始排列，只能保证同行不重复，所以需要引入isValid函数。通过判断列，左斜、右斜是否重复。 需要注意的是：关于全排列递归的写法，要更加熟练掌握才行，并且能完全理解，能够在不同的情况中灵活运用。其基本思想还是：固定前面的某个数字，不短的对后面进行交换。">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/26-LeetCode-52-N-Queens-II/"/>
+  <link rel="canonical" href="http://yoursite.com/26-刷题/LeetCode-51-N-Queens/"/>
 
 
 
 
 
-  <title>LeetCode-52-N-Queens-II | Mianhk's notes</title>
+  <title>LeetCode-51-N-Queens | Mianhk's notes</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/26-LeetCode-52-N-Queens-II/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/26-刷题/LeetCode-51-N-Queens/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-52-N-Queens-II</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-51-N-Queens</h1>
         
 
         <div class="post-meta">
@@ -323,7 +323,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T17:00:24+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T10:12:49+08:00">
                 2018-01-26
               </time>
             
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-26T17:01:53+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-26T10:13:12+08:00">
                 2018-01-26
               </time>
             
@@ -400,12 +400,8 @@
       
 
       
-        <h3 id="LeetCode-52-N-Queens-II"><a href="#LeetCode-52-N-Queens-II" class="headerlink" title="LeetCode-52-N-Queens-II"></a>LeetCode-52-N-Queens-II</h3><blockquote>
-<p>Follow up for N-Queens problem.<br>Now, instead outputting board configurations, return the total number of distinct solutions.</p>
-</blockquote>
-<p>只返回N皇后问题结果的种数。<br>因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135度方向的值即可。依然采用递归的方式，这里需要注意的是，由于是对列递归，所以需要考虑的是行，斜45度，斜135度，本来是要维护一个一维数组和两个二维数组，但是想到二维数组的特征，可以改为维护三个一维数组，这两个一维数组保存的是将二维数组展开的信息。甚至是一波操作改为共维护两个一维数组也可以。<br>接下来是代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int totalNQueens(int n) &#123;</div><div class="line">        vector&lt;int&gt; rows(n),d1(2*n-1),d2(2*n-1);</div><div class="line">        return find(n,n,0,rows,d1,d2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int find(int n,int left,int i,vector&lt;int&gt;&amp; rows,vector&lt;int&gt;&amp; d1,vector&lt;int&gt;&amp; d2)&#123;</div><div class="line">        if(left==0)</div><div class="line">            return 1;</div><div class="line">        int j,sum=0;</div><div class="line">        for(j=0;j&lt;n;++j)&#123;</div><div class="line">            if(rows[j]||d1[i+j]||d2[n-1+i-j])</div><div class="line">                continue;</div><div class="line">            rows[j]=d1[i+j]=d2[n-1+i-j]=1;</div><div class="line">            sum+=find(n,left-1,i+1,rows,d1,d2);</div><div class="line">            rows[j]=d1[i+j]=d2[n-1+i-j]=0;</div><div class="line">        &#125;</div><div class="line">        return sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>看了一下别人的好像确实快一点，毕竟0ms啊，也贴一下别人的代码吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int totalNQueens(int n) &#123;</div><div class="line">        bool flag[5*n] = &#123;false&#125;;</div><div class="line">        int num = 0;</div><div class="line">        dfs(num,flag,0,n);</div><div class="line">        return num;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void dfs(int&amp; num, bool* flag, int row, int n)&#123;</div><div class="line">        if(row == n)&#123;</div><div class="line">            ++num;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        for(int i = 0; i&lt;n;i++)&#123;</div><div class="line">            if(!flag[i] &amp;&amp; !flag[row+i+n] &amp;&amp; !flag[4*n + row - i])&#123;</div><div class="line">                flag[i] = 1;</div><div class="line">                flag[row+i+n] = 1;</div><div class="line">                flag[4*n + row - i] = 1;</div><div class="line">                dfs(num,flag,row+1,n);</div><div class="line">                flag[i] = 0;</div><div class="line">                flag[row+i+n] = 0;</div><div class="line">                flag[4*n + row - i] = 0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h4 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h4><p><a href="https://discuss.leetcode.com/topic/13617/accepted-4ms-c-solution-use-backtracking-and-bitmask-easy-understand" target="_blank" rel="external">https://discuss.leetcode.com/topic/13617/accepted-4ms-c-solution-use-backtracking-and-bitmask-easy-understand</a></p>
+        <h3 id="LeetCode-51-N-Queens"><a href="#LeetCode-51-N-Queens" class="headerlink" title="LeetCode-51-N-Queens"></a>LeetCode-51-N-Queens</h3><p>经典的N皇后问题，重点是全排列的问题，但是这里由于N皇后的不重复行、列、斜的要求，在排列的过程中，比如从行开始排列，只能保证同行不重复，所以需要引入isValid函数。通过判断列，左斜、右斜是否重复。</p>
+<p>需要注意的是：关于全排列递归的写法，要更加熟练掌握才行，并且能完全理解，能够在不同的情况中灵活运用。其基本思想还是：固定前面的某个数字，不短的对后面进行交换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isValid(vector&lt;string&gt;&amp; queen, int row,int col,int n)&#123;</div><div class="line">        for(int i=0;i&lt;row;++i)&#123;</div><div class="line">            if(queen[i][col]==&apos;Q&apos;)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        for(int i=row-1,j=col-1;i&gt;=0&amp;&amp;j&gt;=0;--i,--j)&#123;</div><div class="line">            if(queen[i][j]==&apos;Q&apos;)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        for(int i=row-1,j=col+1;i&gt;=0&amp;&amp;j&lt;n;--i,++j)&#123;</div><div class="line">            if(queen[i][j]==&apos;Q&apos;)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    void recurse(vector&lt;string&gt;&amp; queen,vector&lt;vector&lt;string&gt;&gt;&amp; res,int row,int n)&#123;</div><div class="line">        if(row==n)&#123;</div><div class="line">            res.push_back(queen);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        for(int col=0;col!=n;++col)&#123;</div><div class="line">            if(isValid(queen,row,col,n))&#123;</div><div class="line">                queen[row][col]=&apos;Q&apos;;</div><div class="line">                recurse(queen,res,row+1,n);</div><div class="line">                queen[row][col]=&apos;.&apos;;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    vector&lt;vector&lt;string&gt;&gt; solveNQueens(int n) &#123;</div><div class="line">        vector&lt;vector&lt;string&gt;&gt; res;</div><div class="line">        vector&lt;string&gt; queen(n,string(n,&apos;.&apos;));</div><div class="line">        recurse(queen,res,0,n);</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -470,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/26-LeetCode-51-N-Queens/" rel="next" title="LeetCode-51-N-Queens">
-                <i class="fa fa-chevron-left"></i> LeetCode-51-N-Queens
+              <a href="/25-刷题/LeetCode-49-Group-Anagrams/" rel="next" title="LeetCode-49-Group-Anagrams">
+                <i class="fa fa-chevron-left"></i> LeetCode-49-Group-Anagrams
               </a>
             
           </div>
@@ -480,8 +476,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/26-LeetCode-53-Maximum-Subarray/" rel="prev" title="LeetCode-53-Maximum-Subarray">
-                LeetCode-53-Maximum-Subarray <i class="fa fa-chevron-right"></i>
+              <a href="/26-刷题/LeetCode-52-N-Queens-II/" rel="prev" title="LeetCode-52-N-Queens-II">
+                LeetCode-52-N-Queens-II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -661,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-52-N-Queens-II"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-52-N-Queens-II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-number">1.1.</span> <span class="nav-text">reference:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-51-N-Queens"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-51-N-Queens</span></a></li></ol></div>
             
 
           </div>

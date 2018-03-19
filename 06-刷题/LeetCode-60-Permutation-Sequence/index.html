@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="LeetCode-53-Maximum-Subarray Find the contiguous subarray within an array (containing at least one number) which has the largest sum.For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous">
+<meta name="description" content="LeetCode-60-Permutation-Sequence The set [1,2,3,…,n] contains a total of n! unique permutations.By listing and labeling all of the permutations in order,123456789We get the following sequence (ie, for">
 <meta name="keywords" content="C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-53-Maximum-Subarray">
-<meta property="og:url" content="http://yoursite.com/26-LeetCode-53-Maximum-Subarray/index.html">
+<meta property="og:title" content="LeetCode-60-Permutation-Sequence">
+<meta property="og:url" content="http://yoursite.com/06-刷题/LeetCode-60-Permutation-Sequence/index.html">
 <meta property="og:site_name" content="Mianhk&#39;s notes">
-<meta property="og:description" content="LeetCode-53-Maximum-Subarray Find the contiguous subarray within an array (containing at least one number) which has the largest sum.For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous">
+<meta property="og:description" content="LeetCode-60-Permutation-Sequence The set [1,2,3,…,n] contains a total of n! unique permutations.By listing and labeling all of the permutations in order,123456789We get the following sequence (ie, for">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-26T09:57:24.389Z">
+<meta property="og:updated_time" content="2018-02-06T09:32:57.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-53-Maximum-Subarray">
-<meta name="twitter:description" content="LeetCode-53-Maximum-Subarray Find the contiguous subarray within an array (containing at least one number) which has the largest sum.For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous">
+<meta name="twitter:title" content="LeetCode-60-Permutation-Sequence">
+<meta name="twitter:description" content="LeetCode-60-Permutation-Sequence The set [1,2,3,…,n] contains a total of n! unique permutations.By listing and labeling all of the permutations in order,123456789We get the following sequence (ie, for">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/26-LeetCode-53-Maximum-Subarray/"/>
+  <link rel="canonical" href="http://yoursite.com/06-刷题/LeetCode-60-Permutation-Sequence/"/>
 
 
 
 
 
-  <title>LeetCode-53-Maximum-Subarray | Mianhk's notes</title>
+  <title>LeetCode-60-Permutation-Sequence | Mianhk's notes</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/26-LeetCode-53-Maximum-Subarray/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/06-刷题/LeetCode-60-Permutation-Sequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-53-Maximum-Subarray</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-60-Permutation-Sequence</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T17:57:03+08:00">
-                2018-01-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T17:32:24+08:00">
+                2018-02-06
               </time>
             
 
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-26T17:57:24+08:00">
-                2018-01-26
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-06T17:32:57+08:00">
+                2018-02-06
               </time>
             
           </span>
@@ -400,11 +400,29 @@
       
 
       
-        <h2 id="LeetCode-53-Maximum-Subarray"><a href="#LeetCode-53-Maximum-Subarray" class="headerlink" title="LeetCode-53-Maximum-Subarray"></a>LeetCode-53-Maximum-Subarray</h2><blockquote>
-<p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.<br>For example, given the array [-2,1,-3,4,-1,2,1,-5,4],<br>the contiguous subarray [4,-1,2,1] has the largest sum = 6.</p>
+        <h3 id="LeetCode-60-Permutation-Sequence"><a href="#LeetCode-60-Permutation-Sequence" class="headerlink" title="LeetCode-60-Permutation-Sequence"></a>LeetCode-60-Permutation-Sequence</h3><blockquote>
+<p>The set [1,2,3,…,n] contains a total of n! unique permutations.<br>By listing and labeling all of the permutations in order,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">We get the following sequence (ie, for n = 3):</div><div class="line"></div><div class="line">&quot;123&quot;</div><div class="line">&quot;132&quot;</div><div class="line">&quot;213&quot;</div><div class="line">&quot;231&quot;</div><div class="line">&quot;312&quot;</div><div class="line">&quot;321&quot;</div><div class="line">Given n and k, return the kth permutation sequence.</div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>最长子序列，又是一个动态规划的问题，关于动态规划，我们最主要的是要维护DP数组，这个问题以前还有点不理解，感觉主要的还是思想，只要知道这是一个动态规划的问题，解决动态规划的一般方法掌握了，其他的就都是细节了。</p>
-<p>最近刷算法题，不得不想到的是以前的数学，数学是逻辑性可能更强的东西，尚且需要多做练习才行，何况算法了。当然现在慢慢的感觉就是，以前看到很多题完全没有头绪，现在很多大概是能分清是想考啥了，也会想着主动去选择相应的数据结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        vector&lt;int&gt; dp(nums.size(),0);</div><div class="line">        dp[0]=nums[0];</div><div class="line">        int res=dp[0];</div><div class="line">        for(int i=1;i&lt;nums.size();++i)&#123;</div><div class="line">            dp[i]=nums[i]+(dp[i-1]&gt;0?dp[i-1]:0);</div><div class="line">            res=max(dp[i],res);</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>同样是排列 组合的问题，这次不需要打印所有的排列了，只需要按照排列的顺序打印出第k个，很显然，思路不会是列出所有的排列，然后找第k个打印出来是吧。</p>
+<p>观察来看，以<code>1,2,3,4</code>为例，有<code>4*3*2*1=24</code>种排列，其中根据排列的顺序，按照第一个数字可以分为以下4种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1 * * *</div><div class="line"></div><div class="line">2 * * *</div><div class="line"></div><div class="line">3 1 2 4</div><div class="line">3 1 4 2</div><div class="line">3 2 1 4</div><div class="line">3 2 4 1</div><div class="line">3 4 1 2</div><div class="line">3 4 2 1</div><div class="line"></div><div class="line">4 * * *</div><div class="line">#### 方法一</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>第一个数<br>可以看出，当k=14时，第一个数字为3,这个是可以通过计算的。由于是从1开始的，取k=13；<code>index=k/(n-1)!=13/3!=2</code>，于是可以知道第一个数是3。那么第二个数字呢?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1+permutation(2,4)</div><div class="line">2+permutation(1,4)</div><div class="line">4+permutation(1,2)</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二个数<br>可以根据:<code>k=k-index_pre*(n-1)!=13-2*3!=1</code>;<br><code>index=k/(n-2)!=1/(4-2)!=0</code>于是第二个数为1。</p>
+</li>
+<li>第三个数<br>接下来就只剩下2和4了，继续:<code>k=k-index_pre*(n-2)!=1-0*(4-2)!=1</code>,  <code>index=k/(n-3)!=1/(4-3)!=1</code>在此处表示为4.之后再确定最后一个:</li>
+<li>第四个数<br><code>k=k-index_pre*(n-4)!=1-1*(4-4)=0</code>;<br><code>index=k/(n-4)!=0/(4-4)!=0</code> 故第四个数为2</li>
+</ul>
+<p>到了这里，思路就比较清晰了。我们需要做的是从第一个一直到最后一个的循环，每次选出一个数，但是还需要将该数从原来的数组中剔除掉，因为前面选过的后面就不能排列了。</p>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>其实原理差不多，也还是根据排列的规律。只不过算的方法不一样。</p>
+<ol>
+<li>j=i+k/(n-i)!;</li>
+<li>删除s[j];</li>
+<li>k=k%(n-i);</li>
+<li>s[i]=s[j];<br>代码如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    string getPermutation(int n, int k) &#123;</div><div class="line">        if(n&lt;=0)</div><div class="line">            return &quot; &quot;;</div><div class="line">        int i,j,f=1;</div><div class="line">        string s(n,&apos;0&apos;);</div><div class="line">        for(i=1;i&lt;=n;i++)&#123;</div><div class="line">            f*=i;</div><div class="line">            s[i-1]+=i;</div><div class="line">        &#125;</div><div class="line">        for(i=0,k--;i&lt;n;++i)&#123;</div><div class="line">            f/=n-i;</div><div class="line">            j=i+k/f;</div><div class="line">            char c=s[j];</div><div class="line">            for(;j&gt;i;j--)</div><div class="line">                s[j]=s[j-1];</div><div class="line">            k%=f;</div><div class="line">            s[i]=c;</div><div class="line">        &#125;</div><div class="line">        return s;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -469,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/26-LeetCode-52-N-Queens-II/" rel="next" title="LeetCode-52-N-Queens-II">
-                <i class="fa fa-chevron-left"></i> LeetCode-52-N-Queens-II
+              <a href="/03-architecture-model-of-web-architecture/" rel="next" title="大型网站架构技术-架构模式">
+                <i class="fa fa-chevron-left"></i> 大型网站架构技术-架构模式
               </a>
             
           </div>
@@ -479,8 +497,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/30-LeetCode-55-Jump-Game/" rel="prev" title="LeetCode-55-Jump-Game">
-                LeetCode-55-Jump-Game <i class="fa fa-chevron-right"></i>
+              <a href="/15-Linux的fork使用/" rel="prev" title="Linux的fork使用">
+                Linux的fork使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -660,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-53-Maximum-Subarray"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-53-Maximum-Subarray</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-60-Permutation-Sequence"><span class="nav-number">1.</span> <span class="nav-text">LeetCode-60-Permutation-Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二："><span class="nav-number">1.1.</span> <span class="nav-text">方法二：</span></a></li></ol></li></ol></div>
             
 
           </div>
