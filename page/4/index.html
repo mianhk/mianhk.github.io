@@ -114,7 +114,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -222,16 +222,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -255,9 +245,9 @@
         <li class="menu-item menu-item-books">
           <a href="/books" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            menu.Books
+            看书
           </a>
         </li>
       
@@ -265,9 +255,9 @@
         <li class="menu-item menu-item-movies">
           <a href="/movies" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            menu.Movies
+            电影
           </a>
         </li>
       
@@ -300,6 +290,180 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/11-刷题/LeetCode-23-Merge-k-Sorted-Lists/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/11-刷题/LeetCode-23-Merge-k-Sorted-Lists/" itemprop="url">LeetCode-23-Merge-k-Sorted-Lists</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T22:23:23+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-23T21:05:09+08:00">
+                2018-01-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/11-刷题/LeetCode-23-Merge-k-Sorted-Lists/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/11-刷题/LeetCode-23-Merge-k-Sorted-Lists/" class="cy_cmt_count" data-xid="11-刷题/LeetCode-23-Merge-k-Sorted-Lists/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          23. Merge k Sorted Lists
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+
+这个题乍一看只是对链表的一个排序，因为是很多个链表，所以很简单的想法就是将整个数组里面的两个链表分别进行排序。两个两个互相排序之后就能排好。这里用的是
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/11-刷题/LeetCode-23-Merge-k-Sorted-Lists/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -392,6 +556,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/10-刷题/LeetCode-15-3Sum/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/10-刷题/LeetCode-15-3Sum/" class="cy_cmt_count" data-xid="10-刷题/LeetCode-15-3Sum/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
@@ -556,6 +731,17 @@ Given an array S of n integers, are there elements a, b, c in S such that a + b 
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/09-刷题/LeetCode-8-String-to-Integer-atoi/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/09-刷题/LeetCode-8-String-to-Integer-atoi/" class="cy_cmt_count" data-xid="09-刷题/LeetCode-8-String-to-Integer-atoi/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
           
 
           
@@ -719,6 +905,17 @@ Implement atoi to convert a string to an integer.
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/10-cut-life/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/10-cut-life/" class="cy_cmt_count" data-xid="10-cut-life/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
           
 
           
@@ -879,6 +1076,17 @@ Implement atoi to convert a string to an integer.
           
 
           
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/03-刷题/牛客网-剑指offer-11/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/03-刷题/牛客网-剑指offer-11/" class="cy_cmt_count" data-xid="03-刷题/牛客网-剑指offer-11/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
@@ -1042,6 +1250,17 @@ Implement atoi to convert a string to an integer.
           
 
           
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/01-刷题/牛客网-剑指offer-10/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/01-刷题/牛客网-剑指offer-10/" class="cy_cmt_count" data-xid="01-刷题/牛客网-剑指offer-10/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
@@ -1207,6 +1426,17 @@ Implement atoi to convert a string to an integer.
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/26-random-life-1/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/26-random-life-1/" class="cy_cmt_count" data-xid="26-random-life-1/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
           
 
           
@@ -1367,6 +1597,17 @@ Implement atoi to convert a string to an integer.
           
 
           
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/17-刷题/牛客网-剑指offer-3/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/17-刷题/牛客网-剑指offer-3/" class="cy_cmt_count" data-xid="17-刷题/牛客网-剑指offer-3/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
@@ -1530,6 +1771,17 @@ Implement atoi to convert a string to an integer.
           
 
           
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/12-生活/我的专业书/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/12-生活/我的专业书/" class="cy_cmt_count" data-xid="12-生活/我的专业书/" itemprop="commentsCount" ></span>
+                </a>
+              
             
           
 
@@ -1703,6 +1955,17 @@ Implement atoi to convert a string to an integer.
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/12-生活/我看的电影/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/12-生活/我看的电影/" class="cy_cmt_count" data-xid="12-生活/我看的电影/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
           
 
           
@@ -1775,172 +2038,11 @@ Implement atoi to convert a string to an integer.
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/12-Linux/linux-learn-2-file-IO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mianhk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mianhk's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/12-Linux/linux-learn-2-file-IO/" itemprop="url">Linux学习-文件I/O</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T19:33:00+08:00">
-                2017-11-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-25T21:46:07+08:00">
-                2018-01-25
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          文件系统文件描述符一个进程默认打开三个文件描述符123STDIN_FILENO 0STDOUT_FILENO 1STDERR_FILENO 2
-新打开文件返回文件描述符表中未使用的最小文件描述符。open函数 123456#include &lt;sys/types.h&gt;#include &lt;sys/stat.h&gt;#include &lt;fcntl.h&gt;int open(c
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/12-Linux/linux-learn-2-file-IO/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1986,7 +2088,7 @@ Implement atoi to convert a string to an integer.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1997,7 +2099,7 @@ Implement atoi to convert a string to an integer.
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2008,7 +2110,7 @@ Implement atoi to convert a string to an integer.
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2245,6 +2347,10 @@ Implement atoi to convert a string to an integer.
 
 
 
+
+  
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytzPRg4R"></script>
+  
 
 
 

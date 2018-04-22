@@ -115,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -221,16 +221,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -254,9 +244,9 @@
         <li class="menu-item menu-item-books">
           <a href="/books" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            menu.Books
+            看书
           </a>
         </li>
       
@@ -264,9 +254,9 @@
         <li class="menu-item menu-item-movies">
           <a href="/movies" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            menu.Movies
+            电影
           </a>
         </li>
       
@@ -320,10 +310,10 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-                目前共计 18 个标签
+                目前共计 19 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/C/" style="font-size: 30px; color: #111">C++</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/LeetCode/" style="font-size: 25.5px; color: #404040">LeetCode</a> <a href="/tags/Linux/" style="font-size: 23.25px; color: #575757">Linux</a> <a href="/tags/Nginx/" style="font-size: 21px; color: #6f6f6f">Nginx</a> <a href="/tags/java/" style="font-size: 25.5px; color: #404040">java</a> <a href="/tags/剑指offer/" style="font-size: 18.75px; color: #868686">剑指offer</a> <a href="/tags/后台开发/" style="font-size: 27.75px; color: #282828">后台开发</a> <a href="/tags/大型网站技术/" style="font-size: 14.25px; color: #b5b5b5">大型网站技术</a> <a href="/tags/娱乐/" style="font-size: 12px; color: #ccc">娱乐</a> <a href="/tags/工具/" style="font-size: 16.5px; color: #9d9d9d">工具</a> <a href="/tags/日常/" style="font-size: 14.25px; color: #b5b5b5">日常</a> <a href="/tags/杂想/" style="font-size: 16.5px; color: #9d9d9d">杂想</a> <a href="/tags/架构/" style="font-size: 14.25px; color: #b5b5b5">架构</a> <a href="/tags/牛客网/" style="font-size: 18.75px; color: #868686">牛客网</a> <a href="/tags/记录/" style="font-size: 14.25px; color: #b5b5b5">记录</a> <a href="/tags/阅读/" style="font-size: 12px; color: #ccc">阅读</a>
+              <a href="/tags/C/" style="font-size: 30px; color: #111">C++</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/LeetCode/" style="font-size: 25.5px; color: #404040">LeetCode</a> <a href="/tags/Linux/" style="font-size: 23.25px; color: #575757">Linux</a> <a href="/tags/Nginx/" style="font-size: 21px; color: #6f6f6f">Nginx</a> <a href="/tags/java/" style="font-size: 25.5px; color: #404040">java</a> <a href="/tags/剑指offer/" style="font-size: 18.75px; color: #868686">剑指offer</a> <a href="/tags/后台开发/" style="font-size: 27.75px; color: #282828">后台开发</a> <a href="/tags/大型网站技术/" style="font-size: 14.25px; color: #b5b5b5">大型网站技术</a> <a href="/tags/娱乐/" style="font-size: 12px; color: #ccc">娱乐</a> <a href="/tags/工具/" style="font-size: 16.5px; color: #9d9d9d">工具</a> <a href="/tags/日常/" style="font-size: 14.25px; color: #b5b5b5">日常</a> <a href="/tags/杂想/" style="font-size: 16.5px; color: #9d9d9d">杂想</a> <a href="/tags/架构/" style="font-size: 14.25px; color: #b5b5b5">架构</a> <a href="/tags/牛客网/" style="font-size: 18.75px; color: #868686">牛客网</a> <a href="/tags/网络/" style="font-size: 12px; color: #ccc">网络</a> <a href="/tags/记录/" style="font-size: 14.25px; color: #b5b5b5">记录</a> <a href="/tags/阅读/" style="font-size: 12px; color: #ccc">阅读</a>
             </div>
           </div>
         
@@ -344,6 +334,8 @@
 
           
   <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
     
   </div>
 
@@ -383,7 +375,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -394,7 +386,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -405,7 +397,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -642,6 +634,21 @@
 
 
 
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytzPRg4R';
+      var conf = '2da45db7eb5cf1f4edd1e414c6910d2a';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
 
 
 
