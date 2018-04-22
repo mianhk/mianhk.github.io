@@ -985,7 +985,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day20(IO流2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day18(其他对象)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -1004,7 +1004,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day20(IO流2)/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day18(其他对象)/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -1032,7 +1032,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:35+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:27+08:00">
                 2017-09-09
               </time>
             
@@ -1070,8 +1070,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/09-java/day20(IO流2)/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/09-java/day20(IO流2)/" class="cy_cmt_count" data-xid="09-java/day20(IO流2)/" itemprop="commentsCount" ></span>
+                <a href="/09-java/day18(其他对象)/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/09-java/day18(其他对象)/" class="cy_cmt_count" data-xid="09-java/day18(其他对象)/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1101,194 +1101,16 @@
       
         
           
-          IO流
-File类用来将文件或文件夹封装成对象。方便对文件与文件夹的属性信息进行操作。File对象可以作为参数传递给
-File类的常见方法1.创建boolean createNewFile()boolean mkdir()boolean mkdirs()
-2.删除 boolean delete()  删除失败返回falsevoid deleteOnExit()  在程序退出时删除文件
-3.判断bo
-          ...
+          #其他对象
+
+System可不可以在jvm启动时，动态加载一些属性信息。
+##Runtime对象该类并没有提供构造函数。说明不可以new 对象，那么会直接想到该类中的方法都是静态的，发现该类中海油非静态方法。说明该类肯定会提供了方法获取本类对象，而且该方法是静态的，并返回值类型是本类类型。由这个特点可以看出该类使用了单例设计模式执行。
+##Date
+Math
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day20(IO流2)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day7(面向对象3)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mianhk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mianhk's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/09-java/day7(面向对象3)/" itemprop="url">day5(面向对象2)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
-                2017-03-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:39:48+08:00">
-                2017-09-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/09-java/day7(面向对象3)/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/09-java/day7(面向对象3)/" class="cy_cmt_count" data-xid="09-java/day7(面向对象3)/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          面向对象（3）（继承，final，抽象类，接口）
-1.继承（概述）
-继承：
-
-1.提高了代码的复用性
-2.继承让类与类之间有了关系，有了关系才有了多态的特性。
-注意：千万不要为了获取其他类的功能，简化代码而继承。必须是类与类之间有所属关系才可以继承，所属关系 is a。
-java语言中：java只支持单继承，不支持多继承。
-  因为多继承容易带来安全隐患：当多个父类中定义了相同的功能，当功能内容不
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/09-java/day7(面向对象3)/#more" rel="contents">
+            <a class="btn" href="/09-java/day18(其他对象)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1512,7 +1334,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day5-面向对象2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day14(集合类)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -1531,7 +1353,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day5-面向对象2/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day14(集合类)/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -1559,7 +1381,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:54:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:27+08:00">
                 2017-09-09
               </time>
             
@@ -1597,8 +1419,8 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/09-java/day5-面向对象2/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/09-java/day5-面向对象2/" class="cy_cmt_count" data-xid="09-java/day5-面向对象2/" itemprop="commentsCount" ></span>
+                <a href="/09-java/day14(集合类)/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/09-java/day14(集合类)/" class="cy_cmt_count" data-xid="09-java/day14(集合类)/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1628,15 +1450,14 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
       
         
           
-          面向对象编程(二)
-封装（private）匿名对象使用的方式：只调用一次注意，封装只是私有的一种表现形式。不私有也能封装。
-构造函数构造函数和一般函数在写法上有不同构造函数在对象一建立就运行，而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。一个对象建立，构造方法运行
-
-构造代码块作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。  和构造函数的区别：  构造代码块是给所
+          集合类
+集合框架（体系概述）为什么出现集合类？数组是固定长度的，集合是可变长度的。为什么出现这么多的容器？因为每一个容器对数据的存储方式都有不同。这个存储方式称之为：数据结构。
+##集合框架（共性方法）
+迭代器什么是迭代器？其实就是集合中元素的取出方式。把取出方式定义在集合的内部，这样取出方式就可以直接访问集合内容的元素。那么取出方式就被定义成了内部类。而每一个容器的结构数据不同，所以取出的动作细
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day5-面向对象2/#more" rel="contents">
+            <a class="btn" href="/09-java/day14(集合类)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1687,7 +1508,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day19(IO流)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day11(多线程)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -1706,7 +1527,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day19(IO流)/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day11(多线程)/" itemprop="url">多线程</a></h2>
         
 
         <div class="post-meta">
@@ -1734,7 +1555,179 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:41:31+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-10T00:11:42+08:00">
+                2017-09-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/09-java/day11(多线程)/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/09-java/day11(多线程)/" class="cy_cmt_count" data-xid="09-java/day11(多线程)/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          多线程
+进程：是一个正在执行中的程序。每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制单元。线程：就是进程中的一个独立的控制单元。  线程在控制着进程的执行。一个进程中至少有一个线程。java VM启动的时候会有一个进程jav.exe。该进程中至少有一个线程负责java程序的执行，而且这个线程运行的代码存在于main方法中。该线程称之为主线程。扩展：其实更细节说明jvm，jvm
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/09-java/day11(多线程)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day10(异常包访问)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/09-java/day10(异常包访问)/" itemprop="url">day5(面向对象2)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-09T23:40:03+08:00">
                 2017-09-09
               </time>
             
@@ -1772,8 +1765,8 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/09-java/day19(IO流)/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/09-java/day19(IO流)/" class="cy_cmt_count" data-xid="09-java/day19(IO流)/" itemprop="commentsCount" ></span>
+                <a href="/09-java/day10(异常包访问)/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/09-java/day10(异常包访问)/" class="cy_cmt_count" data-xid="09-java/day10(异常包访问)/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1803,14 +1796,15 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
       
         
           
-          #IO流
+          异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点：
 
-BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（）
-BufferedReader为了提高效率，加
+子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。
+如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。
+如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day19(IO流)/#more" rel="contents">
+            <a class="btn" href="/09-java/day10(异常包访问)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
