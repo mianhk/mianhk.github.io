@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-24T12:55:15.910Z</updated>
+  <updated>2018-04-26T03:37:36.511Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,21 +17,124 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>让生活更美好</title>
+    <link href="http://yoursite.com/26-%E5%B7%A5%E5%85%B7/use_of_jupyter/"/>
+    <id>http://yoursite.com/26-工具/use_of_jupyter/</id>
+    <published>2018-04-26T03:36:57.000Z</published>
+    <updated>2018-04-26T03:37:36.511Z</updated>
+    
+    <content type="html"><![CDATA[<p>update:<br>    2018-04-26 首次更新</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="1-采用直接pip安装"><a href="#1-采用直接pip安装" class="headerlink" title="1.采用直接pip安装"></a>1.采用直接pip安装</h2><p><code>pip install jupyter</code>不过可能由于是版本自带的pip有问题，而且用的Python版本也还是2.7的，反正就出现了各种问题。中间解决的有：  </p><ul><li>重新升级pip，但是发现直接pip还是有问题，于是找到问题原因，可能名字有点对不上，找到bin目录下还有一个pip2，在Python里面运行，发现果然是这个，有点心酸，还是换了这个。  </li><li>升级之后，会出现各种的权限问题，没事，给！  </li><li>之后运行，发现没有浏览器，于是又想起服务器上没有，又加上命令试了一下，而且每次都要复制一个长长的token吗？。。</li></ul><h2 id="2-采用Anaconda安装"><a href="#2-采用Anaconda安装" class="headerlink" title="2.采用Anaconda安装"></a>2.采用Anaconda安装</h2><p>正好晚上在床上看到一个链接，说这个更方便，反正也是折腾嘛，就试试了。过程稍微写一写哈</p><ol><li>在清华镜像站找到采用Anaconda相应版本下载：<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a><br> 找到后复制链接：<code>wget 链接</code> </li><li>安装Anaconda:<br> <code>sh Anaconda3-5.1.0-Linux-x86_64.sh # 一路yes就装了</code>  </li><li>服务器管理控制台开放8888端口（当然端口可以配置，也随便换了）  </li><li>运行<code>jupyter notebook --generate-config</code> 生成默认的jupyter配置文件  </li><li><p>编辑config文件：  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd .jupyter</div><div class="line">vim jupyter_notebook_config.py #编辑config文件</div><div class="line">c.NotebookApp.ip = &apos;*&apos;  #允许所有的ip登录</div><div class="line">c.NotebookApp.open_browser = False #打开浏览器：关闭，因为服务器没有浏览器</div><div class="line">c.NotebookApp.port = 8888  #开放使用的端口</div></pre></td></tr></table></figure></li><li><p>保存退出。运行jupyter notebook，会得到一个带token的访问地址。复制地址，将其中的localhost替换成服务器的公网IP，访问，应该可以正常进入jupyter。  </p></li><li>每次都tocken当然有点麻烦了。设置一个密码吧：<br> <code>jupyter-notebook password</code></li><li>之后就可以公网输入登录了。</li></ol><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.yaozihao.cn/2017/04/25/jupyter-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/" target="_blank" rel="external">http://www.yaozihao.cn/2017/04/25/jupyter-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/</a><br><a href="https://zhuanlan.zhihu.com/p/34289322" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/34289322</a><br><a href="https://zhuanlan.zhihu.com/p/20226040?utm_source=qq&amp;utm_medium=social&amp;utm_member=Y2E2MjI0YTdlMTI5YTMzOTA2NTlhZDRiMzY2MjFiNmQ%3D%0A" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/20226040?utm_source=qq&amp;utm_medium=social&amp;utm_member=Y2E2MjI0YTdlMTI5YTMzOTA2NTlhZDRiMzY2MjFiNmQ%3D%0A</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;update:&lt;br&gt;    2018-04-26 首次更新&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h2 id=&quot;1-采用直接pip安装&quot;&gt;&lt;a href=&quot;#1-采用
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="jupyter" scheme="http://yoursite.com/tags/jupyter/"/>
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/26-cpp/sum_up_cpp/"/>
+    <id>http://yoursite.com/26-cpp/sum_up_cpp/</id>
+    <published>2018-04-26T02:23:53.386Z</published>
+    <updated>2018-04-26T03:12:25.703Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="操作符相关"><a href="#操作符相关" class="headerlink" title="操作符相关"></a>操作符相关</h1><h3 id="strlen-和sizeof"><a href="#strlen-和sizeof" class="headerlink" title="strlen()和sizeof()"></a>strlen()和sizeof()</h3><ul><li><p>sizeof是运算符，并不是函数，结果在编译时得到,因此sizeof不能用来返回动态分配的内存空间的大小。用sizeof来返回类型以及静态分配的对象、结构或数组所占的空间，返回值跟对象、结构、数组所存储的内容没有关系；strlen是字符处理的库<strong>函数</strong>,当数组名作为参数传入时，实际上数组就退化成指针了。。</p></li><li><p>sizeof参数可以是任何数据的类型或者数据（sizeof参数不退化）；strlen的参数只能是字符指针且结尾是’\0’的字符串。</p></li><li><p><strong>因为sizeof值在编译时确定，所以不能用来得到动态分配（运行时分配）存储空间的大小。</strong></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;操作符相关&quot;&gt;&lt;a href=&quot;#操作符相关&quot; class=&quot;headerlink&quot; title=&quot;操作符相关&quot;&gt;&lt;/a&gt;操作符相关&lt;/h1&gt;&lt;h3 id=&quot;strlen-和sizeof&quot;&gt;&lt;a href=&quot;#strlen-和sizeof&quot; class=&quot;head
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/25-%E5%B7%A5%E5%85%B7/daily_zheteng/"/>
+    <id>http://yoursite.com/25-工具/daily_zheteng/</id>
+    <published>2018-04-25T03:49:52.811Z</published>
+    <updated>2018-04-25T03:50:39.973Z</updated>
+    
+    <content type="html"><![CDATA[<p>2018-04-25 11:49:56</p><p>vip视频：<br><a href="https://github.com/laidefa/Flask_Web_Vip：" target="_blank" rel="external">https://github.com/laidefa/Flask_Web_Vip：</a>  <a href="http://101.37.147.236:1518/" target="_blank" rel="external">http://101.37.147.236:1518/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2018-04-25 11:49:56&lt;/p&gt;
+&lt;p&gt;vip视频：&lt;br&gt;&lt;a href=&quot;https://github.com/laidefa/Flask_Web_Vip：&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.co
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux基础-鸟哥的私房菜总结</title>
+    <link href="http://yoursite.com/24-Linux/vbird-linux-sumary/"/>
+    <id>http://yoursite.com/24-Linux/vbird-linux-sumary/</id>
+    <published>2018-04-24T13:01:56.000Z</published>
+    <updated>2018-04-25T14:20:58.347Z</updated>
+    
+    <content type="html"><![CDATA[<p>update:<br>    2018-04-24 首次更新</p><h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><h2 id="一般通用的参数选项"><a href="#一般通用的参数选项" class="headerlink" title="一般通用的参数选项"></a>一般通用的参数选项</h2><p>Linux中有很多通用的选项，意义较为熟悉，很多时候我们可以不用去记这么多东西，记得一些含义的时候，也可以都不用<code>man</code>就能直接想到。</p><ul><li><p><code>-h</code>：大部分时候，可以把一些需要转化的数目转化为我们一眼可以看的，如M、K等。例如：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -h</div><div class="line">df -h</div></pre></td></tr></table></figure></li><li><p><code>-r</code>:大部分文件夹处理的时候，表示递归的意思，比如：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">rm -r /test #非常危险</div><div class="line">cp -r test test1</div><div class="line">```  </div><div class="line"></div><div class="line">* `-f`:(force)，强制执行</div></pre></td></tr></table></figure><p>  mv -f test<br>  cp -f</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* `-n`:显示行号</div></pre></td></tr></table></figure><p>  cat -n</p><p>  ```</p></li></ul><h2 id="命令-ls-cp-rm-mv"><a href="#命令-ls-cp-rm-mv" class="headerlink" title="命令: ls, cp, rm, mv"></a>命令: ls, cp, rm, mv</h2><h3 id="ls：查看目录和文件"><a href="#ls：查看目录和文件" class="headerlink" title="ls：查看目录和文件"></a>ls：查看目录和文件</h3><ul><li><code>-a</code>:列出所有文件  </li><li><code>-l</code>:列出详细属性,包括权限、所属的用户，所属用户组、文件大小</li><li><code>-i</code>:列出 inode号(在Linux文件系统中对应的inode节点)<h3 id="cp-复制"><a href="#cp-复制" class="headerlink" title="cp:复制"></a>cp:复制</h3><h3 id="rm：删除"><a href="#rm：删除" class="headerlink" title="rm：删除"></a>rm：删除</h3><h3 id="mv：移动"><a href="#mv：移动" class="headerlink" title="mv：移动"></a>mv：移动</h3></li></ul><h2 id="命令-cat-tac-nl-more-less，head-tail-od-touch"><a href="#命令-cat-tac-nl-more-less，head-tail-od-touch" class="headerlink" title="命令: cat/tac, nl, more/less，head/tail, od, touch"></a>命令: cat/tac, nl, more/less，head/tail, od, touch</h2><ul><li>cat/tac：第一行开始显示文件内容/从后往前显示  </li><li>nl：带行号的显示文件，多了一些命令而已</li><li>more/less：可以一页一页的显示/还可以往前翻 </li><li>head/tail: 显示头几行/显示尾几行  </li><li>od:以二进制的方式读取文件  </li><li>touch:修改文件时间或创建新文件<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h1 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h1><h1 id="vim相关"><a href="#vim相关" class="headerlink" title="vim相关"></a>vim相关</h1><h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;update:&lt;br&gt;    2018-04-24 首次更新&lt;/p&gt;
+&lt;h1 id=&quot;基本命令&quot;&gt;&lt;a href=&quot;#基本命令&quot; class=&quot;headerlink&quot; title=&quot;基本命令&quot;&gt;&lt;/a&gt;基本命令&lt;/h1&gt;&lt;h2 id=&quot;一般通用的参数选项&quot;&gt;&lt;a href=
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Sublime Text3使用总结</title>
     <link href="http://yoursite.com/24-%E5%B7%A5%E5%85%B7/use-of-sublime/"/>
     <id>http://yoursite.com/24-工具/use-of-sublime/</id>
     <published>2018-04-24T12:43:43.000Z</published>
-    <updated>2018-04-24T12:55:15.910Z</updated>
+    <updated>2018-04-24T14:49:47.092Z</updated>
     
-    <content type="html"><![CDATA[<p>update:</p><pre><code>- 2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只有我的是这样，赶紧找找问题，解决一下。顺便把很多重新折腾一下。</code></pre><p>#用好sublime</p><h3 id="为Sublime-Text3添加插入当前时间的命令"><a href="#为Sublime-Text3添加插入当前时间的命令" class="headerlink" title="为Sublime Text3添加插入当前时间的命令"></a><a href="https://www.cnblogs.com/jiafeimao-dabai/p/7238357.html" target="_blank" rel="external">为Sublime Text3添加插入当前时间的命令</a></h3><ol><li>创建插件：</li></ol><p>Tools → New Plugin:</p><p>import datetime<br>import sublime_plugin<br>class AddCurrentTimeCommand(sublime_plugin.TextCommand):<br>    def run(self, edit):<br>        self.view.run_command(“insert_snippet”,<br>            {<br>                “contents”: “%s” % datetime.datetime.now().strftime(“%Y-%m-%d %H:%M:%S”)<br>            }<br>        )<br>保存为Sublime Text3\Packages\User\addCurrentTime.py</p><ol><li>创建快捷键：</li></ol><p>Preference → Key Bindings - User:</p><p>[<br>    {<br>        “command”: “add_current_time”,<br>        “keys”: [<br>            “ctrl+shift+.”<br>        ]<br>    }<br>]</p><h3 id="添加了一个主题https-packagecontrol-io-packages-Predawn：Predawn"><a href="#添加了一个主题https-packagecontrol-io-packages-Predawn：Predawn" class="headerlink" title="添加了一个主题https://packagecontrol.io/packages/Predawn：Predawn"></a><a href="">添加了一个主题</a><a href="https://packagecontrol.io/packages/Predawn：Predawn" target="_blank" rel="external">https://packagecontrol.io/packages/Predawn：Predawn</a></h3><h3 id="其他链接"><a href="#其他链接" class="headerlink" title="其他链接"></a>其他链接</h3><p>小土刀博客：<a href="http://wdxtub.com/2016/03/24/sublime-guide/" target="_blank" rel="external">http://wdxtub.com/2016/03/24/sublime-guide/</a></p>]]></content>
+    <content type="html"><![CDATA[<p>update:</p><ul><li>2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只有我的是这样，赶紧找找问题，解决一下。顺便把很多重新折腾一下。</li></ul><p>#用好sublime</p><h3 id="为Sublime-Text3添加插入当前时间的命令"><a href="#为Sublime-Text3添加插入当前时间的命令" class="headerlink" title="为Sublime Text3添加插入当前时间的命令"></a><a href="https://www.cnblogs.com/jiafeimao-dabai/p/7238357.html" target="_blank" rel="external">为Sublime Text3添加插入当前时间的命令</a></h3><ol><li>创建插件：</li></ol><p>Tools → New Plugin:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import datetime</div><div class="line">import sublime_plugin</div><div class="line">class AddCurrentTimeCommand(sublime_plugin.TextCommand):</div><div class="line">    def run(self, edit):</div><div class="line">        self.view.run_command(&quot;insert_snippet&quot;, </div><div class="line">            &#123;</div><div class="line">                &quot;contents&quot;: &quot;%s&quot; % datetime.datetime.now().strftime(&quot;%Y-%m-%d %H:%M:%S&quot;) </div><div class="line">            &#125;</div><div class="line">        )</div></pre></td></tr></table></figure></p><p>保存为Sublime Text3\Packages\User\addCurrentTime.py</p><ol><li>创建快捷键：</li></ol><p>Preference → Key Bindings - User:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        &quot;command&quot;: &quot;add_current_time&quot;,</div><div class="line">        &quot;keys&quot;: [</div><div class="line">            &quot;ctrl+shift+.&quot;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p><h3 id="添加了一个主题https-packagecontrol-io-packages-Predawn：Predawn"><a href="#添加了一个主题https-packagecontrol-io-packages-Predawn：Predawn" class="headerlink" title="添加了一个主题https://packagecontrol.io/packages/Predawn：Predawn"></a><a href="">添加了一个主题</a><a href="https://packagecontrol.io/packages/Predawn：Predawn" target="_blank" rel="external">https://packagecontrol.io/packages/Predawn：Predawn</a></h3><h3 id="其他链接"><a href="#其他链接" class="headerlink" title="其他链接"></a>其他链接</h3><p>小土刀博客：<a href="http://wdxtub.com/2016/03/24/sublime-guide/" target="_blank" rel="external">http://wdxtub.com/2016/03/24/sublime-guide/</a></p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;update:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- 2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只有我的是这样，赶紧找找问题，解决一下。顺便把很多重新折腾一下。
-
+&lt;ul&gt;
+&lt;li&gt;2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只有我的是这样，赶紧找找问题，解决一下。顺便把很多重新折腾一下。&lt;/li&gt;
       
     
     </summary>
@@ -50,16 +153,16 @@
     <link href="http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/"/>
     <id>http://yoursite.com/24-随笔/redo-mylife/</id>
     <published>2018-04-24T12:40:26.000Z</published>
-    <updated>2018-04-24T12:41:30.772Z</updated>
+    <updated>2018-04-24T13:08:45.679Z</updated>
     
-    <content type="html"><![CDATA[<p>update:<br>    2018-04-24 首次更新</p>]]></content>
+    <content type="html"><![CDATA[<p>update:<br>    2018-04-24 首次更新</p><h1 id="why-title"><a href="#why-title" class="headerlink" title="why title"></a>why title</h1><p>突然觉得很久没思考自己的生活了，</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;update:&lt;br&gt;    2018-04-24 首次更新&lt;/p&gt;
-
+&lt;h1 id=&quot;why-title&quot;&gt;&lt;a href=&quot;#why-title&quot; class=&quot;headerlink&quot; title=&quot;why title&quot;&gt;&lt;/a&gt;why title&lt;/h1&gt;&lt;p&gt;突然觉得
       
     
     </summary>
@@ -430,122 +533,6 @@
       
       
         &lt;h3 id=&quot;服务器-Nginx设计架构&quot;&gt;&lt;a href=&quot;#服务器-Nginx设计架构&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx设计架构&quot;&gt;&lt;/a&gt;服务器-Nginx设计架构&lt;/h3&gt;&lt;h4 id=&quot;Nginx服务器架构&quot;&gt;&lt;a href=&quot;
-      
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器-Nginx的事件驱动模型</title>
-    <link href="http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://yoursite.com/25-服务器/服务器-Nginx的事件驱动模型/</id>
-    <published>2018-01-25T07:49:39.000Z</published>
-    <updated>2018-01-25T13:50:41.970Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="服务器-Nginx的事件驱动模型"><a href="#服务器-Nginx的事件驱动模型" class="headerlink" title="服务器-Nginx的事件驱动模型"></a>服务器-Nginx的事件驱动模型</h2><h3 id="什么是事件驱动模型"><a href="#什么是事件驱动模型" class="headerlink" title="什么是事件驱动模型"></a>什么是事件驱动模型</h3><p>事件驱动概念：在持续的事物管理过程中，由当前时间节点上出现的事件引起的调用可用资源执行相关任务，解决问题，防止事物堆积的一种策略。<br>一般由：事件收集器、事件发送器和事件处理器组成。</p><h3 id="事件驱动处理库"><a href="#事件驱动处理库" class="headerlink" title="事件驱动处理库"></a>事件驱动处理库</h3><p>又称为多路IO复用方法：主要包括以下几种：</p><h4 id="select库"><a href="#select库" class="headerlink" title="select库"></a>select库</h4><ol><li>创建所关注事件的描述符集合，每个描述符，可以关注读事件、写事件以及异常发生事件。</li><li>调用底层的select函数，等待事件发生。</li><li>轮询所有事件描述符集合中的每一个事件描述符，检查是否有相应的事件发生，如果有，就进行处理。<h4 id="poll库"><a href="#poll库" class="headerlink" title="poll库"></a>poll库</h4>Linux下平台的基本事件驱动模型。基本工作方式与select库相同。<br>区别在于：select库需要为读事件、写事件和异常事件分别创建一个描述符集合，因此在最后轮询的时候，需要分别轮询三个集合。而poll库只需要创建一个集合。轮询的时候同时检查三种事件是否发生。<h4 id="epoll库"><a href="#epoll库" class="headerlink" title="epoll库"></a>epoll库</h4>Nginx服务器支持的高性能事件驱动库。主要的改动是：把描述符列表的管理交由内核负责，一旦有某种事件发生，内核把发生的事件的描述列表通知给进程，这样就避免了轮询整个描述符列表。</li><li>epoll库通过相关调用通知内核创建一个有N个描述符的事件列表。然后给这些描述符设置关注的事件，并添加到内核的事件列表中去。</li><li>完成设置之后，epoll库就开始等待内核通知事件发生。一旦发生，内核将发生事件的描述符上报给epoll库。<h4 id="rtsig模型"><a href="#rtsig模型" class="headerlink" title="rtsig模型"></a>rtsig模型</h4>Real-time signal，实时信号。使用rtsig时，工作进程会通过系统内核建立一个rtsig队列用于存放标记事件发生的信号。每个事件发生时，系统内核就会产生一个信号存放在rtsig队列中等待工作进程的处理。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;服务器-Nginx的事件驱动模型&quot;&gt;&lt;a href=&quot;#服务器-Nginx的事件驱动模型&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx的事件驱动模型&quot;&gt;&lt;/a&gt;服务器-Nginx的事件驱动模型&lt;/h2&gt;&lt;h3 id=&quot;什么是事件驱动模型
-      
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器-Nginx的Web请求处理机制</title>
-    <link href="http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84Web%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://yoursite.com/25-服务器/服务器-Nginx的Web请求处理机制/</id>
-    <published>2018-01-25T03:53:23.000Z</published>
-    <updated>2018-01-25T13:50:37.362Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="服务器-Nginx的Web请求处理机制"><a href="#服务器-Nginx的Web请求处理机制" class="headerlink" title="服务器-Nginx的Web请求处理机制"></a>服务器-Nginx的Web请求处理机制</h2><h3 id="并行处理请求的三种方式"><a href="#并行处理请求的三种方式" class="headerlink" title="并行处理请求的三种方式"></a>并行处理请求的三种方式</h3><p>web服务器和客户端是一对多的关系，所以web服务器要能同时为多个客户端提供服务。一般有三种方式：多进程方式、多线程方式和异步方式。</p><h4 id="多进程方式"><a href="#多进程方式" class="headerlink" title="多进程方式"></a>多进程方式</h4><p>服务器每接收到一个客户端时，就由服务器主进程生成一个子进程与该客户端交互 ，直到连接断开，子进程结束。</p><ul><li>优点：设计和实现相对简单、子进程之间相互独立，处理客户端请求的过程彼此不干扰，一个有问题不会影响其他的。保证了稳定性。子进程退出时，资源会被系统回收，不会留下垃圾。</li><li>缺点：每生成一个子进程，都要进行内存复制的操作，在资源和时间上会有额外的开销。<br>Apache采用的“预生成进程”可以稍微解决大并发请求，但是本质是多进程，无法解决多并发的问题。<h5 id="多线程方式"><a href="#多线程方式" class="headerlink" title="多线程方式"></a>多线程方式</h5>服务器每接收到一个客户端时，会由服务器主进程派生一个线程出来和该客户端进行交互。</li><li>优点：产生一个线程的开销要小于一个进程，比较规范，利于协作。</li><li>缺点：多个线程在一个内存空间中，彼此互相影响，对内存的管理增加了出错的风险。<h4 id="异步方式"><a href="#异步方式" class="headerlink" title="异步方式"></a>异步方式</h4><h5 id="同步、异步与阻塞、非阻塞"><a href="#同步、异步与阻塞、非阻塞" class="headerlink" title="同步、异步与阻塞、非阻塞"></a>同步、异步与阻塞、非阻塞</h5><strong>同步和异步描述的是通信模式的概念</strong><br>同步：发送方发送请求后，需要等待接收到接收方发回的响应后，才接着发送下一个请求。所有的请求在服务器端得到同步，发送方和接收方对请求的处理步调是一致的。<br>异步：发送方发送请求后，不等待接收方响应这个请求，就继续发送下一个请求。所有来自发送方的请求形成一个队列，接收方处理完后通知发送方。</li></ul><p><strong>阻塞和非阻塞描述的是进程处理调用的方式，在网络通信中，主要指的是网络套接字socket的阻塞和非阻塞方式，socket实质上就是IO操作</strong><br>阻塞：调用结果返回之前，当前的线程从运行状态被挂起，一直等到调用结果返回之后，才进入就绪状态，获取CPU继续执行。<br>非阻塞：调用结果返回之前，线程不会被挂起，而是立即返回执行下一个周期。</p><p>所以共有四种方式：</p><ul><li>同步阻塞：发送方发送请求后，一直等待响应；接收方处理请求时不能立即等到结果的时候，就会一直等待返回结果，才响应发送方，期间不能执行任何其他工作。</li><li>同步非阻塞：发送方发送请求后，一直等待响应；接收方处理请求时不能立即等到结果的时候，就会立即返回，去做别的事情，但是由于没有得到结果，也不响应发送方，发送方一直等待。</li><li>异步阻塞：发送方发送请求后，不等待响应；接收方处理请求时不能立即等到结果的时候，就会一直等待返回结果，才响应发送方，期间不能执行任何其他工作。</li><li>异步非阻塞：发送方发送请求后，不等待响应；接收方处理请求时不能立即等到结果的时候，就会立即返回，去做别的事情，但是由于没有得到结果，也不响应发送方，发送方一直等待。</li></ul><h5 id="Nginx如何处理请求"><a href="#Nginx如何处理请求" class="headerlink" title="Nginx如何处理请求"></a>Nginx如何处理请求</h5><p>Nginx采用的是异步非阻塞的方式。采用Master-work模型（其实实际也有single的单进程模式，但是性能较差，很少使用）。每个工作进程采用异步非阻塞的方式。<br>Nginx服务器的工作进程调用IO后，就去进行其他工作，当IO调用返回，会通知工作进程。接下来就是怎么通知给工作进程了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;服务器-Nginx的Web请求处理机制&quot;&gt;&lt;a href=&quot;#服务器-Nginx的Web请求处理机制&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx的Web请求处理机制&quot;&gt;&lt;/a&gt;服务器-Nginx的Web请求处理机制&lt;/h2&gt;&lt;h3 i
-      
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器-Nginx模块化结构</title>
-    <link href="http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/25-服务器/服务器-Nginx模块化结构/</id>
-    <published>2018-01-25T03:52:30.000Z</published>
-    <updated>2018-01-25T13:50:50.499Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="服务器-Nginx模块化结构"><a href="#服务器-Nginx模块化结构" class="headerlink" title="服务器-Nginx模块化结构"></a>服务器-Nginx模块化结构</h3><p>习惯上将Nginx分为：核心模块、标准模块、可选HTTP模块、邮件服务模块和第三方模块五大类。</p><h4 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h4><p>包含对两部分功能的支持：</p><ul><li>主体功能：进程管理、权限控制、错误日志记录、配置解析等</li><li>用于响应请求必需的功能：事件驱动机制、正则表达式解析等<h4 id="标准HTTP模块"><a href="#标准HTTP模块" class="headerlink" title="标准HTTP模块"></a>标准HTTP模块</h4>对应基本的HTTP服务<h4 id="可选HTTP模块"><a href="#可选HTTP模块" class="headerlink" title="可选HTTP模块"></a>可选HTTP模块</h4>快速编译中默认不编译，需要使用的话需要自己加上–with-XXX的参数声明。<h4 id="邮件服务模块"><a href="#邮件服务模块" class="headerlink" title="邮件服务模块"></a>邮件服务模块</h4>Nginx的主要服务之一，快速编译时也不会编译<h4 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h4></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;服务器-Nginx模块化结构&quot;&gt;&lt;a href=&quot;#服务器-Nginx模块化结构&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx模块化结构&quot;&gt;&lt;/a&gt;服务器-Nginx模块化结构&lt;/h3&gt;&lt;p&gt;习惯上将Nginx分为：核心模块、标准模块、
-      
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器-Nginx-一个简单的例子</title>
-    <link href="http://yoursite.com/24-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
-    <id>http://yoursite.com/24-服务器/服务器-Nginx-一个简单的例子/</id>
-    <published>2018-01-24T14:41:26.000Z</published>
-    <updated>2018-01-25T13:50:57.798Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="服务器-Nginx-一个简单的例子"><a href="#服务器-Nginx-一个简单的例子" class="headerlink" title="服务器-Nginx-一个简单的例子"></a>服务器-Nginx-一个简单的例子</h3><p>直接贴一个几经磨难的简单的例子吧，虽然简单，但是有些不理解的地方，就出了很多错，但是因为这些错误，在对nginx理解稍微深刻了那么一点点的同时，对Linux的操作好像也有了一点进步啊。才知道为什么大家的命令都那么长，而我总是一步步慢慢的来了，一方面不熟，另一方面确实操作的不够多啊。</p><h4 id="配置细节"><a href="#配置细节" class="headerlink" title="配置细节"></a>配置细节</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">user mianhk;</div><div class="line">worker_processes 3;</div><div class="line">pid /run/nginx.pid;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    use epoll;</div><div class="line">    #worker_connections 768;</div><div class="line">    worker_connections 768;</div><div class="line">    # multi_accept on;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Basic Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    sendfile on;</div><div class="line">    #tcp_nopush on;</div><div class="line">    #tcp_nodelay on;</div><div class="line">    keepalive_timeout 65;</div><div class="line">    types_hash_max_size 2048;</div><div class="line">    # server_tokens off;</div><div class="line"></div><div class="line">    # server_names_hash_bucket_size 64;</div><div class="line">    # server_name_in_redirect off;</div><div class="line"></div><div class="line">    include /etc/nginx/mime.types;</div><div class="line">    default_type application/octet-stream;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # SSL Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    #ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</div><div class="line">    #ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Logging Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    access_log /var/log/nginx/access.log;</div><div class="line">    error_log /var/log/nginx/error.log;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Gzip Settings</div><div class="line">    ##</div><div class="line"></div><div class="line">    gzip on;</div><div class="line">    gzip_disable &quot;msie6&quot;;</div><div class="line"></div><div class="line">    # gzip_vary on;</div><div class="line">    # gzip_proxied any;</div><div class="line">    # gzip_comp_level 6;</div><div class="line">    # gzip_buffers 16 8k;</div><div class="line">    # gzip_http_version 1.1;</div><div class="line">    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</div><div class="line"></div><div class="line">    ##</div><div class="line">    # Virtual Host Configs</div><div class="line">    ##</div><div class="line">    ## 配置虚拟主机1</div><div class="line">    server &#123;</div><div class="line">        listen        8081;   #监听端口</div><div class="line">        server_name   myServer1;</div><div class="line">        access_log  var/myweb/server1/log/access_log;  #配置日志存放路径</div><div class="line">        error_page 404 /404.thml;   # 错误界面</div><div class="line"></div><div class="line">        location /server1/location1 &#123; #配置/server1/location1请求的location</div><div class="line">            root /var/myweb;</div><div class="line">            index index.svr1-loc1.htm;</div><div class="line">        &#125;</div><div class="line">        location /server1/location2 &#123;  #配置/server1/location2请求的location</div><div class="line">            root /var/myweb;</div><div class="line">            index index.svr1-locl2.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    server &#123;   #配置虚拟主机myServer2</div><div class="line">        listen     8082;</div><div class="line">        server_name 192.168.1.31;</div><div class="line">        access_log var/myweb/server2/log/access_log;</div><div class="line">        error_page 404 /404.thml;  #对错误页面定向</div><div class="line"></div><div class="line">        location /server2/location1 &#123;</div><div class="line">            root /var/myweb;</div><div class="line">            index index.svr2-loc1.htm;</div><div class="line">        &#125;</div><div class="line">        location /svr2/loc2 &#123;</div><div class="line">            alias /myweb/server2/location2/;  #对location的URI进行更改</div><div class="line">            index index.svr2-locl2.htm;</div><div class="line">        &#125;</div><div class="line">        location = /404.html &#123;  #配置错误页面转向</div><div class="line">            root /var/myweb;</div><div class="line">            index 404.html;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    #include /etc/nginx/conf.d/*.conf;</div><div class="line">    #include /etc/nginx/sites-enabled/*;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>在浏览器中输入：<code>http://111.230.231.95:8081/server1/location1/</code><img src="https://github.com/mianhk/image-save/blob/master/server/002/001.jpg?raw=true" alt=""><br>输入<code>http://111.230.231.95:8082/server2/location1/</code>显示：<br><img src="https://github.com/mianhk/image-save/blob/master/server/002/002.jpg?raw=true" alt=""></p><h4 id="出现的问题分析"><a href="#出现的问题分析" class="headerlink" title="出现的问题分析"></a>出现的问题分析</h4><ul><li><p>root目录的位置：<br>原来root的目录虽然写的是/var/myweb，但是实际发现位置是 在<code>/usr/share/nginx</code>下面，所以需要拷过去，具体这个位置是在哪里设置的，因为已经把所有其他的include都关掉了，所以可能是ubuntu下安装之后的默认目录，就像默认监听的80端口的页面其实在<code>var/www/html</code>下面一样。 导致出了各种莫名其妙的错误啊:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">root@VM-95-58-ubuntu:/etc/nginx# systemctl status nginx.service</div><div class="line">● nginx.service - A high performance web server and a reverse proxy server</div><div class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</div><div class="line">   Active: failed (Result: exit-code) since Wed 2018-01-24 22:05:09 CST; 1s ago</div><div class="line">  Process: 32576 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code</div><div class="line">  Process: 21311 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</div><div class="line">  Process: 3307 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=1/FAI</div><div class="line"> Main PID: 21314 (code=exited, status=0/SUCCESS)</div><div class="line"></div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: Starting A high performance web server and a reverse proxy server.</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu nginx[3307]: nginx: [emerg] open() &quot;/usr/share/nginx/var/myweb/server1/log/acc</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu nginx[3307]: nginx: configuration file /etc/nginx/nginx.conf test failed</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: nginx.service: Control process exited, code=exited status=1</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: Failed to start A high performance web server and a reverse proxy</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: nginx.service: Unit entered failed state.</div><div class="line">Jan 24 22:05:09 VM-95-58-ubuntu systemd[1]: nginx.service: Failed with result &apos;exit-code&apos;.</div></pre></td></tr></table></figure></li><li><p>另一个就是关于config文件的格式，一定要仔细写，需要加分号，然后就是最后的<code>/</code>，对于nginx的配置来说，是意义重大的，后面可能会说到这个问题，但是现在还是要写上。</p></li><li>刚刚测试，好像发现这里还有其他的问题，比如我的location2好像打不开啊，尴尬，明天再看看出了什么问题。。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;服务器-Nginx-一个简单的例子&quot;&gt;&lt;a href=&quot;#服务器-Nginx-一个简单的例子&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx-一个简单的例子&quot;&gt;&lt;/a&gt;服务器-Nginx-一个简单的例子&lt;/h3&gt;&lt;p&gt;直接贴一个几经磨难的
       
     
     </summary>
