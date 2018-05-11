@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-06T11:51:59.525Z</updated>
+  <updated>2018-05-07T13:40:09.645Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>让生活更美好</title>
+    <link href="http://yoursite.com/07-%E5%B7%A5%E5%85%B7/critical_atical/"/>
+    <id>http://yoursite.com/07-工具/critical_atical/</id>
+    <published>2018-05-07T12:14:13.000Z</published>
+    <updated>2018-05-07T13:40:09.645Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>平时总会逛一些技术博客，自己又是一个看东西囫囵吞枣的人，有很多东西写的很好，但是自己当时看明白了，后面就忘了。甚至有些当时只是觉得写得很好，但是却没有完全搞懂的。这里就当做个收集，以便平时查阅。  </p></blockquote><h2 id="程序相关"><a href="#程序相关" class="headerlink" title="程序相关"></a>程序相关</h2><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><ul><li><a href="http://www.cnblogs.com/sdjl/articles/1274312.html" target="_blank" rel="external">通过金矿模型介绍动态规划</a></li></ul><h2 id="日常折腾"><a href="#日常折腾" class="headerlink" title="日常折腾"></a>日常折腾</h2><h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><ul><li><a href="https://www.cnblogs.com/kevingrace/p/6496899.html" target="_blank" rel="external">tmux的使用</a></li><li><a href="https://github.com/kxxoling/blog/blob/master/tool/tmux.md" target="_blank" rel="external">2</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;平时总会逛一些技术博客，自己又是一个看东西囫囵吞枣的人，有很多东西写的很好，但是自己当时看明白了，后面就忘了。甚至有些当时只是觉得写得很好，但是却没有完全搞懂的。这里就当做个收集，以便平时查阅。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="资源" scheme="http://yoursite.com/tags/%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="收集" scheme="http://yoursite.com/tags/%E6%94%B6%E9%9B%86/"/>
+    
+  </entry>
   
   <entry>
     <title>LinuxI/O模型</title>
@@ -488,33 +520,6 @@
       
       
         &lt;h3 id=&quot;LeetCode-49-Group-Anagrams&quot;&gt;&lt;a href=&quot;#LeetCode-49-Group-Anagrams&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-49-Group-Anagrams&quot;&gt;&lt;/a&gt;LeetCode
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode-48-Rotate-Image</title>
-    <link href="http://yoursite.com/25-Leetcode-48-Rotate-Image/"/>
-    <id>http://yoursite.com/25-Leetcode-48-Rotate-Image/</id>
-    <published>2018-01-25T12:44:32.000Z</published>
-    <updated>2018-04-27T02:28:46.905Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Leetcode-48-Rotate-Image"><a href="#Leetcode-48-Rotate-Image" class="headerlink" title="Leetcode-48-Rotate-Image"></a>Leetcode-48-Rotate-Image</h3><blockquote><p>ou are given an n x n 2D matrix representing an image.<br>Rotate the image by 90 degrees (clockwise).<br>Note:<br>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p></blockquote><p>Example :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [4,5,6],</div><div class="line">  [7,8,9]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [7,4,1],</div><div class="line">  [8,5,2],</div><div class="line">  [9,6,3]</div><div class="line">]</div><div class="line"></div><div class="line">Given input matrix =</div><div class="line">[</div><div class="line">  [ 5, 1, 9,11],</div><div class="line">  [ 2, 4, 8,10],</div><div class="line">  [13, 3, 6, 7],</div><div class="line">  [15,14,12,16]</div><div class="line">],</div><div class="line"></div><div class="line">rotate the input matrix in-place such that it becomes:</div><div class="line">[</div><div class="line">  [15,13, 2, 5],</div><div class="line">  [14, 3, 4, 1],</div><div class="line">  [12, 6, 8, 9],</div><div class="line">  [16, 7,10,11]</div><div class="line">]</div></pre></td></tr></table></figure></p><p>这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。</p><p>观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。</p><p>所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</div><div class="line">        if(matrix.size()&lt;=0)</div><div class="line">            return;</div><div class="line">        int a=0,b=matrix.size()-1;</div><div class="line">        while(a&lt;b)&#123;</div><div class="line">            for(int i=0;i&lt;b-a;++i)&#123;</div><div class="line">                swap(matrix[a][a+i],matrix[a+i][b]);</div><div class="line">                swap(matrix[a][a+i],matrix[b][b-i]);</div><div class="line">                swap(matrix[a][a+i],matrix[b-i][a]);</div><div class="line">            &#125;</div><div class="line">            ++a;</div><div class="line">            --b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;a href=&quot;#Leetcode-48-Rotate-Image&quot; class=&quot;headerlink&quot; title=&quot;Leetcode-48-Rotate-Image&quot;&gt;&lt;/a&gt;Leetcode-48-Ro
       
     
     </summary>
