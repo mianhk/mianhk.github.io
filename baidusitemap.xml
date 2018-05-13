@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/07-%E5%B7%A5%E5%85%B7/critical_atical/</loc>
-    <lastmod>2018-05-07T13:40:09.645Z</lastmod>
+    <loc>http://yoursite.com/25-%E5%B7%A5%E5%85%B7/daily_zheteng/</loc>
+    <lastmod>2018-05-13T13:57:12.151Z</lastmod>
     <data>
         <display>
-        <title>让生活更美好</title>
-        <pubTime>2018-05-07T12:14:13.000Z</pubTime>
+        <title>日常折腾日记</title>
+        <pubTime>2018-04-25T03:49:56.000Z</pubTime>
         
         <tag>博客</tag>
          
@@ -28,23 +28,19 @@
 
     
   <url>
-    <loc>http://yoursite.com/03-Linux/Linux-IO/</loc>
-    <lastmod>2018-05-06T11:51:59.525Z</lastmod>
+    <loc>http://yoursite.com/22-%E5%B7%A5%E5%85%B7/win7%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2018-05-13T13:55:56.095Z</lastmod>
     <data>
         <display>
-        <title>LinuxI/O模型</title>
-        <pubTime>2018-05-03T12:40:59.000Z</pubTime>
+        <title>win7下安装Ubuntu双系统</title>
+        <pubTime>2017-10-22T14:37:21.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
-        <tag>IO</tag>
-         
-        <tag>服务器</tag>
+        <tag>工具</tag>
          
          
            
              
-              <breadCrumb title="Linux" url="http://yoursite.com/categories/Linux/"/>
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -52,8 +48,159 @@
 
     
   <url>
+    <loc>http://yoursite.com/01-%E5%B7%A5%E5%85%B7/%E7%AE%80%E5%8D%95%E8%84%9A%E6%9C%ACgit%E4%B8%80%E9%94%AE%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2018-05-13T13:55:41.067Z</lastmod>
+    <data>
+        <display>
+        <title>简单脚本git一键提交代码</title>
+        <pubTime>2017-06-01T10:55:29.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/19-%E9%9A%8F%E7%AC%94/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/</loc>
+    <lastmod>2018-05-13T13:55:14.453Z</lastmod>
+    <data>
+        <display>
+        <title>腾讯云服务器Linux挖比特币</title>
+        <pubTime>2018-01-19T14:56:59.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/10-cut-life/</loc>
+    <lastmod>2018-05-13T13:53:32.655Z</lastmod>
+    <data>
+        <display>
+        <title>精剪生活</title>
+        <pubTime>2017-12-10T11:57:26.000Z</pubTime>
+        
+        <tag>杂想</tag>
+         
+        <tag>记录</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/26-random-life-1/</loc>
+    <lastmod>2018-05-13T13:52:37.814Z</lastmod>
+    <data>
+        <display>
+        <title>一个可能很熟悉的周末</title>
+        <pubTime>2017-11-26T13:12:29.000Z</pubTime>
+        
+        <tag>杂想</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
+    <lastmod>2018-05-13T13:52:27.239Z</lastmod>
+    <data>
+        <display>
+        <title>阶段性生活思考</title>
+        <pubTime>2018-04-24T12:40:26.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>生活</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2018-05-13T13:49:13.264Z</lastmod>
+    <data>
+        <display>
+        <title>服务器-Nginx模块化结构</title>
+        <pubTime>2018-01-25T03:52:30.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>后台开发</tag>
+         
+        <tag>Nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/03-architecture-model-of-web-architecture/</loc>
+    <lastmod>2018-05-13T13:47:16.559Z</lastmod>
+    <data>
+        <display>
+        <title>大型网站架构技术-架构模式</title>
+        <pubTime>2018-02-03T08:39:27.000Z</pubTime>
+        
+        <tag>后台开发</tag>
+         
+        <tag>大型网站技术</tag>
+         
+        <tag>架构</tag>
+         
+         
+           
+             
+              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://yoursite.com/26-%E5%B7%A5%E5%85%B7/use_of_jupyter/</loc>
-    <lastmod>2018-05-03T12:34:22.765Z</lastmod>
+    <lastmod>2018-05-13T13:39:12.326Z</lastmod>
     <data>
         <display>
         <title>jupyter-notebook安装和问题解决</title>
@@ -78,21 +225,21 @@
 
     
   <url>
-    <loc>http://yoursite.com/24-Linux/vbird-linux-sumary/</loc>
-    <lastmod>2018-05-03T03:36:49.674Z</lastmod>
+    <loc>http://yoursite.com/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2018-05-13T12:51:19.893Z</lastmod>
     <data>
         <display>
-        <title>Linux基础-鸟哥的私房菜总结</title>
-        <pubTime>2018-04-24T13:01:56.000Z</pubTime>
+        <title>我的hexo折腾笔记</title>
+        <pubTime>2017-09-09T16:24:59.000Z</pubTime>
         
-        <tag>Linux</tag>
+        <tag>博客</tag>
          
-        <tag>后台开发</tag>
+        <tag>工具</tag>
          
          
            
              
-              <breadCrumb title="Linux" url="http://yoursite.com/categories/Linux/"/>
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -100,30 +247,20 @@
 
     
   <url>
-    <loc>http://yoursite.com/25-%E5%B7%A5%E5%85%B7/daily_zheteng/</loc>
-    <lastmod>2018-04-27T02:52:42.569Z</lastmod>
+    <loc>http://yoursite.com/10-network/network/</loc>
+    <lastmod>2018-05-13T02:35:03.438Z</lastmod>
     <data>
         <display>
-        <title></title>
-        <pubTime>2018-04-25T03:49:52.811Z</pubTime>
+        <title>一文总结计算机网络</title>
+        <pubTime>2018-04-10T12:24:59.000Z</pubTime>
         
+        <tag>网络</tag>
+         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/26-cpp/sum_up_cpp/</loc>
-    <lastmod>2018-04-27T02:41:31.261Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2018-04-26T02:23:53.386Z</pubTime>
-        
-         
-           
+             
+              <breadCrumb title="网络" url="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+          
         </display>
     </data>
     </url>
@@ -284,26 +421,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-04-27T02:28:48.310Z</lastmod>
-    <data>
-        <display>
-        <title>我的hexo折腾笔记</title>
-        <pubTime>2017-09-09T16:24:59.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/25-%E9%9A%8F%E7%AC%94/%E4%B8%8D%E7%9F%A5%E9%81%93%E6%80%8E%E4%B9%88%E5%BC%80%E7%9A%84%E8%88%B9/</loc>
     <lastmod>2018-04-27T02:28:48.306Z</lastmod>
     <data>
@@ -399,26 +516,6 @@
            
              
               <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/19-%E9%9A%8F%E7%AC%94/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/</loc>
-    <lastmod>2018-04-27T02:28:48.299Z</lastmod>
-    <data>
-        <display>
-        <title>腾讯云服务器Linux挖比特币</title>
-        <pubTime>2018-01-19T14:56:59.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -524,30 +621,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2018-04-27T02:28:47.238Z</lastmod>
-    <data>
-        <display>
-        <title>服务器-Nginx模块化结构</title>
-        <pubTime>2018-01-25T03:52:30.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>后台开发</tag>
-         
-        <tag>Nginx</tag>
-         
-         
-           
-             
-              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/23-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2018-04-27T02:28:47.236Z</lastmod>
     <data>
@@ -613,44 +686,6 @@
            
              
               <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/01-%E5%B7%A5%E5%85%B7/%E7%AE%80%E5%8D%95%E8%84%9A%E6%9C%ACgit%E4%B8%80%E9%94%AE%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</loc>
-    <lastmod>2018-04-27T02:28:47.205Z</lastmod>
-    <data>
-        <display>
-        <title>简单脚本git一键提交代码</title>
-        <pubTime>2017-06-01T10:55:29.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/22-%E5%B7%A5%E5%85%B7/win7%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2018-04-27T02:28:47.200Z</lastmod>
-    <data>
-        <display>
-        <title>win7下安装Ubuntu双系统</title>
-        <pubTime>2017-10-22T14:37:21.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -987,26 +1022,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/26-random-life-1/</loc>
-    <lastmod>2018-04-27T02:28:47.100Z</lastmod>
-    <data>
-        <display>
-        <title>一个可能很熟悉的周末</title>
-        <pubTime>2017-11-26T13:12:29.000Z</pubTime>
-        
-        <tag>杂想</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/09-java/day9(%E5%86%85%E9%83%A8%E7%B1%BB)/</loc>
     <lastmod>2018-04-27T02:28:47.092Z</lastmod>
     <data>
@@ -1107,7 +1122,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
+    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1127,7 +1142,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1287,11 +1302,11 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/</loc>
+    <loc>http://yoursite.com/09-java/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/</loc>
     <lastmod>2018-04-27T02:28:47.083Z</lastmod>
     <data>
         <display>
-        <title>day5(面向对象2)</title>
+        <title>多线程</title>
         <pubTime>2017-03-09T04:55:17.000Z</pubTime>
         
         <tag>java</tag>
@@ -1307,11 +1322,11 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/</loc>
+    <loc>http://yoursite.com/09-java/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/</loc>
     <lastmod>2018-04-27T02:28:47.083Z</lastmod>
     <data>
         <display>
-        <title>多线程</title>
+        <title>day5(面向对象2)</title>
         <pubTime>2017-03-09T04:55:17.000Z</pubTime>
         
         <tag>java</tag>
@@ -1364,28 +1379,6 @@
            
              
               <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/10-cut-life/</loc>
-    <lastmod>2018-04-27T02:28:47.080Z</lastmod>
-    <data>
-        <display>
-        <title>精剪生活</title>
-        <pubTime>2017-12-10T11:57:26.000Z</pubTime>
-        
-        <tag>杂想</tag>
-         
-        <tag>记录</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -1613,52 +1606,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/03-architecture-model-of-web-architecture/</loc>
-    <lastmod>2018-04-27T02:28:46.998Z</lastmod>
-    <data>
-        <display>
-        <title>大型网站架构技术-架构模式</title>
-        <pubTime>2018-02-03T08:39:27.000Z</pubTime>
-        
-        <tag>后台开发</tag>
-         
-        <tag>大型网站技术</tag>
-         
-        <tag>架构</tag>
-         
-         
-           
-             
-              <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/17-Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
-    <lastmod>2018-04-27T02:28:46.997Z</lastmod>
-    <data>
-        <display>
-        <title>Linux修改用户名和所属组</title>
-        <pubTime>2018-01-17T11:48:22.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>后台开发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://yoursite.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/12-Linux/linux-learn-2-file-IO/</loc>
     <lastmod>2018-04-27T02:28:46.996Z</lastmod>
     <data>
@@ -1703,28 +1650,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/12-Linux/linux-learn-0/</loc>
-    <lastmod>2018-04-27T02:28:46.985Z</lastmod>
-    <data>
-        <display>
-        <title>Linux学习0-开始</title>
-        <pubTime>2017-11-12T10:59:12.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>后台开发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://yoursite.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/10-Linux/github%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2018-04-27T02:28:46.949Z</lastmod>
     <data>
@@ -1747,12 +1672,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
+    <loc>http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2018-04-27T02:28:46.928Z</lastmod>
     <data>
         <display>
-        <title>Linux修改用户名和所属组</title>
-        <pubTime>2018-01-17T11:48:22.000Z</pubTime>
+        <title>Linux用户管理</title>
+        <pubTime>2018-01-23T13:04:16.000Z</pubTime>
         
         <tag>Linux</tag>
          
@@ -1769,12 +1694,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</loc>
+    <loc>http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
     <lastmod>2018-04-27T02:28:46.928Z</lastmod>
     <data>
         <display>
-        <title>Linux用户管理</title>
-        <pubTime>2018-01-23T13:04:16.000Z</pubTime>
+        <title>Linux修改用户名和所属组</title>
+        <pubTime>2018-01-17T11:48:22.000Z</pubTime>
         
         <tag>Linux</tag>
          
@@ -1830,48 +1755,6 @@
            
              
               <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
-    <lastmod>2018-04-24T13:08:45.679Z</lastmod>
-    <data>
-        <display>
-        <title>让生活更美好</title>
-        <pubTime>2018-04-24T12:40:26.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>生活</tag>
-         
-         
-           
-             
-              <breadCrumb title="随笔" url="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/10-network/network/</loc>
-    <lastmod>2018-04-24T12:30:41.255Z</lastmod>
-    <data>
-        <display>
-        <title>一文总结计算机网络</title>
-        <pubTime>2018-04-10T12:24:59.000Z</pubTime>
-        
-        <tag>网络</tag>
-         
-         
-           
-             
-              <breadCrumb title="网络" url="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
           
         </display>
     </data>

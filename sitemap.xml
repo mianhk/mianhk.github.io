@@ -2,44 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/07-%E5%B7%A5%E5%85%B7/critical_atical/</loc>
+    <loc>http://yoursite.com/25-%E5%B7%A5%E5%85%B7/daily_zheteng/</loc>
     
-    <lastmod>2018-05-07T13:40:09.645Z</lastmod>
+    <lastmod>2018-05-13T13:57:12.151Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/03-Linux/Linux-IO/</loc>
+    <loc>http://yoursite.com/22-%E5%B7%A5%E5%85%B7/win7%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</loc>
     
-    <lastmod>2018-05-06T11:51:59.525Z</lastmod>
+    <lastmod>2018-05-13T13:55:56.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/01-%E5%B7%A5%E5%85%B7/%E7%AE%80%E5%8D%95%E8%84%9A%E6%9C%ACgit%E4%B8%80%E9%94%AE%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</loc>
+    
+    <lastmod>2018-05-13T13:55:41.067Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/19-%E9%9A%8F%E7%AC%94/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/</loc>
+    
+    <lastmod>2018-05-13T13:55:14.453Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/10-cut-life/</loc>
+    
+    <lastmod>2018-05-13T13:53:32.655Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/26-random-life-1/</loc>
+    
+    <lastmod>2018-05-13T13:52:37.814Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
+    
+    <lastmod>2018-05-13T13:52:27.239Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/</loc>
+    
+    <lastmod>2018-05-13T13:49:13.264Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/03-architecture-model-of-web-architecture/</loc>
+    
+    <lastmod>2018-05-13T13:47:16.559Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2018-05-13T13:43:43.494Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/26-%E5%B7%A5%E5%85%B7/use_of_jupyter/</loc>
     
-    <lastmod>2018-05-03T12:34:22.765Z</lastmod>
+    <lastmod>2018-05-13T13:39:12.326Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/24-Linux/vbird-linux-sumary/</loc>
+    <loc>http://yoursite.com/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2018-05-03T03:36:49.674Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/25-%E5%B7%A5%E5%85%B7/daily_zheteng/</loc>
-    
-    <lastmod>2018-04-27T02:52:42.569Z</lastmod>
+    <lastmod>2018-05-13T12:51:19.893Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/26-cpp/sum_up_cpp/</loc>
+    <loc>http://yoursite.com/10-network/network/</loc>
     
-    <lastmod>2018-04-27T02:41:31.261Z</lastmod>
+    <lastmod>2018-05-13T02:35:03.438Z</lastmod>
     
   </url>
   
@@ -93,13 +142,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2018-04-27T02:28:48.310Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/25-%E9%9A%8F%E7%AC%94/%E4%B8%8D%E7%9F%A5%E9%81%93%E6%80%8E%E4%B9%88%E5%BC%80%E7%9A%84%E8%88%B9/</loc>
     
     <lastmod>2018-04-27T02:28:48.306Z</lastmod>
@@ -131,13 +173,6 @@
     <loc>http://yoursite.com/12-%E9%9A%8F%E7%AC%94/%E6%88%91%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/</loc>
     
     <lastmod>2018-04-27T02:28:48.300Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/19-%E9%9A%8F%E7%AC%94/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Linux%E6%8C%96%E6%AF%94%E7%89%B9%E5%B8%81/</loc>
-    
-    <lastmod>2018-04-27T02:28:48.299Z</lastmod>
     
   </url>
   
@@ -184,13 +219,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.238Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/23-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2018-04-27T02:28:47.236Z</lastmod>
@@ -208,20 +236,6 @@
     <loc>http://yoursite.com/24-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/</loc>
     
     <lastmod>2018-04-27T02:28:47.210Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/01-%E5%B7%A5%E5%85%B7/%E7%AE%80%E5%8D%95%E8%84%9A%E6%9C%ACgit%E4%B8%80%E9%94%AE%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.205Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/22-%E5%B7%A5%E5%85%B7/win7%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.200Z</lastmod>
     
   </url>
   
@@ -331,13 +345,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/26-random-life-1/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.100Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/09-java/day9(%E5%86%85%E9%83%A8%E7%B1%BB)/</loc>
     
     <lastmod>2018-04-27T02:28:47.092Z</lastmod>
@@ -373,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
+    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     
@@ -436,14 +443,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/</loc>
+    <loc>http://yoursite.com/09-java/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/</loc>
     
     <lastmod>2018-04-27T02:28:47.083Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/</loc>
+    <loc>http://yoursite.com/09-java/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/</loc>
     
     <lastmod>2018-04-27T02:28:47.083Z</lastmod>
     
@@ -460,13 +467,6 @@
     <loc>http://yoursite.com/03-evolution-of-webArchitecture/</loc>
     
     <lastmod>2018-04-27T02:28:47.081Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/10-cut-life/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.080Z</lastmod>
     
   </url>
   
@@ -548,20 +548,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/03-architecture-model-of-web-architecture/</loc>
-    
-    <lastmod>2018-04-27T02:28:46.998Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/17-Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
-    
-    <lastmod>2018-04-27T02:28:46.997Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/12-Linux/linux-learn-2-file-IO/</loc>
     
     <lastmod>2018-04-27T02:28:46.996Z</lastmod>
@@ -576,13 +562,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/12-Linux/linux-learn-0/</loc>
-    
-    <lastmod>2018-04-27T02:28:46.985Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/10-Linux/github%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2018-04-27T02:28:46.949Z</lastmod>
@@ -590,14 +569,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
+    <loc>http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</loc>
     
     <lastmod>2018-04-27T02:28:46.928Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</loc>
+    <loc>http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
     
     <lastmod>2018-04-27T02:28:46.928Z</lastmod>
     
@@ -611,14 +590,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/404.html</loc>
+    <loc>http://yoursite.com/C++/index.html</loc>
     
     <lastmod>2018-04-27T02:28:46.893Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/C++/index.html</loc>
+    <loc>http://yoursite.com/404.html</loc>
     
     <lastmod>2018-04-27T02:28:46.893Z</lastmod>
     
@@ -628,20 +607,6 @@
     <loc>http://yoursite.com/24-%E5%B7%A5%E5%85%B7/use-of-sublime/</loc>
     
     <lastmod>2018-04-24T14:49:47.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
-    
-    <lastmod>2018-04-24T13:08:45.679Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/10-network/network/</loc>
-    
-    <lastmod>2018-04-24T12:30:41.255Z</lastmod>
     
   </url>
   
