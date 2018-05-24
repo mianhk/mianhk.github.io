@@ -130,6 +130,31 @@
   </entry>
   
   <entry>
+    <title>ubuntu自动push到github脚本</title>
+    <link href="http://yoursite.com/10-%E5%B7%A5%E5%85%B7/shell_%E8%87%AA%E5%8A%A8push/"/>
+    <id>http://yoursite.com/10-工具/shell_自动push/</id>
+    <published>2018-04-10T12:24:59.000Z</published>
+    <updated>2018-05-24T09:59:44.209Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="编写shell脚本"><a href="#编写shell脚本" class="headerlink" title="编写shell脚本"></a>编写shell脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">path=~/github/</div><div class="line"></div><div class="line">git_push()&#123;</div><div class="line">    echo &quot;开始push&quot;</div><div class="line">    modify_time=`stat -c %Y $&#123;1&#125;`</div><div class="line">    this_time=`date +%s`</div><div class="line"></div><div class="line">    cd $&#123;1&#125;</div><div class="line">    echo &quot;-------切换目录------&quot;</div><div class="line">    echo `pwd`</div><div class="line">    echo &quot;---------------------&quot;</div><div class="line">    if [ $[ $&#123;modify_time&#125;-$&#123;this_time&#125; ] -gt 86400 ];</div><div class="line">    then</div><div class="line">         echo &quot;$&#123;1&#125; 文件夹 有变化，正在准备push...&quot;</div><div class="line">        date=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`</div><div class="line">        git add .    </div><div class="line">        git commit -m &quot;automatic push @$(date)&quot;</div><div class="line">        echo &quot;git fetch origin master&quot;</div><div class="line">        git fetch origin master</div><div class="line"></div><div class="line">        echo &quot;git merge origin/master&quot;</div><div class="line">        git merge origin/master</div><div class="line"></div><div class="line">        echo &quot;git push origin master:master&quot;</div><div class="line">        git push origin master:master</div><div class="line">         </div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line">git_push ~/github/Linux_pro</div><div class="line">git_push ~/github/miniweb</div></pre></td></tr></table></figure><h2 id="加入定时任务"><a href="#加入定时任务" class="headerlink" title="加入定时任务"></a>加入定时任务</h2><h3 id="编辑定时任务文件"><a href="#编辑定时任务文件" class="headerlink" title="编辑定时任务文件"></a>编辑定时任务文件</h3><p>(<a href="https://blog.csdn.net/xiyuan1999/article/details/8160998" target="_blank" rel="external">https://blog.csdn.net/xiyuan1999/article/details/8160998</a>)<br><code>crontab  -e</code><br>在文件的末尾添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">30 5 * * * /home/mianhk/shell/auto_push.sh  表示在每天的 5.30执行</div></pre></td></tr></table></figure></p><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p><code>/etc/init.d/cron start</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;编写shell脚本&quot;&gt;&lt;a href=&quot;#编写shell脚本&quot; class=&quot;headerlink&quot; title=&quot;编写shell脚本&quot;&gt;&lt;/a&gt;编写shell脚本&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一文总结计算机网络</title>
     <link href="http://yoursite.com/10-network/network/"/>
     <id>http://yoursite.com/10-network/network/</id>
@@ -515,35 +540,6 @@
       
       
         &lt;h2 id=&quot;服务器-Nginx的事件驱动模型&quot;&gt;&lt;a href=&quot;#服务器-Nginx的事件驱动模型&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx的事件驱动模型&quot;&gt;&lt;/a&gt;服务器-Nginx的事件驱动模型&lt;/h2&gt;&lt;h3 id=&quot;什么是事件驱动模型
-      
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器-Nginx的Web请求处理机制</title>
-    <link href="http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E7%9A%84Web%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://yoursite.com/25-服务器/服务器-Nginx的Web请求处理机制/</id>
-    <published>2018-01-25T03:53:23.000Z</published>
-    <updated>2018-04-27T02:28:47.239Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="服务器-Nginx的Web请求处理机制"><a href="#服务器-Nginx的Web请求处理机制" class="headerlink" title="服务器-Nginx的Web请求处理机制"></a>服务器-Nginx的Web请求处理机制</h2><h3 id="并行处理请求的三种方式"><a href="#并行处理请求的三种方式" class="headerlink" title="并行处理请求的三种方式"></a>并行处理请求的三种方式</h3><p>web服务器和客户端是一对多的关系，所以web服务器要能同时为多个客户端提供服务。一般有三种方式：多进程方式、多线程方式和异步方式。</p><h4 id="多进程方式"><a href="#多进程方式" class="headerlink" title="多进程方式"></a>多进程方式</h4><p>服务器每接收到一个客户端时，就由服务器主进程生成一个子进程与该客户端交互 ，直到连接断开，子进程结束。</p><ul><li>优点：设计和实现相对简单、子进程之间相互独立，处理客户端请求的过程彼此不干扰，一个有问题不会影响其他的。保证了稳定性。子进程退出时，资源会被系统回收，不会留下垃圾。</li><li>缺点：每生成一个子进程，都要进行内存复制的操作，在资源和时间上会有额外的开销。<br>Apache采用的“预生成进程”可以稍微解决大并发请求，但是本质是多进程，无法解决多并发的问题。<h5 id="多线程方式"><a href="#多线程方式" class="headerlink" title="多线程方式"></a>多线程方式</h5>服务器每接收到一个客户端时，会由服务器主进程派生一个线程出来和该客户端进行交互。</li><li>优点：产生一个线程的开销要小于一个进程，比较规范，利于协作。</li><li>缺点：多个线程在一个内存空间中，彼此互相影响，对内存的管理增加了出错的风险。<h4 id="异步方式"><a href="#异步方式" class="headerlink" title="异步方式"></a>异步方式</h4><h5 id="同步、异步与阻塞、非阻塞"><a href="#同步、异步与阻塞、非阻塞" class="headerlink" title="同步、异步与阻塞、非阻塞"></a>同步、异步与阻塞、非阻塞</h5><strong>同步和异步描述的是通信模式的概念</strong><br>同步：发送方发送请求后，需要等待接收到接收方发回的响应后，才接着发送下一个请求。所有的请求在服务器端得到同步，发送方和接收方对请求的处理步调是一致的。<br>异步：发送方发送请求后，不等待接收方响应这个请求，就继续发送下一个请求。所有来自发送方的请求形成一个队列，接收方处理完后通知发送方。</li></ul><p><strong>阻塞和非阻塞描述的是进程处理调用的方式，在网络通信中，主要指的是网络套接字socket的阻塞和非阻塞方式，socket实质上就是IO操作</strong><br>阻塞：调用结果返回之前，当前的线程从运行状态被挂起，一直等到调用结果返回之后，才进入就绪状态，获取CPU继续执行。<br>非阻塞：调用结果返回之前，线程不会被挂起，而是立即返回执行下一个周期。</p><p>所以共有四种方式：</p><ul><li>同步阻塞：发送方发送请求后，一直等待响应；接收方处理请求时不能立即等到结果的时候，就会一直等待返回结果，才响应发送方，期间不能执行任何其他工作。</li><li>同步非阻塞：发送方发送请求后，一直等待响应；接收方处理请求时不能立即等到结果的时候，就会立即返回，去做别的事情，但是由于没有得到结果，也不响应发送方，发送方一直等待。</li><li>异步阻塞：发送方发送请求后，不等待响应；接收方处理请求时不能立即等到结果的时候，就会一直等待返回结果，才响应发送方，期间不能执行任何其他工作。</li><li>异步非阻塞：发送方发送请求后，不等待响应；接收方处理请求时不能立即等到结果的时候，就会立即返回，去做别的事情，但是由于没有得到结果，也不响应发送方，发送方一直等待。</li></ul><h5 id="Nginx如何处理请求"><a href="#Nginx如何处理请求" class="headerlink" title="Nginx如何处理请求"></a>Nginx如何处理请求</h5><p>Nginx采用的是异步非阻塞的方式。采用Master-work模型（其实实际也有single的单进程模式，但是性能较差，很少使用）。每个工作进程采用异步非阻塞的方式。<br>Nginx服务器的工作进程调用IO后，就去进行其他工作，当IO调用返回，会通知工作进程。接下来就是怎么通知给工作进程了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;服务器-Nginx的Web请求处理机制&quot;&gt;&lt;a href=&quot;#服务器-Nginx的Web请求处理机制&quot; class=&quot;headerlink&quot; title=&quot;服务器-Nginx的Web请求处理机制&quot;&gt;&lt;/a&gt;服务器-Nginx的Web请求处理机制&lt;/h2&gt;&lt;h3 i
       
     
     </summary>
