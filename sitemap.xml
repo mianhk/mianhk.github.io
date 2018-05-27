@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/</loc>
+    
+    <lastmod>2018-05-27T02:52:22.427Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/24-%E5%B7%A5%E5%85%B7/shell_%E8%87%AA%E5%8A%A8push/</loc>
     
-    <lastmod>2018-05-24T12:24:16.207Z</lastmod>
+    <lastmod>2018-05-27T02:52:09.656Z</lastmod>
     
   </url>
   
@@ -229,13 +236,6 @@
     <loc>http://yoursite.com/23-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%88%9D%E8%AF%86Nginx/</loc>
     
     <lastmod>2018-04-27T02:28:47.260Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/25-%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8-Nginx%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.255Z</lastmod>
     
   </url>
   
