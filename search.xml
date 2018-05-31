@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[ubuntu��?动push到github脚本]]></title>
+    <title><![CDATA[ubuntu自动push到github脚本]]></title>
     <url>%2F24-%E5%B7%A5%E5%85%B7%2Fshell_%E8%87%AA%E5%8A%A8push%2F</url>
-    <content type="text"><![CDATA[由于人比较懒，总是忘了��?己提交到github上，也�?�得博�?�好不�?�易写了还�?�打开文件夹，点一下交，这��?体验有点��?呀。于��?就写了个Linux��?动提交代码的和windows��?动更新博客的��? Linux编写shell脚本脚本代码123456789101112131415161718192021222324252627282930313233#!/bin/bashpath=~/github/git_push()&#123; echo &quot;开始push&quot; modify_time=`stat -c %Y $&#123;1&#125;` this_time=`date +%s` cd $&#123;1&#125; echo &quot;-------切换��?��?------&quot; echo `pwd` echo &quot;---------------------&quot; if [ $[ $&#123;modify_time&#125;-$&#123;this_time&#125; ] -gt 86400 ]; then echo &quot;$&#123;1&#125; 文件��? 有变化，正在准�?�push...&quot; date=`date &quot;+%Y-%m-%d %H:%M:%S&quot;` git add . git commit -m &quot;automatic push @$(date)&quot; echo &quot;git fetch origin master&quot; git fetch origin master echo &quot;git merge origin/master&quot; git merge origin/master echo &quot;git push origin master:master&quot; git push origin master:master fi&#125;git_push ~/github/Linux_progit_push ~/github/miniweb 加入定时任务编辑定时任务文件(https://blog.csdn.net/xiyuan1999/article/details/8160998)crontab -e在文件的��?尾添加：130 5 * * * /home/mianhk/shell/auto_push.sh 表示在每天的 5.30执�?? ��?动服��?/etc/init.d/cron start Windows��?动提交博��?其实windows的也��?不�?�，写一个bat的脚��?，然后加到系统的定时任务里面 代码如下123456789101112131415161718192021222324252627282930313233343536373839404142434445title 同�?�博客到远�??——余国聪color 16echo;echo;echo 切换��?录到blogf:cd \github\mianhkcd .\blogecho cleanhexo g -decho 切换到GitHub备份��?��?cd ..echo 开始提交代码到��?地仓��?echo 当前��?录是��?%cd%echo 开始添加变��?echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++git add -A .echo 执�?�结束！echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++echo;echo 提交变更到本地仓��?echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++set declation=%date:~0,4%%date:~5,2%%date:~8,2%git commit -m &quot;%declation%同�?�博��?&quot;echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++echo;echo 将变更情况提交到远程git服务��?echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++git push origin masterecho ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++echo;echo 批�?�理执�?�完毕！echo;pause 添加到自动任��?计算��?-&gt; �ҵĲ��ͼ�������ͬ������Ѷ��+��������������һͬ��פ��https://cloud.tencent.com/developer/support-plan?invite_code=174pin6hqb074]]></content>
+    <content type="text"><![CDATA[由于人比较懒，总是忘了自己提交到github上，也觉得博客好不容易写了还要打开文件夹，点一下交，这个体验有点差呀。于是就写了个Linux自动提交代码的和windows自动更新博客的。 Linux编写shell脚本脚本代码123456789101112131415161718192021222324252627282930313233#!/bin/bashpath=~/github/git_push()&#123; echo &quot;开始push&quot; modify_time=`stat -c %Y $&#123;1&#125;` this_time=`date +%s` cd $&#123;1&#125; echo &quot;-------切换目录------&quot; echo `pwd` echo &quot;---------------------&quot; if [ $[ $&#123;modify_time&#125;-$&#123;this_time&#125; ] -gt 86400 ]; then echo &quot;$&#123;1&#125; 文件夹 有变化，正在准备push...&quot; date=`date &quot;+%Y-%m-%d %H:%M:%S&quot;` git add . git commit -m &quot;automatic push @$(date)&quot; echo &quot;git fetch origin master&quot; git fetch origin master echo &quot;git merge origin/master&quot; git merge origin/master echo &quot;git push origin master:master&quot; git push origin master:master fi&#125;git_push ~/github/Linux_progit_push ~/github/miniweb 加入定时任务编辑定时任务文件(https://blog.csdn.net/xiyuan1999/article/details/8160998)crontab -e在文件的末尾添加：130 5 * * * /home/mianhk/shell/auto_push.sh 表示在每天的 5.30执行 启动服务/etc/init.d/cron start Windows自动提交博客其实windows的也差不多，写一个bat的脚本，然后加到系统的定时任务里面 代码如下123456789101112131415161718192021222324252627282930313233343536373839404142434445title 同步博客到远端——余国聪color 16echo;echo;echo 切换目录到blogf:cd \github\mianhkcd .\blogecho cleanhexo g -decho 切换到GitHub备份目录cd ..echo 开始提交代码到本地仓库echo 当前目录是：%cd%echo 开始添加变更echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++git add -A .echo 执行结束！echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++echo;echo 提交变更到本地仓库echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++set declation=%date:~0,4%%date:~5,2%%date:~8,2%git commit -m &quot;%declation%同步博客&quot;echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++echo;echo 将变更情况提交到远程git服务器echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++git push origin masterecho ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++echo;echo 批处理执行完毕！echo;pause 添加到自动任务计算机-&gt;管理-&gt;任务计划程序-&gt;添加任务即可 我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=174pin6hqb074]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -197,11 +197,6 @@
   </entry>
   <entry>
     <title><![CDATA[Leetcode-48-Rotate-Image]]></title>
-    <url>%2F25-%E5%88%B7%E9%A2%98%2FLeetcode-48-Rotate-Image%2F</url>
-    <content type="text"><![CDATA[Leetcode-48-Rotate-Image ou are given an n x n 2D matrix representing an image.Rotate the image by 90 degrees (clockwise).Note:You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation. Example :1234567891011121314151617181920212223242526272829Given input matrix =[ [1,2,3], [4,5,6], [7,8,9]],rotate the input matrix in-place such that it becomes:[ [7,4,1], [8,5,2], [9,6,3]]Given input matrix =[ [ 5, 1, 9,11], [ 2, 4, 8,10], [13, 3, 6, 7], [15,14,12,16]],rotate the input matrix in-place such that it becomes:[ [15,13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7,10,11]] 这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。 观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。 所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。代码如下： 1234567891011121314151617class Solution &#123;public: void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123; if(matrix.size()&lt;=0) return; int a=0,b=matrix.size()-1; while(a&lt;b)&#123; for(int i=0;i&lt;b-a;++i)&#123; swap(matrix[a][a+i],matrix[a+i][b]); swap(matrix[a][a+i],matrix[b][b-i]); swap(matrix[a][a+i],matrix[b-i][a]); &#125; ++a; --b; &#125; &#125;&#125;;]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Leetcode-48-Rotate-Image]]></title>
     <url>%2F25-Leetcode-48-Rotate-Image%2F</url>
     <content type="text"><![CDATA[Leetcode-48-Rotate-Image ou are given an n x n 2D matrix representing an image.Rotate the image by 90 degrees (clockwise).Note:You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation. Example :1234567891011121314151617181920212223242526272829Given input matrix =[ [1,2,3], [4,5,6], [7,8,9]],rotate the input matrix in-place such that it becomes:[ [7,4,1], [8,5,2], [9,6,3]]Given input matrix =[ [ 5, 1, 9,11], [ 2, 4, 8,10], [13, 3, 6, 7], [15,14,12,16]],rotate the input matrix in-place such that it becomes:[ [15,13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7,10,11]] 这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。 观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。 所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。代码如下： 1234567891011121314151617class Solution &#123;public: void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123; if(matrix.size()&lt;=0) return; int a=0,b=matrix.size()-1; while(a&lt;b)&#123; for(int i=0;i&lt;b-a;++i)&#123; swap(matrix[a][a+i],matrix[a+i][b]); swap(matrix[a][a+i],matrix[b][b-i]); swap(matrix[a][a+i],matrix[b-i][a]); &#125; ++a; --b; &#125; &#125;&#125;;]]></content>
       <categories>
@@ -211,6 +206,11 @@
         <tag>C++</tag>
         <tag>LeetCode</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode-48-Rotate-Image]]></title>
+    <url>%2F25-%E5%88%B7%E9%A2%98%2FLeetcode-48-Rotate-Image%2F</url>
+    <content type="text"><![CDATA[Leetcode-48-Rotate-Image ou are given an n x n 2D matrix representing an image.Rotate the image by 90 degrees (clockwise).Note:You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation. Example :1234567891011121314151617181920212223242526272829Given input matrix =[ [1,2,3], [4,5,6], [7,8,9]],rotate the input matrix in-place such that it becomes:[ [7,4,1], [8,5,2], [9,6,3]]Given input matrix =[ [ 5, 1, 9,11], [ 2, 4, 8,10], [13, 3, 6, 7], [15,14,12,16]],rotate the input matrix in-place such that it becomes:[ [15,13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7,10,11]] 这个乍一看觉得不难，但是写的时候又不知道怎么回事，其实旋转，对于我们写程序来说，其实就是不停的调换位置，但是怎么调换是个问题。 观察发现，第一个矩阵，最角上的四个1,3,7,9。转完之后，还是这四个数字，只不过是位置变了，接下来这样的四个是：2,4,6,8.最后一个5.再看一下4x4的其实也差不多。 所以想法就是直接每次四个数字进行换，换三次，就能换回来，然后进行下一次调换。代码如下： 1234567891011121314151617class Solution &#123;public: void rotate(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123; if(matrix.size()&lt;=0) return; int a=0,b=matrix.size()-1; while(a&lt;b)&#123; for(int i=0;i&lt;b-a;++i)&#123; swap(matrix[a][a+i],matrix[a+i][b]); swap(matrix[a][a+i],matrix[b][b-i]); swap(matrix[a][a+i],matrix[b-i][a]); &#125; ++a; --b; &#125; &#125;&#125;;]]></content>
   </entry>
   <entry>
     <title><![CDATA[服务器-Nginx设计架构]]></title>
@@ -728,6 +728,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[《c++primer》ch3 字符串、向量和数组]]></title>
+    <url>%2F04-cpp%2Fcpp-primer%2F%E3%80%8Acpp%20primer%E3%80%8Bch3%2F</url>
+    <content type="text"><![CDATA[第3章 字符串、向量和数组3.1 命名空间的using声明每个名字都需要独立的using声明头文件中不应该包含using声明因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。 3.2 标准库类型string3.2.1 定义和初始化string对象 123456string s1; //默认初始化string s2=s1; //s2是s1的副本string s2(s1); //等价于string s2=s1,s2是s1的副本string s3=&quot;hiya&quot;; //s3是字面值的副本，但是不包含字面值最后的那个空字符string s3(&quot;hiya&quot;); //等价于string s3=&quot;hiya&quot;string s4(n,&apos;c&apos;); //把s4初始化为连续n个字符c组成的字符串 3.2.2 string对象上的操作 读写string对象 读取未知数量的string对象 使用getline读取一整行 string的empty和size操作string:size_type类型size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。比较string对象按字典顺序字面值和string类型相加123//错误的方式string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确 字符串字面值与string是不同的类型 ex3.3 string类的输入运算和getline函数分别如何处理字符串string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止getline函数：从给定的输入流中读取，直到遇到换行符为止。 3.3 标准库类型vectorvector是一种类模板，需要后加一堆尖括号，在括号内放上信息。 3.3.1 定义和初始化vector对象 1.使用拷贝初始化 2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化 3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号 4.创建指定数量的元素：采用圆括号3.3.2 像vector中添加元素push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。 3.4 迭代器介绍迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。 迭代器的算数运算可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置） 3.5 数组数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。 3.5.1 定义和初始化数组数组是一种复合类型，数组的维度必须是一个常量表达式。定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。 字符数组的特殊性123char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;; //列表初始化，没有空字符char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;; //列表初始化，含有显式的空字符char a3[]=&quot;C++&quot;; //自动添加表示字符串结束的空字符 不允许拷贝和赋值复杂的数组声明 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 1234int &amp;refs[10]=... // 错误！不存在数组的引用int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组int (&amp;arrRef)[10]=arr //arrRef引用一个含有10个整数的数组int *ptrs[10]; //ptrs是一个含有10个整型指针的数组 3.5.2 访问数组元素 数组下标为 size_t类型 ，是一种机器相关的无符号类型。3.5.3 指针和数组使用数组的时候编译器一般会把它转化成指针指针也是迭代器允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上标准库函数begin和end3.5.4 C风格字符串C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。 问题：为什么没有指针相加？ 指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。3.5.5 与旧代码的接口混用string对象和C风格字符串 允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值 在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。使用数组初始化vector对象允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。3.6 多维数组严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。1int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[《c++primer》ch2 变量和基本类型]]></title>
     <url>%2F04-cpp%2Fcpp-primer%2F%E3%80%8Acpp%20primer%E3%80%8Bch2%2F</url>
     <content type="text"><![CDATA[数据类型决定了程序中数据和操作的意义。 2.1 基本内置类型基本数据类型： 算数类型 空类型（void） ,其中算数类型包括：字符、正整数、布尔值、浮点数。空类型不对应具体的值，用于一些特殊的场合。 2.1.1 算数类型分为整形和浮点型。 整形： bool:取值为true或者false。 char：基本的字符类型，一个char的大小与一个机器字节一样。 wchar_t,char16_t,char32_t rules: 一个int至少和一个short一样大，一个long至少跟一个int一样大，一个long long至少跟一个long一样大。 浮点型： float：一般一个字，32bit double：2个字，64bit long double：3或4个字，96或128bit带符号类型和无符号类型2.1.2 类型转换转换过程： 非bool到bool：初始为0则为false，其他为true bool到非bool：初始值为false则为0，初始值为true为1 浮点数到整型：仅保留浮点数中的 小数点部分 整数到浮点数：小数部分记为0，如果整数所占的空间超过浮点类型的容量，会报错。 赋给无符号类型，当超出它表示范围的时候，转换为该无符号类型表示数值总数取模后的余数。 给带符号的数输出超过范围的值是，结果时 未定义的 tips:一般不在算数表达式中使用bool值 含有无符号类型的表达式一般不要混用无符号和有符号的类型，当无符号超过范围时，可能会出现取模的情况，放在循环中，或者计算结果中，会产生无法预计的结果 2.1.3 字面值常量顾名思义，字面值常量一望而知。每个字面值常量对应一种数据类型，字面量常量得形式和值决定了它的数据类型。 整型和浮点型字面值严格来说，十进制字面值不会是负数，通常，负号并不在字面值内，它的作用仅仅是对字面值取负值而已。 字符和字符串字面值 char型字面值：由单引号括起来的一个字符 字符串字面值：由双引号括起来的零个或多个字符 Note：字符串字面值的类型实际上是由常量字符组成的数组，编译器在每个字符串的结尾处添加一个空字符（’\0’），字符串的字面值的实际长度比它的内容多1。 转义序列有两类不能直接使用的字符。不可打印的和特殊含义的字符（单引号，双引号，问号，反斜线），这些情况下需要使用转义字符。指定字面值类型添加一定的前缀和后缀，可以改变整型、浮点型和字符型字面值的默认类型。前缀有：u（Unicode16）、U（Unicode32）、L（宽字符）、u8（UTF-8）。后缀有：u或者U（unsigned）、l或者L（ling）、ll或者LL（long long），f或者F（float）、l或者L（long double）。布尔字面值和指针字面值bool：true、false指针：nullptr2.2 变量对于c++来说，一般“变量”和“对象”可以互换使用。对象时具有某种数据类型的内存空间。2.2.1 变量定义基本形式：类型说明符+一个或多个变量名组成的列表（变量名以逗号分隔）+分号初始值当对象在创建时获得了一个特定的值，称为被初始化了。 初始化和复制是两个完全不同的操作，注意这个概念很重要 初始化：在创建变量是赋予其一个初始值。复制：把对象的当前值擦除，以一个新的值代替。列表初始化无论是初始化对象还是某些时候为对象赋新值，都可以使用一组又花括号括起来的初始值。1234int units_sold=0;int units_sold=&#123;0&#125;;int units_sold&#123;0&#125;;int units_sold(0); 默认初始化定义于函数体内的内置类型的对象如果没有初始化，则其值未定义。类的对象如果没有显式的初始化，则其值由类确定。。建议初始化每一个内置类型的变量。 2.2.2 变量声明与定义的关系声明使得名字为程序所知，定义负责创建与名字关联的实体。 extern 关键字：如果想声明一个变量而不是定义它，就在变量名前添加extern，而不显示的初始化变量。如果在函数体内部试图初始化一个有extern关键字标记的变量，会引发错误。 2.2.3 标识符用户自定义的标识符中不能出现两个连续的下划线，也不能以下划线紧连大写字母开头。定义在函数体内的标识符不能以下划线开头。 变量命名规范 标识符要能体现实际含义 变量名一般小写字母 自定义的类名一般大写字母开头 标识符由多个单词组成时，单词应有明显区分，使用下划线2.2.4 名字的作用域当内层出现与外层相同的名字时，使用内层定义的名字。2.3 复合类型复合类型指的是基于其他类型定义的类型。这里介绍两种：引用和指针。2.3.1 引用引用为对象起了另外一个名字，引用；类型引用另外一种类型。通过将生命符写成&amp;d的形式来定义引用类型，其中d是声明的变量名。引用必须初始化。引用即别名引用并不是对象，只是一个已经存在的对象起的另外一个名字。定义了一个引用之后，对其做的所有操作都是在与之绑定的对象上进行的。因为引用本身只是一个别名，不是一个对象，所以不能定义引用的引用。引用的定义除了两种例外的情况，其他所有的引用类型都要与之绑定的对象严格比配。引用只能绑定到对象上，不能绑定到字面值或者某个表达式的计算结果上。2.3.2 指针指针是“指向point to”的另外一种类型的复合引用。指针也实现了对其他对象的间接访问。两者的不同点： 1.指针本身就是一个对象，允许对指针赋值和拷贝，而且指针的生命周期内可以指向多个不同的对象。 2.指针无需在定义时赋初值。获取对象的地址指针存放某个对象的地址，要想获取该地址，需要使用取地址符（操作符&amp;）不能定义指向引用的指针（因为引用不是一个对象）。除了两种例外的情况，所有指针的类型都要和它指向的对象严格匹配。指针值指针的值（即地址）应该属于下面四种状态之一： 1.指向一个对象 2.指向紧邻对象所占空间的下一个位置 3.空指针，表示没有指向任何对象。 4.无效指针，上述之外的其他值。利用指针访问对象如果指针指向了一个对象，允许使用解引用符（操作符*）来访问对象。空指针空指针不指向任何对象，得到空指针的办法：直接用字面值nullptr初始化指针或者将指针初始化为字面值0来生成空指针。 建议 ：初始化所有指针赋值和指针记住赋值永远改变的是等号左侧的对象。其他指针操作只要一个指针拥有合法值，就能将它用在条件表达式中，只要不为空，条件都为true。void* 指针void* 是一种特殊的指针类型，可用于存放任意对象的地址。2.3.3 理解复合类型的声明变量的定义包括：一个基本数据类型+一组声明符。基本数据类型只有一个，但是声明符的形式可以不同。指向指针的指针当有多个修饰符连写在一起的时候，按照逻辑关系解释。指向指针的引用引用本身不是对象，但是指针是对象，所以可以对指针引用。面对一条复杂的指针或引用的声明语句时，从右向左阅读有助于弄清真实含义。2.4 const限定符初始化和constconst与非const对象的区别就是，const类型的对象执行不改变起内容的操作。如：const int也能像int一样参与算术运算，也能转化为bool值。默认状态下，const对象仅在文件内有效如果想在多个文件之间共享const对象，必须在变量定义之前添加extern关键字。2.4.1 const的引用可以把引用绑定到const对象上，就像绑定到其他对象上一样，称为对常量引用，对常量的引用不能修改它所绑定的对象。 术语：常量引用是对const的引用 ：并不存在常量引用，是对const的引用。初始化和对const的引用引用情况的例外：第一种是，在初始化常量引用时，允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可。尤其允许为一个常量引用绑定非常量的对象、字面值，甚至是个一般表达式。对const的引用可能引用一个非const的对象此种行为是合法的，但是不能通过对const的引用改变对象的值，兑现可以通过其他的方式改变值。2.4.2 指针和const指向常量的指针不能改变其所指对象的值，要想存放常量对象的地址，只能只用指向常量的指针。所谓指向常量的指针和引用，只是自以为指向了一个常量，所以自觉不去改变所指对象的值。const指针*const：不变的是指针的值而不是指向的那个值。采用从右向左的方式阅读，看离最近的符号。顶层const顶层const表示指针本身是个常量，底层const表示指针指的对象是一个常量。当对象执行拷贝操作时，顶层const不受影响，拷入和拷出的对象必须具有相同的底层const资格，或者两个对象的数据类型必须能够转化。2.4.4 constexpr和常量表达式常量表达式指：值不会改变且在编译过程就能得到计算结果的表达式。（字面值、用常量表达式初始化的const对象）constexpr变量声明为constexpr的变量一定是一个变量，且必须用常量表达式初始化。字面值类型指针和constexpr在constexpr如果定义了一个指针，则constexpr只对指针有效，与指针所指的对象无关。2.5 处理类型2.5.1 类型别名类型别名是一个名字，是某种类型的同义词。使用方式：12345typedef double wages //wages 是double的别名typedef wages base,*p#别名声明using SI=Scales_item; 指针、常量和类型别名2.5.2 auto类型说明符复合类型、常量和auto 引用时的auto，以引用对象的类型作为auto的类型 auto一般会忽略掉顶层const，底层const会保留下来。 可以将引用的类型设为auto2.5.3 decltype类型指示符选择并返回操作数的类型，编译器分析表达式并得到类型，但并不实际计算值decltype和引用有些表达式将向decltype返回一个引用类型。如果表达式的内容是解引用操作，则decltype将得到引用类型。解引用指针可以得到指针所指的对象，而且还能给这个对象赋值。decltype和auto的重要区别：decltype的结果类型与表达式形式密切相关。 如果给变量加上一层或多层括号，decltype就会得到引用类型。decltype((val))的结果永远是引用，decltype(val)只有当val本身是一个引用时才是引用。另外，赋值是会产生引用的一类典型表达式，引用的类型就是左值的类型 2.6 自定义数据结构定义自己的数据结构定义自己的头文件预处理器]]></content>
@@ -742,17 +753,6 @@
     <title><![CDATA[《c++primer》ch3 字符串、向量和数组]]></title>
     <url>%2F04-cpp%2Fcpp-primer%2F%E3%80%8Acpp%20primer%E3%80%8Bch3%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E5%90%91%E9%87%8F%E3%80%81%E6%95%B0%E7%BB%84%2F</url>
     <content type="text"><![CDATA[3.1 命名空间的using声明每个名字都需要独立的using声明头文件中不应该包含using声明因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。 3.2 标准库类型string3.2.1 定义和初始化string对象 123456string s1; //默认初始化string s2=s1; //s2是s1的副本string s2(s1); //等价于string s2=s1,s2是s1的副本string s3=&quot;hiya&quot;; //s3是字面值的副本，但是不包含字面值最后的那个空字符string s3(&quot;hiya&quot;); //等价于string s3=&quot;hiya&quot;string s4(n,&apos;c&apos;); //把s4初始化为连续n个字符c组成的字符串 3.2.2 string对象上的操作 读写string对象 读取未知数量的string对象 使用getline读取一整行 string的empty和size操作string:size_type类型size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。比较string对象按字典顺序字面值和string类型相加123//错误的方式string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确 字符串字面值与string是不同的类型 ex3.3 string类的输入运算和getline函数分别如何处理字符串string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止getline函数：从给定的输入流中读取，直到遇到换行符为止。 3.3 标准库类型vectorvector是一种类模板，需要后加一堆尖括号，在括号内放上信息。 3.3.1 定义和初始化vector对象 1.使用拷贝初始化 2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化 3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号 4.创建指定数量的元素：采用圆括号3.3.2 像vector中添加元素push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。 3.4 迭代器介绍迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。 迭代器的算数运算可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置） 3.5 数组数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。 3.5.1 定义和初始化数组数组是一种复合类型，数组的维度必须是一个常量表达式。定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。 字符数组的特殊性123char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;; //列表初始化，没有空字符char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;; //列表初始化，含有显式的空字符char a3[]=&quot;C++&quot;; //自动添加表示字符串结束的空字符 不允许拷贝和赋值复杂的数组声明 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 1234int &amp;refs[10]=... // 错误！不存在数组的引用int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组int (&amp;arrRef)[10]=arr //arrRef引用一个含有10个整数的数组int *ptrs[10]; //ptrs是一个含有10个整型指针的数组 3.5.2 访问数组元素 数组下标为 size_t类型 ，是一种机器相关的无符号类型。3.5.3 指针和数组使用数组的时候编译器一般会把它转化成指针指针也是迭代器允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上标准库函数begin和end3.5.4 C风格字符串C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。 问题：为什么没有指针相加？ 指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。3.5.5 与旧代码的接口混用string对象和C风格字符串 允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值 在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。使用数组初始化vector对象允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。3.6 多维数组严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。1int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《c++primer》ch3 字符串、向量和数组]]></title>
-    <url>%2F04-cpp%2Fcpp-primer%2F%E3%80%8Acpp%20primer%E3%80%8Bch3%2F</url>
-    <content type="text"><![CDATA[第3章 字符串、向量和数组3.1 命名空间的using声明每个名字都需要独立的using声明头文件中不应该包含using声明因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。 3.2 标准库类型string3.2.1 定义和初始化string对象 123456string s1; //默认初始化string s2=s1; //s2是s1的副本string s2(s1); //等价于string s2=s1,s2是s1的副本string s3=&quot;hiya&quot;; //s3是字面值的副本，但是不包含字面值最后的那个空字符string s3(&quot;hiya&quot;); //等价于string s3=&quot;hiya&quot;string s4(n,&apos;c&apos;); //把s4初始化为连续n个字符c组成的字符串 3.2.2 string对象上的操作 读写string对象 读取未知数量的string对象 使用getline读取一整行 string的empty和size操作string:size_type类型size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。比较string对象按字典顺序字面值和string类型相加123//错误的方式string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确 字符串字面值与string是不同的类型 ex3.3 string类的输入运算和getline函数分别如何处理字符串string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止getline函数：从给定的输入流中读取，直到遇到换行符为止。 3.3 标准库类型vectorvector是一种类模板，需要后加一堆尖括号，在括号内放上信息。 3.3.1 定义和初始化vector对象 1.使用拷贝初始化 2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化 3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号 4.创建指定数量的元素：采用圆括号3.3.2 像vector中添加元素push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。 3.4 迭代器介绍迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。 迭代器的算数运算可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置） 3.5 数组数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。 3.5.1 定义和初始化数组数组是一种复合类型，数组的维度必须是一个常量表达式。定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。 字符数组的特殊性123char a1[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;; //列表初始化，没有空字符char a2[]=&#123;&apos;C&apos;,&apos;+&apos;,&apos;+&apos;&#125;; //列表初始化，含有显式的空字符char a3[]=&quot;C++&quot;; //自动添加表示字符串结束的空字符 不允许拷贝和赋值复杂的数组声明 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 1234int &amp;refs[10]=... // 错误！不存在数组的引用int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组int (&amp;arrRef)[10]=arr //arrRef引用一个含有10个整数的数组int *ptrs[10]; //ptrs是一个含有10个整型指针的数组 3.5.2 访问数组元素 数组下标为 size_t类型 ，是一种机器相关的无符号类型。3.5.3 指针和数组使用数组的时候编译器一般会把它转化成指针指针也是迭代器允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上标准库函数begin和end3.5.4 C风格字符串C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。 问题：为什么没有指针相加？ 指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。3.5.5 与旧代码的接口混用string对象和C风格字符串 允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值 在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。使用数组初始化vector对象允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。3.6 多维数组严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。1int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组]]></content>
       <categories>
         <category>C++</category>
       </categories>
@@ -789,39 +789,6 @@
   </entry>
   <entry>
     <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday15(%E9%9B%86%E5%90%88%E7%B1%BB2)%2F</url>
-    <content type="text"><![CDATA[集合框架2 ##setset：无序，不可以重复元素。hashset：数据结构是哈希表，线程非同步的，保证元素唯一性的原理，判断元素的hashCode值是否相同。如果相同，判断equalsTreeSet：可以对set集合中的元素进行排序。底层数据结构是二叉树。保证元素唯一性的依据：compareTo return 0往TreeSet集合中存储自定义对象学生。想按照学生的年龄进行排序。记住：排序时，当主要条件相同时，一定判断一下次要条件。 二叉树TreeSet排序的第一种方式：让元素自身具备比较性。元素需要事项compareable接口，覆盖compareTo方法。这种方式也称为元素的自然顺序，或者叫做默认顺序。TreeSet排序的第二种方式：当元素自身不具备比较性时，或者具备的比较性不是锁需要的。这时就需要让集合自身具备比较性。在集合初始化时，就有了比较方式。当元素自身不具备比较性，或者具备的比较性不是所需要的。这时需要让容器自身具备比较性，定义了比较器，将比较器对象作为参数传递给TreeSet集合的构造函数。当两种排序都存在时，以比较器为主。定义一个类实现Comparator接口，覆盖compare方法。 泛型JDK1.5之后出现的新特性，用于解决安全问题，是一个安全机制。好处： 将运行时期出现问题转移到编译时期，便于程序员解决。 避免了强制转换的麻烦。泛型格式：通过&lt;&gt;来定义要操作的引用数据类型在使用java提供的对象时，什么时候写泛型？通常在集合框架中很常见，只要见到&lt;&gt;就要定义泛型。其实&lt;&gt;就是用来接收类型的。当使用集合时，将集合中的要存储的数据类型放到&lt;&gt;中即可。泛型类泛型类：带泛型的类。当类中要操作的引用数据类型不确定的时候，早期定义Object来完成扩展，现在定义泛型完成扩展。泛型方法泛型类定义的泛型，在整个类中有效，如果被方法使用，那么泛型类的对象没明确要操作的具体类型后，所有要操作的类型就已经固定了。为了让不同方法可以操作不同类型，而且类型还不确定，那么可以将泛型定义到方法上。静态方法泛型特殊之处是：静态方法不可以访问类上定义的泛型，如果静态方法操作的引用数据类型不确定，可以将泛型定义在方法上。泛型接口泛型限定？： 通配符，也可以理解为占位符。泛型的限定： ？ extends E：可以接收E类型或者E的子类型。上限？ super E：可以接收E类型或者E的父类型。下限]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)%2F</url>
-    <content type="text"><![CDATA[#多进程（二） 1线程间通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。 ##2解决安全问题 3等待唤醒机制wait notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一个锁上的等待线程，可以被同一个锁上的notify唤醒。不可以对不同锁中的线程进行唤醒。也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法定义在Object类中。]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday18(%E5%85%B6%E4%BB%96%E5%AF%B9%E8%B1%A1)%2F</url>
-    <content type="text"><![CDATA[#其他对象 System可不可以在jvm启动时，动态加载一些属性信息。 ##Runtime对象该类并没有提供构造函数。说明不可以new 对象，那么会直接想到该类中的方法都是静态的，发现该类中海油非静态方法。说明该类肯定会提供了方法获取本类对象，而且该方法是静态的，并返回值类型是本类类型。由这个特点可以看出该类使用了单例设计模式执行。 ##Date Math]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
     <url>%2F09-java%2Fday9(%E5%86%85%E9%83%A8%E7%B1%BB)%2F</url>
     <content type="text"><![CDATA[内部类 内部类访问规则 内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this 外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。当内部类被static修饰后，只能直接访问外部类中的static成员，出现了访问局限。在外部其他类中，如何访问内部类的非静态成员呢？内部类定义的原则当描述事物时，事物的内部还有事物，该事物用内部类来描述。因为内部事物在使用外部事物的内容。 内部类定义在局部时， 不可以被成员修饰符修饰 可以直接访问外部类中的成员，因为还持有外部类中的引用。但是不可以访问它所在的局部中的变量，只能访问被final修饰的局部变量 、匿名内部类 匿名内部类其实就是内部类的简写格式 定义匿名内部类的前提：内部类必须是继承一个类或者实现接口。 匿名内部类的格式：new 父类或者接口（）{定义子类的内容} 其实匿名内部类就是一个匿名子类对象，而且这个对象有点胖。可以理解为带内容的对象 匿名内部类中定义的方法最多不要超过三个 异常概述异常：就是程序在运行时出现不正常的情况。异常的由来：问题也是现实生活中一个具体的事物，也可以通过java的类的形式进行描述。并封装成对象。其实就是java对不正常情况进行描述后的对象体现对于问题的划分：两种：一种是严重的问题，一种是不严重的问题 对于严重的，java通过Error类进行描述。对于Error，一般不编写针对性的代码进行处理对于非严重的，java通过Exception类进行描述。（可以使用针对性的处理方式进行处理 ） 异常try-catch异常的处理：java提供了特有的语句进行处理对捕获到的异常对象进行常见的方法操作。String getMessage 异常声明throws多异常处理对多异常的处理。 声明异常时，建议声明更为具体的异常。这样处理的可以更具体。 对方声明几个异常，就对应有几个catch块。不要定义多余的catch块 如果多个catch块中的异常出现继承关系，父类异常catch块放在最下面建立在进行catch处理时，catch中一定要具体的处理方式。不要简单的定义一句e.peintStackTrace()，也不要简单的就书写一条输出语句。 自定义异常项目中会出现特有的问题，而这些问题并未被java所描述并封装对象。所以对于这些特有的问题可以按照java对问题封装的思想。将特有的问题。进行自定义的异常封装。当在函数内部出现了throw抛出异常对象，那么就必须要给对应的处理动作。要么在内部try catch处理，要么在函数上声明让调用者处理。发现打印的结果中只有异常的名称，缺没有异常的信息。因为自定义的异常并未定义信息。父类中已经把异常信息的操作都完成了。所以子类只要在构造时，将异常信息传递给父类通过super语句。那么直接就可以通过getMessage方法获取自定义的异常。 自定义异常：必须是自定义类继承Exception。原因是：异常体系有一个特点：因为异常类和异常对象都被抛出。他们都具备可抛性。这个可抛性是Throwable这个体系中的独有特点。只有这个体系中的类和对象才可以被throw和throws操作。 throws 和throw的区别：throws使用在函数上。throw使用在函数内。throws后面跟的异常类，可以跟多个。用逗号隔开。throw后面跟的是异常对象。 RuntimeException运行时异常。如果在函数内抛出该异常，函数上可以不用声明，编译一样通过。如果在函数上声明了该异常。调用者可以不用进行处理。编译一样通过。之所以不用在函数声明，是因为不需要让调用者处理，当该异常发生，希望程序停止。因为在运行时，出现了无法继续运算的情况，希望停止程序后，对代码尽心修正。自定义异常时，如果该异常的发生，无法再继续进行运算，就让自定义异常继承RuntimeException对于异常分两种： 编译时被检测的异常。 编译时不被检测的异常（运行时异常。RuntimeException以及其子类）]]></content>
       <categories>
@@ -844,8 +811,30 @@
   </entry>
   <entry>
     <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)%2F</url>
-    <content type="text"><![CDATA[集合（工具类） sortmaxbinarySerch替换反转reserveOrderSynlistArrays用于操作数组的工具类，里面都是静态方法。 集合变数组1.指定类型的数组到底要定义多长呢？当指定类型的数组长度小于集合的size，那么该方法会创建一个新的数组，长度为集合的size。当指定类型的数组长度小于了集合的size，就不会创建新数组，而是使用传递进来的数组，所以创建一个刚刚好的数组最优。2.为什么要将集合变数组？为了限定对元素的操作。 ##增强for循环 ##可变参数方法的可变参数注意：可变参数一定要定义在参数列表的最后面。 ##静态导入当类名方法重名时，需要指定具体的包名。当方法重名时，指定具备所属的对象或者类]]></content>
+    <url>%2F09-java%2Fday16(map)%2F</url>
+    <content type="text"><![CDATA[集合(MAP)Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。 添加。 删除。clear() 判断。 获取。Map：Hashtable：底层是哈希表数据结构，不能存入null键null值，是线程同步的。HashMap:底层是哈希表数据结构，允许使用null键null值，该集合是不同步的。TreeMap：底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。–和Set很像，其实Set底层就是使用了Map集合。Map子类对象的特点Map共性方法Map-keySetmap集合的两种取出方式： keySet：将map中所有的键存入到set集合。因为set具备迭代器。所有可以迭代方式取出所有的键，在根据get方法。获取每一个键对应的值。 entrySetSet]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday18(%E5%85%B6%E4%BB%96%E5%AF%B9%E8%B1%A1)%2F</url>
+    <content type="text"><![CDATA[#其他对象 System可不可以在jvm启动时，动态加载一些属性信息。 ##Runtime对象该类并没有提供构造函数。说明不可以new 对象，那么会直接想到该类中的方法都是静态的，发现该类中海油非静态方法。说明该类肯定会提供了方法获取本类对象，而且该方法是静态的，并返回值类型是本类类型。由这个特点可以看出该类使用了单例设计模式执行。 ##Date Math]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday10(%E5%BC%82%E5%B8%B8%E5%8C%85%E8%AE%BF%E9%97%AE)%2F</url>
+    <content type="text"><![CDATA[异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点： 子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。 如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。 如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不能抛。## 异常练习异常–总结是什么：是对问题的描述。将问题进行对象的封装 异常体系：Throwable |–Eroor |–Exception |–RuntimeException异常体系的特点：在异常体系中的所有类以及建立的对象都具备可抛性。也就是说可以被throw和throws关键字所操作。只有异常体系具备这个特点。 throw和throws的用法：throw：定义在函数内，用于抛出异常对象throws：定义在函数上，用于抛出异常类，可以抛出多个用逗号隔开当函数内有throw抛出异常对象，并未进行try处理。必须要在函数上声明，都在编译失败。注意：除了RuntimeException除外，函数内如果声明的是RuntimeException异常，函数上可以不用声明。 如果函数声明了异常，调用者需要处理。处理方法可以throws可以try异常有两种： 编译时被检测异常：该异常在编译时，如果没有处理（没有抛出也没try），编译失败。该异常被标识，代表这可以被处理。 运行时异常（编译时不检测）：在编译时不需要检测，编译器不检查。该异常的发生，建议不处理，让程序停止。需要对代码进行修正。 注意：finally中定义的通常是：关闭资源代码。因为资源必须释放。 finally只有一种情况不被执行。当执行到System.exit(0)；finally不被执行 自定义异常：定义类继承Exception或者RuntimeException 为了让该自定义类具备可抛性 让该类具备异常操作的共性方法 自定义异常好处：按照java面向对象的思想，将程序中出现的特有问题进行封装。 将问题进行封装 将问题和代码进行分离，方便于阅读异常处理的原则： 处理方式有两种：try或者throws 调用到抛出异常的功能时，抛出几个，就处理几个 多个catch，父类的catch放在最下面 catch内，需要定义针对性的处理方式。不要简单的定义printStackTrace输出语句，也不要不写。当捕捉到的异常，本功能处理不了时，可以继续在catch中抛出。 如果该异常处理不了，但并不属于该功能出现的异常。也可以将异常转换后再抛出和该功能相关的异常。 或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，让调用者知道，并处理。也可以捕获异常处理后，转换新的异常。5. 异常的注意事项：在子类覆盖时： 子类抛出的异常必须是父类异常的子类或者子集 如果父类或者接口没有异常抛出时，子类覆盖出现异常，只能try不能抛]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -857,28 +846,6 @@
     <title><![CDATA[day5(面向对象2)]]></title>
     <url>%2F09-java%2Fday8(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A14)%2F</url>
     <content type="text"><![CDATA[面向对象（4）–多态 多态概念多态：可以理解为事物存在的多种体现形态 多态的扩展性 多态的体现 父类的引用指向了自己的子类对象 父类的引用也可以接收自己的子类对象 多态的前提 必须是类与类之间有关系，要么继承，要么实现。 通常还有一个前提：存在覆盖 多态的好处 多态的出现大大的提高程序的扩展性 多态的弊端： 提高了扩展性，但是只能用父类的引用访问父类中的成员 多态的应用 多态–转型向上转型，向上转型千万不要出现这样的操作，就是将父类对象转换成子类类型。我们能转换的是父类应用指向了自己的子类对象时，该引用可以被提升，也可以被强制转换。多态自始至终都是子类对象在做着变化 多态成员的特点在多态中成员函数的特点：在编译时期：参阅引用型变量所属的类中是否有调用的方法，如果有，编译通过，如果没有，编译失败。在运行时期：参阅对象所属的类中是否有调用的方法。简单总结就是：成员函数在多态调用时，编译看左边，运行看右边。在多态中，成员变量的特点：无论编译还是运行，都参考左边（引用型变量所属的类）。在多态中，静态成员函数的特点：无论编译还是运行，都参考左边（引用型变量所属的类）。 多态的实例Object类]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday5-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12%2F</url>
-    <content type="text"><![CDATA[面向对象编程(二) 封装（private）匿名对象使用的方式：只调用一次注意，封装只是私有的一种表现形式。不私有也能封装。 构造函数构造函数和一般函数在写法上有不同构造函数在对象一建立就运行，而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。一个对象建立，构造方法运行 构造代码块作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。 和构造函数的区别： 构造代码块是给所有的对象初始化，构造函数是给特定的对象初始化。 构造代码块 中定义的是不同对象共性的特性. this关键字 变量名起的没有意义，可读性非常差 局部变量和成员变量一样了，局部中有就在局部中使用，没有的话就在成员变量中找,将局部的值赋给成员变量，引出了this关键字 this:看上去，是用于区分局部变量和成员变量同名的情况 this到底代表的是什么 this：就代表本类的对象，到底代表哪一个呢？ this代表它所在函数所在对象的引用 简单说：哪个对象在调用this所在的函数，this就代表哪个对象 this关键字在构造函数间的调用this语句：用于构造函数间互相调用this语句只能放在构造函数的第一行。因为初始化动作要先执行不允许死循环调用]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday16(map)%2F</url>
-    <content type="text"><![CDATA[集合(MAP)Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。 添加。 删除。clear() 判断。 获取。Map：Hashtable：底层是哈希表数据结构，不能存入null键null值，是线程同步的。HashMap:底层是哈希表数据结构，允许使用null键null值，该集合是不同步的。TreeMap：底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。–和Set很像，其实Set底层就是使用了Map集合。Map子类对象的特点Map共性方法Map-keySetmap集合的两种取出方式： keySet：将map中所有的键存入到set集合。因为set具备迭代器。所有可以迭代方式取出所有的键，在根据get方法。获取每一个键对应的值。 entrySetSet]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -910,8 +877,8 @@
   </entry>
   <entry>
     <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday19(IO%E6%B5%81)%2F</url>
-    <content type="text"><![CDATA[#IO流 BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（） BufferedReader为了提高效率，加入缓冲技术。将字符读取流对象作为参数传进缓冲对象的构造函数。readLine方法返回的时候只返回回车符之前的数据内容，并不返回回车符。readLine方法的原理：无论是读取一行，还是读取多个字符，其实最终都是在硬盘上一个个读取。所以最终使用的还是read方法一次读一个的方法。 MyBufferedReader装饰设计模式定义：当想要对已有的对象进行功能增强时，可以定义一个类，将已有对象传入，基于已有的功能，并提供加强功能。那么自定义的该类称为装饰类。装饰类通常会通过构造方法接收被装饰的对象。并基于被装饰的对象的功能，提供更强的功能。 装饰和继承的区别装饰模式比继承要灵活，避免了继承体系臃肿。而且降低了类与类之间的关系。装饰类因为增强已有对象，具备的功能和已有的是相同的，只不过提供了更强的功能。所以装饰类和被装饰类通常都属于一个体系中的。 LineNumberReader字符流和字节流FileReader:FileWriter:字节流：InputStream：OutputStream: 复制一个图片思路：1.用字节读取流对象和图片关联。2.用字节写入流对象创建一个图片文件，用于存储获取到的图片数据。 通过循环读写，完成数据的存储。 关闭资源读取转换流写入转换流流操作的基本规律最痛苦的就是流对象有很多，不知道该用哪一个。通过两个明确来完成。1.明确源和目的。 源：输入流。InputStream Reader 目的：输出流。OutputStream Writer2.操作的数据是否是纯文本。 是：字符流。 否：字节流。3.当体系明确后，再明确要使用哪个具体的对象。通过设备来进行区分：源设备：内存，硬盘，键盘目的设备：内存，硬盘，控制台。]]></content>
+    <url>%2F09-java%2Fday17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)%2F</url>
+    <content type="text"><![CDATA[集合（工具类） sortmaxbinarySerch替换反转reserveOrderSynlistArrays用于操作数组的工具类，里面都是静态方法。 集合变数组1.指定类型的数组到底要定义多长呢？当指定类型的数组长度小于集合的size，那么该方法会创建一个新的数组，长度为集合的size。当指定类型的数组长度小于了集合的size，就不会创建新数组，而是使用传递进来的数组，所以创建一个刚刚好的数组最优。2.为什么要将集合变数组？为了限定对元素的操作。 ##增强for循环 ##可变参数方法的可变参数注意：可变参数一定要定义在参数列表的最后面。 ##静态导入当类名方法重名时，需要指定具体的包名。当方法重名时，指定具备所属的对象或者类]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -921,30 +888,8 @@
   </entry>
   <entry>
     <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday10(%E5%BC%82%E5%B8%B8%E5%8C%85%E8%AE%BF%E9%97%AE)%2F</url>
-    <content type="text"><![CDATA[异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点： 子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。 如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。 如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不能抛。## 异常练习异常–总结是什么：是对问题的描述。将问题进行对象的封装 异常体系：Throwable |–Eroor |–Exception |–RuntimeException异常体系的特点：在异常体系中的所有类以及建立的对象都具备可抛性。也就是说可以被throw和throws关键字所操作。只有异常体系具备这个特点。 throw和throws的用法：throw：定义在函数内，用于抛出异常对象throws：定义在函数上，用于抛出异常类，可以抛出多个用逗号隔开当函数内有throw抛出异常对象，并未进行try处理。必须要在函数上声明，都在编译失败。注意：除了RuntimeException除外，函数内如果声明的是RuntimeException异常，函数上可以不用声明。 如果函数声明了异常，调用者需要处理。处理方法可以throws可以try异常有两种： 编译时被检测异常：该异常在编译时，如果没有处理（没有抛出也没try），编译失败。该异常被标识，代表这可以被处理。 运行时异常（编译时不检测）：在编译时不需要检测，编译器不检查。该异常的发生，建议不处理，让程序停止。需要对代码进行修正。 注意：finally中定义的通常是：关闭资源代码。因为资源必须释放。 finally只有一种情况不被执行。当执行到System.exit(0)；finally不被执行 自定义异常：定义类继承Exception或者RuntimeException 为了让该自定义类具备可抛性 让该类具备异常操作的共性方法 自定义异常好处：按照java面向对象的思想，将程序中出现的特有问题进行封装。 将问题进行封装 将问题和代码进行分离，方便于阅读异常处理的原则： 处理方式有两种：try或者throws 调用到抛出异常的功能时，抛出几个，就处理几个 多个catch，父类的catch放在最下面 catch内，需要定义针对性的处理方式。不要简单的定义printStackTrace输出语句，也不要不写。当捕捉到的异常，本功能处理不了时，可以继续在catch中抛出。 如果该异常处理不了，但并不属于该功能出现的异常。也可以将异常转换后再抛出和该功能相关的异常。 或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，让调用者知道，并处理。也可以捕获异常处理后，转换新的异常。5. 异常的注意事项：在子类覆盖时： 子类抛出的异常必须是父类异常的子类或者子集 如果父类或者接口没有异常抛出时，子类覆盖出现异常，只能try不能抛]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday13(String)%2F</url>
-    <content type="text"><![CDATA[StringBuffer StringBuffer 是字符串缓冲区。是一个容器， 而且长度是可变化的。 可以操作多个数据类型。 最终会通过toString方法变成字符串C（create）U（update）R（read）D（delete）1.存储StringBuffer append（）：将指定的数据作为参数添加到到已有数据的结尾处StringBuffer insert（index，数据）：可以将数据 插入到数据指定index位置2.删除String3.获取4.修改 StringBuilderjava升级的三个因素：1.提高效率2.简化书写3.安全性 基本数据类型对象包装类byte Byteshort shortint Integerlong Longboolean Booleanfloat Floatdouble Doublechar Character基本数据类型对象包装类的最常见作用：就是用于基本数据类型和字符串类型之间做转换。基本数据类型转成字符串。 基本数据类型+“”或者 基本数据类型.toString(基本数据类型值)字符串转基本类型。基本数据类型包装类 a=Xxx.parseXxx(String)]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday14(%E9%9B%86%E5%90%88%E7%B1%BB)%2F</url>
-    <content type="text"><![CDATA[集合类 集合框架（体系概述）为什么出现集合类？数组是固定长度的，集合是可变长度的。为什么出现这么多的容器？因为每一个容器对数据的存储方式都有不同。这个存储方式称之为：数据结构。 ##集合框架（共性方法） 迭代器什么是迭代器？其实就是集合中元素的取出方式。把取出方式定义在集合的内部，这样取出方式就可以直接访问集合内容的元素。那么取出方式就被定义成了内部类。而每一个容器的结构数据不同，所以取出的动作细节也不一样。但是都有共性内容：判断和取出。那么可以将这些共性抽取。 ListList集合共性方法List：元素是有序的，元素可以重复，因为该集合体系有索引。Set：元素是无序的，不能重复。List：特有方法：凡是可以操作角标的方法都是该体系特有的方法。增：add addAll删： remove改：set查：get subList listIterator ListIterator在迭代器时，只能用迭代器的方法操作元素，可是Iterator方法是有限的，只能对元素进行判断，取出，删除的操作，如果想要其他的操作如添加，修改等，就需要使用其子接口，ListIterator。该接口只能通过List集合的ListIterator方法获取。 List集合具体对象的特点List：ArrayList：底层的数据结构使用的是数组，查找很快，但是增删稍慢 （可变长度的）Linkedlist：底层使用的是链表数据结构。特点是增删速度很快，查询稍慢Vector：底层是数组数据结构。线程同步，被ArrayList替代了 ，现在一般不用了。枚举是Vector特有的取出方式。发现枚举和迭代器很像。其实枚举和迭代是一样的。因为枚举的名称以及方法的名称都过长。所以被迭代器取代了。 LinkedListLinkedList特有方法：addFirst(),addLast(),getFirst(),getLast(),removeFirst(),removeLast()JDK1.6出现了替代方法。offerFriest peekFirst poolFirst堆栈：先进后出队列： 先进先出 FIFOList集合判断元素是否相同，依据的是元素的equals方法。 ##setset：元素是无序（存入和取出的顺序不一定一致）set集合的功能和collection是一致的。HashSet：底层数据结构是哈希表。HashSet是如何保证元素的唯一性的呢？是通过元素的两个方法。hashCode和equals来完成。如果元素的HashCode值相同，才会判断equals是否为true，如果元素的hashCode不同，不会判断equals。注意：对于判断元素是否存在，以及删除等操作，依赖的方法是元素的hashcode和equals方法。]]></content>
+    <url>%2F09-java%2Fday21(IO%E6%B5%813)%2F</url>
+    <content type="text"><![CDATA[#IO流（3） 对象的序列化管道流RandomAccessFile该类不是算是IO体系中子类，而是继承自Object。但是它是IO包中的成员，因为它具备读和写功能。颞部封装了一个数组，而且通过指针对数组的元素进行操作。可以通过getFilePointer获取指针位置。同时可以通过seek改变指针位置。其实完成读写的原理就是内部封装了字节输入流和输出流。通过构造函数可以看出，该类只能操作文件。而且操作文件还有模式。该对象的构造函数要操作的文件不存在，会自动创建。如果存在不会覆盖。 ByteArrayStream]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -965,13 +910,68 @@
   </entry>
   <entry>
     <title><![CDATA[day5(面向对象2)]]></title>
-    <url>%2F09-java%2Fday21(IO%E6%B5%813)%2F</url>
-    <content type="text"><![CDATA[#IO流（3） 对象的序列化管道流RandomAccessFile该类不是算是IO体系中子类，而是继承自Object。但是它是IO包中的成员，因为它具备读和写功能。颞部封装了一个数组，而且通过指针对数组的元素进行操作。可以通过getFilePointer获取指针位置。同时可以通过seek改变指针位置。其实完成读写的原理就是内部封装了字节输入流和输出流。通过构造函数可以看出，该类只能操作文件。而且操作文件还有模式。该对象的构造函数要操作的文件不存在，会自动创建。如果存在不会覆盖。 ByteArrayStream]]></content>
+    <url>%2F09-java%2Fday12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)%2F</url>
+    <content type="text"><![CDATA[#多进程（二） 1线程间通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。 ##2解决安全问题 3等待唤醒机制wait notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一个锁上的等待线程，可以被同一个锁上的notify唤醒。不可以对不同锁中的线程进行唤醒。也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法定义在Object类中。]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday14(%E9%9B%86%E5%90%88%E7%B1%BB)%2F</url>
+    <content type="text"><![CDATA[集合类 集合框架（体系概述）为什么出现集合类？数组是固定长度的，集合是可变长度的。为什么出现这么多的容器？因为每一个容器对数据的存储方式都有不同。这个存储方式称之为：数据结构。 ##集合框架（共性方法） 迭代器什么是迭代器？其实就是集合中元素的取出方式。把取出方式定义在集合的内部，这样取出方式就可以直接访问集合内容的元素。那么取出方式就被定义成了内部类。而每一个容器的结构数据不同，所以取出的动作细节也不一样。但是都有共性内容：判断和取出。那么可以将这些共性抽取。 ListList集合共性方法List：元素是有序的，元素可以重复，因为该集合体系有索引。Set：元素是无序的，不能重复。List：特有方法：凡是可以操作角标的方法都是该体系特有的方法。增：add addAll删： remove改：set查：get subList listIterator ListIterator在迭代器时，只能用迭代器的方法操作元素，可是Iterator方法是有限的，只能对元素进行判断，取出，删除的操作，如果想要其他的操作如添加，修改等，就需要使用其子接口，ListIterator。该接口只能通过List集合的ListIterator方法获取。 List集合具体对象的特点List：ArrayList：底层的数据结构使用的是数组，查找很快，但是增删稍慢 （可变长度的）Linkedlist：底层使用的是链表数据结构。特点是增删速度很快，查询稍慢Vector：底层是数组数据结构。线程同步，被ArrayList替代了 ，现在一般不用了。枚举是Vector特有的取出方式。发现枚举和迭代器很像。其实枚举和迭代是一样的。因为枚举的名称以及方法的名称都过长。所以被迭代器取代了。 LinkedListLinkedList特有方法：addFirst(),addLast(),getFirst(),getLast(),removeFirst(),removeLast()JDK1.6出现了替代方法。offerFriest peekFirst poolFirst堆栈：先进后出队列： 先进先出 FIFOList集合判断元素是否相同，依据的是元素的equals方法。 ##setset：元素是无序（存入和取出的顺序不一定一致）set集合的功能和collection是一致的。HashSet：底层数据结构是哈希表。HashSet是如何保证元素的唯一性的呢？是通过元素的两个方法。hashCode和equals来完成。如果元素的HashCode值相同，才会判断equals是否为true，如果元素的hashCode不同，不会判断equals。注意：对于判断元素是否存在，以及删除等操作，依赖的方法是元素的hashcode和equals方法。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday15(%E9%9B%86%E5%90%88%E7%B1%BB2)%2F</url>
+    <content type="text"><![CDATA[集合框架2 ##setset：无序，不可以重复元素。hashset：数据结构是哈希表，线程非同步的，保证元素唯一性的原理，判断元素的hashCode值是否相同。如果相同，判断equalsTreeSet：可以对set集合中的元素进行排序。底层数据结构是二叉树。保证元素唯一性的依据：compareTo return 0往TreeSet集合中存储自定义对象学生。想按照学生的年龄进行排序。记住：排序时，当主要条件相同时，一定判断一下次要条件。 二叉树TreeSet排序的第一种方式：让元素自身具备比较性。元素需要事项compareable接口，覆盖compareTo方法。这种方式也称为元素的自然顺序，或者叫做默认顺序。TreeSet排序的第二种方式：当元素自身不具备比较性时，或者具备的比较性不是锁需要的。这时就需要让集合自身具备比较性。在集合初始化时，就有了比较方式。当元素自身不具备比较性，或者具备的比较性不是所需要的。这时需要让容器自身具备比较性，定义了比较器，将比较器对象作为参数传递给TreeSet集合的构造函数。当两种排序都存在时，以比较器为主。定义一个类实现Comparator接口，覆盖compare方法。 泛型JDK1.5之后出现的新特性，用于解决安全问题，是一个安全机制。好处： 将运行时期出现问题转移到编译时期，便于程序员解决。 避免了强制转换的麻烦。泛型格式：通过&lt;&gt;来定义要操作的引用数据类型在使用java提供的对象时，什么时候写泛型？通常在集合框架中很常见，只要见到&lt;&gt;就要定义泛型。其实&lt;&gt;就是用来接收类型的。当使用集合时，将集合中的要存储的数据类型放到&lt;&gt;中即可。泛型类泛型类：带泛型的类。当类中要操作的引用数据类型不确定的时候，早期定义Object来完成扩展，现在定义泛型完成扩展。泛型方法泛型类定义的泛型，在整个类中有效，如果被方法使用，那么泛型类的对象没明确要操作的具体类型后，所有要操作的类型就已经固定了。为了让不同方法可以操作不同类型，而且类型还不确定，那么可以将泛型定义到方法上。静态方法泛型特殊之处是：静态方法不可以访问类上定义的泛型，如果静态方法操作的引用数据类型不确定，可以将泛型定义在方法上。泛型接口泛型限定？： 通配符，也可以理解为占位符。泛型的限定： ？ extends E：可以接收E类型或者E的子类型。上限？ super E：可以接收E类型或者E的父类型。下限]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday19(IO%E6%B5%81)%2F</url>
+    <content type="text"><![CDATA[#IO流 BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（） BufferedReader为了提高效率，加入缓冲技术。将字符读取流对象作为参数传进缓冲对象的构造函数。readLine方法返回的时候只返回回车符之前的数据内容，并不返回回车符。readLine方法的原理：无论是读取一行，还是读取多个字符，其实最终都是在硬盘上一个个读取。所以最终使用的还是read方法一次读一个的方法。 MyBufferedReader装饰设计模式定义：当想要对已有的对象进行功能增强时，可以定义一个类，将已有对象传入，基于已有的功能，并提供加强功能。那么自定义的该类称为装饰类。装饰类通常会通过构造方法接收被装饰的对象。并基于被装饰的对象的功能，提供更强的功能。 装饰和继承的区别装饰模式比继承要灵活，避免了继承体系臃肿。而且降低了类与类之间的关系。装饰类因为增强已有对象，具备的功能和已有的是相同的，只不过提供了更强的功能。所以装饰类和被装饰类通常都属于一个体系中的。 LineNumberReader字符流和字节流FileReader:FileWriter:字节流：InputStream：OutputStream: 复制一个图片思路：1.用字节读取流对象和图片关联。2.用字节写入流对象创建一个图片文件，用于存储获取到的图片数据。 通过循环读写，完成数据的存储。 关闭资源读取转换流写入转换流流操作的基本规律最痛苦的就是流对象有很多，不知道该用哪一个。通过两个明确来完成。1.明确源和目的。 源：输入流。InputStream Reader 目的：输出流。OutputStream Writer2.操作的数据是否是纯文本。 是：字符流。 否：字节流。3.当体系明确后，再明确要使用哪个具体的对象。通过设备来进行区分：源设备：内存，硬盘，键盘目的设备：内存，硬盘，控制台。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday13(String)%2F</url>
+    <content type="text"><![CDATA[StringBuffer StringBuffer 是字符串缓冲区。是一个容器， 而且长度是可变化的。 可以操作多个数据类型。 最终会通过toString方法变成字符串C（create）U（update）R（read）D（delete）1.存储StringBuffer append（）：将指定的数据作为参数添加到到已有数据的结尾处StringBuffer insert（index，数据）：可以将数据 插入到数据指定index位置2.删除String3.获取4.修改 StringBuilderjava升级的三个因素：1.提高效率2.简化书写3.安全性 基本数据类型对象包装类byte Byteshort shortint Integerlong Longboolean Booleanfloat Floatdouble Doublechar Character基本数据类型对象包装类的最常见作用：就是用于基本数据类型和字符串类型之间做转换。基本数据类型转成字符串。 基本数据类型+“”或者 基本数据类型.toString(基本数据类型值)字符串转基本类型。基本数据类型包装类 a=Xxx.parseXxx(String)]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day5(面向对象2)]]></title>
+    <url>%2F09-java%2Fday5-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12%2F</url>
+    <content type="text"><![CDATA[面向对象编程(二) 封装（private）匿名对象使用的方式：只调用一次注意，封装只是私有的一种表现形式。不私有也能封装。 构造函数构造函数和一般函数在写法上有不同构造函数在对象一建立就运行，而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。一个对象建立，构造方法运行 构造代码块作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。 和构造函数的区别： 构造代码块是给所有的对象初始化，构造函数是给特定的对象初始化。 构造代码块 中定义的是不同对象共性的特性. this关键字 变量名起的没有意义，可读性非常差 局部变量和成员变量一样了，局部中有就在局部中使用，没有的话就在成员变量中找,将局部的值赋给成员变量，引出了this关键字 this:看上去，是用于区分局部变量和成员变量同名的情况 this到底代表的是什么 this：就代表本类的对象，到底代表哪一个呢？ this代表它所在函数所在对象的引用 简单说：哪个对象在调用this所在的函数，this就代表哪个对象 this关键字在构造函数间的调用this语句：用于构造函数间互相调用this语句只能放在构造函数的第一行。因为初始化动作要先执行不允许死循环调用]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>
