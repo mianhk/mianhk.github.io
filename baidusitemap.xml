@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/24-%E5%B7%A5%E5%85%B7/shell_%E8%87%AA%E5%8A%A8push/</loc>
+    <lastmod>2018-05-31T12:10:49.112Z</lastmod>
+    <data>
+        <display>
+        <title>ubuntu��?动push到github脚本</title>
+        <pubTime>2018-05-24T12:20:43.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/10-network/network/</loc>
     <lastmod>2018-05-31T04:00:58.529Z</lastmod>
     <data>
@@ -63,26 +83,6 @@
            
              
               <breadCrumb title="服务器" url="http://yoursite.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/24-%E5%B7%A5%E5%85%B7/shell_%E8%87%AA%E5%8A%A8push/</loc>
-    <lastmod>2018-05-27T02:52:09.656Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu自动push到github脚本</title>
-        <pubTime>2018-05-24T12:20:43.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -1108,7 +1108,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day8(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A14)/</loc>
+    <loc>http://yoursite.com/09-java/day7(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13)/</loc>
     <lastmod>2018-04-27T02:28:47.091Z</lastmod>
     <data>
         <display>
@@ -1128,7 +1128,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day7(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13)/</loc>
+    <loc>http://yoursite.com/09-java/day8(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A14)/</loc>
     <lastmod>2018-04-27T02:28:47.091Z</lastmod>
     <data>
         <display>
@@ -1188,7 +1188,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
+    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1208,7 +1208,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1268,7 +1268,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day16(map)/</loc>
+    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     <data>
         <display>
@@ -1288,7 +1288,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
+    <loc>http://yoursite.com/09-java/day16(map)/</loc>
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     <data>
         <display>
@@ -1699,9 +1699,9 @@
         <title>github简单使用</title>
         <pubTime>2017-11-10T11:33:00.000Z</pubTime>
         
-        <tag>日常</tag>
-         
         <tag>工具</tag>
+         
+        <tag>日常</tag>
          
          
            
