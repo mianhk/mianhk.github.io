@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://yoursite.com/19-Linux/redis_sum/</loc>
+    <lastmod>2018-06-19T10:51:29.298Z</lastmod>
+    <data>
+        <display>
+        <title>Linux用户管理</title>
+        <pubTime>2018-06-19T10:50:41.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>后台开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://yoursite.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/19-Linux/easy_use_of_Linux/</loc>
+    <lastmod>2018-06-19T07:01:05.859Z</lastmod>
+    <data>
+        <display>
+        <title>更好的使用Linux</title>
+        <pubTime>2018-04-19T06:57:16.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>工具</tag>
+         
+        <tag>日常</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/24-%E5%B7%A5%E5%85%B7/shell_%E8%87%AA%E5%8A%A8push/</loc>
     <lastmod>2018-05-31T12:15:39.168Z</lastmod>
     <data>
@@ -1188,7 +1234,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1208,7 +1254,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
+    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1308,7 +1354,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day15(%E9%9B%86%E5%90%88%E7%B1%BB2)/</loc>
+    <loc>http://yoursite.com/09-java/day14(%E9%9B%86%E5%90%88%E7%B1%BB)/</loc>
     <lastmod>2018-04-27T02:28:47.085Z</lastmod>
     <data>
         <display>
@@ -1328,7 +1374,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day14(%E9%9B%86%E5%90%88%E7%B1%BB)/</loc>
+    <loc>http://yoursite.com/09-java/day15(%E9%9B%86%E5%90%88%E7%B1%BB2)/</loc>
     <lastmod>2018-04-27T02:28:47.085Z</lastmod>
     <data>
         <display>
@@ -1368,11 +1414,11 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/</loc>
+    <loc>http://yoursite.com/09-java/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/</loc>
     <lastmod>2018-04-27T02:28:47.083Z</lastmod>
     <data>
         <display>
-        <title>多线程</title>
+        <title>day5(面向对象2)</title>
         <pubTime>2017-03-09T04:55:17.000Z</pubTime>
         
         <tag>java</tag>
@@ -1388,11 +1434,11 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day12(%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1)/</loc>
+    <loc>http://yoursite.com/09-java/day11(%E5%A4%9A%E7%BA%BF%E7%A8%8B)/</loc>
     <lastmod>2018-04-27T02:28:47.083Z</lastmod>
     <data>
         <display>
-        <title>day5(面向对象2)</title>
+        <title>多线程</title>
         <pubTime>2017-03-09T04:55:17.000Z</pubTime>
         
         <tag>java</tag>
@@ -1714,12 +1760,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
+    <loc>http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2018-04-27T02:28:46.928Z</lastmod>
     <data>
         <display>
-        <title>Linux修改用户名和所属组</title>
-        <pubTime>2018-01-17T11:48:22.000Z</pubTime>
+        <title>Linux用户管理</title>
+        <pubTime>2018-01-23T13:04:16.000Z</pubTime>
         
         <tag>Linux</tag>
          
@@ -1736,12 +1782,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/23-Linux/Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</loc>
+    <loc>http://yoursite.com/17-Linux/Linux%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84/</loc>
     <lastmod>2018-04-27T02:28:46.928Z</lastmod>
     <data>
         <display>
-        <title>Linux用户管理</title>
-        <pubTime>2018-01-23T13:04:16.000Z</pubTime>
+        <title>Linux修改用户名和所属组</title>
+        <pubTime>2018-01-17T11:48:22.000Z</pubTime>
         
         <tag>Linux</tag>
          
