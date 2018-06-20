@@ -4,16 +4,42 @@
 
     
   <url>
-    <loc>http://yoursite.com/19-Linux/redis_sum/</loc>
-    <lastmod>2018-06-19T10:51:29.298Z</lastmod>
+    <loc>http://yoursite.com/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2018-06-20T09:47:57.371Z</lastmod>
     <data>
         <display>
-        <title>Linux用户管理</title>
+        <title>我的hexo折腾笔记</title>
+        <pubTime>2017-09-09T16:24:59.000Z</pubTime>
+        
+        <tag>博客</tag>
+         
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/19-Linux/redis_sum/</loc>
+    <lastmod>2018-06-19T14:13:33.929Z</lastmod>
+    <data>
+        <display>
+        <title>《redis 设计与实现》--总结</title>
         <pubTime>2018-06-19T10:50:41.000Z</pubTime>
         
         <tag>Linux</tag>
          
         <tag>后台开发</tag>
+         
+        <tag>Redis</tag>
+         
+        <tag>Nosql</tag>
          
          
            
@@ -464,28 +490,6 @@
            
              
               <breadCrumb title="Linux" url="http://yoursite.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-05-13T12:51:19.893Z</lastmod>
-    <data>
-        <display>
-        <title>我的hexo折腾笔记</title>
-        <pubTime>2017-09-09T16:24:59.000Z</pubTime>
-        
-        <tag>博客</tag>
-         
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
