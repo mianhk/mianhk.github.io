@@ -415,13 +415,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
-    
-    <lastmod>2018-04-27T02:28:47.088Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
@@ -429,9 +422,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day19(IO%E6%B5%81)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     
-    <lastmod>2018-04-27T02:28:47.087Z</lastmod>
+    <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     
   </url>
   
@@ -443,14 +436,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
+    <loc>http://yoursite.com/09-java/day19(IO%E6%B5%81)/</loc>
+    
+    <lastmod>2018-04-27T02:28:47.087Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/09-java/day16(map)/</loc>
     
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day16(map)/</loc>
+    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
     
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     
