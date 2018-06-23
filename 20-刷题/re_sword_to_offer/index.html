@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++,LeetCode,剑指offer," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mianhk's notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="01.二维数组中的查找 在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。    分析：由于每一行都有递增的特性，我们可以采用类似二分搜索的方法。将数组分成行列来进行搜索。123456789101112131415161718class Solution &amp;#123;public:">
+<meta name="keywords" content="C++,LeetCode,剑指offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer-刷题总结">
+<meta property="og:url" content="http://yoursite.com/20-刷题/re_sword_to_offer/index.html">
+<meta property="og:site_name" content="Mianhk&#39;s notes">
+<meta property="og:description" content="01.二维数组中的查找 在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。    分析：由于每一行都有递增的特性，我们可以采用类似二分搜索的方法。将数组分成行列来进行搜索。123456789101112131415161718class Solution &amp;#123;public:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-23T14:57:11.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指offer-刷题总结">
+<meta name="twitter:description" content="01.二维数组中的查找 在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。    分析：由于每一行都有递增的特性，我们可以采用类似二分搜索的方法。将数组分成行列来进行搜索。123456789101112131415161718class Solution &amp;#123;public:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/20-刷题/re_sword_to_offer/"/>
+
+
+
+
+
+  <title>剑指offer-刷题总结 | Mianhk's notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-106121016-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mianhk's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">这个人很懒，动不动就不想写</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            看书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            电影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20-刷题/re_sword_to_offer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">剑指offer-刷题总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T21:40:02+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-23T22:57:11+08:00">
+                2018-06-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="01-二维数组中的查找"><a href="#01-二维数组中的查找" class="headerlink" title="01.二维数组中的查找"></a>01.二维数组中的查找</h2><blockquote>
+<p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。  </p>
+</blockquote>
+<p>分析：由于每一行都有递增的特性，我们可以采用类似二分搜索的方法。将数组分成行列来进行搜索。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool Find(int target, vector&lt;vector&lt;int&gt; &gt; array) &#123;</div><div class="line">        if(0==array.size())</div><div class="line">            return false;</div><div class="line">        int raw=array.size();</div><div class="line">        int col=array[0].size();</div><div class="line">        for(int i=0;i&lt;raw;++i)&#123;</div><div class="line">            if(array[i][col-1]&gt;=target)&#123;</div><div class="line">                for(int j=0;j&lt;col;++j)&#123;</div><div class="line">                    if(array[i][j]==target)</div><div class="line">                        return true;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="02-替换空格"><a href="#02-替换空格" class="headerlink" title="02.替换空格"></a>02.替换空格</h2><blockquote>
+<p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。  </p>
+</blockquote>
+<p>考虑到是在原字符串上操作，如果遇到一个空格就替换的话，需要把后面的都要后移两位，这个复杂度就大了，所以可以先遍历第一遍，找到空格的总数，之后就可以计算替换后的字符串长度。再经过第二遍遍历，从后往前开始替换，这样就不用移动了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">	void replaceSpace(char *str,int length) &#123;</div><div class="line">         if(length&lt;=0)</div><div class="line">             return;</div><div class="line">        int origin_length=0,new_length=0,space_num=0;</div><div class="line">        for(int i=0;str[i]!=&apos;\0&apos;;++i)&#123;</div><div class="line">            origin_length++;</div><div class="line">            if(str[i]==&apos; &apos;)</div><div class="line">                space_num++;</div><div class="line">        &#125;</div><div class="line">        new_length=origin_length+2*space_num;</div><div class="line">        if(new_length&gt;length)</div><div class="line">            return;</div><div class="line">        str[new_length]=&apos;\0&apos;;</div><div class="line">        while(origin_length&gt;0)&#123;</div><div class="line">            --origin_length;</div><div class="line">            if(str[origin_length]==&apos; &apos;)&#123;</div><div class="line">                str[--new_length]=&apos;0&apos;;</div><div class="line">                str[--new_length]=&apos;2&apos;;</div><div class="line">                str[--new_length]=&apos;%&apos;;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                str[--new_length]=str[origin_length];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="03-从尾到头打印链表"><a href="#03-从尾到头打印链表" class="headerlink" title="03.从尾到头打印链表"></a>03.从尾到头打印链表</h2><blockquote>
+<p>输入一个链表，从尾到头打印链表每个节点的值。  </p>
+</blockquote>
+<p>分析：由于链表我们必须从头到尾遍历才能从链表尾开始，所以直接打印的话，需要先从前往后遍历一遍找到链表尾节点，再从后往前遍历打印。能够进行的改善是，通过增加O(N)的空间复杂度，第一次遍历的时候，将数据放在一个栈中，之后再从栈中把所有的数都弹出来就好。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  struct ListNode &#123;</div><div class="line">*        int val;</div><div class="line">*        struct ListNode *next;</div><div class="line">*        ListNode(int x) :</div><div class="line">*              val(x), next(NULL) &#123;</div><div class="line">*        &#125;</div><div class="line">*  &#125;;</div><div class="line">*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; printListFromTailToHead(ListNode* head) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        if(!head)</div><div class="line">            return res;</div><div class="line">        stack&lt;int&gt; istack;</div><div class="line">        while(head)&#123;</div><div class="line">            istack.push(head-&gt;val);</div><div class="line">            head=head-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while(!istack.empty())&#123;</div><div class="line">            res.push_back(istack.top());</div><div class="line">            istack.pop();</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="04-重建二叉树"><a href="#04-重建二叉树" class="headerlink" title="04.重建二叉树"></a>04.重建二叉树</h2><blockquote>
+<p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。  </p>
+</blockquote>
+<p>分析：首先需要知道的是前序遍历和后续遍历的特点，程序中可以维护4个子数组，当进行递归调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    TreeNode* reConstructBinaryTree(vector&lt;int&gt; pre,vector&lt;int&gt; vin) &#123;</div><div class="line">        if(pre.empty() || pre.size()!=vin.size())</div><div class="line">            return nullptr;</div><div class="line">        vector&lt;int&gt; pre1,pre2,vin1,vin2;</div><div class="line">        TreeNode* root=new TreeNode(pre[0]);</div><div class="line">        int i=0;</div><div class="line">        for(;i&lt;vin.size();++i)&#123;</div><div class="line">            if(pre[0]==vin[i])</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">        //不需要判断i ==0 或者i==vin.size()-1的情况</div><div class="line">        for(int j=0;j&lt;i;++j)&#123;</div><div class="line">            pre1.push_back(pre[1+j]);</div><div class="line">            vin1.push_back(vin[j]);</div><div class="line">        &#125;</div><div class="line">        for(int j=i+1;j&lt;pre.size();++j)&#123;</div><div class="line">            pre2.push_back(pre[j]);</div><div class="line">            vin2.push_back(vin[j]);</div><div class="line">        &#125;</div><div class="line">        root-&gt;left=reConstructBinaryTree(pre1,vin1);</div><div class="line">        root-&gt;right=reConstructBinaryTree(pre2,vin2);</div><div class="line">        return root;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>不过上述的方法有个问题，虽然看起来比较好理解，但是增加了空间复杂度，其实这里可以多加一个递归函数就好了，所以觉得还是需要重新写一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition for binary tree</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    TreeNode* recurse(vector&lt;int&gt;&amp; pre,int begin1,int end1,vector&lt;int &gt;&amp; vin,int begin2,int end2)&#123;</div><div class="line">        if(begin1&gt;end1 || begin2&gt;end2)  //退出条件</div><div class="line">            return nullptr;</div><div class="line">        TreeNode* root=new TreeNode(pre[begin1]);</div><div class="line">        for(int i=begin2;i&lt;=end2;++i)&#123;</div><div class="line">            if(pre[begin1]==vin[i])&#123;</div><div class="line">                root-&gt;left=recurse(pre,begin1+1,begin1+i-begin2,vin,begin2,i-1);  //递归的重点，这个要考虑清楚</div><div class="line">                root-&gt;right=recurse(pre,begin1+1+i-begin2,end1,vin,1+i,end2);</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return root;</div><div class="line">    &#125;</div><div class="line">    TreeNode* reConstructBinaryTree(vector&lt;int&gt; pre,vector&lt;int&gt; vin) &#123;</div><div class="line">        if(pre.empty() || pre.size()!=vin.size())</div><div class="line">            return nullptr;</div><div class="line">        return recurse(pre,0,pre.size()-1,vin,0,vin.size()-1);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="05-用两个栈实现队列"><a href="#05-用两个栈实现队列" class="headerlink" title="05.用两个栈实现队列"></a>05.用两个栈实现队列</h2><blockquote>
+<p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。  </p>
+</blockquote>
+<p>分析：由于栈是先进后出，队列是先进先出，于是可以想到，两个栈，必然能够实现一个队列。原理就是，当push的时候就往第一个栈push，pop的时候就从第二个栈pop，当第二个栈的数为空时，从第一个栈pop再push到第二个栈。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    void push(int node) &#123;</div><div class="line">        stack1.push(node);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int pop() &#123;</div><div class="line">        if(stack2.empty())&#123;</div><div class="line">            while(!stack1.empty())&#123;</div><div class="line">                stack2.push(stack1.top());</div><div class="line">                stack1.pop();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        int top=stack2.top();</div><div class="line">        stack2.pop();</div><div class="line">        return top;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">private:</div><div class="line">    stack&lt;int&gt; stack1;</div><div class="line">    stack&lt;int&gt; stack2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="06-旋转数组的最小数字"><a href="#06-旋转数组的最小数字" class="headerlink" title="06.旋转数组的最小数字"></a>06.旋转数组的最小数字</h2><blockquote>
+<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。  </p>
+</blockquote>
+<p>分析：对于排序的数组，即使被旋转过，也能想到的是，采用二分查找。不过可能会存在的问题的是：当整个数组的值都是<code>1 0 0 1 1</code>之类的时候，就会失效了，只是非递减，但是不一定递增。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int minNumberInRotateArray(vector&lt;int&gt; rotateArray) &#123;</div><div class="line">        if(0==rotateArray.size())&#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        int begin=0,end=rotateArray.size()-1;</div><div class="line">        while(begin&lt;end-1)&#123;</div><div class="line">            int mid=begin+(end-begin)/2;</div><div class="line">            if(rotateArray[begin]&lt;rotateArray[mid])</div><div class="line">                begin=mid;</div><div class="line">            else if(rotateArray[begin]&gt;rotateArray[mid])</div><div class="line">                end=mid;</div><div class="line">            else&#123;</div><div class="line">                int res=begin;</div><div class="line">                for(size_t i=1;i&lt;rotateArray.size();++i)&#123;</div><div class="line">                    res=(res&lt;rotateArray[i]?res:rotateArray[i]);</div><div class="line">                &#125;</div><div class="line">                return res;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return rotateArray[end];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="07-斐波那契数列"><a href="#07-斐波那契数列" class="headerlink" title="07.斐波那契数列"></a>07.斐波那契数列</h2><blockquote>
+<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&lt;=39    </p>
+</blockquote>
+<p>分析：斐波拉契数列原理很简单，不过按照原理写的显然复杂度过高了，这里我们可以采用变量存下之前计算过的数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int Fibonacci(int n) &#123;</div><div class="line">        if(n==0)</div><div class="line">            return 0;</div><div class="line">        if(n==1||n==2)</div><div class="line">            return 1;</div><div class="line">        int first=1,second=1,res=0;</div><div class="line">        while(--n&gt;1)&#123;</div><div class="line">            res=first+second;</div><div class="line">            first=second;</div><div class="line">            second=res;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="08-跳台阶"><a href="#08-跳台阶" class="headerlink" title="08.跳台阶"></a>08.跳台阶</h2><blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。  </p>
+</blockquote>
+<p>分析：原理同斐波拉契数列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int jumpFloor(int number) &#123;</div><div class="line">        if(number&lt;=2)</div><div class="line">            return number;</div><div class="line">        int first=1,second=2,res=0;</div><div class="line">        while(--number&gt;1)&#123;</div><div class="line">            res=first+second;</div><div class="line">            first=second;</div><div class="line">            second=res;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="09-变态跳台阶"><a href="#09-变态跳台阶" class="headerlink" title="09.变态跳台阶"></a>09.变态跳台阶</h2><blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。  </p>
+</blockquote>
+<p>分析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">f(n)=f(1)+f(2)+...+f(n-1)</div><div class="line">f(n+1)=f(1)+f(2)+...+f(n-1)+f(n)=2f(n)</div><div class="line">//代码如下：</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int jumpFloorII(int number) &#123;</div><div class="line">        if(number&lt;=2)</div><div class="line">            return number;</div><div class="line">        int res=2;</div><div class="line">        while(--number&gt;=2)&#123;</div><div class="line">            res*=2;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="10-矩形覆盖-TODO"><a href="#10-矩形覆盖-TODO" class="headerlink" title="10.矩形覆盖 /TODO:"></a>10.矩形覆盖 /TODO:</h2><h2 id="11-二进制中1的个数"><a href="#11-二进制中1的个数" class="headerlink" title="11.二进制中1的个数"></a>11.二进制中1的个数</h2><blockquote>
+<p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。  </p>
+</blockquote>
+<p>分析：如果一个整数不为0，那么这个整数至少有一位是1。如果我们把这个整数减1，那么原来处在整数最右边的1就会变为0，原来在1后面的所有的0都会变成1(如果最右边的1后面还有0的话)。其余所有位将不会受到影响。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">     int  NumberOf1(int n) &#123;</div><div class="line">         int count=0;</div><div class="line">         while(n)&#123;</div><div class="line">             count++;</div><div class="line">             n=n&amp;(n-1);</div><div class="line">         &#125;</div><div class="line">         return count;</div><div class="line">     &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="12-数值的整数次方"><a href="#12-数值的整数次方" class="headerlink" title="12.数值的整数次方"></a>12.数值的整数次方</h2><blockquote>
+<p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。  </p>
+</blockquote>
+<p>分析：求一个数的次方，一个就是幂数是负数的处理，另一个就是，对幂的处理，连乘必然带来复杂度，可以想到的是2^4可以表示为(2^2)^2，想到这里，考虑的开水奇偶exponent的奇偶性了，奇数的时候直接乘以base，偶数的时候自乘。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    double Power(double base, int exponent) &#123;</div><div class="line">        bool flag=true;</div><div class="line">        if(exponent&lt;0)&#123;</div><div class="line">            flag=false;</div><div class="line">            exponent*=-1;</div><div class="line">        &#125;</div><div class="line">        double res=1;</div><div class="line">        while(exponent)&#123;</div><div class="line">            if(exponent&amp;1)&#123;</div><div class="line">                res*=base;</div><div class="line">                exponent--;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                exponent=exponent/2;</div><div class="line">                res*=res;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return flag?res:(1/res);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="13-调整数组顺序使奇数位于偶数前面"><a href="#13-调整数组顺序使奇数位于偶数前面" class="headerlink" title="13.调整数组顺序使奇数位于偶数前面"></a>13.调整数组顺序使奇数位于偶数前面</h2><blockquote>
+<p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void reOrderArray(vector&lt;int&gt; &amp;array) &#123;</div><div class="line">		if(array.empty())</div><div class="line">			return;</div><div class="line">		int begin=0,end=array.size();</div><div class="line">		int even=-1;</div><div class="line">		</div><div class="line">		while(begin&lt;end)&#123;</div><div class="line">			while((array[begin]&amp;1) &amp;&amp; (begin&lt;end))&#123;</div><div class="line">				begin++;</div><div class="line">			&#125;</div><div class="line">			even=begin;</div><div class="line">			while((!(array[begin]&amp;1)))&#123;</div><div class="line">				begin++;</div><div class="line">			&#125;</div><div class="line">			if(begin&gt;=end)</div><div class="line">				return;</div><div class="line">			int temp=array[begin];</div><div class="line">			while(even&lt;begin)&#123;</div><div class="line">				array[begin]=array[begin-1];</div><div class="line">				begin--;</div><div class="line">			&#125;</div><div class="line">			array[even]=temp;</div><div class="line">		&#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="14-链表中倒数第k个结点"><a href="#14-链表中倒数第k个结点" class="headerlink" title="14.链表中倒数第k个结点"></a>14.链表中倒数第k个结点</h2><blockquote>
+<p>输入一个链表，输出该链表中倒数第k个结点。  </p>
+</blockquote>
+<p>分析：采用两个指针一起移动是一个很好的办法，不过需要考虑是否越界。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) &#123;</div><div class="line">        ListNode* p1=pListHead;</div><div class="line">        for(int i=0;i&lt;k;++i)&#123;</div><div class="line">            if(!p1)</div><div class="line">               return nullptr;</div><div class="line">            p1=p1-&gt;next;</div><div class="line">        &#125;</div><div class="line">        while(p1)&#123;</div><div class="line">            p1=p1-&gt;next;</div><div class="line">            pListHead=pListHead-&gt;next;</div><div class="line">        &#125;</div><div class="line">        return pListHead;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="15-反转链表"><a href="#15-反转链表" class="headerlink" title="15.反转链表"></a>15.反转链表</h2><blockquote>
+<p>输入一个链表，反转链表后，输出新链表的表头。   </p>
+</blockquote>
+<p>分析：注意断开链表重连的过程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line">//最开始的一版代码，采用的是栈，看起来比较复杂。</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* ReverseList(ListNode* pHead) &#123;</div><div class="line">        if((!pHead)||(!pHead-&gt;next))</div><div class="line">            return pHead;</div><div class="line">        stack&lt;ListNode*&gt; list_stack;</div><div class="line">        while(pHead-&gt;next)&#123;</div><div class="line">            list_stack.push(pHead);</div><div class="line">            pHead=pHead-&gt;next;</div><div class="line">        &#125;</div><div class="line">        ListNode *newHead=pHead;</div><div class="line">        while(!list_stack.empty())&#123;</div><div class="line">            pHead-&gt;next=list_stack.top();</div><div class="line">            pHead=pHead-&gt;next;</div><div class="line">            list_stack.pop();</div><div class="line">        &#125;</div><div class="line">        pHead-&gt;next=nullptr;</div><div class="line">        return newHead;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//采用在链表中的穿针引线。涉及到链表的断开与重连，维护三个指针，分别为：pre,cur,next</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* ReverseList(ListNode* pHead) &#123;</div><div class="line">        ListNode* pre=nullptr;</div><div class="line">        ListNode* cur=pHead;</div><div class="line">        while(cur)&#123;</div><div class="line">            ListNode* next=cur-&gt;next;</div><div class="line">            cur-&gt;next=pre;</div><div class="line">            pre=cur;</div><div class="line">            cur=next;</div><div class="line">        &#125;</div><div class="line">        return pre;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//采用递归实现</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* ReverseList(ListNode* pHead) &#123;</div><div class="line">        if(!pHead||!pHead-&gt;next)</div><div class="line">            return pHead;</div><div class="line">        ListNode* rHead=ReverseList(pHead-&gt;next);</div><div class="line">        // head-&gt;next此刻指向head后面的链表的尾节点</div><div class="line">        // head-&gt;next-&gt;next = head把head节点放在了尾部</div><div class="line">        pHead-&gt;next-&gt;next=pHead;</div><div class="line">        pHead-&gt;next=nullptr;</div><div class="line">        </div><div class="line">        return rHead;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="16-合并两个排序的链表"><a href="#16-合并两个排序的链表" class="headerlink" title="16.合并两个排序的链表"></a>16.合并两个排序的链表</h2><blockquote>
+<p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* Merge(ListNode* pHead1, ListNode* pHead2)</div><div class="line">    &#123;</div><div class="line">        //当一个链表为空时，直接返回另一个链表</div><div class="line">        if(!pHead1)</div><div class="line">            return pHead2;</div><div class="line">        if(!pHead2)</div><div class="line">            return pHead1;</div><div class="line">        ListNode* vHead=new ListNode(0);  //设立虚拟的头节点</div><div class="line">        ListNode* vHeadHead=vHead;</div><div class="line">        while(pHead1 &amp;&amp; pHead2)&#123;  //一旦有一个链表为空，就退出循环</div><div class="line">            if(pHead1-&gt;val&lt;=pHead2-&gt;val)&#123;</div><div class="line">                vHead-&gt;next=pHead1;</div><div class="line">                pHead1=pHead1-&gt;next;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                vHead-&gt;next=pHead2;</div><div class="line">                pHead2=pHead2-&gt;next;</div><div class="line">            &#125;</div><div class="line">            vHead=vHead-&gt;next;</div><div class="line">        &#125;</div><div class="line">        //另一个链表不为空时，加在后面</div><div class="line">        if(!pHead1)</div><div class="line">            vHead-&gt;next=pHead2;</div><div class="line">        else</div><div class="line">            vHead-&gt;next=pHead1;</div><div class="line">        return vHeadHead-&gt;next;  //返回虚拟头节点的下一个节点</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">//采用递归实现</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* Merge(ListNode* pHead1, ListNode* pHead2)</div><div class="line">    &#123;</div><div class="line">        if(!pHead1)</div><div class="line">            return pHead2;</div><div class="line">        if(!pHead2)</div><div class="line">            return pHead1;</div><div class="line">        ListNode* vHead=nullptr;</div><div class="line">        if(pHead1-&gt;val&lt;=pHead2-&gt;val)&#123;</div><div class="line">            vHead=pHead1;</div><div class="line">            vHead-&gt;next=Merge(pHead1-&gt;next,pHead2);</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            vHead=pHead2;</div><div class="line">            vHead-&gt;next=Merge(pHead1,pHead2-&gt;next);</div><div class="line">        &#125;</div><div class="line">        return vHead;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="17-树的子结构"><a href="#17-树的子结构" class="headerlink" title="17.树的子结构"></a>17.树的子结构</h2><blockquote>
+<p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool dfs(TreeNode* pRoot1,TreeNode* pRoot2)&#123;</div><div class="line">        if(!pRoot2)    //注意不能先判断pRoot1再判断pRoot2，因为，只要pRoot2为空的时候，都是true了，而不管这时候pRoot1是不是为空。</div><div class="line">            return true;</div><div class="line">        if(!pRoot1)</div><div class="line">            return false;</div><div class="line">        if(pRoot1-&gt;val!=pRoot2-&gt;val)</div><div class="line">            return false;</div><div class="line">        return dfs(pRoot1-&gt;left,pRoot2-&gt;left)&amp;&amp;dfs(pRoot1-&gt;right,pRoot2-&gt;right);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)</div><div class="line">    &#123;</div><div class="line">        if((!pRoot2)||(!pRoot1))</div><div class="line">            return false;</div><div class="line">        return (dfs(pRoot1,pRoot2)||HasSubtree(pRoot1-&gt;left,pRoot2)||HasSubtree(pRoot1-&gt;right,pRoot2));</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="18-二叉树的镜像"><a href="#18-二叉树的镜像" class="headerlink" title="18.二叉树的镜像"></a>18.二叉树的镜像</h2><blockquote>
+<p>操作给定的二叉树，将其变换为源二叉树的镜像。   </p>
+</blockquote>
+<p>分析：简单的递归解决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">struct TreeNode &#123;</div><div class="line">	int val;</div><div class="line">	struct TreeNode *left;</div><div class="line">	struct TreeNode *right;</div><div class="line">	TreeNode(int x) :</div><div class="line">			val(x), left(NULL), right(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void Mirror(TreeNode *pRoot) &#123;</div><div class="line">        if(pRoot==nullptr)</div><div class="line">            return;</div><div class="line">        Mirror(pRoot-&gt;left);</div><div class="line">        Mirror(pRoot-&gt;right);</div><div class="line">        swap(pRoot-&gt;left,pRoot-&gt;right);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="19-顺时针打印矩阵"><a href="#19-顺时针打印矩阵" class="headerlink" title="19.顺时针打印矩阵"></a>19.顺时针打印矩阵</h2><h2 id="20-包含min函数的栈"><a href="#20-包含min函数的栈" class="headerlink" title="20.包含min函数的栈"></a>20.包含min函数的栈</h2><h2 id="21-栈的压入、弹出序列"><a href="#21-栈的压入、弹出序列" class="headerlink" title="21.栈的压入、弹出序列"></a>21.栈的压入、弹出序列</h2><p>思路：判断是否是压入弹出序列，可以直接使用一个栈进行压入，然后在压入的过程中判断是否跟弹出序列的值相同，是的话则先弹出，最后判断栈是否为空即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool IsPopOrder(vector&lt;int&gt; pushV,vector&lt;int&gt; popV) &#123;</div><div class="line">        stack&lt;int&gt; istack;</div><div class="line">        int i=0,j=0;</div><div class="line">        while(i&lt;pushV.size())&#123;</div><div class="line">        	istack.push(pushV[i++]);</div><div class="line">        	while(j&lt;popV.size() &amp;&amp; istack.top()==popV[j])&#123;</div><div class="line">        		istack.pop();</div><div class="line">        		++j;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return istack.empty();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="22-从上往下打印二叉树"><a href="#22-从上往下打印二叉树" class="headerlink" title="22.从上往下打印二叉树"></a>22.从上往下打印二叉树</h2><blockquote>
+<p>从上往下打印出二叉树的每个节点，同层节点从左至右打印。  </p>
+</blockquote>
+<p>分析：层序遍历，需要每遍历一个节点，就将他们的左右节点保存起来，当前层遍历完后，再顺序遍历他们的孩子节点。于是很容易想到先入先出的结构，队列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">struct TreeNode &#123;</div><div class="line">	int val;</div><div class="line">	struct TreeNode *left;</div><div class="line">	struct TreeNode *right;</div><div class="line">	TreeNode(int x) :</div><div class="line">			val(x), left(NULL), right(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; PrintFromTopToBottom(TreeNode* root) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        if(root==nullptr)</div><div class="line">            return res;</div><div class="line">        queue&lt;TreeNode*&gt; ique;</div><div class="line">        ique.push(root);</div><div class="line">        while(!ique.empty())&#123;</div><div class="line">            TreeNode* temp=ique.front();</div><div class="line">            res.push_back(temp-&gt;val);</div><div class="line">            ique.pop();</div><div class="line">            </div><div class="line">            if(temp-&gt;left)</div><div class="line">                ique.push(temp-&gt;left);</div><div class="line">            if(temp-&gt;right)</div><div class="line">                ique.push(temp-&gt;right);</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="23-二叉搜索树的后序遍历序列"><a href="#23-二叉搜索树的后序遍历序列" class="headerlink" title="23.二叉搜索树的后序遍历序列"></a>23.二叉搜索树的后序遍历序列</h2><h2 id="24-二叉树中和为某一值的路径"><a href="#24-二叉树中和为某一值的路径" class="headerlink" title="24.二叉树中和为某一值的路径"></a>24.二叉树中和为某一值的路径</h2><blockquote>
+<p>输入一颗二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;vector&lt;int&gt;&gt; res;</div><div class="line">    vector&lt;int&gt; temp;</div><div class="line">    vector&lt;vector&lt;int&gt; &gt; FindPath(TreeNode* root,int expectNumber) &#123;</div><div class="line">        if(!root)</div><div class="line">            return res;</div><div class="line">        temp.push_back(root-&gt;val);</div><div class="line">        if(expectNumber-root-&gt;val==0 &amp;&amp; root-&gt;left==nullptr &amp;&amp; root-&gt;right==nullptr)</div><div class="line">            res.push_back(temp);</div><div class="line">        FindPath(root-&gt;left,expectNumber-root-&gt;val);</div><div class="line">        FindPath(root-&gt;right,expectNumber-root-&gt;val);</div><div class="line">        if(!temp.empty())</div><div class="line">            temp.pop_back();</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="25-复杂链表的复制"><a href="#25-复杂链表的复制" class="headerlink" title="25.复杂链表的复制"></a>25.复杂链表的复制</h2><p>代码问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">        while(pHead-&gt;next)&#123;</div><div class="line">//        	cout&lt;&lt;pHead-&gt;label&lt;&lt;endl;</div><div class="line">//            RandomListNode* pTemp=pHead;   //傻了吧</div><div class="line">            RandomListNode* pTemp=new RandomListNode(pHead-&gt;label);  </div><div class="line">            pTemp-&gt;next=pHead-&gt;next;</div><div class="line">            cout&lt;&lt;pTemp-&gt;next-&gt;label&lt;&lt;endl;</div><div class="line">            pHead-&gt;next=pTemp;</div><div class="line">            pHead=pTemp-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">                //拆分</div><div class="line">        pNode=pHead;</div><div class="line">		RandomListNode* newHead=pHead-&gt;next;</div><div class="line">        RandomListNode* pTemp=pNode-&gt;next;</div><div class="line">		while(pNode)&#123;</div><div class="line">			pNode-&gt;next=pTemp-&gt;next;</div><div class="line">			pNode=pNode-&gt;next;</div><div class="line">			pTemp-&gt;next=pNode?pNode-&gt;next:NULL;</div><div class="line">			//pTemp-&gt;next=pNode-&gt;next;</div><div class="line">			//cout&lt;&lt;&quot;pTemp: &quot;&lt;&lt;pTemp-&gt;label&lt;&lt;endl;</div><div class="line">			pTemp=pTemp-&gt;next;</div><div class="line">			//cout&lt;&lt;&quot;text&quot;&lt;&lt;endl;</div><div class="line">		&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    RandomListNode* Clone(RandomListNode* pHead)</div><div class="line">    &#123;</div><div class="line">    	if(!pHead)</div><div class="line">    		return pHead;</div><div class="line">    	RandomListNode* pNode=pHead;</div><div class="line"></div><div class="line">    	while(pNode)&#123;</div><div class="line">    		RandomListNode* pClone=new RandomListNode(pNode-&gt;label);</div><div class="line">    		pClone-&gt;next=pNode-&gt;next;</div><div class="line">    		pNode-&gt;next=pClone;</div><div class="line">    		pNode=pClone-&gt;next;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		pNode=pHead;</div><div class="line">		while(pNode)&#123;</div><div class="line">			RandomListNode* pClone=pNode-&gt;next;</div><div class="line">			if(pNode-&gt;random)</div><div class="line">				pClone-&gt;random=pNode-&gt;random-&gt;next;</div><div class="line">			pNode=pClone-&gt;next;</div><div class="line">		&#125;</div><div class="line">		pNode=pHead;</div><div class="line">		RandomListNode* newHead=pNode-&gt;next;</div><div class="line">		</div><div class="line"></div><div class="line">		while(pNode-&gt;next)&#123;</div><div class="line">			RandomListNode* pTemp=pNode-&gt;next;</div><div class="line">			pNode-&gt;next=pTemp-&gt;next;</div><div class="line">			pNode=pTemp;</div><div class="line">//			pNode=pNode-&gt;next;                  //这种不行，搞得我折腾了很久</div><div class="line">//			pTemp-&gt;next=pNode-&gt;next;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return newHead;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="26二叉搜索树与双向链表"><a href="#26二叉搜索树与双向链表" class="headerlink" title="26二叉搜索树与双向链表"></a>26二叉搜索树与双向链表</h2><blockquote>
+<p>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。<br>TODO:</p>
+</blockquote>
+<h2 id="27字符串的排列"><a href="#27字符串的排列" class="headerlink" title="27字符串的排列"></a>27字符串的排列</h2><h2 id="28数组中出现次数超过一半的数字"><a href="#28数组中出现次数超过一半的数字" class="headerlink" title="28数组中出现次数超过一半的数字"></a>28数组中出现次数超过一半的数字</h2><p>解决一个问题，最终输出的判断，是1，还是0。如果大于1的话，万一最后只剩下了一个呢。所以还需要再判断最后剩下的结果是不是符合条件的，即是大于一般数目的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int MoreThanHalfNum_Solution(vector&lt;int&gt; numbers) &#123;</div><div class="line">        if(numbers.empty())</div><div class="line">            return 0;</div><div class="line">        int count=1;</div><div class="line">        int num=numbers[0];</div><div class="line">        for(int i=1;i&lt;numbers.size();++i)&#123;</div><div class="line">            if(numbers[i]==num)</div><div class="line">                count++;</div><div class="line">            else&#123;</div><div class="line">                if((--count)&lt;=0)&#123;</div><div class="line">                    num=numbers[i];</div><div class="line">                    count=1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //判断结果是否符合条件</div><div class="line">        count=0;</div><div class="line">        for(int i=0;i&lt;numbers.size();++i)&#123;</div><div class="line">            if(num==numbers[i])&#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return count*2&gt;numbers.size()?num:0;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="29-最小的K个数"><a href="#29-最小的K个数" class="headerlink" title="29.最小的K个数"></a>29.最小的K个数</h2><p>存在的问题，写程序的时候越界，没有判断好边界条件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; GetLeastNumbers_Solution(vector&lt;int&gt; input, int k) &#123;</div><div class="line">        vector&lt;int&gt; min_stack;</div><div class="line">        if(input.empty()||(k&lt;=0)||(k&gt;input.size()))  //边界条件的判断</div><div class="line">            return min_stack;</div><div class="line">        for(int i=0;i&lt;input.size();++i)&#123;</div><div class="line">            sort(min_stack.begin(),min_stack.end());</div><div class="line">            if(min_stack.size()&lt;k)&#123;</div><div class="line">                min_stack.push_back(input[i]);</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">            	//cout&lt;&lt;&quot;min_stack[min_stack.size()-1]: &quot;&lt;&lt;min_stack[min_stack.size()-1]&lt;&lt;endl;</div><div class="line">                if(input[i]&lt;min_stack[min_stack.size()-1])&#123;</div><div class="line">                    min_stack.pop_back();</div><div class="line">                    min_stack.push_back(input[i]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return min_stack;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="30-连续子数组的最大和"><a href="#30-连续子数组的最大和" class="headerlink" title="30.连续子数组的最大和"></a>30.连续子数组的最大和</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int FindGreatestSumOfSubArray(vector&lt;int&gt; array) &#123;</div><div class="line">    	int  res=array[0];</div><div class="line">    	int cur=array[0];</div><div class="line">    	for(int i=1;i&lt;array.size();++i)&#123;</div><div class="line">    		cur+=array[i];</div><div class="line">    		if(cur&lt;array[i])</div><div class="line">    			cur=array[i];</div><div class="line">    		res=(res&gt;cur?res:cur);</div><div class="line">		&#125;</div><div class="line">		return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="31-整数中1出现的次数（从1到n整数中1出现的次数）"><a href="#31-整数中1出现的次数（从1到n整数中1出现的次数）" class="headerlink" title="31.整数中1出现的次数（从1到n整数中1出现的次数）"></a>31.整数中1出现的次数（从1到n整数中1出现的次数）</h2><h2 id="32-把数组排成最小的数"><a href="#32-把数组排成最小的数" class="headerlink" title="32.把数组排成最小的数"></a>32.把数组排成最小的数</h2><blockquote>
+<p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    static bool equal(int a,int b)&#123;</div><div class="line">        string str1=to_string(a)+to_string(b);</div><div class="line">        string str2=to_string(b)+to_string(a);</div><div class="line">        return str1&lt;str2;</div><div class="line">    &#125;</div><div class="line">    string PrintMinNumber(vector&lt;int&gt; numbers)</div><div class="line">    &#123;</div><div class="line">        string result;</div><div class="line">        sort(numbers.begin(),numbers.end(),equal);</div><div class="line">        </div><div class="line">        for(int i=0;i&lt;numbers.size();++i)&#123;</div><div class="line">            result+=to_string(numbers[i]);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="33-丑数"><a href="#33-丑数" class="headerlink" title="33.丑数"></a>33.丑数</h2><blockquote>
+<p>把只包含因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int GetUglyNumber_Solution(int index) &#123;</div><div class="line">        if(index&lt;=0)        </div><div class="line">            return 0;</div><div class="line">        vector&lt;int &gt; res(index);</div><div class="line">        res[0]=1;</div><div class="line">        int x=0,y=0,z=0;</div><div class="line">        for(int i=1;i&lt;index;++i)&#123;</div><div class="line">            res[i]=min(2*res[x],min(3*res[y],5*res[z]));</div><div class="line">            if(res[i]==2*res[x])</div><div class="line">                x++;</div><div class="line">            if(res[i]==3*res[y])</div><div class="line">                y++;</div><div class="line">            if(res[i]==5*res[z])</div><div class="line">                z++;</div><div class="line">        &#125;</div><div class="line">        return res[index-1];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="34-第一个只出现一次的字符位置"><a href="#34-第一个只出现一次的字符位置" class="headerlink" title="34.第一个只出现一次的字符位置"></a>34.第一个只出现一次的字符位置</h2><blockquote>
+<p>在一个字符串(1&lt;=字符串长度&lt;=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置  </p>
+</blockquote>
+<p>一般对于这种字符的处理，因为字符一般都是不超过256的，所以尤其是计数之类的，我们可以首先考虑数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    int FirstNotRepeatingChar(string str)</div><div class="line">    &#123;</div><div class="line">        if(str.size()&lt;=0)</div><div class="line">            return -1;</div><div class="line">        int array[256]=&#123;0&#125;;</div><div class="line">        for(int i=0;i&lt;str.size();++i)&#123;</div><div class="line">            array[int(str[i])]++;</div><div class="line">        &#125;</div><div class="line">        for(int i=0;i&lt;str.size();++i)&#123;</div><div class="line">            if(array[int(str[i])]==1)</div><div class="line">                return i;</div><div class="line">        &#125;</div><div class="line">        return str.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="35-数组中的逆序对"><a href="#35-数组中的逆序对" class="headerlink" title="35.数组中的逆序对"></a>35.数组中的逆序对</h2><blockquote>
+<p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007<br>//TODO:</p>
+<h2 id="36-两个链表的第一个公共结点"><a href="#36-两个链表的第一个公共结点" class="headerlink" title="36.两个链表的第一个公共结点"></a>36.两个链表的第一个公共结点</h2><p>输入两个链表，找出它们的第一个公共结点。  </p>
+</blockquote>
+<p>需要知道的一个常识是，对于只有一个单链表，两个链表有公共节点，意味着从公共节点开始，之后两个链表都是公共的，因此他们有共同的终点。有了这个就好办了。可以将两个链表一直遍历，当遍历到链表尾的时候，就换另一个链表，当他们有公共节点时，在他们遍历到同一个节点时停止遍历，此节点即为第一个公共节点。   </p>
+<p><strong>对于这种将两个不同的长度，通过两个结合在一起，使两个长度相等的方法，其实我们用到过很多次。例如本题中的找公共节点，原因是两个链表长度不同。还有之前的一个判断两个string的大小，可以把他们放在一起，这样他们的长度就相同了，可以直接用string的方法进行比较。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) &#123;</div><div class="line">        ListNode* p1=pHead1;</div><div class="line">        ListNode* p2=pHead2;</div><div class="line">        while(p1!=p2)&#123;</div><div class="line">            p1=(p1==nullptr?pHead2:p1-&gt;next);</div><div class="line">            p2=(p2==nullptr?pHead1:p2-&gt;next);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return p1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="37-数字在排序数组中出现的次数"><a href="#37-数字在排序数组中出现的次数" class="headerlink" title="37.数字在排序数组中出现的次数"></a>37.数字在排序数组中出现的次数</h2><blockquote>
+<p>统计一个数字在排序数组中出现的次数。  </p>
+</blockquote>
+<p>显然很容易想到的是二分法,没有用函数的话，就存在一个找到没找到的问题，在这采用了一个返回值的处理。如果没找到，(end-begin-1)<0，则可以判断是没有找到。 <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int GetNumberOfK(vector&lt;int&gt; data ,int k) &#123;</div><div class="line">        if(data.empty())</div><div class="line">            return 0;</div><div class="line">        int begin=0,end=data.size()-1;</div><div class="line">        int count=0;</div><div class="line">        int mid;</div><div class="line">        while(begin&lt;=end)&#123;</div><div class="line">        	mid=(begin+end)/2;</div><div class="line">//        	cout&lt;&lt;&quot;dsdasads&quot;&lt;&lt;endl;</div><div class="line">			if(data[mid]==k)</div><div class="line">				break;</div><div class="line">            else if(data[mid]&lt;k)&#123;</div><div class="line">                begin=mid+1;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            else if(data[mid]&gt;k)&#123;</div><div class="line">                end=mid-1;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        begin=end=mid;</div><div class="line">        while(data[begin]==k)</div><div class="line">            --begin;</div><div class="line">        while(data[end]==k)</div><div class="line">            ++end;</div><div class="line">        count=(end-begin-1)&gt;0?(end-begin-1):0;</div><div class="line">        return count;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></0，则可以判断是没有找到。></p>
+<h2 id="38-二叉树的深度"><a href="#38-二叉树的深度" class="headerlink" title="38.二叉树的深度"></a>38.二叉树的深度</h2><h2 id="39-平衡二叉树"><a href="#39-平衡二叉树" class="headerlink" title="39.平衡二叉树"></a>39.平衡二叉树</h2><h2 id="40-数组中只出现一次的数字"><a href="#40-数组中只出现一次的数字" class="headerlink" title="40.数组中只出现一次的数字"></a>40.数组中只出现一次的数字</h2><blockquote>
+<p>一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。  </p>
+</blockquote>
+<p>数组中只出现一次的数字，当有一个的时候，很容易利用的特性是：全部异或，最后剩下的那个就是。原因是一个数跟自身异或，结果为0.那么出现有两个的时候呢。很容易想到的还是异或，最后的结果是两个只出现一次数字异或的结果，再进行分组解决。分组的依据是：因为有两个不同的数字只出现一次，所以整个数组异或的结果必然不为0，不为0就肯定有一位为1.按该位是否为1来进行划分即可。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void FindNumsAppearOnce(vector&lt;int&gt; data,int* num1,int *num2) &#123;</div><div class="line">        if(data.empty())</div><div class="line">            return;</div><div class="line">        //第一次遍历一遍，求两个数字最后的异或</div><div class="line">        int res=data[0];</div><div class="line">        for(int i=1;i&lt;data.size();++i)&#123;</div><div class="line">            res=res^data[i];</div><div class="line">        &#125;</div><div class="line">        if(res==0)</div><div class="line">            return;</div><div class="line">        //由于存在两个只出现一次的数字，所以res的值为这两个数字的异或，因此肯定不为0，肯定不为0意味着肯定有一位是1.找出这一位是1的</div><div class="line">        int index=0;</div><div class="line">        while((res&amp;1)==0)&#123;</div><div class="line">            res=res&gt;&gt;1;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        *num1=*num2=0;        </div><div class="line">        //根据index位为不为1，将数组分为两部分。</div><div class="line">        int x;</div><div class="line">        for(int i=0;i&lt;data.size();++i)&#123;</div><div class="line">            if((x=data[i]&gt;&gt;index)&amp;1)</div><div class="line">                *num1^=data[i];</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">                *num2^=data[i];</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="41-和为S的连续正数序列"><a href="#41-和为S的连续正数序列" class="headerlink" title="41.和为S的连续正数序列"></a>41.和为S的连续正数序列</h2><blockquote>
+<p>输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;vector&lt;int&gt; &gt; FindContinuousSequence(int sum) &#123;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; res;</div><div class="line">        vector&lt;int&gt; temp;</div><div class="line">        //边界条件的判断</div><div class="line">        if(sum&lt;0)</div><div class="line">            return res;</div><div class="line">            </div><div class="line">        int end=0;</div><div class="line">        int tempSum=0;</div><div class="line">        //遍历数组</div><div class="line">        while(end&lt;sum)&#123;</div><div class="line">            if(tempSum==sum)&#123;</div><div class="line">                res.push_back(temp);</div><div class="line">                end=temp[0];  //这一句其实很重要,因为要考虑将end从最开始重新开始计算，不然可能会有所遗漏,eg:9=2+3+4=4+5，其中4会重复</div><div class="line">                temp.erase(temp.begin(),temp.end());</div><div class="line">                tempSum=0;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            if(tempSum&gt;sum)&#123;</div><div class="line">                tempSum-=temp[0];</div><div class="line">                temp.erase(temp.begin());</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            temp.push_back(++end);</div><div class="line">            tempSum+=end;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="42-和为S的两个数字"><a href="#42-和为S的两个数字" class="headerlink" title="42.和为S的两个数字"></a>42.和为S的两个数字</h2><blockquote>
+<p>输入一个递增排序的数组和一个数字S，在数组中查找两个数，是的他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。  </p>
+</blockquote>
+<p>输出乘积最小的，显然距离最大的乘积就越小，所以，可以直接前后两个指针搜索，搜到的第一个就是。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    vector&lt;int&gt; FindNumbersWithSum(vector&lt;int&gt; array, int sum)</div><div class="line">    &#123;</div><div class="line">        vector&lt;int &gt; res;</div><div class="line">        if(array.empty())</div><div class="line">            return res;</div><div class="line">            </div><div class="line">        int i=0,j=array.size()-1;</div><div class="line">        while(i&lt;j)&#123;</div><div class="line">            int temp=array[i]+array[j];</div><div class="line">            if(temp&gt;sum)</div><div class="line">                --j;</div><div class="line">            if(temp&lt;sum)</div><div class="line">                ++i;</div><div class="line">            </div><div class="line">            if(temp==sum) </div><div class="line">            &#123;</div><div class="line">                res.push_back(array[i]);</div><div class="line">                res.push_back(array[j]);</div><div class="line">                return res;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="43-左旋转字符串"><a href="#43-左旋转字符串" class="headerlink" title="43.左旋转字符串"></a>43.左旋转字符串</h2><blockquote>
+<p>汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！  </p>
+</blockquote>
+<p>由BA=(ATBT)T计算可得<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//第一次通过代码</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    string LeftRotateString(string str, int n) &#123;</div><div class="line">        int len=str.size();</div><div class="line">        if(n&gt;=len)</div><div class="line">            return str;</div><div class="line">        int i=0,j=0;</div><div class="line">        for(i=0,j=n-1;i&lt;j;++i,--j)&#123;swap(str[i],str[j]);&#125;</div><div class="line">        for(i=n,j=len-1;i&lt;j;++i,--j)&#123;swap(str[i],str[j]);&#125;</div><div class="line">        for(i=0,j=len-1;i&lt;j;++i,--j)&#123;swap(str[i],str[j]);&#125;</div><div class="line">        return str;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="44-翻转单词顺序列"><a href="#44-翻转单词顺序列" class="headerlink" title="44.翻转单词顺序列"></a>44.翻转单词顺序列</h2><p>//TODO:</p>
+<blockquote>
+<p>牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，有一天他向Fish借来翻看，但却读不懂它的意思。例如，“student. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a student.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">//以前买的</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void ReverseSentence(string &amp;str,int begin,int end)&#123;</div><div class="line">        while(begin&lt;end)&#123;</div><div class="line">            char tmp=str[begin];</div><div class="line">            str[begin]=str[end];</div><div class="line">            str[end]=tmp;</div><div class="line">            begin++;</div><div class="line">            end--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    string ReverseSentence(string str) &#123;</div><div class="line">        if(str.size()&lt;=1)</div><div class="line">            return str;</div><div class="line">      	</div><div class="line">        int begin=0;</div><div class="line">        int end=0;</div><div class="line">        </div><div class="line">        //这里需要注意，考虑只有一个单词的情况</div><div class="line">        while(end!=str.size())&#123;</div><div class="line">            if(str[end]==&apos; &apos;)&#123;</div><div class="line">                ReverseSentence(str,0,str.size()-1);</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            else if(end==str.size()-1)</div><div class="line">            	return str;</div><div class="line">            else</div><div class="line">                ++end;</div><div class="line">        &#125;</div><div class="line">        end=0;</div><div class="line">        //开始遍历，旋转每个单词</div><div class="line">        while(begin!=str.size())&#123;</div><div class="line">            if(str[begin]==&apos; &apos;)&#123;</div><div class="line">                ++end;</div><div class="line">                ++begin;</div><div class="line">            &#125;</div><div class="line">            else if(str[end]==&apos; &apos;||end==str.size())&#123;</div><div class="line">                ReverseSentence(str,begin,--end);</div><div class="line">                begin=++end;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                ++end;</div><div class="line">        &#125;</div><div class="line">        return str;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="45-扑克牌顺子"><a href="#45-扑克牌顺子" class="headerlink" title="45.扑克牌顺子"></a>45.扑克牌顺子</h2><blockquote>
+<p>LL今天心情特别好,因为他去买了一副扑克牌,发现里面居然有2个大王,2个小王(一副牌原本是54张^_^)…他随机从中抽出了5张牌,想测测自己的手气,看看能不能抽到顺子,如果抽到的话,他决定去买体育彩票,嘿嘿！！“红心A,黑桃3,小王,大王,方片5”,“Oh My God!”不是顺子…..LL不高兴了,他想了想,决定大\小 王可以看成任何数字,并且A看作1,J为11,Q为12,K为13。上面的5张牌就可以变成“1,2,3,4,5”(大小王分别看作2和4),“So Lucky!”。LL决定去买体育彩票啦。 现在,要求你使用这幅牌模拟上面的过程,然后告诉我们LL的运气如何。为了方便起见,你可以认为大小王是0。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    bool IsContinuous(vector&lt;int&gt; numbers)</div><div class="line">    &#123;</div><div class="line">        if (numbers.empty())</div><div class="line">            return false;</div><div class="line">        sort(numbers.begin(), numbers.end());</div><div class="line">        int sum = 0, zero_num = 0;</div><div class="line">        for (int i = 0; i &lt; numbers.size() - 1; ++i)</div><div class="line">        &#123;</div><div class="line">            if (numbers[i] == 0)</div><div class="line">            &#123;</div><div class="line">                zero_num++;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            //考虑数字重复的情况</div><div class="line">            if (numbers[i + 1] == numbers[i])</div><div class="line">                return false;</div><div class="line">            sum += numbers[i + 1] - numbers[i] - 1;</div><div class="line">        &#125;</div><div class="line">        return sum &lt;= zero_num; //注意这里要大于等于就可以，不一定等于</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="46-孩子们的游戏-圆圈中最后剩下的数"><a href="#46-孩子们的游戏-圆圈中最后剩下的数" class="headerlink" title="46.孩子们的游戏(圆圈中最后剩下的数)"></a>46.孩子们的游戏(圆圈中最后剩下的数)</h2><blockquote>
+<p>每年六一儿童节,牛客都会准备一些小礼物去看望孤儿院的小朋友,今年亦是如此。HF作为牛客的资深元老,自然也准备了一些小游戏。其中,有个游戏是这样的:首先,让小朋友们围成一个大圈。然后,他随机指定一个数m,让编号为0的小朋友开始报数。每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,从他的下一个小朋友开始,继续0…m-1报数….这样下去….直到剩下最后一个小朋友,可以不用表演,并且拿到牛客名贵的“名侦探柯南”典藏版(名额有限哦!!^_^)。请你试着想下,哪个小朋友会得到这份礼品呢？(注：小朋友的编号是从0到n-1)   </p>
+</blockquote>
+<p>此约瑟夫环的问题。TODO:<a href="https://www.nowcoder.com/profile/4566768/codeBookDetail?submissionId=13393365" target="_blank" rel="external">https://www.nowcoder.com/profile/4566768/codeBookDetail?submissionId=13393365</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int LastRemaining_Solution(int n, int m)</div><div class="line">    &#123;</div><div class="line">        if(n&lt;=0)</div><div class="line">            return -1;</div><div class="line">        int last=0;</div><div class="line">        for(int i=2;i&lt;=n;++i)&#123;</div><div class="line">            last=(last+m)%i;</div><div class="line">        &#125;</div><div class="line">        return last;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="47-求1-2-3-…-n"><a href="#47-求1-2-3-…-n" class="headerlink" title="47.求1+2+3+…+n"></a>47.求1+2+3+…+n</h2><blockquote>
+<p>求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。  </p>
+</blockquote>
+<p>这个题，可以有好几种解决办法，一个容易想到的就是递归，每次都跟自己相加，直到加到0为止，判断的条件可以采用<code>&amp;&amp;</code>的短路特性：通过&amp;&amp;判断值是否为0已经到达结尾了。<br>另一种办法，可以利用类的构造函数。TODO:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int Sum_Solution(int n) &#123;</div><div class="line">        int sum=n;</div><div class="line">        sum&amp;&amp;(sum+=Sum_Solution(n-1));</div><div class="line">        return sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="48-不用加减乘除做加法"><a href="#48-不用加减乘除做加法" class="headerlink" title="48.不用加减乘除做加法"></a>48.不用加减乘除做加法</h2><blockquote>
+<p>写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。  </p>
+</blockquote>
+<p>不能用加法做加法运算，可以想到的计算机中利用的二进制的加法。通过异或两个数，也就是模2加，得到的是不考虑进位的加法的结果。通过两个数异或，左移一位得到的是进位。无进位结果加上进位，一直循环知道进位为0的时候，结果即为加法的结果。<br>计算的过程中，一定要细心。方法虽然简单，但是要写对。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    int Add(int num1, int num2)</div><div class="line">    &#123;</div><div class="line">        int res = num1 ^ num2, temp = num1 &amp; num2;</div><div class="line">        while (temp != 0)</div><div class="line">        &#123;</div><div class="line">            temp = temp &lt;&lt; 1;</div><div class="line">            int t = res;  //暂存res,以避免res的值被改变</div><div class="line">            res ^= temp;</div><div class="line">            temp = temp &amp; t;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="49-把字符串转换成整数"><a href="#49-把字符串转换成整数" class="headerlink" title="49.把字符串转换成整数"></a>49.把字符串转换成整数</h2><blockquote>
+<p>输入一个字符串,包括数字字母符号,可以为空.如果是合法的数值表达则返回该数字，否则返回0  </p>
+</blockquote>
+<p>分析：主要首先要考虑正负号，这里有一个小细节，我们把flag直接置1的话，可以直接输出flag*res得到结果，而不需要进行判断，是一种省略。另外的判断就比较简单了，按照正常的思路去判断就行。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    int StrToInt(string str)</div><div class="line">    &#123;</div><div class="line">        if (str.size() == 0)</div><div class="line">            return 0;</div><div class="line">        int flag = 1;</div><div class="line">        int size = str.size(), res = 0;</div><div class="line">        int i = 0;</div><div class="line">        if (str[0] == &apos;-&apos;)</div><div class="line">        &#123;</div><div class="line">            flag = -1;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        else if (str[0] == &apos;+&apos;)</div><div class="line">        &#123;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        for (; i &lt; size; ++i)</div><div class="line">        &#123;</div><div class="line">            if (str[i] &lt;= &apos;0&apos; || str[i] &gt;= &apos;9&apos;)</div><div class="line">            &#123;</div><div class="line">                return 0;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                res = res * 10 + (str[i] - &apos;0&apos;);</div><div class="line">        &#125;</div><div class="line">        return flag * res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="50-数组中重复的数字"><a href="#50-数组中重复的数字" class="headerlink" title="50.数组中重复的数字"></a>50.数组中重复的数字</h2><blockquote>
+<p>在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。  </p>
+</blockquote>
+<p>分析：由于规定了数组中的数字在范围为0–n内，所以可以利用当前数组的位置进行遍历，比如每次遍历到一个位置，就将该数字对应位置的值加n，这样，当再次遍历到该值时，发现如果该值已经大于n，说明已经重复了，返回即可。不过在遍历的时候，如果发现某一位置的值大于n，应该先减去n，得到该位置上原来的值，这里应该捋清楚。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution</div><div class="line">&#123;</div><div class="line">  public:</div><div class="line">    // Parameters:</div><div class="line">    //        numbers:     an array of integers</div><div class="line">    //        length:      the length of array numbers</div><div class="line">    //        duplication: (Output) the duplicated number in the array number</div><div class="line">    // Return value:       true if the input is valid, and there are some duplications in the array number</div><div class="line">    //                     otherwise false</div><div class="line">    bool duplicate(int numbers[], int length, int *duplication)</div><div class="line">    &#123;</div><div class="line">        for(int i=0;i&lt;length;++i)&#123;</div><div class="line">            int index=numbers[i];</div><div class="line">            if(index&gt;=length)</div><div class="line">                index=index-length;</div><div class="line">            if(numbers[index]&gt;=length)&#123;</div><div class="line">                *duplication=index;</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">            numbers[index]+=length;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="51-构建乘积数组"><a href="#51-构建乘积数组" class="headerlink" title="51.构建乘积数组"></a>51.构建乘积数组</h2><blockquote>
+<p>给定一个数组A[0,1,…,n-1],请构建一个数组B[0,1,…,n-1],其中B中的元素B[i]=A[0]<em>A[1]</em>…<em>A[i-1]</em>A[i+1]<em>…</em>A[n-1]。不能使用除法。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; multiply(const vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        vector&lt;int&gt; res(A.size());</div><div class="line">        if(A.empty())</div><div class="line">            return res;</div><div class="line">        res[0]=1;</div><div class="line">        //计算下三角</div><div class="line">        for(int i=1;i&lt;A.size();++i)&#123;</div><div class="line">            res[i]=res[i-1]*A[i-1];</div><div class="line">        &#125;</div><div class="line">        int temp=1;</div><div class="line">        for(int i=A.size()-2;i&gt;=0;--i)&#123;</div><div class="line">            temp*=A[i+1];</div><div class="line">            res[i]*=temp;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="52-正则表达式匹配"><a href="#52-正则表达式匹配" class="headerlink" title="52.正则表达式匹配"></a>52.正则表达式匹配</h2><h2 id="53-表示数值的字符串"><a href="#53-表示数值的字符串" class="headerlink" title="53.表示数值的字符串"></a>53.表示数值的字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) :</div><div class="line">        val(x), next(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">*/</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode* deleteDuplication(ListNode* pHead)</div><div class="line">    &#123;</div><div class="line">        if(pHead==nullptr)</div><div class="line">            return pHead;</div><div class="line">        ListNode* virtualHead=new ListNode(0);</div><div class="line">        virtualHead-&gt;next=pHead;</div><div class="line">        ListNode* prev=virtualHead;</div><div class="line">        </div><div class="line">        while(pHead-&gt;next)&#123;</div><div class="line">            if(pHead-&gt;val==pHead-&gt;next-&gt;val)&#123;</div><div class="line">                if(pHead-&gt;next-&gt;next)&#123;</div><div class="line">                    pHead=pHead-&gt;next-&gt;next;</div><div class="line">                    prev-&gt;next=pHead;</div><div class="line">                &#125;</div><div class="line">                else </div><div class="line">                    return virtualHead-&gt;next;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                pHead=pHead-&gt;next;</div><div class="line">                prev=prev-&gt;next;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        return virtualHead-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>测试用例:<br>{1,1,1,1,1,1,1}</p>
+<p>对应输出应该为:</p>
+<h2 id="54-字符流中第一个不重复的字符"><a href="#54-字符流中第一个不重复的字符" class="headerlink" title="54.字符流中第一个不重复的字符"></a>54.字符流中第一个不重复的字符</h2><h2 id="55-链表中环的入口结点"><a href="#55-链表中环的入口结点" class="headerlink" title="55.链表中环的入口结点"></a>55.链表中环的入口结点</h2><h2 id="56-删除链表中重复的结点"><a href="#56-删除链表中重复的结点" class="headerlink" title="56.删除链表中重复的结点"></a>56.删除链表中重复的结点</h2><h2 id="57-二叉树的下一个结点"><a href="#57-二叉树的下一个结点" class="headerlink" title="57.二叉树的下一个结点"></a>57.二叉树的下一个结点</h2><h2 id="58-对称的二叉树"><a href="#58-对称的二叉树" class="headerlink" title="58.对称的二叉树"></a>58.对称的二叉树</h2><h2 id="59-按之字形顺序打印二叉树"><a href="#59-按之字形顺序打印二叉树" class="headerlink" title="59.按之字形顺序打印二叉树"></a>59.按之字形顺序打印二叉树</h2><h2 id="60-把二叉树打印成多行"><a href="#60-把二叉树打印成多行" class="headerlink" title="60.把二叉树打印成多行"></a>60.把二叉树打印成多行</h2><h2 id="61-序列化二叉树"><a href="#61-序列化二叉树" class="headerlink" title="61.序列化二叉树"></a>61.序列化二叉树</h2><h2 id="62-二叉搜索树的第k个结点"><a href="#62-二叉搜索树的第k个结点" class="headerlink" title="62.二叉搜索树的第k个结点"></a>62.二叉搜索树的第k个结点</h2><h2 id="63-数据流中的中位数"><a href="#63-数据流中的中位数" class="headerlink" title="63.数据流中的中位数"></a>63.数据流中的中位数</h2><h2 id="64-滑动窗口的最大值"><a href="#64-滑动窗口的最大值" class="headerlink" title="64.滑动窗口的最大值"></a>64.滑动窗口的最大值</h2><h2 id="65-矩阵中的路径"><a href="#65-矩阵中的路径" class="headerlink" title="65.矩阵中的路径"></a>65.矩阵中的路径</h2><h2 id="66-机器人的运动范围"><a href="#66-机器人的运动范围" class="headerlink" title="66.机器人的运动范围"></a>66.机器人的运动范围</h2>
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="mianhk wechat" style="width: 200px; max-width: 100%;"/>
+    <div>不关注一下怎么知道有多好看呢</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>来都来了，请我喝点啥吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="mianhk WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          
+            <a href="/tags/剑指offer/" rel="tag"><i class="fa fa-tag"></i> 剑指offer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/19-Linux/redis_sum/" rel="next" title="《redis 设计与实现》--总结">
+                <i class="fa fa-chevron-left"></i> 《redis 设计与实现》--总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="mianhk" />
+          <p class="site-author-name" itemprop="name">mianhk</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mianhk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/3024507693/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              不是特别强烈的推荐
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://x-nicolo.github.io" title="肖洒的博客" target="_blank">肖洒的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yuanfengliu.github.io/" title="刘渊峰的博客" target="_blank">刘渊峰的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#01-二维数组中的查找"><span class="nav-number">1.</span> <span class="nav-text">01.二维数组中的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-替换空格"><span class="nav-number">2.</span> <span class="nav-text">02.替换空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-从尾到头打印链表"><span class="nav-number">3.</span> <span class="nav-text">03.从尾到头打印链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#04-重建二叉树"><span class="nav-number">4.</span> <span class="nav-text">04.重建二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#05-用两个栈实现队列"><span class="nav-number">5.</span> <span class="nav-text">05.用两个栈实现队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-旋转数组的最小数字"><span class="nav-number">6.</span> <span class="nav-text">06.旋转数组的最小数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#07-斐波那契数列"><span class="nav-number">7.</span> <span class="nav-text">07.斐波那契数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#08-跳台阶"><span class="nav-number">8.</span> <span class="nav-text">08.跳台阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-变态跳台阶"><span class="nav-number">9.</span> <span class="nav-text">09.变态跳台阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-矩形覆盖-TODO"><span class="nav-number">10.</span> <span class="nav-text">10.矩形覆盖 /TODO:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-二进制中1的个数"><span class="nav-number">11.</span> <span class="nav-text">11.二进制中1的个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-数值的整数次方"><span class="nav-number">12.</span> <span class="nav-text">12.数值的整数次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-调整数组顺序使奇数位于偶数前面"><span class="nav-number">13.</span> <span class="nav-text">13.调整数组顺序使奇数位于偶数前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-链表中倒数第k个结点"><span class="nav-number">14.</span> <span class="nav-text">14.链表中倒数第k个结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-反转链表"><span class="nav-number">15.</span> <span class="nav-text">15.反转链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-合并两个排序的链表"><span class="nav-number">16.</span> <span class="nav-text">16.合并两个排序的链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-树的子结构"><span class="nav-number">17.</span> <span class="nav-text">17.树的子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-二叉树的镜像"><span class="nav-number">18.</span> <span class="nav-text">18.二叉树的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-顺时针打印矩阵"><span class="nav-number">19.</span> <span class="nav-text">19.顺时针打印矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-包含min函数的栈"><span class="nav-number">20.</span> <span class="nav-text">20.包含min函数的栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-栈的压入、弹出序列"><span class="nav-number">21.</span> <span class="nav-text">21.栈的压入、弹出序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-从上往下打印二叉树"><span class="nav-number">22.</span> <span class="nav-text">22.从上往下打印二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-二叉搜索树的后序遍历序列"><span class="nav-number">23.</span> <span class="nav-text">23.二叉搜索树的后序遍历序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-二叉树中和为某一值的路径"><span class="nav-number">24.</span> <span class="nav-text">24.二叉树中和为某一值的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-复杂链表的复制"><span class="nav-number">25.</span> <span class="nav-text">25.复杂链表的复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26二叉搜索树与双向链表"><span class="nav-number">26.</span> <span class="nav-text">26二叉搜索树与双向链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27字符串的排列"><span class="nav-number">27.</span> <span class="nav-text">27字符串的排列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28数组中出现次数超过一半的数字"><span class="nav-number">28.</span> <span class="nav-text">28数组中出现次数超过一半的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-最小的K个数"><span class="nav-number">29.</span> <span class="nav-text">29.最小的K个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#30-连续子数组的最大和"><span class="nav-number">30.</span> <span class="nav-text">30.连续子数组的最大和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-整数中1出现的次数（从1到n整数中1出现的次数）"><span class="nav-number">31.</span> <span class="nav-text">31.整数中1出现的次数（从1到n整数中1出现的次数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-把数组排成最小的数"><span class="nav-number">32.</span> <span class="nav-text">32.把数组排成最小的数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-丑数"><span class="nav-number">33.</span> <span class="nav-text">33.丑数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-第一个只出现一次的字符位置"><span class="nav-number">34.</span> <span class="nav-text">34.第一个只出现一次的字符位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-数组中的逆序对"><span class="nav-number">35.</span> <span class="nav-text">35.数组中的逆序对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#36-两个链表的第一个公共结点"><span class="nav-number">36.</span> <span class="nav-text">36.两个链表的第一个公共结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37-数字在排序数组中出现的次数"><span class="nav-number">37.</span> <span class="nav-text">37.数字在排序数组中出现的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#38-二叉树的深度"><span class="nav-number">38.</span> <span class="nav-text">38.二叉树的深度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-平衡二叉树"><span class="nav-number">39.</span> <span class="nav-text">39.平衡二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#40-数组中只出现一次的数字"><span class="nav-number">40.</span> <span class="nav-text">40.数组中只出现一次的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#41-和为S的连续正数序列"><span class="nav-number">41.</span> <span class="nav-text">41.和为S的连续正数序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-和为S的两个数字"><span class="nav-number">42.</span> <span class="nav-text">42.和为S的两个数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-左旋转字符串"><span class="nav-number">43.</span> <span class="nav-text">43.左旋转字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-翻转单词顺序列"><span class="nav-number">44.</span> <span class="nav-text">44.翻转单词顺序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#45-扑克牌顺子"><span class="nav-number">45.</span> <span class="nav-text">45.扑克牌顺子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#46-孩子们的游戏-圆圈中最后剩下的数"><span class="nav-number">46.</span> <span class="nav-text">46.孩子们的游戏(圆圈中最后剩下的数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#47-求1-2-3-…-n"><span class="nav-number">47.</span> <span class="nav-text">47.求1+2+3+…+n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#48-不用加减乘除做加法"><span class="nav-number">48.</span> <span class="nav-text">48.不用加减乘除做加法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#49-把字符串转换成整数"><span class="nav-number">49.</span> <span class="nav-text">49.把字符串转换成整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#50-数组中重复的数字"><span class="nav-number">50.</span> <span class="nav-text">50.数组中重复的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51-构建乘积数组"><span class="nav-number">51.</span> <span class="nav-text">51.构建乘积数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#52-正则表达式匹配"><span class="nav-number">52.</span> <span class="nav-text">52.正则表达式匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53-表示数值的字符串"><span class="nav-number">53.</span> <span class="nav-text">53.表示数值的字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#54-字符流中第一个不重复的字符"><span class="nav-number">54.</span> <span class="nav-text">54.字符流中第一个不重复的字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#55-链表中环的入口结点"><span class="nav-number">55.</span> <span class="nav-text">55.链表中环的入口结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#56-删除链表中重复的结点"><span class="nav-number">56.</span> <span class="nav-text">56.删除链表中重复的结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#57-二叉树的下一个结点"><span class="nav-number">57.</span> <span class="nav-text">57.二叉树的下一个结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#58-对称的二叉树"><span class="nav-number">58.</span> <span class="nav-text">58.对称的二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#59-按之字形顺序打印二叉树"><span class="nav-number">59.</span> <span class="nav-text">59.按之字形顺序打印二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#60-把二叉树打印成多行"><span class="nav-number">60.</span> <span class="nav-text">60.把二叉树打印成多行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#61-序列化二叉树"><span class="nav-number">61.</span> <span class="nav-text">61.序列化二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#62-二叉搜索树的第k个结点"><span class="nav-number">62.</span> <span class="nav-text">62.二叉搜索树的第k个结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#63-数据流中的中位数"><span class="nav-number">63.</span> <span class="nav-text">63.数据流中的中位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#64-滑动窗口的最大值"><span class="nav-number">64.</span> <span class="nav-text">64.滑动窗口的最大值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#65-矩阵中的路径"><span class="nav-number">65.</span> <span class="nav-text">65.矩阵中的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#66-机器人的运动范围"><span class="nav-number">66.</span> <span class="nav-text">66.机器人的运动范围</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mianhk</span>
+</div>
+
+
+<div class="powered-by">
+  powerd by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Hosted By 
+  <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
