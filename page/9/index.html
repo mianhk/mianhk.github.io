@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -466,7 +466,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day20(IO流2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day5-面向对象2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -485,7 +485,7 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day20(IO流2)/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day5-面向对象2/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -571,342 +571,15 @@ GUIAwt与 Swingjava.Awt： Abstract Window ToolKit (抽象窗口工具包)，需
       
         
           
-          IO流
-File类用来将文件或文件夹封装成对象。方便对文件与文件夹的属性信息进行操作。File对象可以作为参数传递给
-File类的常见方法1.创建boolean createNewFile()boolean mkdir()boolean mkdirs()
-2.删除 boolean delete()  删除失败返回falsevoid deleteOnExit()  在程序退出时删除文件
-3.判断bo
+          面向对象编程(二)
+封装（private）匿名对象使用的方式：只调用一次注意，封装只是私有的一种表现形式。不私有也能封装。
+构造函数构造函数和一般函数在写法上有不同构造函数在对象一建立就运行，而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。一个对象建立，构造方法运行
+
+构造代码块作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。  和构造函数的区别：  构造代码块是给所
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day20(IO流2)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day9(内部类)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mianhk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mianhk's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/09-java/day9(内部类)/" itemprop="url">day5(面向对象2)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
-                2017-03-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-27T10:28:47+08:00">
-                2018-04-27
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          内部类
-内部类访问规则
-内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this
-外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/09-java/day9(内部类)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day10(异常包访问)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mianhk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mianhk's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/09-java/day10(异常包访问)/" itemprop="url">day5(面向对象2)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
-                2017-03-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-27T10:28:47+08:00">
-                2018-04-27
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          异常-finally异常-处理语句其他格式异常-覆盖时的异常特点异常在子父类覆盖中的特点：
-
-子类在覆盖父类时，如果父类的方法抛出异常，子类的覆盖方法，只能抛出父类的异常或该异常的子类。
-如果父类方法抛出多个异常，那么子类在覆盖该方法时，只能抛出父类异常的子集。
-如果父类或接口的方法中没有异常抛出，那么子类在覆盖方法时，也不可以抛出异常。 如果子类方法发生了异常。那么就必须要进行try处理，绝对不
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/09-java/day10(异常包访问)/#more" rel="contents">
+            <a class="btn" href="/09-java/day5-面向对象2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1125,7 +798,7 @@ java语言中：java只支持单继承，不支持多继承。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day19(IO流)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day9(内部类)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -1144,7 +817,7 @@ java语言中：java只支持单继承，不支持多继承。
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day19(IO流)/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day9(内部类)/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -1230,14 +903,183 @@ java语言中：java只支持单继承，不支持多继承。
       
         
           
-          #IO流
-
-BufferedWriter缓冲区的出现是为了提高流的操作效率而出现的。所以在创建缓冲区之前，必须要先有流对象。为了 提高字符写入流效率，加入了缓冲技术,只要将需要提高效率的流对象作为参数传递给缓冲区的构造函数即可。记住只要用到缓冲区，就要记得刷新。其实关闭缓冲区，其实就是在关闭缓冲区的流对象。该缓冲区中提供了一个跨平台的newLine（）
-BufferedReader为了提高效率，加
+          内部类
+内部类访问规则
+内部类可以直接访问外部类中的成员，包括私有 之所以可以直接访问外部类中的成员，是因为内部类中持有了 一个外部类的引用，格式：外部类名.this
+外部类要访问内部类，必须建立内部类对象。 直接访问内部类中的成员访问格式：当内部类定义在外部类的成员位置上，就可以被成员修饰符所修饰。比如，private：将内部类在外部类中进行封装。 static：内部类就具备static的特性。
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day19(IO流)/#more" rel="contents">
+            <a class="btn" href="/09-java/day9(内部类)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day8(面向对象4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/09-java/day8(面向对象4)/" itemprop="url">day5(面向对象2)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-27T10:28:47+08:00">
+                2018-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          面向对象（4）–多态
+多态概念多态：可以理解为事物存在的多种体现形态
+多态的扩展性
+多态的体现 父类的引用指向了自己的子类对象 父类的引用也可以接收自己的子类对象
+多态的前提 必须是类与类之间有关系，要么继承，要么实现。 通常还有一个前提：存在覆盖
+多态的好处 多态的出现大大的提高程序的扩展性
+多态的弊端： 提高了扩展性，但是只能用父类的引用访问父类中的成员
+多态的应用
+
+多态–转型向上转型，向上
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/09-java/day8(面向对象4)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1440,6 +1282,170 @@ Math
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day16(map)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/09-java/day16(map)/" itemprop="url">day5(面向对象2)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-27T10:28:47+08:00">
+                2018-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          集合(MAP)Map集合：该集合存储键值对。一对一对往里存。而且要保证键的唯一性。
+添加。
+删除。clear()
+判断。
+获取。Map：Hashtable：底层是哈希表数据结构，不能存入null键null值，是线程同步的。HashMap:底层是哈希表数据结构，允许使用null键null值，该集合是不同步的。TreeMap：底层是二叉树数据结构。线程不同步。可以用于给map集合中的键进行排序。–和S
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/09-java/day16(map)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1501,7 +1507,7 @@ Math
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1512,7 +1518,7 @@ Math
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
