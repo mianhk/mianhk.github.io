@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
+    
+    <lastmod>2018-07-15T10:58:10.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/24-interview/interview_links/</loc>
+    
+    <lastmod>2018-07-09T13:53:08.751Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/24-interview/interview_operation/</loc>
     
     <lastmod>2018-07-09T01:36:55.025Z</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>http://yoursite.com/24-interview/interview_cpp/</loc>
-    
-    <lastmod>2018-07-09T01:36:54.957Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/24-interview/interview_links/</loc>
     
     <lastmod>2018-07-09T01:36:54.957Z</lastmod>
     
@@ -47,13 +54,6 @@
     <loc>http://yoursite.com/01-Linux/tencent_cloud_plan/</loc>
     
     <lastmod>2018-06-24T13:41:59.155Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
-    
-    <lastmod>2018-06-24T03:25:56.491Z</lastmod>
     
   </url>
   
