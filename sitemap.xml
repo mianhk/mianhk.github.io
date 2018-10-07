@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/19-Linux/redis_sum/</loc>
+    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/</loc>
     
-    <lastmod>2018-07-16T12:58:08.683Z</lastmod>
+    <lastmod>2018-07-17T11:29:36.335Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
     
-    <lastmod>2018-07-15T10:58:10.673Z</lastmod>
+    <lastmod>2018-07-17T11:27:29.867Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/19-Linux/redis_sum/</loc>
+    
+    <lastmod>2018-07-16T12:58:08.683Z</lastmod>
     
   </url>
   
@@ -457,14 +464,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
+    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     
@@ -485,14 +492,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day16(map)/</loc>
+    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
     
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
+    <loc>http://yoursite.com/09-java/day16(map)/</loc>
     
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     

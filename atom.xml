@@ -40,9 +40,9 @@
     
       <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
-      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
       <category term="工作" scheme="http://yoursite.com/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
@@ -67,11 +67,11 @@
       <category term="面试经验" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/"/>
     
     
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
       <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="工作" scheme="http://yoursite.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
@@ -95,11 +95,11 @@
       <category term="面试经验" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/"/>
     
     
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
       <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="工作" scheme="http://yoursite.com/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
@@ -184,9 +184,9 @@
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="腾讯云" scheme="http://yoursite.com/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
     
@@ -304,11 +304,37 @@
   </entry>
   
   <entry>
+    <title>生活随笔</title>
+    <link href="http://yoursite.com/24-%E9%9A%8F%E7%AC%94/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
+    <id>http://yoursite.com/24-随笔/生活随笔/</id>
+    <published>2018-04-24T12:40:26.000Z</published>
+    <updated>2018-07-17T11:29:36.335Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。  </p></blockquote><a id="more"></a><h3 id="update-2018-07-17-19-22-01-周二"><a href="#update-2018-07-17-19-22-01-周二" class="headerlink" title="update:2018-07-17 19:22:01 周二"></a>update:2018-07-17 19:22:01 周二</h3><p>看了个视频：<a href="https://www.youtube.com/watch?v=jbUJGkM4Ksk" target="_blank" rel="external">https://www.youtube.com/watch?v=jbUJGkM4Ksk</a> 成长型思维和固定型思维。虽然看名字有点鸡汤了，但是确实很久都忘了这些了。  </p><p>可能已经不像很久以前那样了，什么都不怕，能够不问结果的去做很多事情，现在考虑的很多，也更想着用一些以前的思路去考虑问题，却忘了自己本来的优势了。  </p><p>1.了解大脑可塑性 2.以过程为焦点 3.尝试做有挑战性的事情   </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。  &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>阶段性生活思考</title>
     <link href="http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/"/>
     <id>http://yoursite.com/24-随笔/redo-mylife/</id>
     <published>2018-04-24T12:40:26.000Z</published>
-    <updated>2018-07-15T10:58:10.673Z</updated>
+    <updated>2018-07-17T11:27:29.867Z</updated>
     
     <content type="html"><![CDATA[<h2 id="why-title"><a href="#why-title" class="headerlink" title="why title"></a>why title</h2><blockquote><p>生活就是要不断的思考,不是吗?</p><p><div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180624112358.png"> </div><br><br><a id="more"></a></p></blockquote><h3 id="uptate-2018-07-15-18-51-18-周日"><a href="#uptate-2018-07-15-18-51-18-周日" class="headerlink" title="uptate:2018-07-15 18:51:18 周日"></a>uptate:2018-07-15 18:51:18 周日</h3><p>最近的目标：  </p><ol><li>不要随意浪费时间，集中精力。以前觉得自己的优势就是，做事情的时候很认真，能够把一件事先做好，现在就总是一会看这儿一会看那个，刷刷手机，所以有的时候虽然看起来很多时间都在学习，效率却不高。   </li><li>多动脑子，多思考，而不是形式化的做一些东西，或者一些不切实际的计划，觉得自己看过了，但是没有实际效果。涉猎百遍却不如深看一次。  </li><li>发现做事情不是很果断，有的时候想的太多，可能年龄大些了会有时候这样，但是还是不喜欢这样。   </li><li>控制娱乐时间和休息，有很多有意思的事情，同样有很多无聊的事情。  </li><li>这是我最后一次好好改博客的主题了吧。。以后不折腾了      </li></ol><h3 id="update-2018-05-30-20-21-01-周三"><a href="#update-2018-05-30-20-21-01-周三" class="headerlink" title="update:2018-05-30 20:21:01 周三"></a>update:2018-05-30 20:21:01 周三</h3><ul><li>学习方面稍微集中了一点，但是还是没有太专注。  </li><li>做事情还是要抓住重点，仍然需要注意。  </li><li>多多总结。  </li></ul><h3 id="update-2018-05-13-21-15-04-周日"><a href="#update-2018-05-13-21-15-04-周日" class="headerlink" title="update:2018-05-13 21:15:04 周日"></a>update:2018-05-13 21:15:04 周日</h3><p>突然觉得很久没思考自己的生活了。      </p><ul><li>1.做事情注意力不集中。最近虽然看起来学习态度要好一些，每天都是待在实验室，但是学习的效率却感觉没有以前高了。而且总是注意力不够集中，明明在该学习的时候，却看看这个看看那个。做这个的时候看看想起另外一件事，就去看看，结果就该做的事情没做好。看看论文就想玩玩手机，玩着又有点愧疚就去看看c++，总是三心二意的。  </li><li>2.不太爱思考。另一个问题就是，遇到问题不求甚解。这还是以前的老问题吧，对于以前的应试教育来说，可能里面的道理也不用太深究，毕竟能最后写在试卷上就行了，看起来还能有个差不多好看的分数。但是现在处于的阶段不一样了，不管是日常的工作学习，还是平时看到一些新闻的想法，这都会有一些问题。当然，这方面可能手机因素也比较大一点，有很多的观点唾手可得，找找资料就能看到很多东西，恰好这方面自己又比较擅长，于是就又陷入了找资料不思考的陷阱。这样虽然有时候找到了很多有价值的东西，平时看到了很多，说吧，都知道，但是具体的就是不清楚，更别谈再有所新的想法了。所以这是个重要的问题。  </li><li>3.做事情应该更有目的。就是可能现在感觉很忙，但是却没有个统一的目的，有时候花的时间是多了，但是却没有很好的效果。  </li></ul>]]></content>
     
@@ -532,33 +558,6 @@
       
       
         &lt;h3 id=&quot;LeetCode-55-Jump-Game&quot;&gt;&lt;a href=&quot;#LeetCode-55-Jump-Game&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-55-Jump-Game&quot;&gt;&lt;/a&gt;LeetCode-55-Jump-Game&lt;/
-      
-    
-    </summary>
-    
-      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-53-Maximum-Subarray</title>
-    <link href="http://yoursite.com/26-%E5%88%B7%E9%A2%98/LeetCode-53-Maximum-Subarray/"/>
-    <id>http://yoursite.com/26-刷题/LeetCode-53-Maximum-Subarray/</id>
-    <published>2018-01-26T09:57:03.000Z</published>
-    <updated>2018-04-27T02:28:48.319Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="LeetCode-53-Maximum-Subarray"><a href="#LeetCode-53-Maximum-Subarray" class="headerlink" title="LeetCode-53-Maximum-Subarray"></a>LeetCode-53-Maximum-Subarray</h2><blockquote><p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.<br>For example, given the array [-2,1,-3,4,-1,2,1,-5,4],<br>the contiguous subarray [4,-1,2,1] has the largest sum = 6.</p></blockquote><p>最长子序列，又是一个动态规划的问题，关于动态规划，我们最主要的是要维护DP数组，这个问题以前还有点不理解，感觉主要的还是思想，只要知道这是一个动态规划的问题，解决动态规划的一般方法掌握了，其他的就都是细节了。</p><p>最近刷算法题，不得不想到的是以前的数学，数学是逻辑性可能更强的东西，尚且需要多做练习才行，何况算法了。当然现在慢慢的感觉就是，以前看到很多题完全没有头绪，现在很多大概是能分清是想考啥了，也会想着主动去选择相应的数据结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        vector&lt;int&gt; dp(nums.size(),0);</div><div class="line">        dp[0]=nums[0];</div><div class="line">        int res=dp[0];</div><div class="line">        for(int i=1;i&lt;nums.size();++i)&#123;</div><div class="line">            dp[i]=nums[i]+(dp[i-1]&gt;0?dp[i-1]:0);</div><div class="line">            res=max(dp[i],res);</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;LeetCode-53-Maximum-Subarray&quot;&gt;&lt;a href=&quot;#LeetCode-53-Maximum-Subarray&quot; class=&quot;headerlink&quot; title=&quot;LeetCode-53-Maximum-Subarray&quot;&gt;&lt;/a&gt;Le
       
     
     </summary>

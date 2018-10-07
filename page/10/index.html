@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day5-面向对象2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day21(IO流3)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -323,7 +323,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day5-面向对象2/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day21(IO流3)/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -409,15 +409,177 @@
       
         
           
-          面向对象编程(二)
-封装（private）匿名对象使用的方式：只调用一次注意，封装只是私有的一种表现形式。不私有也能封装。
-构造函数构造函数和一般函数在写法上有不同构造函数在对象一建立就运行，而一般方法是在对象调用的时候才运行，是给对象添加对象具备的功能。一个对象建立，构造方法运行
+          #IO流（3）
 
-构造代码块作用：给对象初始化，对象一建立就运行，而且优先于构造函数执行。  和构造函数的区别：  构造代码块是给所
+对象的序列化管道流RandomAccessFile该类不是算是IO体系中子类，而是继承自Object。但是它是IO包中的成员，因为它具备读和写功能。颞部封装了一个数组，而且通过指针对数组的元素进行操作。可以通过getFilePointer获取指针位置。同时可以通过seek改变指针位置。其实完成读写的原理就是内部封装了字节输入流和输出流。通过构造函数可以看出，该类只能操作文件。而且
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day5-面向对象2/#more" rel="contents">
+            <a class="btn" href="/09-java/day21(IO流3)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day12(多线程-进程间通信)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mianhk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mianhk's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/09-java/day12(多线程-进程间通信)/" itemprop="url">day5(面向对象2)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T12:55:17+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-27T10:28:47+08:00">
+                2018-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #多进程（二）
+
+1线程间通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。
+##2解决安全问题
+3等待唤醒机制wait  notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/09-java/day12(多线程-进程间通信)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -505,7 +667,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">91</span>
+                <span class="site-state-item-count">92</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -527,7 +689,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -585,15 +747,23 @@
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="https://www.v2ex.com/member/mianhk" title="V2EX" target="_blank">V2EX</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
                   <a href="https://x-nicolo.github.io" title="肖洒的博客" target="_blank">肖洒的博客</a>
                 </li>
               
                 <li class="links-of-blogroll-item">
                   <a href="https://yuanfengliu.github.io/" title="刘渊峰的博客" target="_blank">刘渊峰的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.fucksec.com/" title="天才小三斤" target="_blank">天才小三斤</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.imdst.com/" title="MengBo'Li" target="_blank">MengBo'Li</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://xiaozhou.net/" title="Timothy" target="_blank">Timothy</a>
                 </li>
               
             </ul>

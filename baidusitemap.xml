@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2018-07-17T11:29:36.335Z</lastmod>
+    <data>
+        <display>
+        <title>生活随笔</title>
+        <pubTime>2018-04-24T12:40:26.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>生活</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
+    <lastmod>2018-07-17T11:27:29.867Z</lastmod>
+    <data>
+        <display>
+        <title>阶段性生活思考</title>
+        <pubTime>2018-04-24T12:40:26.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>生活</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/19-Linux/redis_sum/</loc>
     <lastmod>2018-07-16T12:58:08.683Z</lastmod>
     <data>
@@ -30,28 +74,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/24-%E9%9A%8F%E7%AC%94/redo-mylife/</loc>
-    <lastmod>2018-07-15T10:58:10.673Z</lastmod>
-    <data>
-        <display>
-        <title>阶段性生活思考</title>
-        <pubTime>2018-04-24T12:40:26.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>生活</tag>
-         
-         
-           
-             
-              <breadCrumb title="随笔" url="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/24-interview/interview_links/</loc>
     <lastmod>2018-07-09T13:53:08.751Z</lastmod>
     <data>
@@ -59,11 +81,11 @@
         <title>面试总结-链接</title>
         <pubTime>2018-06-24T14:03:23.000Z</pubTime>
         
+        <tag>C++</tag>
+         
         <tag>面试</tag>
          
         <tag>工作</tag>
-         
-        <tag>C++</tag>
          
          
            
@@ -87,9 +109,9 @@
          
         <tag>面试</tag>
          
-        <tag>操作系统</tag>
-         
         <tag>工作</tag>
+         
+        <tag>操作系统</tag>
          
          
            
@@ -109,11 +131,11 @@
         <title>面试总结-C++</title>
         <pubTime>2018-06-24T14:02:20.000Z</pubTime>
         
+        <tag>C++</tag>
+         
         <tag>面试</tag>
          
         <tag>工作</tag>
-         
-        <tag>C++</tag>
          
          
            
@@ -199,9 +221,9 @@
         
         <tag>Linux</tag>
          
-        <tag>服务器</tag>
-         
         <tag>后台开发</tag>
+         
+        <tag>服务器</tag>
          
         <tag>腾讯云</tag>
          
@@ -269,9 +291,9 @@
         <title>我的hexo折腾笔记</title>
         <pubTime>2017-09-09T16:24:59.000Z</pubTime>
         
-        <tag>博客</tag>
-         
         <tag>工具</tag>
+         
+        <tag>博客</tag>
          
          
            
@@ -1382,7 +1404,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
+    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1402,7 +1424,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day21(IO%E6%B5%813)/</loc>
+    <loc>http://yoursite.com/09-java/day20(IO%E6%B5%812)/</loc>
     <lastmod>2018-04-27T02:28:47.088Z</lastmod>
     <data>
         <display>
@@ -1462,7 +1484,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day16(map)/</loc>
+    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     <data>
         <display>
@@ -1482,7 +1504,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/09-java/day17(%E9%9B%86%E5%90%884-%E5%B7%A5%E5%85%B7%E7%B1%BB)/</loc>
+    <loc>http://yoursite.com/09-java/day16(map)/</loc>
     <lastmod>2018-04-27T02:28:47.086Z</lastmod>
     <data>
         <display>
