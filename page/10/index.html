@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day21(IO流3)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day15(集合类2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -323,7 +323,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day21(IO流3)/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day15(集合类2)/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -409,13 +409,12 @@
       
         
           
-          #IO流（3）
-
-对象的序列化管道流RandomAccessFile该类不是算是IO体系中子类，而是继承自Object。但是它是IO包中的成员，因为它具备读和写功能。颞部封装了一个数组，而且通过指针对数组的元素进行操作。可以通过getFilePointer获取指针位置。同时可以通过seek改变指针位置。其实完成读写的原理就是内部封装了字节输入流和输出流。通过构造函数可以看出，该类只能操作文件。而且
+          集合框架2
+##setset：无序，不可以重复元素。hashset：数据结构是哈希表，线程非同步的，保证元素唯一性的原理，判断元素的hashCode值是否相同。如果相同，判断equalsTreeSet：可以对set集合中的元素进行排序。底层数据结构是二叉树。保证元素唯一性的依据：compareTo return 0往TreeSet集合中存储自定义对象学生。想按照学生的年龄进行排序。记住：排序时，当
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day21(IO流3)/#more" rel="contents">
+            <a class="btn" href="/09-java/day15(集合类2)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -466,7 +465,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day12(多线程-进程间通信)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/09-java/day7(面向对象3)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mianhk">
@@ -485,7 +484,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/09-java/day12(多线程-进程间通信)/" itemprop="url">day5(面向对象2)</a></h2>
+                <a class="post-title-link" href="/09-java/day7(面向对象3)/" itemprop="url">day5(面向对象2)</a></h2>
         
 
         <div class="post-meta">
@@ -571,15 +570,19 @@
       
         
           
-          #多进程（二）
+          面向对象（3）（继承，final，抽象类，接口）
+1.继承（概述）
+继承：
 
-1线程间通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。
-##2解决安全问题
-3等待唤醒机制wait  notify notifyAll 都使用在同步中，因为要对持有监视器（锁）的线程操作。所以要使用在同步中，以为只有同步才具有锁。为什么这些操作线程的方法要定义在Object类中呢？因为这些方法在操作同步中线程时，都必须要标识他们所操作线程只有的锁。只有同一
+1.提高了代码的复用性
+2.继承让类与类之间有了关系，有了关系才有了多态的特性。
+注意：千万不要为了获取其他类的功能，简化代码而继承。必须是类与类之间有所属关系才可以继承，所属关系 is a。
+java语言中：java只支持单继承，不支持多继承。
+  因为多继承容易带来安全隐患：当多个父类中定义了相同的功能，当功能内容不
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/09-java/day12(多线程-进程间通信)/#more" rel="contents">
+            <a class="btn" href="/09-java/day7(面向对象3)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
