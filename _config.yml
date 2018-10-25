@@ -92,6 +92,6 @@ douban:
 deploy:
  type: git
  repository:
-   github: git@github.com:mianhk/mianhk.github.io.git
+   github: https://$REPO_TOKEN@github.com/mianhk/mianhk.github.io.git
    coding: git@git.coding.net:mianhk/mianhk.coding.me.git
  branch: master
