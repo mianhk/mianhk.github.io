@@ -12,6 +12,19 @@ tags: [工具,博客]
 <!--more-->
 
 ## 2018-10-30 17:28:33
+##### 添加访问量
+打开`\themes\next\layout\_partials\footer.swig`文件,搜索`<div class="copyright">`，在这个`div`标签前边加上如下代码:
+```
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+```
+然后再在合适的位置添加如下代码，放在footer.swig文件的末尾:  
+```
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+```
 ##### 设置博文内链接为蓝色
 通过路径：`themes\next\source\css\_common\components\post\`,打开`post.styl`文件，在文件中添加，如下字段：
 ```
