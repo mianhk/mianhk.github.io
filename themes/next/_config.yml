@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `hexo-site/source/` directory.
-favicon: /favicon.ico
+favicon: http://blog-1252063226.cosbj.myqcloud.com/network/favicon.ico
 
 # Set default keywords (Use a comma to separate)
 keywords: "hello,world"
