@@ -1,15 +1,75 @@
 ---
 title: 我的hexo折腾笔记
 date: 2017-09-10 00:24:59
-updates: 2017-11-18 00:25:59
+updates: 2018-10-30 17:43:30
 categories: 工具
 tags: [工具,博客]
 ---
 
-### 我的hexo折腾笔记--记录一下折腾的过程
+# 我的hexo折腾笔记--记录一下折腾的过程
 > 没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github始终是一个好的选择，于是入了Hexo的坑。。折腾的过程心情总是有些复杂，在激动和mmp之间徘徊，虽然很多问题在wiki和issue里都有，但还是想总结一下自己亲自踩的坑。
 
 <!--more-->
+
+## 2018-10-30 17:28:33
+##### 设置博文内链接为蓝色
+通过路径：`themes\next\source\css\_common\components\post\`,打开`post.styl`文件，在文件中添加，如下字段：
+```
+ .post-body p a{
+      color: #0593d3;
+      border-bottom: none;
+      &:hover {
+        color: #0477ab;
+        text-decoration: underline;
+      }
+    }
+```
+
+##### 设置文章末尾”本文结束”标记
+
+##### 显示每篇文章字数
+
+##### 文章末尾添加版权说明
+直接修改`主题配置文件`，定位到`post_copyright`，将`enable`由`false`改为`true`即可。
+```
+# Declare license on posts
+post_copyright:
+  enable: true
+  license: CC BY-NC-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/3.0/
+```
+
+##### 实现fork me on github
+在右上角或者左上角实现fork me on github。  
+点击[这里](https://blog.github.com/2008-12-19-github-ribbons/)挑选自己喜欢的样式，并复制代码。 例如，我是复制如下代码：
+```
+<a href="https://github.com/you"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+```
+粘贴刚才复制的代码到`themes/next/layout/_layout.swig`文件中(放在`<div class="headband"></div>`的下面)，并把`href`标签改为github地址：
+
+##### 修改文章底部的#号标签
+修改模板`/themes/next/layout/_macro/post.swig`，搜索 `rel="tag">#`，将其中的 `# `换成`<i class="fa fa-tag"></i>`
+
+##### 添加搜索功能
+安装 `hexo-generator-searchdb`，在站点的根目录下执行以下命令：
+```
+npm install hexo-generator-searchdb --save
+```
+编辑 `站点配置文件` （站点根目录下），新增以下内容到任意位置：  
+```
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+```
+编辑 `主题配置文件` （主题目录下），启用本地搜索功能：
+```
+# Local search
+local_search:
+  enable: true
+```
+
 ##### 图床修改
 由于以前都是直接使用的github私人仓库做的图床，但是有时候就是访问不到，因为博客是采用双部署的，可能coding上的已经是外链了被屏蔽了，所以还是得想点别的办法了。  
 看到网上说的各种，其实都还是有点问题，最终发现最近的腾讯对象存储，发现还真的可以。  
@@ -53,3 +113,4 @@ layout: "tags"
 [Hexo文档](https://hexo.io/zh-cn/docs/)
 [Next主题文档](http://theme-next.iissnan.com/getting-started.html)
 [绑定到coding](http://blog.csdn.net/dengnanyi/article/details/53969684)
+[Hexo搭建的GitHub博客之优化大全](https://zhuanlan.zhihu.com/p/33616481)
