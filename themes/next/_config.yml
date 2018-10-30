@@ -290,7 +290,7 @@ font:
   # Global font settings used on <body> element.
   global:
     # external: true will load this font family from host.
-    external: true
+    external: false
     family: Lato
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6)
@@ -385,7 +385,7 @@ changyan:
 #google_site_verification:
 
 # Google Analytics
-google_analytics: UA-106121016-1
+#google_analytics: UA-106121016-1
 
 # Yandex Webmaster tools verification setting
 # See: https://webmaster.yandex.ru/
@@ -402,7 +402,7 @@ google_analytics: UA-106121016-1
 # user_id must NOT be null when admin_enable is true!
 # you can visit http://dev.duoshuo.com get duoshuo user id.
 duoshuo_info:
-  ua_enable: true
+  ua_enable: false
   admin_enable: false
   user_id: 0
   #admin_nickname: Author
