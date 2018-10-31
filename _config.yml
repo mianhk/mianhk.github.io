@@ -87,6 +87,14 @@ search:
   format: html
   limit: 10000
 
+
+#宠物
+live2d:
+  model: miku
+  bottom: -30
+  mobileShow: false
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
