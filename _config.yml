@@ -89,10 +89,10 @@ search:
 
 
 #宠物
-live2d:
-  model: miku
-  bottom: -30
-  mobileShow: false
+# live2d:
+#   model: miku
+#   bottom: -30
+#   mobileShow: false
 
 
 # Deployment

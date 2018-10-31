@@ -82,6 +82,6 @@
   {% include '_third-party/exturl.swig' %}
   
   
-{{ live2d() }}
+
 </body>
 </html>
