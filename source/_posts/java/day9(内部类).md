@@ -1,5 +1,5 @@
 ---
-title: day5(面向对象2)
+title: day9(内部类)
 date: 2017-03-09 12:55:17
 categories: Java
 tags: java
