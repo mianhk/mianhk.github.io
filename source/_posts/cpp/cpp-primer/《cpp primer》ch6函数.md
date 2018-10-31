@@ -1,6 +1,6 @@
 ---
 title: 《c++primer》ch6 函数
-date: 2017-6-5 1w7:55:33
+date: 2017-6-20 15:44:11
 categories: C++
 tags: C++
 toc: true
