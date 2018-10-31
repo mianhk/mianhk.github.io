@@ -6,9 +6,9 @@ node_js: stable
 branches:
   only:
   - source
-git:
-    depth: false
-    submodules: false
+# git:
+#     depth: false
+#     submodules: false
 # 缓存，可以节省集成的时间，这里我用了yarn，如果不用可以删除
 cache:
   apt: true
@@ -19,8 +19,8 @@ before_install:
 - export TZ='Asia/Shanghai' # 更改时区
 - git config --global user.name "mianhk"
 - git config --global user.email "gcyu@gmail.com"
-- chmod +x git_reset_mtime.py
-- python3 ./git_reset_mtime.py
+# - chmod +x git_reset_mtime.py
+# - python3 ./git_reset_mtime.py
 # 由于使用了yarn，所以需要下载，如不用yarn这两行可以删除
 #- curl -o- -L https://yarnpkg.com/install.sh | bash
 #- export PATH=$HOME/.yarn/bin:$PATH
