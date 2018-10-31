@@ -12,6 +12,31 @@ tags: [工具,博客]
 <!--more-->
 
 ## 2018-10-30 17:28:33
+
+##### 主页文章添加阴影效果
+##### 在网站底部加上访问量
+##### 添加热度
+##### 网站底部字数统计
+##### 修改``代码块自定义样式
+打开`\themes\next\source\css\_custom\custom.styl`,向里面加入：(颜色可以自己定义):
+```
+// Custom styles.
+code {
+    color: #ff7600;
+    background: #fbf7f8;
+    margin: 2px;
+}
+// 大代码块的自定义样式
+.highlight, pre {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+}
+.highlight, code, pre {
+    border: 1px solid #d6d6d6;
+}
+```
+
 ##### 添加访问量
 打开`\themes\next\layout\_partials\footer.swig`文件,搜索`<div class="copyright">`，在这个`div`标签前边加上如下代码:
 ```
