@@ -691,8 +691,3 @@ images: images
 version: 5.1.2
 
 
-#宠物
-live2d:
-  model: nipsilon
-  bottom: -30
-  mobileShow: false
