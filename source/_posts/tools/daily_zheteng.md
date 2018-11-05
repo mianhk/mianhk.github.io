@@ -13,6 +13,7 @@ tags: [博客,资源,收集]
 [hexo博客插件](https://zhuanlan.zhihu.com/p/28128674)
 [我的博客折腾](http://www.yuguocong.me/10-%E5%B7%A5%E5%85%B7/%E6%88%91%E7%9A%84hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/)
 [自动构建博客](http://yeziahehe.com/2015/12/13/use_Travis_CI_auto_build_Hexo_static_blog/)
+[hexo干货系列：（六）hexo提交搜索引擎（百度+谷歌）](https://www.cnblogs.com/tengj/p/5357879.html)
 
 ## Linux
 [jupyter](http://www.yuguocong.me/26-%E5%B7%A5%E5%85%B7/use_of_jupyter/)
