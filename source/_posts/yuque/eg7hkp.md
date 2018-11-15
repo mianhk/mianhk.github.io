@@ -1,5 +1,5 @@
 
-title: Hexo折腾-使用语雀编辑器
+title: 使用语雀编辑器写静态博客
 date: 2018-11-14 22:27:10 +0800
 tags: [Hexo,折腾,语雀]
 categories: 工具
