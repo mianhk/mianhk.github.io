@@ -72,6 +72,7 @@ theme: next
 # 豆瓣
 douban:
   user: 177022660
+  builtin: true 
   book:
     title: 'Book'
     quote: '我看的书'
