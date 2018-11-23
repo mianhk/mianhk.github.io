@@ -11,7 +11,7 @@ tags: [Linux,后台开发,Redis,Nosql]
 ### 1.简单动态字符串
 Redis自己构建了简单动态字符串(Simple Dynamic String,SDS)来作为默认的字符串表示。  
 SDS的构造如下：
-<img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180619151556.png"/>
+<img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180619151556.png"/>
 优势是：
 1. 能够在常数时间内获取字符串的长度-通过len属性   
 2. 能够杜绝缓冲区溢出：记录了缓冲区的大小，在长度不够时，能够自动扩展空间  
@@ -28,7 +28,7 @@ Redis字典底层采用哈希表实现。采用MurmurHash2算法，解决键冲�
 Redis采用跳跃表作为有序集合键的底层数据结构，另：在集群节点中用作内部数据结构  
 跳跃表：一种有序数据结构，通过在一个节点维持多个指向其他节点的指针，从而达到快速访问节点的目的。支持平均O(logN),最差O(N)复杂度的查找。
 Redis中跳跃表的实现：
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180619154918.png" /> </div><br>
+<div align="center"> <img src="http://blog-1252063226.cosbj..com/network/20180619154918.png" /> </div><br>
 其中包括表头和表尾节点，length记录节点的数量，level用于获取跳跃表中层高最大的那个节点的层数量 （表头节点的层高不计算在内）    
   
 ### 5.整数集合

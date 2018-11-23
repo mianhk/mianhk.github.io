@@ -26,7 +26,7 @@ tags: [面试,操作系统,工作,Linux]
 
 ## 段页存储
 程序员按照分段系统的地址结构将地址分为段号与段内位移量，地址变换机构将段内位移量分解为页号和页内位移量。  
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180622105842.png" /> </div><br>  
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180622105842.png" /> </div><br>  
 为实现段页式存储管理，系统应为每个进程设置一个段表，包括每段的段号，该段的页表始址和页表长度。每个段有自己的页表，记录段中的每一页的页号和存放在主存中的物理块
 
 它首先将程序按其逻辑结构划分为若干个大小不等的逻辑段，然后再将每个逻辑段划分为若干个大小相等的逻辑页。主存空间也划分为若干个同样大小的物理页。辅存和主存之间的信息调度以页为基本传送单位，每个程序段对应一个段表，每页对应一个页表。
@@ -147,7 +147,7 @@ OPT（Optimal replacement）最优置换算法：理论的最优，理论；就�
   "Z (zombie)",        /*  32 */
 };
 ```
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180622100813.png" /> </div><br>         
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180622100813.png" /> </div><br>         
 
 ### 1.进程管理->CPU
 
@@ -185,5 +185,5 @@ SJF算法有两种：不可抢占方式和可抢占方式。其中可抢占方�
 
 ### Linux 的启动流程
 BIOS->主引导记录->操作系统->**加载内核(/boot)**:载入内核文件->**启动初始化进程**：运行第一个程序 /sbin/init，初始化系统环境。->**确定运行级别**:运行这些开机启动的程序。->**加载开机启动程序**->**用户登录**->**进入 login shell**->打开 non-login shell  
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180622222745.png" /> </div><br>
-[Linux 的启动流程-阮一峰](http://www.ruanyifeng.com/blog/2013/08/linux_boot_process.html)
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180622222745.png" /> </div><br>
+[Linux 的启动流程-阮一峰](https://www.ruanyifeng.com/blog/2013/08/linux_boot_process.html)

@@ -113,9 +113,9 @@ http {
 ```
 
 #### 结果
-在浏览器中输入：`http://111.230.231.95:8081/server1/location1/`![](http://blog-1252063226.cosbj.myqcloud.com/server/002001.jpg?raw=true)
+在浏览器中输入：`http://111.230.231.95:8081/server1/location1/`![](https://blog-1252063226.cosbj.myqcloud.com/server/002001.jpg?raw=true)
 输入`http://111.230.231.95:8082/server2/location1/`显示：
-![](http://blog-1252063226.cosbj.myqcloud.com/server/002002.jpg?raw=true)
+![](https://blog-1252063226.cosbj.myqcloud.com/server/002002.jpg?raw=true)
 
 #### 出现的问题分析
 * root目录的位置：

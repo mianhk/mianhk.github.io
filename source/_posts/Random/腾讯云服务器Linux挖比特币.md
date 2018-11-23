@@ -30,10 +30,10 @@ nohup ./minerd -a scrypt -o stratum+tcp://xmr.f2pool.com:13531 --userpass=账号
 nohup ./minerd -a scrypt -o stratum+tcp://zec.f2pool.com:3357 --userpass=账号:密码 &
 ```
 之后，就可以打开日志文件看到在挖矿了。我们还需要在网站填上自己的比特币钱包地址。但是这个挖的数目确实有点小啊
-  ![](http://blog-1252063226.cosbj.myqcloud.com/tools/001001.png?raw=true)
+  ![](https://blog-1252063226.cosbj.myqcloud.com/tools/001001.png?raw=true)
 
 之后打开腾讯云服务器可以看到CPU已经跑满了啊。
-![](http://blog-1252063226.cosbj.myqcloud.com/tools/001002.png?raw=true)
+![](https://blog-1252063226.cosbj.myqcloud.com/tools/001002.png?raw=true)
 
 
 然后之后就看到网上说云服务器跑的太满的话，会被封的，那就把CPU限制一下吧。
@@ -54,8 +54,8 @@ cpulimit -p pid -l n  # n是限制的值
 ```
 
 限制之后，就能明显的看到CPU占用没有满了：
-![](http://blog-1252063226.cosbj.myqcloud.com/tools/001003.jpg?raw=true)
-![](http://blog-1252063226.cosbj.myqcloud.com/tools/001004.jpg?raw=true)
+![](https://blog-1252063226.cosbj.myqcloud.com/tools/001003.jpg?raw=true)
+![](https://blog-1252063226.cosbj.myqcloud.com/tools/001004.jpg?raw=true)
 
 
 哈哈，就当玩玩吧，多了解一下区块链，总得跟上节奏吧，虽然已经有点晚了的样子

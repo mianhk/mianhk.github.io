@@ -6,7 +6,7 @@ tags: [C++,LeetCode,剑指offer]
 ---
 > 重刷剑指offer总结  
     
-<div align="center" > <img src="http://blog-1252063226.cosbj.myqcloud.com/network/22547215-1_u_1.jpg" hight="200px"/> </div><br>
+<div align="center" > <img src="https://blog-1252063226.cosbj.myqcloud.com/network/22547215-1_u_1.jpg" hight="200px"/> </div><br>
 
 <!--more-->
 ## 01.二维数组中的查找 

@@ -23,19 +23,19 @@ tags: [博客,折腾]
 由于Travis CI可以监听某个分支，所以这样一想，就不用弄两个仓库了，只需要弄两个分支即可：源码放在source分支，并又Travis CI监听，每次push后会自动push到master分支，完成博客的自动部署。  
 
 Travis CI连接到仓库需要token才能操作，就相当于一把钥匙，可以在`Settings`->` Developer settings`->`Personal access tokens`->`Generate new token`,填写`Token description`，之后勾选`repo`，选择`generate token`。如图：
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20181026151507.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026151507.png" /> </div><br>
 
 点击复制按钮复制`token`：
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20181026151704.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026151704.png" /> </div><br>
 
 # Travis CI设置
 ## github账号登录
 在[Travis CI网站](https://travis-ci.org/)通过github账号登录后，开启gitpages仓库的同步，然后点击`settings`进行设置。
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20181026155513.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026155513.png" /> </div><br>
 
 ## 通用设置和配置环境变量
 之后开启设置，并设置环境变量(主要是为了travis的自动部署，但是token直接公开有风险，因此需要在这里设置):
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20181026155627.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026155627.png" /> </div><br>
 
 # 在source分支创建`.travis.yml `文件
 在gitpages仓库的source分支创建。这里涉及几个git的操作，真是坑踩多了，自然就会多用几个命令了。。   
@@ -99,7 +99,7 @@ after_success:
 ```
 
 之后便可以通过在本地或者其他电脑上通过git在source分支上的操作实现自动部署了。  
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20181026161116.png" /> </div><br> 
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026161116.png" /> </div><br> 
 
 # 一些坑
 一些拷贝文件产生的错误，导致中间出错了好几次，通过调整文件进行本地测试的时候，没有问题，但是自动构建就还是出问题。需要将原来的源码中的`config.yml`的push选项进行一下修改。
