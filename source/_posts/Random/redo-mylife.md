@@ -8,7 +8,7 @@ tags: [随笔,生活]
 	
 ## why title
 > 生活就是要不断的思考,不是吗?
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180624112358.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180624112358.png" /> </div><br>
 <!--more-->
 ### update:2018-05-13 21:15:04 周日
 突然觉得很久没思考自己的生活了。      

@@ -14,7 +14,7 @@ sudo /etc/init.d/nginx start
 接下来直接在浏览器里面打开，就能看到hello,Nginx这样欣慰 的界面了。
 
 之后能够在文件夹`/etc`中看到我们的配置的文件：
-![](http://blog-1252063226.cosbj.myqcloud.com/server/001001.jpg?raw=true)
+![](https://blog-1252063226.cosbj.myqcloud.com/server/001001.jpg?raw=true)
 在`var/www/html`文件夹中能看到`index.html`文件，即是我们的主页文件。
 **这里没有采用源码的方式安装，其实是觉得没有必要了。 **
 

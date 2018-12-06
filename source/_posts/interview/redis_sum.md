@@ -28,7 +28,7 @@ Redis字典底层采用哈希表实现。采用MurmurHash2算法，解决键冲�
 Redis采用跳跃表作为有序集合键的底层数据结构，另：在集群节点中用作内部数据结构  
 跳跃表：一种有序数据结构，通过在一个节点维持多个指向其他节点的指针，从而达到快速访问节点的目的。支持平均O(logN),最差O(N)复杂度的查找。
 Redis中跳跃表的实现：
-<div align="center"> <img src="http://blog-1252063226.cosbj..com/network/20180619154918.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj..com/network/20180619154918.png" /> </div><br>
 其中包括表头和表尾节点，length记录节点的数量，level用于获取跳跃表中层高最大的那个节点的层数量 （表头节点的层高不计算在内）    
   
 ### 5.整数集合
@@ -48,7 +48,7 @@ Redis服务器讲所有数据库保存在一个db数组中，默认创建16个�
 键空间的键也是数据库的键。每个键都是一个字符串对象。  
 键空间的值也是数据库的值，每个值可以是字符串对象、列表对象、哈希对象、集合对象，有序集合对象中的任意一个Redis对象。  
 一个键空间的例子：
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180619162843.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180619162843.png" /> </div><br>
   
 #### 设置键的生存时间或过期时间
 原理是：过期时间是一个UNIX时间戳，当键的过期时间来临是，服务器就会自动从数据库中删除一个键。   
@@ -66,7 +66,7 @@ ttl <key>   #计算key的剩余生存时间
 
 setex命令可以设置一个字符串键的同时为键设置过期时间。
 一个带有过期字典的数据库例子：（实际中，键空间的键和过期字典中的键都指向同一个键对象）
-<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/20180619163748.png" /> </div><br>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20180619163748.png" /> </div><br>
 
 #### 过期键删除策略
 - 定时删除： 内存最友好，CPU时间最不友好   
