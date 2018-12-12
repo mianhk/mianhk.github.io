@@ -1,14 +1,13 @@
 
-title: CentOS7安装并使用MySQL
-date: 2018-12-07 17:41:58 +0800
-tags: []
-categories: 
----
-title:  使用语雀编辑器写静态博客
-date: 2018-12-9 21:57:59
-update: 2018-12-9 21:57:59
-categories: MySQL
+title: 使用语雀编辑器写静态博客
+date: 2018-12-09 21:57:59 +0800
 tags: [MySQL,学习]
+categories: MySQL
+---
+
+> MySQL在CentOS上的安装和使用  
+
+<!--more-->  
 # <a name="nvr1gq"></a>yum安装
 1.首先找到官网yum的地址：[https://dev.mysql.com/downloads/repo/yum/](https://dev.mysql.com/downloads/repo/yum/)，找到redhat的版本 ``` __Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package __`,并复制download的地址，然后下载下来：
 ```bash
