@@ -12,6 +12,20 @@ tags: [工具,博客]
 <!--more-->
 
 ## 2018-12-24 
+### Hexo添加分类
+在文件中使用`categories`，然后配置`themes/_config.yml`文件：
+```
+menu:
+  home: /
+  #categories: /categories/
+  archives: /archives/
+  tags: /tags/
+  books: /books   
+  movies: /movies
+  friends: /categories/friends
+  about: /categories/about
+```
+
 ### 添加背景图片
 使用插件jquery-backstretch，编辑文件`/themes/next/layout/_layout.swig`,将下面的代码添加到最后面body的前面:
 ```
@@ -219,3 +233,4 @@ layout: "tags"
 [Hexo搭建的GitHub博客之优化大全](https://zhuanlan.zhihu.com/p/33616481)
 [解决 Travis CI 总是更新旧博客的问题](https://wafer.li/Hexo/%E8%A7%A3%E5%86%B3%20Travis%20CI%20%E6%80%BB%E6%98%AF%E6%9B%B4%E6%96%B0%E6%97%A7%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%97%AE%E9%A2%98/)
 [修改背景图片](http://www.tianguolangzi.com/2018/01/17/hexo%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/)
+[Hexo添加分类](https://xyzardq.github.io/2016/11/02/Hexo%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8A%9F%E8%83%BD/)
