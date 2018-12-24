@@ -82,6 +82,10 @@
   {% include '_third-party/exturl.swig' %}
   
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>;
+  <script>
+  $("body").backstretch("http://blog-1252063226.cosbj.myqcloud.com/network/20181224194730.png");
+  </script>
 
 </body>
 </html>

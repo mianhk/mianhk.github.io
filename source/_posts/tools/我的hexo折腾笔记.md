@@ -11,6 +11,53 @@ tags: [工具,博客]
 
 <!--more-->
 
+## 2018-12-24 
+### 添加背景图片
+使用插件jquery-backstretch，编辑文件`/themes/next/layout/_layout.swig`,将下面的代码添加到最后面body的前面:
+```
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>;
+  <script>
+  $("body").backstretch("http://blog-1252063226.cosbj.myqcloud.com/network/20181224194730.png");
+  </script>
+
+</body>
+```
+### 使用hexo-neat进行压缩以增加页面速度
+采用`hexo-neat`进行压缩，插件地址为：https://github.com/rozbo/hexo-neat，使用步骤为：
+```
+#安装hexo-neat
+$ npm install hexo-neat --save
+```
+
+添加配置到根目录下的`_config.yml`，在最后加上(这里跟别人的有一些改动，因为有一些配置出了问题，找了很久，但是还是没有解决，干脆就不折腾了):
+```
+# hexo-neat
+# 博文压缩
+neat_enable: true
+# 压缩html
+neat_html:
+  enable: true
+  exclude:
+    - '**/*.html'
+# 压缩css  
+neat_css:
+  enable: true
+  exclude:
+    - '**/*.min.css'
+# 压缩js
+neat_js:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '**/*.min.js'
+    - '**/jquery.fancybox.pack.js'
+    - '**/index.js'
+```
+不用再做其他的改动，压缩前后的对比为：
+<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/TIM%E5%9B%BE%E7%89%8720181224194312.png" /> </div><br>
+<div align="center"> <img src="http://blog-1252063226.cosbj.myqcloud.com/network/TIM%E6%88%AA%E5%9B%BE20181224194410.jpg" /> </div><br>
 ## 2018-10-30 17:28:33
 
 ##### 主页文章添加阴影效果
