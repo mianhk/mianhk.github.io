@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.yuguocong.cn/Tools/my_hexo_notes.html</loc>
+    <lastmod>2018-12-24T13:29:18.000Z</lastmod>
+  </url>  <url>
     <loc>http://www.yuguocong.cn/yuque/agwlu3.html</loc>
     <lastmod>2018-12-24T13:06:25.000Z</lastmod>
   </url>  <url>
@@ -80,9 +83,6 @@
     <lastmod>2018-12-24T12:58:19.000Z</lastmod>
   </url>  <url>
     <loc>http://www.yuguocong.cn/Random/moives.html</loc>
-    <lastmod>2018-12-24T12:58:19.000Z</lastmod>
-  </url>  <url>
-    <loc>http://www.yuguocong.cn/Tools/my_hexo_notes.html</loc>
     <lastmod>2018-12-24T12:58:19.000Z</lastmod>
   </url>  <url>
     <loc>http://www.yuguocong.cn/interview/redis_sum.html</loc>
