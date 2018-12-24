@@ -56,8 +56,8 @@ menu:
   #commonweal: /404/
   books: /books   
   movies: /movies
-  friends: /archives/friends
-  about: /archives/about
+  friends: /categories/friends
+  about: /categories/about
   
 # Enable/Disable menu icons.
 # Icon Mapping:
