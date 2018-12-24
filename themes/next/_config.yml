@@ -56,8 +56,8 @@ menu:
   #commonweal: /404/
   books: /books   
   movies: /movies
-  friends: /categories/friends/index.html
-  about: /categories/about/index.html
+  大佬们: /social
+  我: /about
   
 # Enable/Disable menu icons.
 # Icon Mapping:
