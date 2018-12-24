@@ -72,7 +72,7 @@ menu_icons:
   home: home
   about: user
   categories: th
-  friends: user
+  social: user
   #schedule: calendar
   tags: tags
   archives: archive
