@@ -68,7 +68,7 @@
     "body": "> 本来以为已经是最后一次折腾了，但是总是生活不停，折腾不止，觉得本地文件管起来还是有点麻烦，看到语雀markdown又做的这么好，前几天还准备拿它当云笔记用，但是据说底层存的都是md格式，有的时候又还是不太方便，不过做编辑器来说确实很爽了，自带图床，还有github上开源的一个接口。   \n\n<!--more-->\n\n# <a name=\"s7pfan\"></a>准备工作\n## <a name=\"p3r4ex\"></a>更新node.js和npm\n刚刚来就是坑，不过还是准备从正常的步骤开始说吧，就是博客基于的是nodejs，很多包的安装都是采用npm统一管理的，因为有些插件需要使用新的版本，所以需要先更新一下，这里只说一下windows下面的操作。\n### <a name=\"p7w2ix\"></a>更新node.js\nwindow下并没有网上说的乱七八糟的命令行更新方式，直接在[官网](http://nodejs.cn/)下载最新的安装包就可以。然后安装在之前的位置进行覆盖就可以更新了。更新之后通过命令:\n```git\n$node -v\nv10.13.0\n```\n### <a name=\"85nlcu\"></a>更新npm\n通过命令：\n```git\n$npm install -g npm\n\n#更新后的版本可以看到\n$npm -v\n6.4.1\n```\n### <a name=\"wng1dw\"></a>更新包\n可以使用命令:\n```git\n$npm outdated         #查看需要更新的包：\nPackage                 Current  Wanted  Latest  Location\nhexo-helper-live2d      MISSING   3.1.0   3.1.0  hexo-site\nhexo                      3.3.9   3.8.0   3.8.0  hexo-site\nhexo-douban              0.2.14  0.2.16   1.0.6  hexo-site\nhexo-generator-archive    0.1.4   0.1.5   0.1.5  hexo-site\nhexo-generator-search     2.2.5   2.3.0   2.3.0  hexo-site\nhexo-renderer-ejs         0.2.0   0.2.0   0.3.1  hexo-site\nhexo-renderer-marked     0.2.11  0.2.11   0.3.2  hexo-site\nhexo-server               0.2.2   0.2.2   0.3.3  hexo-site\n```\n\n## <a name=\"安装语雀文章下载插件\"></a>安装语雀文章下载插件\n首先这里鸣谢开源的插件：[[yuque-hexo](https://github.com/x-cold/yuque-hexo)](https://github.com/x-cold/yuque-hexo)，通过工具可以将语雀知识库中的文件同步到本地，大部分功能和步骤在仓库中都有些，但是自己做的时候还是踩了坑，这里就还是写一下吧。\n### <a name=\"z8p4qn\"></a>1.创建语雀知识库\n打开[语雀](https://www.yuque.com/) 创建自己的博客知识库，并且要__设置成公开的。可以在设置中看到链接如下：__\n\n\n![image.png | center | 375x247](https://cdn.nlark.com/yuque/0/2018/png/187932/1542204775155-271c9311-4643-4ccd-8692-24ab7351e0cb.png \"\")\n\n同时打开[blog知识库](https://www.yuque.com/mianhk/gaqqwc):[https://www.yuque.com/mianhk/gaqqwc](https://www.yuque.com/mianhk/gaqqwc)可以打开知识库。\n### <a name=\"p1gbwg\"></a>2.在本地安装<span data-type=\"color\" style=\"color:rgb(74, 74, 74)\"><span data-type=\"background\" style=\"background-color:rgb(255, 255, 255)\">yuque-hexo</span></span>\n```git\nnpm i -g yuque-hexo\n```\n### <a name=\"2nybfh\"></a>3.配置package.json\n```plain\n  \"scripts\": {\n    \"clean\": \"npm run clean:yuque && hexo clean\",\n    \"clean:yuque\": \"DEBUG=yuque-hexo.* yuque-hexo clean\",\n    \"deploy\": \"hexo deploy\",\n    \"publish\": \"npm run clean && npm run deploy\",\n    \"dev\": \"hexo s\",\n    \"sync\": \"DEBUG=yuque-hexo.* yuque-hexo sync\",\n    \"reset\": \"npm run clean:yuque && npm run sync\"\n  },   \n  \"yuqueConfig\": {\n    \"baseUrl\": \"https://www.yuque.com/api/v2\",    #这是语雀的永久链接，直接复制就可以\n    \"login\": \"mianhk\",                      #用户名，上个链接的第一个下划线\n    \"repo\": \"gaqqwc\",                      #知识库链接，第二个下划线\n    \"mdNameFormat\": \"slug\",               #导出本地的文件名为随机的数字，比直接的中文title要好看，\n                                                可以直接用了\n    \"postPath\": \"source/_posts/yuque\"     #存在本地文件夹的位置\n  }\n```\n\n### <a name=\"0rl2so\"></a>4.删除和同步文章\n```plain\n#删除文章\n$yuque-clean\n[INFO] yuque-hexo clean start.\n[INFO] remove yuque posts: F:\\blog\\mianhk.github.io\\source\\_posts\\yuque\\\n[INFO] remove yuque local file: F:\\blog\\mianhk.github.io\\yuque.json\n[INFO] yuque-hexo clean finished.\n\n#同步文章\n$yuque-hexo sync\n[INFO] yuque-hexo sync start.\n[INFO] remove yuque posts: F:\\blog\\mianhk.github.io\\source\\_posts\\yuque\\\n[INFO] loading config: F:\\blog\\mianhk.github.io\\package.json\n[INFO] downloading articles: {\"baseUrl\":\"https://www.yuque.com/api/v2\",\"login\":\"mianhk\",\"repo\":\"gaqqwc\",\"mdNameFormat\":\"slug\",\"postPath\":\"source/_posts/yuque\"}\n[INFO] reading from local file: F:\\blog\\mianhk.github.io\\yuque.json\n[INFO] download article body: 11月生活小结\n[INFO] download articls done!\n[INFO] writing to local file: F:\\blog\\mianhk.github.io\\yuque.json\n[INFO] create posts director (if it not exists): F:\\blog\\mianhk.github.io\\source\\_posts\\yuque\n[INFO] generate post file: F:\\blog\\mianhk.github.io\\source\\_posts\\yuque\\xzxhcv.md\n[INFO] yuque-hexo sync finished.\n\n```\n\n### <a name=\"enltgy\"></a>5.修改文章的title和tag等\n还是跟之前的格式直接写即可。\n```makedown\ntitle:  \ndate: \nupdate: \ncategories: \ntags: []\n```\n\n### <a name=\"974chn\"></a>6.部署博客\n\n# <a name=\"mzmxge\"></a>记录一些坑\n\n* 知识库一定要是公开的\n* windows下更新nodejs不能用n，即使强制使用了也还是无法更新\n* 新版本的npm。<span data-type=\"color\" style=\"color:rgb(26, 26, 26)\"><span data-type=\"background\" style=\"background-color:rgb(255, 255, 255)\">如果改了package.json，且package.json和lock文件不同，那么执行`npm i`时npm会根据package中的版本号以及语义含义去下载最新的包，并更新至lock。</span></span>\n\n\n## <a name=\"vpz7ep\"></a>Reference:\n* [https://github.com/x-cold/yuque-hexo](https://github.com/x-cold/yuque-hexo)\n* [https://luan.ma/post/yuque2blog/](https://luan.ma/post/yuque2blog/)\n* [https://www.zhihu.com/question/62331583](https://www.zhihu.com/question/62331583)\n* [将 Hexo 升级到 v3.5.0](https://tommy.net.cn/2018/02/26/upgrade-hexo-to-v3-5-0/) \n* [Demo Json](https://github.com/x-cold/blog/blob/master/package.json#L26) \n\n"
   },
   {
-    "title": "使用语雀编辑器写静态博客",
+    "title": "CentOS7安装并使用MySQL",
     "description": "title:  使用语雀编辑器写静态博客date: 2018-12-9 21:57:59update: 2018-12-9 21:57:59categories: MySQLtags: [MySQL,学习]\ryum安装1.首先找到官网yum的地址：https://dev.mysql.com/d...",
     "created_at": "2018-12-07T09:41:58.000Z",
     "updated_at": "2018-12-10T14:01:37.000Z",
@@ -238,6 +238,32 @@
     "published_at": null,
     "format": "asl",
     "slug": "nb89bz",
+    "last_editor": {
+      "id": 187932,
+      "type": "User",
+      "login": "mianhk",
+      "name": "mianhk",
+      "description": null,
+      "avatar_url": "https://gw.alipayobjects.com/zos/rmsportal/wYnHWSXDmBhiEmuwXsym.png",
+      "large_avatar_url": "https://gw.alipayobjects.com/zos/rmsportal/wYnHWSXDmBhiEmuwXsym.png?x-oss-process=image/resize,m_fill,w_320,h_320",
+      "medium_avatar_url": "https://gw.alipayobjects.com/zos/rmsportal/wYnHWSXDmBhiEmuwXsym.png?x-oss-process=image/resize,m_fill,w_160,h_160",
+      "small_avatar_url": "https://gw.alipayobjects.com/zos/rmsportal/wYnHWSXDmBhiEmuwXsym.png?x-oss-process=image/resize,m_fill,w_80,h_80",
+      "followers_count": 0,
+      "following_count": 0,
+      "created_at": "2018-10-10T13:47:18.000Z",
+      "updated_at": "2018-11-14T13:39:11.000Z",
+      "_serializer": "v2.user"
+    },
+    "body": ""
+  },
+  {
+    "title": "2018年终总结",
+    "description": "",
+    "created_at": "2018-12-16T11:02:22.000Z",
+    "updated_at": "2018-12-16T11:15:35.000Z",
+    "published_at": null,
+    "format": "asl",
+    "slug": "ws11rq",
     "last_editor": {
       "id": 187932,
       "type": "User",

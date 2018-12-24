@@ -1,5 +1,5 @@
 
-title: 使用语雀编辑器写静态博客
+title: CentOS7安装并使用MySQL
 date: 2018-12-09 21:57:59 +0800
 tags: [MySQL,学习]
 categories: MySQL
