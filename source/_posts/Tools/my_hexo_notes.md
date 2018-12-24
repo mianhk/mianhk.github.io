@@ -22,6 +22,24 @@ tags: [工具,博客]
 
 </body>
 ```
+但是好像没有效果，于是在文件`themes\next\source\css_custom\custom.styl`中添加了如下：
+```
+body {
+    background:url(https://source.unsplash.com/random/1600x900);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%;
+}
+
+//修改背景的不透明度
+.main-inner { 
+    margin-top: 60px;
+    padding: 60px 60px 60px 60px;
+    background: #fff;
+    opacity: 0.8;
+    min-height: 500px;
+}
+```
 ### 使用hexo-neat进行压缩以增加页面速度
 采用`hexo-neat`进行压缩，插件地址为：https://github.com/rozbo/hexo-neat，使用步骤为：
 ```
@@ -200,3 +218,4 @@ layout: "tags"
 [绑定到coding](http://blog.csdn.net/dengnanyi/article/details/53969684)
 [Hexo搭建的GitHub博客之优化大全](https://zhuanlan.zhihu.com/p/33616481)
 [解决 Travis CI 总是更新旧博客的问题](https://wafer.li/Hexo/%E8%A7%A3%E5%86%B3%20Travis%20CI%20%E6%80%BB%E6%98%AF%E6%9B%B4%E6%96%B0%E6%97%A7%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%97%AE%E9%A2%98/)
+[修改背景图片](http://www.tianguolangzi.com/2018/01/17/hexo%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/)

@@ -100,9 +100,9 @@ save 60 10000
 满足上述一个条件，BASAVE就会执行。
 ```
 #### RDB文件结构
-| 头部  | 数据库版本 | 数据      | 正文结束符 | 校验和    |
+| 头部  | 数据库版本 |   数据    | 正文结束符 |  校验和   |
 | :---: | :--------: | :-------: | :--------: | :-------: |
-| REDIS | db_version | databases | EOF        | check_sum |
+| REDIS | db_version | databases |    EOF     | check_sum |
 
 ### AOF持久化(Append Only File)
 通过保存Redis服务器所执行的写命令来记录数据库状态。   

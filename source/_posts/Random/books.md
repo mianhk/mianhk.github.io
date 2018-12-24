@@ -1,10 +1,22 @@
 ---
-title: 我的书单2017
-date: 2017-09-10 00:40:49
-updates: 2017-09-10 00:40:49
-categories: 生活
-tags: 阅读
+title: 我的专业书阅读
+date: 2017-11-12 20:47:37
+categories: C++
+tags: C++
 ---
+<!--more-->
+# 专业书
+- 《Python核心编程》 ed2
+- 《C++　Primer 》ed5
+- 《STL 源码剖析》
+- 《Effective C++》
+- 《Unix 网络编程》卷一
+- 《Unix 网络编程》卷二
+- 《Unix 环境高级编程》
+- 《Linux多线程服务端编程》陈硕
+- 《TCP/IP详解》卷一
+
+# 其他
 ##### 2017要看完的书，生活总得有一些flag是吧
 [《人类简史》尤瓦尔·赫拉利](http://item.jd.com/12125924.html)
 [《未来简史》尤瓦尔·赫拉利](http://item.jd.com/12099462.html)
@@ -32,4 +44,3 @@ tags: 阅读
 [放学后]()
 [解忧杂货店]()
 [彷徨之刃]()
-
