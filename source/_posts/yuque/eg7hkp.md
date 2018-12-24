@@ -27,7 +27,7 @@ $npm -v
 6.4.1
 ```
 ### <a name="wng1dw"></a>更新包
-可以使用命令:
+可以使用命令查看可以更新的包:
 ```git
 $npm outdated         #查看需要更新的包：
 Package                 Current  Wanted  Latest  Location
@@ -39,8 +39,12 @@ hexo-generator-search     2.2.5   2.3.0   2.3.0  hexo-site
 hexo-renderer-ejs         0.2.0   0.2.0   0.3.1  hexo-site
 hexo-renderer-marked     0.2.11  0.2.11   0.3.2  hexo-site
 hexo-server               0.2.2   0.2.2   0.3.3  hexo-site
+$npm install --save  #
 ```
-
+之后修改`package.json`文件，修改到对应的版本。然后执行命令，进行更新：
+```plain
+$npm install --save 
+```
 ## <a name="安装语雀文章下载插件"></a>安装语雀文章下载插件
 首先这里鸣谢开源的插件：[[yuque-hexo](https://github.com/x-cold/yuque-hexo)](https://github.com/x-cold/yuque-hexo)，通过工具可以将语雀知识库中的文件同步到本地，大部分功能和步骤在仓库中都有些，但是自己做的时候还是踩了坑，这里就还是写一下吧。
 ### <a name="z8p4qn"></a>1.创建语雀知识库
