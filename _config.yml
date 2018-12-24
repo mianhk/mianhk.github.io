@@ -114,14 +114,15 @@ neat_enable: true
 neat_html:
   enable: true
   exclude:
+    - '**/*.html'
 # 压缩css  
 neat_css:
-  enable: false
+  enable: true
   exclude:
     - '**/*.min.css'
 # 压缩js
 neat_js:
-  enable: false
+  enable: true
   mangle: true
   output:
   compress:
