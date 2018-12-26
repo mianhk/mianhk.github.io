@@ -18,5 +18,6 @@ date: 2018-12-24 20:47:09
 [章帅不太帅](https://www.huangzz.xyz/)
 [MARKSZのBlog](https://molunerfinn.com/) :PicGo的大佬
 [飞雪无情的博客](https://www.flysnow.org/) :Android 和Go语言，写了个hugo的主题，准备以后换一下来着。
+[小淡博客](https://www.tanteng.me/blog) :后台开发，每周阅读
 
 
