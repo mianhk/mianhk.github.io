@@ -65,8 +65,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: aircloud
-# theme: next
-theme: maupassant-hexo
+theme: next
+# theme: maupassant-hexo
 
 # 自动生成sitemap
 
