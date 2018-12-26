@@ -64,8 +64,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: landscape
-# theme: next
-theme: maupassant
+theme: next
+# theme: maupassant
 
 # 自动生成sitemap
 
