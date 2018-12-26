@@ -7,8 +7,8 @@ title: Mianhk's notes
 subtitle: 这个人很懒，动不动就不想写
 description: 余国聪
 author: mianhk
-# language: zh-Hans
-language: zh-CN
+language: zh-Hans
+# language: zh-CN
 timezone: 
 
 # URL
@@ -65,8 +65,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: aircloud
-# theme: next
-theme: maupassant-hexo
+theme: next
+# theme: maupassant-hexo
 
 # 自动生成sitemap
 
