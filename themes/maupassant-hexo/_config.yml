@@ -83,7 +83,6 @@ menu:
   - page: 我
     directory: about/
     icon: fa-user
-  
   - page: 订阅
     directory: atom.xml
     icon: fa-rss

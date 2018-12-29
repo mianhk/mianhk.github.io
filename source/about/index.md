@@ -1,9 +1,8 @@
 ---
 layout: "about"
-title: "About"
-date: 2018-12-29 10:31:31
+title: "我"
+date: 2018-12-24 20:47:09
 comments: true
----
 
 # 个人信息
 
