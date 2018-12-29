@@ -1,7 +1,8 @@
 ---
-title: 关于我
-date: 2018-05-13 21:40:04
-updates: 2018-05-13 21:40:01
+layout: "about"
+title: "About"
+date: 2018-12-29 10:31:31
+comments: true
 ---
 
 # 个人信息
