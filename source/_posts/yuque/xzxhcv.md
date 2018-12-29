@@ -10,7 +10,6 @@ categories: 随笔
 
 
 
-
 ![image.png | center | 596x578](https://cdn.nlark.com/yuque/0/2018/png/187932/1541420058802-2a13e83c-eb31-4adb-9ce0-5b8443a9ff3b.png "")
 
 ## <a name="b8zftw"></a>专注的做自己该做的事情

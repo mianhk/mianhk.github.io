@@ -1,9 +1,9 @@
----
+<!-- ---
 layout: "catagory"
 title: "友情链接"
 date: 2018-12-24 20:47:09
 comments: true
-
+--- -->
 
 # <a name="9447oz"></a>友情链接
 [肖洒的博客](https://x-nicolo.github.io) 
