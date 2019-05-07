@@ -186,10 +186,10 @@ donate:
 
 # Site settings
 # 网站综合内容设置：
-# SEOTitle: Mianhk的博客 | Mianhk's Notes
-# email: gcyu25@gmail.com
-# description: "Mianhk的博客"
-# keyword: ""
+SEOTitle: Mianhk的博客 | Mianhk's Notes
+email: gcyu25@gmail.com
+description: "Mianhk的博客"
+keyword: ""
 
 # SNS settings
 # 一些社交平台地址，支持以下几种：
@@ -202,6 +202,6 @@ donate:
 
 # 文章样式(是否首行缩进)：
 post_style:
-  indent: default
+  indent: 0
   
 
