@@ -1,7 +1,8 @@
 # 使用语言
 language: node_js
 # node版本
-node_js: stable
+# node_js: stable
+node_js: v11.10.0
 # 设置只监听哪个分支
 branches:
   only:
