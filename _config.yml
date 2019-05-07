@@ -188,7 +188,7 @@ donate:
 # 网站综合内容设置：
 SEOTitle: Mianhk的博客 | Mianhk's Notes
 email: gcyu25@gmail.com
-description: "Mianhk的博客"
+# description: "Mianhk的博客"
 keyword: ""
 
 # SNS settings
