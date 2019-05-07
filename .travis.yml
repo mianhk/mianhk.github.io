@@ -42,6 +42,7 @@ install:
 # 不用yarn的话这里改成 npm i 即可
 #- yarn
 - npm i
+# - npm install -g yuque-hexo --save
 - npm install hexo-renderer-sass --save
 - npm install hexo-renderer-jade --save
 script:

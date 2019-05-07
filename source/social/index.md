@@ -19,5 +19,20 @@ comments: true
 [小淡博客](https://www.tanteng.me/blog) :后台开发，每周阅读  
 [卢涛南](https://lutaonan.com/):JavaScript,健身，还不错的博客
 [匠心零度](http://www.jiangxinlingdu.com/)
+[杨建荣的学习笔记](https://cloud.tencent.com/developer/column/2127) :腾讯云上的运维mysql
+[匠心零度](http://www.jiangxinlingdu.com/): java后台开发
+[Randy Lu 卢涛南](https://lutaonan.com/) :javaScript,阿里，技术写的较少
+[Alex's Blog](http://saili.science/) : 一个认真写工具总结的博士。。
+[Sean's Notes](http://seanlook.com/) : MySQL
+[入境繁华](http://blog.leanote.com/along): 百度后台开发
+[Eva](http://eva1963.win/): 前端
+[赖明星](http://mingxinglai.com/cn/):数据库
+[crosschannel](https://crosschannel.cc/): 专注于二次元的博客
+[天边风](https://www.tbfeng.com/):这个主题我比较喜欢，用的hugo的
+[王垠](https://www.yinwang.org/)
+[](http://blog.tmaize.net/):Go 语言
 
 
+## 小工具
+[MikuTools - 工具集合](https://miku.tools/)
+[Json在线](http://json.zhaojun.im/)
