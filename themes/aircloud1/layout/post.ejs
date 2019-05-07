@@ -3,9 +3,7 @@
 
 <div class="post-container">
     <div class="post-title">
-        <%- page.title.replace(/[<>&"]/g,function(c){
-            return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
-        }) %>
+        <%- page.title %>
     </div>
 
     <div class="post-meta">

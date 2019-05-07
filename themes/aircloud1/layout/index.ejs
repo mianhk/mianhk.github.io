@@ -9,9 +9,7 @@ layout: layout
         <div class="post-info">
             <a href="<%- config.root %><%- post.path %>">
                 <h3>
-                    <%- (post.title || "Untitled").replace(/[<>&"]/g,function(c){
-                        return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
-                    }) %>
+                    <%- post.title || "Untitled" %>
                 </h3>
             </a>
             <p>

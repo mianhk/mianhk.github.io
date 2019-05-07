@@ -65,9 +65,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-# theme: aircloud
+theme: aircloud
 # theme: next
-theme: maupassant-hexo
+# theme: maupassant-hexo
 
 # 自动生成sitemap
 
@@ -179,4 +179,29 @@ comment:
 donate:
   img: img/donate.jpg
   content: 感谢鼓励
+  
+  
+# 下面是Aircloud的修改
+#Custom Setting Start
+
+# Site settings
+# 网站综合内容设置：
+SEOTitle: Mianhk的博客 | Mianhk's Notes
+email: gcyu25@gmail.com
+description: "Mianhk的博客"
+keyword: ""
+
+# SNS settings
+# 一些社交平台地址，支持以下几种：
+weibo_username:     
+zhihu_username:     
+github_username:    mianhk
+twitter_username:   
+facebook_username:  
+linkedin_username:  
+
+# 文章样式(是否首行缩进)：
+post_style:
+  indent: default
+  
 
