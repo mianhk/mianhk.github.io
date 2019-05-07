@@ -8,8 +8,8 @@ subtitle: 这个人很懒，动不动就不想写
 description: 余国聪
 author: mianhk
 # language: zh-Hans
-language: zh-CN
-# language: zh
+# language: zh-CN
+language: zh
 timezone: 
 
 # URL
@@ -193,12 +193,12 @@ donate:
 
 # SNS settings
 # 一些社交平台地址，支持以下几种：
-weibo_username:     
-zhihu_username:     
-github_username:    mianhk
-twitter_username:   
-facebook_username:  
-linkedin_username:  
+# weibo_username:     
+# zhihu_username:     
+# github_username:    mianhk
+# twitter_username:   
+# facebook_username:  
+# linkedin_username:  
 
 # 文章样式(是否首行缩进)：
 post_style:
