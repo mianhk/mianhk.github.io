@@ -47,7 +47,6 @@ install:
 - npm install hexo-renderer-jade --save
 script:
 - hexo clean
-- hexo clean:yuque
 - hexo sync
 - hexo g
 
