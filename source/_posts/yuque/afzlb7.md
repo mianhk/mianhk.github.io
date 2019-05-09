@@ -1,15 +1,19 @@
 
 title: CentOS7安装并使用MySQL
-date: 2018-12-09 21:57:59 +0800
-tags: [MySQL,学习]
-categories: MySQL
+date: 2018-12-07 17:41:58 +0800
+tags: []
+categories: 
 ---
+title:  CentOS7安装并使用MySQL<br />date: 2018-12-9 21:57:59<br />update: 2018-12-9 21:57:59<br />categories: MySQL<br />tags: [MySQL,学习]
 
-> MySQL在CentOS上的安装和使用  
+---
+> MySQL在CentOS上的安装和使用  
 
-<!--more-->  
-# <a name="nvr1gq"></a>yum安装
-1.首先找到官网yum的地址：[https://dev.mysql.com/downloads/repo/yum/](https://dev.mysql.com/downloads/repo/yum/)，找到redhat的版本 ``` __Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package __`,并复制download的地址，然后下载下来：
+
+<!--more-->  
+<a name="nvr1gq"></a>
+# [](#nvr1gq)yum安装
+1.首先找到官网yum的地址：[https://dev.mysql.com/downloads/repo/yum/](https://dev.mysql.com/downloads/repo/yum/)，找到redhat的版本 ``` **Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package **`,并复制download的地址，然后下载下来：
 ```bash
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 ```
@@ -29,9 +33,11 @@ chown mysql:mysql -R /var/lib/mysql
 systemctl start mysqld
 ```
 
-# <a name="1qgpbs"></a>遇到的问题记录
+<a name="1qgpbs"></a>
+# [](#1qgpbs)遇到的问题记录
 当然，看着上面好像很爽，很快的样子，但是没想到接下来坑还是很多的。都有点怀疑自己了，到现在装个mysql还这么多问题。关键是，网上的解决办法，都是什么乱七八糟的。 
-## <a name="117oeg"></a>1.状态查看-灰色
+<a name="117oeg"></a>
+## [](#117oeg)1.状态查看-灰色
 ```powershell
 ➜  ~ systemctl status mysqld
 ● mysqld.service - MySQL Server
@@ -53,8 +59,7 @@ mysqladmin  Ver 8.0.13 for Linux on x86_64 (MySQL Community Server - GPL)
 ➜  ~ mysql
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
 ```
-看样子是没有这个socket，应该是位置不对，于是`sudo find / -name mysql.sock `赶紧搜一下，什么都没有，没有办法，重启一下试试吧。
-3.重启
+看样子是没有这个socket，应该是位置不对，于是`sudo find / -name mysql.sock `赶紧搜一下，什么都没有，没有办法，重启一下试试吧。<br />3.重启
 ```bash
 ➜  ~ sudo systemctl restart mysqld
 Job for mysqld.service failed because the control process exited with error code. See "systemctl status mysqld.service" and "journalctl -xe" for details.
@@ -73,11 +78,12 @@ Failed to start mysqld.service: Access denied
 See system logs and 'systemctl status mysqld.service' for details.
 ```
 
-## <a name="5wg9re"></a>2.错误：ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
-这个错误网上找了一下，有看起来还可以的处理:[http://blog.51cto.com/pengjc/1861088](http://blog.51cto.com/pengjc/1861088) 。但是实际上我打开都没有这个文件，搜也没有搜到，于是放弃，这个问题应该不算个问题，先放着解决别的。  
-## <a name="e6syft"></a>3.错误：Job for mysqld.service failed because the control process exited with error code. See "systemctl status mysqld.service" and "journalctl -xe" for details.
-看了一下网上的解决办法，说是由于权限的问题：[https://www.cnblogs.com/ivictor/p/5146247.html](https://www.cnblogs.com/ivictor/p/5146247.html) ，通过命令`chown mysql.mysql /var/run/mysqld/`，但是问题还是没有解决。  
-看了一下[stackoverflow](https://stackoverflow.com/questions/42317139/job-for-mysqld-service-failed-see-systemctl-status-mysqld-service)上面的说法，先通过`tail -f /var/log/mysqld.log`查看一下,，但是我的这个问题不是因为没有权限，
+<a name="5wg9re"></a>
+## [](#5wg9re)2.错误：ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+这个错误网上找了一下，有看起来还可以的处理:[http://blog.51cto.com/pengjc/1861088](http://blog.51cto.com/pengjc/1861088) 。但是实际上我打开都没有这个文件，搜也没有搜到，于是放弃，这个问题应该不算个问题，先放着解决别的。  
+<a name="e6syft"></a>
+## [](#e6syft)3.错误：Job for mysqld.service failed because the control process exited with error code. See "systemctl status mysqld.service" and "journalctl -xe" for details.
+看了一下网上的解决办法，说是由于权限的问题：[https://www.cnblogs.com/ivictor/p/5146247.html](https://www.cnblogs.com/ivictor/p/5146247.html) ，通过命令`chown mysql.mysql /var/run/mysqld/`，但是问题还是没有解决。  <br />看了一下[stackoverflow](https://stackoverflow.com/questions/42317139/job-for-mysqld-service-failed-see-systemctl-status-mysqld-service)上面的说法，先通过`tail -f /var/log/mysqld.log`查看一下,，但是我的这个问题不是因为没有权限，
 ```bash
 ➜  ~  tail /var/log/mysqld.log
 2018-12-07T09:13:21.651467Z 0 [ERROR] [MY-010119] [Server] Aborting
@@ -90,11 +96,8 @@ See system logs and 'systemctl status mysqld.service' for details.
 2018-12-07T09:15:40.965949Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
 2018-12-07T09:15:40.965977Z 0 [ERROR] [MY-010119] [Server] Aborting
 2018-12-07T09:15:40.966835Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.13)  MySQL Community Server - GPL.
-
 ```
-搜了一下这个问题：
-`[ERROR] [MY-012681] [InnoDB] mmap(137428992 bytes) failed; errno 12`
-看样子是内存映射出错，再通过命令`journalctl -xe`看一下,同时也找到了原因：原来是__swap分区是0(https://blog.csdn.net/sxyandapp/article/details/77091007),于是一阵操作：__
+搜了一下这个问题：<br />`[ERROR] [MY-012681] [InnoDB] mmap(137428992 bytes) failed; errno 12`<br />看样子是内存映射出错，再通过命令`journalctl -xe`看一下,同时也找到了原因：原来是**swap分区是0(https://blog.csdn.net/sxyandapp/article/details/77091007),于是一阵操作：**
 ```bash
 ➜  ~ free -m
 /dev/vda1            /                    ext4       noatime,acl,user_xattr 1 1
@@ -128,7 +131,8 @@ vi /etc/fstab
 /swap swap swap defaults 0 0
 ```
 之后再重启就好了。
-## <a name="75lwvk"></a>错误3：登录问题error: 'Access denied for user 'root'@'localhost' (using password: NO)'
+<a name="75lwvk"></a>
+## [](#75lwvk)错误3：登录问题error: 'Access denied for user 'root'@'localhost' (using password: NO)'
 这个其实是密码的问题，没有设置密码的时候，mysql会生成一个临时的密码，通过命令：
 ```bash
 ➜  ~ sudo grep 'temporary password' /var/log/mysqld.log
@@ -136,22 +140,20 @@ vi /etc/fstab
 ```
 可以看到生成的临时密码，然后用临时密码登录即可。
 
-## <a name="wt3kod"></a>修改密码的问题
+<a name="wt3kod"></a>
+## [](#wt3kod)修改密码的问题
 可能因为8.0的版本，修改的密码不能过于简单，并且命令好像也有些不一样了，用的是``
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
 ```
 
-看到一个别人的回答：
+看到一个别人的回答：<br />![](https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#width=695)<br />应该是后面才改的？
 
-
-![image.png | center | 695x148](https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png "")
-
-应该是后面才改的？
-
-# <a name="69ioxf"></a>外网连接mysql
+<a name="69ioxf"></a>
+# [](#69ioxf)外网连接mysql
 由于两台服务器的版本有点不一样，修改外网连接也有点不一样。
-## <a name="zvrisn"></a>[MySQL5.7](https://blog.csdn.net/w20228396/article/details/70143500) 
+<a name="zvrisn"></a>
+## [](#zvrisn)[MySQL5.7](https://blog.csdn.net/w20228396/article/details/70143500) 
 1.修改配置文件
 ```bash
 #修改配置文件
@@ -169,29 +171,25 @@ root        表示要给哪个用户授权，这个用户可以是存在�
 '%'          表示允许远程连接的IP地址，%代表允许所有IP连接
 ```
 
-## <a name="d0cydb"></a>[MySQL8.0](https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0) 
+<a name="d0cydb"></a>
+## [](#d0cydb)[MySQL8.0](https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0) 
 8.0的版本总结的对权限的管理严格很多，毕竟数据很重要，只有安全才能放心。尝试过上述方式，但是连接不上。最终在Stack Overflow上找到了办法。
 ```bash
 CREATE USER 'root'@'%' IDENTIFIED BY 'root';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
-但是修改之后还是会有问题，出现了2059错误：   
-
-
-![image.png | center | 586x129](https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png "")
-
-解决方式可以采用修改密码为简单密码：
+但是修改之后还是会有问题，出现了2059错误：   <br />![](https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#width=586)<br />解决方式可以采用修改密码为简单密码：
 ```bash
 SET GLOBAL validate_password.policy=0;
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '12345678';
 ```
-# <a name="gwwwfv"></a>总结
+<a name="gwwwfv"></a>
+# [](#gwwwfv)总结
 总之，感觉之前windows和ubuntu下都没有这么麻烦，这里总结一下吧，感觉以后会用的很多，不想踩坑了。
 
-# <a name="ex7rxf"></a>参考：
-[MySQL8.0.11连接错误2059解决方法](https://juejin.im/entry/5af5d2786fb9a07aaf3547cc) 
-[How to grant all privileges to root user in MySQL 8.0](https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0)
-[centos mysql初探 -- 配置、基本操作及问题](https://www.cnblogs.com/echo-coding/p/9172636.html)
+<a name="ex7rxf"></a>
+# [](#ex7rxf)参考：
+[MySQL8.0.11连接错误2059解决方法](https://juejin.im/entry/5af5d2786fb9a07aaf3547cc) <br />[How to grant all privileges to root user in MySQL 8.0](https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0)<br />[centos mysql初探 -- 配置、基本操作及问题](https://www.cnblogs.com/echo-coding/p/9172636.html)
 
 
 
