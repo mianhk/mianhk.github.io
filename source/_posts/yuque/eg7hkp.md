@@ -1,30 +1,35 @@
-
-title: 使用语雀编辑器写静态博客
-date: 2018-11-14 21:53:08 +0800
-tags: []
-categories: 
 ---
-title:  使用语雀编辑器写静态博客<br />date: 2018-11-14 22:27:10<br />update: 2018-11-14 22:27:10<br />categories: 工具<br />tags: [Hexo,折腾,语雀]<br /><br /><br />---
-> 本来以为已经是最后一次折腾了，但是总是生活不停，折腾不止，觉得本地文件管起来还是有点麻烦，看到语雀markdown又做的这么好，前几天还准备拿它当云笔记用，但是据说底层存的都是md格式，有的时候又还是不太方便，不过做编辑器来说确实很爽了，自带图床，还有github上开源的一个接口。   
+title:  使用语雀编辑器写静态博客
+urlname: eg7hkp
+date: 2018-11-14 22:27:10 +0800
+update: Wed Nov 14 2018 22:27:10 GMT+0800 (中国标准时间)
+categories: [工,具]
+tags: [Hexo,折腾,语雀]
+---
 
+> 本来以为已经是最后一次折腾了，但是总是生活不停，折腾不止，觉得本地文件管起来还是有点麻烦，看到语雀 markdown 又做的这么好，前几天还准备拿它当云笔记用，但是据说底层存的都是 md 格式，有的时候又还是不太方便，不过做编辑器来说确实很爽了，自带图床，还有 github 上开源的一个接口。
 
 <!--more-->
 
-<a name="s7pfan"></a>
-# [](#s7pfan)准备工作
-<a name="p3r4ex"></a>
-## [](#p3r4ex)更新node.js和npm
-刚刚来就是坑，不过还是准备从正常的步骤开始说吧，就是博客基于的是nodejs，很多包的安装都是采用npm统一管理的，因为有些插件需要使用新的版本，所以需要先更新一下，这里只说一下windows下面的操作。
-<a name="p7w2ix"></a>
-### [](#p7w2ix)更新node.js
-window下并没有网上说的乱七八糟的命令行更新方式，直接在[官网](http://nodejs.cn/)下载最新的安装包就可以。然后安装在之前的位置进行覆盖就可以更新了。更新之后通过命令:
+# 准备工作
+
+## 更新 node.js 和 npm
+
+刚刚来就是坑，不过还是准备从正常的步骤开始说吧，就是博客基于的是 nodejs，很多包的安装都是采用 npm 统一管理的，因为有些插件需要使用新的版本，所以需要先更新一下，这里只说一下 windows 下面的操作。
+
+### 更新 node.js
+
+window 下并没有网上说的乱七八糟的命令行更新方式，直接在[官网](http://nodejs.cn/)下载最新的安装包就可以。然后安装在之前的位置进行覆盖就可以更新了。更新之后通过命令:
+
 ```git
 $node -v
 v10.13.0
 ```
-<a name="85nlcu"></a>
-### [](#85nlcu)更新npm
+
+### 更新 npm
+
 通过命令：
+
 ```git
 $npm install -g npm
 
@@ -32,9 +37,11 @@ $npm install -g npm
 $npm -v
 6.4.1
 ```
-<a name="wng1dw"></a>
-### [](#wng1dw)更新包
+
+### 更新包
+
 可以使用命令查看可以更新的包:
+
 ```git
 $npm outdated         #查看需要更新的包：
 Package                 Current  Wanted  Latest  Location
@@ -48,25 +55,33 @@ hexo-renderer-marked     0.2.11  0.2.11   0.3.2  hexo-site
 hexo-server               0.2.2   0.2.2   0.3.3  hexo-site
 $npm install --save  #
 ```
+
 之后修改`package.json`文件，修改到对应的版本。然后执行命令，进行更新：
+
 ```
 $npm install --save
 ```
-<a name="f2134cf5"></a>
-## [](#安装语雀文章下载插件)安装语雀文章下载插件
+
+## 安装语雀文章下载插件
+
 首先这里鸣谢开源的插件：[[yuque-hexo](https://github.com/x-cold/yuque-hexo)](https://github.com/x-cold/yuque-hexo)，通过工具可以将语雀知识库中的文件同步到本地，大部分功能和步骤在仓库中都有些，但是自己做的时候还是踩了坑，这里就还是写一下吧。
-<a name="z8p4qn"></a>
-### [](#z8p4qn)1.创建语雀知识库
-打开[语雀](https://www.yuque.com/) 创建自己的博客知识库，并且要**设置成公开的。可以在设置中看到链接如下：**<br />![](https://cdn.nlark.com/yuque/0/2018/png/187932/1542204775155-271c9311-4643-4ccd-8692-24ab7351e0cb.png#width=375)<br />同时打开[blog知识库](https://www.yuque.com/mianhk/gaqqwc):[https://www.yuque.com/mianhk/gaqqwc](https://www.yuque.com/mianhk/gaqqwc)可以打开知识库。
-<a name="p1gbwg"></a>
-### [](#p1gbwg)2.在本地安装yuque-hexo
+
+### 1.创建语雀知识库
+
+打开[语雀](https://www.yuque.com/) 创建自己的博客知识库，并且要**设置成公开的。可以在设置中看到链接如下：**
+![](https://cdn.nlark.com/yuque/0/2018/png/187932/1542204775155-271c9311-4643-4ccd-8692-24ab7351e0cb.png#width=375)
+同时打开[blog 知识库](https://www.yuque.com/mianhk/gaqqwc):[https://www.yuque.com/mianhk/gaqqwc](https://www.yuque.com/mianhk/gaqqwc)可以打开知识库。
+
+### 2.在本地安装 yuque-hexo
+
 ```git
 npm i -g yuque-hexo
 ```
-<a name="2nybfh"></a>
-### [](#2nybfh)3.配置package.json
+
+### 3.配置 package.json
+
 ```
-"scripts": {
+  "scripts": {
     "clean": "npm run clean:yuque && hexo clean",
     "clean:yuque": "DEBUG=yuque-hexo.* yuque-hexo clean",
     "deploy": "hexo deploy",
@@ -74,7 +89,7 @@ npm i -g yuque-hexo
     "dev": "hexo s",
     "sync": "DEBUG=yuque-hexo.* yuque-hexo sync",
     "reset": "npm run clean:yuque && npm run sync"
-  },   
+  }, 
   "yuqueConfig": {
     "baseUrl": "https://www.yuque.com/api/v2",    #这是语雀的永久链接，直接复制就可以
     "login": "mianhk",                      #用户名，上个链接的第一个下划线
@@ -85,8 +100,8 @@ npm i -g yuque-hexo
   }
 ```
 
-<a name="0rl2so"></a>
-### [](#0rl2so)4.删除和同步文章
+### 4.删除和同步文章
+
 ```
 #删除文章
 $yuque-clean
@@ -110,33 +125,29 @@ $yuque-hexo sync
 [INFO] yuque-hexo sync finished.
 ```
 
-<a name="enltgy"></a>
-### [](#enltgy)5.修改文章的title和tag等
+### 5.修改文章的 title 和 tag 等
+
 还是跟之前的格式直接写即可。
+
 ```makedown
-title:  
-date: 
-update: 
-categories: 
+title:
+date:
+update:
+categories:
 tags: []
 ```
 
-<a name="974chn"></a>
-### [](#974chn)6.部署博客
+### 6.部署博客
 
-<a name="mzmxge"></a>
-# [](#mzmxge)记录一些坑
+# 记录一些坑
 
 - 知识库一定要是公开的
 
-- windows下更新nodejs不能用n，即使强制使用了也还是无法更新
+- windows 下更新 nodejs 不能用 n，即使强制使用了也还是无法更新
 
-- 新版本的npm。如果改了package.json，且package.json和lock文件不同，那么执行`npm i`时npm会根据package中的版本号以及语义含义去下载最新的包，并更新至lock。
+- 新版本的 npm。如果改了 package.json，且 package.json 和 lock 文件不同，那么执行`npm i`时 npm 会根据 package 中的版本号以及语义含义去下载最新的包，并更新至 lock。
 
-
-
-<a name="vpz7ep"></a>
-## [](#vpz7ep)Reference:
+## Reference:
 
 - [https://github.com/x-cold/yuque-hexo](https://github.com/x-cold/yuque-hexo)
 
@@ -144,9 +155,6 @@ tags: []
 
 - [https://www.zhihu.com/question/62331583](https://www.zhihu.com/question/62331583)
 
-- [将 Hexo 升级到 v3.5.0](https://tommy.net.cn/2018/02/26/upgrade-hexo-to-v3-5-0/) 
+- [将 Hexo 升级到 v3.5.0](https://tommy.net.cn/2018/02/26/upgrade-hexo-to-v3-5-0/)
 
-- [Demo Json](https://github.com/x-cold/blog/blob/master/package.json#L26) 
-
-
-
+- [Demo Json](https://github.com/x-cold/blog/blob/master/package.json#L26)
