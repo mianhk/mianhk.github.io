@@ -65,9 +65,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: aircloud
+# theme: aircloud
 # theme: next
-# theme: maupassant-hexo
+theme: maupassant-hexo
 
 # 自动生成sitemap
 
@@ -173,9 +173,9 @@ anchorjs: true                          # if you want to customize anchor. check
 #  owner: aircloud
 #  repo: hexo-aircloud-blog
 
-comment:
-   type: disqus
-   script: 'https://airclouds-blog.disqus.com/embed.js'
+# comment:
+#    type: disqus
+#    script: 'https://airclouds-blog.disqus.com/embed.js'
 
 donate:
   img: img/donate.jpg
