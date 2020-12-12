@@ -8,8 +8,8 @@ subtitle: 这个人很懒，动不动就不想写
 description: mianhk
 author: mianhk
 # language: zh-Hans
-# language: zh-CN
-language: zh
+language: zh-CN
+# language: zh
 timezone: 
 
 # URL
@@ -128,7 +128,7 @@ neat_js:
   enable: true
   mangle: true
   output:
-  compress:
+  # compress:
   exclude:
     - '**/*.min.js'
     - '**/jquery.fancybox.pack.js'
