@@ -4,7 +4,7 @@
 
 # Site
 title: mianhk
-subtitle: mianhk
+subtitle: 这个人很懒，动不动就不想写
 description:
 author: mianhk
 language: en
@@ -64,7 +64,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+# theme: aircloud
+# theme: next
 theme: even
+# theme: maupassant-hexo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
