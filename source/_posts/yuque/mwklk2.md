@@ -6,12 +6,6 @@ tags: []
 categories: []
 ---
 
-title:  语雀编写，自动部署博客
-categories: MySQL
-tags: [MySQL,学习]
-
----
-
 # 相关的坑总结：
 
 ## Postman 的使用

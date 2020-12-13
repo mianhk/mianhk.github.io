@@ -3,7 +3,7 @@ title: go语言基础学习（一）
 urlname: qhz9md
 date: 2019-09-12 20:45:04 +0800
 tags: [golang,学习]
-categories: [g,o,l,a,n,g]
+categories: [golang]
 ---
 
 配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。

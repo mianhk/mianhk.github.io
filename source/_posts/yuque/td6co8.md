@@ -3,7 +3,7 @@ title: Hexo折腾笔记
 urlname: td6co8
 date: 2020-09-13 20:45:04 +0800
 tags: [Hexo,博客]
-categories: [工,具]
+categories: [工具]
 ---
 
 # 202009 再次更新

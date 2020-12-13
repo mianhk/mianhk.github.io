@@ -5,14 +5,6 @@ date: 2019-04-28 21:34:33 +0800
 tags: []
 categories: []
 ---
-
-title: go 语言学习-极客时间
-date: 2019-05-07 11:25:46
-categories: Go
-tags: [Go,学习]
-
----
-
 # 第一个 go 程序
 
 - go 语言主函数没有返回值，需要使用 os 包， `os.exit()` ，也不能直接函数传参。

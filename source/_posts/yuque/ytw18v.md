@@ -3,7 +3,7 @@ title: MySQL45讲总结
 urlname: ytw18v
 date: 2020-06-23 10:45:04 +0800
 tags: [MySQL,学习]
-categories: [M,y,S,Q,L]
+categories: [MySQL]
 ---
 
 # 01 | 基础架构：一条 SQL 查询语句是如何执行的？

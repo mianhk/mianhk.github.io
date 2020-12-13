@@ -6,13 +6,6 @@ tags: []
 categories: []
 ---
 
-title: MySQL 相关概念总结
-date: 2019-1-20 11:27:21
-categories: Git
-tags: [Git,学习]
-
----
-
 # 简单配置
 
 ## 配置 user 信息

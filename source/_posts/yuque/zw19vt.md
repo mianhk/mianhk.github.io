@@ -3,7 +3,7 @@ title: golang tips
 urlname: zw19vt
 date: 2020-09-13 18:45:04 +0800
 tags: [golang]
-categories: [g,o,l,a,n,g]
+categories: [golang]
 ---
 
 ## init

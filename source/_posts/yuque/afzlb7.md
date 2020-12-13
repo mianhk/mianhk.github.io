@@ -2,7 +2,7 @@
 title:  CentOS7安装并使用MySQL
 urlname: afzlb7
 date: 2018-12-07 17:41:58 +0800
-categories: [M,y,S,Q,L]
+categories: [MySQL]
 tags: [MySQL,学习]
 ---
 

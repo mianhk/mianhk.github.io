@@ -5,14 +5,6 @@ date: 2019-01-25 09:56:46 +0800
 tags: []
 categories: []
 ---
-
-title: MySQL 相关概念总结
-date: 2019-1-20 11:27:21
-categories: MySQL
-tags: [MySQL,学习]
-
----
-
 # 三大范式
 
 **第一范式（1NF）：**无重复的列。

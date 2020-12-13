@@ -3,7 +3,7 @@ title: Python进阶
 urlname: xuze3g
 date: 2020-09-02 11:27:21 +0800
 tags: [Python,学习]
-categories: [学,习]
+categories: [学习]
 ---
 
 # 常见数据结构

@@ -2,7 +2,7 @@
 title: go语言学习
 urlname: fff20p
 date: 2019-07-02 10:00:25 +0800
-tags: []
+tags: [golang]
 categories: []
 ---
 

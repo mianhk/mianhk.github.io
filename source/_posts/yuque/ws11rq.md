@@ -2,7 +2,7 @@
 title: 2018年终总结
 urlname: ws11rq
 date: 2018-12-16 19:02:22 +0800
-categories: [l,i,f,e]
+categories: [life]
 tags: [生活,总结]
 ---
 
