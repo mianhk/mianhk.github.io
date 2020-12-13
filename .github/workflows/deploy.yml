@@ -28,6 +28,8 @@ jobs:
         npm install
         npm run build
         cat public/index.html
+        ls public
+        echo "build done"
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
