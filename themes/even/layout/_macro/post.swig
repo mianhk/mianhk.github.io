@@ -47,6 +47,15 @@
           <div class="read-more">
             <a href="{{ url_for(post.path) }}" class="read-more-link">{{ __('posts.readmore') }}</a>
           </div>
+        {% elif theme.auto_excerpt.enable %}
+          {% set content = post.content | striptags %}
+          {{ content.substring(0, theme.auto_excerpt.length) }}
+          {% if content.length > theme.auto_excerpt.length %}...{% endif %}
+          <div class="post-button text-center">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+              {{ __('post.read_more') }} &raquo;
+            </a>
+          </div>
         {%- else -%}
           {{ post.content }}
         {%- endif -%}
