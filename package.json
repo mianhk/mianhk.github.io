@@ -3,51 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.9.0"
+    "version": "4.2.1"
   },
   "scripts": {
-    "clean": "npm run clean:yuque && hexo clean",
-    "clean:yuque": "DEBUG=yuque-hexo.* yuque-hexo clean",
-    "deploy": "npm run clean:yuque && hexo clean && npm run sync && hexo deploy",
-    "build": "rm -rf public;hexo generate --debug",
-    "publish": "npm run clean && npm run deploy",
-    "dev": "hexo s",
-    "sync": "DEBUG=yuque-hexo.* yuque-hexo sync",
-    "reset": "npm run clean:yuque && npm run sync"
+    "build": "rm -rf public; hexo generate -f"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "hexo": "^3.8.0",
-    "hexo-deployer-git": "^0.3.0",
-    "hexo-douban": "^1.1.3",
-    "hexo-generator-archive": "^0.1.5",
-    "hexo-generator-baidu-sitemap": "^0.1.5",
+    "hexo": "^4.2.0",
+    "hexo-deployer-git": "^2.1.0",
+    "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",
-    "hexo-generator-feed": "^1.2.2",
+    "hexo-generator-feed": "^1.2.0",
     "hexo-generator-index": "^0.2.0",
     "hexo-generator-search": "^2.4.0",
-    "hexo-generator-searchdb": "^1.0.8",
-    "hexo-generator-sitemap": "^1.2.0",
+    "hexo-generator-seo-friendly-sitemap": "0.0.25",
     "hexo-generator-tag": "^0.2.0",
-    "hexo-neat": "^1.0.8",
-    "hexo-renderer-ejs": "^0.3.1",
-    "hexo-renderer-marked": "^0.3.2",
-    "hexo-renderer-pug": "0.0.5",
-    "hexo-renderer-sass": "^0.3.2",
-    "hexo-renderer-scss": "^1.2.0",
+    "hexo-migrator-wordpress": "git+https://github.com/dengshilong/hexo-migrator-wordpress.git",
+    "hexo-renderer-ejs": "^0.2.0",
+    "hexo-renderer-markdown-it": "^3.4.1",
+    "hexo-renderer-scss": "^1.0.2",
     "hexo-renderer-stylus": "^0.3.1",
-    "hexo-renderer-swig": "^1.1.0",
-    "hexo-server": "^0.3.3",
-    "hexo-wordcount": "^6.0.1"
-  },
-  "yuqueConfig": {
-    "baseUrl": "https://www.yuque.com/api/v2",
-    "login": "mianhk",
-    "repo": "gaqqwc",
-    "mdNameFormat": "slug",
-    "postPath": "source/_posts/yuque",
-    "onlyPublished": true,
-    "token": "EXAuwC8CQkdmkfbtfc5nPMgwGGa26sANGcM01MGr"
+    "hexo-server": "^0.2.0",
+    "markdown-it-emoji": "^1.3.0"
   },
   "devDependencies": {
     "hexo-cli": "^3.1.0"

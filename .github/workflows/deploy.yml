@@ -30,7 +30,6 @@ jobs:
         npm ls --depth 0
         echo "begin build"
         npm run build
-        cat debug.log
         cat public/index.html
         ls public
         echo "build done"
