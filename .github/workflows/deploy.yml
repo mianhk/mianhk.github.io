@@ -26,6 +26,9 @@ jobs:
     - name: Build
       run: |
         npm install
+        echo "show npm depth"
+        npm ls --depth 0
+        echo "begin build"
         npm run build
         cat public/index.html
         ls public
