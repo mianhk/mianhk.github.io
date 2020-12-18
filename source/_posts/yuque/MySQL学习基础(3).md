@@ -1,9 +1,9 @@
 ---
-title: MySQL相关概念总结
+title: MySQL学习基础(3)
 urlname: xxehz0
 date: 2019-01-25 09:56:46 +0800
-tags: []
-categories: []
+tags: [MySQL]
+categories: [MySQL]
 ---
 # 三大范式
 

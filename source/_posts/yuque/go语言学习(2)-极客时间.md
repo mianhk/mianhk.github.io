@@ -1,9 +1,9 @@
 ---
-title: go语言学习-极客时间
+title: go语言学习(2)-极客时间
 urlname: pkq8u1
 date: 2019-04-28 21:34:33 +0800
-tags: []
-categories: []
+tags: [Golang]
+categories: [Golang]
 ---
 # 第一个 go 程序
 

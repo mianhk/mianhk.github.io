@@ -1,9 +1,9 @@
 ---
-title: MySQL学习总结2-表连接
+title: MySQL学习总结(2)
 urlname: vguflv
 date: 2019-01-23 20:23:55 +0800
-tags: []
-categories: []
+tags: [MySQL]
+categories: [MySQL]
 ---
 
 > 在关系型数据库里面，每个实体有自己的一张表，所有属性都是这张表的字段，表与表之间根据关联字段"连接"在一起。

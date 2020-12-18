@@ -1,9 +1,9 @@
 ---
-title: golang tips
+title: 【Golang】Tips
 urlname: zw19vt
-date: 2020-09-13 18:45:04 +0800
-tags: [golang]
-categories: [golang]
+date: 2019-09-13 18:45:04 +0800
+tags: [Golang]
+categories: [Golang]
 ---
 
 ## init

@@ -36,9 +36,9 @@ toc: true
 
 # jQuery fancybox
 fancybox: true
-
+search: false
 # LaTeX support (via MathJax)
-latex: false
+latex: true
 
 copyright:
   enable: true
