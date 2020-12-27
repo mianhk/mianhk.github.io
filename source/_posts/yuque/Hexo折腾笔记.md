@@ -1,14 +1,10 @@
 ---
 title: Hexo折腾笔记
 urlname: td6co8
-date: 2020-09-13 20:45:04 +0800
+date: 2019-08-13 20:45:04 +0800
 tags: [Hexo,博客]
 categories: [工具]
 ---
-
-# 202009 再次更新
-
-> 重新写博客，发现语雀上写的文档不更新了，想起之前费力搭了这一套就是为了不折腾，结果现在许久不用，回来发现依赖太多，难以看出问题出在哪里了，于是便重新梳理了一下博客的架构和流程。
 
 ## 博客基本架构
 
@@ -29,8 +25,6 @@ cloud-flare：网页 CDN
 [https://www.yuguocong.cn/yuque/mwklk2.html](https://www.yuguocong.cn/yuque/mwklk2.html)
 
 更换了主题：[Aircloud](https://github.com/aircloud/hexo-theme-aircloud)
-
-##
 
 ## 2018-12-24
 
