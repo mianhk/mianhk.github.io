@@ -1,5 +1,5 @@
 ---
-title: 【MySQL】MySQL常见错误与处理
+title: 【MySQL】MySQL常见配置
 urlname: xzxhcv
 date: 2020-03-05 20:04:46 +0800
 update: Mon Nov 05 2018 20:04:50 GMT+0800 (中国标准时间)
@@ -7,14 +7,14 @@ categories: [MySQL]
 tags: [MySQL]
 ---
 
-> 记录MySQL日常错误
+> MySQL的配置项很多，日常使用中需要调整的并不多，整理几个主要的参数
 
 <!--more-->  
 
 
 
-# 启动报错
+# 性能相关
 
-
+# 复制相关
 
 ## 
