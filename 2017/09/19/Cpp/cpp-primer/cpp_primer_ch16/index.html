@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="《c++primer》ch16 模板与泛型编程"/><meta name="keywords" content="C++, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2017/09/19/Cpp/cpp-primer/cpp_primer_ch16/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>《c++primer》ch16 模板与泛型编程 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">《c++primer》ch16 模板与泛型编程
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-09-19
+        </span><span class="post-category">
+            <a href="/categories/C/">C++</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#16-1-定义模板"><span class="toc-text">16.1 定义模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-2-模板实参推断"><span class="toc-text">16.2 模板实参推断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-3-重载与模板"><span class="toc-text">16.3 重载与模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-4-可变参数模板"><span class="toc-text">16.4 可变参数模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-5-模板特例化"><span class="toc-text">16.5 模板特例化</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。</p>
+<h4 id="16-1-定义模板">16.1 定义模板</h4>
+<p>模板程序应该尽量减少对实参类型的要求。
+模板的头文件通常包括声明和定义。
+模板直到实例化时才生成代码。
+泛型编程的一个目标就是另算法是“通用的”-适合于不同类型。所有标准库容器都定义了<code>==</code>和<code>!=</code>，但只有少数定义了<code>&lt;</code>运算符。因此尽量使用<code>!=</code>而不是<code>&lt;</code>。
+** 类模板<strong>用来生成类的蓝图，一个类模板的每个实例都形成一个独立的类。默认情况下，对于一个实例化了的类模板，其成员只有在使用时才被实例化。在类模板的作用域类，我们可以直接使用模板名而不必指定模板实参。
+如果一个类模板包含一个非模板友元，则友元被授权可以访问所有模板实例。如果友元自身是模板，类可以授权给 所有友元模板实例，也可以只授权给特定实例。
+当我们希望通知编译器一个名字表示类型时，必须使用关键字<code>typename</code>，而不能使用<code>class</code>。
+** 成员模板</strong>：一个类（不管是模板类还是普通类）可以包含本身是模板的成员函数。这些成员函数被称为成员模板。成员模板不能是虚函数。
+控制实例化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extern template class Blob&lt;string&gt;;  &#x2F;&#x2F;声明，遇到extern模板声明时，编译器不会在本文件中生成实例化代码。，对于一个给定的实例化版本，可以有多个extern声明，但只能有一个定义。</span><br><span class="line">template int compare(const int&amp;,const int&amp;); &#x2F;&#x2F;定义</span><br></pre></td></tr></table></figure>
+<h4 id="16-2-模板实参推断">16.2 模板实参推断</h4>
+<p>将实参传递给带模板类型的函数形参时，能够自动应用的类型转换只有const转换及数组或函数到指针的转换。
+一个模板类型参数可以用作多个函数形参的类型。由于只允许有限的几种类型转换，因此传递给这些形参的实参必须具有相同的类型。
+如果函数参数类型不是模板参数，则可以进行正常的类型转换。
+** 显式模板实参**按由左至右的顺序与对应的模板参数匹配。</p>
+<h4 id="16-3-重载与模板">16.3 重载与模板</h4>
+<h4 id="16-4-可变参数模板">16.4 可变参数模板</h4>
+<h4 id="16-5-模板特例化">16.5 模板特例化</h4>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2017/09/19/Cpp/cpp-primer/cpp_primer_ch16/">http://www.yuguocong.cn/2017/09/19/Cpp/cpp-primer/cpp_primer_ch16/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/C/">C++</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/09/25/Random/how_to_sail/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">不知道怎么开的船？</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2017/09/19/Cpp/cpp-primer/cpp_primer_ch15/">
+        <span class="next-text nav-default">《c++primer》ch15-面向对象程序设计</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

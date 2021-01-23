@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="牛客网-剑指offer-3"/><meta name="keywords" content="C++, 剑指offer, 牛客网, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2017/11/17/Exercise/nowcoder-sword-to-offer3/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>牛客网-剑指offer-3 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">牛客网-剑指offer-3
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-11-17
+        </span><span class="post-category">
+            <a href="/categories/%E5%88%B7%E9%A2%98/">刷题</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#t7：斐波那契数列"><span class="toc-text">T7：斐波那契数列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#t8：跳台阶"><span class="toc-text">T8：跳台阶</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#t9：变态跳台阶"><span class="toc-text">T9：变态跳台阶</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h4 id="t7：斐波那契数列">T7：斐波那契数列</h4>
+<blockquote>
+<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。
+n&lt;=39</p>
+</blockquote>
+<p>斐波那契数列是很常用的数列，也是很简单的递归能够解决的，但是当n稍微大一点的时候，复杂度都让人无法接受。
+例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">long long Fi(int n)&#123;</span><br><span class="line">    if(n&#x3D;&#x3D;0)</span><br><span class="line">        return 0;</span><br><span class="line">    if(n&#x3D;&#x3D;1)</span><br><span class="line">        return 1;</span><br><span class="line">    return Fi(n-1)+Fi(n-2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样出现的问题主要是在递归的过程中会出现很多重复的计算，比如我们每次计算第n个的时候，都需要重新计算前面的n-1和n-2，这样每个值其实都会被计算两遍。简单的处理是：从下往上开始算，从第0个一直算到第n个。
+代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int Fibonacci(int n) &#123;</span><br><span class="line">        if(n&lt;&#x3D;0)</span><br><span class="line">            return 0;</span><br><span class="line">        if(n&#x3D;&#x3D;1||n&#x3D;&#x3D;2)</span><br><span class="line">            return 1;</span><br><span class="line">        int newNum&#x3D;1;</span><br><span class="line">        int oneNum&#x3D;1,twoNum&#x3D;1;</span><br><span class="line">        for(int i&#x3D;3;i&lt;&#x3D;n;++i)&#123;</span><br><span class="line">            newNum&#x3D;oneNum+twoNum;</span><br><span class="line">            oneNum&#x3D;twoNum;</span><br><span class="line">            twoNum&#x3D;newNum;</span><br><span class="line">        &#125;</span><br><span class="line">        return newNum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="t8：跳台阶">T8：跳台阶</h4>
+<blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+</blockquote>
+<p>该类问题其实就是斐波那契数列的应用：考虑第一次跳的情况，如果第一跳1级，那么后面就是n种情况，如果第一次跳2级，后面就是n-2种，于是：<code>f(n)=f(n-1)+f(n-2)</code>；同理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int jumpFloor(int number) &#123;</span><br><span class="line">        if(number&lt;&#x3D;0)</span><br><span class="line">            return 0;</span><br><span class="line">        int result&#x3D;0;</span><br><span class="line">        if(number&#x3D;&#x3D;1)</span><br><span class="line">            return 1;</span><br><span class="line">        int first_step&#x3D;1;</span><br><span class="line">        int second_step&#x3D;1;</span><br><span class="line">        while(number&gt;&#x3D;2)&#123;</span><br><span class="line">            --number;</span><br><span class="line">            result&#x3D;first_step+second_step;</span><br><span class="line">            first_step&#x3D;second_step;</span><br><span class="line">            second_step&#x3D;result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="t9：变态跳台阶">T9：变态跳台阶</h4>
+<blockquote>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+</blockquote>
+<p>同样的分析：1.把第n级和第n-1级看成一级，则有：f(n-1)种；2.把第n级和第n-1级分开，则到n-1级有：f(n-1)，n-1级到第n级只有一种，所以加起来是：2*f(n-1)
+代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int jumpFloorII(int number) &#123;</span><br><span class="line">        if(number&lt;&#x3D;0)</span><br><span class="line">            return 0;</span><br><span class="line">        int result&#x3D;1;</span><br><span class="line">        if(number&#x3D;&#x3D;1)</span><br><span class="line">            return 1;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;number-1;++i)&#123;</span><br><span class="line">            result*&#x3D;2;</span><br><span class="line">            &#125;</span><br><span class="line">        return result;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2017/11/17/Exercise/nowcoder-sword-to-offer3/">http://www.yuguocong.cn/2017/11/17/Exercise/nowcoder-sword-to-offer3/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/C/">C++</a>
+            <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/">牛客网</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/11/26/Random/random-life-1/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">一个可能很熟悉的周末</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2017/11/12/Random/books/">
+        <span class="next-text nav-default">我的专业书阅读</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

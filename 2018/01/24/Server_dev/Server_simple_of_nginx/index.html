@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="服务器-Nginx基础配置"/><meta name="keywords" content="Linux, 后台开发, Nginx, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2018/01/24/Server_dev/Server_simple_of_nginx/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>服务器-Nginx基础配置 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">服务器-Nginx基础配置
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-01-24
+        </span><span class="post-category">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器-nginx基础配置"><span class="toc-text">服务器-Nginx基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx-conf文件结构"><span class="toc-text">nginx.conf文件结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#详细配置分析"><span class="toc-text">详细配置分析</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="服务器-nginx基础配置">服务器-Nginx基础配置</h3>
+<h4 id="nginx-conf文件结构">nginx.conf文件结构</h4>
+<p>Nginx的默认配置文件为：<code>nginx.conf</code>，文件一共由三个部分组成，分别为：<code>全局块、events块、http块</code>在<code>http块</code>中，包含http全局块，多个server块。在每个<code>server块</code>中，可以包含多个server块和location块。</p>
+<p>同一模块中嵌套的配置块。各个之间不存在次序关系，也就是是同时生效的。另外，在高一等级的配置可能会被更内层括号内的设置覆盖，这个其实跟我们的继承或者函数中差不多。</p>
+<ul>
+<li>全局块：（从配置文件开始到events的一部分）主要影响Nginx服务器整体运行的配置指令 ，顾名思义，能够作用于全局。</li>
+<li>evevts块：主要影响Nginx服务器与用户的网络连接。这部分对Nginx服务器性能影响较大。</li>
+<li>http块：代理、缓存和日志定义等绝大部分功能和第三方模块的配置都在这部分。由于http块包括server块，这里用http全局块表示不包含server块的部分。</li>
+<li>server块：和“虚拟主机”密切联系。利用虚拟主机技术可以避免为每一个要用运行的网站提供单独的Nginx服务器，也不需要为每个网站对应一组nginx进程。一个http块中可以包含多个server块，每个server块相当于一个虚拟主机，它内部可以有多台主机联合提供服务，一起对外提供在逻辑上的一组服务（或网站）。server全局块一般配置的是：虚拟主机的监听配置和本虚拟主机的名称和IP配置。</li>
+<li>location块：location块其实是server块的一个指令，主要作用是：基于Nginx服务器接收到的字符串，对除虚拟主机名称外的字符串进行匹配，对特定的请求进行处理、地址定向、数据缓存和应答控制等功能。</li>
+</ul>
+<h4 id="详细配置分析">详细配置分析</h4>
+<p>接下来是一个详细解释的配置的设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">                                     #全局块开始</span><br><span class="line">user user [group];                       #可以开启nginx服务的用户名user和所对应的group（可选）</span><br><span class="line">#user nobody nobody;         #注释或者nobody可以表示任何人都能启动</span><br><span class="line">worker_processes number|auto;               #开启的工作进程的数量，auto则会根据系统自动</span><br><span class="line">pid &#x2F;run&#x2F;nginx.pid;                  #存储进程pid的文件，记得不止要加上路径，还要加上文件名，并且开启服务的用户需要对该文件有权限</span><br><span class="line"></span><br><span class="line">events &#123;                             #events块</span><br><span class="line">    worker_connections 768;          #每一个工作进程能开启的最大连接个数：总的连接个数total&#x3D;worker_processes*worker_connections</span><br><span class="line">    # accept_mutex on;     #设置网络连接的序列化，解决“惊群”的问题（当一个网络连接到来时，多个睡眠进程被唤醒，影响系统性能）</span><br><span class="line">    # multi_accept on;  #允许接受多个网络连接</span><br><span class="line">    #use method;  #时间驱动模型的选择:select|poll|kqueue|epoll|rtsig|&#x2F;dev&#x2F;poll|eventport</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;                               #http块</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Basic Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    sendfile on;</span><br><span class="line">    tcp_nopush on;</span><br><span class="line">    tcp_nodelay on;</span><br><span class="line">    keepalive_timeout 65;   #连接超时时间</span><br><span class="line">    #keepalive_requests number; #单连接请求数上限</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    # server_tokens off;</span><br><span class="line"></span><br><span class="line">    # server_names_hash_bucket_size 64;</span><br><span class="line">    # server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;mime.types;   #MIME-types存储了媒体资源的类型</span><br><span class="line">    default_type application&#x2F;octet-stream; #处理前端请求的MIME类型，可在http、server、location中定义</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # SSL Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Logging Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    access_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log;  # 日志存放文件名，该指令可以在全局块、http块和server块中，作用域不同</span><br><span class="line">    error_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Gzip Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    gzip on;</span><br><span class="line">    gzip_disable &quot;msie6&quot;;</span><br><span class="line"></span><br><span class="line">    # gzip_vary on;</span><br><span class="line">    # gzip_proxied any;</span><br><span class="line">    # gzip_comp_level 6;</span><br><span class="line">    # gzip_buffers 16 8k;</span><br><span class="line">    # gzip_http_version 1.1;</span><br><span class="line">    # gzip_types text&#x2F;plain text&#x2F;css application&#x2F;json application&#x2F;javascript text&#x2F;xml application&#x2F;xml application&#x2F;xml+rss text&#x2F;javascript;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Virtual Host Configs</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;*.conf;   # include 引入配置文件，支持相对路径</span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;*;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2018/01/24/Server_dev/Server_simple_of_nginx/">http://www.yuguocong.cn/2018/01/24/Server_dev/Server_simple_of_nginx/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Linux/">Linux</a>
+            <a href="/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/">后台开发</a>
+            <a href="/tags/Nginx/">Nginx</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2018/01/24/Server_dev/Server_a_simple_sample/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">服务器-Nginx-一个简单的例子</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2018/01/23/Server_dev/Server_first_of_nginx/">
+        <span class="next-text nav-default">服务器-Nginx安装和基本配置</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

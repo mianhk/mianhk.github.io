@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="《c++primer》ch13 拷贝控制"/><meta name="keywords" content="C++, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2017/09/14/Cpp/cpp-primer/cpp_primer_ch13/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>《c++primer》ch13 拷贝控制 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">《c++primer》ch13 拷贝控制
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-09-14
+        </span><span class="post-category">
+            <a href="/categories/C/">C++</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#13-1-拷贝-赋值-销毁"><span class="toc-text">13.1 拷贝、赋值、销毁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-6-对象移动"><span class="toc-text">13.6 对象移动</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#13-6-1-右值引用"><span class="toc-text">13.6.1 右值引用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#移动构造函数和移动赋值运算符"><span class="toc-text">移动构造函数和移动赋值运算符</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-6-1-右值引用和成员函数"><span class="toc-text">13.6.1 右值引用和成员函数</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><p>通过定义的五种特殊的成员函数，控制类的对象在拷贝。赋值、移动或销毁时做什么。包括：拷贝构造函数、拷贝赋值运算符、拷贝赋值运算符、移动赋值运算符以及析构函数。</p>
+<h4 id="13-1-拷贝-赋值-销毁">13.1 拷贝、赋值、销毁</h4>
+<h4 id="13-6-对象移动">13.6 对象移动</h4>
+<p>在旧标准的标准库中，容器中所保存的类必须是可以拷贝的，新标准中，可以在容器中保存不可拷贝的类型，只要他们能够被移动就可以。</p>
+<h5 id="13-6-1-右值引用">13.6.1 右值引用</h5>
+<p>通过&amp;&amp;来获得右值引用，意为绑定到右值的引用。
+** 重要性质：只能绑定到一个将要销毁的对象。**
+** 所引用的对象将要被销毁，该对象没有其他用户**
+– 左值引用：返回左值引用的函数，赋值、下标、解引用、前置递增/递减运算符。
+– 右值引用：返回非引用的函数，算数、关系、位以及后置递增/递减运算符。
+区分的方法：一个区分左值与右值的便捷方法是：看能不能对表达式取地址，如果能，则为左值，否则为右值。<a href="http://blog.csdn.net/yapian8/article/details/42341307" target="_blank" rel="noopener">右值引用比较</a></p>
+<p>** move函数(utility头文件中)**</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int &amp;&amp;rr3&#x3D;std::move(rr1);  &#x2F;&#x2F;相当于告诉编译器，我们希望像处理右值一样处理左值rr1。</span><br><span class="line">                           &#x2F;&#x2F;调用move后，除了赋值和销毁rr1外不会再使用它</span><br><span class="line">                           &#x2F;&#x2F;使用move直接用std::move</span><br></pre></td></tr></table></figure>
+<h6 id="移动构造函数和移动赋值运算符">移动构造函数和移动赋值运算符</h6>
+<p>目的：让类支持移动操作。
+移动构造函数：第一个参数是一个该类类型的右值引用，任何其他额外的参数都要有默认实参。不需要分配新内存，直接接管原来的内存。不会跑异常，不抛出异常的移动构造函数和移动赋值运算符必须标记为noexcept。（原因是标准库很多对于存在异常的处理方式，例如vector）
+移动赋值运算符：首先要处理自赋值的情况。（为什么检查自赋值？因为右值可能是move调用返回的结果，不能在使用右侧运算符对象之前释放左侧运算对象的资源。）
+** 如果类有拷贝构造函数和拷贝赋值运算符，没有定义移动操作时，编译器不会为其分配默认的移动操作，而是会采用对应的拷贝进行代替。如果没有定义任何的拷贝操作，才会为其合成移动构造函数或移动赋值运算符。**
+移动操作不会被隐式的定义为删除的操作,定义为删除元素的原则：</p>
+<ul>
+<li>有类成员定义了自己的拷贝构造函数且未定义移动构造函数，或有类成员未定义自己的拷贝构造函数且编译器不能为其合成默认移动构造函数</li>
+<li>有类成员的移动构造函数或移动赋值运算符被定义为删除的或不可访问的</li>
+<li>类的析构函数被定义为删除的</li>
+<li>有类成员是const的或是引用</li>
+</ul>
+<p>** 三/五法则 **：
+通常，拥有一个资源的类，必须定义拷贝构造函数、拷贝赋值运算符、析构函数才能工作，而由于大量的拷贝会影响资源的额外开销，定义移动构造函数和移动赋值运算符可以避免此类问题。</p>
+<h5 id="13-6-1-右值引用和成员函数">13.6.1 右值引用和成员函数</h5>
+<p>区分移动和拷贝的重载函数通常有一个版本接受<code>const T&amp;</code>，另一个版本接受一个<code>T&amp;&amp;</code>。很多时候它们看起来调用的是一个函数，通常它们内部的构造也很接近，有一点差别。我们可以根据实参的类型进行判断，我们用的是左值和右值区分调用的版本。
+有的时候我们想要避免对右值进行赋值（在旧的标准中是有可能发生的，并且新的标准为了向后兼容没有禁止），可以在参数列表后放置一个** 引用限定符**。还可以通过使用<code>&amp;</code>或者<code>&amp;&amp;</code>指出指向一个左值或者一个右值。eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Foo&#123;</span><br><span class="line">    public:</span><br><span class="line">        Foo &amp;operator&#x3D;(const Foo&amp;) &amp;; &#x2F;&#x2F;只能向可修改的左值赋值。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>引用限定符可以区分重载版本，如同const可以用来区分一个成员函数的重载版本。一般当我们定义两个或两个以上的具有相同名字和相同参数列表的成员函数，就必须对所有函数加上引用限定符，或者都不加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Foo&#123;</span><br><span class="line">    public:</span><br><span class="line">        Foo sorted() &amp;&amp;;</span><br><span class="line">        Foo sorted() const; &#x2F;&#x2F;错误，需要加上引用限定符</span><br><span class="line">        &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;</span><br><span class="line">        Foo sorted(Comp*);</span><br><span class="line">        Foo sorted(Comp*) const; &#x2F;&#x2F;正确，两个版本都没有引用限定符</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2017/09/14/Cpp/cpp-primer/cpp_primer_ch13/">http://www.yuguocong.cn/2017/09/14/Cpp/cpp-primer/cpp_primer_ch13/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/C/">C++</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/09/19/Cpp/cpp-primer/cpp_primer_ch15/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">《c++primer》ch15-面向对象程序设计</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2017/09/14/Cpp/cpp-primer/cpp_primer_ch14/">
+        <span class="next-text nav-default">《c++primer》ch14 重载运算符和类型转换</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

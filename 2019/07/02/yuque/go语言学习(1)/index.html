@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="【Golang】go语言学习(1)-初识切片"/><meta name="keywords" content="golang, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2019/07/02/yuque/go语言学习(1)/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>【Golang】go语言学习(1)-初识切片 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">【Golang】go语言学习(1)-初识切片
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-07-02
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础记录"><span class="toc-text">基础记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于切片"><span class="toc-text">关于切片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于方法和接口"><span class="toc-text">关于方法和接口</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="基础记录">基础记录</h1>
+<ul>
+<li>命名返回值:没有参数的  return  语句返回已命名的返回值</li>
+<li>println 的执行顺序。会先把函数计算结束之后，再按照顺序输出</li>
+<li>没有条件的 switch 同  <code>switch true</code>  一样。</li>
+<li>defer 函数调用会被压入一个栈中，所以后 defer 的值会先输出</li>
+<li>结构体指针的使用：修改结构体指针的值时，不需要带*号。</li>
+<li>数组定义的几种方式</li>
+</ul>
+<h1 id="关于切片">关于切片</h1>
+<ul>
+<li>
+<p>切片就像数组的引用，改变切片会改变底层的值</p>
+</li>
+<li>
+<p>切片的默认行为，可以不写完全部的上下限，因为切片默认有上下限</p>
+</li>
+<li>
+<p>只是截取切片是不会改变切片大小的</p>
+</li>
+<li>
+<p>切片的长度就是它所包含的元素个数。</p>
+</li>
+<li>
+<p>切片的容量是从它的第一个元素开始数，到其底层数组元素末尾的个数</p>
+</li>
+<li>
+<p>切片的零值是  <code>nil</code></p>
+</li>
+<li>
+<p>函数的闭包</p>
+</li>
+<li>
+<p>接收者的类型定义和方法声明必须在同一包内；不能为内建类型声明方法，可以定义别名，<code>**type **MyFloat float64</code></p>
+</li>
+</ul>
+<h1 id="关于方法和接口">关于方法和接口</h1>
+<ul>
+<li>
+<p>指针参数的函数必须接受一个指针,而以指针为接收者的方法被调用时，接收者既能为值又能为指针</p>
+</li>
+<li>
+<p>跟 C++中一样，使用指针接收者可以修改接收者指向的值；另外，可以避免每次在调用方法时复制该值。</p>
+<p>1.函数执行顺序是否是后序遍历的方式，可以再嵌套一层方法试试？ 画个调用树出来看看？
+我在网上没有找到相关的解释，就自己查看了 fmt.Println()函数的源码，会先调用 Fprintln 函数，而 Fprintln 会先执行传入的函数，存在 p 的 buf 中，之后转换成 string 再打印。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span><span class="params">(a ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(n <span class="keyword">int</span>, err error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> Fprintln(os.Stdout, a...)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sprintln</span><span class="params">(a ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	p := newPrinter()</span><br><span class="line">	p.doPrintln(a)</span><br><span class="line">	s := <span class="keyword">string</span>(p.buf)</span><br><span class="line">	p.free()</span><br><span class="line">	<span class="keyword">return</span> s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时也重新把打印语句加复杂了一下，结果与预期相符。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(x,y <span class="keyword">int</span>)</span> <span class="title">int</span></span>&#123;</span><br><span class="line">	sum:=x+y</span><br><span class="line">	fmt.Println(sum)</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fmt.Println(add(<span class="number">1</span>,<span class="number">2</span>),add(add(<span class="number">1</span>,<span class="number">1</span>),add(<span class="number">3</span>,<span class="number">7</span>)),add(<span class="number">4</span>,<span class="number">5</span>))</span><br><span class="line">&#125;</span><br><span class="line">运行结果为：</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">3</span> <span class="number">12</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>切片的增长为什么是 20，是否在大于 1024 或某个值时，有其他的增长方法？ 比如 增加 1.2 倍？ 可以贴源码作为论据
+查看了一下 slice 中的 growslice 函数，可以看到当容量小于 1024 时，是按照 2 倍进行增长的，当超过 1024 时，按照 1.25 倍进行增长，应该是从节省空间的角度考虑，毕竟对一个很长的数组，再插入同样长度的数的概率很小。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">newcap := old.<span class="built_in">cap</span></span><br><span class="line">doublecap := newcap + newcap</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">cap</span> &gt; doublecap &#123;</span><br><span class="line">	newcap = <span class="built_in">cap</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> old.<span class="built_in">len</span> &lt; <span class="number">1024</span> &#123;</span><br><span class="line">		newcap = doublecap</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Check 0 &lt; newcap to detect overflow</span></span><br><span class="line">		<span class="comment">// and prevent an infinite loop.</span></span><br><span class="line">		<span class="keyword">for</span> <span class="number">0</span> &lt; newcap &amp;&amp; newcap &lt; <span class="built_in">cap</span> &#123;</span><br><span class="line">			newcap += newcap / <span class="number">4</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Set newcap to the requested cap when</span></span><br><span class="line">		<span class="comment">// the newcap calculation overflowed.</span></span><br><span class="line">		<span class="keyword">if</span> newcap &lt;= <span class="number">0</span> &#123;</span><br><span class="line">			newcap = <span class="built_in">cap</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过代码测试上述结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">1500</span>;i++&#123;</span><br><span class="line">		a=<span class="built_in">append</span>(a,i)</span><br><span class="line">		<span class="keyword">if</span> i%<span class="number">100</span>==<span class="number">0</span>&#123;</span><br><span class="line">			fmt.Printf(<span class="string">"len: %d , cap; %d\n"</span>,<span class="built_in">len</span>(a),<span class="built_in">cap</span>(a))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果为：</span><br><span class="line"><span class="built_in">len</span>: <span class="number">1</span> , <span class="built_in">cap</span>; <span class="number">1</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">101</span> , <span class="built_in">cap</span>; <span class="number">128</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">201</span> , <span class="built_in">cap</span>; <span class="number">256</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">301</span> , <span class="built_in">cap</span>; <span class="number">512</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">401</span> , <span class="built_in">cap</span>; <span class="number">512</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">501</span> , <span class="built_in">cap</span>; <span class="number">512</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">601</span> , <span class="built_in">cap</span>; <span class="number">1024</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">701</span> , <span class="built_in">cap</span>; <span class="number">1024</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">801</span> , <span class="built_in">cap</span>; <span class="number">1024</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">901</span> , <span class="built_in">cap</span>; <span class="number">1024</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">1001</span> , <span class="built_in">cap</span>; <span class="number">1024</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">1101</span> , <span class="built_in">cap</span>; <span class="number">1280</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">1201</span> , <span class="built_in">cap</span>; <span class="number">1280</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">1301</span> , <span class="built_in">cap</span>; <span class="number">1696</span></span><br><span class="line"><span class="built_in">len</span>: <span class="number">1401</span> , <span class="built_in">cap</span>; <span class="number">1696</span></span><br></pre></td></tr></table></figure>
+<p>如上符合源码结果，所以之前的分析有些问题，但是 append 多个值的时候，与之前的结果相同。再次查看源码，发现实际上还有内存对齐的考虑：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capmem = roundupsize(<span class="keyword">uintptr</span>(newcap) * sys.PtrSize)</span><br></pre></td></tr></table></figure>
+<p>其中 capmem 会根据 roundupsize 函数进行内存对齐。其中 uintptr(newcap)表示新容量的大小，sys.PtrSize 表示一个元素的大小，int 时为 8。roundupsize 函数的实现如下</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">roundupsize</span><span class="params">(size <span class="keyword">uintptr</span>)</span> <span class="title">uintptr</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> size &lt; _MaxSmallSize &#123;</span><br><span class="line">		<span class="keyword">if</span> size &lt;= smallSizeMax<span class="number">-8</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">uintptr</span>(class_to_size[size_to_class8[(size+smallSizeDiv<span class="number">-1</span>)/smallSizeDiv]])</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">uintptr</span>(class_to_size[size_to_class128[(size-smallSizeMax+largeSizeDiv<span class="number">-1</span>)/largeSizeDiv]])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> size+_PageSize &lt; size &#123;</span><br><span class="line">		<span class="keyword">return</span> size</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> round(size, _PageSize)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：_MaxSmallSize=32768,2 的 15 次方，是 32K。当需要分配的 size 大于 32K 时，需要 mchche 向 mcentral 申请；当 size 小于 32K 时，计算应该分配的 sizeclass，直接去 mchche 申请。（关于具体的内存申请方面，在后面的开发需要的时候再仔细研究）
+当 size 小于 smallSizeMax-8=1024-8=1016 时，采用 size_to_class8 的分配方式，大于 1016 时采用 size_to_class128 的分配方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size_to_class8 &#x3D; [smallSizeMax&#x2F;smallSizeDiv + 1]uint8&#123;0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22, 22, 23, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31&#125;</span><br><span class="line">size_to_class128 &#x3D; [(_MaxSmallSize-smallSizeMax)&#x2F;largeSizeDiv + 1]uint8&#123;31, 32, 33, 34, 35, 36, 36, 37, 37, 38, 38, 39, 39, 39, 40, 40, 40, 41, 42, 42, 43, 43, 43, 43, 43, 44, 44, 44, 44, 44, 44, 45, 45, 45, 45, 46, 46, 46, 46, 46, 46, 47, 47, 47, 48, 48, 49, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 52, 52, 53, 53, 53, 53, 54, 54, 54, 54, 54, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57, 57, 57, 57, 57, 57, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66&#125;</span><br><span class="line"></span><br><span class="line">class_to_size &#x3D; [_NumSizeClasses]uint16&#123;0, 8, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 896, 1024, 1152, 1280, 1408, 1536, 1792, 2048, 2304, 2688, 3072, 3200, 3456, 4096, 4864, 5376, 6144, 6528, 6784, 6912, 8192, 9472, 9728, 10240, 10880, 12288, 13568, 14336, 16384, 18432, 19072, 20480, 21760, 24576, 27264, 28672, 32768&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到两个数组值的不同，并且间隔的粒度也不同，当 size 较小时，间隔为 8，当 size 较大时，间隔为 128.
+而为了内存优化考虑，class_to_size 会控制分配大小，间隔从 8-4096
+以 int 为例</p>
+<table>
+<thead>
+<tr>
+<th>个数</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字节数</td>
+<td>8</td>
+<td>16</td>
+<td>24</td>
+<td>32</td>
+<td>40</td>
+<td>48</td>
+<td>56</td>
+<td>64</td>
+<td>72</td>
+</tr>
+<tr>
+<td>所占空间</td>
+<td>8</td>
+<td>16</td>
+<td>32</td>
+<td>32</td>
+<td>48</td>
+<td>48</td>
+<td>64</td>
+<td>64</td>
+<td>80</td>
+</tr>
+<tr>
+<td>size_to_class8</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2019/07/02/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(1)/">http://www.yuguocong.cn/2019/07/02/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(1)/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/golang/">golang</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2019/07/04/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(4)/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">go语言基础学习(4)</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/05/26/yuque/Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+        <span class="next-text nav-default">【Git】Git使用总结</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

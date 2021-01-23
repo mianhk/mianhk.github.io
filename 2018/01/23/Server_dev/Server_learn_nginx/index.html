@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="服务器-初识Nginx"/><meta name="keywords" content="Linux, 后台开发, Nginx, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2018/01/23/Server_dev/Server_learn_nginx/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>服务器-初识Nginx - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">服务器-初识Nginx
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-01-23
+        </span><span class="post-category">
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#初识nginx"><span class="toc-text">初识Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx的历史"><span class="toc-text">Nginx的历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见服务器"><span class="toc-text">常见服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx的功能特性"><span class="toc-text">Nginx的功能特性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本的http服务："><span class="toc-text">基本的HTTP服务：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#高级http服务："><span class="toc-text">高级HTTP服务：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#邮件服务："><span class="toc-text">邮件服务：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用功能"><span class="toc-text">常用功能</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#http代理和反向代理"><span class="toc-text">HTTP代理和反向代理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#负载均衡"><span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#web缓存"><span class="toc-text">Web缓存</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="初识nginx">初识Nginx</h3>
+<h4 id="nginx的历史">Nginx的历史</h4>
+<p>Netcraft公司，1994年在英国成立。</p>
+<h4 id="常见服务器">常见服务器</h4>
+<ul>
+<li>Apache服务器：目前最广泛使用的web服务器，由于使用了以“进程”为基础的结构，会消耗更多的系统开支。因此通常对Apache web进行扩容的时候，是增加服务器或者扩充集群节点而不是增加处理器。</li>
+<li>Microsoft IIS：微软的，付费软件，部署成本较高。</li>
+<li>Tomcat服务器：最初Sun公司开发，是官方推荐的Servlet和JSP容器，在中小型系统和并发访问用户不是很多的时候，可以作为轻量级应用服务器。一般应用中，通常作为Apache服务器的扩展部分，为运行JSP页面和Servlet提供服务，提供的Servlet容器是Tomcat的默认模式。Tomcat也具有处理HTML页面的功能，只是处理静态页面的能力不如Apache服务器。</li>
+<li>Lighttpd服务器：德国开源的一个轻量级web服务器，它专门针对高性能网站，提供一种安全、快速、兼容性良好并且灵活的Web Server的环境。同时有非常低的内存开销、CPU占用率低、模块丰富。  但是最为轻量服务器，与Apache这种大型服务器相比还有差距。</li>
+<li>Nginx</li>
+</ul>
+<h4 id="nginx的功能特性">Nginx的功能特性</h4>
+<h5 id="基本的http服务：">基本的HTTP服务：</h5>
+<ul>
+<li>作为HTTP代理服务器和反向代理服务器</li>
+<li>支持通过缓存加速访问</li>
+<li>完成简单的负载均衡和容错</li>
+<li>支持包过滤</li>
+<li>支持SSL</li>
+</ul>
+<h5 id="高级http服务：">高级HTTP服务：</h5>
+<ul>
+<li>进行自定义配置</li>
+<li>支持虚拟主机</li>
+<li>支持URL重定向</li>
+<li>支持网络监控</li>
+<li>支持流媒体传输</li>
+</ul>
+<h5 id="邮件服务：">邮件服务：</h5>
+<ul>
+<li>支持IMAP/POP3代理服务</li>
+<li>支持内部SMTP代理服务</li>
+</ul>
+<h4 id="常用功能">常用功能</h4>
+<h5 id="http代理和反向代理">HTTP代理和反向代理</h5>
+<p>在反向代理服务方面，Nginx服务器转发前端请求性能稳定，并且后端转发与业务配置相互分离，配置相当灵活。</p>
+<h5 id="负载均衡">负载均衡</h5>
+<p>负载均衡：一是将单一的重负载分担到多个网络节点做并行处理，每个节点处理结束后将结果汇总返回给用户；二是讲大量的前端并发访问或数据流量分担到多个后端网络节点上分别处理，有效减少前端用户等待响应的时间。Nginx服务器的负载均衡主要是对大量的前端访问和流量进行分流，以保证前端用户的访问效率。</p>
+<p>Nginx服务器的负载均衡策略可以划分为两类：</p>
+<ul>
+<li>内置策略：轮询、加权轮询和IP hash</li>
+<li>扩展策略：通过第三方模块实现，常见：url hash、fair</li>
+</ul>
+<h5 id="web缓存">Web缓存</h5>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2018/01/23/Server_dev/Server_learn_nginx/">http://www.yuguocong.cn/2018/01/23/Server_dev/Server_learn_nginx/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Linux/">Linux</a>
+            <a href="/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/">后台开发</a>
+            <a href="/tags/Nginx/">Nginx</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2018/01/23/Server_dev/Server_first_of_nginx/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">服务器-Nginx安装和基本配置</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2018/01/19/Random/tencentcloud_bitcoin/">
+        <span class="next-text nav-default">腾讯云服务器Linux挖比特币</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

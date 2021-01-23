@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="MySQL45讲总结"/><meta name="keywords" content="MySQL, 学习, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2020/06/23/yuque/MySQL45讲总结/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>MySQL45讲总结 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">MySQL45讲总结
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-06-23
+        </span><span class="post-category">
+            <a href="/categories/MySQL/">MySQL</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01-基础架构：一条-sql-查询语句是如何执行的？"><span class="toc-text">01 | 基础架构：一条 SQL 查询语句是如何执行的？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sql-执行步骤"><span class="toc-text">SQL 执行步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#server-层"><span class="toc-text">server 层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储引擎"><span class="toc-text">存储引擎</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接器"><span class="toc-text">连接器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询缓存"><span class="toc-text">查询缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析器"><span class="toc-text">分析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化器"><span class="toc-text">优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行器"><span class="toc-text">执行器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02-日志系统：一条-sql-更新语句是如何执行的？"><span class="toc-text">02 | 日志系统：一条 SQL 更新语句是如何执行的？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-事务隔离：为什么你改了我还看不见？"><span class="toc-text">03 | 事务隔离：为什么你改了我还看不见？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04-深入浅出索引-上"><span class="toc-text">04 | 深入浅出索引（上）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05-深入浅出索引-下"><span class="toc-text">05 | 深入浅出索引（下）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#06-全局锁和表锁-：给表加个字段怎么有这么多阻碍？"><span class="toc-text">06 | 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#07-行锁功过：怎么减少行锁对性能的影响？"><span class="toc-text">07 | 行锁功过：怎么减少行锁对性能的影响？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#08-事务到底是隔离的还是不隔离的？"><span class="toc-text">08 | 事务到底是隔离的还是不隔离的？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#09-普通索引和唯一索引-应该怎么选择？"><span class="toc-text">09 | 普通索引和唯一索引，应该怎么选择？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-为什么我的-mysql-会-抖-一下？"><span class="toc-text">12 | 为什么我的 MySQL 会“抖”一下？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-为什么表数据删掉一半-表文件大小不变？"><span class="toc-text">13 | 为什么表数据删掉一半，表文件大小不变？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-count-这么慢-我该怎么办？"><span class="toc-text">14 | count(*)这么慢，我该怎么办？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-答疑文章-一-：日志和索引相关问题"><span class="toc-text">15 | 答疑文章（一）：日志和索引相关问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16-order-by-是怎么工作的？"><span class="toc-text">16 | “order by”是怎么工作的？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#全字段排序"><span class="toc-text">全字段排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rowid-排序"><span class="toc-text">rowid 排序</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="01-基础架构：一条-sql-查询语句是如何执行的？">01 | 基础架构：一条 SQL 查询语句是如何执行的？</h1>
+<p>配置：
+wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时，</p>
+<h4 id="sql-执行步骤">SQL 执行步骤</h4>
+<p>客户端-连接器（管理连接、权限验证）-查询缓存（命中则直接返回，基本没啥用）-分析器（词法分析、语法分析，语法错误在这就能看到了）-优化器（执行计划生成、索引选择）-存储引擎（存储数据、提供读写接口）</p>
+<h4 id="server-层">server 层</h4>
+<p>连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</p>
+<h4 id="存储引擎">存储引擎</h4>
+<p>负责数据的存储和提取。</p>
+<h3 id="连接器">连接器</h3>
+<p>Sleep：表示是空闲连接。</p>
+<p>数据库长连接和短连接：
+长连接是连接成功后，如果客户端持续有请求，则一直使用同一个连接。优点：减少建立连接的动作，尽量使用
+短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。</p>
+<p>全部使用长连接问题：可能 MySQL 占用内存会涨的很快，因为 MySQL 在执行过程中临时使用的内存是管理在连接对象里面的，会在连接断开才释放，如果长连接积累，会导致内存占用较大。
+解决办法：定期断开长连接；5.7 版本，执行比较大的操作的后，mysql_reset_connection 来重新初始化连接资源，恢复连接到刚刚创建时的状态。miproxy 连接数太多会自己断开</p>
+<p>内存：操作系统 10G，应用 8G，
+线程级别的内存占用，
+一个连接占多大，tcp 占 1M，文件系统描述符。</p>
+<p>为啥会用 swap 内存，
+操作系统配置：是否使用 swap    cpu 结构有关 对称一致访问：每个核心访问最近的 32G 内存最快，开了的话，cpu0 访问 32G，这个进程用了 32G 就会用 swap 分区。 smp  numa</p>
+<h3 id="查询缓存">查询缓存</h3>
+<p>基本没用了</p>
+<h3 id="分析器">分析器</h3>
+<p>词法分析：识别关键字，以及表名之类。
+语法分析：根据语法规则判断语法是否错误。</p>
+<h3 id="优化器">优化器</h3>
+<p>索引顺序选择，多表 join 顺序等。</p>
+<h3 id="执行器">执行器</h3>
+<p>执行前判断对表有没有相应权限。（没分析完词法，不知道是哪张表）</p>
+<p>问题：
+1.Sleep 连接是不是杀了一直没影响
+2.miproxy 对连接的管理：长短连接，长连接的维护。<em>功能怎么实现的，</em>
+3.MySQL 内存的使用。（innodb_buffer_size_pool 之外的内存）。 4.数据库权限和表权限验证时间不一样</p>
+<h1 id="02-日志系统：一条-sql-更新语句是如何执行的？">02 | 日志系统：一条 SQL 更新语句是如何执行的？</h1>
+<p>线上配置：
+innodb_flush_log_at_trx_commit：为 1 时保证每次事务的 redo log 都会持久化到磁盘。
+sync_binlog：为 1 时保证每次事务的 binlog 都持久化到磁盘。</p>
+<p>更新流程：两阶段提交，涉及和 binlog</p>
+<p>|
+|
+|
+|
+|
+|</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">redo log</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">binlog</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>redo log：保证了 MySQL crash-safe 能力。记录更新时，先把记录写到 redo log 并更新内存。
+binlog：。。，
+crash-safe：有了 redo-log，可以保证数据库异常重启时，从 redo log 读取后写入内存再写入磁盘，保证数据部丢失。</p>
+<p>两阶段提交：
+更新写入到内存后，redolog 处于 prapare 阶段，然后写 binlog，再调用引擎的提交事务接口，将 redolog 改成提交状态。
+server 是作为一个协调者。innodb 只知道干啥。发起 commit 时候，innodb redo  write 
+innodb 没完成不能马上写磁盘。</p>
+<p>MySQL 磁盘满，会休眠，磁盘满。innodb 队列变长了，可能都建立连接不成功：gdbc 建立连接会 show 变量，要不建立连接不成功，要不就连接数暴涨。
+原因：如果在写完 binlog 到提交事务之间 MySQL crash 的问题。或者从备份恢复的时候。</p>
+<p>问题：
+备份恢复 apply log 是在：将 redo log 的数据写入磁盘吗？</p>
+<h1 id="03-事务隔离：为什么你改了我还看不见？">03 | 事务隔离：为什么你改了我还看不见？</h1>
+<p>线上配置：</p>
+<p>事务 ACID：Atomicity、Consistency、Isolation、Durability（原子性、一致性、隔离性、持久性）</p>
+<p>多个事务同时执行会出现的问题：脏读（dirty read）、不可重复读（non-repeatable read）、幻读（phantom read）
+隔离级别：
+读未提交：可以看到未提交的事务
+读提交：只有提交的事务才会被看到
+可重复读：一个事务执行过程中看到的数据，总是和启动时看到的一样。不管其他的事务有没有启动。
+串行化：顾名思义</p>
+<p>|</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">脏读</th>
+<th style="text-align:left">不可重复读</th>
+<th style="text-align:left">幻读</th>
+<th style="text-align:left">视图开启时间（对于一个查询）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">读未提交</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">读提交</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">可重复读</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">串行化</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
+<p>幻读的原因：update 等操作的当前读，需要读取当前的数据，这个时候就会读到最新的更新数据了。表现为：单独 select 没有值，然后 insert 或者 update，发现值已经有了。</p>
+<p>MVCC：undo log 实现</p>
+<h1 id="04-深入浅出索引-上">04 | 深入浅出索引（上）</h1>
+<p>innodb 索引类型：
+主键索引和：根据叶子节点的内容
+主键索引：叶子节点内容是整行数据
+非主键索引：叶子节点内容是主键的值。也叫二级索引。使用二级索引，如果想获得整列的值，需要先从索引找到主键值，然后再根据主键查，需要回表。</p>
+<p>索引维护：
+分裂：某个数据页满了，新插入数据的时候。
+合并：相邻两个页删除了数据，利用率很低的时候。
+ps：自增主键是不会分裂的，因为一直是增长的。</p>
+<p>问题： 1.同时插入较多数据时，索引维护是不是比较占资源。 2.业务字段做主键：只有一个索引；该索引必须是唯一索引？</p>
+<h1 id="05-深入浅出索引-下">05 | 深入浅出索引（下）</h1>
+<p>避免回表的方式：
+覆盖索引（组合索引）：
+索引使用注意： 1.最左前缀原则：不管是对于组合索引，还是对于 2.索引下推：MySQL5.6 优化，多个 and 条件的时候，对索引中的字段先过滤，减少回表次数。 2.索引列使用函数会导致索引失效</p>
+<h1 id="06-全局锁和表锁-：给表加个字段怎么有这么多阻碍？">06 | 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？</h1>
+<p>加锁范围分类：全局锁、表级锁和行锁。
+全局锁
+加全局锁方法：Flush tables with read lock (FTWRL)。使用场景：全库逻辑备份（innodb 已经不需要了，可以使用–single-transaction）
+表级锁
+分为表锁和元数据锁（MDL）
+表锁：lock tables … read/write。
+元数据锁：当对一个表做增删改查操作的时候，加 MDL 读锁；当要对表做结构变更操作的时候，加 MDL 写锁。所以给小表加字段，如果读取较多的话，也会阻塞，会阻塞所有的查询和更新，如果客户端有重试机制，会导致该库线程打满。</p>
+<p>尽量使用 FTWRL 而不是 set global read_only=1：
+1.read_only 可能会用来判断是主库还是备库。
+2.FTWRL 命令时，如果客户端异常断开，MySQL 会自动释放，set global read_only 会导致 MySQL 一直只读。</p>
+<h1 id="07-行锁功过：怎么减少行锁对性能的影响？">07 | 行锁功过：怎么减少行锁对性能的影响？</h1>
+<p>线上配置：
+innodb_lock_wait_timeout：10
+innodb_deadlock_detect：on
+两阶段锁协议：行锁在需要的时候才加上，但是在事务结束后才释放。所以要把可能影响并发的锁放在后面。
+死锁和死锁检测策略：
+一直等待到超时：innodb_lock_wait_timeout：一直等待锁，直到超时。值不能太大，也不能太小。
+死锁检测：发现死锁后，主动回滚死锁链条中的某偶一个事务，让其他事务执行。</p>
+<p>问题：
+死锁检测成本：每个新来的线程，都要要判断会不会由于自己的加入导致死锁，如果同时更新同一行的线程很多的时候。CPU 消耗。
+原理怎么做的。</p>
+<h1 id="08-事务到底是隔离的还是不隔离的？">08 | 事务到底是隔离的还是不隔离的？</h1>
+<p>undolog：实现了 MVCC
+数据可见性，锁是实现隔离级别。
+查询和更新是当前读还是一致性读。
+一致性读：可重复读隔离级别下，读取数据时，会根据 row trx_id 找到是否能读到当前值，不在的话会根据 redo log 往前找。
+当前读：操作数据都是要读当前。可重复读隔离级别下，如果需要更新数据，只能拿最新的数据更新，这个时候虽然别的事务还没有提交，但还是能看到的。
+undolog 大小。共享表空间</p>
+<h1 id="09-普通索引和唯一索引-应该怎么选择？">09 | 普通索引和唯一索引，应该怎么选择？</h1>
+<h1 id="12-为什么我的-mysql-会-抖-一下？">12 | 为什么我的 MySQL 会“抖”一下？</h1>
+<p>线上配置：
+innodb_flush_neighbors：1
+innodb_io_capacity：5000
+innodb_max_dirty_pages_pct：75</p>
+<p>为什么会抖一下：
+1.redo log 满了。redo log 中的 checkpoint 前移动，需要刷脏页。（应该避免，因为此时数据库服务已经阻塞，需要控制刷脏页频率）  一般不会设置，不同百分比的时候不一样。 2.内存不足，需要淘汰脏页。buffer_pool     3.日常刷脏页。对应 MySQL 的配置。
+4.MySQL 正常关闭。</p>
+<p>正常使用的数据库，buffer 一般未被使用的情况比较少，如果一个查询，需要的内存比较大，查询需要从磁盘读取很多页的时候，也要将脏页刷到磁盘中。
+可用的页，刷脏页，写到磁盘，redolog checkpoint 往前走，free list flush list lru list</p>
+<p>脏页刷盘参考：一个是脏页比例，一个是 redo log 写盘速度。</p>
+<p>如果高配机器 redo log 设置比较小的话：redo log 很容易被写满，就会导致经常要因为 redo log 满了而刷盘。表现为：磁盘压力很小，但是数据库出现间歇性的性能下跌</p>
+<h1 id="13-为什么表数据删掉一半-表文件大小不变？">13 | 为什么表数据删掉一半，表文件大小不变？</h1>
+<p>：怎么正确的回收表空间
+innodb_file_per_table：1 默认值
+删除整个表数据会删除，但是删除表中的部分数据，空间是怎么回收的。</p>
+<p>delete 删除一条记录：将记录标记为已删除，之后可以复用。
+delete 删除多条记录：如果整个页被删除，则整页都被标记为可复用。相邻的两页使用率低，会合并。但空间均不会被释放。同理：插入数据，如果当前页已满，肯定会开启新页，也会造成数据空洞。</p>
+<p>压缩空间：alter table A engine=InnoDB。5.5 之前不要用，会阻塞 DML。5.6 版本之后：Online DDL（先建新表，并将旧表的更新写在一个文件中，新表搞好之后，再读取文件中的更新。<strong>会有很短时间的 MDL 写锁</strong>）</p>
+<p>DDL 过程如果是 Online 的，就一定是 inplace 的？</p>
+<h1 id="14-count-这么慢-我该怎么办？">14 | count(*)这么慢，我该怎么办？</h1>
+<p>不加 where 条件：
+MyISAM 引擎：把一个表的总行数存在了磁盘上，因此执行 count(*)的时候会直接返回这个数，效率很高；
+InnoDB 引擎：数据一行一行地从引擎里面读出来，然后累积计数。
+show table status：不准确。</p>
+<p>加 where 条件：
+InnoDB 引擎：选择从引擎读</p>
+<p>效率排序：count(字段)&lt;count(主键 id)&lt;count(1)≈count(<em>)
+count(</em>)：特殊处理过，因为不会为 null，server 会按行累计。</p>
+<p>count(1)：InnoDB 引擎遍历整张表，但不取值。server 层对于返回的每一行，放一个数字“1”进去，判断是不可能为空的，按行累加。
+count(主键 id)：InnoDB 引擎会遍历整张表，把每一行的 id 值都取出来，返回给 server 层。server 层拿到 id 后，判断是不可能为空的，就按行累加。
+count(字段)：根据是否为 not null 进行判断。</p>
+<h1 id="15-答疑文章-一-：日志和索引相关问题">15 | 答疑文章（一）：日志和索引相关问题</h1>
+<p>日志相关： 1.两阶段提交不同瞬间 MySQL 异常重启怎么保证数据完整性：
+测试</p>
+<h1 id="16-order-by-是怎么工作的？">16 | “order by”是怎么工作的？</h1>
+<h2 id="全字段排序">全字段排序</h2>
+<p>排序过程对字符串做了“紧凑”处理。即使 name 字段的定义是 varchar(16)，在排序过程中还是要按照实际长度来分配空间的。</p>
+<p>max_length_for_sort_data</p>
+<h2 id="rowid-排序">rowid 排序</h2>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2020/06/23/yuque/MySQL45%E8%AE%B2%E6%80%BB%E7%BB%93/">http://www.yuguocong.cn/2020/06/23/yuque/MySQL45%E8%AE%B2%E6%80%BB%E7%BB%93/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/MySQL/">MySQL</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2020/11/05/binlog/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">【MySQL】Binlog详解</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/09/12/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(3)/">
+        <span class="next-text nav-default">go语言基础学习(3)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
