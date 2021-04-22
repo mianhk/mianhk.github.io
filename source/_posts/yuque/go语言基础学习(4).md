@@ -289,3 +289,25 @@ class_to_size = [_NumSizeClasses]uint16{0, 8, 16, 32, 48, 64, 80, 96, 112, 128, 
 | 字节数         | 8   | 16  | 24  | 32  | 40  | 48  | 56  | 64  | 72  |
 | 所占空间       | 8   | 16  | 32  | 32  | 48  | 48  | 64  | 64  | 80  |
 | size_to_class8 | 1   | 2   | 3   | 3   | 4   | 4   | 5   | 5   | 6   |
+
+
+
+## Tips
+
+函数
+
+```
+var rmdirs []func()
+for _, d := range tempDirs() {
+  dir := d // NOTE: necessary!如果没有这一行会导致传入同样的dir
+  os.MkdirAll(dir, 0755) // creates parent directories too
+  rmdirs = append(rmdirs, func() {
+  	os.RemoveAll(dir)
+  })
+}
+// ...do some work…
+for _, rmdir := range rmdirs {
+	rmdir() // clean up
+}
+```
+
