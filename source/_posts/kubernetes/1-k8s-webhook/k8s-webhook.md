@@ -10,4 +10,4 @@ tags: [k8s]
 
 **Admission Webhook**调用图
 
-![img](../../images/img1-20210925115028214.png)
+![img](img1-20210925120413030.png)
