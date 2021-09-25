@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /tags/
-Disallow: /page/
-Disallow: /categories/
+Disallow:
+Sitemap: https://yuguocong.cn/sitemap.xml

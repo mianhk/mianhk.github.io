@@ -1,0 +1,354 @@
+<!doctype html><html lang=zh-cn dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>面试总结-操作系统 | mianhk's notes</title>
+<meta name=keywords content="面试,操作系统,工作,Linux">
+<meta name=description content="操作系统的分页分段 操作系统之分页分段介绍 分页存储 思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(p">
+<meta name=author content="mianhk">
+<link rel=canonical href=https://yuguocong.cn/posts/interview_operation/>
+<meta name=google-site-verification content="XYZabc">
+<meta name=yandex-verification content="XYZabc">
+<meta name=msvalidate.01 content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=icon type=image/png sizes=16x16 href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=icon type=image/png sizes=32x32 href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=apple-touch-icon href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=mask-icon href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123 -45','auto'),ga('send','pageview'))</script><meta property="og:title" content="面试总结-操作系统">
+<meta property="og:description" content="操作系统的分页分段 操作系统之分页分段介绍 分页存储 思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(p">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yuguocong.cn/posts/interview_operation/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2018-06-24T22:03:43+08:00">
+<meta property="article:modified_time" content="2018-06-24T22:03:43+08:00"><meta property="og:site_name" content="mianhk's notes">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="面试总结-操作系统">
+<meta name=twitter:description content="操作系统的分页分段 操作系统之分页分段介绍 分页存储 思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(p">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://yuguocong.cn/posts/"},{"@type":"ListItem","position":2,"name":"面试总结-操作系统","item":"https://yuguocong.cn/posts/interview_operation/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"面试总结-操作系统","name":"面试总结-操作系统","description":"操作系统的分页分段 操作系统之分页分段介绍 分页存储 思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(p","keywords":["面试","操作系统","工作","Linux"],"articleBody":"操作系统的分页分段 操作系统之分页分段介绍\n分页存储  思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(page frame)或物理块，每个物理块的大小一般取2的整数幂。程序加载时，可将任意一页放人内存中任意一个页框，这些页框不必连续，从而实现了离散分配。该方法需要CPU的硬件支持，来实现逻辑地址和物理地址之间的映射。在页式存储管理方式中地址结构由两部构成，前一部分是页号，后一部分为页内地址w（位移量）。 逻辑地址道物理地址变化原理：CPU中的内存管理单元(MMU)按逻辑页号通过查进程页表得到物理页框号，将物理页框号与页内地址相加形成物理地址。 优点：没有外碎片，提高内存的利用率。一个程序不必连续存放。便于改变程序占用空间的大小(主要指随着程序运行，动态生成的数据增多，所要求的地址空间相应增长)。 缺点：无论数据有多少，都只能按照页面大小分配，容易产生内部碎片。无法体现程序逻辑。页长与程序的逻辑大小不相关。不利于编程时的独立性，并给换入换出处理、存储保护和存储共享等操作造成麻烦。  分段存储  思想：将用户程序地址空间分成若干个大小不等的段，每段可以定义一组相对完整的逻辑信息。存储分配时，以段为单位，段与段在内存中可以不相邻接，也实现了离散分配。通常，程序员把子程序、操作数和常数等不同类型的数据划分到不同的段中（写c程序时会用到），并且每个程序可以有多个相同类型的段。段表本身也是一个段，可以存在辅存中，但一般是驻留在主存中。\n在为某个段分配物理内存时，可以采用首先适配法、下次适配法、最佳适配法等方法。在回收某个段所占用的空间时，要注意将收回的空间与其相邻的空间合并。 地址映射: 在分段存储中，整个进程的地址空间是二维的，即其逻辑地址由段号和段内地址两部分组成。 优点：分段对程序员可见。段的逻辑独立性使其易于编译、管理、修改和保护，也便于多道程序共享。段长可以根据需要动态改变，允许自由调度，以便有效利用主存空间。方便编程，分段共享，分段保护，动态链接，动态增长。 缺点：主存空间分配比较麻烦。外部碎片。由于段长不一定是2的整数次幂，因而不能简单地像分页方式那样用虚拟地址和实存地址的最低若干二进制位作为段内地址，并与段号进行直接拼接，必须用加法操作通过段起址与段内地址的求和运算得到物理地址。  分页存储和分段存储的区别  页是信息的物理单位，分页是为实现离散分配方式，以消减内存的外零头，提高内存的利用率；段则是信息的逻辑单位，它含有一组其意义相对完整的信息，分段的目的是为了能更好地满足用户的需要。 页的大小固定且由系统决定，由系统把逻辑地址划分为页号和页内地址两部分，是由机器硬件实现的，因而在系统中只能有一种大小的页面；而段的长度却不固定，决定于用户所编写的程序，通常由编译程序在对源程序进行编译时，根据信息的性质来划分。 分页的作业地址空间是一维的，即单一的线性地址空间，程序员只需利用一个记忆符，即可表示一个地址；而分段的作业地址空间则是二维的，程序员在标识一个地址是，即需给出段名，又需给出段内地址。 分页信息很难保护和共享、分段存储按逻辑存储所以容易实现对段的保存和共享。  段页存储 程序员按照分段系统的地址结构将地址分为段号与段内位移量，地址变换机构将段内位移量分解为页号和页内位移量。\n它首先将程序按其逻辑结构划分为若干个大小不等的逻辑段，然后再将每个逻辑段划分为若干个大小相等的逻辑页。主存空间也划分为若干个同样大小的物理页。辅存和主存之间的信息调度以页为基本传送单位，每个程序段对应一个段表，每页对应一个页表。\n段页式系统中，作业的地址结构包含三部分的内容：段号，页号，页内位移量\nCPU访问时，段表指示每段对应的页表地址，每一段的页表确定页所在的主存空间的位置，最后与页表内地址拼接，确定CPU要访问单元的物理地址。\n段页存储管理方式综合了段式管理和页式管理的优点，但需要经过两级查表才能完成地址转换，消耗时间多。\n 过程：检查是否越界。利用段表始址和段号来求出该段所对应的段表项在段表中的位置，得到该段的页表始址。读出该页所在的物理块号b。构建物理地址。 优点：提供了大量的虚拟存储空间。有效地利用主存，为组织多道程序运行提供了方便。 缺点：增加了硬件成本、系统的复杂性和管理上的开销。存在系统抖动的风险。存在内碎片。各种表占用更多的空间。  Linux自旋锁 线程同步 http://bestmind.space/posts/%E5%B8%B8%E8%A7%81C-%E9%9D%A2%E8%AF%95%E9%A2%98/\n线程同步和线程互斥的区别 线程同步的方式:互斥锁、读写锁(共享-独占锁)、条件变量和信号量\n进程间通信 进程间的通信方式 管道、有名管道、信号、共享内存、消息队列、信号量、套接字、文件. (1)管道( pipe )：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。 管道是单向的、先进先出的、无结构的、固定大小的字节流，它把一个进程的标准输出和另一个进程的标准输入连接在一起。写进程在管道的尾端写入数据，读进程在管道的首端读出数据。数据读出后将从管道中移走，其它读进程都不能再读到这些数据。分为普通管道、流管道、命名管道。 (2)命名管道(named pipe):命名管道也是半双工的通信方式，它克服了管道没有名字的限制，并且它允许无亲缘关系进程间的通信。命令管道在文件系统中有对应的文件名，命名管道通过命令mkfifo或系统调用mkfifo来创建。\n(3)信号:信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。除了用于进程通信外，进程还可以发送信号给进程本身。\n(4)消息队列：克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小的限制。由消息链表的结构实现。\n(5)信号量(semophore):信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。\n(6)共享内存：映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的IPC方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信。\n(7)套接字: 与其他通信机制不同的是，它可用于不同机器间的进程通信。但是将通信转移到了应用层。\nselect、poll、epoll的区别 死锁 指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。\n死锁产生的四个必要条件: 互斥条件:一个资源每次只能被一个进程使用 不可剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺 请求与保持条件:一个进程因请求资源而阻塞时，对已获得的资源保持不放 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系.\n死锁避免 银行家算法：检查申请者对资源的最大需求量，如果系统现存的各类资源可以满足申请者的请求，就满足申请者的请求。这样申请者就可很快完成其计算，然后释放它占用的资源，从而保证了系统中的所有进程都能完成，所以可避免死锁的发生。\n死锁解除  资源剥夺法。挂起某些死锁进程，并抢占它的资源，将这些资源分配给其他的死锁进程。但应防止被挂起的进程长时间得不到资源，而处于资源匮乏的状态。 撤销进程法。强制撤销部分、甚至全部死锁进程并剥夺这些进程的资源。撤销的原则可以按进程优先级和撤销进程代价的高低进行。 进程回退法。让一（多）个进程回退到足以回避死锁的地步，进程回退时自愿释放资源而不是被剥夺。要求系统保持进程的历史信息，设置还原点。  进程有哪几种状态？ 就绪状态：进程已获得除处理机以外的所需资源，等待分配处理机资源； 运行状态：占用处理机资源运行，处于此状态的进程数小于等于CPU数； 阻塞状态： 进程等待某种条件，在条件满足之前无法执行；\n操作系统中进程调度策略有哪几种？ FCFS(先来先服务，队列实现，非抢占的)：先请求CPU的进程先分配到CPU\nSJF(最短作业优先调度算法)：平均等待时间最短，但难以知道下一个CPU区间长度\n优先级调度算法(可以是抢占的，也可以是非抢占的)：优先级越高越先分配到CPU，相同优先级先到先服务，存在的主要问题是：低优先级进程无穷等待CPU，会导致无穷阻塞或饥饿；解决方案：老化\n时间片轮转调度算法(可抢占的)：队列中没有进程被分配超过一个时间片的CPU时间，除非它是唯一可运行的进程。如果进程的CPU区间超过了一个时间片，那么该进程就被抢占并放回就绪队列。\n多级队列调度算法：将就绪队列分成多个独立的队列，每个队列都有自己的调度算法，队列之间采用固定优先级抢占调度。其中，一个进程根据自身属性被永久地分配到一个队列中。\n多级反馈队列调度算法：与多级队列调度算法相比，其允许进程在队列之间移动：若进程使用过多CPU时间，那么它会被转移到更低的优先级队列；在较低优先级队列等待时间过长的进程会被转移到更高优先级队列，以防止饥饿发生。\n虚拟内存 为什么有虚拟内存：对于进程而言，逻辑上似乎有很大的内存空间，实际上其中一部分对应物理内存上的一块(称为帧，通常页和帧大小相等)，还有一些没加载在内存中的对应在硬盘上 缺页：如果虚拟内存的页并不存在于物理内存中，会产生缺页中断，从磁盘中取得缺的页放入内存，如果内存已满，还会根据某种算法将磁盘中的页换出。\n页面置换算法： FIFO先进先出算法：在操作系统中经常被用到，比如作业调度（主要实现简单，很容易想到）；\nLRU（Least recently use）最近最少使用算法：根据使用时间到现在的长短来判断；\nLFU（Least frequently use）最少使用次数算法：根据使用次数来判断；\nOPT（Optimal replacement）最优置换算法：理论的最优，理论；就是要保证置换出去的是不再被使用的页，或者是在实际内存中最晚使用的算法。\n多线程中栈与堆是公有的还是私有的 一般来说栈是私有的，堆是公有的。 但是在多线程中，可以为特定的线程创建私有的堆。\n进程是资源分配的最小单位，线程是CPU调度的最小单位 进程是资源分配的基本单位。所有与该进程有关的资源，都被记录在进程控制块PCB中。以表示该进程拥有这些资源或正在使用它们。进程也是抢占处理机的调度单位，它拥有一个完整的虚拟地址空间。当进程发生调度时，不同的进程拥有不同的虚拟地址空间，而同一进程内的不同线程共享同一地址空间。\n与进程相对应，线程与资源分配无关，它属于某一个进程，并与进程内的其他线程一起共享进程的资源。\n线程只由相关堆栈（系统栈或用户栈）寄存器和线程控制表TCB组成。寄存器可被用来存储线程内的局部变量，但不能存储其他线程的相关变量。\n因此一个简单的解释就是：进程拥有PCB，而多个线程共享一个进程的PCB。\n进程和线程的区别 进程与线程的一个简单解释 地址空间和其它资源（如打开文件）：进程间相互独立，同一进程的各线程间共享。某进程内的线程在其它进程不可见。\n通信：进程间通信IPC，线程间可以直接读写进程数据段（如全局变量）来进行通信——需要进程同步和互斥手段的辅助，以保证数据的一致性。\n调度和切换：线程上下文切换比进程上下文切换要快得多。 在多线程OS中，进程不是一个可执行的实体。\n进程的基本状态 状态：运行、阻塞、挂起阻塞、就绪、挂起就绪\n状态之间的转换： 准备就绪的进程，被CPU调度执行，变成运行态；\n运行中的进程，进行I/O请求或者不能得到所请求的资源，变成阻塞态；\n运行中的进程，进程执行完毕（或时间片已到），变成就绪态；\n将阻塞态的进程挂起，变成挂起阻塞态，当导致进程阻塞的I/O操作在用户重启进程前完成（称之为唤醒），挂起阻塞态变成挂起就绪态，当用户在I/O操作结束之前重启进程，挂起阻塞态变成阻塞态；\n将就绪（或运行）中的进程挂起，变成挂起就绪态，当该进程恢复之后，挂起就绪态变成就绪态；\n\"R (running)\", /* 0 */ \"S (sleeping)\", /* 1 */ \"D (disk sleep)\", /* 2 */ \"T (stopped)\", /* 4 */ \"t (tracing stop)\", /* 8 */ \"X (dead)\", /* 16 */ \"Z (zombie)\", /* 32 */ }; 1.进程管理-CPU 任务调度算法 1.先来先服务算法 优点：简单，易于理解和实现。 缺点：一批任务的平均周转时间取决于各个任务到达的顺序，如果短任务位于长任务之后，那么将增大平均周转时间。\n2.短作业优先算法\nSJF算法的基本思路是：各个任务在开始执行之前，必须事先预计好它的执行时间，然后调度器将根据这些时间，从中选择用时较短的任务优先执行。 SJF算法有两种：不可抢占方式和可抢占方式。其中可抢占方式又叫最短剩余时间优先算法（Shortest Remaining Time First，SRTF）。\n3.时间片轮转算法 时间片轮转算法（Round Robin，RR）的基本思路是：把系统当中的所有就绪任务按照先来先服务的原则，排成一个队列，然后再每次调度的时候，把处理器分派给队列当中的第一个任务，让它去执行一小段CPU时间（即时间片，time slice）。当这个时间片结束时，如果任务还没有执行完成的话，将会发生时钟中断，在时钟中断里面，调度器将会暂停当前任务的执行，并把它送到就绪队列的末尾，然后执行当前的队首任务。反之，如果一个任务在它的时间片用完之前就已经结束了或者阻塞了，那么它就会立即让出CPU给其他任务。\n优点：公平性，各个就绪任务能得到相同的时间片；活动性，每个就绪任务能一直保持活动。\n缺点：时间片的大小q要适当选取，如果选择不当，将会影响到系统的性能和效率。如果q太大，每个任务都在一个时间片内完成，这就退化为先来先服务算法了。如果q太小，每个任务需要更多的时间片才能运行结束，这就使任务之间的切换次数增加，从而增大了系统的管理开销，降低了CPU的使用效率。一般来说，q值选取在20ms~50ms比较合适。\n4.优先级算法\n优先级调度算法（priority）的基本思路是：给每个任务都设置一个优先级，然后在任务调度的时候，在所有处于就绪状态的任务中选择优先级最高的任务去运行。上文提到的短作业优先算法其实也是一种优先级算法，每个任务的优先级就是它的运行时间，运行时间越短，优先级越高。\n进程与线程 简单的一句话：进程是资源分配的基本单位、线程是资源调度的基本单位。这句话看起来很简单，但是核心却不仅仅如此。\n进程 进程间通信方式  管道（pipe）,流管道(s_pipe)和有名管道（FIFO）\n管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有血缘关系的进程间使用。进程的血缘关系通常指父子进程关系。\n有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间通信。 信号（signal）\n信号是一种比较复杂的通信方式，用于通知接收进程某一事件已经发生。 消息队列 消息队列是由消息组成的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。 共享内存 共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问，共享内存是最快的IPC方式，它是针对其他进程间的通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信。 信号量 信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它通常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。  Linux 的启动流程 BIOS-主引导记录-操作系统-加载内核(/boot):载入内核文件-启动初始化进程：运行第一个程序 /sbin/init，初始化系统环境。-确定运行级别:运行这些开机启动的程序。-加载开机启动程序-用户登录-进入 login shell-打开 non-login shell\n","wordCount":"6361","inLanguage":"zh-cn","datePublished":"2018-06-24T22:03:43+08:00","dateModified":"2018-06-24T22:03:43+08:00","author":{"@type":"Person","name":"mianhk"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://yuguocong.cn/posts/interview_operation/"},"publisher":{"@type":"Organization","name":"mianhk's notes","logo":{"@type":"ImageObject","url":"https://yuguocong.cn/%3Clink%20/%20abs%20url%3E"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://yuguocong.cn/ accesskey=h title="mianhk's notes (Alt + H)">mianhk's notes</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://yuguocong.cn/posts/ title=文章>
+<span>文章</span>
+</a>
+</li>
+<li>
+<a href=https://yuguocong.cn/archives/ title=归档>
+<span>归档</span>
+</a>
+</li>
+<li>
+<a href=https://yuguocong.cn/tags/ title=标签>
+<span>标签</span>
+</a>
+</li>
+<li>
+<a href=https://yuguocong.cn/search/ title=搜索>
+<span>搜索</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://yuguocong.cn/>Home</a>&nbsp;»&nbsp;<a href=https://yuguocong.cn/posts/>Posts</a></div>
+<h1 class=post-title>
+面试总结-操作系统
+</h1>
+<div class=post-meta>June 24, 2018&nbsp;·&nbsp;13 min&nbsp;·&nbsp;mianhk
+</div>
+</header> <div class=toc>
+<details>
+<summary accesskey=c title="(Alt + C)">
+<span class=details>Table of Contents</span>
+</summary>
+<div class=inner><ul>
+<li>
+<a href=#%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e7%9a%84%e5%88%86%e9%a1%b5%e5%88%86%e6%ae%b5 aria-label=操作系统的分页分段>操作系统的分页分段</a><ul>
+<li>
+<a href=#%e5%88%86%e9%a1%b5%e5%ad%98%e5%82%a8 aria-label=分页存储>分页存储</a></li>
+<li>
+<a href=#%e5%88%86%e6%ae%b5%e5%ad%98%e5%82%a8 aria-label=分段存储>分段存储</a></li>
+<li>
+<a href=#%e5%88%86%e9%a1%b5%e5%ad%98%e5%82%a8%e5%92%8c%e5%88%86%e6%ae%b5%e5%ad%98%e5%82%a8%e7%9a%84%e5%8c%ba%e5%88%ab aria-label=分页存储和分段存储的区别>分页存储和分段存储的区别</a></li>
+<li>
+<a href=#%e6%ae%b5%e9%a1%b5%e5%ad%98%e5%82%a8 aria-label=段页存储>段页存储</a></li></ul>
+</li>
+<li>
+<a href=#linux%e8%87%aa%e6%97%8b%e9%94%81 aria-label=Linux自旋锁>Linux自旋锁</a></li>
+<li>
+<a href=#%e7%ba%bf%e7%a8%8b%e5%90%8c%e6%ad%a5 aria-label=线程同步>线程同步</a></li>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e9%97%b4%e9%80%9a%e4%bf%a1 aria-label=进程间通信>进程间通信</a></li>
+<li>
+<a href=#selectpollepoll%e7%9a%84%e5%8c%ba%e5%88%ab aria-label=select、poll、epoll的区别>select、poll、epoll的区别</a></li>
+<li>
+<a href=#%e6%ad%bb%e9%94%81 aria-label=死锁>死锁</a><ul>
+<li>
+<a href=#%e6%ad%bb%e9%94%81%e9%81%bf%e5%85%8d aria-label=死锁避免>死锁避免</a></li>
+<li>
+<a href=#%e6%ad%bb%e9%94%81%e8%a7%a3%e9%99%a4 aria-label=死锁解除>死锁解除</a></li></ul>
+</li>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e6%9c%89%e5%93%aa%e5%87%a0%e7%a7%8d%e7%8a%b6%e6%80%81 aria-label=进程有哪几种状态？>进程有哪几种状态？</a></li>
+<li>
+<a href=#%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e4%b8%ad%e8%bf%9b%e7%a8%8b%e8%b0%83%e5%ba%a6%e7%ad%96%e7%95%a5%e6%9c%89%e5%93%aa%e5%87%a0%e7%a7%8d aria-label=操作系统中进程调度策略有哪几种？>操作系统中进程调度策略有哪几种？</a></li>
+<li>
+<a href=#%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98 aria-label=虚拟内存>虚拟内存</a><ul>
+<li>
+<a href=#%e5%a4%9a%e7%ba%bf%e7%a8%8b%e4%b8%ad%e6%a0%88%e4%b8%8e%e5%a0%86%e6%98%af%e5%85%ac%e6%9c%89%e7%9a%84%e8%bf%98%e6%98%af%e7%a7%81%e6%9c%89%e7%9a%84 aria-label=多线程中栈与堆是公有的还是私有的>多线程中栈与堆是公有的还是私有的</a></li>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e6%98%af%e8%b5%84%e6%ba%90%e5%88%86%e9%85%8d%e7%9a%84%e6%9c%80%e5%b0%8f%e5%8d%95%e4%bd%8d%e7%ba%bf%e7%a8%8b%e6%98%afcpu%e8%b0%83%e5%ba%a6%e7%9a%84%e6%9c%80%e5%b0%8f%e5%8d%95%e4%bd%8d aria-label=进程是资源分配的最小单位，线程是CPU调度的最小单位>进程是资源分配的最小单位，线程是CPU调度的最小单位</a><ul>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e5%92%8c%e7%ba%bf%e7%a8%8b%e7%9a%84%e5%8c%ba%e5%88%ab aria-label=进程和线程的区别>进程和线程的区别</a></li></ul>
+</li>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e7%9a%84%e5%9f%ba%e6%9c%ac%e7%8a%b6%e6%80%81 aria-label=进程的基本状态>进程的基本状态</a><ul>
+<li>
+<a href=#1%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86-cpu aria-label=1.进程管理-&amp;gt;CPU>1.进程管理->CPU</a><ul>
+<li>
+<a href=#%e4%bb%bb%e5%8a%a1%e8%b0%83%e5%ba%a6%e7%ae%97%e6%b3%95 aria-label=任务调度算法>任务调度算法</a></li>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e4%b8%8e%e7%ba%bf%e7%a8%8b aria-label=进程与线程>进程与线程</a></li>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b aria-label=进程>进程</a><ul>
+<li>
+<a href=#%e8%bf%9b%e7%a8%8b%e9%97%b4%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f aria-label=进程间通信方式>进程间通信方式</a></li></ul>
+</li></ul>
+</li>
+<li>
+<a href=#linux-%e7%9a%84%e5%90%af%e5%8a%a8%e6%b5%81%e7%a8%8b aria-label="Linux 的启动流程">Linux 的启动流程</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content><h1 id=操作系统的分页分段>操作系统的分页分段<a hidden class=anchor aria-hidden=true href=#操作系统的分页分段>#</a></h1>
+<p><a href=https://www.cnblogs.com/onepeace/p/5066736.html>操作系统之分页分段介绍</a></p>
+<h2 id=分页存储>分页存储<a hidden class=anchor aria-hidden=true href=#分页存储>#</a></h2>
+<ul>
+<li>思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(page frame)或物理块，每个物理块的大小一般取2的整数幂。程序加载时，可将任意一页放人内存中任意一个页框，这些页框不必连续，从而实现了离散分配。该方法需要CPU的硬件支持，来实现逻辑地址和物理地址之间的映射。在页式存储管理方式中地址结构由两部构成，前一部分是页号，后一部分为页内地址w（位移量）。</li>
+<li>逻辑地址道物理地址变化原理：CPU中的内存管理单元(MMU)按逻辑页号通过查进程页表得到物理页框号，将物理页框号与页内地址相加形成物理地址。</li>
+<li>优点：没有外碎片，提高内存的利用率。一个程序不必连续存放。便于改变程序占用空间的大小(主要指随着程序运行，动态生成的数据增多，所要求的地址空间相应增长)。</li>
+<li>缺点：无论数据有多少，都只能按照页面大小分配，容易产生内部碎片。无法体现程序逻辑。页长与程序的逻辑大小不相关。不利于编程时的独立性，并给换入换出处理、存储保护和存储共享等操作造成麻烦。</li>
+</ul>
+<h2 id=分段存储>分段存储<a hidden class=anchor aria-hidden=true href=#分段存储>#</a></h2>
+<ul>
+<li>思想：将用户程序地址空间分成若干个大小不等的段，每段可以定义一组相对完整的逻辑信息。存储分配时，以段为单位，段与段在内存中可以不相邻接，也实现了离散分配。通常，程序员把子程序、操作数和常数等不同类型的数据划分到不同的段中（写c程序时会用到），并且每个程序可以有多个相同类型的段。段表本身也是一个段，可以存在辅存中，但一般是驻留在主存中。<br>
+在为某个段分配物理内存时，可以采用<strong>首先适配法、下次适配法、最佳适配法</strong>等方法。在回收某个段所占用的空间时，要注意将收回的空间与其相邻的空间合并。</li>
+<li>地址映射: 在分段存储中，整个进程的地址空间是<strong>二维</strong>的，即其逻辑地址由段号和段内地址两部分组成。</li>
+<li>优点：分段对程序员可见。段的逻辑独立性使其易于编译、管理、修改和保护，也便于多道程序共享。段长可以根据需要动态改变，允许自由调度，以便有效利用主存空间。方便编程，分段共享，分段保护，动态链接，动态增长。</li>
+<li>缺点：主存空间分配比较麻烦。外部碎片。由于段长不一定是2的整数次幂，因而不能简单地像分页方式那样用虚拟地址和实存地址的最低若干二进制位作为段内地址，并与段号进行直接拼接，必须用加法操作通过段起址与段内地址的求和运算得到物理地址。</li>
+</ul>
+<h2 id=分页存储和分段存储的区别>分页存储和分段存储的区别<a hidden class=anchor aria-hidden=true href=#分页存储和分段存储的区别>#</a></h2>
+<ol>
+<li>页是信息的物理单位，分页是为实现离散分配方式，以消减内存的外零头，提高内存的利用率；段则是信息的逻辑单位，它含有一组其意义相对完整的信息，分段的目的是为了能更好地满足用户的需要。</li>
+<li>页的大小固定且由系统决定，由系统把逻辑地址划分为页号和页内地址两部分，是由机器硬件实现的，因而在系统中只能有一种大小的页面；而段的长度却不固定，决定于用户所编写的程序，通常由编译程序在对源程序进行编译时，根据信息的性质来划分。</li>
+<li>分页的作业地址空间是一维的，即单一的线性地址空间，程序员只需利用一个记忆符，即可表示一个地址；而分段的作业地址空间则是二维的，程序员在标识一个地址是，即需给出段名，又需给出段内地址。</li>
+<li>分页信息很难保护和共享、分段存储按逻辑存储所以容易实现对段的保存和共享。</li>
+</ol>
+<h2 id=段页存储>段页存储<a hidden class=anchor aria-hidden=true href=#段页存储>#</a></h2>
+<p>程序员按照分段系统的地址结构将地址分为段号与段内位移量，地址变换机构将段内位移量分解为页号和页内位移量。</p>
+<p>它首先将程序按其逻辑结构划分为若干个大小不等的逻辑段，然后再将每个逻辑段划分为若干个大小相等的逻辑页。主存空间也划分为若干个同样大小的物理页。辅存和主存之间的信息调度以页为基本传送单位，每个程序段对应一个段表，每页对应一个页表。</p>
+<p>段页式系统中，作业的地址结构包含三部分的内容：段号，页号，页内位移量</p>
+<p>CPU访问时，段表指示每段对应的页表地址，每一段的页表确定页所在的主存空间的位置，最后与页表内地址拼接，确定CPU要访问单元的物理地址。</p>
+<p>段页存储管理方式综合了段式管理和页式管理的优点，但需要经过两级查表才能完成地址转换，消耗时间多。</p>
+<ul>
+<li>过程：检查是否越界。利用段表始址和段号来求出该段所对应的段表项在段表中的位置，得到该段的页表始址。读出该页所在的物理块号b。构建物理地址。</li>
+<li>优点：提供了大量的虚拟存储空间。有效地利用主存，为组织多道程序运行提供了方便。</li>
+<li>缺点：增加了硬件成本、系统的复杂性和管理上的开销。存在系统抖动的风险。存在内碎片。各种表占用更多的空间。</li>
+</ul>
+<h1 id=linux自旋锁>Linux自旋锁<a hidden class=anchor aria-hidden=true href=#linux自旋锁>#</a></h1>
+<h1 id=线程同步>线程同步<a hidden class=anchor aria-hidden=true href=#线程同步>#</a></h1>
+<p><a href=http://bestmind.space/posts/%E5%B8%B8%E8%A7%81C-%E9%9D%A2%E8%AF%95%E9%A2%98/>http://bestmind.space/posts/%E5%B8%B8%E8%A7%81C-%E9%9D%A2%E8%AF%95%E9%A2%98/</a><br>
+线程同步和线程互斥的区别
+线程同步的方式:互斥锁、读写锁(共享-独占锁)、条件变量和信号量</p>
+<h1 id=进程间通信>进程间通信<a hidden class=anchor aria-hidden=true href=#进程间通信>#</a></h1>
+<p>进程间的通信方式
+管道、有名管道、信号、共享内存、消息队列、信号量、套接字、文件.
+(1)管道( pipe )：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。 管道是单向的、先进先出的、无结构的、固定大小的字节流，它把一个进程的标准输出和另一个进程的标准输入连接在一起。写进程在管道的尾端写入数据，读进程在管道的首端读出数据。数据读出后将从管道中移走，其它读进程都不能再读到这些数据。分为普通管道、流管道、命名管道。 <br>
+(2)命名管道(named pipe):命名管道也是半双工的通信方式，它克服了管道没有名字的限制，并且它允许无亲缘关系进程间的通信。命令管道在文件系统中有对应的文件名，命名管道通过命令mkfifo或系统调用mkfifo来创建。<br>
+(3)信号:信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。除了用于进程通信外，进程还可以发送信号给进程本身。<br>
+(4)消息队列：克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小的限制。由消息链表的结构实现。<br>
+(5)信号量(semophore):信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。<br>
+(6)共享内存：映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的IPC方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信。<br>
+(7)套接字: 与其他通信机制不同的是，它可用于不同机器间的进程通信。但是将通信转移到了应用层。</p>
+<h1 id=selectpollepoll的区别>select、poll、epoll的区别<a hidden class=anchor aria-hidden=true href=#selectpollepoll的区别>#</a></h1>
+<h1 id=死锁>死锁<a hidden class=anchor aria-hidden=true href=#死锁>#</a></h1>
+<p>指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。</p>
+<p>死锁产生的四个必要条件:
+互斥条件:一个资源每次只能被一个进程使用
+不可剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺
+请求与保持条件:一个进程因请求资源而阻塞时，对已获得的资源保持不放
+循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系.</p>
+<h2 id=死锁避免>死锁避免<a hidden class=anchor aria-hidden=true href=#死锁避免>#</a></h2>
+<p>银行家算法：检查申请者对资源的最大需求量，如果系统现存的各类资源可以满足申请者的请求，就满足申请者的请求。这样申请者就可很快完成其计算，然后释放它占用的资源，从而保证了系统中的所有进程都能完成，所以可避免死锁的发生。</p>
+<h2 id=死锁解除>死锁解除<a hidden class=anchor aria-hidden=true href=#死锁解除>#</a></h2>
+<ol>
+<li>资源剥夺法。挂起某些死锁进程，并抢占它的资源，将这些资源分配给其他的死锁进程。但应防止被挂起的进程长时间得不到资源，而处于资源匮乏的状态。</li>
+<li>撤销进程法。强制撤销部分、甚至全部死锁进程并剥夺这些进程的资源。撤销的原则可以按进程优先级和撤销进程代价的高低进行。</li>
+<li>进程回退法。让一（多）个进程回退到足以回避死锁的地步，进程回退时自愿释放资源而不是被剥夺。要求系统保持进程的历史信息，设置还原点。</li>
+</ol>
+<h1 id=进程有哪几种状态>进程有哪几种状态？<a hidden class=anchor aria-hidden=true href=#进程有哪几种状态>#</a></h1>
+<p>就绪状态：进程已获得除处理机以外的所需资源，等待分配处理机资源；
+运行状态：占用处理机资源运行，处于此状态的进程数小于等于CPU数；
+阻塞状态： 进程等待某种条件，在条件满足之前无法执行；</p>
+<h1 id=操作系统中进程调度策略有哪几种>操作系统中进程调度策略有哪几种？<a hidden class=anchor aria-hidden=true href=#操作系统中进程调度策略有哪几种>#</a></h1>
+<p>FCFS(先来先服务，队列实现，非抢占的)：先请求CPU的进程先分配到CPU</p>
+<p>SJF(最短作业优先调度算法)：平均等待时间最短，但难以知道下一个CPU区间长度</p>
+<p>优先级调度算法(可以是抢占的，也可以是非抢占的)：优先级越高越先分配到CPU，相同优先级先到先服务，存在的主要问题是：低优先级进程无穷等待CPU，会导致无穷阻塞或饥饿；解决方案：老化</p>
+<p>时间片轮转调度算法(可抢占的)：队列中没有进程被分配超过一个时间片的CPU时间，除非它是唯一可运行的进程。如果进程的CPU区间超过了一个时间片，那么该进程就被抢占并放回就绪队列。</p>
+<p>多级队列调度算法：将就绪队列分成多个独立的队列，每个队列都有自己的调度算法，队列之间采用固定优先级抢占调度。其中，一个进程根据自身属性被永久地分配到一个队列中。</p>
+<p>多级反馈队列调度算法：与多级队列调度算法相比，其允许进程在队列之间移动：若进程使用过多CPU时间，那么它会被转移到更低的优先级队列；在较低优先级队列等待时间过长的进程会被转移到更高优先级队列，以防止饥饿发生。</p>
+<h1 id=虚拟内存>虚拟内存<a hidden class=anchor aria-hidden=true href=#虚拟内存>#</a></h1>
+<p>为什么有虚拟内存：对于进程而言，逻辑上似乎有很大的内存空间，实际上其中一部分对应物理内存上的一块(称为帧，通常页和帧大小相等)，还有一些没加载在内存中的对应在硬盘上
+缺页：如果虚拟内存的页并不存在于物理内存中，会产生缺页中断，从磁盘中取得缺的页放入内存，如果内存已满，还会根据某种算法将磁盘中的页换出。</p>
+<p>页面置换算法：
+FIFO先进先出算法：在操作系统中经常被用到，比如作业调度（主要实现简单，很容易想到）；</p>
+<p>LRU（Least recently use）最近最少使用算法：根据使用时间到现在的长短来判断；</p>
+<p>LFU（Least frequently use）最少使用次数算法：根据使用次数来判断；</p>
+<p>OPT（Optimal replacement）最优置换算法：理论的最优，理论；就是要保证置换出去的是不再被使用的页，或者是在实际内存中最晚使用的算法。</p>
+<h2 id=多线程中栈与堆是公有的还是私有的>多线程中栈与堆是公有的还是私有的<a hidden class=anchor aria-hidden=true href=#多线程中栈与堆是公有的还是私有的>#</a></h2>
+<p>一般来说栈是私有的，堆是公有的。
+但是在多线程中，可以为特定的线程创建私有的堆。</p>
+<h2 id=进程是资源分配的最小单位线程是cpu调度的最小单位>进程是资源分配的最小单位，线程是CPU调度的最小单位<a hidden class=anchor aria-hidden=true href=#进程是资源分配的最小单位线程是cpu调度的最小单位>#</a></h2>
+<p>进程是资源分配的基本单位。所有与该进程有关的资源，都被记录在进程控制块PCB中。以表示该进程拥有这些资源或正在使用它们。进程也是抢占处理机的调度单位，它拥有一个完整的虚拟地址空间。当进程发生调度时，不同的进程拥有不同的虚拟地址空间，而同一进程内的不同线程共享同一地址空间。<br>
+与进程相对应，线程与资源分配无关，它属于某一个进程，并与进程内的其他线程一起共享进程的资源。<br>
+线程只由相关堆栈（系统栈或用户栈）寄存器和线程控制表TCB组成。寄存器可被用来存储线程内的局部变量，但不能存储其他线程的相关变量。<br>
+因此一个简单的解释就是：进程拥有PCB，而多个线程共享一个进程的PCB。</p>
+<h3 id=进程和线程的区别>进程和线程的区别<a hidden class=anchor aria-hidden=true href=#进程和线程的区别>#</a></h3>
+<p><a href=https://segmentfault.com/a/1190000005884656>进程与线程的一个简单解释</a>
+地址空间和其它资源（如打开文件）：进程间相互独立，同一进程的各线程间共享。某进程内的线程在其它进程不可见。<br>
+通信：进程间通信IPC，线程间可以直接读写进程数据段（如全局变量）来进行通信——需要进程同步和互斥手段的辅助，以保证数据的一致性。<br>
+调度和切换：线程上下文切换比进程上下文切换要快得多。 <br>
+在多线程OS中，进程不是一个可执行的实体。</p>
+<h2 id=进程的基本状态>进程的基本状态<a hidden class=anchor aria-hidden=true href=#进程的基本状态>#</a></h2>
+<p>状态：运行、阻塞、挂起阻塞、就绪、挂起就绪<br>
+状态之间的转换：
+准备就绪的进程，被CPU调度执行，变成运行态；<br>
+运行中的进程，进行I/O请求或者不能得到所请求的资源，变成阻塞态；<br>
+运行中的进程，进程执行完毕（或时间片已到），变成就绪态；<br>
+将阻塞态的进程挂起，变成挂起阻塞态，当导致进程阻塞的I/O操作在用户重启进程前完成（称之为唤醒），挂起阻塞态变成挂起就绪态，当用户在I/O操作结束之前重启进程，挂起阻塞态变成阻塞态；<br>
+将就绪（或运行）中的进程挂起，变成挂起就绪态，当该进程恢复之后，挂起就绪态变成就绪态；</p>
+<pre tabindex=0><code class=language-static data-lang=static>  &quot;R (running)&quot;,        /*   0 */
+  &quot;S (sleeping)&quot;,        /*   1 */
+  &quot;D (disk sleep)&quot;,    /*   2 */
+  &quot;T (stopped)&quot;,        /*   4 */
+  &quot;t (tracing stop)&quot;,    /*   8 */
+  &quot;X (dead)&quot;,        /*  16 */
+  &quot;Z (zombie)&quot;,        /*  32 */
+};
+</code></pre>
+<h3 id=1进程管理-cpu>1.进程管理->CPU<a hidden class=anchor aria-hidden=true href=#1进程管理-cpu>#</a></h3>
+<h4 id=任务调度算法>任务调度算法<a hidden class=anchor aria-hidden=true href=#任务调度算法>#</a></h4>
+<p>1.先来先服务算法
+优点：简单，易于理解和实现。
+缺点：一批任务的平均周转时间取决于各个任务到达的顺序，如果短任务位于长任务之后，那么将增大平均周转时间。<br>
+2.短作业优先算法<br>
+SJF算法的基本思路是：各个任务在开始执行之前，必须事先预计好它的执行时间，然后调度器将根据这些时间，从中选择用时较短的任务优先执行。
+SJF算法有两种：不可抢占方式和可抢占方式。其中可抢占方式又叫最短剩余时间优先算法（Shortest Remaining Time First，SRTF）。<br>
+3.时间片轮转算法
+时间片轮转算法（Round Robin，RR）的基本思路是：把系统当中的所有就绪任务按照先来先服务的原则，排成一个队列，然后再每次调度的时候，把处理器分派给队列当中的第一个任务，让它去执行一小段CPU时间（即时间片，time slice）。当这个时间片结束时，如果任务还没有执行完成的话，将会发生时钟中断，在时钟中断里面，调度器将会暂停当前任务的执行，并把它送到就绪队列的末尾，然后执行当前的队首任务。反之，如果一个任务在它的时间片用完之前就已经结束了或者阻塞了，那么它就会立即让出CPU给其他任务。<br>
+优点：公平性，各个就绪任务能得到相同的时间片；活动性，每个就绪任务能一直保持活动。<br>
+缺点：时间片的大小q要适当选取，如果选择不当，将会影响到系统的性能和效率。如果q太大，每个任务都在一个时间片内完成，这就退化为先来先服务算法了。如果q太小，每个任务需要更多的时间片才能运行结束，这就使任务之间的切换次数增加，从而增大了系统的管理开销，降低了CPU的使用效率。一般来说，q值选取在20ms~50ms比较合适。<br>
+4.优先级算法<br>
+优先级调度算法（priority）的基本思路是：给每个任务都设置一个优先级，然后在任务调度的时候，在所有处于就绪状态的任务中选择优先级最高的任务去运行。上文提到的短作业优先算法其实也是一种优先级算法，每个任务的优先级就是它的运行时间，运行时间越短，优先级越高。</p>
+<h4 id=进程与线程>进程与线程<a hidden class=anchor aria-hidden=true href=#进程与线程>#</a></h4>
+<p>简单的一句话：进程是资源分配的基本单位、线程是资源调度的基本单位。这句话看起来很简单，但是核心却不仅仅如此。</p>
+<h4 id=进程>进程<a hidden class=anchor aria-hidden=true href=#进程>#</a></h4>
+<h5 id=进程间通信方式>进程间通信方式<a hidden class=anchor aria-hidden=true href=#进程间通信方式>#</a></h5>
+<ul>
+<li>管道（pipe）,流管道(s_pipe)和有名管道（FIFO）<br>
+管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有血缘关系的进程间使用。进程的血缘关系通常指父子进程关系。<br>
+有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间通信。</li>
+<li>信号（signal）<br>
+信号是一种比较复杂的通信方式，用于通知接收进程某一事件已经发生。</li>
+<li>消息队列
+消息队列是由消息组成的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+<li>共享内存
+共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问，共享内存是最快的IPC方式，它是针对其他进程间的通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信。</li>
+<li>信号量
+信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它通常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</li>
+</ul>
+<h3 id=linux-的启动流程>Linux 的启动流程<a hidden class=anchor aria-hidden=true href=#linux-的启动流程>#</a></h3>
+<p>BIOS->主引导记录->操作系统-><strong>加载内核(/boot)</strong>:载入内核文件-><strong>启动初始化进程</strong>：运行第一个程序 /sbin/init，初始化系统环境。-><strong>确定运行级别</strong>:运行这些开机启动的程序。-><strong>加载开机启动程序</strong>-><strong>用户登录</strong>-><strong>进入 login shell</strong>->打开 non-login shell</p>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://yuguocong.cn/tags/%E9%9D%A2%E8%AF%95/>面试</a></li>
+<li><a href=https://yuguocong.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/>操作系统</a></li>
+<li><a href=https://yuguocong.cn/tags/%E5%B7%A5%E4%BD%9C/>工作</a></li>
+<li><a href=https://yuguocong.cn/tags/linux/>Linux</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://yuguocong.cn/posts/hexo_travis-ci/>
+<span class=title>« </span>
+<br>
+<span>Travis CI 自动部署博客</span>
+</a>
+<a class=next href=https://yuguocong.cn/posts/interview_cpp/>
+<span class=title> »</span>
+<br>
+<span>面试总结-C++</span>
+</a>
+</nav>
+<div class=share-buttons>
+<a target=_blank rel="noopener noreferrer" aria-label="share 面试总结-操作系统 on twitter" href="https://twitter.com/intent/tweet/?text=%e9%9d%a2%e8%af%95%e6%80%bb%e7%bb%93-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f&url=https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f&hashtags=%e9%9d%a2%e8%af%95%2c%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%2c%e5%b7%a5%e4%bd%9c%2cLinux"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share 面试总结-操作系统 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f&title=%e9%9d%a2%e8%af%95%e6%80%bb%e7%bb%93-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f&summary=%e9%9d%a2%e8%af%95%e6%80%bb%e7%bb%93-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f&source=https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share 面试总结-操作系统 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f&title=%e9%9d%a2%e8%af%95%e6%80%bb%e7%bb%93-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share 面试总结-操作系统 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share 面试总结-操作系统 on whatsapp" href="https://api.whatsapp.com/send?text=%e9%9d%a2%e8%af%95%e6%80%bb%e7%bb%93-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%20-%20https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share 面试总结-操作系统 on telegram" href="https://telegram.me/share/url?text=%e9%9d%a2%e8%af%95%e6%80%bb%e7%bb%93-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f&url=https%3a%2f%2fyuguocong.cn%2fposts%2finterview_operation%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
+</a>
+</div>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://yuguocong.cn/>mianhk's notes</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

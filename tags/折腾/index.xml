@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>折腾 on mianhk&#39;s notes</title>
+    <link>https://yuguocong.cn/tags/%E6%8A%98%E8%85%BE/</link>
+    <description>Recent content in 折腾 on mianhk&#39;s notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 14 Nov 2018 22:27:10 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/tags/%E6%8A%98%E8%85%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> 使用语雀编辑器写静态博客</title>
+      <link>https://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Wed, 14 Nov 2018 22:27:10 +0800</pubDate>
+      
+      <guid>https://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本来以为已经是最后一次折腾了，但是总是生活不停，折腾不止，觉得本地文件管起来还是有点麻烦，看到语雀 markdown 又做的这么好，前几天还准备拿它当云笔记用，但是据说底层存的都是 md 格式，有的时候又还是不太方便，不过做编辑器来说确实很爽了，自带图床，还有 github 上开源的一个接口。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Travis CI 自动部署博客</title>
+      <link>https://yuguocong.cn/posts/hexo_travis-ci/</link>
+      <pubDate>Fri, 26 Oct 2018 14:44:30 +0800</pubDate>
+      
+      <guid>https://yuguocong.cn/posts/hexo_travis-ci/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Hexo的又双叒一次折腾，以前觉得hexo部署博客还是很麻烦，除了每次操作完都得等待生成一下，还有的就是有时候很久一生成，都是看人品出错，以前也弄过那种自动的脚本，每天自己生成然后push，但是出错的时候就又是很麻烦。直到这次看到了Travis CI&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sublime Text3使用总结</title>
+      <link>https://yuguocong.cn/posts/use-of-sublime/</link>
+      <pubDate>Tue, 24 Apr 2018 20:43:43 +0800</pubDate>
+      
+      <guid>https://yuguocong.cn/posts/use-of-sublime/</guid>
+      <description>update: 2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只</description>
+    </item>
+    
+  </channel>
+</rss>

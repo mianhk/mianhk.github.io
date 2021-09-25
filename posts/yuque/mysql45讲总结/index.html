@@ -1,0 +1,453 @@
+<!doctype html><html lang=zh-cn dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>MySQL45讲总结 | mianhk's notes</title>
+<meta name=keywords content="MySQL,学习">
+<meta name=description content="01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时， SQL 执行步骤 客户端-连接">
+<meta name=author content="mianhk">
+<link rel=canonical href=https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/>
+<meta name=google-site-verification content="XYZabc">
+<meta name=yandex-verification content="XYZabc">
+<meta name=msvalidate.01 content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=icon type=image/png sizes=16x16 href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=icon type=image/png sizes=32x32 href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=apple-touch-icon href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<link rel=mask-icon href=https://yuguocong.cn/%3Clink%20/%20abs%20url%3E>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123 -45','auto'),ga('send','pageview'))</script><meta property="og:title" content="MySQL45讲总结">
+<meta property="og:description" content="01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时， SQL 执行步骤 客户端-连接">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-06-23T10:45:04+08:00">
+<meta property="article:modified_time" content="2020-06-23T10:45:04+08:00"><meta property="og:site_name" content="mianhk's notes">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="MySQL45讲总结">
+<meta name=twitter:description content="01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时， SQL 执行步骤 客户端-连接">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://yuguocong.cn/posts/"},{"@type":"ListItem","position":2,"name":"MySQL45讲总结","item":"https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"MySQL45讲总结","name":"MySQL45讲总结","description":"01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时， SQL 执行步骤 客户端-连接","keywords":["MySQL","学习"],"articleBody":"01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时，\nSQL 执行步骤 客户端-连接器（管理连接、权限验证）-查询缓存（命中则直接返回，基本没啥用）-分析器（词法分析、语法分析，语法错误在这就能看到了）-优化器（执行计划生成、索引选择）-存储引擎（存储数据、提供读写接口）\nserver 层 连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。\n存储引擎 负责数据的存储和提取。\n连接器 Sleep：表示是空闲连接。\n数据库长连接和短连接： 长连接是连接成功后，如果客户端持续有请求，则一直使用同一个连接。优点：减少建立连接的动作，尽量使用 短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。\n全部使用长连接问题：可能 MySQL 占用内存会涨的很快，因为 MySQL 在执行过程中临时使用的内存是管理在连接对象里面的，会在连接断开才释放，如果长连接积累，会导致内存占用较大。 解决办法：定期断开长连接；5.7 版本，执行比较大的操作的后，mysql_reset_connection 来重新初始化连接资源，恢复连接到刚刚创建时的状态。miproxy 连接数太多会自己断开\n内存：操作系统 10G，应用 8G， 线程级别的内存占用， 一个连接占多大，tcp 占 1M，文件系统描述符。\n为啥会用 swap 内存， 操作系统配置：是否使用 swap cpu 结构有关 对称一致访问：每个核心访问最近的 32G 内存最快，开了的话，cpu0 访问 32G，这个进程用了 32G 就会用 swap 分区。 smp numa\n查询缓存 基本没用了\n分析器 词法分析：识别关键字，以及表名之类。 语法分析：根据语法规则判断语法是否错误。\n优化器 索引顺序选择，多表 join 顺序等。\n执行器 执行前判断对表有没有相应权限。（没分析完词法，不知道是哪张表）\n问题： 1.Sleep 连接是不是杀了一直没影响 2.miproxy 对连接的管理：长短连接，长连接的维护。功能怎么实现的， 3.MySQL 内存的使用。（innodb_buffer_size_pool 之外的内存）。 4.数据库权限和表权限验证时间不一样\n02 | 日志系统：一条 SQL 更新语句是如何执行的？ 线上配置： innodb_flush_log_at_trx_commit：为 1 时保证每次事务的 redo log 都会持久化到磁盘。 sync_binlog：为 1 时保证每次事务的 binlog 都持久化到磁盘。\n更新流程：两阶段提交，涉及和 binlog\n| | | | | |\n             redo log 存储引擎层 物理日志（记录在哪个数据页上做了什么修改） 大小固定，循环写                     binlog server 层 逻辑日志（记录原始语句，对某行数据做了什么修改） 追加写                      redo log：保证了 MySQL crash-safe 能力。记录更新时，先把记录写到 redo log 并更新内存。 binlog：。。， crash-safe：有了 redo-log，可以保证数据库异常重启时，从 redo log 读取后写入内存再写入磁盘，保证数据部丢失。\n两阶段提交： 更新写入到内存后，redolog 处于 prapare 阶段，然后写 binlog，再调用引擎的提交事务接口，将 redolog 改成提交状态。 server 是作为一个协调者。innodb 只知道干啥。发起 commit 时候，innodb redo write innodb 没完成不能马上写磁盘。\nMySQL 磁盘满，会休眠，磁盘满。innodb 队列变长了，可能都建立连接不成功：gdbc 建立连接会 show 变量，要不建立连接不成功，要不就连接数暴涨。 原因：如果在写完 binlog 到提交事务之间 MySQL crash 的问题。或者从备份恢复的时候。\n问题： 备份恢复 apply log 是在：将 redo log 的数据写入磁盘吗？\n03 | 事务隔离：为什么你改了我还看不见？ 线上配置：\n事务 ACID：Atomicity、Consistency、Isolation、Durability（原子性、一致性、隔离性、持久性）\n多个事务同时执行会出现的问题：脏读（dirty read）、不可重复读（non-repeatable read）、幻读（phantom read） 隔离级别： 读未提交：可以看到未提交的事务 读提交：只有提交的事务才会被看到 可重复读：一个事务执行过程中看到的数据，总是和启动时看到的一样。不管其他的事务有没有启动。 串行化：顾名思义\n|\n   脏读 不可重复读 幻读 视图开启时间（对于一个查询）      读未提交 0 0 0 直接返回记录最新值   读提交 1 0 0 SQL 执行时创建，此时有别的事务修改记录也可以看到   可重复读 1 1 0 事务启动时创建，事务启动后的改动都看不到   串行化 1 1 1 每次都加锁，避免并行    幻读的原因：update 等操作的当前读，需要读取当前的数据，这个时候就会读到最新的更新数据了。表现为：单独 select 没有值，然后 insert 或者 update，发现值已经有了。\nMVCC：undo log 实现\n04 | 深入浅出索引（上） innodb 索引类型： 主键索引和：根据叶子节点的内容 主键索引：叶子节点内容是整行数据 非主键索引：叶子节点内容是主键的值。也叫二级索引。使用二级索引，如果想获得整列的值，需要先从索引找到主键值，然后再根据主键查，需要回表。\n索引维护： 分裂：某个数据页满了，新插入数据的时候。 合并：相邻两个页删除了数据，利用率很低的时候。 ps：自增主键是不会分裂的，因为一直是增长的。\n问题： 1.同时插入较多数据时，索引维护是不是比较占资源。 2.业务字段做主键：只有一个索引；该索引必须是唯一索引？\n05 | 深入浅出索引（下） 避免回表的方式： 覆盖索引（组合索引）： 索引使用注意： 1.最左前缀原则：不管是对于组合索引，还是对于 2.索引下推：MySQL5.6 优化，多个 and 条件的时候，对索引中的字段先过滤，减少回表次数。 2.索引列使用函数会导致索引失效\n06 | 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？ 加锁范围分类：全局锁、表级锁和行锁。 全局锁 加全局锁方法：Flush tables with read lock (FTWRL)。使用场景：全库逻辑备份（innodb 已经不需要了，可以使用–single-transaction） 表级锁 分为表锁和元数据锁（MDL） 表锁：lock tables … read/write。 元数据锁：当对一个表做增删改查操作的时候，加 MDL 读锁；当要对表做结构变更操作的时候，加 MDL 写锁。所以给小表加字段，如果读取较多的话，也会阻塞，会阻塞所有的查询和更新，如果客户端有重试机制，会导致该库线程打满。\n尽量使用 FTWRL 而不是 set global read_only=1： 1.read_only 可能会用来判断是主库还是备库。 2.FTWRL 命令时，如果客户端异常断开，MySQL 会自动释放，set global read_only 会导致 MySQL 一直只读。\n07 | 行锁功过：怎么减少行锁对性能的影响？ 线上配置： innodb_lock_wait_timeout：10 innodb_deadlock_detect：on 两阶段锁协议：行锁在需要的时候才加上，但是在事务结束后才释放。所以要把可能影响并发的锁放在后面。 死锁和死锁检测策略： 一直等待到超时：innodb_lock_wait_timeout：一直等待锁，直到超时。值不能太大，也不能太小。 死锁检测：发现死锁后，主动回滚死锁链条中的某偶一个事务，让其他事务执行。\n问题： 死锁检测成本：每个新来的线程，都要要判断会不会由于自己的加入导致死锁，如果同时更新同一行的线程很多的时候。CPU 消耗。 原理怎么做的。\n08 | 事务到底是隔离的还是不隔离的？ undolog：实现了 MVCC 数据可见性，锁是实现隔离级别。 查询和更新是当前读还是一致性读。 一致性读：可重复读隔离级别下，读取数据时，会根据 row trx_id 找到是否能读到当前值，不在的话会根据 redo log 往前找。 当前读：操作数据都是要读当前。可重复读隔离级别下，如果需要更新数据，只能拿最新的数据更新，这个时候虽然别的事务还没有提交，但还是能看到的。 undolog 大小。共享表空间\n09 | 普通索引和唯一索引，应该怎么选择？ 12 | 为什么我的 MySQL 会“抖”一下？ 线上配置： innodb_flush_neighbors：1 innodb_io_capacity：5000 innodb_max_dirty_pages_pct：75\n为什么会抖一下： 1.redo log 满了。redo log 中的 checkpoint 前移动，需要刷脏页。（应该避免，因为此时数据库服务已经阻塞，需要控制刷脏页频率） 一般不会设置，不同百分比的时候不一样。 2.内存不足，需要淘汰脏页。buffer_pool 3.日常刷脏页。对应 MySQL 的配置。 4.MySQL 正常关闭。\n正常使用的数据库，buffer 一般未被使用的情况比较少，如果一个查询，需要的内存比较大，查询需要从磁盘读取很多页的时候，也要将脏页刷到磁盘中。 可用的页，刷脏页，写到磁盘，redolog checkpoint 往前走，free list flush list lru list\n脏页刷盘参考：一个是脏页比例，一个是 redo log 写盘速度。\n如果高配机器 redo log 设置比较小的话：redo log 很容易被写满，就会导致经常要因为 redo log 满了而刷盘。表现为：磁盘压力很小，但是数据库出现间歇性的性能下跌\n13 | 为什么表数据删掉一半，表文件大小不变？ ：怎么正确的回收表空间 innodb_file_per_table：1 默认值 删除整个表数据会删除，但是删除表中的部分数据，空间是怎么回收的。\ndelete 删除一条记录：将记录标记为已删除，之后可以复用。 delete 删除多条记录：如果整个页被删除，则整页都被标记为可复用。相邻的两页使用率低，会合并。但空间均不会被释放。同理：插入数据，如果当前页已满，肯定会开启新页，也会造成数据空洞。\n压缩空间：alter table A engine=InnoDB。5.5 之前不要用，会阻塞 DML。5.6 版本之后：Online DDL（先建新表，并将旧表的更新写在一个文件中，新表搞好之后，再读取文件中的更新。会有很短时间的 MDL 写锁）\nDDL 过程如果是 Online 的，就一定是 inplace 的？\n14 | count(*)这么慢，我该怎么办？ 不加 where 条件： MyISAM 引擎：把一个表的总行数存在了磁盘上，因此执行 count(*)的时候会直接返回这个数，效率很高； InnoDB 引擎：数据一行一行地从引擎里面读出来，然后累积计数。 show table status：不准确。\n加 where 条件： InnoDB 引擎：选择从引擎读\n效率排序：count(字段)) count()：特殊处理过，因为不会为 null，server 会按行累计。\ncount(1)：InnoDB 引擎遍历整张表，但不取值。server 层对于返回的每一行，放一个数字“1”进去，判断是不可能为空的，按行累加。 count(主键 id)：InnoDB 引擎会遍历整张表，把每一行的 id 值都取出来，返回给 server 层。server 层拿到 id 后，判断是不可能为空的，就按行累加。 count(字段)：根据是否为 not null 进行判断。\n15 | 答疑文章（一）：日志和索引相关问题 日志相关： 1.两阶段提交不同瞬间 MySQL 异常重启怎么保证数据完整性： 测试\n16 | “order by”是怎么工作的？ 全字段排序 排序过程对字符串做了“紧凑”处理。即使 name 字段的定义是 varchar(16)，在排序过程中还是要按照实际长度来分配空间的。\nmax_length_for_sort_data\nrowid 排序 ","wordCount":"4348","inLanguage":"zh-cn","datePublished":"2020-06-23T10:45:04+08:00","dateModified":"2020-06-23T10:45:04+08:00","author":{"@type":"Person","name":"mianhk"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/"},"publisher":{"@type":"Organization","name":"mianhk's notes","logo":{"@type":"ImageObject","url":"https://yuguocong.cn/%3Clink%20/%20abs%20url%3E"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://yuguocong.cn/ accesskey=h title="mianhk's notes (Alt + H)">mianhk's notes</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://yuguocong.cn/posts/ title=文章>
+<span>文章</span>
+</a>
+</li>
+<li>
+<a href=https://yuguocong.cn/archives/ title=归档>
+<span>归档</span>
+</a>
+</li>
+<li>
+<a href=https://yuguocong.cn/tags/ title=标签>
+<span>标签</span>
+</a>
+</li>
+<li>
+<a href=https://yuguocong.cn/search/ title=搜索>
+<span>搜索</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://yuguocong.cn/>Home</a>&nbsp;»&nbsp;<a href=https://yuguocong.cn/posts/>Posts</a></div>
+<h1 class=post-title>
+MySQL45讲总结
+</h1>
+<div class=post-meta>June 23, 2020&nbsp;·&nbsp;9 min&nbsp;·&nbsp;mianhk
+</div>
+</header> <div class=toc>
+<details>
+<summary accesskey=c title="(Alt + C)">
+<span class=details>Table of Contents</span>
+</summary>
+<div class=inner><ul>
+<li>
+<a href=#01--%e5%9f%ba%e7%a1%80%e6%9e%b6%e6%9e%84%e4%b8%80%e6%9d%a1-sql-%e6%9f%a5%e8%af%a2%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84 aria-label="01 | 基础架构：一条 SQL 查询语句是如何执行的？">01 | 基础架构：一条 SQL 查询语句是如何执行的？</a><ul>
+<ul>
+<ul>
+<li>
+<a href=#sql-%e6%89%a7%e8%a1%8c%e6%ad%a5%e9%aa%a4 aria-label="SQL 执行步骤">SQL 执行步骤</a></li>
+<li>
+<a href=#server-%e5%b1%82 aria-label="server 层">server 层</a></li>
+<li>
+<a href=#%e5%ad%98%e5%82%a8%e5%bc%95%e6%93%8e aria-label=存储引擎>存储引擎</a></li></ul>
+<li>
+<a href=#%e8%bf%9e%e6%8e%a5%e5%99%a8 aria-label=连接器>连接器</a></li>
+<li>
+<a href=#%e6%9f%a5%e8%af%a2%e7%bc%93%e5%ad%98 aria-label=查询缓存>查询缓存</a></li>
+<li>
+<a href=#%e5%88%86%e6%9e%90%e5%99%a8 aria-label=分析器>分析器</a></li>
+<li>
+<a href=#%e4%bc%98%e5%8c%96%e5%99%a8 aria-label=优化器>优化器</a></li>
+<li>
+<a href=#%e6%89%a7%e8%a1%8c%e5%99%a8 aria-label=执行器>执行器</a></li></ul>
+</ul>
+</li>
+<li>
+<a href=#02--%e6%97%a5%e5%bf%97%e7%b3%bb%e7%bb%9f%e4%b8%80%e6%9d%a1-sql-%e6%9b%b4%e6%96%b0%e8%af%ad%e5%8f%a5%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84 aria-label="02 | 日志系统：一条 SQL 更新语句是如何执行的？">02 | 日志系统：一条 SQL 更新语句是如何执行的？</a></li>
+<li>
+<a href=#03--%e4%ba%8b%e5%8a%a1%e9%9a%94%e7%a6%bb%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bd%a0%e6%94%b9%e4%ba%86%e6%88%91%e8%bf%98%e7%9c%8b%e4%b8%8d%e8%a7%81 aria-label="03 | 事务隔离：为什么你改了我还看不见？">03 | 事务隔离：为什么你改了我还看不见？</a></li>
+<li>
+<a href=#04--%e6%b7%b1%e5%85%a5%e6%b5%85%e5%87%ba%e7%b4%a2%e5%bc%95%e4%b8%8a aria-label="04 | 深入浅出索引（上）">04 | 深入浅出索引（上）</a></li>
+<li>
+<a href=#05--%e6%b7%b1%e5%85%a5%e6%b5%85%e5%87%ba%e7%b4%a2%e5%bc%95%e4%b8%8b aria-label="05 | 深入浅出索引（下）">05 | 深入浅出索引（下）</a></li>
+<li>
+<a href=#06--%e5%85%a8%e5%b1%80%e9%94%81%e5%92%8c%e8%a1%a8%e9%94%81-%e7%bb%99%e8%a1%a8%e5%8a%a0%e4%b8%aa%e5%ad%97%e6%ae%b5%e6%80%8e%e4%b9%88%e6%9c%89%e8%bf%99%e4%b9%88%e5%a4%9a%e9%98%bb%e7%a2%8d aria-label="06 | 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？">06 | 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？</a></li>
+<li>
+<a href=#07--%e8%a1%8c%e9%94%81%e5%8a%9f%e8%bf%87%e6%80%8e%e4%b9%88%e5%87%8f%e5%b0%91%e8%a1%8c%e9%94%81%e5%af%b9%e6%80%a7%e8%83%bd%e7%9a%84%e5%bd%b1%e5%93%8d aria-label="07 | 行锁功过：怎么减少行锁对性能的影响？">07 | 行锁功过：怎么减少行锁对性能的影响？</a></li>
+<li>
+<a href=#08--%e4%ba%8b%e5%8a%a1%e5%88%b0%e5%ba%95%e6%98%af%e9%9a%94%e7%a6%bb%e7%9a%84%e8%bf%98%e6%98%af%e4%b8%8d%e9%9a%94%e7%a6%bb%e7%9a%84 aria-label="08 | 事务到底是隔离的还是不隔离的？">08 | 事务到底是隔离的还是不隔离的？</a></li>
+<li>
+<a href=#09--%e6%99%ae%e9%80%9a%e7%b4%a2%e5%bc%95%e5%92%8c%e5%94%af%e4%b8%80%e7%b4%a2%e5%bc%95%e5%ba%94%e8%af%a5%e6%80%8e%e4%b9%88%e9%80%89%e6%8b%a9 aria-label="09 | 普通索引和唯一索引，应该怎么选择？">09 | 普通索引和唯一索引，应该怎么选择？</a></li>
+<li>
+<a href=#12--%e4%b8%ba%e4%bb%80%e4%b9%88%e6%88%91%e7%9a%84-mysql-%e4%bc%9a%e6%8a%96%e4%b8%80%e4%b8%8b aria-label="12 | 为什么我的 MySQL 会“抖”一下？">12 | 为什么我的 MySQL 会“抖”一下？</a></li>
+<li>
+<a href=#13--%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a1%a8%e6%95%b0%e6%8d%ae%e5%88%a0%e6%8e%89%e4%b8%80%e5%8d%8a%e8%a1%a8%e6%96%87%e4%bb%b6%e5%a4%a7%e5%b0%8f%e4%b8%8d%e5%8f%98 aria-label="13 | 为什么表数据删掉一半，表文件大小不变？">13 | 为什么表数据删掉一半，表文件大小不变？</a></li>
+<li>
+<a href=#14--count%e8%bf%99%e4%b9%88%e6%85%a2%e6%88%91%e8%af%a5%e6%80%8e%e4%b9%88%e5%8a%9e aria-label="14 | count(*)这么慢，我该怎么办？">14 | count(*)这么慢，我该怎么办？</a></li>
+<li>
+<a href=#15--%e7%ad%94%e7%96%91%e6%96%87%e7%ab%a0%e4%b8%80%e6%97%a5%e5%bf%97%e5%92%8c%e7%b4%a2%e5%bc%95%e7%9b%b8%e5%85%b3%e9%97%ae%e9%a2%98 aria-label="15 | 答疑文章（一）：日志和索引相关问题">15 | 答疑文章（一）：日志和索引相关问题</a></li>
+<li>
+<a href=#16--order-by%e6%98%af%e6%80%8e%e4%b9%88%e5%b7%a5%e4%bd%9c%e7%9a%84 aria-label="16 | “order by”是怎么工作的？">16 | “order by”是怎么工作的？</a><ul>
+<li>
+<a href=#%e5%85%a8%e5%ad%97%e6%ae%b5%e6%8e%92%e5%ba%8f aria-label=全字段排序>全字段排序</a></li>
+<li>
+<a href=#rowid-%e6%8e%92%e5%ba%8f aria-label=" rowid 排序"> rowid 排序</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content><h1 id=01--基础架构一条-sql-查询语句是如何执行的>01 | 基础架构：一条 SQL 查询语句是如何执行的？<a hidden class=anchor aria-hidden=true href=#01--基础架构一条-sql-查询语句是如何执行的>#</a></h1>
+<p>配置：
+wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时，</p>
+<h4 id=sql-执行步骤>SQL 执行步骤<a hidden class=anchor aria-hidden=true href=#sql-执行步骤>#</a></h4>
+<p>客户端-连接器（管理连接、权限验证）-查询缓存（命中则直接返回，基本没啥用）-分析器（词法分析、语法分析，语法错误在这就能看到了）-优化器（执行计划生成、索引选择）-存储引擎（存储数据、提供读写接口）</p>
+<h4 id=server-层>server 层<a hidden class=anchor aria-hidden=true href=#server-层>#</a></h4>
+<p>连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</p>
+<h4 id=存储引擎>存储引擎<a hidden class=anchor aria-hidden=true href=#存储引擎>#</a></h4>
+<p>负责数据的存储和提取。</p>
+<h3 id=连接器>连接器<a hidden class=anchor aria-hidden=true href=#连接器>#</a></h3>
+<p>Sleep：表示是空闲连接。</p>
+<p>数据库长连接和短连接：
+长连接是连接成功后，如果客户端持续有请求，则一直使用同一个连接。优点：减少建立连接的动作，尽量使用
+短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。</p>
+<p>全部使用长连接问题：可能 MySQL 占用内存会涨的很快，因为 MySQL 在执行过程中临时使用的内存是管理在连接对象里面的，会在连接断开才释放，如果长连接积累，会导致内存占用较大。
+解决办法：定期断开长连接；5.7 版本，执行比较大的操作的后，mysql_reset_connection 来重新初始化连接资源，恢复连接到刚刚创建时的状态。miproxy 连接数太多会自己断开</p>
+<p>内存：操作系统 10G，应用 8G，
+线程级别的内存占用，
+一个连接占多大，tcp 占 1M，文件系统描述符。</p>
+<p>为啥会用 swap 内存，
+操作系统配置：是否使用 swap    cpu 结构有关 对称一致访问：每个核心访问最近的 32G 内存最快，开了的话，cpu0 访问 32G，这个进程用了 32G 就会用 swap 分区。 smp  numa</p>
+<h3 id=查询缓存>查询缓存<a hidden class=anchor aria-hidden=true href=#查询缓存>#</a></h3>
+<p>基本没用了</p>
+<h3 id=分析器>分析器<a hidden class=anchor aria-hidden=true href=#分析器>#</a></h3>
+<p>词法分析：识别关键字，以及表名之类。
+语法分析：根据语法规则判断语法是否错误。</p>
+<h3 id=优化器>优化器<a hidden class=anchor aria-hidden=true href=#优化器>#</a></h3>
+<p>索引顺序选择，多表 join 顺序等。</p>
+<h3 id=执行器>执行器<a hidden class=anchor aria-hidden=true href=#执行器>#</a></h3>
+<p>执行前判断对表有没有相应权限。（没分析完词法，不知道是哪张表）</p>
+<p>问题：
+1.Sleep 连接是不是杀了一直没影响
+2.miproxy 对连接的管理：长短连接，长连接的维护。<em>功能怎么实现的，</em>
+3.MySQL 内存的使用。（innodb_buffer_size_pool 之外的内存）。 4.数据库权限和表权限验证时间不一样</p>
+<h1 id=02--日志系统一条-sql-更新语句是如何执行的>02 | 日志系统：一条 SQL 更新语句是如何执行的？<a hidden class=anchor aria-hidden=true href=#02--日志系统一条-sql-更新语句是如何执行的>#</a></h1>
+<p>线上配置：
+innodb_flush_log_at_trx_commit：为 1 时保证每次事务的 redo log 都会持久化到磁盘。
+sync_binlog：为 1 时保证每次事务的 binlog 都持久化到磁盘。</p>
+<p>更新流程：两阶段提交，涉及和 binlog</p>
+<p>|
+|
+|
+|
+|
+|</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>redo log</td>
+<td style=text-align:left>存储引擎层</td>
+<td style=text-align:left>物理日志（记录在哪个数据页上做了什么修改）</td>
+<td style=text-align:left>大小固定，循环写</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style=text-align:left>binlog</td>
+<td style=text-align:left>server 层</td>
+<td style=text-align:left>逻辑日志（记录原始语句，对某行数据做了什么修改）</td>
+<td style=text-align:left>追加写</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>redo log：保证了 MySQL crash-safe 能力。记录更新时，先把记录写到 redo log 并更新内存。
+binlog：。。，
+crash-safe：有了 redo-log，可以保证数据库异常重启时，从 redo log 读取后写入内存再写入磁盘，保证数据部丢失。</p>
+<p>两阶段提交：
+更新写入到内存后，redolog 处于 prapare 阶段，然后写 binlog，再调用引擎的提交事务接口，将 redolog 改成提交状态。
+server 是作为一个协调者。innodb 只知道干啥。发起 commit 时候，innodb redo  write 
+innodb 没完成不能马上写磁盘。</p>
+<p>MySQL 磁盘满，会休眠，磁盘满。innodb 队列变长了，可能都建立连接不成功：gdbc 建立连接会 show 变量，要不建立连接不成功，要不就连接数暴涨。
+原因：如果在写完 binlog 到提交事务之间 MySQL crash 的问题。或者从备份恢复的时候。</p>
+<p>问题：
+备份恢复 apply log 是在：将 redo log 的数据写入磁盘吗？</p>
+<h1 id=03--事务隔离为什么你改了我还看不见>03 | 事务隔离：为什么你改了我还看不见？<a hidden class=anchor aria-hidden=true href=#03--事务隔离为什么你改了我还看不见>#</a></h1>
+<p>线上配置：</p>
+<p>事务 ACID：Atomicity、Consistency、Isolation、Durability（原子性、一致性、隔离性、持久性）</p>
+<p>多个事务同时执行会出现的问题：脏读（dirty read）、不可重复读（non-repeatable read）、幻读（phantom read）
+隔离级别：
+读未提交：可以看到未提交的事务
+读提交：只有提交的事务才会被看到
+可重复读：一个事务执行过程中看到的数据，总是和启动时看到的一样。不管其他的事务有没有启动。
+串行化：顾名思义</p>
+<p>|</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>脏读</th>
+<th style=text-align:left>不可重复读</th>
+<th style=text-align:left>幻读</th>
+<th style=text-align:left>视图开启时间（对于一个查询）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>读未提交</td>
+<td style=text-align:left>0</td>
+<td style=text-align:left>0</td>
+<td style=text-align:left>0</td>
+<td style=text-align:left>直接返回记录最新值</td>
+</tr>
+<tr>
+<td style=text-align:left>读提交</td>
+<td style=text-align:left>1</td>
+<td style=text-align:left>0</td>
+<td style=text-align:left>0</td>
+<td style=text-align:left>SQL 执行时创建，此时有别的事务修改记录也可以看到</td>
+</tr>
+<tr>
+<td style=text-align:left>可重复读</td>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+<td style=text-align:left>0</td>
+<td style=text-align:left>事务启动时创建，事务启动后的改动都看不到</td>
+</tr>
+<tr>
+<td style=text-align:left>串行化</td>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+<td style=text-align:left>每次都加锁，避免并行</td>
+</tr>
+</tbody>
+</table>
+<p>幻读的原因：update 等操作的当前读，需要读取当前的数据，这个时候就会读到最新的更新数据了。表现为：单独 select 没有值，然后 insert 或者 update，发现值已经有了。</p>
+<p>MVCC：undo log 实现</p>
+<h1 id=04--深入浅出索引上>04 | 深入浅出索引（上）<a hidden class=anchor aria-hidden=true href=#04--深入浅出索引上>#</a></h1>
+<p>innodb 索引类型：
+主键索引和：根据叶子节点的内容
+主键索引：叶子节点内容是整行数据
+非主键索引：叶子节点内容是主键的值。也叫二级索引。使用二级索引，如果想获得整列的值，需要先从索引找到主键值，然后再根据主键查，需要回表。</p>
+<p>索引维护：
+分裂：某个数据页满了，新插入数据的时候。
+合并：相邻两个页删除了数据，利用率很低的时候。
+ps：自增主键是不会分裂的，因为一直是增长的。</p>
+<p>问题： 1.同时插入较多数据时，索引维护是不是比较占资源。 2.业务字段做主键：只有一个索引；该索引必须是唯一索引？</p>
+<h1 id=05--深入浅出索引下>05 | 深入浅出索引（下）<a hidden class=anchor aria-hidden=true href=#05--深入浅出索引下>#</a></h1>
+<p>避免回表的方式：
+覆盖索引（组合索引）：
+索引使用注意： 1.最左前缀原则：不管是对于组合索引，还是对于 2.索引下推：MySQL5.6 优化，多个 and 条件的时候，对索引中的字段先过滤，减少回表次数。 2.索引列使用函数会导致索引失效</p>
+<h1 id=06--全局锁和表锁-给表加个字段怎么有这么多阻碍>06 | 全局锁和表锁 ：给表加个字段怎么有这么多阻碍？<a hidden class=anchor aria-hidden=true href=#06--全局锁和表锁-给表加个字段怎么有这么多阻碍>#</a></h1>
+<p>加锁范围分类：全局锁、表级锁和行锁。
+全局锁
+加全局锁方法：Flush tables with read lock (FTWRL)。使用场景：全库逻辑备份（innodb 已经不需要了，可以使用&ndash;single-transaction）
+表级锁
+分为表锁和元数据锁（MDL）
+表锁：lock tables … read/write。
+元数据锁：当对一个表做增删改查操作的时候，加 MDL 读锁；当要对表做结构变更操作的时候，加 MDL 写锁。所以给小表加字段，如果读取较多的话，也会阻塞，会阻塞所有的查询和更新，如果客户端有重试机制，会导致该库线程打满。</p>
+<p>尽量使用 FTWRL 而不是 set global read_only=1：
+1.read_only 可能会用来判断是主库还是备库。
+2.FTWRL 命令时，如果客户端异常断开，MySQL 会自动释放，set global read_only 会导致 MySQL 一直只读。</p>
+<h1 id=07--行锁功过怎么减少行锁对性能的影响>07 | 行锁功过：怎么减少行锁对性能的影响？<a hidden class=anchor aria-hidden=true href=#07--行锁功过怎么减少行锁对性能的影响>#</a></h1>
+<p>线上配置：
+innodb_lock_wait_timeout：10
+innodb_deadlock_detect：on
+两阶段锁协议：行锁在需要的时候才加上，但是在事务结束后才释放。所以要把可能影响并发的锁放在后面。
+死锁和死锁检测策略：
+一直等待到超时：innodb_lock_wait_timeout：一直等待锁，直到超时。值不能太大，也不能太小。
+死锁检测：发现死锁后，主动回滚死锁链条中的某偶一个事务，让其他事务执行。</p>
+<p>问题：
+死锁检测成本：每个新来的线程，都要要判断会不会由于自己的加入导致死锁，如果同时更新同一行的线程很多的时候。CPU 消耗。
+原理怎么做的。</p>
+<h1 id=08--事务到底是隔离的还是不隔离的>08 | 事务到底是隔离的还是不隔离的？<a hidden class=anchor aria-hidden=true href=#08--事务到底是隔离的还是不隔离的>#</a></h1>
+<p>undolog：实现了 MVCC
+数据可见性，锁是实现隔离级别。
+查询和更新是当前读还是一致性读。
+一致性读：可重复读隔离级别下，读取数据时，会根据 row trx_id 找到是否能读到当前值，不在的话会根据 redo log 往前找。
+当前读：操作数据都是要读当前。可重复读隔离级别下，如果需要更新数据，只能拿最新的数据更新，这个时候虽然别的事务还没有提交，但还是能看到的。
+undolog 大小。共享表空间</p>
+<h1 id=09--普通索引和唯一索引应该怎么选择>09 | 普通索引和唯一索引，应该怎么选择？<a hidden class=anchor aria-hidden=true href=#09--普通索引和唯一索引应该怎么选择>#</a></h1>
+<h1 id=12--为什么我的-mysql-会抖一下>12 | 为什么我的 MySQL 会“抖”一下？<a hidden class=anchor aria-hidden=true href=#12--为什么我的-mysql-会抖一下>#</a></h1>
+<p>线上配置：
+innodb_flush_neighbors：1
+innodb_io_capacity：5000
+innodb_max_dirty_pages_pct：75</p>
+<p>为什么会抖一下：
+1.redo log 满了。redo log 中的 checkpoint 前移动，需要刷脏页。（应该避免，因为此时数据库服务已经阻塞，需要控制刷脏页频率）  一般不会设置，不同百分比的时候不一样。 2.内存不足，需要淘汰脏页。buffer_pool     3.日常刷脏页。对应 MySQL 的配置。
+4.MySQL 正常关闭。</p>
+<p>正常使用的数据库，buffer 一般未被使用的情况比较少，如果一个查询，需要的内存比较大，查询需要从磁盘读取很多页的时候，也要将脏页刷到磁盘中。
+可用的页，刷脏页，写到磁盘，redolog checkpoint 往前走，free list flush list lru list</p>
+<p>脏页刷盘参考：一个是脏页比例，一个是 redo log 写盘速度。</p>
+<p>如果高配机器 redo log 设置比较小的话：redo log 很容易被写满，就会导致经常要因为 redo log 满了而刷盘。表现为：磁盘压力很小，但是数据库出现间歇性的性能下跌</p>
+<h1 id=13--为什么表数据删掉一半表文件大小不变>13 | 为什么表数据删掉一半，表文件大小不变？<a hidden class=anchor aria-hidden=true href=#13--为什么表数据删掉一半表文件大小不变>#</a></h1>
+<p>：怎么正确的回收表空间
+innodb_file_per_table：1 默认值
+删除整个表数据会删除，但是删除表中的部分数据，空间是怎么回收的。</p>
+<p>delete 删除一条记录：将记录标记为已删除，之后可以复用。
+delete 删除多条记录：如果整个页被删除，则整页都被标记为可复用。相邻的两页使用率低，会合并。但空间均不会被释放。同理：插入数据，如果当前页已满，肯定会开启新页，也会造成数据空洞。</p>
+<p>压缩空间：alter table A engine=InnoDB。5.5 之前不要用，会阻塞 DML。5.6 版本之后：Online DDL（先建新表，并将旧表的更新写在一个文件中，新表搞好之后，再读取文件中的更新。<strong>会有很短时间的 MDL 写锁</strong>）</p>
+<p>DDL 过程如果是 Online 的，就一定是 inplace 的？</p>
+<h1 id=14--count这么慢我该怎么办>14 | count(*)这么慢，我该怎么办？<a hidden class=anchor aria-hidden=true href=#14--count这么慢我该怎么办>#</a></h1>
+<p>不加 where 条件：
+MyISAM 引擎：把一个表的总行数存在了磁盘上，因此执行 count(*)的时候会直接返回这个数，效率很高；
+InnoDB 引擎：数据一行一行地从引擎里面读出来，然后累积计数。
+show table status：不准确。</p>
+<p>加 where 条件：
+InnoDB 引擎：选择从引擎读</p>
+<p>效率排序：count(字段)&lt;count(主键 id)&lt;count(1)≈count(<em>)
+count(</em>)：特殊处理过，因为不会为 null，server 会按行累计。</p>
+<p>count(1)：InnoDB 引擎遍历整张表，但不取值。server 层对于返回的每一行，放一个数字“1”进去，判断是不可能为空的，按行累加。
+count(主键 id)：InnoDB 引擎会遍历整张表，把每一行的 id 值都取出来，返回给 server 层。server 层拿到 id 后，判断是不可能为空的，就按行累加。
+count(字段)：根据是否为 not null 进行判断。</p>
+<h1 id=15--答疑文章一日志和索引相关问题>15 | 答疑文章（一）：日志和索引相关问题<a hidden class=anchor aria-hidden=true href=#15--答疑文章一日志和索引相关问题>#</a></h1>
+<p>日志相关： 1.两阶段提交不同瞬间 MySQL 异常重启怎么保证数据完整性：
+测试</p>
+<h1 id=16--order-by是怎么工作的>16 | “order by”是怎么工作的？<a hidden class=anchor aria-hidden=true href=#16--order-by是怎么工作的>#</a></h1>
+<h2 id=全字段排序>全字段排序<a hidden class=anchor aria-hidden=true href=#全字段排序>#</a></h2>
+<p>排序过程对字符串做了“紧凑”处理。即使 name 字段的定义是 varchar(16)，在排序过程中还是要按照实际长度来分配空间的。</p>
+<p>max_length_for_sort_data</p>
+<h2 id=rowid-排序> rowid 排序<a hidden class=anchor aria-hidden=true href=#rowid-排序>#</a></h2>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://yuguocong.cn/tags/mysql/>MySQL</a></li>
+<li><a href=https://yuguocong.cn/tags/%E5%AD%A6%E4%B9%A0/>学习</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://yuguocong.cn/posts/binlog/>
+<span class=title>« </span>
+<br>
+<span>【MySQL】Binlog详解</span>
+</a>
+<a class=next href=https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/>
+<span class=title> »</span>
+<br>
+<span>go语言基础学习(3)</span>
+</a>
+</nav>
+<div class=share-buttons>
+<a target=_blank rel="noopener noreferrer" aria-label="share MySQL45讲总结 on twitter" href="https://twitter.com/intent/tweet/?text=MySQL45%e8%ae%b2%e6%80%bb%e7%bb%93&url=https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f&hashtags=MySQL%2c%e5%ad%a6%e4%b9%a0"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share MySQL45讲总结 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f&title=MySQL45%e8%ae%b2%e6%80%bb%e7%bb%93&summary=MySQL45%e8%ae%b2%e6%80%bb%e7%bb%93&source=https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share MySQL45讲总结 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f&title=MySQL45%e8%ae%b2%e6%80%bb%e7%bb%93"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share MySQL45讲总结 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share MySQL45讲总结 on whatsapp" href="https://api.whatsapp.com/send?text=MySQL45%e8%ae%b2%e6%80%bb%e7%bb%93%20-%20https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share MySQL45讲总结 on telegram" href="https://telegram.me/share/url?text=MySQL45%e8%ae%b2%e6%80%bb%e7%bb%93&url=https%3a%2f%2fyuguocong.cn%2fposts%2fyuque%2fmysql45%25E8%25AE%25B2%25E6%2580%25BB%25E7%25BB%2593%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
+</a>
+</div>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://yuguocong.cn/>mianhk's notes</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>
