@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>随笔 on mianhk&#39;s notes</title>
-    <link>https://yuguocong.cn/categories/%E9%9A%8F%E7%AC%94/</link>
+    <link>http://yuguocong.cn/categories/%E9%9A%8F%E7%AC%94/</link>
     <description>Recent content in 随笔 on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 05 Nov 2018 20:04:46 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Nov 2018 20:04:46 +0800</lastBuildDate><atom:link href="http://yuguocong.cn/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>11月生活小结(2018)</title>
-      <link>https://yuguocong.cn/draft/mysql_config/</link>
+      <link>http://yuguocong.cn/draft/mysql_config/</link>
       <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/draft/mysql_config/</guid>
+      <guid>http://yuguocong.cn/draft/mysql_config/</guid>
       <description></description>
     </item>
     
     <item>
       <title> 11月生活小结(2018)</title>
-      <link>https://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</link>
+      <link>http://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</link>
       <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</guid>
+      <guid>http://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</guid>
       <description>最近又到了生活有点不知道干什么的时候，有的时候觉得自己对什么都很有信心，有的时候又觉得什么都做不好。想起来以前总是站在自己的角度看一些事情，</description>
     </item>
     
     <item>
       <title>生活随笔</title>
-      <link>https://yuguocong.cn/posts/life_random/</link>
+      <link>http://yuguocong.cn/posts/life_random/</link>
       <pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/life_random/</guid>
+      <guid>http://yuguocong.cn/posts/life_random/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -38,10 +38,10 @@
     
     <item>
       <title>阶段性生活思考</title>
-      <link>https://yuguocong.cn/posts/redo-mylife/</link>
+      <link>http://yuguocong.cn/posts/redo-mylife/</link>
       <pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/redo-mylife/</guid>
+      <guid>http://yuguocong.cn/posts/redo-mylife/</guid>
       <description>&lt;h2 id=&#34;why-title&#34;&gt;why title&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;生活就是要不断的思考,不是吗?&lt;/p&gt;
