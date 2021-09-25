@@ -90,8 +90,6 @@ tags: [生活,日常总结]
 
 最后，2021年，继续加油，最后附上一张小豆的照片吧。
 
-
-
 ![image-20201228003035033](https://blog-1252063226.cos.ap-beijing.myqcloud.com/img/image-20201228003035033.png)
 
 
