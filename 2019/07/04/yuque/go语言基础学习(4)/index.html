@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="go语言基础学习(4)"/><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2019/07/04/yuque/go语言基础学习(4)/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>go语言基础学习(4) - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">go语言基础学习(4)
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-07-04
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#go-语言学习"><span class="toc-text">go 语言学习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于切片"><span class="toc-text">关于切片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于方法和接口"><span class="toc-text">关于方法和接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tips"><span class="toc-text">Tips</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><ol>
+<li>类型别名
+type S string 与
+type S = string 区别？</li>
+</ol>
+<p>type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。
+而 type S = string 只是一种别名，可以理解为，S 和 String 是完全一样的，只是换了一种叫法而已。类型别名和原类型方法是一样的。也不能在 Switch 中使用两者同时作为分支。</p>
+<ol start="2">
+<li>go 语言中没有按地址传递，可以深究一下如何传递 slice，再回复到邮件中</li>
+</ol>
+<p>Go 语言中只有按值传递，通过源码可以看到，slice 是一个结构体。结构体中包括真正的数组和长度以及容量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type slice struct &#123;</span><br><span class="line">	array unsafe.Pointer</span><br><span class="line">	len   int</span><br><span class="line">	cap   int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数传递 slice 时，其实传递的 slice 结构体，其中包括 array 的首地址、len 和 cap。通过下面的代码可以有以下的结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">func add_slice(a []int)&#123;</span><br><span class="line">	a[0]&#x3D;2</span><br><span class="line">	a[1]&#x3D;3</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func append_slice(a []int)&#123;</span><br><span class="line">	a&#x3D;append(a,5)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func modify_slice(a *[]int)&#123;</span><br><span class="line">	*a&#x3D;append(*a,6)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	a:&#x3D;[]int&#123;1,2,3&#125;</span><br><span class="line"></span><br><span class="line">	add_slice(a)</span><br><span class="line">	fmt.Println(a)  &#x2F;&#x2F;输出[2 3 3]</span><br><span class="line"></span><br><span class="line">	append_slice(a)</span><br><span class="line">	fmt.Println(a)  &#x2F;&#x2F;输出[2 3 3]</span><br><span class="line"></span><br><span class="line">	modify_slice(&amp;a)</span><br><span class="line">	fmt.Println(a)   &#x2F;&#x2F;输出[2 3 3 6]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只是改变 slice 内部的值时，看起来像是按引用传递，因为可以改变 slice 内的值，但是实际上是在参数传递的过程中，传递了 array 的首地址，而 slice 在内存中是一连串的地址，所以知道首地址就可以修改整个数组内部的值。
+    但是由于是按值传递，所以不能在函数内对 slice 进行 append。如果需要改变 slice 的长度，可以通过传入 slice 的指针。
+    由于 slice 传递的形式，需要在编程中多多注意，避免进坑。另外看到一个关于传递 slice 的操作，加深了一下对 slice 传参的理解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	a :&#x3D; []int&#123;7,8,9&#125;</span><br><span class="line">	b:&#x3D;[]int&#123;&#125;</span><br><span class="line">	b&#x3D;append(b,1,2,3)  &#x2F;&#x2F;a,b初始化的方式不一样，导致两者的cap不一样</span><br><span class="line"></span><br><span class="line">	fmt.Printf(&quot;a len: %d cap:%d data:%+v\n&quot;, len(a), cap(a), a)  &#x2F;&#x2F;a len: 3 cap:3 data:[7 8 9]</span><br><span class="line">	fmt.Printf(&quot;b len: %d cap:%d data:%+v\n&quot;, len(b), cap(b), b)  &#x2F;&#x2F;b len: 3 cap:4 data:[1 2 3]</span><br><span class="line"></span><br><span class="line">	append_slice(a)    &#x2F;&#x2F;显然append是没有效果的</span><br><span class="line">	fmt.Printf(&quot;a len: %d cap:%d data:%+v\n&quot;, len(a), cap(a), a)</span><br><span class="line">	p :&#x3D; unsafe.Pointer(&amp;a[2])  &#x2F;&#x2F;根据slice在内存的连续性，拿到最后一位的指针地址</span><br><span class="line">	q :&#x3D; uintptr(p)+8           &#x2F;&#x2F;将指针往后移一位，因为是int，所以是8</span><br><span class="line">	t :&#x3D; (*int)(unsafe.Pointer(q))</span><br><span class="line">	fmt.Println(*t)             &#x2F;&#x2F;输出0</span><br><span class="line"></span><br><span class="line">	append_slice(b)</span><br><span class="line">	fmt.Printf(&quot;b len: %d cap:%d data:%+v\n&quot;, len(b), cap(b), b)</span><br><span class="line">	p1 :&#x3D; unsafe.Pointer(&amp;b[2])</span><br><span class="line">	q1 :&#x3D; uintptr(p1)+8</span><br><span class="line">	t1 :&#x3D; (*int)(unsafe.Pointer(q1))</span><br><span class="line">	fmt.Println(*t1)    &#x2F;&#x2F;输出10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func append_slice(a []int) &#123;</span><br><span class="line">	a &#x3D; append(a, 10)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，直接 append 到 slice 的值，如果 cap 够的话，是会 append 上的，但是由于 len 的值没有改变，所以看不到，可以通过 unsafe 指针观察到结果。但是如果 cap 不够，继续 append，会导致重新分配内存空间，append 在新的位置上，此时通过 unsafe 指针也拿不到 append 的值。</p>
+<ol start="3">
+<li>关于函数的执行顺序：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">func add1(x,y int) int&#123;</span><br><span class="line">	fmt.Println(&quot;in add1. sum1&#x3D; &quot;,x,y)</span><br><span class="line">	return x+y</span><br><span class="line">&#125;</span><br><span class="line">func add(x,y,z,t int) int&#123;</span><br><span class="line">	sum:&#x3D;0</span><br><span class="line">	sum&#x3D;add1(x,y)+add1(z,t)</span><br><span class="line">	fmt.Println(&quot;in add. sum&#x3D;&quot;,sum)</span><br><span class="line">	return sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	fmt.Println(add(1,2,3,4),add(2,3,4,5))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">in add1. sum1&#x3D;  1 2</span><br><span class="line">in add1. sum1&#x3D;  3 4</span><br><span class="line">in add. sum&#x3D; 10</span><br><span class="line">in add1. sum1&#x3D;  2 3</span><br><span class="line">in add1. sum1&#x3D;  4 5</span><br><span class="line">in add. sum&#x3D; 14</span><br><span class="line">10 14</span><br></pre></td></tr></table></figure>
+<p>可以看到，add1 的结果是最先执行的，再执行 add，最后才执行 fmt.Println（）.是按后序遍历的顺序。</p>
+<h1 id="go-语言学习">go 语言学习</h1>
+<ul>
+<li>命名返回值:没有参数的  return  语句返回已命名的返回值</li>
+<li>println 的执行顺序。会先把函数计算结束之后，再按照顺序输出</li>
+<li>没有条件的 switch 同  <code>switch true</code>  一样。</li>
+<li>defer 函数调用会被压入一个栈中，所以后 defer 的值会先输出</li>
+<li>结构体指针的使用：修改结构体指针的值时，不需要带*号。</li>
+<li>数组定义的几种方式</li>
+</ul>
+<h1 id="关于切片">关于切片</h1>
+<ul>
+<li>
+<p>切片就像数组的引用，改变切片会改变底层的值</p>
+</li>
+<li>
+<p>切片的默认行为，可以不写完全部的上下限，因为切片默认有上下限</p>
+</li>
+<li>
+<p>只是截取切片是不会改变切片大小的</p>
+</li>
+<li>
+<p>切片的长度就是它所包含的元素个数。</p>
+</li>
+<li>
+<p>切片的容量是从它的第一个元素开始数，到其底层数组元素末尾的个数</p>
+</li>
+<li>
+<p>切片的零值是  <code>nil</code></p>
+</li>
+<li>
+<p>函数的闭包</p>
+</li>
+<li>
+<p>接收者的类型定义和方法声明必须在同一包内；不能为内建类型声明方法，可以定义别名，<code>**type **MyFloat float64</code></p>
+</li>
+</ul>
+<h1 id="关于方法和接口">关于方法和接口</h1>
+<ul>
+<li>
+<p>指针参数的函数必须接受一个指针,而以指针为接收者的方法被调用时，接收者既能为值又能为指针</p>
+</li>
+<li>
+<p>跟 C++中一样，使用指针接收者可以修改接收者指向的值；另外，可以避免每次在调用方法时复制该值。</p>
+<p>1.函数执行顺序是否是后序遍历的方式，可以再嵌套一层方法试试？ 画个调用树出来看看？
+我在网上没有找到相关的解释，就自己查看了 fmt.Println()函数的源码，会先调用 Fprintln 函数，而 Fprintln 会先执行传入的函数，存在 p 的 buf 中，之后转换成 string 再打印。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func Println(a ...interface&#123;&#125;) (n int, err error) &#123;</span><br><span class="line">	return Fprintln(os.Stdout, a...)</span><br><span class="line">&#125;</span><br><span class="line">func Sprintln(a ...interface&#123;&#125;) string &#123;</span><br><span class="line">	p :&#x3D; newPrinter()</span><br><span class="line">	p.doPrintln(a)</span><br><span class="line">	s :&#x3D; string(p.buf)</span><br><span class="line">	p.free()</span><br><span class="line">	return s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时也重新把打印语句加复杂了一下，结果与预期相符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">func add(x,y int) int&#123;</span><br><span class="line">	sum:&#x3D;x+y</span><br><span class="line">	fmt.Println(sum)</span><br><span class="line">	return sum</span><br><span class="line">&#125;</span><br><span class="line">func main()&#123;</span><br><span class="line">	fmt.Println(add(1,2),add(add(1,1),add(3,7)),add(4,5))</span><br><span class="line">&#125;</span><br><span class="line">运行结果为：</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">10</span><br><span class="line">12</span><br><span class="line">9</span><br><span class="line">3 12 9</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>切片的增长为什么是 20，是否在大于 1024 或某个值时，有其他的增长方法？ 比如 增加 1.2 倍？ 可以贴源码作为论据
+查看了一下 slice 中的 growslice 函数，可以看到当容量小于 1024 时，是按照 2 倍进行增长的，当超过 1024 时，按照 1.25 倍进行增长，应该是从节省空间的角度考虑，毕竟对一个很长的数组，再插入同样长度的数的概率很小。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">newcap :&#x3D; old.cap</span><br><span class="line">	doublecap :&#x3D; newcap + newcap</span><br><span class="line">	if cap &gt; doublecap &#123;</span><br><span class="line">		newcap &#x3D; cap</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		if old.len &lt; 1024 &#123;</span><br><span class="line">			newcap &#x3D; doublecap</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			&#x2F;&#x2F; Check 0 &lt; newcap to detect overflow</span><br><span class="line">			&#x2F;&#x2F; and prevent an infinite loop.</span><br><span class="line">			for 0 &lt; newcap &amp;&amp; newcap &lt; cap &#123;</span><br><span class="line">				newcap +&#x3D; newcap &#x2F; 4</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; Set newcap to the requested cap when</span><br><span class="line">			&#x2F;&#x2F; the newcap calculation overflowed.</span><br><span class="line">			if newcap &lt;&#x3D; 0 &#123;</span><br><span class="line">				newcap &#x3D; cap</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>通过代码测试上述结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">func main()&#123;</span><br><span class="line">	var a []int</span><br><span class="line">	for i:&#x3D;0;i&lt;1500;i++&#123;</span><br><span class="line">		a&#x3D;append(a,i)</span><br><span class="line">		if i%100&#x3D;&#x3D;0&#123;</span><br><span class="line">			fmt.Printf(&quot;len: %d , cap; %d\n&quot;,len(a),cap(a))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">输出结果为：</span><br><span class="line">len: 1 , cap; 1</span><br><span class="line">len: 101 , cap; 128</span><br><span class="line">len: 201 , cap; 256</span><br><span class="line">len: 301 , cap; 512</span><br><span class="line">len: 401 , cap; 512</span><br><span class="line">len: 501 , cap; 512</span><br><span class="line">len: 601 , cap; 1024</span><br><span class="line">len: 701 , cap; 1024</span><br><span class="line">len: 801 , cap; 1024</span><br><span class="line">len: 901 , cap; 1024</span><br><span class="line">len: 1001 , cap; 1024</span><br><span class="line">len: 1101 , cap; 1280</span><br><span class="line">len: 1201 , cap; 1280</span><br><span class="line">len: 1301 , cap; 1696</span><br><span class="line">len: 1401 , cap; 1696</span><br></pre></td></tr></table></figure>
+<p>如上符合源码结果，所以之前的分析有些问题，但是 append 多个值的时候，与之前的结果相同。再次查看源码，发现实际上还有内存对齐的考虑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capmem &#x3D; roundupsize(uintptr(newcap) * sys.PtrSize)</span><br></pre></td></tr></table></figure>
+<p>其中 capmem 会根据 roundupsize 函数进行内存对齐。其中 uintptr(newcap)表示新容量的大小，sys.PtrSize 表示一个元素的大小，int 时为 8。roundupsize 函数的实现如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func roundupsize(size uintptr) uintptr &#123;</span><br><span class="line">	if size &lt; _MaxSmallSize &#123;</span><br><span class="line">		if size &lt;&#x3D; smallSizeMax-8 &#123;</span><br><span class="line">			return uintptr(class_to_size[size_to_class8[(size+smallSizeDiv-1)&#x2F;smallSizeDiv]])</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return uintptr(class_to_size[size_to_class128[(size-smallSizeMax+largeSizeDiv-1)&#x2F;largeSizeDiv]])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if size+_PageSize &lt; size &#123;</span><br><span class="line">		return size</span><br><span class="line">	&#125;</span><br><span class="line">	return round(size, _PageSize)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：_MaxSmallSize=32768,2 的 15 次方，是 32K。当需要分配的 size 大于 32K 时，需要 mchche 向 mcentral 申请；当 size 小于 32K 时，计算应该分配的 sizeclass，直接去 mchche 申请。（关于具体的内存申请方面，在后面的开发需要的时候再仔细研究）
+当 size 小于 smallSizeMax-8=1024-8=1016 时，采用 size_to_class8 的分配方式，大于 1016 时采用 size_to_class128 的分配方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">size_to_class8 &#x3D; [smallSizeMax&#x2F;smallSizeDiv + 1]uint8&#123;0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22, 22, 23, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31&#125;</span><br><span class="line">size_to_class128 &#x3D; [(_MaxSmallSize-smallSizeMax)&#x2F;largeSizeDiv + 1]uint8&#123;31, 32, 33, 34, 35, 36, 36, 37, 37, 38, 38, 39, 39, 39, 40, 40, 40, 41, 42, 42, 43, 43, 43, 43, 43, 44, 44, 44, 44, 44, 44, 45, 45, 45, 45, 46, 46, 46, 46, 46, 46, 47, 47, 47, 48, 48, 49, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 52, 52, 53, 53, 53, 53, 54, 54, 54, 54, 54, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57, 57, 57, 57, 57, 57, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66&#125;</span><br><span class="line">class_to_size &#x3D; [_NumSizeClasses]uint16&#123;0, 8, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 896, 1024, 1152, 1280, 1408, 1536, 1792, 2048, 2304, 2688, 3072, 3200, 3456, 4096, 4864, 5376, 6144, 6528, 6784, 6912, 8192, 9472, 9728, 10240, 10880, 12288, 13568, 14336, 16384, 18432, 19072, 20480, 21760, 24576, 27264, 28672, 32768&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到两个数组值的不同，并且间隔的粒度也不同，当 size 较小时，间隔为 8，当 size 较大时，间隔为 128.
+而为了内存优化考虑，class_to_size 会控制分配大小，间隔从 8-4096
+以 int 为例</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">个数</th>
+<th style="text-align:left">1</th>
+<th style="text-align:left">2</th>
+<th style="text-align:left">3</th>
+<th style="text-align:left">4</th>
+<th style="text-align:left">5</th>
+<th style="text-align:left">6</th>
+<th style="text-align:left">7</th>
+<th style="text-align:left">8</th>
+<th style="text-align:left">9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">字节数</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">24</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">40</td>
+<td style="text-align:left">48</td>
+<td style="text-align:left">56</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">72</td>
+</tr>
+<tr>
+<td style="text-align:left">所占空间</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">48</td>
+<td style="text-align:left">48</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">80</td>
+</tr>
+<tr>
+<td style="text-align:left">size_to_class8</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips">Tips</h2>
+<p>函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var rmdirs []func()</span><br><span class="line">for _, d :&#x3D; range tempDirs() &#123;</span><br><span class="line">  dir :&#x3D; d &#x2F;&#x2F; NOTE: necessary!如果没有这一行会导致传入同样的dir</span><br><span class="line">  os.MkdirAll(dir, 0755) &#x2F;&#x2F; creates parent directories too</span><br><span class="line">  rmdirs &#x3D; append(rmdirs, func() &#123;</span><br><span class="line">  	os.RemoveAll(dir)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; ...do some work…</span><br><span class="line">for _, rmdir :&#x3D; range rmdirs &#123;</span><br><span class="line">	rmdir() &#x2F;&#x2F; clean up</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2019/07/04/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(4)/">http://www.yuguocong.cn/2019/07/04/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(4)/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/08/13/yuque/Hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Hexo折腾笔记</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/07/02/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(1)/">
+        <span class="next-text nav-default">【Golang】go语言学习(1)-初识切片</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

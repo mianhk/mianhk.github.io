@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Travis CI 自动部署博客"/><meta name="keywords" content="博客, 折腾, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2018/10/26/tools/hexo_travis-ci/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>Travis CI 自动部署博客 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Travis CI 自动部署博客
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-10-26
+        </span><span class="post-category">
+            <a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#travis思想"><span class="toc-text">Travis思想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#github准备"><span class="toc-text">Github准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#travis-ci设置"><span class="toc-text">Travis CI设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#github账号登录"><span class="toc-text">github账号登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用设置和配置环境变量"><span class="toc-text">通用设置和配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在source分支创建-travis-yml文件"><span class="toc-text">在source分支创建.travis.yml文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#拉取远程仓库并创建新分支"><span class="toc-text">拉取远程仓库并创建新分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-travis-yml文件"><span class="toc-text">创建.travis.yml文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些坑"><span class="toc-text">一些坑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-text">Reference</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><blockquote>
+<p>Hexo的又双叒一次折腾，以前觉得hexo部署博客还是很麻烦，除了每次操作完都得等待生成一下，还有的就是有时候很久一生成，都是看人品出错，以前也弄过那种自动的脚本，每天自己生成然后push，但是出错的时候就又是很麻烦。直到这次看到了Travis CI…</p>
+</blockquote>
+<a id="more"></a>
+<p>听到持续集成这个词还是最近逛github的时候，看到一些讨论才搜了一下这个，不过之前也是想过这个问题，毕竟有痛点就会想。之前折腾hexo博客的时候，试过在windows下面写个bat脚本，定时<code>hexo clean hexo g -d</code>一下，但是有时候文件太多搞乱了，就出问题了，一段时间没弄，就又得回来折腾。后面也试过就不在windows下面操作了，干脆只在博客文件夹弄，然后编辑器自动ftp到服务器上，再在服务器上自动生成，好像也没啥区别。直到看到Travis CI，才知道大佬们为啥都这么青睐hexo了。那就开整吧。</p>
+<h1 id="travis思想">Travis思想</h1>
+<p>简单点就是，当我们的github公开仓库与Travis CI绑定后，在仓库中建立一个Travis CI<code>.travis.yml</code>文件，每当<code>.travis.yml</code>文件中监听的分支发现有变动时，会根据<code>.travis.yml</code>中的配置进行操作。</p>
+<h1 id="github准备">Github准备</h1>
+<p>首先是准备gitpages，仓库之前已经有了，这个是放生成的静态页面的，还有一个仓库，放的是博客的源码。之前的一般操作都是在源码博客中通过<code>hexo g -d</code>后push到gitpages目录中，所以大部分操作一般都是在这个源码中进行的，gitpages仓库是用来展示的，准确来说是gitpages仓库的master分支。</p>
+<p>由于Travis CI可以监听某个分支，所以这样一想，就不用弄两个仓库了，只需要弄两个分支即可：源码放在source分支，并又Travis CI监听，每次push后会自动push到master分支，完成博客的自动部署。</p>
+<p>Travis CI连接到仓库需要token才能操作，就相当于一把钥匙，可以在<code>Settings</code>-&gt;<code>Developer settings</code>-&gt;<code>Personal access tokens</code>-&gt;<code>Generate new token</code>,填写<code>Token description</code>，之后勾选<code>repo</code>，选择<code>generate token</code>。如图：</p>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026151507.png" /> </div><br>
+<p>点击复制按钮复制<code>token</code>：</p>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026151704.png" /> </div><br>
+<h1 id="travis-ci设置">Travis CI设置</h1>
+<h2 id="github账号登录">github账号登录</h2>
+<p>在<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI网站</a>通过github账号登录后，开启gitpages仓库的同步，然后点击<code>settings</code>进行设置。</p>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026155513.png" /> </div><br>
+<h2 id="通用设置和配置环境变量">通用设置和配置环境变量</h2>
+<p>之后开启设置，并设置环境变量(主要是为了travis的自动部署，但是token直接公开有风险，因此需要在这里设置):</p>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026155627.png" /> </div><br>
+<h1 id="在source分支创建-travis-yml文件">在source分支创建<code>.travis.yml</code>文件</h1>
+<p>在gitpages仓库的source分支创建。这里涉及几个git的操作，真是坑踩多了，自然就会多用几个命令了。。</p>
+<h2 id="拉取远程仓库并创建新分支">拉取远程仓库并创建新分支</h2>
+<p>操作步骤为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 克隆项目到本地</span><br><span class="line">&gt; git clone git@github.com:mianhk&#x2F;mianhk.github.io.git</span><br><span class="line"># 创建并切换到source分支</span><br><span class="line">&gt; git checkout -b source</span><br></pre></td></tr></table></figure>
+<p>切换到source分支后，将本地除<code>.git</code>文件夹的其他文件删除，并将之前的源码文件拷贝到当前文件夹，然后提交到远程的source分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 提交本地hexo分支到远程仓库的hexo分支</span><br><span class="line">git push origin hexo:hexo</span><br></pre></td></tr></table></figure>
+<h2 id="创建-travis-yml文件">创建.travis.yml文件</h2>
+<p>当然这个文件网上一找一大堆，也不是我自己写的，参考：https://juejin.im/post/5a1fa30c6fb9a045263b5d2a  自己进行了一点修改：具体如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"># 使用语言</span><br><span class="line">language: node_js</span><br><span class="line"># node版本</span><br><span class="line">node_js: stable</span><br><span class="line"># 设置只监听哪个分支</span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">  - source</span><br><span class="line"># 缓存，可以节省集成的时间，这里我用了yarn，如果不用可以删除</span><br><span class="line">cache:</span><br><span class="line">  apt: true</span><br><span class="line">  directories:</span><br><span class="line">    - node_modules</span><br><span class="line"># tarvis生命周期执行顺序详见官网文档</span><br><span class="line">before_install:</span><br><span class="line">- export TZ&#x3D;&#39;Asia&#x2F;Shanghai&#39; # 更改时区</span><br><span class="line">- git config --global user.name &quot;mianhk&quot;</span><br><span class="line">- git config --global user.email &quot;gcyu@gmail.com&quot;</span><br><span class="line"># 由于使用了yarn，所以需要下载，如不用yarn这两行可以删除</span><br><span class="line">#- curl -o- -L https:&#x2F;&#x2F;yarnpkg.com&#x2F;install.sh | bash</span><br><span class="line">#- export PATH&#x3D;$HOME&#x2F;.yarn&#x2F;bin:$PATH</span><br><span class="line">- npm install -g hexo-cli</span><br><span class="line">install:</span><br><span class="line"># 不用yarn的话这里改成 npm i 即可</span><br><span class="line">#- yarn</span><br><span class="line">- npm i</span><br><span class="line">script:</span><br><span class="line">- hexo clean</span><br><span class="line">- hexo generate</span><br><span class="line">after_success:</span><br><span class="line">- cd .&#x2F;public</span><br><span class="line">- git init</span><br><span class="line">- git add --all .</span><br><span class="line"># commit 中间添加时间信息</span><br><span class="line">- git commit -m &quot;Travis CI Auto Builder at &#96;date +&quot;%Y-%m-%d %H:%M&quot;&#96;&quot;  </span><br><span class="line"># 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的</span><br><span class="line">- git push --quiet --force https:&#x2F;&#x2F;$REPO_TOKEN@github.com&#x2F;mianhk&#x2F;mianhk.github.io.git</span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
+<p>之后便可以通过在本地或者其他电脑上通过git在source分支上的操作实现自动部署了。</p>
+<div align="center"> <img src="https://blog-1252063226.cosbj.myqcloud.com/network/20181026161116.png" /> </div><br> 
+<h1 id="一些坑">一些坑</h1>
+<p>一些拷贝文件产生的错误，导致中间出错了好几次，通过调整文件进行本地测试的时候，没有问题，但是自动构建就还是出问题。需要将原来的源码中的<code>config.yml</code>的push选项进行一下修改。</p>
+<h1 id="reference">Reference</h1>
+<p><a href="https://www.itfanr.cc/2017/08/09/using-travis-ci-automatic-deploy-hexo-blogs/" target="_blank" rel="noopener">使用Travis CI自动部署Hexo博客</a><br>
+<a href="https://juejin.im/post/5a1fa30c6fb9a045263b5d2a" target="_blank" rel="noopener">Hexo遇上Travis-CI：可能是最通俗易懂的自动发布博客图文教程</a></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2018/10/26/tools/hexo_travis-ci/">http://www.yuguocong.cn/2018/10/26/tools/hexo_travis-ci/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
+            <a href="/tags/%E6%8A%98%E8%85%BE/">折腾</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2018/11/05/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%93(2018)/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default"> 11月生活小结(2018)</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2018/06/24/interview/interview_operation/">
+        <span class="next-text nav-default">面试总结-操作系统</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

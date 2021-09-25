@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="go语言学习(2)-极客时间"/><meta name="keywords" content="Golang, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2019/04/28/yuque/go语言学习(2)-极客时间/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>go语言学习(2)-极客时间 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">go语言学习(2)-极客时间
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-28
+        </span><span class="post-category">
+            <a href="/categories/Golang/">Golang</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一个-go-程序"><span class="toc-text">第一个 go 程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#变量-常量和其他语言的区别"><span class="toc-text">变量、常量和其他语言的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符"><span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件和循环"><span class="toc-text">条件和循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组和切片"><span class="toc-text">数组和切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切片"><span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切片和数组的区别"><span class="toc-text">切片和数组的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map-基础"><span class="toc-text">Map 基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map-与工厂模式"><span class="toc-text">Map 与工厂模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#unicode-和-utf-8"><span class="toc-text">Unicode 和 UTF-8</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-语言的函数"><span class="toc-text">Go 语言的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可变参数及-defer"><span class="toc-text">可变参数及 defer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#行为的定义和实现"><span class="toc-text">行为的定义和实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#封装数据和行为"><span class="toc-text">封装数据和行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行为-方法-定义"><span class="toc-text">行为（方法）定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-语言的相关接口"><span class="toc-text">Go 语言的相关接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#duck-type"><span class="toc-text">Duck Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口变量"><span class="toc-text">接口变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义类型"><span class="toc-text">自定义类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩展与复用"><span class="toc-text">扩展与复用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不一样的接口类型-一样的多态"><span class="toc-text">不一样的接口类型，一样的多态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#空接口与断言"><span class="toc-text">空接口与断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-接口最佳实践"><span class="toc-text">Go 接口最佳实践</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编写好的错误处理"><span class="toc-text">编写好的错误处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#panic-和-recover"><span class="toc-text">panic 和 recover</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#panic"><span class="toc-text">panic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#panic-vs-os-exit"><span class="toc-text">panic vs os.Exit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#recover"><span class="toc-text">recover</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构建可复用的模块-包"><span class="toc-text">构建可复用的模块（包）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#package"><span class="toc-text">package</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#init-方法"><span class="toc-text">init 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-get"><span class="toc-text">go get</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#依赖管理"><span class="toc-text">依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#go-未解决的依赖问题"><span class="toc-text">Go 未解决的依赖问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vendor-路径"><span class="toc-text">vendor 路径</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#协程机制"><span class="toc-text">协程机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线程-vs-协程"><span class="toc-text">线程 vs 协程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共享内存并发机制"><span class="toc-text">共享内存并发机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lock"><span class="toc-text">Lock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#waitgroup"><span class="toc-text">WaitGroup</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#csp-并发机制"><span class="toc-text">CSP 并发机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#csp-vs-actor"><span class="toc-text">CSP vs Actor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#channel"><span class="toc-text">Channel</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多路选择和超时"><span class="toc-text">多路选择和超时</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-text">select</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#channel-的关闭和广播"><span class="toc-text">channel 的关闭和广播</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#channel-的关闭"><span class="toc-text">channel 的关闭</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#任务的取消"><span class="toc-text">任务的取消</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#context-与任务取消"><span class="toc-text">Context 与任务取消</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-text">Context</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#典型并发任务"><span class="toc-text">典型并发任务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#只运行一次-常见的并发任务"><span class="toc-text">只运行一次（常见的并发任务）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所需任意任务完成"><span class="toc-text">所需任意任务完成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所有任务完成"><span class="toc-text">所有任务完成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象池"><span class="toc-text">对象池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-pool-对象缓存"><span class="toc-text">sync.pool 对象缓存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内置单元测试框架"><span class="toc-text">内置单元测试框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#benchmark"><span class="toc-text">Benchmark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bbd"><span class="toc-text">BBD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射编程"><span class="toc-text">反射编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#万能程序"><span class="toc-text">万能程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不安全编程"><span class="toc-text">不安全编程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构模式"><span class="toc-text">架构模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pipe-filter-架构"><span class="toc-text">Pipe-Filter 架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#micro-kernel"><span class="toc-text">micro kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内置-json-解析"><span class="toc-text">内置 json 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easyjson"><span class="toc-text">easyjson</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http-服务"><span class="toc-text">HTTP 服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建-restful-服务"><span class="toc-text">构建 Restful 服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能分析工具"><span class="toc-text">性能分析工具</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="第一个-go-程序">第一个 go 程序</h1>
+<ul>
+<li>go 语言主函数没有返回值，需要使用 os 包， <code>os.exit()</code> ，也不能直接函数传参。</li>
+</ul>
+<h1 id="变量-常量和其他语言的区别">变量、常量和其他语言的区别</h1>
+<ul>
+<li>赋值可以自动类型推断： <code>a:=1</code> ，怎么方便怎么来就行</li>
+<li>快速连续赋值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const (</span><br><span class="line">	Monday&#x3D;itoa+1</span><br><span class="line">  Tuesday</span><br><span class="line">  Wednesday</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const(</span><br><span class="line">	Open&#x3D;1&lt;&lt;itoa</span><br><span class="line">  Close</span><br><span class="line">  Pending</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="运算符">运算符</h1>
+<ul>
+<li>算数运算符：没有前置的++、–</li>
+<li>比较运算符：用 <code>==</code>  比较时，相同维数的数组可以比较</li>
+<li>逻辑运算符</li>
+<li>位运算符： <code>&amp;^</code> ：按位清零</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 &amp;^ 0 --1</span><br><span class="line">1&amp;^ 1 --0</span><br><span class="line">0&amp;^1 --0</span><br><span class="line">0&amp;^0 --0</span><br></pre></td></tr></table></figure>
+<h1 id="条件和循环">条件和循环</h1>
+<ul>
+<li>循环：只支持 <code>for</code> ，并且没有括号，while 条件的写法为</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> n&lt;<span class="number">5</span>&#123;</span><br><span class="line">	n++</span><br><span class="line">  fmt.Println(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>条件：条件一定要是个布尔值或表达式。支持在 if 语句中对变量赋值</li>
+<li>switch 条件：条件表达式不限制为常量或者整数；单个 case 中，可以出现多个结果选项，使用逗号分隔；不需要 break；可以不设定 switch 之后的条件表达式</li>
+</ul>
+<h1 id="数组和切片">数组和切片</h1>
+<h2 id="数组">数组</h2>
+<ul>
+<li>数组的声明：声明同时初始化：<code>arr3:=[...]int{1,3,4,5}</code></li>
+<li>数组的遍历</li>
+<li>数组截取：a[index_begin(包含),index_end(不包含)]</li>
+</ul>
+<h2 id="切片">切片</h2>
+<ul>
+<li>切片的声明方式：与数组的声明有点相似</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s0 []<span class="keyword">int</span></span><br><span class="line">s1:=[]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">s2:=[]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">s2:=<span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">2</span>,<span class="number">4</span>)  <span class="comment">//([]type,len,cap)  len个元素会被初始化为零值，</span></span><br><span class="line">                       <span class="built_in">cap</span>中其它未初始化的元素不能访问</span><br></pre></td></tr></table></figure>
+<ul>
+<li>切片的增长方式：类似于 c++的 vector。</li>
+<li>切片共享存储结构：切片截取后，计算 cap 得到的结果。其实切片截取，指向的是内部共享的切片存储空间。所以修改截取的切片的数据，其他截取的相同区域也会发生改变。这是一个容易出错的问题。</li>
+</ul>
+<h2 id="切片和数组的区别">切片和数组的区别</h2>
+<ul>
+<li>容量是否可伸缩</li>
+<li>是否可以进行比较</li>
+</ul>
+<h1 id="map-基础">Map 基础</h1>
+<ul>
+<li>Map 声明方式</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m:=<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>&#123;<span class="string">"one"</span>:<span class="number">1</span>,<span class="string">"two"</span>:<span class="number">2</span>,<span class="string">"three"</span>:<span class="number">3</span>&#125;</span><br><span class="line">m1:=<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">m1[<span class="string">"one"</span>]=<span class="number">1</span></span><br><span class="line">m2:=<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>,<span class="number">10</span>)  <span class="comment">//10表示初始化的cap,不需要初始化len</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>元素访问：当访问的 key 不存在时，仍然会返回零值，编程时需要根据 nil 来判断元素是否存在</li>
+</ul>
+<h1 id="map-与工厂模式">Map 与工厂模式</h1>
+<ul>
+<li>Map 的 value 可以是一个方法</li>
+<li>与 Go 的 Dock type 接口方式一起，可以方便的实现单一方法对象的工厂模式</li>
+<li>Go 内置集合中没有 Set，可以通过 map 实现<code>mySet:=**map**[int]bool{}</code></li>
+</ul>
+<h1 id="字符串">字符串</h1>
+<ul>
+<li>string 是数据类型，不是引用或指针类型。零值不是空，而是空字符串。</li>
+<li>string 是只读的 byte slice，不能重复赋值。len 函数可以表示它所包含的 byte 数</li>
+<li>string 的 byte 数组可以存放任何数据</li>
+</ul>
+<h2 id="unicode-和-utf-8">Unicode 和 UTF-8</h2>
+<ul>
+<li>Unicode 是一种字符集（code point）</li>
+<li>UTF-8 是 Unicode 的存储实现（转换为）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1556503870325-262231e2-8b69-42ab-8711-83d68d74069e.png#align=left&amp;display=inline&amp;height=270&amp;name=image.png&amp;originHeight=398&amp;originWidth=671&amp;size=46907&amp;status=done&amp;width=456" alt="image.png"></p>
+<h1 id="go-语言的函数">Go 语言的函数</h1>
+<ul>
+<li>函数可以返回多个值</li>
+<li>所有参数都是值传递：slice，map，channel 会有传引用的错觉</li>
+<li>函数可以作为变量的值</li>
+<li>函数可以作为参数和返回值</li>
+</ul>
+<h1 id="可变参数及-defer">可变参数及 defer</h1>
+<ul>
+<li>延迟执行函数：defer。类似于其他语言中的 finally，主要作用是最后关闭一些资源或者关闭一些锁</li>
+</ul>
+<h1 id="行为的定义和实现">行为的定义和实现</h1>
+<h2 id="封装数据和行为">封装数据和行为</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Employee <span class="keyword">struct</span>&#123;</span><br><span class="line">	Id <span class="keyword">string</span></span><br><span class="line">  Name <span class="keyword">string</span></span><br><span class="line">  Age <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line">实例的创建和初始化</span><br><span class="line">e:=Employee&#123;<span class="string">"0"</span>,<span class="string">"Bob"</span>,<span class="number">20</span>&#125;</span><br><span class="line">e1:=Employee&#123;Name:<span class="string">"Mike"</span>,Age:<span class="number">30</span>&#125;</span><br><span class="line">e2:=<span class="built_in">new</span>(Employee)  <span class="comment">//这里返回的是实例的指针</span></span><br><span class="line">e2.Id=<span class="string">"2"</span>  <span class="comment">//通过实例的指针访问指针不需要“-&gt;”</span></span><br></pre></td></tr></table></figure>
+<h2 id="行为-方法-定义">行为（方法）定义</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e Employee)</span><span class="title">String1</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprintf(<span class="string">"ID:%s-Name:%s-Age:%d"</span>,e.Id,e.Name,e.Age)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//推荐使用的方式，类似于c++的引用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *Employee)</span><span class="title">String</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprintf(<span class="string">"ID:%s-Name:%s-Age:%d"</span>,e.Id,e.Name,e.Age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="go-语言的相关接口">Go 语言的相关接口</h1>
+<h2 id="duck-type">Duck Type</h2>
+<p>方法签名是一样的，就认为是这样的</p>
+<ul>
+<li>接口是非入侵性的，实现不依赖于接口定义</li>
+<li>接口的定义可以包含在接口使用者包内</li>
+</ul>
+<h2 id="接口变量">接口变量</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1556508509894-85f1967f-80e0-4a9e-9db7-a2b01ba96f30.png#align=left&amp;display=inline&amp;height=338&amp;name=image.png&amp;originHeight=338&amp;originWidth=701&amp;size=40266&amp;status=done&amp;width=701" alt="image.png"></p>
+<h2 id="自定义类型">自定义类型</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> IntConv <span class="function"><span class="keyword">func</span> <span class="params">(op <span class="keyword">int</span>)</span> <span class="title">int</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="扩展与复用">扩展与复用</h1>
+<h1 id="不一样的接口类型-一样的多态">不一样的接口类型，一样的多态</h1>
+<h2 id="空接口与断言">空接口与断言</h2>
+<ul>
+<li>空接口可以表示任何类型</li>
+<li>通过断言来将空接口转换为制定类型 <code>v,ok:=p.(int) //ok=true时为转换成功</code></li>
+</ul>
+<h2 id="go-接口最佳实践">Go 接口最佳实践</h2>
+<ul>
+<li>倾向于使用小的接口定义，很多接口只包含一个方法。实现的负担较小。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Type Reader <span class="keyword">interface</span>&#123;</span><br><span class="line">	Read(p []<span class="keyword">byte</span>)(n <span class="keyword">int</span>,err error)</span><br><span class="line">&#125;</span><br><span class="line">Type Writer <span class="keyword">interface</span>&#123;</span><br><span class="line">	Write(p []<span class="keyword">byte</span>)(n <span class="keyword">int</span>,err error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>较大的接口定义，可以由多个小接口定义组合而成。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Type ReadWrite <span class="keyword">interface</span>&#123;</span><br><span class="line">	Reader</span><br><span class="line">  Writer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只依赖于必要功能的最小接口，方法才能更多的被复用</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">StoreData</span><span class="params">(reader Reader)</span> <span class="title">error</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="编写好的错误处理">编写好的错误处理</h1>
+<ul>
+<li>没有异常机制</li>
+<li>error 类型实现了 error 接口</li>
+<li>可以通过 errors.New 来快速创建错误实例</li>
+</ul>
+<h1 id="panic-和-recover">panic 和 recover</h1>
+<h2 id="panic">panic</h2>
+<ul>
+<li>panic 用于不可恢复的错误</li>
+<li>panic 退出前会执行 defer 指定的内容</li>
+</ul>
+<h2 id="panic-vs-os-exit">panic vs os.Exit</h2>
+<ul>
+<li>os.Exit 退出时不会调用 defer 指定的函数</li>
+<li>os.Exit 退出时不会输出当前调用栈信息</li>
+</ul>
+<h2 id="recover">recover</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">defer func()&#123;</span><br><span class="line">	if err:&#x3D;recover();err!&#x3D;nil&#123;</span><br><span class="line">  	&#x2F;&#x2F;恢复错误</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不要强制恢复错误，有的时候“Let it crash”可能更好，让程序重启来恢复。</li>
+</ul>
+<h1 id="构建可复用的模块-包">构建可复用的模块（包）</h1>
+<h2 id="package">package</h2>
+<ul>
+<li>基本复用模块单元：以<strong>首字母大写</strong>来表名可被包外代码访问</li>
+<li>代码在 package 可以和所在的目录了不一致（相对于 Java 而言）</li>
+<li>同一目录里的 Go 代码的 package 要保持一致</li>
+</ul>
+<h2 id="init-方法">init 方法</h2>
+<ul>
+<li>在 main 被执行前，所有依赖的 package 的 init 方法都会被执行</li>
+<li>不同包的 init 函数按照包导入的依赖关系决定执行顺序</li>
+<li>每个包可以有多个 init 函数</li>
+<li>包的每个源文件也可以有多个 init 函数，比较特殊</li>
+</ul>
+<h2 id="go-get">go get</h2>
+<ul>
+<li>通过 go get 来获取远程依赖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u 强制从网络更新远程依赖</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意代码在 Github 上的组织形式，以适应 go get：直接以代码路径开始，不要有 src</li>
+</ul>
+<h1 id="依赖管理">依赖管理</h1>
+<h2 id="go-未解决的依赖问题">Go 未解决的依赖问题</h2>
+<ul>
+<li>同一环境下，不同项目使用同一包的不同版本</li>
+<li>无法管理对包的特定版本的依赖</li>
+</ul>
+<h2 id="vendor-路径">vendor 路径</h2>
+<p>Go1.5 release 版本，vendor 目录被添加到除了 GOPATH 和 GOROOT 以外的依赖目录查找方案。查找依赖包路径的解决方案：</p>
+<ol>
+<li>当前包下的 vendor 目录</li>
+<li>向上级目录查找，直到找到 src 下的 vendor 目录</li>
+<li>在 GOPATH 下面查找依赖包</li>
+<li>在 GOROOT 目录下查找</li>
+</ol>
+<p>其他第三方依赖管理工具：godep，glide，<strong>dep</strong>
+**</p>
+<h1 id="协程机制">协程机制</h1>
+<h2 id="线程-vs-协程">线程 vs 协程</h2>
+<ul>
+<li>创建时默认的 stack 大小：JAVA 1M vs Goroutine 2K</li>
+<li>和 KSE（Kernel Space Entity）：java Thread 是 1:1；GO M:N</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1556704202218-7913c997-6b91-48e2-9dc6-49b057a39342.png#align=left&amp;display=inline&amp;height=432&amp;name=image.png&amp;originHeight=432&amp;originWidth=618&amp;size=110172&amp;status=done&amp;width=618" alt="image.png"></p>
+<h1 id="共享内存并发机制">共享内存并发机制</h1>
+<h2 id="lock">Lock</h2>
+<h2 id="waitgroup">WaitGroup</h2>
+<p>相当于 Java 的 join</p>
+<h1 id="csp-并发机制">CSP 并发机制</h1>
+<h2 id="csp-vs-actor">CSP vs Actor</h2>
+<ul>
+<li>和 Actor 的直接通讯不同，CSP 模式是通过 Channel 进行通讯的，更松耦合一些</li>
+<li>Go 中 Channel 是有容量限制并且独立于处理 Goroutine，而如 Erlang，Actor 模式中的 mailbox 容量是无限的，接收进程也总是被动地处理消息。</li>
+</ul>
+<h2 id="channel">Channel</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1556705599268-5d3769a6-8c93-4827-a9c2-525810d0cc3a.png#align=left&amp;display=inline&amp;height=910&amp;name=image.png&amp;originHeight=910&amp;originWidth=1703&amp;size=565338&amp;status=done&amp;width=1703" alt="image.png">
+两种情况：一种是一直等待，一种 Buffered Channel ，更松耦合的 Channel，消息发送方可以在容量没满的时候一直放，满了之后需要等待。对于接收方来说，只要 Channel 内有消息就可以一直接收。</p>
+<h1 id="多路选择和超时">多路选择和超时</h1>
+<h2 id="select">select</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1556712290363-e32d5fa7-eb01-4d32-8fed-14ae04a0042d.png#align=left&amp;display=inline&amp;height=301&amp;name=image.png&amp;originHeight=301&amp;originWidth=861&amp;size=79632&amp;status=done&amp;width=861" alt="image.png">
+运行到 select 时，当任一个事件准备好了，就可以对应响应。当不想一直等待某事件时，可以进行超时控制。</p>
+<h1 id="channel-的关闭和广播">channel 的关闭和广播</h1>
+<p>解决怎么知道 channel 数据完了的问题</p>
+<h2 id="channel-的关闭">channel 的关闭</h2>
+<ul>
+<li>向关闭的 channel 发送数据，会导致 panic</li>
+<li>v,ok&lt;-ch；ok 为 bool 值，true 表示正常接收，false 表示通道关闭</li>
+<li>所有的 channel 接收者都会在 channel 关闭时，立即从阻塞等待中返回且上述 ok 值为 false。这个广播机制常被利用，进行向多个订阅者发送信号，如：退出信号。</li>
+</ul>
+<h1 id="任务的取消">任务的取消</h1>
+<h1 id="context-与任务取消">Context 与任务取消</h1>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557062963366-c9338325-f390-4dce-ae1d-f0874f9612ba.png#align=left&amp;display=inline&amp;height=372&amp;name=image.png&amp;originHeight=298&amp;originWidth=786&amp;size=58395&amp;status=done&amp;width=982.4999853596094" alt="image.png"></p>
+<h2 id="context">Context</h2>
+<ul>
+<li>根 Context：通过 context.Background()创建</li>
+<li>子 Context：context.WithCancel(parentContext)创建</li>
+<li>ctx,cancel：context.WithCancel(context.Background())</li>
+<li>当前 Context 被取消时，基于他的子 context 也会被取消</li>
+<li>接收取消通知&lt;-ctx.Done()</li>
+</ul>
+<p>还有一些其他的方法</p>
+<h1 id="典型并发任务">典型并发任务</h1>
+<h2 id="只运行一次-常见的并发任务">只运行一次（常见的并发任务）</h2>
+<p>在常见的多任务环境下，只执行一次。单例模式（懒汉式，线程安全）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Singleton <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> singleInstance *Singleton</span><br><span class="line"><span class="keyword">var</span> once sync.Once</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetSingletonObj</span><span class="params">()</span> *<span class="title">Singleton</span></span>&#123;</span><br><span class="line">	once.Do(<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;    <span class="comment">//传入创建方法</span></span><br><span class="line">		fmt.Println(<span class="string">"Create Obj"</span>)</span><br><span class="line">		singleInstance=<span class="built_in">new</span>(Singleton)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> singleInstance</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="所需任意任务完成">所需任意任务完成</h2>
+<h2 id="所有任务完成">所有任务完成</h2>
+<h2 id="对象池">对象池</h2>
+<p>数据库连接，网络连接，经常将这些对象池化，避免重复创建。</p>
+<h2 id="sync-pool-对象缓存">sync.pool 对象缓存</h2>
+<p>从名字来看，像是 go 语言提供的池。其实是对象的缓存
+<img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557066107461-3144bf63-f63c-4522-b25d-af4bd721daab.png#align=left&amp;display=inline&amp;height=517&amp;name=image.png&amp;originHeight=414&amp;originWidth=846&amp;size=118933&amp;status=done&amp;width=1057.4999842420223" alt="image.png"></p>
+<ul>
+<li>如果私有对象不存在则保存为私有对象</li>
+<li>如果私有对象存在，就放入当前 Processor 子池的共享池中</li>
+</ul>
+<p>使用：
+<img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557066277648-e57411da-71d5-4673-93bc-a82e0315284b.png#align=left&amp;display=inline&amp;height=341&amp;name=image.png&amp;originHeight=273&amp;originWidth=497&amp;size=37422&amp;status=done&amp;width=621.2499907426537" alt="image.png"></p>
+<p>**sync.pool 对象的生命周期—**sync.pool 不能作为对象池的原因</p>
+<ul>
+<li>GC 会清除 sync.pool 缓存的对象</li>
+<li>sync.pool 对象的缓存有效期为下一次 GC 之前</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>适合于通过复用，降低复杂对象的创建和 GC 代价</li>
+<li>协程安全，会有锁的开销</li>
+<li>声明周期受 GC 影响，不适合于做连接池等，需自己管理生命周期资源的池化</li>
+<li>所以具体要看锁的开销大，还是初始化的开销大</li>
+</ul>
+<h1 id="测试">测试</h1>
+<h2 id="单元测试">单元测试</h2>
+<p>表格测试</p>
+<h3 id="内置单元测试框架">内置单元测试框架</h3>
+<ul>
+<li>Fail，Error：该测试失败，该测试继续，其他测试继续执行</li>
+<li>FailNow，Fatal：该测试失败，该测试中止，其他测试继续执行</li>
+</ul>
+<p>代码覆盖率</p>
+<h2 id="benchmark">Benchmark</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557067837101-3bdadb6b-821f-4dbd-9b3a-c9efe304bc7a.png#align=left&amp;display=inline&amp;height=491&amp;name=image.png&amp;originHeight=393&amp;originWidth=679&amp;size=77590&amp;status=done&amp;width=848.7499873526397" alt="image.png">
+以 Benchmark 开头，参数类型稍有不同。
+通过 ResetTimer 和 StopTimer 将测试代码隔开</p>
+<p>命令行下运行：</p>
+<h2 id="bbd">BBD</h2>
+<p>Behavior Driven Development
+常用框架：goconvey</p>
+<h2 id="反射编程">反射编程</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557107233067-f50d5086-e384-46cc-bd5e-0a2446ec3d8f.png#align=left&amp;display=inline&amp;height=390&amp;name=image.png&amp;originHeight=312&amp;originWidth=820&amp;size=64732&amp;status=done&amp;width=1024.99998472631" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557107389241-fb6b5237-7e73-48e9-83a9-e6c6ae45f6aa.png#align=left&amp;display=inline&amp;height=356&amp;name=image.png&amp;originHeight=285&amp;originWidth=755&amp;size=35453&amp;status=done&amp;width=943.7499859370294" alt="image.png"></p>
+<h2 id="万能程序">万能程序</h2>
+<p>DeepEqual
+比较切片和 map
+与配置相关的，要求灵活性和复用性时，可以
+反射的</p>
+<h2 id="不安全编程">不安全编程</h2>
+<p>unsafe，一般涉及到库的交互，与 c 语言交互。
+“不安全”行为危险性：Go 语言中不支持强制类型转换。下列操作看似可以，实际不能转换，而且实际使用起来很危险。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i:&#x3D;10</span><br><span class="line">f:&#x3D;*(*floa64)(unsafe.Pointer(&amp;i))</span><br></pre></td></tr></table></figure>
+<p>场景 2：用到内置的 Atomic 操作，指针原子操作，并发读写</p>
+<h1 id="架构模式">架构模式</h1>
+<h2 id="pipe-filter-架构">Pipe-Filter 架构</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557108759332-46d3b8e2-5573-419b-80b6-63cfbf5feaa1.png#align=left&amp;display=inline&amp;height=510&amp;name=image.png&amp;originHeight=408&amp;originWidth=782&amp;size=86362&amp;status=done&amp;width=977.4999854341152" alt="image.png"></p>
+<ul>
+<li>非常适合与数据处理及数据分析系统<img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557108843135-278143cd-9e6a-4b4f-ae49-b800e98a261c.png#align=left&amp;display=inline&amp;height=474&amp;name=image.png&amp;originHeight=379&amp;originWidth=690&amp;size=86777&amp;status=done&amp;width=862.4999871477487" alt="image.png"></li>
+</ul>
+<h2 id="micro-kernel">micro kernel</h2>
+<p>特点：易于拓展，错误隔离，保持架构一致性
+要点：</p>
+<ul>
+<li>内核包含公共流程或通用逻辑</li>
+<li>将可变成或可扩展部分规划为扩展点</li>
+<li>抽象扩展点行为，定义接口</li>
+<li>利用插件进行扩展</li>
+</ul>
+<p>生产过程任务的开发</p>
+<h2 id="内置-json-解析">内置 json 解析</h2>
+<p>远程过程调用等过程中，会用 json，以及在配置文件中，很多使用 json</p>
+<h2 id="easyjson">easyjson</h2>
+<p>go 内置的，一般适用于配置文件解析，对于 qps 较高，运用了反射，效率较低。尽量使用高性能的 json 解析</p>
+<h2 id="http-服务">HTTP 服务</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557111353880-2f261975-45c5-4dcd-9281-44ac48f2fbcb.png#align=left&amp;display=inline&amp;height=442&amp;name=image.png&amp;originHeight=354&amp;originWidth=862&amp;size=103367&amp;status=done&amp;width=1077.499983943999" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557111366213-f5138ca3-fd5f-4da1-992a-f68e1681d3ff.png#align=left&amp;display=inline&amp;height=445&amp;name=image.png&amp;originHeight=356&amp;originWidth=771&amp;size=101595&amp;status=done&amp;width=963.7499856390061" alt="image.png"></p>
+<h2 id="构建-restful-服务">构建 Restful 服务</h2>
+<p>更好的 router，httprouter
+面向资源的架构（Resource Oriented Architecture）</p>
+<h2 id="性能分析工具">性能分析工具</h2>
+<p>学习函数式编程：《计算机程序的构造和解释》functional programming
+《Restful Web Service》
+《Go 程序设计语言》
+《面向模式的软件架构》1,2,3 本</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2019/04/28/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(2)-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/">http://www.yuguocong.cn/2019/04/28/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(2)-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Golang/">Golang</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2019/05/26/yuque/Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">【Git】Git使用总结</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/01/25/yuque/MySQL%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80(3)/">
+        <span class="next-text nav-default">MySQL学习基础(3)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

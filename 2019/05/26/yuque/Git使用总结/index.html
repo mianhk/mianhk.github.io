@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="【Git】Git使用总结"/><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2019/05/26/yuque/Git使用总结/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>【Git】Git使用总结 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">【Git】Git使用总结
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-26
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-user-信息"><span class="toc-text">配置 user 信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给文件重命名"><span class="toc-text">给文件重命名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看-gitlog"><span class="toc-text">查看 gitlog</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-目录"><span class="toc-text">.git 目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#commit-tree-和-blob-之间的关系"><span class="toc-text">commit、tree 和 blob 之间的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分离头指针"><span class="toc-text">分离头指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#head-和-branch"><span class="toc-text">HEAD 和 branch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用场景"><span class="toc-text">常用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除分支"><span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-commit-的-message"><span class="toc-text">修改 commit 的 message</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整理多个-commit-为-1-个"><span class="toc-text">整理多个 commit 为 1 个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较暂存区和-head-所含文件的差异"><span class="toc-text">比较暂存区和 HEAD 所含文件的差异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较工作区和暂存区的区别"><span class="toc-text">比较工作区和暂存区的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让暂存区恢复成和-head-一样"><span class="toc-text">让暂存区恢复成和 HEAD 一样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区的文件恢复成暂存区一样"><span class="toc-text">工作区的文件恢复成暂存区一样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取消暂存区部分文件的修改"><span class="toc-text">取消暂存区部分文件的修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消除最近的几次提交"><span class="toc-text">消除最近的几次提交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#看不同提交的指定文件的差异"><span class="toc-text">看不同提交的指定文件的差异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正确删除文件的方法"><span class="toc-text">正确删除文件的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发临时加塞紧急任务处理方式"><span class="toc-text">开发临时加塞紧急任务处理方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-的备份"><span class="toc-text">Git 的备份</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tips"><span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#同步含有git的文件夹及问题解决"><span class="toc-text">同步含有git的文件夹及问题解决</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h2 id="配置-user-信息">配置 user 信息</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#39;your_name&#39;</span><br><span class="line">git config --global user.email &#39;your_email&#39;</span><br><span class="line"></span><br><span class="line">git config --local  #local只对某个仓库有效</span><br><span class="line">git config --global  #global对当前用户的所有仓库有效</span><br><span class="line">git config --system  #对系统所有登录用户有效，一般不用没什么意义</span><br><span class="line"></span><br><span class="line">git config --global --list #显示配置项</span><br></pre></td></tr></table></figure>
+<p>local 比 global 优先级要高</p>
+<h1 id="给文件重命名">给文件重命名</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#原来的使用：</span><br><span class="line">mv readme readme.md</span><br><span class="line">git add readme.md</span><br><span class="line">git rm readme</span><br><span class="line">#直接使用</span><br><span class="line">git mv readme readme.md</span><br></pre></td></tr></table></figure>
+<h1 id="查看-gitlog">查看 gitlog</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log #只显示当前分支</span><br><span class="line">git log --all --graph #可以看所有的分支</span><br><span class="line">git log --oneline --all -n4 #一行显示所有分支最近的4个</span><br></pre></td></tr></table></figure>
+<h1 id="git-目录">.git 目录</h1>
+<p>HEAD：整个仓库正在工作的分支
+config：存放仓库本地的配置信息，记录 user 等信息
+refs：
+objects：包括文件夹和 pack</p>
+<h1 id="commit-tree-和-blob-之间的关系">commit、tree 和 blob 之间的关系</h1>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&amp;display=inline&amp;height=681&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=681&amp;originWidth=1132&amp;size=170368&amp;status=done&amp;style=none&amp;width=1132" alt="image.png">
+一个 commit 对应一棵 tree，每个文件夹对应一个 tree</p>
+<h1 id="分离头指针">分离头指针</h1>
+<p>表示某个变更没有基于某个 branch，在切换分支的时候，这些变更很有可能会被 git 当做垃圾清理，所以如果认为这些变更有用的话，一定要与某个 branch 绑定才能得到保留。</p>
+<h1 id="head-和-branch">HEAD 和 branch</h1>
+<p>切换分支时，HEAD 指向会发生变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD HEAD^  #与上一次HEAD比较</span><br><span class="line">git diff HEAD HEAD^^ #与上上次进行比较</span><br><span class="line">git diff HEAD HEAD^3 #与上上上次进行比较</span><br></pre></td></tr></table></figure>
+<h1 id="常用场景">常用场景</h1>
+<h2 id="删除分支">删除分支</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &#39;分支名&#39;  #清除分支的命令</span><br><span class="line">git branch -D &#39;分支名&#39;  #确信清除没有影响，采用D清除</span><br></pre></td></tr></table></figure>
+<h2 id="修改-commit-的-message">修改 commit 的 message</h2>
+<p>在维护自己的分支的时候，还没有提交的时候</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend   #修改最新的commit的message</span><br><span class="line">git rebase -i &#39;commit id&#39;  #修改更久的commit的message</span><br><span class="line">  然后按照提示进行修改</span><br></pre></td></tr></table></figure>
+<h2 id="整理多个-commit-为-1-个">整理多个 commit 为 1 个</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i &#39;commit-id&#39;  # commit-id为最久的想合并的</span><br></pre></td></tr></table></figure>
+<h2 id="比较暂存区和-head-所含文件的差异">比较暂存区和 HEAD 所含文件的差异</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached  #表示暂存区和HEAD的区别</span><br></pre></td></tr></table></figure>
+<h2 id="比较工作区和暂存区的区别">比较工作区和暂存区的区别</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git diff #默认比较的是工作区和暂存区的区别</span><br><span class="line">git diff --文件名 #比较文件</span><br></pre></td></tr></table></figure>
+<h2 id="让暂存区恢复成和-head-一样">让暂存区恢复成和 HEAD 一样</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD #将暂存区所有的变更恢复成HEAD</span><br></pre></td></tr></table></figure>
+<h2 id="工作区的文件恢复成暂存区一样">工作区的文件恢复成暂存区一样</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &#39;文件名&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="取消暂存区部分文件的修改">取消暂存区部分文件的修改</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD --&#39;文件名&#39;  # 将暂存区某一文件恢复成HEAD</span><br></pre></td></tr></table></figure>
+<h2 id="消除最近的几次提交">消除最近的几次提交</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &#39;commit-id&#39; #慎用</span><br></pre></td></tr></table></figure>
+<h2 id="看不同提交的指定文件的差异">看不同提交的指定文件的差异</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git diff &#39;branch1&#39; &#39;branch2&#39; -- &#39;文件名&#39;</span><br><span class="line">git diff &#39;commit-id1&#39; &#39;commit-id2&#39; -- &#39;文件名&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="正确删除文件的方法">正确删除文件的方法</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &#39;文件名&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="开发临时加塞紧急任务处理方式">开发临时加塞紧急任务处理方式</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git stash apply</span><br><span class="line">或者 git stach pop  #两者区别是会丢掉</span><br></pre></td></tr></table></figure>
+<h2 id="git-的备份">Git 的备份</h2>
+<ul>
+<li>哑协议：不显示进度条</li>
+<li>智能协议：</li>
+</ul>
+<h1 id="tips">Tips</h1>
+<h2 id="同步含有git的文件夹及问题解决">同步含有git的文件夹及问题解决</h2>
+<p>同步含有 git 的文件夹真的有点烦，由于没有注意同步结果，只是一直在看 travis 构建结果，结果半天没有发现问题，后来发现了也不知道怎么解决，看远程仓库的代码是一个关联的文件夹形式，表示这是一个 git 的文件夹，但是点不开，本地的也没有上传。</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2019/05/26/yuque/Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">http://www.yuguocong.cn/2019/05/26/yuque/Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/07/02/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(1)/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">【Golang】go语言学习(1)-初识切片</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/04/28/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(2)-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/">
+        <span class="next-text nav-default">go语言学习(2)-极客时间</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="ubuntu自动push到github脚本"/><meta name="keywords" content="工具, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2018/05/24/Tools/shell_autopush/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>ubuntu自动push到github脚本 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">ubuntu自动push到github脚本
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-05-24
+        </span><span class="post-category">
+            <a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux编写shell脚本"><span class="toc-text">Linux编写shell脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#脚本代码"><span class="toc-text">脚本代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加入定时任务"><span class="toc-text">加入定时任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑定时任务文件"><span class="toc-text">编辑定时任务文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务"><span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows自动提交博客"><span class="toc-text">Windows自动提交博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码如下"><span class="toc-text">代码如下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加到自动任务"><span class="toc-text">添加到自动任务</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><blockquote>
+<p>由于人比较懒，总是忘了自己提交到github上，也觉得博客好不容易写了还要打开文件夹，点一下交，这个体验有点差呀。于是就写了个Linux自动提交代码的和windows自动更新博客的。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="linux编写shell脚本">Linux编写shell脚本</h2>
+<h3 id="脚本代码">脚本代码</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">path&#x3D;~&#x2F;github&#x2F;</span><br><span class="line"></span><br><span class="line">git_push()&#123;</span><br><span class="line">    echo &quot;开始push&quot;</span><br><span class="line">    modify_time&#x3D;&#96;stat -c %Y $&#123;1&#125;&#96;</span><br><span class="line">    this_time&#x3D;&#96;date +%s&#96;</span><br><span class="line"></span><br><span class="line">    cd $&#123;1&#125;</span><br><span class="line">    echo &quot;-------切换目录------&quot;</span><br><span class="line">    echo &#96;pwd&#96;</span><br><span class="line">    echo &quot;---------------------&quot;</span><br><span class="line">    if [ $[ $&#123;modify_time&#125;-$&#123;this_time&#125; ] -gt 86400 ];</span><br><span class="line">    then</span><br><span class="line">         echo &quot;$&#123;1&#125; 文件夹 有变化，正在准备push...&quot;</span><br><span class="line">        date&#x3D;&#96;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#96;</span><br><span class="line">        git add .    </span><br><span class="line">        git commit -m &quot;automatic push @$(date)&quot;</span><br><span class="line">        echo &quot;git fetch origin master&quot;</span><br><span class="line">        git fetch origin master</span><br><span class="line"></span><br><span class="line">        echo &quot;git merge origin&#x2F;master&quot;</span><br><span class="line">        git merge origin&#x2F;master</span><br><span class="line"></span><br><span class="line">        echo &quot;git push origin master:master&quot;</span><br><span class="line">        git push origin master:master</span><br><span class="line">         </span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">git_push ~&#x2F;github&#x2F;Linux_pro</span><br><span class="line">git_push ~&#x2F;github&#x2F;miniweb</span><br></pre></td></tr></table></figure>
+<h3 id="加入定时任务">加入定时任务</h3>
+<h3 id="编辑定时任务文件">编辑定时任务文件</h3>
+<p>(https://blog.csdn.net/xiyuan1999/article/details/8160998)
+<code>crontab -e</code>
+在文件的末尾添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 5 * * * &#x2F;home&#x2F;mianhk&#x2F;shell&#x2F;auto_push.sh  表示在每天的 5.30执行</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务">启动服务</h3>
+<p><code>/etc/init.d/cron start</code></p>
+<h2 id="windows自动提交博客">Windows自动提交博客</h2>
+<p>其实windows的也差不多，写一个bat的脚本，然后加到系统的定时任务里面</p>
+<h3 id="代码如下">代码如下</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">title 同步博客到远端——余国聪</span><br><span class="line">color 16</span><br><span class="line"></span><br><span class="line">echo;</span><br><span class="line">echo;</span><br><span class="line"></span><br><span class="line">echo 切换目录到blog</span><br><span class="line">f:</span><br><span class="line">cd \github\mianhk</span><br><span class="line">cd .\blog</span><br><span class="line">echo clean</span><br><span class="line"></span><br><span class="line">hexo g -d</span><br><span class="line"></span><br><span class="line">echo 切换到GitHub备份目录</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">echo 开始提交代码到本地仓库</span><br><span class="line">echo 当前目录是：%cd%</span><br><span class="line"></span><br><span class="line">echo 开始添加变更</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">git add -A .</span><br><span class="line">echo 执行结束！</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line"></span><br><span class="line">echo;</span><br><span class="line">echo 提交变更到本地仓库</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">set declation&#x3D;%date:~0,4%%date:~5,2%%date:~8,2%</span><br><span class="line">git commit -m &quot;%declation%同步博客&quot;</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line"></span><br><span class="line">echo;</span><br><span class="line">echo 将变更情况提交到远程git服务器</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">git push origin master</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line"></span><br><span class="line">echo;</span><br><span class="line">echo 批处理执行完毕！</span><br><span class="line">echo;</span><br><span class="line"></span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<h3 id="添加到自动任务">添加到自动任务</h3>
+<p>计算机-&gt;管理-&gt;任务计划程序-&gt;添加任务即可</p>
+<p>我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=174pin6hqb074</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2018/05/24/Tools/shell_autopush/">http://www.yuguocong.cn/2018/05/24/Tools/shell_autopush/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2018/06/19/interview/redis_sum/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">《redis 设计与实现》--总结</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2018/04/26/tools/use_of_jupyter/">
+        <span class="next-text nav-default">jupyter-notebook安装和问题解决</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

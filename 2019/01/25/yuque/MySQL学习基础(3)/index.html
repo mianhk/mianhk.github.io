@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="MySQL学习基础(3)"/><meta name="keywords" content="MySQL, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2019/01/25/yuque/MySQL学习基础(3)/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>MySQL学习基础(3) - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">MySQL学习基础(3)
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-01-25
+        </span><span class="post-category">
+            <a href="/categories/MySQL/">MySQL</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#三大范式"><span class="toc-text">三大范式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql-日志类型"><span class="toc-text">MySQL 日志类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的隔离级别"><span class="toc-text">事务的隔离级别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#drop-delete-与-truncate"><span class="toc-text">DROP、DELETE 与 TRUNCATE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#存储引擎"><span class="toc-text">存储引擎</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="三大范式">三大范式</h1>
+<p>**第一范式（1NF）：**无重复的列。
+要求：表所有的属性不可再分。
+如果不符合第一范式，则不符合关系模型的定义。
+**第二范式（2NF）：**属性完全依赖于主键 [ 消除部分子函数依赖 ]。
+要求：在满足 1NF 前提，每一行能够唯一标识，不存在非主键字段。
+常用方法可以增加一个单字段的主键。
+<strong>第三范式（3NF）</strong>：属性不依赖于其它非主属性 [ 消除传递依赖 ]。
+要求：在满足 2NF 前提，不出现类似于 A-&gt;B-&gt;C 的情况，这样的传递依赖可以分为两个表，分别保存。</p>
+<p>通用的原则：</p>
+<ul>
+<li>每个实体都有一个表。</li>
+<li>为每一个关系（二维表）增加一个逻辑主键作为标识。</li>
+<li>出现二维表对应的关系，采用 1:1, 1:N, M:n 的形式将关联关系设计。</li>
+</ul>
+<h1 id="mysql-日志类型">MySQL 日志类型</h1>
+<p><strong>错误日志</strong>：记录启动、运行或停止 mysqld 时出现的问题
+<strong>查询日志</strong>：记录建立的客户端连接和执行的所有语句（包括错误的）
+<strong>二进制日志</strong>：记录所有更改数据的语句、还用于主从复制
+<strong>慢日志</strong>：记录所有执行时间超过 long_query_time 秒的所有查询</p>
+<h1 id="索引">索引</h1>
+<p>索引：对数据库表中一或多个列的值进行排序的结构，是帮助 MySQL 高效获取数据的数据结构，可以 加快检索表中的数据，而不必扫描整个数据库。
+缺点是：需要占用额外的空间，并且需要定期维护，每条记录的 INSERT,DELETE,UPDATE 操作可能付出更多的磁盘 IO。同时不必要的索引反而会使查询速度变慢。
+索引查询的适用的情况：基于一个范围的检索，一般查询返回结果集小于表中记录数的 30%。基于非唯一性索引的检索。
+数据库几个基本的索引类型：普通索引、唯一索引、主键索引、全文索引</p>
+<h1 id="事务">事务</h1>
+<p>事务：并发控制的基本单位，是一个操作序列，这些操作要么都执行，要么都不执行，是一个不可分割的工作单位。</p>
+<h2 id="事务的隔离级别">事务的隔离级别</h2>
+<p>分为四个级别：<br>
+未提交读:允许脏读，可能读到其他会话没有提交的数据。
+已提交读:只能读到已经提交的数据。ORACAL 等多数数据库的默认隔离级别。<br>
+可重复读:可重复读，同一事务内的查询都是和事务开始时一致的，Innodb 的默认隔离级别。<br>
+串行读：完全串行化的读，每次读都需要获得表级共享锁，读写相互会阻塞。</p>
+<p>对应：脏读、不可重复读、幻读情况为：
+脏读：当一个事务正在访问数据，并且对数据进行了修改，这个修改还没提交到数据库。另一个事务也访问这个数据，使用了这个数据。  
+不可重复读：一个事务内，多次读同一数据。这个事务还没结束时，另一个事务也访问这个数据，导致第一个事务两次访问的数据不一样。  
+幻读：第一个事务对表中的每一行数据进行了修改，同时第二个事务也访问这个表中的数据，这种修改是向表中插入而来一行数据，那么以后就会发生操作第一个事物的用户表中发现表中还有没修改的数据行，像是产生了幻觉。
+<a href="https://www.cnblogs.com/zhoujinyi/p/3437475.html" target="_blank" rel="noopener">MySQL 四种事务隔离级的说明</a></p>
+<h1 id="drop-delete-与-truncate">DROP、DELETE 与 TRUNCATE</h1>
+<p>DROP：不仅删除表的数据，还删除表的结构。
+DELETE 和 TRUNCATE 只删除表的数据不删除表的结构。
+删除速度：DROP&gt; DELETE&gt;TRUNCATE
+适用场景：当不需要一张表的时候，适用 DROP；删除部分数据行的时候，用 DELETE，并且使用 where 子句；保留表而删除所有数据的时候用 TRUNCATE。</p>
+<h1 id="存储引擎">存储引擎</h1>
+<p>MySQL 目前用的比较多的两种，是 Innodb 和 Myisam</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2019/01/25/yuque/MySQL%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80(3)/">http://www.yuguocong.cn/2019/01/25/yuque/MySQL%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80(3)/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/MySQL/">MySQL</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2019/04/28/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0(2)-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">go语言学习(2)-极客时间</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/01/23/yuque/MySQL%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/">
+        <span class="next-text nav-default">MySQL学习总结(2)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

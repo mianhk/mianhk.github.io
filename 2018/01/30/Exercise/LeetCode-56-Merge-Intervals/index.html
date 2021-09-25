@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="LeetCode-56and57-Merge-Intervals"/><meta name="keywords" content="C++, LeetCode, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2018/01/30/Exercise/LeetCode-56-Merge-Intervals/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>LeetCode-56and57-Merge-Intervals - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">LeetCode-56and57-Merge-Intervals
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-01-30
+        </span><span class="post-category">
+            <a href="/categories/%E5%88%B7%E9%A2%98/">刷题</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode-56-merge-intervals"><span class="toc-text">LeetCode-56-Merge-Intervals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#57-insert-interval"><span class="toc-text">57-Insert-Interval</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="leetcode-56-merge-intervals">LeetCode-56-Merge-Intervals</h3>
+<blockquote>
+<p>Given a collection of intervals, merge all overlapping intervals.
+For example,</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Given [1,3],[2,6],[8,10],[15,18],</span><br><span class="line">return [1,6],[8,10],[15,18].</span><br></pre></td></tr></table></figure>
+<p>如例子中所示，每个数组的前后分别表示开始和结束，工作是合并有重叠的数组。例如，由于[1,3]和[2,6]有重叠，故直接改为[1,6]后输出。
+想法还是比较简单的，因为输入的并不一定是给好的按照开始，所以需要先对输入以开始的值排序。首先在结果数组中写入第一个，只有遍历进行判断，分为两种情况：</p>
+<ol>
+<li>如果某一interval的开始比结果数组中的结尾要大，显然不会有重叠，直接写入到结果数组中即可；</li>
+<li>某一interval的开始比结果数组中的结尾要大，必然有重叠，此时还需要判断结束位置的大小。</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for an interval.</span><br><span class="line"> * struct Interval &#123;</span><br><span class="line"> *     int start;</span><br><span class="line"> *     int end;</span><br><span class="line"> *     Interval() : start(0), end(0) &#123;&#125;</span><br><span class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; merge(vector&lt;Interval&gt;&amp; intervals) &#123;</span><br><span class="line">        vector&lt;Interval&gt; res;</span><br><span class="line">        if(intervals.size()&lt;&#x3D;0)</span><br><span class="line">            return res;</span><br><span class="line">        sort(intervals.begin(),intervals.end(),[](Interval a,Interval b)&#123;return a.start&lt;b.start;&#125;);</span><br><span class="line">        res.push_back(intervals[0]);</span><br><span class="line">        for(int i&#x3D;1;i&lt;intervals.size();++i)&#123;</span><br><span class="line">            if(res.back().end&lt;intervals[i].start) res.push_back(intervals[i]);</span><br><span class="line">            else&#123;</span><br><span class="line">                res.back().end&#x3D;max(res.back().end,intervals[i].end);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="57-insert-interval">57-Insert-Interval</h3>
+<blockquote>
+<p>Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
+You may assume that the intervals were initially sorted according to their start times.</p>
+</blockquote>
+<p>题目改为向一个已经重叠的数组中加入新加入一个。需要做的是判断所处的位置，插入进去后还要删掉，值得注意的是这个删掉值的时候，vector的迭代器会发生变化，即有些会失效，所以最好的做法是，先插入，把需要的插入都插入之后再删除。</p>
+<p>另外还有一个值得注意的是，排序搜索的谓语，使用的是<code>a.end&lt;b.start</code>，而不是之前的<code>a.start&lt;b.start</code> ，原因是需要找到一个范围，将newINterval夹在中间的一个范围。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for an interval.</span><br><span class="line"> * struct Interval &#123;</span><br><span class="line"> *     int start;</span><br><span class="line"> *     int end;</span><br><span class="line"> *     Interval() : start(0), end(0) &#123;&#125;</span><br><span class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        if(intervals.size()&lt;&#x3D;0)&#123;</span><br><span class="line">            intervals.push_back(newInterval);</span><br><span class="line">            return intervals;</span><br><span class="line">        &#125;</span><br><span class="line">        auto range&#x3D;equal_range(intervals.begin(),intervals.end(),newInterval,[](Interval a,Interval b)&#123;return a.end&lt;b.start;&#125;);</span><br><span class="line">        auto iter1&#x3D;range.first,iter2&#x3D;range.second;</span><br><span class="line">        if(iter1&#x3D;&#x3D;iter2)</span><br><span class="line">            intervals.insert(iter1,newInterval);</span><br><span class="line">        else&#123;</span><br><span class="line">            iter2--;</span><br><span class="line">            iter2-&gt;start&#x3D;min(newInterval.start,iter1-&gt;start);</span><br><span class="line">            iter2-&gt;end&#x3D;max(newInterval.end,iter2-&gt;end);</span><br><span class="line">            intervals.erase(iter1,iter2);</span><br><span class="line">        &#125;</span><br><span class="line">        return intervals;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2018/01/30/Exercise/LeetCode-56-Merge-Intervals/">http://www.yuguocong.cn/2018/01/30/Exercise/LeetCode-56-Merge-Intervals/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/C/">C++</a>
+            <a href="/tags/LeetCode/">LeetCode</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2018/02/03/Server_dev/evolution-of-webArchitecture/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">大型网站架构技术-演化</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2018/01/30/Exercise/LeetCode-55-Jump-Game/">
+        <span class="next-text nav-default">LeetCode-55-Jump-Game</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

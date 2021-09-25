@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="【MySQL】Binlog详解"/><meta name="keywords" content="MySQL, mianhk" /><link rel="alternate" href="/atom.xml" title="mianhk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://www.yuguocong.cn/2020/11/05/binlog/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>【MySQL】Binlog详解 - mianhk</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">mianhk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">mianhk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">【MySQL】Binlog详解
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-11-05
+        </span><span class="post-category">
+            <a href="/categories/MySQL/">MySQL</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是binlog"><span class="toc-text">什么是Binlog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#binlog作用"><span class="toc-text">Binlog作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#binlog格式"><span class="toc-text">Binlog格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#binlog何时写入"><span class="toc-text">Binlog何时写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他日志的区别"><span class="toc-text">与其他日志的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用binlog"><span class="toc-text">使用Binlog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql配置"><span class="toc-text">MySQL配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看binlog"><span class="toc-text">查看Binlog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看binlog信息"><span class="toc-text">查看Binlog信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程查看"><span class="toc-text">远程查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地查看"><span class="toc-text">本地查看</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#binlog内容"><span class="toc-text">Binlog内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#binlog基本格式"><span class="toc-text">Binlog基本格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#binlog事件解析"><span class="toc-text">Binlog事件解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的写入顺序"><span class="toc-text">事务的写入顺序</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><p>Binlog作为MySQL重要的灵魂之一，在MySQL的主从同步、问题定位、数据恢复、增量备份等都发挥着重要的作用。也是MySQL多年来被大家信任的原因之一，同时Binlog也随着MySQL的流行被大家熟知，不过对于很多人来说，只是知道Binlog记录MySQL操作的功能，以及做过简单的解析查看操作SQL，却并没有深入。最近与Binlog交流比较多，就正好梳理下。</p>
+<a id="more"></a>  
+<h1 id="什么是binlog">什么是Binlog</h1>
+<p>Binlog是MySQL server层的日志，记录MySQL的数据更新或潜在更新的SQL语句。Binlog是与innodb引擎中的undo log和redo log不一样的</p>
+<h2 id="binlog作用">Binlog作用</h2>
+<p>binlog的作用主要包括：</p>
+<ul>
+<li>主从同步：在一个MySQL集群中，从库通过拉取主库的Binlog，在本地进行回放执行，从而同步主库的数据更新，达到主从同步的目的。主从同步也是一般生产环境MySQL服务高可用的必要保障。</li>
+<li>数据恢复：作为一个数据存储工具，可能存在写错数据的情况，需要回滚到某一时间点，可以通过解析Binlog，通过binlog2sql等工具，来闪回到指定的时间点。</li>
+<li>增量备份：一般生产环境都会对MySQL数据进行定期的备份，以应对MySQL集群的快速扩容、版本升级等需求，全量备份耗时较长，且占用空间较多，因此一般采用全量备份+增量备份的方式对集群数据进行备份，其中增量备份备份的就是Binlog。</li>
+<li>问题定位：由于所有的数据更新都会记录在Binlog中，所以Binlog也是解决问题的一把好手，通过分析Binlog，有时是快速解决问题的途径。</li>
+</ul>
+<h2 id="binlog格式">Binlog格式</h2>
+<p>Binlog格式分为三种：statement、row、mixed</p>
+<ul>
+<li>statement：记录数据更新的SQL。意思是binlog记录数据更新的语句，优点是节省binlog日志量，减少磁盘占用（只是在部分时候）。这种方式很简单，但是会存在问题，比如SQL中出现了now()等函数，还需要保存语句执行时候的一些信息，才能使语句在回放的时候不至于数据不一致。但是仍然有一些函数无法被复制。</li>
+<li>row：记录数据变更的行记录。记录每一行被更改的记录，这样就能保证函数的执行也能被完全的记录，问题是，如果某条语句更新的行数较多（如变更表结构），会产生较多的Binlog，日志量增长很大。</li>
+<li>mixed：是statement和row格式的一种折中，结合了两者的优点。会自动切换采用row还是statement格式，但是还是会存在数据不一致的问题。级联复制在特殊情况下会binlog丢失。</li>
+</ul>
+<p>在实际生产环境中，为了保证数据完全一致，还是会采用row格式的binlog，毕竟作为底层软件，首先应该保证正确，其次才是节省。</p>
+<h2 id="binlog何时写入">Binlog何时写入</h2>
+<p>Binlog在事务commit前才会写入（由于innodb的两阶段提交，会先写Binlog再写redo log）。</p>
+<p>同时binlog的写入会通过参数<code>sync_binlog</code> 控制，如果设置为0，则表示不会主动控制Binlog的刷新，由文件系统控制缓存的刷新，设为0安全，当MySQL异常重启会丢失缓存中的事务。一般生产环境主库会设置为1，保证每次事务都能被写到磁盘。</p>
+<h2 id="与其他日志的区别">与其他日志的区别</h2>
+<h1 id="使用binlog">使用Binlog</h1>
+<h2 id="mysql配置">MySQL配置</h2>
+<p>Binlog的配置有一下几个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">log_bin &#x3D; on   # 开启binlog</span><br><span class="line">binlog_format &#x3D; row  # binlog格式为row </span><br><span class="line">log_bin &#x3D; &#x2F;home&#x2F;work&#x2F;mysql&#x2F;log&#x2F;mysql-bin.log # binlog 位置</span><br><span class="line">expire_logs_days &#x3D; 7  # binlog清理周期7天</span><br><span class="line">max_binlog_size &#x3D; 1G  # binlog文件大小</span><br><span class="line">sync_binlog &#x3D; 1   # binlog刷盘控制，为1表示每次事务都会刷盘</span><br><span class="line">max_binlog_cache_size &#x3D; 2147483648  # 最大binlog缓存大小，如果一个事务的binlog超过此大小，会报错</span><br><span class="line">binlog_rows_query_log_events &#x3D; on  # 展示SQL</span><br></pre></td></tr></table></figure>
+<h2 id="查看binlog">查看Binlog</h2>
+<h3 id="查看binlog信息">查看Binlog信息</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 查看现有的binlog文件</span><br><span class="line">mysql&gt; show binary logs;</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| Log_name         | File_size |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| mysql-bin.000001 | 142554153 |</span><br><span class="line">+------------------+-----------+</span><br><span class="line"></span><br><span class="line"># 查看当前binlog位点</span><br><span class="line">mysql&gt; show master status\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">             File: mysql-bin.000001</span><br><span class="line">         Position: 142556517</span><br><span class="line">     Binlog_Do_DB:</span><br><span class="line"> Binlog_Ignore_DB:</span><br><span class="line">Executed_Gtid_Set: 727332c9-1a67-11eb-8021-fa163e7d3507:1-841889,</span><br><span class="line">73841e3c-ec47-11ea-9d43-fa163e263d6f:1-150</span><br><span class="line"></span><br><span class="line"># 清理binlog</span><br><span class="line">PURGE BINARY LOGS TO &#39;mysql-bin.000001&#39;; # 清理到</span><br><span class="line">PURGE BINARY LOGS BEFORE &#39;2014-04-28 23:59:59&#39;;</span><br><span class="line"></span><br><span class="line"># 查看binlog事件</span><br><span class="line">show binlog events in &#39;mysql-bin.000001&#39;;</span><br></pre></td></tr></table></figure>
+<h3 id="远程查看">远程查看</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog -R -hhostname -uroot -p123456 mysql-bin.000001 &gt; binlog.sql</span><br></pre></td></tr></table></figure>
+<h3 id="本地查看">本地查看</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog --base64-output&#x3D;DECODE-ROWS --start-position&#x3D;start_position --end-position&#x3D;end_position --start-time&#x3D;start_time --end-time&#x3D;end_time -v -v mysql-bin.000776 | less</span><br></pre></td></tr></table></figure>
+<h1 id="binlog内容">Binlog内容</h1>
+<h2 id="binlog基本格式">Binlog基本格式</h2>
+<p>如官方文档所说:</p>
+<ul>
+<li>binlog文件以一个值为0Xfe62696e的魔数开头，这个魔数对应0xfe ‘b’‘i’‘n’。</li>
+<li>binlog由一系列的binlog event构成。每个binlog event包含header和data两部分。</li>
+</ul>
+<p>​          <code>header</code>部分提供的是event的公共的类型信息，包括event的创建时间，服务器等</p>
+<p>​          <code>data</code>部分提供的是针对该event的具体信息，如具体数据的修改</p>
+<ul>
+<li>最后一个<code>rotate event</code>用于说明下一个binlog文件</li>
+<li>binlog索引文件是一个文本文件，其中内容为当前的binlog文件列表。比如下面就是一个mysql-bin.index文件的内容</li>
+</ul>
+<p>以执行一个insert语句为例，会产生如下几个binlog event。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="binlog事件解析">Binlog事件解析</h2>
+<h1 id="注意">注意</h1>
+<h2 id="事务的写入顺序">事务的写入顺序</h2>
+<p>Reference：</p>
+<p><a href="https://dev.mysql.com/doc/internals/en/binary-log.html" target="_blank" rel="noopener">官方Binlog解析</a></p>
+<p>https://www.cnblogs.com/igoodful/p/11920740.html</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://www.yuguocong.cn">mianhk</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://www.yuguocong.cn/2020/11/05/binlog/">http://www.yuguocong.cn/2020/11/05/binlog/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/MySQL/">MySQL</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2020/12/26/2020_summary/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">2020年总结</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2020/06/23/yuque/MySQL45%E8%AE%B2%E6%80%BB%E7%BB%93/">
+        <span class="next-text nav-default">MySQL45讲总结</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:gcyu25@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mianhk" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mianhk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
