@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>MySQL on mianhk&#39;s notes</title>
-    <link>https://yuguocong.cn/categories/mysql/</link>
+    <link>https://www.yuguocong.cn/categories/mysql/</link>
     <description>Recent content in MySQL on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Nov 2020 20:04:46 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Nov 2020 20:04:46 +0800</lastBuildDate><atom:link href="https://www.yuguocong.cn/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【MySQL】Binlog详解</title>
-      <link>https://yuguocong.cn/posts/binlog/</link>
+      <link>https://www.yuguocong.cn/posts/binlog/</link>
       <pubDate>Thu, 05 Nov 2020 20:04:46 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/binlog/</guid>
+      <guid>https://www.yuguocong.cn/posts/binlog/</guid>
       <description>&lt;p&gt;Binlog作为MySQL重要的灵魂之一，在MySQL的主从同步、问题定位、数据恢复、增量备份等都发挥着重要的作用。也是MySQL多年来被大家信任的原因之一，同时Binlog也随着MySQL的流行被大家熟知，不过对于很多人来说，只是知道Binlog记录MySQL操作的功能，以及做过简单的解析查看操作SQL，却并没有深入。最近与Binlog交流比较多，就正好梳理下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL45讲总结</title>
-      <link>https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</link>
+      <link>https://www.yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 Jun 2020 10:45:04 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://www.yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</guid>
       <description>01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时， SQL 执行步骤 客户端-连接</description>
     </item>
     
     <item>
       <title>【MySQL】MySQL常见配置</title>
-      <link>https://yuguocong.cn/draft/mysql_errs/</link>
+      <link>https://www.yuguocong.cn/draft/mysql_errs/</link>
       <pubDate>Thu, 05 Mar 2020 20:04:46 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/draft/mysql_errs/</guid>
+      <guid>https://www.yuguocong.cn/draft/mysql_errs/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;MySQL的配置项很多，日常使用中需要调整的并不多，整理几个主要的参数&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -38,10 +38,10 @@
     
     <item>
       <title>【MySQL】MySQL常见错误与处理</title>
-      <link>https://yuguocong.cn/draft/blog/</link>
+      <link>https://www.yuguocong.cn/draft/blog/</link>
       <pubDate>Thu, 05 Mar 2020 20:04:46 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/draft/blog/</guid>
+      <guid>https://www.yuguocong.cn/draft/blog/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;记录MySQL日常错误&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -49,28 +49,28 @@
     
     <item>
       <title>MySQL学习基础(3)</title>
-      <link>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</link>
+      <link>https://www.yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</link>
       <pubDate>Fri, 25 Jan 2019 09:56:46 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</guid>
+      <guid>https://www.yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</guid>
       <description>三大范式 **第一范式（1NF）：**无重复的列。 要求：表所有的属性不可再分。 如果不符合第一范式，则不符合关系模型的定义。 **第二范式（2NF</description>
     </item>
     
     <item>
       <title>MySQL学习总结(2)</title>
-      <link>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</link>
+      <link>https://www.yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</link>
       <pubDate>Wed, 23 Jan 2019 20:23:55 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</guid>
+      <guid>https://www.yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</guid>
       <description>在关系型数据库里面，每个实体有自己的一张表，所有属性都是这张表的字段，表与表之间根据关联字段&amp;quot;连接&amp;quot;在一起。 什么是连接 两</description>
     </item>
     
     <item>
       <title> CentOS7安装并使用MySQL</title>
-      <link>https://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</link>
+      <link>https://www.yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</link>
       <pubDate>Fri, 07 Dec 2018 17:41:58 +0800</pubDate>
       
-      <guid>https://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</guid>
+      <guid>https://www.yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;MySQL 在 CentOS 上的安装和使用&lt;/p&gt;
 &lt;/blockquote&gt;</description>
