@@ -6,7 +6,16 @@
     <description>Recent content on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Dec 2020 17:30:02 +0800</lastBuildDate><atom:link href="https://www.yuguocong.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Sep 2021 18:40:57 +0800</lastBuildDate><atom:link href="https://www.yuguocong.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes之webhook</title>
+      <link>https://www.yuguocong.cn/posts/kubernets/1-k8s-webhook/webhook/</link>
+      <pubDate>Sat, 25 Sep 2021 18:40:57 +0800</pubDate>
+      
+      <guid>https://www.yuguocong.cn/posts/kubernets/1-k8s-webhook/webhook/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>2020年总结</title>
       <link>https://www.yuguocong.cn/posts/2020_summary/</link>

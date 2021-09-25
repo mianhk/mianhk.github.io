@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.yuguocong.cn/posts/kubernets/1-k8s-webhook/webhook/</loc>
+    <lastmod>2021-09-25T18:40:57+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yuguocong.cn/</loc>
+    <lastmod>2021-09-25T18:40:57+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yuguocong.cn/posts/</loc>
+    <lastmod>2021-09-25T18:40:57+08:00</lastmod>
+  </url><url>
     <loc>https://www.yuguocong.cn/posts/2020_summary/</loc>
     <lastmod>2020-12-26T17:30:02+08:00</lastmod>
   </url><url>
     <loc>https://www.yuguocong.cn/categories/</loc>
-    <lastmod>2020-12-26T17:30:02+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yuguocong.cn/</loc>
-    <lastmod>2020-12-26T17:30:02+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yuguocong.cn/posts/</loc>
     <lastmod>2020-12-26T17:30:02+08:00</lastmod>
   </url><url>
     <loc>https://www.yuguocong.cn/tags/</loc>
