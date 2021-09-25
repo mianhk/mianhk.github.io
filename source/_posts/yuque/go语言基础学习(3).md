@@ -1,7 +1,7 @@
 ---
 title: go语言基础学习(3)
 urlname: qhz9md
-date: 2019-09-12 20:45:04 +0800
+date: 2019-09-12 20:45:04
 tags: [golang,学习]
 categories: [golang]
 ---

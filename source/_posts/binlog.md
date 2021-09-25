@@ -1,7 +1,7 @@
 ---
 title:  【MySQL】Binlog详解
 urlname: xzxhct
-date: 2020-11-05 20:04:46 +0800
+date: 2020-11-05 20:04:46
 update: Mon Nov 05 2018 20:04:50 GMT+0800 (中国标准时间)
 categories: [MySQL]
 tags: [MySQL]

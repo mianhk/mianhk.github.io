@@ -1,7 +1,7 @@
 ---
 title: go语言学习(2)-极客时间
 urlname: pkq8u1
-date: 2019-04-28 21:34:33 +0800
+date: 2019-04-28 21:34:33
 tags: [Golang]
 categories: [Golang]
 ---

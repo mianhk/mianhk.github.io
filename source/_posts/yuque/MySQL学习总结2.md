@@ -1,7 +1,7 @@
 ---
 title: MySQL学习总结(2)
 urlname: vguflv
-date: 2019-01-23 20:23:55 +0800
+date: 2019-01-23 20:23:55
 tags: [MySQL]
 categories: [MySQL]
 ---

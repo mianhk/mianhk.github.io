@@ -1,7 +1,7 @@
 ---
 title:  2020年总结
 urlname: xzxhcvsd
-date: 2020-12-26 17:30:02 +0800
+date: 2020-12-26 17:30:02
 categories: [生活]
 tags: [生活,日常总结]
 ---

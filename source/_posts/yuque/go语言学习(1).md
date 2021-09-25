@@ -1,7 +1,7 @@
 ---
 title: 【Golang】go语言学习(1)-初识切片
 urlname: fff20p
-date: 2019-07-02 10:00:25 +0800
+date: 2019-07-02 10:00:25
 tags: [golang]
 categories: []
 ---

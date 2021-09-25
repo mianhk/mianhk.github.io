@@ -1,7 +1,7 @@
 ---
 title: MySQL45讲总结
 urlname: ytw18v
-date: 2020-06-23 10:45:04 +0800
+date: 2020-06-23 10:45:04
 tags: [MySQL,学习]
 categories: [MySQL]
 ---

@@ -1,7 +1,7 @@
 ---
 title: 【Golang】Tips
 urlname: zw19vt
-date: 2019-09-13 18:45:04 +0800
+date: 2019-09-13 18:45:04
 tags: [Golang]
 categories: [Golang]
 ---
