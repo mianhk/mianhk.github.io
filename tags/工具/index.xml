@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>工具 on mianhk&#39;s notes</title>
-    <link>http://yuguocong.cn/tags/%E5%B7%A5%E5%85%B7/</link>
+    <link>https://yuguocong.cn/tags/%E5%B7%A5%E5%85%B7/</link>
     <description>Recent content in 工具 on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 24 May 2018 20:20:43 +0800</lastBuildDate><atom:link href="http://yuguocong.cn/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 May 2018 20:20:43 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ubuntu自动push到github脚本</title>
-      <link>http://yuguocong.cn/posts/shell_autopush/</link>
+      <link>https://yuguocong.cn/posts/shell_autopush/</link>
       <pubDate>Thu, 24 May 2018 20:20:43 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/shell_autopush/</guid>
+      <guid>https://yuguocong.cn/posts/shell_autopush/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;由于人比较懒，总是忘了自己提交到github上，也觉得博客好不容易写了还要打开文件夹，点一下交，这个体验有点差呀。于是就写了个Linux自动提交代码的和windows自动更新博客的。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -20,10 +20,10 @@
     
     <item>
       <title>jupyter-notebook安装和问题解决</title>
-      <link>http://yuguocong.cn/posts/use_of_jupyter/</link>
+      <link>https://yuguocong.cn/posts/use_of_jupyter/</link>
       <pubDate>Thu, 26 Apr 2018 11:36:57 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/use_of_jupyter/</guid>
+      <guid>https://yuguocong.cn/posts/use_of_jupyter/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;jupyter notebook折腾日记&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -31,29 +31,29 @@
     
     <item>
       <title>Sublime Text3使用总结</title>
-      <link>http://yuguocong.cn/posts/use-of-sublime/</link>
+      <link>https://yuguocong.cn/posts/use-of-sublime/</link>
       <pubDate>Tue, 24 Apr 2018 20:43:43 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/use-of-sublime/</guid>
+      <guid>https://yuguocong.cn/posts/use-of-sublime/</guid>
       <description>update: 2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只</description>
     </item>
     
     <item>
       <title>腾讯云服务器Linux挖比特币</title>
-      <link>http://yuguocong.cn/posts/tencentcloud_bitcoin/</link>
+      <link>https://yuguocong.cn/posts/tencentcloud_bitcoin/</link>
       <pubDate>Fri, 19 Jan 2018 22:56:59 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/tencentcloud_bitcoin/</guid>
+      <guid>https://yuguocong.cn/posts/tencentcloud_bitcoin/</guid>
       <description>&lt;h3 id=&#34;腾讯云服务器linux挖比特币&#34;&gt;腾讯云服务器Linux挖比特币&lt;/h3&gt;
 &lt;p&gt;毕竟又是一个周五的下午，有点等着放假，就想起来现在的挖矿，虽然现在挖矿都是专门的矿机或者是显卡之类的。但是经过计算，好像自己挖的话连电费都不够，就想试试云服务器可不可以，虽然CPU做这种傻瓜的计算问题可能不如专门的器件是吧。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>win7下安装Ubuntu双系统</title>
-      <link>http://yuguocong.cn/posts/installation_of_two_system_on_win7/</link>
+      <link>https://yuguocong.cn/posts/installation_of_two_system_on_win7/</link>
       <pubDate>Sun, 22 Oct 2017 22:37:21 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/installation_of_two_system_on_win7/</guid>
+      <guid>https://yuguocong.cn/posts/installation_of_two_system_on_win7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;学(xian)习(de)所(dan)需(teng)，觉得一个虚拟机确实装的Ubuntu确实有点烦了，除了没有一个系统那样直接用起来爽以外，总觉得感受不到一个纯正的系统。而且虚拟机有时候懒得开了就算了。但是又舍不得直接把我换了固态之后就没有换过的系统直接换掉，毕竟我已经不是那个年轻的爱折腾的22岁的小伙子了，我23了。。于是就看着教程和xjbg装了双系统。同时的难度是，我的固态硬盘里放的系统，但是又不想把系统直接放在固态硬盘，只是希望通过固态启动一下，然后把其他的目录放在机械硬盘中&lt;/p&gt;
 &lt;/blockquote&gt;</description>

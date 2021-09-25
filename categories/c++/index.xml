@@ -2,62 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>C&#43;&#43; on mianhk&#39;s notes</title>
-    <link>http://yuguocong.cn/categories/c&#43;&#43;/</link>
+    <link>https://yuguocong.cn/categories/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Nov 2017 20:47:37 +0800</lastBuildDate><atom:link href="http://yuguocong.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Nov 2017 20:47:37 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的专业书阅读</title>
-      <link>http://yuguocong.cn/posts/books/</link>
+      <link>https://yuguocong.cn/posts/books/</link>
       <pubDate>Sun, 12 Nov 2017 20:47:37 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/books/</guid>
+      <guid>https://yuguocong.cn/posts/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>《effective C&#43;&#43;》from line 1 to line 12</title>
-      <link>http://yuguocong.cn/posts/effective-cpp-1/</link>
+      <link>https://yuguocong.cn/posts/effective-cpp-1/</link>
       <pubDate>Mon, 09 Oct 2017 19:16:31 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/effective-cpp-1/</guid>
+      <guid>https://yuguocong.cn/posts/effective-cpp-1/</guid>
       <description>前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch16 模板与泛型编程</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch16/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch16/</link>
       <pubDate>Tue, 19 Sep 2017 12:47:04 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch16/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch16/</guid>
       <description>泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。 16.1 定义模板 模板程序</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch15-面向对象程序设计</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch15/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch15/</link>
       <pubDate>Tue, 19 Sep 2017 12:44:24 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch15/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch15/</guid>
       <description>面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。 15.1 OOP：概述 15.2 定义基类和派生类 基类希望</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch13 拷贝控制</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch13/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch13/</link>
       <pubDate>Thu, 14 Sep 2017 11:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch13/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch13/</guid>
       <description>通过定义的五种特殊的成员函数，控制类的对象在拷贝。赋值、移动或销毁时做什么。包括：拷贝构造函数、拷贝赋值运算符、拷贝赋值运算符、移动赋值运算</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch14 重载运算符和类型转换</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch14/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch14/</link>
       <pubDate>Thu, 14 Sep 2017 11:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch14/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch14/</guid>
       <description>&lt;h3 id=&#34;ch14-重载运算与类型转化&#34;&gt;ch14 重载运算与类型转化&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。&lt;/p&gt;
@@ -66,46 +66,46 @@
     
     <item>
       <title>《c&#43;&#43;primer》ch7 类</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch7/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch7/</link>
       <pubDate>Tue, 27 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch7/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch7/</guid>
       <description>类是面向对象编程的基础，使用类定义自己的数据类型，可以更方便的解决问题中的各种概念，使我们更容易编写、调试和修改程序。 7.1 定义抽象的数据类型 定</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch4 表达式</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch4/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch4/</link>
       <pubDate>Mon, 05 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch4/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch4/</guid>
       <description>不管学习什么语言都会有这么一章，不管是c、java、Python，这都是会经历的一章，唉，无奈当时年少无知不止梦想是什么的我每每看到这些的时</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch6 函数</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch6/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch6/</link>
       <pubDate>Mon, 05 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch6/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch6/</guid>
       <description>涉及到函数之后，我认为已经是基础的较后面的部分，因为这开始慢慢涉及到了一门语言的思想观念，设计的想法，以及对编程人员的要求。所以这些部分不知</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch2 变量和基本类型</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch2/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch2/</link>
       <pubDate>Sun, 04 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch2/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch2/</guid>
       <description>数据类型决定了程序中数据和操作的意义。 2.1 基本内置类型 基本数据类型：** 算数类型 空类型（void） **,其中算数类型包括：字符、正整数、布尔值</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch3 字符串、向量和数组</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch3/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch3/</link>
       <pubDate>Sun, 04 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch3/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch3/</guid>
       <description>第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到</description>
     </item>
     

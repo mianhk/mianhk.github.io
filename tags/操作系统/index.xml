@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>操作系统 on mianhk&#39;s notes</title>
-    <link>http://yuguocong.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <link>https://yuguocong.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
     <description>Recent content in 操作系统 on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Jun 2018 22:03:43 +0800</lastBuildDate><atom:link href="http://yuguocong.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jun 2018 22:03:43 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>面试总结-操作系统</title>
-      <link>http://yuguocong.cn/posts/interview_operation/</link>
+      <link>https://yuguocong.cn/posts/interview_operation/</link>
       <pubDate>Sun, 24 Jun 2018 22:03:43 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/interview_operation/</guid>
+      <guid>https://yuguocong.cn/posts/interview_operation/</guid>
       <description>操作系统的分页分段 操作系统之分页分段介绍 分页存储 思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(p</description>
     </item>
     

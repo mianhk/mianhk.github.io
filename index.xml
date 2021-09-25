@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>mianhk&#39;s notes</title>
-    <link>http://yuguocong.cn/</link>
+    <link>https://yuguocong.cn/</link>
     <description>Recent content on mianhk&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Dec 2020 17:30:02 +0800</lastBuildDate><atom:link href="http://yuguocong.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Dec 2020 17:30:02 +0800</lastBuildDate><atom:link href="https://yuguocong.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2020年总结</title>
-      <link>http://yuguocong.cn/posts/2020_summary/</link>
+      <link>https://yuguocong.cn/posts/2020_summary/</link>
       <pubDate>Sat, 26 Dec 2020 17:30:02 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/2020_summary/</guid>
+      <guid>https://yuguocong.cn/posts/2020_summary/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;2020，仿佛还是刚刚开始，不过已经快要过完了。三月份一到周末就跟家人一起去爬山的日子感觉就在不久前，现在也已12月了，口罩从冬天戴到了冬天，感觉都已经记不起原来从没戴过口罩的生活是什么样的了。疫情影响着生活的大小方面，不过在此还是总结自己吧。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -20,37 +20,37 @@
     
     <item>
       <title>【MySQL】Binlog详解</title>
-      <link>http://yuguocong.cn/posts/binlog/</link>
+      <link>https://yuguocong.cn/posts/binlog/</link>
       <pubDate>Thu, 05 Nov 2020 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/binlog/</guid>
+      <guid>https://yuguocong.cn/posts/binlog/</guid>
       <description>&lt;p&gt;Binlog作为MySQL重要的灵魂之一，在MySQL的主从同步、问题定位、数据恢复、增量备份等都发挥着重要的作用。也是MySQL多年来被大家信任的原因之一，同时Binlog也随着MySQL的流行被大家熟知，不过对于很多人来说，只是知道Binlog记录MySQL操作的功能，以及做过简单的解析查看操作SQL，却并没有深入。最近与Binlog交流比较多，就正好梳理下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>【算法】raft协议</title>
-      <link>http://yuguocong.cn/draft/raft/</link>
+      <link>https://yuguocong.cn/draft/raft/</link>
       <pubDate>Sat, 05 Sep 2020 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/draft/raft/</guid>
+      <guid>https://yuguocong.cn/draft/raft/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL45讲总结</title>
-      <link>http://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</link>
+      <link>https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 23 Jun 2020 10:45:04 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/</guid>
       <description>01 | 基础架构：一条 SQL 查询语句是如何执行的？ 配置： wait_timeout：控制 Sleep 连接保持时间。线上未配置，默认 8 小时， SQL 执行步骤 客户端-连接</description>
     </item>
     
     <item>
       <title>【MySQL】MySQL常见配置</title>
-      <link>http://yuguocong.cn/draft/mysql_errs/</link>
+      <link>https://yuguocong.cn/draft/mysql_errs/</link>
       <pubDate>Thu, 05 Mar 2020 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/draft/mysql_errs/</guid>
+      <guid>https://yuguocong.cn/draft/mysql_errs/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;MySQL的配置项很多，日常使用中需要调整的并不多，整理几个主要的参数&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -58,10 +58,10 @@
     
     <item>
       <title>【MySQL】MySQL常见错误与处理</title>
-      <link>http://yuguocong.cn/draft/blog/</link>
+      <link>https://yuguocong.cn/draft/blog/</link>
       <pubDate>Thu, 05 Mar 2020 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/draft/blog/</guid>
+      <guid>https://yuguocong.cn/draft/blog/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;记录MySQL日常错误&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -69,100 +69,100 @@
     
     <item>
       <title>【Golang】Tips</title>
-      <link>http://yuguocong.cn/draft/zw19vt/</link>
+      <link>https://yuguocong.cn/draft/zw19vt/</link>
       <pubDate>Fri, 13 Sep 2019 18:45:04 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/draft/zw19vt/</guid>
+      <guid>https://yuguocong.cn/draft/zw19vt/</guid>
       <description>init 在全局变量后执行 map 操作 除了 nil 以外，map 之间不能进行比较，要判断两个 map 是否相等，</description>
     </item>
     
     <item>
       <title>go语言基础学习(3)</title>
-      <link>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/</link>
+      <link>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/</link>
       <pubDate>Thu, 12 Sep 2019 20:45:04 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/</guid>
       <description>配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。 一.Go 语言变量、函数 1.变量的初始化 可以通</description>
     </item>
     
     <item>
       <title>Hexo折腾笔记</title>
-      <link>http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <link>https://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 13 Aug 2019 20:45:04 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
       <description>博客基本架构 如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。 对应工具 语雀：编写博客 腾讯云云函数: webhook 解析更新文</description>
     </item>
     
     <item>
       <title>go语言基础学习(4)</title>
-      <link>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/</link>
+      <link>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/</link>
       <pubDate>Thu, 04 Jul 2019 11:47:16 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/</guid>
       <description>类型别名 type S string 与 type S = string 区别？ type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。 而 type S = string 只是一种别名，可以理解为，S</description>
     </item>
     
     <item>
       <title>【Golang】go语言学习(1)-初识切片</title>
-      <link>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/</link>
+      <link>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/</link>
       <pubDate>Tue, 02 Jul 2019 10:00:25 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/</guid>
       <description>基础记录 命名返回值:没有参数的 return 语句返回已命名的返回值 println 的执行顺序。会先把函数计算结束之后，再按照顺序输出 没有条件的 switch 同 switch true 一样。 defer 函数调用</description>
     </item>
     
     <item>
       <title>【Git】Git使用总结</title>
-      <link>http://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+      <link>https://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 26 May 2019 10:24:53 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
       <description>配置 user 信息 git config --global user.name &#39;your_name&#39; git config --global user.email &#39;your_email&#39; git config --local #local只对某个仓库有效 git config --global #global对当前用户的所有仓库有效 git config --system #对系统所有登录用户有效，</description>
     </item>
     
     <item>
       <title>go语言学习(2)-极客时间</title>
-      <link>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</link>
+      <link>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</link>
       <pubDate>Sun, 28 Apr 2019 21:34:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</guid>
       <description>第一个 go 程序 go 语言主函数没有返回值，需要使用 os 包， os.exit() ，也不能直接函数传参。 变量、常量和其他语言的区别 赋值可以自动类型推断： a:=1 ，怎么方便怎么来</description>
     </item>
     
     <item>
       <title>MySQL学习基础(3)</title>
-      <link>http://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</link>
+      <link>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</link>
       <pubDate>Fri, 25 Jan 2019 09:56:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%803/</guid>
       <description>三大范式 **第一范式（1NF）：**无重复的列。 要求：表所有的属性不可再分。 如果不符合第一范式，则不符合关系模型的定义。 **第二范式（2NF</description>
     </item>
     
     <item>
       <title>MySQL学习总结(2)</title>
-      <link>http://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</link>
+      <link>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</link>
       <pubDate>Wed, 23 Jan 2019 20:23:55 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%932/</guid>
       <description>在关系型数据库里面，每个实体有自己的一张表，所有属性都是这张表的字段，表与表之间根据关联字段&amp;quot;连接&amp;quot;在一起。 什么是连接 两</description>
     </item>
     
     <item>
       <title>【MySQL】MySQL学习基础(1)</title>
-      <link>http://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%801/</link>
+      <link>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%801/</link>
       <pubDate>Mon, 14 Jan 2019 21:18:27 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%801/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/mysql%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%801/</guid>
       <description>数据库和 SQL SQL(Structured Query Language)：结构化查询语言。包括 DDL（Data Definition Language 数据定义语言）、DML（Data Management Language 数据管理语言）、DCL（Dat</description>
     </item>
     
     <item>
       <title>2018年终总结</title>
-      <link>http://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</link>
+      <link>https://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 16 Dec 2018 19:02:22 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;2018 年总结。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -170,10 +170,10 @@
     
     <item>
       <title> CentOS7安装并使用MySQL</title>
-      <link>http://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</link>
+      <link>https://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</link>
       <pubDate>Fri, 07 Dec 2018 17:41:58 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;MySQL 在 CentOS 上的安装和使用&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -181,10 +181,10 @@
     
     <item>
       <title> 使用语雀编辑器写静态博客</title>
-      <link>http://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Wed, 14 Nov 2018 22:27:10 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本来以为已经是最后一次折腾了，但是总是生活不停，折腾不止，觉得本地文件管起来还是有点麻烦，看到语雀 markdown 又做的这么好，前几天还准备拿它当云笔记用，但是据说底层存的都是 md 格式，有的时候又还是不太方便，不过做编辑器来说确实很爽了，自带图床，还有 github 上开源的一个接口。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -192,28 +192,28 @@
     
     <item>
       <title>11月生活小结(2018)</title>
-      <link>http://yuguocong.cn/draft/mysql_config/</link>
+      <link>https://yuguocong.cn/draft/mysql_config/</link>
       <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/draft/mysql_config/</guid>
+      <guid>https://yuguocong.cn/draft/mysql_config/</guid>
       <description></description>
     </item>
     
     <item>
       <title> 11月生活小结(2018)</title>
-      <link>http://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</link>
+      <link>https://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</link>
       <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</guid>
+      <guid>https://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</guid>
       <description>最近又到了生活有点不知道干什么的时候，有的时候觉得自己对什么都很有信心，有的时候又觉得什么都做不好。想起来以前总是站在自己的角度看一些事情，</description>
     </item>
     
     <item>
       <title>【Golang】go并发编程</title>
-      <link>http://yuguocong.cn/draft/go-concurrent/</link>
+      <link>https://yuguocong.cn/draft/go-concurrent/</link>
       <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/draft/go-concurrent/</guid>
+      <guid>https://yuguocong.cn/draft/go-concurrent/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;并发是Go语言一直宣扬的优势之一，写起来很方便，但在实际的并发编程中，还是有很多需要注意的，学习了极客时间的《Go 并发编程实战课》，这里重新梳理总结一下&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -221,10 +221,10 @@
     
     <item>
       <title>Travis CI 自动部署博客</title>
-      <link>http://yuguocong.cn/posts/hexo_travis-ci/</link>
+      <link>https://yuguocong.cn/posts/hexo_travis-ci/</link>
       <pubDate>Fri, 26 Oct 2018 14:44:30 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/hexo_travis-ci/</guid>
+      <guid>https://yuguocong.cn/posts/hexo_travis-ci/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Hexo的又双叒一次折腾，以前觉得hexo部署博客还是很麻烦，除了每次操作完都得等待生成一下，还有的就是有时候很久一生成，都是看人品出错，以前也弄过那种自动的脚本，每天自己生成然后push，但是出错的时候就又是很麻烦。直到这次看到了Travis CI&amp;hellip;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -232,28 +232,28 @@
     
     <item>
       <title>面试总结-操作系统</title>
-      <link>http://yuguocong.cn/posts/interview_operation/</link>
+      <link>https://yuguocong.cn/posts/interview_operation/</link>
       <pubDate>Sun, 24 Jun 2018 22:03:43 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/interview_operation/</guid>
+      <guid>https://yuguocong.cn/posts/interview_operation/</guid>
       <description>操作系统的分页分段 操作系统之分页分段介绍 分页存储 思想：将程序的逻辑地址空间划分为固定大小的页(page)，而物理内存划分为同样大小的页框(p</description>
     </item>
     
     <item>
       <title>面试总结-C&#43;&#43;</title>
-      <link>http://yuguocong.cn/posts/interview_cpp/</link>
+      <link>https://yuguocong.cn/posts/interview_cpp/</link>
       <pubDate>Sun, 24 Jun 2018 22:02:20 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/interview_cpp/</guid>
+      <guid>https://yuguocong.cn/posts/interview_cpp/</guid>
       <description>编程基础 C++ 内存管理方式 堆、栈、自由存储区、全局/静态存储区、常量存储区 自由存储区存储malloc申请的内存 (1)从静态存储区域分配 。内存在程</description>
     </item>
     
     <item>
       <title>剑指offer-刷题总结</title>
-      <link>http://yuguocong.cn/posts/re_sword_to_offer/</link>
+      <link>https://yuguocong.cn/posts/re_sword_to_offer/</link>
       <pubDate>Wed, 20 Jun 2018 21:40:02 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/re_sword_to_offer/</guid>
+      <guid>https://yuguocong.cn/posts/re_sword_to_offer/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;重刷剑指offer总结&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -262,10 +262,10 @@
     
     <item>
       <title>《redis 设计与实现》--总结</title>
-      <link>http://yuguocong.cn/posts/redis_sum/</link>
+      <link>https://yuguocong.cn/posts/redis_sum/</link>
       <pubDate>Tue, 19 Jun 2018 18:50:41 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/redis_sum/</guid>
+      <guid>https://yuguocong.cn/posts/redis_sum/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Redis设计与实现，以及关于Redis使用的总结&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -273,10 +273,10 @@
     
     <item>
       <title>ubuntu自动push到github脚本</title>
-      <link>http://yuguocong.cn/posts/shell_autopush/</link>
+      <link>https://yuguocong.cn/posts/shell_autopush/</link>
       <pubDate>Thu, 24 May 2018 20:20:43 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/shell_autopush/</guid>
+      <guid>https://yuguocong.cn/posts/shell_autopush/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;由于人比较懒，总是忘了自己提交到github上，也觉得博客好不容易写了还要打开文件夹，点一下交，这个体验有点差呀。于是就写了个Linux自动提交代码的和windows自动更新博客的。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -284,10 +284,10 @@
     
     <item>
       <title>jupyter-notebook安装和问题解决</title>
-      <link>http://yuguocong.cn/posts/use_of_jupyter/</link>
+      <link>https://yuguocong.cn/posts/use_of_jupyter/</link>
       <pubDate>Thu, 26 Apr 2018 11:36:57 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/use_of_jupyter/</guid>
+      <guid>https://yuguocong.cn/posts/use_of_jupyter/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;jupyter notebook折腾日记&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -295,10 +295,10 @@
     
     <item>
       <title>日常折腾日记</title>
-      <link>http://yuguocong.cn/posts/daily_zheteng/</link>
+      <link>https://yuguocong.cn/posts/daily_zheteng/</link>
       <pubDate>Wed, 25 Apr 2018 11:49:56 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/daily_zheteng/</guid>
+      <guid>https://yuguocong.cn/posts/daily_zheteng/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;俗话说，生活就是不断的折腾，恰好自己是个这样的人。可能就是这样一个虽然不是很年轻了，但是心态总是年轻的，看到一些有趣的或者有意思的，总是忍不住想看看，或者试试。但是有时候又觉得自己不再年轻了，有些东西虽然当时记着了，但是后来又忘了，或者有时候记着又找起来很耽误时间。所以就在这记录一下吧。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -306,19 +306,19 @@
     
     <item>
       <title>Sublime Text3使用总结</title>
-      <link>http://yuguocong.cn/posts/use-of-sublime/</link>
+      <link>https://yuguocong.cn/posts/use-of-sublime/</link>
       <pubDate>Tue, 24 Apr 2018 20:43:43 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/use-of-sublime/</guid>
+      <guid>https://yuguocong.cn/posts/use-of-sublime/</guid>
       <description>update: 2018-04-24 首次更新:突然发现Sublime Text3也还是挺好用的，之前切出去光标总是乱跳，就有点烦，以为是这样的就没管，用了网易云，没想到发现只</description>
     </item>
     
     <item>
       <title>生活随笔</title>
-      <link>http://yuguocong.cn/posts/life_random/</link>
+      <link>https://yuguocong.cn/posts/life_random/</link>
       <pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/life_random/</guid>
+      <guid>https://yuguocong.cn/posts/life_random/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -326,10 +326,10 @@
     
     <item>
       <title>阶段性生活思考</title>
-      <link>http://yuguocong.cn/posts/redo-mylife/</link>
+      <link>https://yuguocong.cn/posts/redo-mylife/</link>
       <pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/redo-mylife/</guid>
+      <guid>https://yuguocong.cn/posts/redo-mylife/</guid>
       <description>&lt;h2 id=&#34;why-title&#34;&gt;why title&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;生活就是要不断的思考,不是吗?&lt;/p&gt;
@@ -339,10 +339,10 @@
     
     <item>
       <title>一文总结计算机网络</title>
-      <link>http://yuguocong.cn/posts/interview_network/</link>
+      <link>https://yuguocong.cn/posts/interview_network/</link>
       <pubDate>Tue, 10 Apr 2018 20:24:59 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/interview_network/</guid>
+      <guid>https://yuguocong.cn/posts/interview_network/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;最近一直在看网络编程的东西，不管是看书、还是一些博客，或者是自己的一些编程，都觉得写的有点乱，有点杂。虽然这也比较符合网络方面的特点，零碎的知识点，有些人觉得重要就写上了，另一些就没有写。想到将来可能跟网络编程接触很多，也觉得最近的学习就是缺少一些总结。就在这里站在大佬的肩膀上整理一下吧。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -351,337 +351,337 @@
     
     <item>
       <title>Linux的fork使用</title>
-      <link>http://yuguocong.cn/posts/use_of_fork/</link>
+      <link>https://yuguocong.cn/posts/use_of_fork/</link>
       <pubDate>Thu, 15 Mar 2018 22:48:01 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/use_of_fork/</guid>
+      <guid>https://yuguocong.cn/posts/use_of_fork/</guid>
       <description>Linux的fork使用 fork函数可以算是Linux里有点不好明白的函数了，调用一次，返回两次，虽然在平时的写法中，有基本固定的写法，但是</description>
     </item>
     
     <item>
       <title>LeetCode-60-Permutation-Sequence</title>
-      <link>http://yuguocong.cn/posts/leetcode-60-permutation-sequence/</link>
+      <link>https://yuguocong.cn/posts/leetcode-60-permutation-sequence/</link>
       <pubDate>Tue, 06 Feb 2018 17:32:24 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-60-permutation-sequence/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-60-permutation-sequence/</guid>
       <description>LeetCode-60-Permutation-Sequence The set [1,2,3,…,n] contains a total of n! unique permutations. By listing and labeling all of the permutations in order, We get the following sequence (ie, for n = 3): &amp;quot;123&amp;quot; &amp;quot;132&amp;quot; &amp;quot;213&amp;quot; &amp;quot;231&amp;quot; &amp;quot;312&amp;quot; &amp;quot;321&amp;quot; Given n and k, return the kth permutation sequence. 同样是排列 组合的问题，这次不</description>
     </item>
     
     <item>
       <title>大型网站架构技术-架构模式</title>
-      <link>http://yuguocong.cn/posts/architecture-model-of-web-architecture/</link>
+      <link>https://yuguocong.cn/posts/architecture-model-of-web-architecture/</link>
       <pubDate>Sat, 03 Feb 2018 16:39:27 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/architecture-model-of-web-architecture/</guid>
+      <guid>https://yuguocong.cn/posts/architecture-model-of-web-architecture/</guid>
       <description>&lt;h2 id=&#34;大型网站架构技术-架构模式&#34;&gt;大型网站架构技术-架构模式&lt;/h2&gt;
 &lt;p&gt;模式的关键在于模式的可重复性。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>大型网站架构技术-演化</title>
-      <link>http://yuguocong.cn/posts/evolution-of-webarchitecture/</link>
+      <link>https://yuguocong.cn/posts/evolution-of-webarchitecture/</link>
       <pubDate>Sat, 03 Feb 2018 13:43:26 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/evolution-of-webarchitecture/</guid>
+      <guid>https://yuguocong.cn/posts/evolution-of-webarchitecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LeetCode-56and57-Merge-Intervals</title>
-      <link>http://yuguocong.cn/posts/leetcode-56-merge-intervals/</link>
+      <link>https://yuguocong.cn/posts/leetcode-56-merge-intervals/</link>
       <pubDate>Tue, 30 Jan 2018 16:00:00 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-56-merge-intervals/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-56-merge-intervals/</guid>
       <description>LeetCode-56-Merge-Intervals Given a collection of intervals, merge all overlapping intervals. For example, Given [1,3],[2,6],[8,10],[15,18], return [1,6],[8,10],[15,18]. 如例子中所示，每个数组的前后分别表示开始和结束，工作是合并有重叠的数组。例如，由于[1,3]和[2,6]有重</description>
     </item>
     
     <item>
       <title>LeetCode-55-Jump-Game</title>
-      <link>http://yuguocong.cn/posts/leetcode-55-jump-game/</link>
+      <link>https://yuguocong.cn/posts/leetcode-55-jump-game/</link>
       <pubDate>Tue, 30 Jan 2018 15:39:55 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-55-jump-game/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-55-jump-game/</guid>
       <description>LeetCode-55-Jump-Game Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index. For example: A = [2,3,1,1,4], return true. A = [3,2,1,0,4], return false. 由题可知，数组的位置表示从该位置可</description>
     </item>
     
     <item>
       <title>LeetCode-53-Maximum-Subarray</title>
-      <link>http://yuguocong.cn/posts/leetcode-53-maximum-subarray/</link>
+      <link>https://yuguocong.cn/posts/leetcode-53-maximum-subarray/</link>
       <pubDate>Fri, 26 Jan 2018 17:57:03 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-53-maximum-subarray/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-53-maximum-subarray/</guid>
       <description>LeetCode-53-Maximum-Subarray Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4], the contiguous subarray [4,-1,2,1] has the largest sum = 6. 最长子序列，又是一个动态规划的问题，关于动态规划，我们最主要的是要维护D</description>
     </item>
     
     <item>
       <title>LeetCode-52-N-Queens-II</title>
-      <link>http://yuguocong.cn/posts/leetcode-52-n-queens-ii/</link>
+      <link>https://yuguocong.cn/posts/leetcode-52-n-queens-ii/</link>
       <pubDate>Fri, 26 Jan 2018 17:00:24 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-52-n-queens-ii/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-52-n-queens-ii/</guid>
       <description>LeetCode-52-N-Queens-II Follow up for N-Queens problem. Now, instead outputting board configurations, return the total number of distinct solutions. 只返回N皇后问题结果的种数。 因此不需要每一个字符串置位了，只需要判断一个位置的横竖，斜45度和斜135度</description>
     </item>
     
     <item>
       <title>LeetCode-51-N-Queens</title>
-      <link>http://yuguocong.cn/posts/leetcode-51-n-queens/</link>
+      <link>https://yuguocong.cn/posts/leetcode-51-n-queens/</link>
       <pubDate>Fri, 26 Jan 2018 10:12:49 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-51-n-queens/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-51-n-queens/</guid>
       <description>LeetCode-51-N-Queens 经典的N皇后问题，重点是全排列的问题，但是这里由于N皇后的不重复行、列、斜的要求，在排列的过程中，比如从行开始排列，只能保证同行不重复，所</description>
     </item>
     
     <item>
       <title>LeetCode-49-Group-Anagrams</title>
-      <link>http://yuguocong.cn/posts/leetcode-49-group-anagrams/</link>
+      <link>https://yuguocong.cn/posts/leetcode-49-group-anagrams/</link>
       <pubDate>Thu, 25 Jan 2018 21:44:37 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-49-group-anagrams/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-49-group-anagrams/</guid>
       <description>LeetCode-49-Group-Anagrams Given an array of strings, group anagrams together. For example, given: [&amp;ldquo;eat&amp;rdquo;, &amp;ldquo;tea&amp;rdquo;, &amp;ldquo;tan&amp;rdquo;, &amp;ldquo;ate&amp;rdquo;, &amp;ldquo;nat&amp;rdquo;, &amp;ldquo;bat&amp;rdquo;], Return: [ [&amp;quot;ate&amp;quot;, &amp;quot;eat&amp;quot;,&amp;quot;tea&amp;quot;], [&amp;quot;nat&amp;quot;,&amp;quot;tan&amp;quot;], [&amp;quot;bat&amp;quot;] ] 输入一个字符串数组，输出的是：将相同字符的字符串放在一个数组的二维数组。相同字符的处理，基</description>
     </item>
     
     <item>
       <title>Leetcode-48-Rotate-Image</title>
-      <link>http://yuguocong.cn/posts/leetcode-48-rotate-image/</link>
+      <link>https://yuguocong.cn/posts/leetcode-48-rotate-image/</link>
       <pubDate>Thu, 25 Jan 2018 20:44:32 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-48-rotate-image/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-48-rotate-image/</guid>
       <description>Leetcode-48-Rotate-Image ou are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise). Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation. Example : Given input matrix = [ [1,2,3], [4,5,6], [7,8,9] ], rotate the input matrix in-place such that it becomes: [</description>
     </item>
     
     <item>
       <title>服务器-Nginx设计架构</title>
-      <link>http://yuguocong.cn/posts/server_archtectuer_of_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_archtectuer_of_nginx/</link>
       <pubDate>Thu, 25 Jan 2018 16:37:48 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_archtectuer_of_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_archtectuer_of_nginx/</guid>
       <description>服务器-Nginx设计架构 Nginx服务器架构 Nginx服务器启动后，产生一个主进程，主进程执行一系列工作后产生一个或多个工作进程。 如下图所</description>
     </item>
     
     <item>
       <title>服务器-Nginx的事件驱动模型</title>
-      <link>http://yuguocong.cn/posts/server_model_of_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_model_of_nginx/</link>
       <pubDate>Thu, 25 Jan 2018 15:49:39 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_model_of_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_model_of_nginx/</guid>
       <description>服务器-Nginx的事件驱动模型 什么是事件驱动模型 事件驱动概念：在持续的事物管理过程中，由当前时间节点上出现的事件引起的调用可用资源执行相关</description>
     </item>
     
     <item>
       <title>服务器-Nginx的Web请求处理机制</title>
-      <link>http://yuguocong.cn/posts/server_web_of_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_web_of_nginx/</link>
       <pubDate>Thu, 25 Jan 2018 11:53:23 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_web_of_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_web_of_nginx/</guid>
       <description>服务器-Nginx的Web请求处理机制 并行处理请求的三种方式 web服务器和客户端是一对多的关系，所以web服务器要能同时为多个客户端提供服务</description>
     </item>
     
     <item>
       <title>服务器-Nginx模块化结构</title>
-      <link>http://yuguocong.cn/posts/server_structure_of_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_structure_of_nginx/</link>
       <pubDate>Thu, 25 Jan 2018 11:52:30 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_structure_of_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_structure_of_nginx/</guid>
       <description>服务器-Nginx模块化结构 习惯上将Nginx分为：核心模块、标准模块、可选HTTP模块、邮件服务模块和第三方模块五大类。 核心模块 包含对两部</description>
     </item>
     
     <item>
       <title>服务器-Nginx-一个简单的例子</title>
-      <link>http://yuguocong.cn/posts/server_a_simple_sample/</link>
+      <link>https://yuguocong.cn/posts/server_a_simple_sample/</link>
       <pubDate>Wed, 24 Jan 2018 22:41:26 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_a_simple_sample/</guid>
+      <guid>https://yuguocong.cn/posts/server_a_simple_sample/</guid>
       <description>服务器-Nginx-一个简单的例子 直接贴一个几经磨难的简单的例子吧，虽然简单，但是有些不理解的地方，就出了很多错，但是因为这些错误，在对ng</description>
     </item>
     
     <item>
       <title>服务器-Nginx基础配置</title>
-      <link>http://yuguocong.cn/posts/server_simple_of_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_simple_of_nginx/</link>
       <pubDate>Wed, 24 Jan 2018 20:50:05 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_simple_of_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_simple_of_nginx/</guid>
       <description>服务器-Nginx基础配置 nginx.conf文件结构 Nginx的默认配置文件为：nginx.conf，文件一共由三个部分组成，分别为：全局</description>
     </item>
     
     <item>
       <title>服务器-Nginx安装和基本配置</title>
-      <link>http://yuguocong.cn/posts/server_first_of_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_first_of_nginx/</link>
       <pubDate>Tue, 23 Jan 2018 22:25:21 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_first_of_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_first_of_nginx/</guid>
       <description>服务器-Nginx安装和基本配置 Nginx的安装 没有看书上，直接在ubuntu输了一个nginx，大概是ubuntu的支持比较好，直接提醒可</description>
     </item>
     
     <item>
       <title>服务器-初识Nginx</title>
-      <link>http://yuguocong.cn/posts/server_learn_nginx/</link>
+      <link>https://yuguocong.cn/posts/server_learn_nginx/</link>
       <pubDate>Tue, 23 Jan 2018 21:39:44 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/server_learn_nginx/</guid>
+      <guid>https://yuguocong.cn/posts/server_learn_nginx/</guid>
       <description>初识Nginx Nginx的历史 Netcraft公司，1994年在英国成立。 常见服务器 Apache服务器：目前最广泛使用的web服务器，由于使</description>
     </item>
     
     <item>
       <title>腾讯云服务器Linux挖比特币</title>
-      <link>http://yuguocong.cn/posts/tencentcloud_bitcoin/</link>
+      <link>https://yuguocong.cn/posts/tencentcloud_bitcoin/</link>
       <pubDate>Fri, 19 Jan 2018 22:56:59 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/tencentcloud_bitcoin/</guid>
+      <guid>https://yuguocong.cn/posts/tencentcloud_bitcoin/</guid>
       <description>&lt;h3 id=&#34;腾讯云服务器linux挖比特币&#34;&gt;腾讯云服务器Linux挖比特币&lt;/h3&gt;
 &lt;p&gt;毕竟又是一个周五的下午，有点等着放假，就想起来现在的挖矿，虽然现在挖矿都是专门的矿机或者是显卡之类的。但是经过计算，好像自己挖的话连电费都不够，就想试试云服务器可不可以，虽然CPU做这种傻瓜的计算问题可能不如专门的器件是吧。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>LeetCode-36-Valid-Sudoku</title>
-      <link>http://yuguocong.cn/posts/leetcode-36-valid-sudoku/</link>
+      <link>https://yuguocong.cn/posts/leetcode-36-valid-sudoku/</link>
       <pubDate>Sun, 14 Jan 2018 21:53:42 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-36-valid-sudoku/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-36-valid-sudoku/</guid>
       <description>LeetCode-36-Valid-Sudoku Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules. The Sudoku board could be partially filled, where empty cells are filled with the character &amp;lsquo;.&amp;rsquo;. 判断一个二维数组是不是数独数组。要求是：同行同列，斜对角不能有相同的数组，这里需</description>
     </item>
     
     <item>
       <title>LeetCode-34-Search-for-a-Range</title>
-      <link>http://yuguocong.cn/posts/leetcode-34-search-for-a-range/</link>
+      <link>https://yuguocong.cn/posts/leetcode-34-search-for-a-range/</link>
       <pubDate>Sun, 14 Jan 2018 21:52:38 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-34-search-for-a-range/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-34-search-for-a-range/</guid>
       <description>LeetCode-34-Search-for-a-Range Given an array of integers sorted in ascending order, find the starting and ending position of a given target value. Your algorithm&amp;rsquo;s runtime complexity must be in the order of O(log n). If the target is not found in the array, return [-1, -1]. 在一个排序的数组中找到出现这个值的起点和重点。很容</description>
     </item>
     
     <item>
       <title>LeetCode-32-Longest-Valid-Parentheses</title>
-      <link>http://yuguocong.cn/posts/leetcode-32-longest-valid-parentheses/</link>
+      <link>https://yuguocong.cn/posts/leetcode-32-longest-valid-parentheses/</link>
       <pubDate>Fri, 12 Jan 2018 17:28:31 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-32-longest-valid-parentheses/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-32-longest-valid-parentheses/</guid>
       <description>LeetCode-32-Longest-Valid-Parentheses Given a string containing just the characters &amp;lsquo;(&amp;rsquo; and &amp;lsquo;)&amp;rsquo;, find the length of the longest valid (well-formed) parentheses substring. For &amp;ldquo;(()&amp;rdquo;, the longest valid parentheses substring is &amp;ldquo;()&amp;rdquo;, which has length = 2. Another example is &amp;ldquo;)()())&amp;rdquo;, where the longest valid parentheses substring is &amp;ldquo;()()&amp;rdquo;, which has length = 4. 表示这是一道没有看懂题目的题，看到题</description>
     </item>
     
     <item>
       <title>LeetCode-31-Next-Permutation</title>
-      <link>http://yuguocong.cn/posts/leetcode-31-next-permutation/</link>
+      <link>https://yuguocong.cn/posts/leetcode-31-next-permutation/</link>
       <pubDate>Fri, 12 Jan 2018 17:26:20 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-31-next-permutation/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-31-next-permutation/</guid>
       <description>LeetCode-31-Next-Permutation Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order). The replacement must be in-place, do not allocate extra memory. 这个排序主要是有两种情况，一个是类似于3 1 2 这样的</description>
     </item>
     
     <item>
       <title>LeetCode-19-Remove-Nth-Node-From-End-of-List</title>
-      <link>http://yuguocong.cn/posts/leetcode-19-remove-nth-node-from-end-of-list/</link>
+      <link>https://yuguocong.cn/posts/leetcode-19-remove-nth-node-from-end-of-list/</link>
       <pubDate>Fri, 12 Jan 2018 17:25:23 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-19-remove-nth-node-from-end-of-list/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-19-remove-nth-node-from-end-of-list/</guid>
       <description>Given a linked list, remove the nth node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2. After removing the second node from the end, the linked list becomes 1-&amp;gt;2-&amp;gt;3-&amp;gt;5. 这个题目之前在剑指offer上就有，记得当时的方法是：采用两</description>
     </item>
     
     <item>
       <title>LeetCode-23-Merge-k-Sorted-Lists</title>
-      <link>http://yuguocong.cn/posts/leetcode-23-merge-k-sorted-lists/</link>
+      <link>https://yuguocong.cn/posts/leetcode-23-merge-k-sorted-lists/</link>
       <pubDate>Thu, 11 Jan 2018 22:23:23 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-23-merge-k-sorted-lists/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-23-merge-k-sorted-lists/</guid>
       <description>23. Merge k Sorted Lists Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 这个题乍一看只是对链表的一个排序，因为是很多个链表，所以很简单的想法就是将整个数组里面的两个链表</description>
     </item>
     
     <item>
       <title>LeetCode-15-3Sum&amp;&amp;4Sum</title>
-      <link>http://yuguocong.cn/posts/leetcode-15-3sum/</link>
+      <link>https://yuguocong.cn/posts/leetcode-15-3sum/</link>
       <pubDate>Wed, 10 Jan 2018 21:57:08 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-15-3sum/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-15-3sum/</guid>
       <description>15. 3Sum Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contain duplicate triplets. For example, given array S = [-1, 0, 1, 2, -1, -4], A solution set is: [ [-1, 0, 1], [-1, -1,</description>
     </item>
     
     <item>
       <title>LeetCode-8-String to Integer (atoi)</title>
-      <link>http://yuguocong.cn/posts/leetcode-8-string-to-integer-atoi/</link>
+      <link>https://yuguocong.cn/posts/leetcode-8-string-to-integer-atoi/</link>
       <pubDate>Tue, 09 Jan 2018 22:24:41 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/leetcode-8-string-to-integer-atoi/</guid>
+      <guid>https://yuguocong.cn/posts/leetcode-8-string-to-integer-atoi/</guid>
       <description>8.String to Integer (atoi) Implement atoi to convert a string to an integer. 讲字符串转化为整型。当然过程很简单，但是需要考虑的乱七八糟的情况很多，空格和正负号之类的。提交了一百次，终于过了，</description>
     </item>
     
     <item>
       <title>精剪生活</title>
-      <link>http://yuguocong.cn/posts/cut-life/</link>
+      <link>https://yuguocong.cn/posts/cut-life/</link>
       <pubDate>Sun, 10 Dec 2017 19:57:26 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cut-life/</guid>
+      <guid>https://yuguocong.cn/posts/cut-life/</guid>
       <description>&lt;p&gt;好像从小的时候开始，拥有各种感兴趣的事情或者不只是好好学习就像一种美德一样充斥于我们与同龄人的自己的生活中。就像小时候打的弹珠和后面看的小说乒乓球和dota一样。哦，对，应该说是合群，或者是接地气，就是所有与同龄人正常社交所需的娱乐活动吧。所以作为一个老师口中活泼开朗的学生，这些我基本都有，可能玩的不一定好，但是so what，只要不是像“那些只爱学习的同学”一样，好像都够了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>牛客网-剑指offer-11</title>
-      <link>http://yuguocong.cn/posts/nowcoder-sword-to-offer11/</link>
+      <link>https://yuguocong.cn/posts/nowcoder-sword-to-offer11/</link>
       <pubDate>Sun, 03 Dec 2017 20:44:21 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/nowcoder-sword-to-offer11/</guid>
+      <guid>https://yuguocong.cn/posts/nowcoder-sword-to-offer11/</guid>
       <description>T31：把数组排成最小的数 输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32</description>
     </item>
     
     <item>
       <title>牛客网-剑指offer-10</title>
-      <link>http://yuguocong.cn/posts/nowcoder-sword-to-offer10/</link>
+      <link>https://yuguocong.cn/posts/nowcoder-sword-to-offer10/</link>
       <pubDate>Fri, 01 Dec 2017 21:11:56 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/nowcoder-sword-to-offer10/</guid>
+      <guid>https://yuguocong.cn/posts/nowcoder-sword-to-offer10/</guid>
       <description>T28：最小的K个数 输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,</description>
     </item>
     
     <item>
       <title>一个可能很熟悉的周末</title>
-      <link>http://yuguocong.cn/posts/random-life-1/</link>
+      <link>https://yuguocong.cn/posts/random-life-1/</link>
       <pubDate>Sun, 26 Nov 2017 21:12:29 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/random-life-1/</guid>
+      <guid>https://yuguocong.cn/posts/random-life-1/</guid>
       <description>&lt;h3 id=&#34;2017-11-26-记录一个可能很熟悉的周末&#34;&gt;2017-11-26 记录一个可能很熟悉的周末&lt;/h3&gt;
 &lt;p&gt;这周又过去了，时间依旧是这么快啊，待在实验室跟上一周的感觉差不多，还是周日的下午，晚上才想起来来一下实验室，还是本来想周末搞个学习，却还是没有一不小心就休息过去了，非常单纯的尊重了一下周末。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>牛客网-剑指offer-3</title>
-      <link>http://yuguocong.cn/posts/nowcoder-sword-to-offer3/</link>
+      <link>https://yuguocong.cn/posts/nowcoder-sword-to-offer3/</link>
       <pubDate>Fri, 17 Nov 2017 19:50:52 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/nowcoder-sword-to-offer3/</guid>
+      <guid>https://yuguocong.cn/posts/nowcoder-sword-to-offer3/</guid>
       <description>T7：斐波那契数列 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。 n&amp;lt;=39 斐波那契数列是很常用的数列，也是很简单的递</description>
     </item>
     
     <item>
       <title>我的专业书阅读</title>
-      <link>http://yuguocong.cn/posts/books/</link>
+      <link>https://yuguocong.cn/posts/books/</link>
       <pubDate>Sun, 12 Nov 2017 20:47:37 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/books/</guid>
+      <guid>https://yuguocong.cn/posts/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>我看的电影</title>
-      <link>http://yuguocong.cn/posts/moives/</link>
+      <link>https://yuguocong.cn/posts/moives/</link>
       <pubDate>Sun, 12 Nov 2017 20:27:30 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/moives/</guid>
+      <guid>https://yuguocong.cn/posts/moives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>牛客网-剑指offer-2</title>
-      <link>http://yuguocong.cn/posts/nowcoder-sword-to-offer2/</link>
+      <link>https://yuguocong.cn/posts/nowcoder-sword-to-offer2/</link>
       <pubDate>Fri, 27 Oct 2017 19:50:52 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/nowcoder-sword-to-offer2/</guid>
+      <guid>https://yuguocong.cn/posts/nowcoder-sword-to-offer2/</guid>
       <description>T4：重建二叉树 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序</description>
     </item>
     
     <item>
       <title>win7下安装Ubuntu双系统</title>
-      <link>http://yuguocong.cn/posts/installation_of_two_system_on_win7/</link>
+      <link>https://yuguocong.cn/posts/installation_of_two_system_on_win7/</link>
       <pubDate>Sun, 22 Oct 2017 22:37:21 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/installation_of_two_system_on_win7/</guid>
+      <guid>https://yuguocong.cn/posts/installation_of_two_system_on_win7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;学(xian)习(de)所(dan)需(teng)，觉得一个虚拟机确实装的Ubuntu确实有点烦了，除了没有一个系统那样直接用起来爽以外，总觉得感受不到一个纯正的系统。而且虚拟机有时候懒得开了就算了。但是又舍不得直接把我换了固态之后就没有换过的系统直接换掉，毕竟我已经不是那个年轻的爱折腾的22岁的小伙子了，我23了。。于是就看着教程和xjbg装了双系统。同时的难度是，我的固态硬盘里放的系统，但是又不想把系统直接放在固态硬盘，只是希望通过固态启动一下，然后把其他的目录放在机械硬盘中&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -689,64 +689,64 @@
     
     <item>
       <title>牛客网刷题总结-剑指offer(1)</title>
-      <link>http://yuguocong.cn/posts/nowcoder-sword-to-offer1/</link>
+      <link>https://yuguocong.cn/posts/nowcoder-sword-to-offer1/</link>
       <pubDate>Sun, 15 Oct 2017 21:26:46 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/nowcoder-sword-to-offer1/</guid>
+      <guid>https://yuguocong.cn/posts/nowcoder-sword-to-offer1/</guid>
       <description>说在前面：刷题真的是一件残酷的事情，就好比以前大学的时候只剩两天就考试了，刚刚看了一遍就开始先做题一样的感觉，面对无数的套路，幸运的时候还能</description>
     </item>
     
     <item>
       <title>《effective C&#43;&#43;》from line 1 to line 12</title>
-      <link>http://yuguocong.cn/posts/effective-cpp-1/</link>
+      <link>https://yuguocong.cn/posts/effective-cpp-1/</link>
       <pubDate>Mon, 09 Oct 2017 19:16:31 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/effective-cpp-1/</guid>
+      <guid>https://yuguocong.cn/posts/effective-cpp-1/</guid>
       <description>前面两章的内容主要是习惯使用c++，大部分都是《C++ primer》中的需要注意的一些东西，由于刚刚看完前面一本，所以有些还是有些印象的。这</description>
     </item>
     
     <item>
       <title>不知道怎么开的船？</title>
-      <link>http://yuguocong.cn/posts/how_to_sail/</link>
+      <link>https://yuguocong.cn/posts/how_to_sail/</link>
       <pubDate>Mon, 25 Sep 2017 23:36:13 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/how_to_sail/</guid>
+      <guid>https://yuguocong.cn/posts/how_to_sail/</guid>
       <description>2017-9-25 记录学习 额，打开sublime，打出来第一个#号，下意识的想打include，笑了自己两秒钟，好像这几天看来，就这句写的最熟练吧。 最近开始</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch16 模板与泛型编程</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch16/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch16/</link>
       <pubDate>Tue, 19 Sep 2017 12:47:04 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch16/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch16/</guid>
       <description>泛型编程与面向对象编程的区别是：面向对象编程能处理类型在程序运行之前都未知的情况；而在泛型编程中，在编译时就能获知类型了。 16.1 定义模板 模板程序</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch15-面向对象程序设计</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch15/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch15/</link>
       <pubDate>Tue, 19 Sep 2017 12:44:24 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch15/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch15/</guid>
       <description>面向对象三个基本概念：数据抽象、继承和动态绑定（java里说的多态）。这章主要内容是继承和动态绑定。 15.1 OOP：概述 15.2 定义基类和派生类 基类希望</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch13 拷贝控制</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch13/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch13/</link>
       <pubDate>Thu, 14 Sep 2017 11:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch13/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch13/</guid>
       <description>通过定义的五种特殊的成员函数，控制类的对象在拷贝。赋值、移动或销毁时做什么。包括：拷贝构造函数、拷贝赋值运算符、拷贝赋值运算符、移动赋值运算</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch14 重载运算符和类型转换</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch14/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch14/</link>
       <pubDate>Thu, 14 Sep 2017 11:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch14/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch14/</guid>
       <description>&lt;h3 id=&#34;ch14-重载运算与类型转化&#34;&gt;ch14 重载运算与类型转化&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;当运算符作用于类的对象的时，通过重载运算符，使不同的运算符对于不同的类有着特定的含义，一方面能够简化类的使用者的逻辑，另一方面也能是程序更易于编写和阅读，而不至于编写更多的函数。&lt;/p&gt;
@@ -755,73 +755,73 @@
     
     <item>
       <title>《c&#43;&#43;primer》ch7 类</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch7/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch7/</link>
       <pubDate>Tue, 27 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch7/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch7/</guid>
       <description>类是面向对象编程的基础，使用类定义自己的数据类型，可以更方便的解决问题中的各种概念，使我们更容易编写、调试和修改程序。 7.1 定义抽象的数据类型 定</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch4 表达式</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch4/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch4/</link>
       <pubDate>Mon, 05 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch4/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch4/</guid>
       <description>不管学习什么语言都会有这么一章，不管是c、java、Python，这都是会经历的一章，唉，无奈当时年少无知不止梦想是什么的我每每看到这些的时</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch6 函数</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch6/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch6/</link>
       <pubDate>Mon, 05 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch6/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch6/</guid>
       <description>涉及到函数之后，我认为已经是基础的较后面的部分，因为这开始慢慢涉及到了一门语言的思想观念，设计的想法，以及对编程人员的要求。所以这些部分不知</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch2 变量和基本类型</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch2/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch2/</link>
       <pubDate>Sun, 04 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch2/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch2/</guid>
       <description>数据类型决定了程序中数据和操作的意义。 2.1 基本内置类型 基本数据类型：** 算数类型 空类型（void） **,其中算数类型包括：字符、正整数、布尔值</description>
     </item>
     
     <item>
       <title>《c&#43;&#43;primer》ch3 字符串、向量和数组</title>
-      <link>http://yuguocong.cn/posts/cpp_primer_ch3/</link>
+      <link>https://yuguocong.cn/posts/cpp_primer_ch3/</link>
       <pubDate>Sun, 04 Jun 2017 17:55:33 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/cpp_primer_ch3/</guid>
+      <guid>https://yuguocong.cn/posts/cpp_primer_ch3/</guid>
       <description>第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到</description>
     </item>
     
     <item>
       <title>使用gitpage&#43;Hexo搭建自己的博客</title>
-      <link>http://yuguocong.cn/posts/hexo&#43;gitpage/</link>
+      <link>https://yuguocong.cn/posts/hexo&#43;gitpage/</link>
       <pubDate>Wed, 31 May 2017 08:55:29 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/hexo&#43;gitpage/</guid>
+      <guid>https://yuguocong.cn/posts/hexo&#43;gitpage/</guid>
       <description>如今，各种博客网站都可以让我们随意的写作，但是很多的选择也让我们有时候不知道该怎么选择，而且作为喜欢折腾的程序员来说，自己搭建属于自己的博客</description>
     </item>
     
     <item>
       <title>我为什么写博客？</title>
-      <link>http://yuguocong.cn/posts/why_blog/</link>
+      <link>https://yuguocong.cn/posts/why_blog/</link>
       <pubDate>Mon, 15 May 2017 19:56:31 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/why_blog/</guid>
+      <guid>https://yuguocong.cn/posts/why_blog/</guid>
       <description>开博客的第一天&amp;ndash;谈学习与博客 作为一个不是总能坚持一些事情的人，在这个碎片化的时代，每个人都有着自己的事情，学习、工作、生活、吃、</description>
     </item>
     
     <item>
       <title>20天学习Java视频笔记</title>
-      <link>http://yuguocong.cn/posts/20days_java/</link>
+      <link>https://yuguocong.cn/posts/20days_java/</link>
       <pubDate>Thu, 09 Mar 2017 12:55:17 +0800</pubDate>
       
-      <guid>http://yuguocong.cn/posts/20days_java/</guid>
+      <guid>https://yuguocong.cn/posts/20days_java/</guid>
       <description>面向对象编程(二) 封装（private） 匿名对象使用的方式：只调用一次 注意，封装只是私有的一种表现形式。不私有也能封装。 构造函数 构造函数和一</description>
     </item>
     
