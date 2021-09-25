@@ -10,4 +10,4 @@ tags: [k8s]
 
 **Admission Webhook**调用图
 
-![img](/Users/ygc/work/mianhk/mianhk.github.io/images/blog/img1.png)
+![img](../../images/img1-20210925115028214.png)
