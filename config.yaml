@@ -1,4 +1,4 @@
-baseurl: "http://yuguocong.cn/"
+baseurl: "https://yuguocong.cn/"
 defaultContentLanguage: "zh-cn"
 # 网站语言, 仅在这里 CN 大写
 languageCode: "zh-CN"
