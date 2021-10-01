@@ -1,75 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>生活 on mianhk&#39;s notes</title>
-    <link>https://www.yuguocong.cn/tags/%E7%94%9F%E6%B4%BB/</link>
-    <description>Recent content in 生活 on mianhk&#39;s notes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Dec 2020 17:30:02 +0800</lastBuildDate><atom:link href="https://www.yuguocong.cn/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2020年总结</title>
-      <link>https://www.yuguocong.cn/posts/2020_summary/</link>
-      <pubDate>Sat, 26 Dec 2020 17:30:02 +0800</pubDate>
-      
-      <guid>https://www.yuguocong.cn/posts/2020_summary/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;2020，仿佛还是刚刚开始，不过已经快要过完了。三月份一到周末就跟家人一起去爬山的日子感觉就在不久前，现在也已12月了，口罩从冬天戴到了冬天，感觉都已经记不起原来从没戴过口罩的生活是什么样的了。疫情影响着生活的大小方面，不过在此还是总结自己吧。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>2018年终总结</title>
-      <link>https://www.yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Sun, 16 Dec 2018 19:02:22 +0800</pubDate>
-      
-      <guid>https://www.yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;2018 年总结。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>11月生活小结(2018)</title>
-      <link>https://www.yuguocong.cn/draft/mysql_config/</link>
-      <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
-      
-      <guid>https://www.yuguocong.cn/draft/mysql_config/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title> 11月生活小结(2018)</title>
-      <link>https://www.yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</link>
-      <pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate>
-      
-      <guid>https://www.yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</guid>
-      <description>最近又到了生活有点不知道干什么的时候，有的时候觉得自己对什么都很有信心，有的时候又觉得什么都做不好。想起来以前总是站在自己的角度看一些事情，</description>
-    </item>
-    
-    <item>
-      <title>生活随笔</title>
-      <link>https://www.yuguocong.cn/posts/life_random/</link>
-      <pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate>
-      
-      <guid>https://www.yuguocong.cn/posts/life_random/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>阶段性生活思考</title>
-      <link>https://www.yuguocong.cn/posts/redo-mylife/</link>
-      <pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate>
-      
-      <guid>https://www.yuguocong.cn/posts/redo-mylife/</guid>
-      <description>&lt;h2 id=&#34;why-title&#34;&gt;why title&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;生活就是要不断的思考,不是吗?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>生活 - 标签 - mianhk's notes</title><link>http://yuguocong.cn/tags/%E7%94%9F%E6%B4%BB/</link><description>生活 - 标签 - mianhk's notes</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>gcyu25@gmail.com (mianhk)</managingEditor><webMaster>gcyu25@gmail.com (mianhk)</webMaster><lastBuildDate>Sat, 26 Dec 2020 17:30:02 +0800</lastBuildDate><atom:link href="http://yuguocong.cn/tags/%E7%94%9F%E6%B4%BB/" rel="self" type="application/rss+xml"/><item><title>2020年总结</title><link>http://yuguocong.cn/posts/2020_summary/</link><pubDate>Sat, 26 Dec 2020 17:30:02 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/2020_summary/</guid><description>&lt;blockquote>
+&lt;p>2020，仿佛还是刚刚开始，不过已经快要过完了。三月份一到周末就跟家人一起去爬山的日子感觉就在不久前，现在也已12月了，口罩从冬天戴到了冬天，感觉都已经记不起原来从没戴过口罩的生活是什么样的了。疫情影响着生活的大小方面，不过在此还是总结自己吧。&lt;/p>
+&lt;/blockquote></description></item><item><title>2018年终总结</title><link>http://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</link><pubDate>Sun, 16 Dec 2018 19:02:22 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</guid><description>&lt;blockquote>
+&lt;p>2018 年总结。&lt;/p>
+&lt;/blockquote></description></item><item><title>11月生活小结(2018)</title><link>http://yuguocong.cn/draft/mysql_config/</link><pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/draft/mysql_config/</guid><description></description></item><item><title> 11月生活小结(2018)</title><link>http://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</link><pubDate>Mon, 05 Nov 2018 20:04:46 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/yuque/11%E6%9C%88%E7%94%9F%E6%B4%BB%E5%B0%8F%E7%BB%932018/</guid><description>最近又到了生活有点不知道干什么的时候，有的时候觉得自己对什么都很有信心，有的时候又觉得什么都做不好。想起来以前总是站在自己的角度看一些事情，</description></item><item><title>生活随笔</title><link>http://yuguocong.cn/posts/life_random/</link><pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/life_random/</guid><description>&lt;blockquote>
+&lt;p>生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。&lt;/p>
+&lt;/blockquote></description></item><item><title>阶段性生活思考</title><link>http://yuguocong.cn/posts/redo-mylife/</link><pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/redo-mylife/</guid><description><![CDATA[<h2 id="why-title">why title</h2>
+<blockquote>
+<p>生活就是要不断的思考,不是吗?</p>
+</blockquote>
+<!-- raw HTML omitted -->]]></description></item></channel></rss>

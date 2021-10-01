@@ -1,206 +1,152 @@
-<!doctype html><html lang=zh-cn dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>《redis 设计与实现》--总结 | mianhk's notes</title>
-<meta name=keywords content="Linux,后台开发,Redis,Nosql">
-<meta name=description content="
-Redis设计与实现，以及关于Redis使用的总结
-">
-<meta name=author content="mianhk">
-<link rel=canonical href=https://www.yuguocong.cn/posts/redis_sum/>
-<meta name=google-site-verification content="XYZabc">
-<meta name=yandex-verification content="XYZabc">
-<meta name=msvalidate.01 content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=icon type=image/png sizes=16x16 href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=icon type=image/png sizes=32x32 href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=apple-touch-icon href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=mask-icon href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.88.1">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123 -45','auto'),ga('send','pageview'))</script><meta property="og:title" content="《redis 设计与实现》--总结">
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>《redis 设计与实现》--总结 - mianhk's notes</title><meta name=Description content><meta property="og:title" content="《redis 设计与实现》--总结">
 <meta property="og:description" content="
 Redis设计与实现，以及关于Redis使用的总结
 ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://www.yuguocong.cn/posts/redis_sum/"><meta property="article:section" content="posts">
+<meta property="og:url" content="http://yuguocong.cn/posts/redis_sum/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2018-06-19T18:50:41+08:00">
-<meta property="article:modified_time" content="2018-06-19T18:50:41+08:00"><meta property="og:site_name" content="mianhk's notes">
+<meta property="article:modified_time" content="2018-06-19T18:50:41+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="《redis 设计与实现》--总结">
 <meta name=twitter:description content="
 Redis设计与实现，以及关于Redis使用的总结
 ">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://www.yuguocong.cn/posts/"},{"@type":"ListItem","position":2,"name":"《redis 设计与实现》--总结","item":"https://www.yuguocong.cn/posts/redis_sum/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"《redis 设计与实现》--总结","name":"《redis 设计与实现》--总结","description":" Redis设计与实现，以及关于Redis使用的总结\n","keywords":["Linux","后台开发","Redis","Nosql"],"articleBody":" Redis设计与实现，以及关于Redis使用的总结\n 1.数据结构与对象 1.简单动态字符串 Redis自己构建了简单动态字符串(Simple Dynamic String,SDS)来作为默认的字符串表示。\nSDS的构造如下： 优势是：\n 能够在常数时间内获取字符串的长度-通过len属性 能够杜绝缓冲区溢出：记录了缓冲区的大小，在长度不够时，能够自动扩展空间 减少修改字符串时带来的内存重新分配次数：采用空间预分配和惰性空间释放  2.链表 Redis自己实现了链表。拥有以下特性：双端无环、带表头指针和表尾指针、带链表长度计数器、多态(使用void* 保存节点值)\n3.字典 Redis字典底层采用哈希表实现。采用MurmurHash2算法，解决键冲突的方式是：链地址法。\n哈希表的扩展与收缩：以下条件满足时：\n 服务器没有执行BGSAVE或BGREWRITEAOF命令，哈希表负载因子1 服务器在执行BGSAVE或BGREWRITEAOF命令，哈希表负载因子5  4.跳跃表 Redis采用跳跃表作为有序集合键的底层数据结构，另：在集群节点中用作内部数据结构\n跳跃表：一种有序数据结构，通过在一个节点维持多个指向其他节点的指针，从而达到快速访问节点的目的。支持平均O(logN),最差O(N)复杂度的查找。 Redis中跳跃表的实现：\n5.整数集合 Redis中集合键的底层实现之一，当一个集合只包含整数值元素，并且这个集合中元素的数量不多时，就会使用整数集合作为集合键的底层实现。\n整数集合的升级策略：能够提高整数集合的灵活性，并且能够尽可能的节约内存。升级后不支持降级\n6.压缩列表 Redis中列表键和哈希键的底层实现之一。\n7.对象 Redis使用上述的数据结构创建了一个对象系统。包括：字符串对象、列表对象、哈希对象、集合对象和有序集合对象。其实这就是一直说的Redis五种数据结构：字符串、列表、字典、集合、有序集合。\n2.单机数据库的实现 数据库 Redis服务器讲所有数据库保存在一个db数组中，默认创建16个数据库。\n切换数据库:select 0 #选择0号数据库\n数据库键空间 键空间的键也是数据库的键。每个键都是一个字符串对象。\n键空间的值也是数据库的值，每个值可以是字符串对象、列表对象、哈希对象、集合对象，有序集合对象中的任意一个Redis对象。\n一个键空间的例子：\n设置键的生存时间或过期时间 原理是：过期时间是一个UNIX时间戳，当键的过期时间来临是，服务器就会自动从数据库中删除一个键。\n命令:\nexpire   #key的生存时间为ttl秒 pexpire   #key的生存时间为ttl毫秒 expireat   #key的生存时间直到timestamp指定的时间戳s pexpireat   #key的生存时间直到timestamp指定的时间戳ms persist  #移除key的过期时间 ttl  #计算key的剩余生存时间 setex命令可以设置一个字符串键的同时为键设置过期时间。 一个带有过期字典的数据库例子：（实际中，键空间的键和过期字典中的键都指向同一个键对象）\n过期键删除策略  定时删除： 内存最友好，CPU时间最不友好 惰性删除：CPU时间友好，内存不友好 定期删除：折中 Redis实际使用：惰性删除和定期删除配合使用。  过期键的处理  RDB文件： 生成RDB文件：已过期的键不会保存到新创建的RDB文件中，因此对生成新的RDB文件没有影响。 载入RDB文件：主服务器模式时，过期键不会被载入。从服务器模式时，都会被载入，但同步后，从服务器数据会被清空，所以也没有影响。 AOF文件： AOF写入：如果某个键已经过期，但没有被删除，AOF文件不会因为这个过期键产生任何影响。如果已经删除，AOF文件会追加一条DEL命令显式记录该键已被删除。\nAOF重写：已过期的键不会被保存到重写的AOF文件。 复制：\n主服务器删除一个过期键，会显示向所有的从服务器发送DEL命令，告知删除。\n从服务器遇到过期的键也不会删除。只有接收到DEL命令后才会删除过期键。  RDB持久化 通过保存数据库中的键值对来记录数据库状态不同。\n功能：将Redis在内存中的数据库状态保存到磁盘中，避免数据意外丢失。RDB文件是一个经过压缩的二进制文件，保存在硬盘中，因此Redis进程退出，只要RDB文件仍在，就可以用来还原数据库的状态。\nRDB文件的创建和载入 服务器在载入RDB文件期间，会一直阻塞。\nSAVE命令由服务器进程执行保存工作，因此会阻塞服务器。BGSAVE命令由子进程执行保存工作。\n自动间隔性保存 设置服务器配置的save选项，让服务器每隔一段时间自动执行一次BGSAVE命令。\nsave 900 1 # 900s内发生了至少一次修改 save 300 10 save 60 10000 满足上述一个条件，BASAVE就会执行。 RDB文件结构    头部 数据库版本 数据 正文结束符 校验和     REDIS db_version databases EOF check_sum    AOF持久化(Append Only File) 通过保存Redis服务器所执行的写命令来记录数据库状态。\nAOF持久化的实现过程 命令追加:将内容追加到aof_buf缓冲区的末尾。\n写入与同步：服务器每次结束一个时间循环之前，都会调用flushAppendOnlyFile函数，考虑是否将aof_buf缓冲区中的内容写入和保存到AOF文件中。选项值为：alwals,everysec,no\n载入与数据还原：还原过程：创建一个不带网络连接的伪客户端；从AOF文件中分析并读取一条写命令；使用伪客户端执行被读出的写命令；循环处理。\nAOF重写 目的：解决AOF文件体积膨胀。\n实现原理：从数据库中读取键现在的值，然后用一条命令去记录键值对，代替之前记录这个键值对的多条命令。 后台重写：子进程AOF重写期间，服务器进程可以继续处理命令请求。\n后台重写问题：子进程重写期间，服务器还需要处理命令请求，可能导致服务器当前数据库状态和重写后的AOF文件所保存的数据库状态不一致。解决办法：AOF重写缓冲区。\n事件 文件事件 文件事件处理器。基于Reactor模式，使用IO多路复用程序同时监听多个套接字。\n3.多机数据库的实现 4.独立功能的实现 常见问题 AOF和RDB比较  两者区别：RDB持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是fork一个子进程，先将数据集写入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储。AOF持久化以日志的形式记录服务器所处理的每一个写、删除操作，查询操作不会记录，以文本的方式记录，可以打开文件看到详细的操作记录。 优缺点：RDB：灵活设置备份频率和周期。方便灾难恢复，可以轻松的将一个单独的文件压缩再转移到其他存储介质上。性能最大化。数据集很大时，启动效率相对AOF较高。缺点：很难保证高可用，可能数据在写入磁盘之前会丢失。数据集较大时，可能导致服务器停止服务。\nAOF：数据持久性。对日志的写入操作采用的是append模式，写入过程即使出现宕机，也不会破坏日志文件中已经存在的内容。如果日志过大，Redis可以自动启用rewrite机制。包含一个格式清晰、易于理解的日志文件用于记录所有的修改操作。缺点：RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。根据同步策略的不同，AOF在运行效率上往往会慢于RDB。  Redis分布式锁 使用setnx来争抢锁，抢到之后，再用expire给锁加一个过期时间防止锁忘记了释放。\n如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样？\n同时把setnx和expire合成一条指令来用\n寻找key 假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？\n用keys指令可以扫出指定模式的key列表。\nredis的单线程的。keys指令会导致线程阻塞一段时间，线上服务会停顿，直到指令执行完毕，服务才能恢复。这个时候可以使用scan指令，scan指令可以无阻塞的提取出指定模式的key列表，但是会有一定的重复概率，在客户端做一次去重就可以了，但是整体所花费的时间会比直接用keys指令长。\nRedis同步机制 Redis可以使用主从同步，从从同步。第一次同步时，主节点做一次bgsave，并同时将后续修改操作记录到内存buffer，待完成后将rdb文件全量同步到复制节点，复制节点接受完成后将rdb镜像加载到内存。加载完成后，再通知主节点将期间修改的操作记录同步到复制节点进行重放就完成了同步过程。\nredis相比memcached有哪些优势  丰富的数据类型 速度快 可以持久化\n区别： 存储方式：Memecache把数据全部存在内存之中，断电后会挂掉，数据不能超过内存大小。Redis有部份存在硬盘上，这样能保证数据的持久性。 数据类型：Memcache对数据类型支持相对简单。Redis有复杂的数据类型,Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，hash等数据结构的存储。 底层模型：它们之间底层实现方式以及与客户端之间通信的应用协议不一样。Redis直接自己构建了VM 机制，因为一般的系统调用系统函数的话，会浪费一定的时间去移动和请求。 value大小：redis最大可以达到1GB，而memcache只有1MB。 Redis支持数据的备份，即master-slave模式的数据备份。  Redis的LRU算法 最近最久未用算法。当内存达到限制时，Redis 具体的回收策略是通过 maxmemory-policy 配置项配置的。\nno-eviction：不清除数据，只是返回错误，这样会导致浪费掉更多的内存，对大多数写命令（DEL 命令和其他的少数命令例外） allkeys-lru：从所有的数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰，以供新数据使用 volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰，以供新数据使用 allkeys-random：从所有数据集（server.db[i].dict）中任意选择数据淘汰，以供新数据使用 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰，以供新数据使用 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰，以供新数据使用\nRedis常见的性能问题及解决  Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件. 特别是不要启用内存快照做持久化,如果数据比较关键，某个Slave开启AOF备份数据，策略为每秒同步一次。 尽量避免在压力很大的主库上增加从库。 Master调用BGREWRITEAOF重写AOF文件，AOF在重写的时候会占大量的CPU和内存资源，导致服务load过高，出现短暂服务暂停现象。 Redis主从复制的性能问题，为了主从复制的速度和连接的稳定性，Slave和Master最好在同一个局域网内  适合Redis的场景  会话缓存 全页缓存 队列 排行榜/计数器 发布/订阅 会话 购物车  Nosql和Key-Value数据库 NoSQL，泛指非关系型的数据库，全称Not Only SQL，意即“不仅仅是SQL”。\nNoSQL数据库的四大家族：\n 键值（Key-Value）数据库:Redis、Memcached 面向文档（Document-Oriented）数据库:MongoDB 适用：日志、分析 列存储（Wide Column Store/Column-Family）数据库 HBase 适用:日志、博客平台 图（Graph-Oriented）数据库 适用：关系性强，推荐引擎  Redis最大连接数 默认10000\nredis的瓶颈 Redis 主从复制 Redis 复制功能 Redis的定时机制怎么实现的，有哪些弊端，你将如何改进这个弊端 Redis是单线程的，为什么这么高效。我用了对比的方式说，举例Apache和Nginx，一个多线程，一个IO多路复用 Redis的数据类型有哪些，底层怎么实现，跳跃表，哈希表，整数集合等等 Redis的rehash怎么做的，为什么要渐进rehash，渐进rehash怎么实现的 Redis和memcached的区别，Redis为什么可以组集群 Reference： https://www.bookstack.cn/read/note-of-interview/framework-redis.md\nhttp://www.techug.com/post/nosql.html\n","wordCount":"4920","inLanguage":"zh-cn","datePublished":"2018-06-19T18:50:41+08:00","dateModified":"2018-06-19T18:50:41+08:00","author":{"@type":"Person","name":"mianhk"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yuguocong.cn/posts/redis_sum/"},"publisher":{"@type":"Organization","name":"mianhk's notes","logo":{"@type":"ImageObject","url":"https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://www.yuguocong.cn/ accesskey=h title="mianhk's notes (Alt + H)">mianhk's notes</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
+<meta name=application-name content="LoveIt">
+<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/redis_sum/><link rel=prev href=http://yuguocong.cn/posts/shell_autopush/><link rel=next href=http://yuguocong.cn/posts/re_sword_to_offer/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"《redis 设计与实现》--总结","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/redis_sum\/"},"genre":"posts","keywords":"Linux, 后台开发, Redis, Nosql","wordcount":4920,"url":"http:\/\/yuguocong.cn\/posts\/redis_sum\/","datePublished":"2018-06-19T18:50:41+08:00","dateModified":"2018-06-19T18:50:41+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="mianhk's notes">mianhk's notes</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="mianhk's notes">mianhk's notes</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
 </span>
 </div>
-<ul id=menu>
-<li>
-<a href=https://www.yuguocong.cn/posts/ title=文章>
-<span>文章</span>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
 </a>
-</li>
-<li>
-<a href=https://www.yuguocong.cn/archives/ title=归档>
-<span>归档</span>
-</a>
-</li>
-<li>
-<a href=https://www.yuguocong.cn/tags/ title=标签>
-<span>标签</span>
-</a>
-</li>
-<li>
-<a href=https://www.yuguocong.cn/search/ title=搜索>
-<span>搜索</span>
-</a>
-</li>
-</ul>
-</nav>
+</div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
 </header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
 <main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://www.yuguocong.cn/>Home</a>&nbsp;»&nbsp;<a href=https://www.yuguocong.cn/posts/>Posts</a></div>
-<h1 class=post-title>
-《redis 设计与实现》--总结
-</h1>
-<div class=post-meta>June 19, 2018&nbsp;·&nbsp;10 min&nbsp;·&nbsp;mianhk
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">《redis 设计与实现》--总结</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/other/><i class="far fa-folder fa-fw"></i>other</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2018-06-19>2018-06-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4920 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
 </div>
-</header> <div class=toc>
-<details>
-<summary accesskey=c title="(Alt + C)">
-<span class=details>Table of Contents</span>
-</summary>
-<div class=inner><ul>
-<li>
-<a href=#1%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e5%af%b9%e8%b1%a1 aria-label=1.数据结构与对象>1.数据结构与对象</a><ul>
-<li>
-<a href=#1%e7%ae%80%e5%8d%95%e5%8a%a8%e6%80%81%e5%ad%97%e7%ac%a6%e4%b8%b2 aria-label=1.简单动态字符串>1.简单动态字符串</a></li>
-<li>
-<a href=#2%e9%93%be%e8%a1%a8 aria-label=2.链表>2.链表</a></li>
-<li>
-<a href=#3%e5%ad%97%e5%85%b8 aria-label=3.字典>3.字典</a></li>
-<li>
-<a href=#4%e8%b7%b3%e8%b7%83%e8%a1%a8 aria-label=4.跳跃表>4.跳跃表</a></li>
-<li>
-<a href=#5%e6%95%b4%e6%95%b0%e9%9b%86%e5%90%88 aria-label=5.整数集合>5.整数集合</a></li>
-<li>
-<a href=#6%e5%8e%8b%e7%bc%a9%e5%88%97%e8%a1%a8 aria-label=6.压缩列表>6.压缩列表</a></li>
-<li>
-<a href=#7%e5%af%b9%e8%b1%a1 aria-label=7.对象>7.对象</a></li></ul>
-</li>
-<li>
-<a href=#2%e5%8d%95%e6%9c%ba%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e5%ae%9e%e7%8e%b0 aria-label=2.单机数据库的实现>2.单机数据库的实现</a><ul>
-<li>
-<a href=#%e6%95%b0%e6%8d%ae%e5%ba%93 aria-label=数据库>数据库</a><ul>
-<li>
-<a href=#%e6%95%b0%e6%8d%ae%e5%ba%93%e9%94%ae%e7%a9%ba%e9%97%b4 aria-label=数据库键空间>数据库键空间</a></li>
-<li>
-<a href=#%e8%ae%be%e7%bd%ae%e9%94%ae%e7%9a%84%e7%94%9f%e5%ad%98%e6%97%b6%e9%97%b4%e6%88%96%e8%bf%87%e6%9c%9f%e6%97%b6%e9%97%b4 aria-label=设置键的生存时间或过期时间>设置键的生存时间或过期时间</a></li>
-<li>
-<a href=#%e8%bf%87%e6%9c%9f%e9%94%ae%e5%88%a0%e9%99%a4%e7%ad%96%e7%95%a5 aria-label=过期键删除策略>过期键删除策略</a></li>
-<li>
-<a href=#%e8%bf%87%e6%9c%9f%e9%94%ae%e7%9a%84%e5%a4%84%e7%90%86 aria-label=过期键的处理>过期键的处理</a></li></ul>
-</li>
-<li>
-<a href=#rdb%e6%8c%81%e4%b9%85%e5%8c%96 aria-label=RDB持久化>RDB持久化</a><ul>
-<li>
-<a href=#rdb%e6%96%87%e4%bb%b6%e7%9a%84%e5%88%9b%e5%bb%ba%e5%92%8c%e8%bd%bd%e5%85%a5 aria-label=RDB文件的创建和载入>RDB文件的创建和载入</a></li>
-<li>
-<a href=#%e8%87%aa%e5%8a%a8%e9%97%b4%e9%9a%94%e6%80%a7%e4%bf%9d%e5%ad%98 aria-label=自动间隔性保存>自动间隔性保存</a></li>
-<li>
-<a href=#rdb%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84 aria-label=RDB文件结构>RDB文件结构</a></li></ul>
-</li>
-<li>
-<a href=#aof%e6%8c%81%e4%b9%85%e5%8c%96append-only-file aria-label="AOF持久化(Append Only File)">AOF持久化(Append Only File)</a><ul>
-<li>
-<a href=#aof%e6%8c%81%e4%b9%85%e5%8c%96%e7%9a%84%e5%ae%9e%e7%8e%b0%e8%bf%87%e7%a8%8b aria-label=AOF持久化的实现过程>AOF持久化的实现过程</a></li>
-<li>
-<a href=#aof%e9%87%8d%e5%86%99 aria-label=AOF重写>AOF重写</a></li></ul>
-</li>
-<li>
-<a href=#%e4%ba%8b%e4%bb%b6 aria-label=事件>事件</a><ul>
-<li>
-<a href=#%e6%96%87%e4%bb%b6%e4%ba%8b%e4%bb%b6 aria-label=文件事件>文件事件</a></li></ul>
-</li></ul>
-</li>
-<li>
-<a href=#3%e5%a4%9a%e6%9c%ba%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e5%ae%9e%e7%8e%b0 aria-label=3.多机数据库的实现>3.多机数据库的实现</a></li>
-<li>
-<a href=#4%e7%8b%ac%e7%ab%8b%e5%8a%9f%e8%83%bd%e7%9a%84%e5%ae%9e%e7%8e%b0 aria-label=4.独立功能的实现>4.独立功能的实现</a></li>
-<li>
-<a href=#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98 aria-label=常见问题>常见问题</a><ul>
-<li>
-<a href=#aof%e5%92%8crdb%e6%af%94%e8%be%83 aria-label=AOF和RDB比较>AOF和RDB比较</a></li>
-<li>
-<a href=#redis%e5%88%86%e5%b8%83%e5%bc%8f%e9%94%81 aria-label=Redis分布式锁>Redis分布式锁</a></li>
-<li>
-<a href=#%e5%af%bb%e6%89%bekey aria-label=寻找key>寻找key</a></li>
-<li>
-<a href=#redis%e5%90%8c%e6%ad%a5%e6%9c%ba%e5%88%b6 aria-label=Redis同步机制>Redis同步机制</a></li>
-<li>
-<a href=#redis%e7%9b%b8%e6%af%94memcached%e6%9c%89%e5%93%aa%e4%ba%9b%e4%bc%98%e5%8a%bf aria-label=redis相比memcached有哪些优势>redis相比memcached有哪些优势</a></li>
-<li>
-<a href=#redis%e7%9a%84lru%e7%ae%97%e6%b3%95 aria-label=Redis的LRU算法>Redis的LRU算法</a></li>
-<li>
-<a href=#redis%e5%b8%b8%e8%a7%81%e7%9a%84%e6%80%a7%e8%83%bd%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3 aria-label=Redis常见的性能问题及解决>Redis常见的性能问题及解决</a></li>
-<li>
-<a href=#%e9%80%82%e5%90%88redis%e7%9a%84%e5%9c%ba%e6%99%af aria-label=适合Redis的场景>适合Redis的场景</a></li>
-<li>
-<a href=#nosql%e5%92%8ckey-value%e6%95%b0%e6%8d%ae%e5%ba%93 aria-label=Nosql和Key-Value数据库>Nosql和Key-Value数据库</a></li>
-<li>
-<a href=#redis%e6%9c%80%e5%a4%a7%e8%bf%9e%e6%8e%a5%e6%95%b0 aria-label=Redis最大连接数>Redis最大连接数</a></li>
-<li>
-<a href=#redis%e7%9a%84%e7%93%b6%e9%a2%88 aria-label=redis的瓶颈>redis的瓶颈</a></li>
-<li>
-<a href=#redis-%e4%b8%bb%e4%bb%8e%e5%a4%8d%e5%88%b6 aria-label="Redis 主从复制">Redis 主从复制</a><ul>
-<li>
-<a href=#redis-%e5%a4%8d%e5%88%b6%e5%8a%9f%e8%83%bd aria-label="Redis 复制功能">Redis 复制功能</a></li></ul>
-</li>
-<li>
-<a href=#redis%e7%9a%84%e5%ae%9a%e6%97%b6%e6%9c%ba%e5%88%b6%e6%80%8e%e4%b9%88%e5%ae%9e%e7%8e%b0%e7%9a%84%e6%9c%89%e5%93%aa%e4%ba%9b%e5%bc%8a%e7%ab%af%e4%bd%a0%e5%b0%86%e5%a6%82%e4%bd%95%e6%94%b9%e8%bf%9b%e8%bf%99%e4%b8%aa%e5%bc%8a%e7%ab%af aria-label=Redis的定时机制怎么实现的，有哪些弊端，你将如何改进这个弊端>Redis的定时机制怎么实现的，有哪些弊端，你将如何改进这个弊端</a></li>
-<li>
-<a href=#redis%e6%98%af%e5%8d%95%e7%ba%bf%e7%a8%8b%e7%9a%84%e4%b8%ba%e4%bb%80%e4%b9%88%e8%bf%99%e4%b9%88%e9%ab%98%e6%95%88%e6%88%91%e7%94%a8%e4%ba%86%e5%af%b9%e6%af%94%e7%9a%84%e6%96%b9%e5%bc%8f%e8%af%b4%e4%b8%be%e4%be%8bapache%e5%92%8cnginx%e4%b8%80%e4%b8%aa%e5%a4%9a%e7%ba%bf%e7%a8%8b%e4%b8%80%e4%b8%aaio%e5%a4%9a%e8%b7%af%e5%a4%8d%e7%94%a8 aria-label=Redis是单线程的，为什么这么高效。我用了对比的方式说，举例Apache和Nginx，一个多线程，一个IO多路复用>Redis是单线程的，为什么这么高效。我用了对比的方式说，举例Apache和Nginx，一个多线程，一个IO多路复用</a></li>
-<li>
-<a href=#redis%e7%9a%84%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e6%9c%89%e5%93%aa%e4%ba%9b%e5%ba%95%e5%b1%82%e6%80%8e%e4%b9%88%e5%ae%9e%e7%8e%b0%e8%b7%b3%e8%b7%83%e8%a1%a8%e5%93%88%e5%b8%8c%e8%a1%a8%e6%95%b4%e6%95%b0%e9%9b%86%e5%90%88%e7%ad%89%e7%ad%89 aria-label=Redis的数据类型有哪些，底层怎么实现，跳跃表，哈希表，整数集合等等>Redis的数据类型有哪些，底层怎么实现，跳跃表，哈希表，整数集合等等</a></li>
-<li>
-<a href=#redis%e7%9a%84rehash%e6%80%8e%e4%b9%88%e5%81%9a%e7%9a%84%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e6%b8%90%e8%bf%9brehash%e6%b8%90%e8%bf%9brehash%e6%80%8e%e4%b9%88%e5%ae%9e%e7%8e%b0%e7%9a%84 aria-label=Redis的rehash怎么做的，为什么要渐进rehash，渐进rehash怎么实现的>Redis的rehash怎么做的，为什么要渐进rehash，渐进rehash怎么实现的</a></li>
-<li>
-<a href=#redis%e5%92%8cmemcached%e7%9a%84%e5%8c%ba%e5%88%abredis%e4%b8%ba%e4%bb%80%e4%b9%88%e5%8f%af%e4%bb%a5%e7%bb%84%e9%9b%86%e7%be%a4 aria-label=Redis和memcached的区别，Redis为什么可以组集群>Redis和memcached的区别，Redis为什么可以组集群</a></li></ul>
-</li>
-<li>
-<a href=#reference aria-label=Reference：>Reference：</a>
-</li>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#1数据结构与对象>1.数据结构与对象</a>
+<ul>
+<li><a href=#1简单动态字符串>1.简单动态字符串</a></li>
+<li><a href=#2链表>2.链表</a></li>
+<li><a href=#3字典>3.字典</a></li>
+<li><a href=#4跳跃表>4.跳跃表</a></li>
+<li><a href=#5整数集合>5.整数集合</a></li>
+<li><a href=#6压缩列表>6.压缩列表</a></li>
+<li><a href=#7对象>7.对象</a></li>
 </ul>
-</div>
-</details>
-</div>
-<div class=post-content><blockquote>
+</li>
+<li><a href=#2单机数据库的实现>2.单机数据库的实现</a>
+<ul>
+<li><a href=#数据库>数据库</a></li>
+<li><a href=#rdb持久化>RDB持久化</a></li>
+<li><a href=#aof持久化append-only-file>AOF持久化(Append Only File)</a></li>
+<li><a href=#事件>事件</a></li>
+</ul>
+</li>
+<li><a href=#3多机数据库的实现>3.多机数据库的实现</a></li>
+<li><a href=#4独立功能的实现>4.独立功能的实现</a></li>
+<li><a href=#常见问题>常见问题</a>
+<ul>
+<li><a href=#aof和rdb比较>AOF和RDB比较</a></li>
+<li><a href=#redis分布式锁>Redis分布式锁</a></li>
+<li><a href=#寻找key>寻找key</a></li>
+<li><a href=#redis同步机制>Redis同步机制</a></li>
+<li><a href=#redis相比memcached有哪些优势>redis相比memcached有哪些优势</a></li>
+<li><a href=#redis的lru算法>Redis的LRU算法</a></li>
+<li><a href=#redis常见的性能问题及解决>Redis常见的性能问题及解决</a></li>
+<li><a href=#适合redis的场景>适合Redis的场景</a></li>
+<li><a href=#nosql和key-value数据库>Nosql和Key-Value数据库</a></li>
+<li><a href=#redis最大连接数>Redis最大连接数</a></li>
+<li><a href=#redis的瓶颈>redis的瓶颈</a></li>
+<li><a href=#redis-主从复制>Redis 主从复制</a></li>
+<li><a href=#redis的定时机制怎么实现的有哪些弊端你将如何改进这个弊端>Redis的定时机制怎么实现的，有哪些弊端，你将如何改进这个弊端</a></li>
+<li><a href=#redis是单线程的为什么这么高效我用了对比的方式说举例apache和nginx一个多线程一个io多路复用>Redis是单线程的，为什么这么高效。我用了对比的方式说，举例Apache和Nginx，一个多线程，一个IO多路复用</a></li>
+<li><a href=#redis的数据类型有哪些底层怎么实现跳跃表哈希表整数集合等等>Redis的数据类型有哪些，底层怎么实现，跳跃表，哈希表，整数集合等等</a></li>
+<li><a href=#redis的rehash怎么做的为什么要渐进rehash渐进rehash怎么实现的>Redis的rehash怎么做的，为什么要渐进rehash，渐进rehash怎么实现的</a></li>
+<li><a href=#redis和memcached的区别redis为什么可以组集群>Redis和memcached的区别，Redis为什么可以组集群</a></li>
+</ul>
+</li>
+<li><a href=#reference>Reference：</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><blockquote>
 <p>Redis设计与实现，以及关于Redis使用的总结</p>
 </blockquote>
-<h2 id=1数据结构与对象>1.数据结构与对象<a hidden class=anchor aria-hidden=true href=#1数据结构与对象>#</a></h2>
-<h3 id=1简单动态字符串>1.简单动态字符串<a hidden class=anchor aria-hidden=true href=#1简单动态字符串>#</a></h3>
+<h2 id=1数据结构与对象>1.数据结构与对象</h2>
+<h3 id=1简单动态字符串>1.简单动态字符串</h3>
 <p>Redis自己构建了简单动态字符串(Simple Dynamic String,SDS)来作为默认的字符串表示。<br>
 SDS的构造如下：
 优势是：</p>
@@ -209,35 +155,35 @@ SDS的构造如下：
 <li>能够杜绝缓冲区溢出：记录了缓冲区的大小，在长度不够时，能够自动扩展空间</li>
 <li>减少修改字符串时带来的内存重新分配次数：采用空间预分配和惰性空间释放</li>
 </ol>
-<h3 id=2链表>2.链表<a hidden class=anchor aria-hidden=true href=#2链表>#</a></h3>
+<h3 id=2链表>2.链表</h3>
 <p>Redis自己实现了链表。拥有以下特性：双端无环、带表头指针和表尾指针、带链表长度计数器、多态(使用void* 保存节点值)</p>
-<h3 id=3字典>3.字典<a hidden class=anchor aria-hidden=true href=#3字典>#</a></h3>
+<h3 id=3字典>3.字典</h3>
 <p>Redis字典底层采用哈希表实现。采用MurmurHash2算法，解决键冲突的方式是：链地址法。<br>
 哈希表的扩展与收缩：以下条件满足时：</p>
 <ol>
 <li>服务器没有执行BGSAVE或BGREWRITEAOF命令，哈希表负载因子>1</li>
 <li>服务器在执行BGSAVE或BGREWRITEAOF命令，哈希表负载因子>5</li>
 </ol>
-<h3 id=4跳跃表>4.跳跃表<a hidden class=anchor aria-hidden=true href=#4跳跃表>#</a></h3>
+<h3 id=4跳跃表>4.跳跃表</h3>
 <p>Redis采用跳跃表作为有序集合键的底层数据结构，另：在集群节点中用作内部数据结构<br>
 跳跃表：一种有序数据结构，通过在一个节点维持多个指向其他节点的指针，从而达到快速访问节点的目的。支持平均O(logN),最差O(N)复杂度的查找。
 Redis中跳跃表的实现：</p>
-<h3 id=5整数集合>5.整数集合<a hidden class=anchor aria-hidden=true href=#5整数集合>#</a></h3>
+<h3 id=5整数集合>5.整数集合</h3>
 <p>Redis中集合键的底层实现之一，当一个集合只包含整数值元素，并且这个集合中元素的数量不多时，就会使用整数集合作为集合键的底层实现。<br>
 整数集合的升级策略：能够提高整数集合的灵活性，并且能够尽可能的节约内存。升级后不支持降级</p>
-<h3 id=6压缩列表>6.压缩列表<a hidden class=anchor aria-hidden=true href=#6压缩列表>#</a></h3>
+<h3 id=6压缩列表>6.压缩列表</h3>
 <p>Redis中列表键和哈希键的底层实现之一。</p>
-<h3 id=7对象>7.对象<a hidden class=anchor aria-hidden=true href=#7对象>#</a></h3>
+<h3 id=7对象>7.对象</h3>
 <p>Redis使用上述的数据结构创建了一个对象系统。包括：字符串对象、列表对象、哈希对象、集合对象和有序集合对象。其实这就是一直说的Redis五种数据结构：字符串、列表、字典、集合、有序集合。</p>
-<h2 id=2单机数据库的实现>2.单机数据库的实现<a hidden class=anchor aria-hidden=true href=#2单机数据库的实现>#</a></h2>
-<h3 id=数据库>数据库<a hidden class=anchor aria-hidden=true href=#数据库>#</a></h3>
+<h2 id=2单机数据库的实现>2.单机数据库的实现</h2>
+<h3 id=数据库>数据库</h3>
 <p>Redis服务器讲所有数据库保存在一个db数组中，默认创建16个数据库。<br>
 切换数据库:<code>select 0 #选择0号数据库</code></p>
-<h4 id=数据库键空间>数据库键空间<a hidden class=anchor aria-hidden=true href=#数据库键空间>#</a></h4>
+<h4 id=数据库键空间>数据库键空间</h4>
 <p>键空间的键也是数据库的键。每个键都是一个字符串对象。<br>
 键空间的值也是数据库的值，每个值可以是字符串对象、列表对象、哈希对象、集合对象，有序集合对象中的任意一个Redis对象。<br>
 一个键空间的例子：</p>
-<h4 id=设置键的生存时间或过期时间>设置键的生存时间或过期时间<a hidden class=anchor aria-hidden=true href=#设置键的生存时间或过期时间>#</a></h4>
+<h4 id=设置键的生存时间或过期时间>设置键的生存时间或过期时间</h4>
 <p>原理是：过期时间是一个UNIX时间戳，当键的过期时间来临是，服务器就会自动从数据库中删除一个键。<br>
 命令:</p>
 <pre tabindex=0><code>expire &lt;key&gt; &lt;ttl&gt;  #key的生存时间为ttl秒
@@ -249,14 +195,14 @@ persist &lt;key&gt;  #移除key的过期时间
 ttl &lt;key&gt;   #计算key的剩余生存时间
 </code></pre><p>setex命令可以设置一个字符串键的同时为键设置过期时间。
 一个带有过期字典的数据库例子：（实际中，键空间的键和过期字典中的键都指向同一个键对象）</p>
-<h4 id=过期键删除策略>过期键删除策略<a hidden class=anchor aria-hidden=true href=#过期键删除策略>#</a></h4>
+<h4 id=过期键删除策略>过期键删除策略</h4>
 <ul>
 <li>定时删除： 内存最友好，CPU时间最不友好</li>
 <li>惰性删除：CPU时间友好，内存不友好</li>
 <li>定期删除：折中
 Redis实际使用：惰性删除和定期删除配合使用。</li>
 </ul>
-<h4 id=过期键的处理>过期键的处理<a hidden class=anchor aria-hidden=true href=#过期键的处理>#</a></h4>
+<h4 id=过期键的处理>过期键的处理</h4>
 <ol>
 <li>RDB文件：
 生成RDB文件：已过期的键不会保存到新创建的RDB文件中，因此对生成新的RDB文件没有影响。
@@ -268,19 +214,19 @@ AOF重写：已过期的键不会被保存到重写的AOF文件。</li>
 主服务器删除一个过期键，会显示向所有的从服务器发送DEL命令，告知删除。<br>
 从服务器遇到过期的键也不会删除。只有接收到DEL命令后才会删除过期键。</li>
 </ol>
-<h3 id=rdb持久化>RDB持久化<a hidden class=anchor aria-hidden=true href=#rdb持久化>#</a></h3>
+<h3 id=rdb持久化>RDB持久化</h3>
 <p>通过保存数据库中的键值对来记录数据库状态不同。<br>
 功能：将Redis在内存中的数据库状态保存到磁盘中，避免数据意外丢失。RDB文件是一个经过压缩的二进制文件，保存在硬盘中，因此Redis进程退出，只要RDB文件仍在，就可以用来还原数据库的状态。</p>
-<h4 id=rdb文件的创建和载入>RDB文件的创建和载入<a hidden class=anchor aria-hidden=true href=#rdb文件的创建和载入>#</a></h4>
+<h4 id=rdb文件的创建和载入>RDB文件的创建和载入</h4>
 <p>服务器在载入RDB文件期间，会一直阻塞。<br>
 SAVE命令由服务器进程执行保存工作，因此会阻塞服务器。BGSAVE命令由子进程执行保存工作。</p>
-<h4 id=自动间隔性保存>自动间隔性保存<a hidden class=anchor aria-hidden=true href=#自动间隔性保存>#</a></h4>
+<h4 id=自动间隔性保存>自动间隔性保存</h4>
 <p>设置服务器配置的save选项，让服务器每隔一段时间自动执行一次BGSAVE命令。</p>
 <pre tabindex=0><code>save 900 1  # 900s内发生了至少一次修改
 save 300 10
 save 60 10000
 满足上述一个条件，BASAVE就会执行。
-</code></pre><h4 id=rdb文件结构>RDB文件结构<a hidden class=anchor aria-hidden=true href=#rdb文件结构>#</a></h4>
+</code></pre><h4 id=rdb文件结构>RDB文件结构</h4>
 <table>
 <thead>
 <tr>
@@ -301,40 +247,40 @@ save 60 10000
 </tr>
 </tbody>
 </table>
-<h3 id=aof持久化append-only-file>AOF持久化(Append Only File)<a hidden class=anchor aria-hidden=true href=#aof持久化append-only-file>#</a></h3>
+<h3 id=aof持久化append-only-file>AOF持久化(Append Only File)</h3>
 <p>通过保存Redis服务器所执行的写命令来记录数据库状态。</p>
-<h4 id=aof持久化的实现过程>AOF持久化的实现过程<a hidden class=anchor aria-hidden=true href=#aof持久化的实现过程>#</a></h4>
+<h4 id=aof持久化的实现过程>AOF持久化的实现过程</h4>
 <p>命令追加:将内容追加到aof_buf缓冲区的末尾。<br>
 写入与同步：服务器每次结束一个时间循环之前，都会调用flushAppendOnlyFile函数，考虑是否将aof_buf缓冲区中的内容写入和保存到AOF文件中。选项值为：alwals,everysec,no<br>
 载入与数据还原：还原过程：创建一个不带网络连接的伪客户端；从AOF文件中分析并读取一条写命令；使用伪客户端执行被读出的写命令；循环处理。</p>
-<h4 id=aof重写>AOF重写<a hidden class=anchor aria-hidden=true href=#aof重写>#</a></h4>
+<h4 id=aof重写>AOF重写</h4>
 <p>目的：解决AOF文件体积膨胀。<br>
 实现原理：从数据库中读取键现在的值，然后用一条命令去记录键值对，代替之前记录这个键值对的多条命令。
 后台重写：子进程AOF重写期间，服务器进程可以继续处理命令请求。<br>
 后台重写问题：子进程重写期间，服务器还需要处理命令请求，可能导致服务器当前数据库状态和重写后的AOF文件所保存的数据库状态不一致。解决办法：AOF重写缓冲区。</p>
-<h3 id=事件>事件<a hidden class=anchor aria-hidden=true href=#事件>#</a></h3>
-<h4 id=文件事件>文件事件<a hidden class=anchor aria-hidden=true href=#文件事件>#</a></h4>
+<h3 id=事件>事件</h3>
+<h4 id=文件事件>文件事件</h4>
 <p>文件事件处理器。基于Reactor模式，使用IO多路复用程序同时监听多个套接字。</p>
-<h2 id=3多机数据库的实现>3.多机数据库的实现<a hidden class=anchor aria-hidden=true href=#3多机数据库的实现>#</a></h2>
-<h2 id=4独立功能的实现>4.独立功能的实现<a hidden class=anchor aria-hidden=true href=#4独立功能的实现>#</a></h2>
-<h2 id=常见问题>常见问题<a hidden class=anchor aria-hidden=true href=#常见问题>#</a></h2>
-<h3 id=aof和rdb比较>AOF和RDB比较<a hidden class=anchor aria-hidden=true href=#aof和rdb比较>#</a></h3>
+<h2 id=3多机数据库的实现>3.多机数据库的实现</h2>
+<h2 id=4独立功能的实现>4.独立功能的实现</h2>
+<h2 id=常见问题>常见问题</h2>
+<h3 id=aof和rdb比较>AOF和RDB比较</h3>
 <ul>
 <li>两者区别：RDB持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是fork一个子进程，先将数据集写入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储。AOF持久化以日志的形式记录服务器所处理的每一个写、删除操作，查询操作不会记录，以文本的方式记录，可以打开文件看到详细的操作记录。</li>
 <li>优缺点：RDB：灵活设置备份频率和周期。方便灾难恢复，可以轻松的将一个单独的文件压缩再转移到其他存储介质上。性能最大化。数据集很大时，启动效率相对AOF较高。缺点：很难保证高可用，可能数据在写入磁盘之前会丢失。数据集较大时，可能导致服务器停止服务。<br>
 AOF：数据持久性。对日志的写入操作采用的是append模式，写入过程即使出现宕机，也不会破坏日志文件中已经存在的内容。如果日志过大，Redis可以自动启用rewrite机制。包含一个格式清晰、易于理解的日志文件用于记录所有的修改操作。缺点：RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。根据同步策略的不同，AOF在运行效率上往往会慢于RDB。</li>
 </ul>
-<h3 id=redis分布式锁>Redis分布式锁<a hidden class=anchor aria-hidden=true href=#redis分布式锁>#</a></h3>
+<h3 id=redis分布式锁>Redis分布式锁</h3>
 <p>使用setnx来争抢锁，抢到之后，再用expire给锁加一个过期时间防止锁忘记了释放。<br>
 如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样？<br>
 同时把setnx和expire合成一条指令来用</p>
-<h3 id=寻找key>寻找key<a hidden class=anchor aria-hidden=true href=#寻找key>#</a></h3>
+<h3 id=寻找key>寻找key</h3>
 <p>假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如果将它们全部找出来？<br>
 用keys指令可以扫出指定模式的key列表。<br>
 redis的单线程的。keys指令会导致线程阻塞一段时间，线上服务会停顿，直到指令执行完毕，服务才能恢复。这个时候可以使用scan指令，scan指令可以无阻塞的提取出指定模式的key列表，但是会有一定的重复概率，在客户端做一次去重就可以了，但是整体所花费的时间会比直接用keys指令长。</p>
-<h3 id=redis同步机制>Redis同步机制<a hidden class=anchor aria-hidden=true href=#redis同步机制>#</a></h3>
+<h3 id=redis同步机制>Redis同步机制</h3>
 <p>Redis可以使用主从同步，从从同步。第一次同步时，主节点做一次bgsave，并同时将后续修改操作记录到内存buffer，待完成后将rdb文件全量同步到复制节点，复制节点接受完成后将rdb镜像加载到内存。加载完成后，再通知主节点将期间修改的操作记录同步到复制节点进行重放就完成了同步过程。</p>
-<h3 id=redis相比memcached有哪些优势>redis相比memcached有哪些优势<a hidden class=anchor aria-hidden=true href=#redis相比memcached有哪些优势>#</a></h3>
+<h3 id=redis相比memcached有哪些优势>redis相比memcached有哪些优势</h3>
 <ol>
 <li>丰富的数据类型</li>
 <li>速度快</li>
@@ -346,7 +292,7 @@ redis的单线程的。keys指令会导致线程阻塞一段时间，线上服�
 <li>value大小：redis最大可以达到1GB，而memcache只有1MB。</li>
 <li>Redis支持数据的备份，即master-slave模式的数据备份。</li>
 </ol>
-<h3 id=redis的lru算法>Redis的LRU算法<a hidden class=anchor aria-hidden=true href=#redis的lru算法>#</a></h3>
+<h3 id=redis的lru算法>Redis的LRU算法</h3>
 <p>最近最久未用算法。当内存达到限制时，Redis 具体的回收策略是通过 maxmemory-policy 配置项配置的。<br>
 no-eviction：不清除数据，只是返回错误，这样会导致浪费掉更多的内存，对大多数写命令（DEL 命令和其他的少数命令例外）
 allkeys-lru：从所有的数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰，以供新数据使用
@@ -354,18 +300,18 @@ volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中
 allkeys-random：从所有数据集（server.db[i].dict）中任意选择数据淘汰，以供新数据使用
 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰，以供新数据使用
 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰，以供新数据使用</p>
-<h3 id=redis常见的性能问题及解决>Redis常见的性能问题及解决<a hidden class=anchor aria-hidden=true href=#redis常见的性能问题及解决>#</a></h3>
+<h3 id=redis常见的性能问题及解决>Redis常见的性能问题及解决</h3>
 <ol>
 <li>Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件. 特别是不要启用内存快照做持久化,如果数据比较关键，某个Slave开启AOF备份数据，策略为每秒同步一次。</li>
 <li>尽量避免在压力很大的主库上增加从库。</li>
 <li>Master调用BGREWRITEAOF重写AOF文件，AOF在重写的时候会占大量的CPU和内存资源，导致服务load过高，出现短暂服务暂停现象。</li>
 <li>Redis主从复制的性能问题，为了主从复制的速度和连接的稳定性，Slave和Master最好在同一个局域网内</li>
 </ol>
-<h3 id=适合redis的场景>适合Redis的场景<a hidden class=anchor aria-hidden=true href=#适合redis的场景>#</a></h3>
+<h3 id=适合redis的场景>适合Redis的场景</h3>
 <ol>
 <li>会话缓存 全页缓存 队列 排行榜/计数器 发布/订阅 会话 购物车</li>
 </ol>
-<h3 id=nosql和key-value数据库>Nosql和Key-Value数据库<a hidden class=anchor aria-hidden=true href=#nosql和key-value数据库>#</a></h3>
+<h3 id=nosql和key-value数据库>Nosql和Key-Value数据库</h3>
 <p>NoSQL，泛指非关系型的数据库，全称Not Only SQL，意即“不仅仅是SQL”。<br>
 NoSQL数据库的四大家族：</p>
 <ol>
@@ -374,68 +320,52 @@ NoSQL数据库的四大家族：</p>
 <li>列存储（Wide Column Store/Column-Family）数据库 HBase 适用:日志、博客平台</li>
 <li>图（Graph-Oriented）数据库 适用：关系性强，推荐引擎</li>
 </ol>
-<h3 id=redis最大连接数>Redis最大连接数<a hidden class=anchor aria-hidden=true href=#redis最大连接数>#</a></h3>
+<h3 id=redis最大连接数>Redis最大连接数</h3>
 <p>默认10000</p>
-<h3 id=redis的瓶颈>redis的瓶颈<a hidden class=anchor aria-hidden=true href=#redis的瓶颈>#</a></h3>
-<h3 id=redis-主从复制>Redis 主从复制<a hidden class=anchor aria-hidden=true href=#redis-主从复制>#</a></h3>
-<h4 id=redis-复制功能>Redis 复制功能<a hidden class=anchor aria-hidden=true href=#redis-复制功能>#</a></h4>
-<h3 id=redis的定时机制怎么实现的有哪些弊端你将如何改进这个弊端>Redis的定时机制怎么实现的，有哪些弊端，你将如何改进这个弊端<a hidden class=anchor aria-hidden=true href=#redis的定时机制怎么实现的有哪些弊端你将如何改进这个弊端>#</a></h3>
-<h3 id=redis是单线程的为什么这么高效我用了对比的方式说举例apache和nginx一个多线程一个io多路复用>Redis是单线程的，为什么这么高效。我用了对比的方式说，举例Apache和Nginx，一个多线程，一个IO多路复用<a hidden class=anchor aria-hidden=true href=#redis是单线程的为什么这么高效我用了对比的方式说举例apache和nginx一个多线程一个io多路复用>#</a></h3>
-<h3 id=redis的数据类型有哪些底层怎么实现跳跃表哈希表整数集合等等>Redis的数据类型有哪些，底层怎么实现，跳跃表，哈希表，整数集合等等<a hidden class=anchor aria-hidden=true href=#redis的数据类型有哪些底层怎么实现跳跃表哈希表整数集合等等>#</a></h3>
-<h3 id=redis的rehash怎么做的为什么要渐进rehash渐进rehash怎么实现的>Redis的rehash怎么做的，为什么要渐进rehash，渐进rehash怎么实现的<a hidden class=anchor aria-hidden=true href=#redis的rehash怎么做的为什么要渐进rehash渐进rehash怎么实现的>#</a></h3>
-<h3 id=redis和memcached的区别redis为什么可以组集群>Redis和memcached的区别，Redis为什么可以组集群<a hidden class=anchor aria-hidden=true href=#redis和memcached的区别redis为什么可以组集群>#</a></h3>
-<h2 id=reference>Reference：<a hidden class=anchor aria-hidden=true href=#reference>#</a></h2>
-<p><a href=https://www.bookstack.cn/read/note-of-interview/framework-redis.md>https://www.bookstack.cn/read/note-of-interview/framework-redis.md</a><br>
-<a href=http://www.techug.com/post/nosql.html>http://www.techug.com/post/nosql.html</a></p>
+<h3 id=redis的瓶颈>redis的瓶颈</h3>
+<h3 id=redis-主从复制>Redis 主从复制</h3>
+<h4 id=redis-复制功能>Redis 复制功能</h4>
+<h3 id=redis的定时机制怎么实现的有哪些弊端你将如何改进这个弊端>Redis的定时机制怎么实现的，有哪些弊端，你将如何改进这个弊端</h3>
+<h3 id=redis是单线程的为什么这么高效我用了对比的方式说举例apache和nginx一个多线程一个io多路复用>Redis是单线程的，为什么这么高效。我用了对比的方式说，举例Apache和Nginx，一个多线程，一个IO多路复用</h3>
+<h3 id=redis的数据类型有哪些底层怎么实现跳跃表哈希表整数集合等等>Redis的数据类型有哪些，底层怎么实现，跳跃表，哈希表，整数集合等等</h3>
+<h3 id=redis的rehash怎么做的为什么要渐进rehash渐进rehash怎么实现的>Redis的rehash怎么做的，为什么要渐进rehash，渐进rehash怎么实现的</h3>
+<h3 id=redis和memcached的区别redis为什么可以组集群>Redis和memcached的区别，Redis为什么可以组集群</h3>
+<h2 id=reference>Reference：</h2>
+<p><a href=https://www.bookstack.cn/read/note-of-interview/framework-redis.md target=_blank rel="noopener noreffer">https://www.bookstack.cn/read/note-of-interview/framework-redis.md</a><br>
+<a href=http://www.techug.com/post/nosql.html target=_blank rel="noopener noreffer">http://www.techug.com/post/nosql.html</a></p></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2018-06-19</span>
 </div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://www.yuguocong.cn/tags/linux/>Linux</a></li>
-<li><a href=https://www.yuguocong.cn/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/>后台开发</a></li>
-<li><a href=https://www.yuguocong.cn/tags/redis/>Redis</a></li>
-<li><a href=https://www.yuguocong.cn/tags/nosql/>Nosql</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://www.yuguocong.cn/posts/re_sword_to_offer/>
-<span class=title>« </span>
-<br>
-<span>剑指offer-刷题总结</span>
-</a>
-<a class=next href=https://www.yuguocong.cn/posts/shell_autopush/>
-<span class=title> »</span>
-<br>
-<span>ubuntu自动push到github脚本</span>
-</a>
-</nav>
-<div class=share-buttons>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《redis 设计与实现》--总结 on twitter" href="https://twitter.com/intent/tweet/?text=%e3%80%8aredis%20%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%e3%80%8b--%e6%80%bb%e7%bb%93&url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f&hashtags=Linux%2c%e5%90%8e%e5%8f%b0%e5%bc%80%e5%8f%91%2cRedis%2cNosql"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《redis 设计与实现》--总结 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f&title=%e3%80%8aredis%20%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%e3%80%8b--%e6%80%bb%e7%bb%93&summary=%e3%80%8aredis%20%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%e3%80%8b--%e6%80%bb%e7%bb%93&source=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《redis 设计与实现》--总结 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f&title=%e3%80%8aredis%20%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%e3%80%8b--%e6%80%bb%e7%bb%93"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《redis 设计与实现》--总结 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《redis 设计与实现》--总结 on whatsapp" href="https://api.whatsapp.com/send?text=%e3%80%8aredis%20%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%e3%80%8b--%e6%80%bb%e7%bb%93%20-%20https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《redis 设计与实现》--总结 on telegram" href="https://telegram.me/share/url?text=%e3%80%8aredis%20%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e7%8e%b0%e3%80%8b--%e6%80%bb%e7%bb%93&url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fredis_sum%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
-</a>
+<div class=post-info-license></div>
 </div>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://www.yuguocong.cn/>mianhk's notes</a></span>
-<span>
-Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+<div class=post-info-line>
+<div class=post-info-md></div>
+<div class=post-info-share>
+<span></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/linux/>Linux</a>,&nbsp;<a href=/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/>后台开发</a>,&nbsp;<a href=/tags/redis/>Redis</a>,&nbsp;<a href=/tags/nosql/>Nosql</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/posts/shell_autopush/ class=prev rel=prev title=ubuntu自动push到github脚本><i class="fas fa-angle-left fa-fw"></i>ubuntu自动push到github脚本</a>
+<a href=/posts/re_sword_to_offer/ class=next rel=next title=剑指offer-刷题总结>剑指offer-刷题总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
 </a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
+</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
 </html>

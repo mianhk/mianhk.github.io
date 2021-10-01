@@ -1,306 +1,263 @@
-<!doctype html><html lang=zh-cn dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>《c++primer》ch3 字符串、向量和数组 | mianhk's notes</title>
-<meta name=keywords content="C++">
-<meta name=description content="第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到">
-<meta name=author content="mianhk">
-<link rel=canonical href=https://www.yuguocong.cn/posts/cpp_primer_ch3/>
-<meta name=google-site-verification content="XYZabc">
-<meta name=yandex-verification content="XYZabc">
-<meta name=msvalidate.01 content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=icon type=image/png sizes=16x16 href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=icon type=image/png sizes=32x32 href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=apple-touch-icon href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<link rel=mask-icon href=https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.88.1">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123 -45','auto'),ga('send','pageview'))</script><meta property="og:title" content="《c++primer》ch3 字符串、向量和数组">
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>《c++primer》ch3 字符串、向量和数组 - mianhk's notes</title><meta name=Description content><meta property="og:title" content="《c++primer》ch3 字符串、向量和数组">
 <meta property="og:description" content="第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://www.yuguocong.cn/posts/cpp_primer_ch3/"><meta property="article:section" content="posts">
+<meta property="og:url" content="http://yuguocong.cn/posts/cpp_primer_ch3/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2017-06-04T17:55:33+08:00">
-<meta property="article:modified_time" content="2017-06-04T17:55:33+08:00"><meta property="og:site_name" content="mianhk's notes">
+<meta property="article:modified_time" content="2017-06-04T17:55:33+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="《c++primer》ch3 字符串、向量和数组">
 <meta name=twitter:description content="第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://www.yuguocong.cn/posts/"},{"@type":"ListItem","position":2,"name":"《c++primer》ch3 字符串、向量和数组","item":"https://www.yuguocong.cn/posts/cpp_primer_ch3/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"《c++primer》ch3 字符串、向量和数组","name":"《c\u002b\u002bprimer》ch3 字符串、向量和数组","description":"第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到","keywords":["C++"],"articleBody":"第3章 字符串、向量和数组 3.1 命名空间的using声明 每个名字都需要独立的using声明 头文件中不应该包含using声明 因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。\n3.2 标准库类型string 3.2.1 定义和初始化string对象 string s1; //默认初始化 string s2=s1; //s2是s1的副本 string s2(s1); //等价于string s2=s1,s2是s1的副本 string s3=\"hiya\"; //s3是字面值的副本，但是不包含字面值最后的那个空字符 string s3(\"hiya\"); //等价于string s3=\"hiya\" string s4(n,'c'); //把s4初始化为连续n个字符c组成的字符串 3.2.2 string对象上的操作  读写string对象 读取未知数量的string对象 使用getline读取一整行 string的empty和size操作  string:size_type类型 size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。\n比较string对象 按字典顺序\n字面值和string类型相加 //错误的方式 string s=\"hello\"+\",\" //错误，因为两个运算对象都不是string，不能把两个字面值直接相加 string s1=\"hello\"+s1+\",\" //正确 ** 字符串字面值与string是不同的类型 **\nex3.3 string类的输入运算和getline函数分别如何处理字符串 string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止 getline函数：从给定的输入流中读取，直到遇到换行符为止。\n3.3 标准库类型vector vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。\n3.3.1 定义和初始化vector对象  1.使用拷贝初始化 2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化 3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号 4.创建指定数量的元素：采用圆括号  3.3.2 像vector中添加元素 push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好） 不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。\n3.4 迭代器介绍 迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。 某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。\n迭代器的算数运算 可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。 迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）\n3.5 数组 数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。\n3.5.1 定义和初始化数组 数组是一种复合类型，数组的维度必须是一个常量表达式。 定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。\n字符数组的特殊性 char a1[]={'C','+','+'}; //列表初始化，没有空字符 char a2[]={'C','+','+'}; //列表初始化，含有显式的空字符 char a3[]=\"C++\"; //自动添加表示字符串结束的空字符 不允许拷贝和赋值 复杂的数组声明 ** 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 **\nint \u0026refs[10]=... // 错误！不存在数组的引用 int (*Parray)[10]=\u0026arr; //Parray指向一个含有10个整数的数组 int (\u0026arrRef)[10]=arr //arrRef引用一个含有10个整数的数组 int *ptrs[10]; //ptrs是一个含有10个整型指针的数组 3.5.2 访问数组元素  数组下标为** size_t类型 **，是一种机器相关的无符号类型。  3.5.3 指针和数组 使用数组的时候编译器一般会把它转化成指针\n指针也是迭代器 允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上\n标准库函数begin和end 3.5.4 C风格字符串 C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。 C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。 ** 问题：为什么没有指针相加？ ** 指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。\n3.5.5 与旧代码的接口 混用string对象和C风格字符串  允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值 在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。  使用数组初始化vector对象 允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。\n3.6 多维数组 严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。 当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。\nint ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组 ","wordCount":"2123","inLanguage":"zh-cn","datePublished":"2017-06-04T17:55:33+08:00","dateModified":"2017-06-04T17:55:33+08:00","author":{"@type":"Person","name":"mianhk"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yuguocong.cn/posts/cpp_primer_ch3/"},"publisher":{"@type":"Organization","name":"mianhk's notes","logo":{"@type":"ImageObject","url":"https://www.yuguocong.cn/%3Clink%20/%20abs%20url%3E"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://www.yuguocong.cn/ accesskey=h title="mianhk's notes (Alt + H)">mianhk's notes</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
+<meta name=application-name content="LoveIt">
+<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/cpp_primer_ch3/><link rel=prev href=http://yuguocong.cn/posts/hexo+gitpage/><link rel=next href=http://yuguocong.cn/posts/cpp_primer_ch2/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"《c++primer》ch3 字符串、向量和数组","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/cpp_primer_ch3\/"},"genre":"posts","keywords":"C\u002b\u002b","wordcount":2123,"url":"http:\/\/yuguocong.cn\/posts\/cpp_primer_ch3\/","datePublished":"2017-06-04T17:55:33+08:00","dateModified":"2017-06-04T17:55:33+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="mianhk's notes">mianhk's notes</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="mianhk's notes">mianhk's notes</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
 </span>
 </div>
-<ul id=menu>
-<li>
-<a href=https://www.yuguocong.cn/posts/ title=文章>
-<span>文章</span>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
 </a>
-</li>
-<li>
-<a href=https://www.yuguocong.cn/archives/ title=归档>
-<span>归档</span>
-</a>
-</li>
-<li>
-<a href=https://www.yuguocong.cn/tags/ title=标签>
-<span>标签</span>
-</a>
-</li>
-<li>
-<a href=https://www.yuguocong.cn/search/ title=搜索>
-<span>搜索</span>
-</a>
-</li>
-</ul>
-</nav>
+</div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
 </header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
 <main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://www.yuguocong.cn/>Home</a>&nbsp;»&nbsp;<a href=https://www.yuguocong.cn/posts/>Posts</a></div>
-<h1 class=post-title>
-《c++primer》ch3 字符串、向量和数组
-</h1>
-<div class=post-meta>June 4, 2017&nbsp;·&nbsp;5 min&nbsp;·&nbsp;mianhk
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">《c++primer》ch3 字符串、向量和数组</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/c++/><i class="far fa-folder fa-fw"></i>C++</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2017-06-04>2017-06-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2123 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
 </div>
-</header> <div class=toc>
-<details>
-<summary accesskey=c title="(Alt + C)">
-<span class=details>Table of Contents</span>
-</summary>
-<div class=inner><ul>
-<li>
-<a href=#%e7%ac%ac3%e7%ab%a0-%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84 aria-label="第3章 字符串、向量和数组">第3章 字符串、向量和数组</a><ul>
-<li>
-<a href=#31-%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4%e7%9a%84using%e5%a3%b0%e6%98%8e aria-label="3.1 命名空间的using声明">3.1 命名空间的using声明</a><ul>
-<li>
-<a href=#%e6%af%8f%e4%b8%aa%e5%90%8d%e5%ad%97%e9%83%bd%e9%9c%80%e8%a6%81%e7%8b%ac%e7%ab%8b%e7%9a%84using%e5%a3%b0%e6%98%8e aria-label=每个名字都需要独立的using声明>每个名字都需要独立的using声明</a></li>
-<li>
-<a href=#%e5%a4%b4%e6%96%87%e4%bb%b6%e4%b8%ad%e4%b8%8d%e5%ba%94%e8%af%a5%e5%8c%85%e5%90%abusing%e5%a3%b0%e6%98%8e aria-label=头文件中不应该包含using声明>头文件中不应该包含using声明</a></li></ul>
-</li>
-<li>
-<a href=#32-%e6%a0%87%e5%87%86%e5%ba%93%e7%b1%bb%e5%9e%8bstring aria-label="3.2 标准库类型string">3.2 标准库类型string</a><ul>
-<li>
-<a href=#321-%e5%ae%9a%e4%b9%89%e5%92%8c%e5%88%9d%e5%a7%8b%e5%8c%96string%e5%af%b9%e8%b1%a1 aria-label="3.2.1 定义和初始化string对象">3.2.1 定义和初始化string对象</a></li>
-<li>
-<a href=#322-string%e5%af%b9%e8%b1%a1%e4%b8%8a%e7%9a%84%e6%93%8d%e4%bd%9c aria-label="3.2.2 string对象上的操作">3.2.2 string对象上的操作</a></li>
-<li>
-<a href=#stringsize_type%e7%b1%bb%e5%9e%8b aria-label=string:size_type类型>string:size_type类型</a></li>
-<li>
-<a href=#%e6%af%94%e8%be%83string%e5%af%b9%e8%b1%a1 aria-label=比较string对象>比较string对象</a></li>
-<li>
-<a href=#%e5%ad%97%e9%9d%a2%e5%80%bc%e5%92%8cstring%e7%b1%bb%e5%9e%8b%e7%9b%b8%e5%8a%a0 aria-label=字面值和string类型相加>字面值和string类型相加</a></li>
-<li>
-<a href=#ex33-string%e7%b1%bb%e7%9a%84%e8%be%93%e5%85%a5%e8%bf%90%e7%ae%97%e5%92%8cgetline%e5%87%bd%e6%95%b0%e5%88%86%e5%88%ab%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e5%ad%97%e7%ac%a6%e4%b8%b2 aria-label="ex3.3 string类的输入运算和getline函数分别如何处理字符串">ex3.3 string类的输入运算和getline函数分别如何处理字符串</a></li></ul>
-</li>
-<li>
-<a href=#33-%e6%a0%87%e5%87%86%e5%ba%93%e7%b1%bb%e5%9e%8bvector aria-label="3.3 标准库类型vector">3.3 标准库类型vector</a><ul>
-<li>
-<a href=#331-%e5%ae%9a%e4%b9%89%e5%92%8c%e5%88%9d%e5%a7%8b%e5%8c%96vector%e5%af%b9%e8%b1%a1 aria-label="3.3.1 定义和初始化vector对象">3.3.1 定义和初始化vector对象</a></li>
-<li>
-<a href=#332-%e5%83%8fvector%e4%b8%ad%e6%b7%bb%e5%8a%a0%e5%85%83%e7%b4%a0 aria-label="3.3.2 像vector中添加元素">3.3.2 像vector中添加元素</a></li></ul>
-</li>
-<li>
-<a href=#34-%e8%bf%ad%e4%bb%a3%e5%99%a8%e4%bb%8b%e7%bb%8d aria-label="3.4 迭代器介绍">3.4 迭代器介绍</a><ul>
-<li>
-<a href=#%e8%bf%ad%e4%bb%a3%e5%99%a8%e7%9a%84%e7%ae%97%e6%95%b0%e8%bf%90%e7%ae%97 aria-label=迭代器的算数运算>迭代器的算数运算</a></li></ul>
-</li>
-<li>
-<a href=#35-%e6%95%b0%e7%bb%84 aria-label="3.5 数组">3.5 数组</a><ul>
-<li>
-<a href=#351-%e5%ae%9a%e4%b9%89%e5%92%8c%e5%88%9d%e5%a7%8b%e5%8c%96%e6%95%b0%e7%bb%84 aria-label="3.5.1 定义和初始化数组">3.5.1 定义和初始化数组</a><ul>
-<li>
-<a href=#%e5%ad%97%e7%ac%a6%e6%95%b0%e7%bb%84%e7%9a%84%e7%89%b9%e6%ae%8a%e6%80%a7 aria-label=字符数组的特殊性>字符数组的特殊性</a></li>
-<li>
-<a href=#%e4%b8%8d%e5%85%81%e8%ae%b8%e6%8b%b7%e8%b4%9d%e5%92%8c%e8%b5%8b%e5%80%bc aria-label=不允许拷贝和赋值>不允许拷贝和赋值</a></li>
-<li>
-<a href=#%e5%a4%8d%e6%9d%82%e7%9a%84%e6%95%b0%e7%bb%84%e5%a3%b0%e6%98%8e aria-label=复杂的数组声明>复杂的数组声明</a></li></ul>
-</li>
-<li>
-<a href=#352-%e8%ae%bf%e9%97%ae%e6%95%b0%e7%bb%84%e5%85%83%e7%b4%a0 aria-label="3.5.2 访问数组元素">3.5.2 访问数组元素</a></li>
-<li>
-<a href=#353-%e6%8c%87%e9%92%88%e5%92%8c%e6%95%b0%e7%bb%84 aria-label="3.5.3 指针和数组">3.5.3 指针和数组</a><ul>
-<li>
-<a href=#%e6%8c%87%e9%92%88%e4%b9%9f%e6%98%af%e8%bf%ad%e4%bb%a3%e5%99%a8 aria-label=指针也是迭代器>指针也是迭代器</a></li>
-<li>
-<a href=#%e6%a0%87%e5%87%86%e5%ba%93%e5%87%bd%e6%95%b0begin%e5%92%8cend aria-label=标准库函数begin和end>标准库函数begin和end</a></li></ul>
-</li>
-<li>
-<a href=#354-c%e9%a3%8e%e6%a0%bc%e5%ad%97%e7%ac%a6%e4%b8%b2 aria-label="3.5.4 C风格字符串">3.5.4 C风格字符串</a></li>
-<li>
-<a href=#355-%e4%b8%8e%e6%97%a7%e4%bb%a3%e7%a0%81%e7%9a%84%e6%8e%a5%e5%8f%a3 aria-label="3.5.5 与旧代码的接口">3.5.5 与旧代码的接口</a><ul>
-<li>
-<a href=#%e6%b7%b7%e7%94%a8string%e5%af%b9%e8%b1%a1%e5%92%8cc%e9%a3%8e%e6%a0%bc%e5%ad%97%e7%ac%a6%e4%b8%b2 aria-label=混用string对象和C风格字符串>混用string对象和C风格字符串</a></li>
-<li>
-<a href=#%e4%bd%bf%e7%94%a8%e6%95%b0%e7%bb%84%e5%88%9d%e5%a7%8b%e5%8c%96vector%e5%af%b9%e8%b1%a1 aria-label=使用数组初始化vector对象>使用数组初始化vector对象</a></li></ul>
-</li></ul>
-</li>
-<li>
-<a href=#36-%e5%a4%9a%e7%bb%b4%e6%95%b0%e7%bb%84 aria-label="3.6 多维数组">3.6 多维数组</a>
-</li>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#31-命名空间的using声明>3.1 命名空间的using声明</a>
+<ul>
+<li><a href=#每个名字都需要独立的using声明>每个名字都需要独立的using声明</a></li>
+<li><a href=#头文件中不应该包含using声明>头文件中不应该包含using声明</a></li>
 </ul>
 </li>
+<li><a href=#32-标准库类型string>3.2 标准库类型string</a>
+<ul>
+<li><a href=#321-定义和初始化string对象>3.2.1 定义和初始化string对象</a></li>
+<li><a href=#322-string对象上的操作>3.2.2 string对象上的操作</a></li>
+<li><a href=#stringsize_type类型>string:size_type类型</a></li>
+<li><a href=#比较string对象>比较string对象</a></li>
+<li><a href=#字面值和string类型相加>字面值和string类型相加</a></li>
+<li><a href=#ex33-string类的输入运算和getline函数分别如何处理字符串>ex3.3 string类的输入运算和getline函数分别如何处理字符串</a></li>
 </ul>
-</div>
-</details>
-</div>
-<div class=post-content><h1 id=第3章-字符串向量和数组>第3章 字符串、向量和数组<a hidden class=anchor aria-hidden=true href=#第3章-字符串向量和数组>#</a></h1>
-<h2 id=31-命名空间的using声明>3.1 命名空间的using声明<a hidden class=anchor aria-hidden=true href=#31-命名空间的using声明>#</a></h2>
-<h3 id=每个名字都需要独立的using声明>每个名字都需要独立的using声明<a hidden class=anchor aria-hidden=true href=#每个名字都需要独立的using声明>#</a></h3>
-<h3 id=头文件中不应该包含using声明>头文件中不应该包含using声明<a hidden class=anchor aria-hidden=true href=#头文件中不应该包含using声明>#</a></h3>
+</li>
+<li><a href=#33-标准库类型vector>3.3 标准库类型vector</a>
+<ul>
+<li><a href=#331-定义和初始化vector对象>3.3.1 定义和初始化vector对象</a></li>
+<li><a href=#332-像vector中添加元素>3.3.2 像vector中添加元素</a></li>
+</ul>
+</li>
+<li><a href=#34-迭代器介绍>3.4 迭代器介绍</a>
+<ul>
+<li><a href=#迭代器的算数运算>迭代器的算数运算</a></li>
+</ul>
+</li>
+<li><a href=#35-数组>3.5 数组</a>
+<ul>
+<li><a href=#351-定义和初始化数组>3.5.1 定义和初始化数组</a></li>
+<li><a href=#352-访问数组元素>3.5.2 访问数组元素</a></li>
+<li><a href=#353-指针和数组>3.5.3 指针和数组</a></li>
+<li><a href=#354-c风格字符串>3.5.4 C风格字符串</a></li>
+<li><a href=#355-与旧代码的接口>3.5.5 与旧代码的接口</a></li>
+</ul>
+</li>
+<li><a href=#36-多维数组>3.6 多维数组</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h1 id=第3章-字符串向量和数组>第3章 字符串、向量和数组</h1>
+<h2 id=31-命名空间的using声明>3.1 命名空间的using声明</h2>
+<h3 id=每个名字都需要独立的using声明>每个名字都需要独立的using声明</h3>
+<h3 id=头文件中不应该包含using声明>头文件中不应该包含using声明</h3>
 <p>因为头文件的内容会拷贝到所有引用它的文件夹中去，如果头文件中有using声明，可能会产生始料未及的名字冲突。</p>
-<h2 id=32-标准库类型string>3.2 标准库类型string<a hidden class=anchor aria-hidden=true href=#32-标准库类型string>#</a></h2>
-<h3 id=321-定义和初始化string对象>3.2.1 定义和初始化string对象<a hidden class=anchor aria-hidden=true href=#321-定义和初始化string对象>#</a></h3>
+<h2 id=32-标准库类型string>3.2 标准库类型string</h2>
+<h3 id=321-定义和初始化string对象>3.2.1 定义和初始化string对象</h3>
 <pre tabindex=0><code>string s1;   //默认初始化
 string s2=s1;  //s2是s1的副本
 string s2(s1); //等价于string s2=s1,s2是s1的副本
 string s3=&quot;hiya&quot;;  //s3是字面值的副本，但是不包含字面值最后的那个空字符
 string s3(&quot;hiya&quot;);  //等价于string s3=&quot;hiya&quot;
 string s4(n,'c');  //把s4初始化为连续n个字符c组成的字符串
-</code></pre><h3 id=322-string对象上的操作>3.2.2 string对象上的操作<a hidden class=anchor aria-hidden=true href=#322-string对象上的操作>#</a></h3>
+</code></pre><h3 id=322-string对象上的操作>3.2.2 string对象上的操作</h3>
 <ul>
 <li>读写string对象</li>
 <li>读取未知数量的string对象</li>
 <li>使用getline读取一整行</li>
 <li>string的empty和size操作</li>
 </ul>
-<h3 id=stringsize_type类型>string:size_type类型<a hidden class=anchor aria-hidden=true href=#stringsize_type类型>#</a></h3>
+<h3 id=stringsize_type类型>string:size_type类型</h3>
 <p>size_type是一种无符号整形数，如果在表达式中混用了带符号数和无符号数会产生意想不到的后果。</p>
-<h3 id=比较string对象>比较string对象<a hidden class=anchor aria-hidden=true href=#比较string对象>#</a></h3>
+<h3 id=比较string对象>比较string对象</h3>
 <p>按字典顺序</p>
-<h3 id=字面值和string类型相加>字面值和string类型相加<a hidden class=anchor aria-hidden=true href=#字面值和string类型相加>#</a></h3>
+<h3 id=字面值和string类型相加>字面值和string类型相加</h3>
 <pre tabindex=0><code>//错误的方式
 string s=&quot;hello&quot;+&quot;,&quot; //错误，因为两个运算对象都不是string，不能把两个字面值直接相加
 string s1=&quot;hello&quot;+s1+&quot;,&quot; //正确
 </code></pre><p>** 字符串字面值与string是不同的类型 **</p>
-<h3 id=ex33-string类的输入运算和getline函数分别如何处理字符串>ex3.3 string类的输入运算和getline函数分别如何处理字符串<a hidden class=anchor aria-hidden=true href=#ex33-string类的输入运算和getline函数分别如何处理字符串>#</a></h3>
+<h3 id=ex33-string类的输入运算和getline函数分别如何处理字符串>ex3.3 string类的输入运算和getline函数分别如何处理字符串</h3>
 <p>string的标准输入：自动忽略字符串开头的空白，从第一个真正的字符开始读取，直到下一个空白为止
 getline函数：从给定的输入流中读取，直到遇到换行符为止。</p>
-<h2 id=33-标准库类型vector>3.3 标准库类型vector<a hidden class=anchor aria-hidden=true href=#33-标准库类型vector>#</a></h2>
+<h2 id=33-标准库类型vector>3.3 标准库类型vector</h2>
 <p>vector是一种类模板，需要后加一堆尖括号，在括号内放上信息。</p>
-<h3 id=331-定义和初始化vector对象>3.3.1 定义和初始化vector对象<a hidden class=anchor aria-hidden=true href=#331-定义和初始化vector对象>#</a></h3>
+<h3 id=331-定义和初始化vector对象>3.3.1 定义和初始化vector对象</h3>
 <ul>
 <li>1.使用拷贝初始化</li>
 <li>2.如果提供一个类内的初始值，只能使用拷贝初始化或者花括号形式初始化</li>
 <li>3.如果提供的是初始值元素值的列表，则只能使用花括号初始化，而不能使用圆括号</li>
 <li>4.创建指定数量的元素：采用圆括号</li>
 </ul>
-<h3 id=332-像vector中添加元素>3.3.2 像vector中添加元素<a hidden class=anchor aria-hidden=true href=#332-像vector中添加元素>#</a></h3>
+<h3 id=332-像vector中添加元素>3.3.2 像vector中添加元素</h3>
 <p>push_back：像一个值添加到vector的尾部。（如果开始不知道有多少元素，c++中，一般先创建一个空的vector然后像其中添加元素最好）
 不能使用下标形式添加元素，只能对确知已存在的元素执行下标操作。</p>
-<h2 id=34-迭代器介绍>3.4 迭代器介绍<a hidden class=anchor aria-hidden=true href=#34-迭代器介绍>#</a></h2>
+<h2 id=34-迭代器介绍>3.4 迭代器介绍</h2>
 <p>迭代器这个名词可能有三种不同的含义：可能是迭代器概念本身，可能是容器定义的类型，还可能指某个迭代器对象。
 某些对Vector对象的操作回事迭代器失效：一个是不能在范围for循环内向vector中添加元素，另一个是任何一种可能改变vector对象容量的操作，都有可能是vector对象的迭代器失效。</p>
-<h3 id=迭代器的算数运算>迭代器的算数运算<a hidden class=anchor aria-hidden=true href=#迭代器的算数运算>#</a></h3>
+<h3 id=迭代器的算数运算>迭代器的算数运算</h3>
 <p>可以令迭代器和一个整数值相加（或相减），其返回值是向前（或向后）移动了若干个位置的迭代器。
 迭代器之间的比较：参与比较的迭代器必须合法且指向同一个容器的元素（或者尾元素的下一个位置）</p>
-<h2 id=35-数组>3.5 数组<a hidden class=anchor aria-hidden=true href=#35-数组>#</a></h2>
+<h2 id=35-数组>3.5 数组</h2>
 <p>数组与vector的区别：数组的大小确定不变，不能随意像数组中添加元素。性能很好，但是损失了灵活性。</p>
-<h3 id=351-定义和初始化数组>3.5.1 定义和初始化数组<a hidden class=anchor aria-hidden=true href=#351-定义和初始化数组>#</a></h3>
+<h3 id=351-定义和初始化数组>3.5.1 定义和初始化数组</h3>
 <p>数组是一种复合类型，数组的维度必须是一个常量表达式。
 定义数组的时候必须指定数组的类型。同时，数组的元素应该为对象，不存在引用的数组。</p>
-<h4 id=字符数组的特殊性>字符数组的特殊性<a hidden class=anchor aria-hidden=true href=#字符数组的特殊性>#</a></h4>
+<h4 id=字符数组的特殊性>字符数组的特殊性</h4>
 <pre tabindex=0><code>char a1[]={'C','+','+'};  //列表初始化，没有空字符
 char a2[]={'C','+','+'};  //列表初始化，含有显式的空字符
 char a3[]=&quot;C++&quot;;   //自动添加表示字符串结束的空字符
-</code></pre><h4 id=不允许拷贝和赋值>不允许拷贝和赋值<a hidden class=anchor aria-hidden=true href=#不允许拷贝和赋值>#</a></h4>
-<h4 id=复杂的数组声明>复杂的数组声明<a hidden class=anchor aria-hidden=true href=#复杂的数组声明>#</a></h4>
+</code></pre><h4 id=不允许拷贝和赋值>不允许拷贝和赋值</h4>
+<h4 id=复杂的数组声明>复杂的数组声明</h4>
 <p>** 要想理解数组的声明的含义，最好的办法是从数组的名字开始按照由内向外的顺序阅读 **</p>
 <pre tabindex=0><code>int &amp;refs[10]=...  //  错误！不存在数组的引用
 int (*Parray)[10]=&amp;arr; //Parray指向一个含有10个整数的数组
 int (&amp;arrRef)[10]=arr   //arrRef引用一个含有10个整数的数组
 int *ptrs[10];  //ptrs是一个含有10个整型指针的数组
-</code></pre><h3 id=352-访问数组元素>3.5.2 访问数组元素<a hidden class=anchor aria-hidden=true href=#352-访问数组元素>#</a></h3>
+</code></pre><h3 id=352-访问数组元素>3.5.2 访问数组元素</h3>
 <ul>
 <li>数组下标为** size_t类型 **，是一种机器相关的无符号类型。</li>
 </ul>
-<h3 id=353-指针和数组>3.5.3 指针和数组<a hidden class=anchor aria-hidden=true href=#353-指针和数组>#</a></h3>
+<h3 id=353-指针和数组>3.5.3 指针和数组</h3>
 <p>使用数组的时候编译器一般会把它转化成指针</p>
-<h4 id=指针也是迭代器>指针也是迭代器<a hidden class=anchor aria-hidden=true href=#指针也是迭代器>#</a></h4>
+<h4 id=指针也是迭代器>指针也是迭代器</h4>
 <p>允许使用递增运算符将指向数组元素的指针向前移动到下一个位置上</p>
-<h4 id=标准库函数begin和end>标准库函数begin和end<a hidden class=anchor aria-hidden=true href=#标准库函数begin和end>#</a></h4>
-<h3 id=354-c风格字符串>3.5.4 C风格字符串<a hidden class=anchor aria-hidden=true href=#354-c风格字符串>#</a></h3>
+<h4 id=标准库函数begin和end>标准库函数begin和end</h4>
+<h3 id=354-c风格字符串>3.5.4 C风格字符串</h3>
 <p>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。
 C风格字符串和字符数组的关系，尤其需要考虑串尾是否含有空字符。
 ** 问题：为什么没有指针相加？ **
 指着也是一个对象，与指针有关的属性有三个，分别是指针的值（是一个内存地址值）、指针所指的对象、指针本身在内存中的存储位置。显然把两个地址加在一起是没有意义的。</p>
-<h3 id=355-与旧代码的接口>3.5.5 与旧代码的接口<a hidden class=anchor aria-hidden=true href=#355-与旧代码的接口>#</a></h3>
-<h4 id=混用string对象和c风格字符串>混用string对象和C风格字符串<a hidden class=anchor aria-hidden=true href=#混用string对象和c风格字符串>#</a></h4>
+<h3 id=355-与旧代码的接口>3.5.5 与旧代码的接口</h3>
+<h4 id=混用string对象和c风格字符串>混用string对象和C风格字符串</h4>
 <ul>
 <li>允许使用以空字符结束的字符数组来初始化string对象或为string对象赋值</li>
 <li>在string对象的加法运算中允许使用以空字符结束的字符数组作为其中一个运算对象（但不能两个都是）；在string对象的赋值运算中允许以空字符串结束的字符数组作为右侧的运算对象。</li>
 </ul>
-<h4 id=使用数组初始化vector对象>使用数组初始化vector对象<a hidden class=anchor aria-hidden=true href=#使用数组初始化vector对象>#</a></h4>
+<h4 id=使用数组初始化vector对象>使用数组初始化vector对象</h4>
 <p>允许使用数组初始化vector对象，只需要指明拷贝区域的首元素地址和尾后地址即可。但不能使用一个数组为另一个内置类型的数组赋初值，也不能使用vector对象初始化数组。</p>
-<h2 id=36-多维数组>3.6 多维数组<a hidden class=anchor aria-hidden=true href=#36-多维数组>#</a></h2>
+<h2 id=36-多维数组>3.6 多维数组</h2>
 <p>严格来说，C++语言中没有多维数组，通常所说的多维数组其实是数组的数组。
 当一个数组的元素仍然是数组时，通常使用两个维度来定义它：一个维度表示数组本身大小，另一个维度表示其元素（也是数组）大小。</p>
 <pre tabindex=0><code>int ia[3][4] //大小为3的数组，每个元素是含有4个整数的数组
-</code></pre>
+</code></pre></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2017-06-04</span>
 </div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://www.yuguocong.cn/tags/c++/>C++</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://www.yuguocong.cn/posts/cpp_primer_ch2/>
-<span class=title>« </span>
-<br>
-<span>《c++primer》ch2 变量和基本类型</span>
-</a>
-<a class=next href=https://www.yuguocong.cn/posts/hexo+gitpage/>
-<span class=title> »</span>
-<br>
-<span>使用gitpage+Hexo搭建自己的博客</span>
-</a>
-</nav>
-<div class=share-buttons>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《c++primer》ch3 字符串、向量和数组 on twitter" href="https://twitter.com/intent/tweet/?text=%e3%80%8ac%2b%2bprimer%e3%80%8bch3%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%81%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84&url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f&hashtags=C%2b%2b"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《c++primer》ch3 字符串、向量和数组 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f&title=%e3%80%8ac%2b%2bprimer%e3%80%8bch3%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%81%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84&summary=%e3%80%8ac%2b%2bprimer%e3%80%8bch3%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%81%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84&source=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《c++primer》ch3 字符串、向量和数组 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f&title=%e3%80%8ac%2b%2bprimer%e3%80%8bch3%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%81%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《c++primer》ch3 字符串、向量和数组 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《c++primer》ch3 字符串、向量和数组 on whatsapp" href="https://api.whatsapp.com/send?text=%e3%80%8ac%2b%2bprimer%e3%80%8bch3%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%81%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84%20-%20https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
-</a>
-<a target=_blank rel="noopener noreferrer" aria-label="share 《c++primer》ch3 字符串、向量和数组 on telegram" href="https://telegram.me/share/url?text=%e3%80%8ac%2b%2bprimer%e3%80%8bch3%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%81%e5%90%91%e9%87%8f%e5%92%8c%e6%95%b0%e7%bb%84&url=https%3a%2f%2fwww.yuguocong.cn%2fposts%2fcpp_primer_ch3%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
-</a>
+<div class=post-info-license></div>
 </div>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://www.yuguocong.cn/>mianhk's notes</a></span>
-<span>
-Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+<div class=post-info-line>
+<div class=post-info-md></div>
+<div class=post-info-share>
+<span></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/c++/>C++</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/posts/hexo+gitpage/ class=prev rel=prev title=使用gitpage+Hexo搭建自己的博客><i class="fas fa-angle-left fa-fw"></i>使用gitpage+Hexo搭建自己的博客</a>
+<a href=/posts/cpp_primer_ch2/ class=next rel=next title="《c++primer》ch2 变量和基本类型">《c++primer》ch2 变量和基本类型<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
 </a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
+</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
 </html>
