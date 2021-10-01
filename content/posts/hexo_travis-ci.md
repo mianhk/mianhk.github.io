@@ -2,7 +2,7 @@
 title = "Travis CI 自动部署博客"
 date = "2018-10-26T14:44:30+08:00"
 update = 2018-10-26T14:44:34Z
-categories = "工具"
+categories = ["工具"]
 tags = ["博客", "折腾"]
 description = ""
 +++

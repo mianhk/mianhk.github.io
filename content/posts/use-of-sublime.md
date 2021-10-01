@@ -2,7 +2,7 @@
 title = "Sublime Text3使用总结"
 date = "2018-04-24T20:43:43+08:00"
 update = 2018-04-24T20:43:39Z
-categories = "工具"
+categories = ["工具"]
 tags = ["工具", "折腾"]
 description = ""
 +++

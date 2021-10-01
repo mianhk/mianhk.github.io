@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-23-Merge-k-Sorted-Lists"
 date = "2018-01-11T22:23:23+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

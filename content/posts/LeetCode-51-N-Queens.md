@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-51-N-Queens"
 date = "2018-01-26T10:12:49+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

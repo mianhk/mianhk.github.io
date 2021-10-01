@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-15-3Sum&&4Sum"
 date = "2018-01-10T21:57:08+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

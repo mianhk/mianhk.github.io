@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-34-Search-for-a-Range"
 date = "2018-01-14T21:52:38+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

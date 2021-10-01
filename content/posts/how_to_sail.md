@@ -2,7 +2,7 @@
 title = "不知道怎么开的船？"
 date = "2017-09-25T23:36:13+08:00"
 tags = ["杂想"]
-categories = "生活"
+categories = ["生活"]
 description = ""
 +++
 

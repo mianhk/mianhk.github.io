@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-19-Remove-Nth-Node-From-End-of-List"
 date = "2018-01-12T17:25:23+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

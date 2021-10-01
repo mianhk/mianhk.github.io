@@ -2,7 +2,7 @@
 title = "一文总结计算机网络"
 date = "2018-04-10T20:24:59+08:00"
 updates = 2018-04-10T20:24:59Z
-categories = "网络"
+categories = ["面试经验"]
 tags = ["网络"]
 description = ""
 +++

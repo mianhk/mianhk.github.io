@@ -2,7 +2,7 @@
 title = "ubuntu自动push到github脚本"
 date = "2018-05-24T20:20:43+08:00"
 updates = 2018-05-24T20:20:46Z
-categories = "工具"
+categories = ["工具"]
 tags = ["工具"]
 description = ""
 +++

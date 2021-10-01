@@ -1,7 +1,7 @@
 +++
 title = "《c++primer》ch6 函数"
 date = "2017-06-05T17:55:33+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 toc = true
 description = ""

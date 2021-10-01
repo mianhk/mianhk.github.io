@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-49-Group-Anagrams"
 date = "2018-01-25T21:44:37+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

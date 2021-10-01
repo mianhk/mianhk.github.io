@@ -1,7 +1,7 @@
 +++
 title = "面试总结-操作系统"
 date = "2018-06-24T22:03:43+08:00"
-categories = "面试经验"
+categories = ["面试经验"]
 tags = ["面试", "操作系统", "工作", "Linux"]
 description = ""
 +++

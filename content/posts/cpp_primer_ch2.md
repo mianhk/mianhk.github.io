@@ -1,7 +1,7 @@
 +++
 title = "《c++primer》ch2 变量和基本类型"
 date = "2017-06-04T17:55:33+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 toc = true
 description = ""

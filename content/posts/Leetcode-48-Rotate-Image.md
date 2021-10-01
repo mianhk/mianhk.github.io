@@ -1,7 +1,7 @@
 +++
 title = "Leetcode-48-Rotate-Image"
 date = "2018-01-25T20:44:32+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

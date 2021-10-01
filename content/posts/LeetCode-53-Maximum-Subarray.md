@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-53-Maximum-Subarray"
 date = "2018-01-26T17:57:03+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

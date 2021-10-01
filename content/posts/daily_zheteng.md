@@ -2,7 +2,7 @@
 title = "日常折腾日记"
 date = "2018-04-25T11:49:56+08:00"
 update = 2018-04-25T11:49:56Z
-categories = "工具"
+categories = ["工具"]
 tags = ["博客", "资源", "收集"]
 description = ""
 +++

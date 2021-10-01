@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-56and57-Merge-Intervals"
 date = "2018-01-30T16:00:00+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

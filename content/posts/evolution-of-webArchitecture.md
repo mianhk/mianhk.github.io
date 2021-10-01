@@ -1,7 +1,7 @@
 +++
 title = "大型网站架构技术-演化"
 date = "2018-02-03T13:43:26+08:00"
-categories = "服务器"
+categories = ["服务器"]
 tags = ["后台开发", "大型网站技术", "架构"]
 description = ""
 +++

@@ -1,7 +1,7 @@
 +++
 title = "《c++primer》ch15-面向对象程序设计"
 date = "2017-09-19T12:44:24+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 description = ""
 +++

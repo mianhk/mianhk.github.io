@@ -1,7 +1,7 @@
 +++
 title = "20天学习Java视频笔记"
 date = "2017-03-09T12:55:17+08:00"
-categories = "Java"
+categories = ["other"]
 tags = ["Java"]
 description = ""
 +++

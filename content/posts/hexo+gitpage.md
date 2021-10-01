@@ -1,7 +1,7 @@
 +++
 title = "使用gitpage+Hexo搭建自己的博客"
 date = "2017-05-31T08:55:29+08:00"
-categories = "工具"
+categories = ["工具"]
 toc = true
 description = ""
 +++

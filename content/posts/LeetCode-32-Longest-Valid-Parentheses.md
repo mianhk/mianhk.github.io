@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-32-Longest-Valid-Parentheses"
 date = "2018-01-12T17:28:31+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

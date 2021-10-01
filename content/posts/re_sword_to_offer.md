@@ -1,7 +1,7 @@
 +++
 title = "剑指offer-刷题总结"
 date = "2018-06-20T21:40:02+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode", "剑指offer"]
 description = ""
 +++

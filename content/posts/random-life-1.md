@@ -2,7 +2,7 @@
 title = "一个可能很熟悉的周末"
 date = "2017-11-26T21:12:29+08:00"
 tags = ["杂想"]
-categories = "生活"
+categories = ["生活"]
 description = ""
 +++
 

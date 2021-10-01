@@ -1,7 +1,7 @@
 +++
 title = "服务器-Nginx模块化结构"
 date = "2018-01-25T11:52:30+08:00"
-categories = "服务器"
+categories = ["服务器"]
 tags = ["后台开发", "Linux", "Nginx"]
 description = ""
 +++

@@ -1,7 +1,7 @@
 +++
 title = "牛客网-剑指offer-10"
 date = "2017-12-01T21:11:56+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "剑指offer", "牛客网"]
 description = ""
 +++

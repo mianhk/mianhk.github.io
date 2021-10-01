@@ -1,7 +1,7 @@
 +++
 title = "《redis 设计与实现》--总结"
 date = "2018-06-19T18:50:41+08:00"
-categories = "Linux"
+categories = ["other"]
 tags = ["Linux", "后台开发", "Redis", "Nosql"]
 description = ""
 +++

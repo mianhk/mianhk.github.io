@@ -1,7 +1,7 @@
 +++
 title = "腾讯云服务器Linux挖比特币"
 date = "2018-01-19T22:56:59+08:00"
-categories = "工具"
+categories = ["工具"]
 tags = ["工具"]
 description = ""
 +++

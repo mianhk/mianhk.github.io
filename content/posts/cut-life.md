@@ -1,7 +1,7 @@
 +++
 title = "精剪生活"
 date = "2017-12-10T19:57:26+08:00"
-categories = "生活"
+categories = ["生活"]
 tags = ["杂想", "记录"]
 description = ""
 +++

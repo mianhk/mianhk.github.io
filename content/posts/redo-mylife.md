@@ -2,7 +2,7 @@
 title = "阶段性生活思考"
 date = "2018-04-24T20:40:26+08:00"
 update = 2018-05-13T21:11:10Z
-categories = "随笔"
+categories = ["other"]
 tags = ["随笔", "生活"]
 description = ""
 +++

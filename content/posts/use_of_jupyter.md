@@ -2,7 +2,7 @@
 title = "jupyter-notebook安装和问题解决"
 date = "2018-04-26T11:36:57+08:00"
 update = 2018-04-26T11:37:00Z
-categories = "Linux"
+categories = ["other"]
 tags = ["Linux", "工具", "jupyter", "笔记"]
 description = ""
 +++

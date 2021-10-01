@@ -1,7 +1,7 @@
 +++
 title = "《effective C++》from line 1 to line 12"
 date = "2017-10-09T19:16:31+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 description = ""
 +++

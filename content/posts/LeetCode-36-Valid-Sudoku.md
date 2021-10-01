@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-36-Valid-Sudoku"
 date = "2018-01-14T21:53:42+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

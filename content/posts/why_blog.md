@@ -2,7 +2,7 @@
 title = "我为什么写博客？"
 date = "2017-05-15T19:56:31+08:00"
 type = "tags"
-categories = "生活"
+categories = ["生活"]
 tags = ["日常"]
 description = ""
 +++

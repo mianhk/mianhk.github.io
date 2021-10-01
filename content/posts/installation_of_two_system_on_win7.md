@@ -1,7 +1,7 @@
 +++
 title = "win7下安装Ubuntu双系统"
 date = "2017-10-22T22:37:21+08:00"
-categories = "工具"
+categories = ["工具"]
 tags = ["工具"]
 description = ""
 +++

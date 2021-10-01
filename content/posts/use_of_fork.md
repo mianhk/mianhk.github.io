@@ -1,7 +1,7 @@
 +++
 title = "Linux的fork使用"
 date = "2018-03-15T22:48:01+08:00"
-categories = "Linux"
+categories = ["other"]
 tags = ["Linux", "后台开发"]
 description = ""
 +++

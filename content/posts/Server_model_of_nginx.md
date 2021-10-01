@@ -1,7 +1,7 @@
 +++
 title = "服务器-Nginx的事件驱动模型"
 date = "2018-01-25T15:49:39+08:00"
-categories = "服务器"
+categories = ["服务器"]
 tags = ["后台开发", "Linux", "Nginx"]
 description = ""
 +++

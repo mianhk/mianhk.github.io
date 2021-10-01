@@ -1,7 +1,7 @@
 +++
 title = "《c++primer》ch14 重载运算符和类型转换"
 date = "2017-09-14T11:55:33+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 toc = true
 description = ""

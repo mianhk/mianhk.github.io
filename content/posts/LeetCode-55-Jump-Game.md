@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-55-Jump-Game"
 date = "2018-01-30T15:39:55+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

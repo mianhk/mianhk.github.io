@@ -1,7 +1,7 @@
 +++
 title = "《c++primer》ch16 模板与泛型编程"
 date = "2017-09-19T12:47:04+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 description = ""
 +++

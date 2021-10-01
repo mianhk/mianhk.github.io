@@ -2,7 +2,7 @@
 title = "我看的电影"
 date = "2017-11-12T20:27:30+08:00"
 update = 2017-12-03T20:27:30Z
-categories = "生活"
+categories = ["生活"]
 tags = ["娱乐", "记录"]
 description = ""
 +++

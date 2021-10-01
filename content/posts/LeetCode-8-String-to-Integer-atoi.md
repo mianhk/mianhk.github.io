@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-8-String to Integer (atoi)"
 date = "2018-01-09T22:24:41+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

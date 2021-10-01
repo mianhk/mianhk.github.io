@@ -1,7 +1,7 @@
 +++
 title = "我的专业书阅读"
 date = "2017-11-12T20:47:37+08:00"
-categories = "C++"
+categories = ["C++"]
 tags = ["C++"]
 description = ""
 +++

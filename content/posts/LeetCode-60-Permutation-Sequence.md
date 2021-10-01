@@ -1,7 +1,7 @@
 +++
 title = "LeetCode-60-Permutation-Sequence"
 date = "2018-02-06T17:32:24+08:00"
-categories = "刷题"
+categories = ["刷题"]
 tags = ["C++", "LeetCode"]
 description = ""
 +++

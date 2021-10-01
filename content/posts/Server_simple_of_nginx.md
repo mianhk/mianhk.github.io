@@ -1,7 +1,7 @@
 +++
 title = "服务器-Nginx基础配置"
 date = "2018-01-24T20:50:05+08:00"
-categories = "服务器"
+categories = ["服务器"]
 tags = ["后台开发", "Linux", "Nginx"]
 description = ""
 +++
