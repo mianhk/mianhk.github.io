@@ -1,119 +1,23 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="noodp">
-<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>go语言基础学习(4) - mianhk's notes</title><meta name=Description content><meta property="og:title" content="go语言基础学习(4)">
-<meta property="og:description" content="类型别名 type S string 与 type S = string 区别？ type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。 而 type S = string 只是一种别名，可以理解为，S">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-07-04T11:47:16+08:00">
-<meta property="article:modified_time" content="2019-07-04T11:47:16+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="go语言基础学习(4)">
-<meta name=twitter:description content="类型别名 type S string 与 type S = string 区别？ type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。 而 type S = string 只是一种别名，可以理解为，S">
-<meta name=application-name content="LoveIt">
-<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/><link rel=prev href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/><link rel=next href=http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"go语言基础学习(4)","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04\/"},"genre":"posts","wordcount":2884,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04\/","datePublished":"2019-07-04T11:47:16+08:00","dateModified":"2019-07-04T11:47:16+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
-<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
-<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu>
-<div class=menu-inner><a class=menu-item href=/> 主页 </a><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>go语言基础学习(4) - mianhk's notes</title><meta name=Description content><meta property="og:title" content="go语言基础学习(4)"><meta property="og:description" content="类型别名 type S string 与 type S = string 区别？ type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。 而 type S = string 只是一种别名，可以理解为，S"><meta property="og:type" content="article"><meta property="og:url" content="http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-07-04T11:47:16+08:00"><meta property="article:modified_time" content="2019-07-04T11:47:16+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="go语言基础学习(4)"><meta name=twitter:description content="类型别名 type S string 与 type S = string 区别？ type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。 而 type S = string 只是一种别名，可以理解为，S"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/><link rel=prev href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/><link rel=next href=http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"go语言基础学习(4)","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04\/"},"genre":"posts","wordcount":2884,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04\/","datePublished":"2019-07-04T11:47:16+08:00","dateModified":"2019-07-04T11:47:16+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":''==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:''==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>主页 </a><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a>
-</div>
-</div>
-</div>
-</header><header class=mobile id=header-mobile>
-<div class=header-container>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu-toggle id=menu-toggle-mobile>
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class=menu id=menu-mobile><div class=search-wrapper>
-<div class="search mobile" id=search-mobile>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</div>
-<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
-取消
-</a>
-</div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a></div>
-</div>
-</header>
-<div class="search-dropdown desktop">
-<div id=search-dropdown-desktop></div>
-</div>
-<div class="search-dropdown mobile">
-<div id=search-dropdown-mobile></div>
-</div>
-<main class=main>
-<div class=container><div class=toc id=toc-auto>
-<h2 class=toc-title>目录</h2>
-<div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">go语言基础学习(4)</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-07-04>2019-07-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2884 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept>
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
-</div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
-<ul>
-<li><a href=#tips>Tips</a></li>
-</ul>
-</nav></div>
-</div><div class=content id=content><ol>
-<li>类型别名
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">go语言基础学习(4)</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-07-04>2019-07-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2884 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#tips>Tips</a></li></ul></nav></div></div><div class=content id=content><ol><li>类型别名
 type S string 与
-type S = string 区别？</li>
-</ol>
-<p>type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。
-而 type S = string 只是一种别名，可以理解为，S 和 String 是完全一样的，只是换了一种叫法而已。类型别名和原类型方法是一样的。也不能在 Switch 中使用两者同时作为分支。</p>
-<ol start=2>
-<li>go 语言中没有按地址传递，可以深究一下如何传递 slice，再回复到邮件中</li>
-</ol>
-<p>Go 语言中只有按值传递，通过源码可以看到，slice 是一个结构体。结构体中包括真正的数组和长度以及容量。</p>
-<pre tabindex=0><code>type slice struct {
+type S = string 区别？</li></ol><p>type S string 是类型声明，S 是一种新的类型，给 S 定义的方法，接口等和 string 没有关系。
+而 type S = string 只是一种别名，可以理解为，S 和 String 是完全一样的，只是换了一种叫法而已。类型别名和原类型方法是一样的。也不能在 Switch 中使用两者同时作为分支。</p><ol start=2><li>go 语言中没有按地址传递，可以深究一下如何传递 slice，再回复到邮件中</li></ol><p>Go 语言中只有按值传递，通过源码可以看到，slice 是一个结构体。结构体中包括真正的数组和长度以及容量。</p><pre tabindex=0><code>type slice struct {
 	array unsafe.Pointer
 	len   int
 	cap   int
 }
-</code></pre><p>函数传递 slice 时，其实传递的 slice 结构体，其中包括 array 的首地址、len 和 cap。通过下面的代码可以有以下的结果:</p>
-<pre tabindex=0><code>func add_slice(a []int){
+</code></pre><p>函数传递 slice 时，其实传递的 slice 结构体，其中包括 array 的首地址、len 和 cap。通过下面的代码可以有以下的结果:</p><pre tabindex=0><code>func add_slice(a []int){
 	a[0]=2
 	a[1]=3
 	return
@@ -141,24 +45,23 @@ func main(){
 }
 </code></pre><p>只是改变 slice 内部的值时，看起来像是按引用传递，因为可以改变 slice 内的值，但是实际上是在参数传递的过程中，传递了 array 的首地址，而 slice 在内存中是一连串的地址，所以知道首地址就可以修改整个数组内部的值。
     但是由于是按值传递，所以不能在函数内对 slice 进行 append。如果需要改变 slice 的长度，可以通过传入 slice 的指针。
-    由于 slice 传递的形式，需要在编程中多多注意，避免进坑。另外看到一个关于传递 slice 的操作，加深了一下对 slice 传参的理解。</p>
-<pre tabindex=0><code>func main() {
+    由于 slice 传递的形式，需要在编程中多多注意，避免进坑。另外看到一个关于传递 slice 的操作，加深了一下对 slice 传参的理解。</p><pre tabindex=0><code>func main() {
 	a := []int{7,8,9}
 	b:=[]int{}
 	b=append(b,1,2,3)  //a,b初始化的方式不一样，导致两者的cap不一样
 
-	fmt.Printf(&quot;a len: %d cap:%d data:%+v\n&quot;, len(a), cap(a), a)  //a len: 3 cap:3 data:[7 8 9]
-	fmt.Printf(&quot;b len: %d cap:%d data:%+v\n&quot;, len(b), cap(b), b)  //b len: 3 cap:4 data:[1 2 3]
+	fmt.Printf(&#34;a len: %d cap:%d data:%+v\n&#34;, len(a), cap(a), a)  //a len: 3 cap:3 data:[7 8 9]
+	fmt.Printf(&#34;b len: %d cap:%d data:%+v\n&#34;, len(b), cap(b), b)  //b len: 3 cap:4 data:[1 2 3]
 
 	append_slice(a)    //显然append是没有效果的
-	fmt.Printf(&quot;a len: %d cap:%d data:%+v\n&quot;, len(a), cap(a), a)
+	fmt.Printf(&#34;a len: %d cap:%d data:%+v\n&#34;, len(a), cap(a), a)
 	p := unsafe.Pointer(&amp;a[2])  //根据slice在内存的连续性，拿到最后一位的指针地址
 	q := uintptr(p)+8           //将指针往后移一位，因为是int，所以是8
 	t := (*int)(unsafe.Pointer(q))
 	fmt.Println(*t)             //输出0
 
 	append_slice(b)
-	fmt.Printf(&quot;b len: %d cap:%d data:%+v\n&quot;, len(b), cap(b), b)
+	fmt.Printf(&#34;b len: %d cap:%d data:%+v\n&#34;, len(b), cap(b), b)
 	p1 := unsafe.Pointer(&amp;b[2])
 	q1 := uintptr(p1)+8
 	t1 := (*int)(unsafe.Pointer(q1))
@@ -168,18 +71,14 @@ func main(){
 func append_slice(a []int) {
 	a = append(a, 10)
 }
-</code></pre><p>可以看到，直接 append 到 slice 的值，如果 cap 够的话，是会 append 上的，但是由于 len 的值没有改变，所以看不到，可以通过 unsafe 指针观察到结果。但是如果 cap 不够，继续 append，会导致重新分配内存空间，append 在新的位置上，此时通过 unsafe 指针也拿不到 append 的值。</p>
-<ol start=3>
-<li>关于函数的执行顺序：</li>
-</ol>
-<pre tabindex=0><code>func add1(x,y int) int{
-	fmt.Println(&quot;in add1. sum1= &quot;,x,y)
+</code></pre><p>可以看到，直接 append 到 slice 的值，如果 cap 够的话，是会 append 上的，但是由于 len 的值没有改变，所以看不到，可以通过 unsafe 指针观察到结果。但是如果 cap 不够，继续 append，会导致重新分配内存空间，append 在新的位置上，此时通过 unsafe 指针也拿不到 append 的值。</p><ol start=3><li>关于函数的执行顺序：</li></ol><pre tabindex=0><code>func add1(x,y int) int{
+	fmt.Println(&#34;in add1. sum1= &#34;,x,y)
 	return x+y
 }
 func add(x,y,z,t int) int{
 	sum:=0
 	sum=add1(x,y)+add1(z,t)
-	fmt.Println(&quot;in add. sum=&quot;,sum)
+	fmt.Println(&#34;in add. sum=&#34;,sum)
 	return sum
 }
 
@@ -195,55 +94,8 @@ in add1. sum1=  2 3
 in add1. sum1=  4 5
 in add. sum= 14
 10 14
-</code></pre><p>可以看到，add1 的结果是最先执行的，再执行 add，最后才执行 fmt.Println（）.是按后序遍历的顺序。</p>
-<h1 id=go-语言学习>go 语言学习</h1>
-<ul>
-<li>命名返回值:没有参数的  return  语句返回已命名的返回值</li>
-<li>println 的执行顺序。会先把函数计算结束之后，再按照顺序输出</li>
-<li>没有条件的 switch 同  <code>switch true</code>  一样。</li>
-<li>defer 函数调用会被压入一个栈中，所以后 defer 的值会先输出</li>
-<li>结构体指针的使用：修改结构体指针的值时，不需要带*号。</li>
-<li>数组定义的几种方式</li>
-</ul>
-<h1 id=关于切片>关于切片</h1>
-<ul>
-<li>
-<p>切片就像数组的引用，改变切片会改变底层的值</p>
-</li>
-<li>
-<p>切片的默认行为，可以不写完全部的上下限，因为切片默认有上下限</p>
-</li>
-<li>
-<p>只是截取切片是不会改变切片大小的</p>
-</li>
-<li>
-<p>切片的长度就是它所包含的元素个数。</p>
-</li>
-<li>
-<p>切片的容量是从它的第一个元素开始数，到其底层数组元素末尾的个数</p>
-</li>
-<li>
-<p>切片的零值是  <code>nil</code></p>
-</li>
-<li>
-<p>函数的闭包</p>
-</li>
-<li>
-<p>接收者的类型定义和方法声明必须在同一包内；不能为内建类型声明方法，可以定义别名，<code>**type **MyFloat float64</code></p>
-</li>
-</ul>
-<h1 id=关于方法和接口>关于方法和接口</h1>
-<ul>
-<li>
-<p>指针参数的函数必须接受一个指针,而以指针为接收者的方法被调用时，接收者既能为值又能为指针</p>
-</li>
-<li>
-<p>跟 C++中一样，使用指针接收者可以修改接收者指向的值；另外，可以避免每次在调用方法时复制该值。</p>
-<p>1.函数执行顺序是否是后序遍历的方式，可以再嵌套一层方法试试？ 画个调用树出来看看？
-我在网上没有找到相关的解释，就自己查看了 fmt.Println()函数的源码，会先调用 Fprintln 函数，而 Fprintln 会先执行传入的函数，存在 p 的 buf 中，之后转换成 string 再打印。</p>
-</li>
-</ul>
-<pre tabindex=0><code>func Println(a ...interface{}) (n int, err error) {
+</code></pre><p>可以看到，add1 的结果是最先执行的，再执行 add，最后才执行 fmt.Println（）.是按后序遍历的顺序。</p><h1 id=go-语言学习>go 语言学习</h1><ul><li>命名返回值:没有参数的  return  语句返回已命名的返回值</li><li>println 的执行顺序。会先把函数计算结束之后，再按照顺序输出</li><li>没有条件的 switch 同  <code>switch true</code>  一样。</li><li>defer 函数调用会被压入一个栈中，所以后 defer 的值会先输出</li><li>结构体指针的使用：修改结构体指针的值时，不需要带*号。</li><li>数组定义的几种方式</li></ul><h1 id=关于切片>关于切片</h1><ul><li><p>切片就像数组的引用，改变切片会改变底层的值</p></li><li><p>切片的默认行为，可以不写完全部的上下限，因为切片默认有上下限</p></li><li><p>只是截取切片是不会改变切片大小的</p></li><li><p>切片的长度就是它所包含的元素个数。</p></li><li><p>切片的容量是从它的第一个元素开始数，到其底层数组元素末尾的个数</p></li><li><p>切片的零值是  <code>nil</code></p></li><li><p>函数的闭包</p></li><li><p>接收者的类型定义和方法声明必须在同一包内；不能为内建类型声明方法，可以定义别名，<code>**type **MyFloat float64</code></p></li></ul><h1 id=关于方法和接口>关于方法和接口</h1><ul><li><p>指针参数的函数必须接受一个指针,而以指针为接收者的方法被调用时，接收者既能为值又能为指针</p></li><li><p>跟 C++中一样，使用指针接收者可以修改接收者指向的值；另外，可以避免每次在调用方法时复制该值。</p><p>1.函数执行顺序是否是后序遍历的方式，可以再嵌套一层方法试试？ 画个调用树出来看看？
+我在网上没有找到相关的解释，就自己查看了 fmt.Println()函数的源码，会先调用 Fprintln 函数，而 Fprintln 会先执行传入的函数，存在 p 的 buf 中，之后转换成 string 再打印。</p></li></ul><pre tabindex=0><code>func Println(a ...interface{}) (n int, err error) {
 	return Fprintln(os.Stdout, a...)
 }
 func Sprintln(a ...interface{}) string {
@@ -253,9 +105,8 @@ func Sprintln(a ...interface{}) string {
 	p.free()
 	return s
 }
-</code></pre><p>同时也重新把打印语句加复杂了一下，结果与预期相符。</p>
-<pre tabindex=0><code>package main
-import &quot;fmt&quot;
+</code></pre><p>同时也重新把打印语句加复杂了一下，结果与预期相符。</p><pre tabindex=0><code>package main
+import &#34;fmt&#34;
 func add(x,y int) int{
 	sum:=x+y
 	fmt.Println(sum)
@@ -271,11 +122,8 @@ func main(){
 12
 9
 3 12 9
-</code></pre><ol start=2>
-<li>切片的增长为什么是 20，是否在大于 1024 或某个值时，有其他的增长方法？ 比如 增加 1.2 倍？ 可以贴源码作为论据
-查看了一下 slice 中的 growslice 函数，可以看到当容量小于 1024 时，是按照 2 倍进行增长的，当超过 1024 时，按照 1.25 倍进行增长，应该是从节省空间的角度考虑，毕竟对一个很长的数组，再插入同样长度的数的概率很小。</li>
-</ol>
-<pre tabindex=0><code>newcap := old.cap
+</code></pre><ol start=2><li>切片的增长为什么是 20，是否在大于 1024 或某个值时，有其他的增长方法？ 比如 增加 1.2 倍？ 可以贴源码作为论据
+查看了一下 slice 中的 growslice 函数，可以看到当容量小于 1024 时，是按照 2 倍进行增长的，当超过 1024 时，按照 1.25 倍进行增长，应该是从节省空间的角度考虑，毕竟对一个很长的数组，再插入同样长度的数的概率很小。</li></ol><pre tabindex=0><code>newcap := old.cap
 	doublecap := newcap + newcap
 	if cap &gt; doublecap {
 		newcap = cap
@@ -295,13 +143,12 @@ func main(){
 			}
 		}
 	}
-</code></pre><p>通过代码测试上述结果：</p>
-<pre tabindex=0><code>func main(){
+</code></pre><p>通过代码测试上述结果：</p><pre tabindex=0><code>func main(){
 	var a []int
 	for i:=0;i&lt;1500;i++{
 		a=append(a,i)
 		if i%100==0{
-			fmt.Printf(&quot;len: %d , cap; %d\n&quot;,len(a),cap(a))
+			fmt.Printf(&#34;len: %d , cap; %d\n&#34;,len(a),cap(a))
 		}
 	}
 }
@@ -321,10 +168,8 @@ len: 1101 , cap; 1280
 len: 1201 , cap; 1280
 len: 1301 , cap; 1696
 len: 1401 , cap; 1696
-</code></pre><p>如上符合源码结果，所以之前的分析有些问题，但是 append 多个值的时候，与之前的结果相同。再次查看源码，发现实际上还有内存对齐的考虑：</p>
-<pre tabindex=0><code>capmem = roundupsize(uintptr(newcap) * sys.PtrSize)
-</code></pre><p>其中 capmem 会根据 roundupsize 函数进行内存对齐。其中 uintptr(newcap)表示新容量的大小，sys.PtrSize 表示一个元素的大小，int 时为 8。roundupsize 函数的实现如下</p>
-<pre tabindex=0><code>func roundupsize(size uintptr) uintptr {
+</code></pre><p>如上符合源码结果，所以之前的分析有些问题，但是 append 多个值的时候，与之前的结果相同。再次查看源码，发现实际上还有内存对齐的考虑：</p><pre tabindex=0><code>capmem = roundupsize(uintptr(newcap) * sys.PtrSize)
+</code></pre><p>其中 capmem 会根据 roundupsize 函数进行内存对齐。其中 uintptr(newcap)表示新容量的大小，sys.PtrSize 表示一个元素的大小，int 时为 8。roundupsize 函数的实现如下</p><pre tabindex=0><code>func roundupsize(size uintptr) uintptr {
 	if size &lt; _MaxSmallSize {
 		if size &lt;= smallSizeMax-8 {
 			return uintptr(class_to_size[size_to_class8[(size+smallSizeDiv-1)/smallSizeDiv]])
@@ -338,70 +183,12 @@ len: 1401 , cap; 1696
 	return round(size, _PageSize)
 }
 </code></pre><p>其中：_MaxSmallSize=32768,2 的 15 次方，是 32K。当需要分配的 size 大于 32K 时，需要 mchche 向 mcentral 申请；当 size 小于 32K 时，计算应该分配的 sizeclass，直接去 mchche 申请。（关于具体的内存申请方面，在后面的开发需要的时候再仔细研究）
-当 size 小于 smallSizeMax-8=1024-8=1016 时，采用 size_to_class8 的分配方式，大于 1016 时采用 size_to_class128 的分配方式。</p>
-<pre tabindex=0><code>size_to_class8 = [smallSizeMax/smallSizeDiv + 1]uint8{0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22, 22, 23, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31}
+当 size 小于 smallSizeMax-8=1024-8=1016 时，采用 size_to_class8 的分配方式，大于 1016 时采用 size_to_class128 的分配方式。</p><pre tabindex=0><code>size_to_class8 = [smallSizeMax/smallSizeDiv + 1]uint8{0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22, 22, 23, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31}
 size_to_class128 = [(_MaxSmallSize-smallSizeMax)/largeSizeDiv + 1]uint8{31, 32, 33, 34, 35, 36, 36, 37, 37, 38, 38, 39, 39, 39, 40, 40, 40, 41, 42, 42, 43, 43, 43, 43, 43, 44, 44, 44, 44, 44, 44, 45, 45, 45, 45, 46, 46, 46, 46, 46, 46, 47, 47, 47, 48, 48, 49, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 52, 52, 53, 53, 53, 53, 54, 54, 54, 54, 54, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57, 57, 57, 57, 57, 57, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66}
 class_to_size = [_NumSizeClasses]uint16{0, 8, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 896, 1024, 1152, 1280, 1408, 1536, 1792, 2048, 2304, 2688, 3072, 3200, 3456, 4096, 4864, 5376, 6144, 6528, 6784, 6912, 8192, 9472, 9728, 10240, 10880, 12288, 13568, 14336, 16384, 18432, 19072, 20480, 21760, 24576, 27264, 28672, 32768}
 </code></pre><p>可以看到两个数组值的不同，并且间隔的粒度也不同，当 size 较小时，间隔为 8，当 size 较大时，间隔为 128.
 而为了内存优化考虑，class_to_size 会控制分配大小，间隔从 8-4096
-以 int 为例</p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left>个数</th>
-<th style=text-align:left>1</th>
-<th style=text-align:left>2</th>
-<th style=text-align:left>3</th>
-<th style=text-align:left>4</th>
-<th style=text-align:left>5</th>
-<th style=text-align:left>6</th>
-<th style=text-align:left>7</th>
-<th style=text-align:left>8</th>
-<th style=text-align:left>9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left>字节数</td>
-<td style=text-align:left>8</td>
-<td style=text-align:left>16</td>
-<td style=text-align:left>24</td>
-<td style=text-align:left>32</td>
-<td style=text-align:left>40</td>
-<td style=text-align:left>48</td>
-<td style=text-align:left>56</td>
-<td style=text-align:left>64</td>
-<td style=text-align:left>72</td>
-</tr>
-<tr>
-<td style=text-align:left>所占空间</td>
-<td style=text-align:left>8</td>
-<td style=text-align:left>16</td>
-<td style=text-align:left>32</td>
-<td style=text-align:left>32</td>
-<td style=text-align:left>48</td>
-<td style=text-align:left>48</td>
-<td style=text-align:left>64</td>
-<td style=text-align:left>64</td>
-<td style=text-align:left>80</td>
-</tr>
-<tr>
-<td style=text-align:left>size_to_class8</td>
-<td style=text-align:left>1</td>
-<td style=text-align:left>2</td>
-<td style=text-align:left>3</td>
-<td style=text-align:left>3</td>
-<td style=text-align:left>4</td>
-<td style=text-align:left>4</td>
-<td style=text-align:left>5</td>
-<td style=text-align:left>5</td>
-<td style=text-align:left>6</td>
-</tr>
-</tbody>
-</table>
-<h2 id=tips>Tips</h2>
-<p>函数</p>
-<pre tabindex=0><code>var rmdirs []func()
+以 int 为例</p><table><thead><tr><th style=text-align:left>个数</th><th style=text-align:left>1</th><th style=text-align:left>2</th><th style=text-align:left>3</th><th style=text-align:left>4</th><th style=text-align:left>5</th><th style=text-align:left>6</th><th style=text-align:left>7</th><th style=text-align:left>8</th><th style=text-align:left>9</th></tr></thead><tbody><tr><td style=text-align:left>字节数</td><td style=text-align:left>8</td><td style=text-align:left>16</td><td style=text-align:left>24</td><td style=text-align:left>32</td><td style=text-align:left>40</td><td style=text-align:left>48</td><td style=text-align:left>56</td><td style=text-align:left>64</td><td style=text-align:left>72</td></tr><tr><td style=text-align:left>所占空间</td><td style=text-align:left>8</td><td style=text-align:left>16</td><td style=text-align:left>32</td><td style=text-align:left>32</td><td style=text-align:left>48</td><td style=text-align:left>48</td><td style=text-align:left>64</td><td style=text-align:left>64</td><td style=text-align:left>80</td></tr><tr><td style=text-align:left>size_to_class8</td><td style=text-align:left>1</td><td style=text-align:left>2</td><td style=text-align:left>3</td><td style=text-align:left>3</td><td style=text-align:left>4</td><td style=text-align:left>4</td><td style=text-align:left>5</td><td style=text-align:left>5</td><td style=text-align:left>6</td></tr></tbody></table><h2 id=tips>Tips</h2><p>函数</p><pre tabindex=0><code>var rmdirs []func()
 for _, d := range tempDirs() {
   dir := d // NOTE: necessary!如果没有这一行会导致传入同样的dir
   os.MkdirAll(dir, 0755) // creates parent directories too
@@ -413,40 +200,6 @@ for _, d := range tempDirs() {
 for _, rmdir := range rmdirs {
 	rmdir() // clean up
 }
-</code></pre></div><div class=post-footer id=post-footer>
-<div class=post-info>
-<div class=post-info-line>
-<div class=post-info-mod>
-<span>更新于 2019-07-04</span>
-</div>
-<div class=post-info-license></div>
-</div>
-<div class=post-info-line>
-<div class=post-info-md></div>
-<div class=post-info-share>
-<span></span>
-</div>
-</div>
-</div>
-<div class=post-info-more>
-<section class=post-tags></section>
-<section>
-<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
-</section>
-</div>
-<div class=post-nav><a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/ class=prev rel=prev title=【Golang】go语言学习(1)-初识切片><i class="fas fa-angle-left fa-fw"></i>【Golang】go语言学习(1)-初识切片</a>
-<a href=/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/ class=next rel=next title=Hexo折腾笔记>Hexo折腾笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
-</div>
-</article></div>
-</main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
-</div>
-</footer></div>
-<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw"></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw"></i>
-</a>
-</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
-</html>
+</code></pre></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2019-07-04</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/ class=prev rel=prev title=【Golang】go语言学习(1)-初识切片><i class="fas fa-angle-left fa-fw"></i>【Golang】go语言学习(1)-初识切片</a>
+<a href=/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/ class=next rel=next title=Hexo折腾笔记>Hexo折腾笔记<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>

@@ -1,323 +1,142 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="noodp">
-<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title> CentOS7安装并使用MySQL - mianhk's notes</title><meta name=Description content><meta property="og:title" content=" CentOS7安装并使用MySQL">
-<meta property="og:description" content="
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title> CentOS7安装并使用MySQL - mianhk's notes</title><meta name=Description content><meta property="og:title" content=" CentOS7安装并使用MySQL"><meta property="og:description" content="
 MySQL 在 CentOS 上的安装和使用
-">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2018-12-07T17:41:58+08:00">
-<meta property="article:modified_time" content="2018-12-07T17:41:58+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content=" CentOS7安装并使用MySQL">
-<meta name=twitter:description content="
+"><meta property="og:type" content="article"><meta property="og:url" content="http://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2018-12-07T17:41:58+08:00"><meta property="article:modified_time" content="2018-12-07T17:41:58+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content=" CentOS7安装并使用MySQL"><meta name=twitter:description content="
 MySQL 在 CentOS 上的安装和使用
-">
-<meta name=application-name content="LoveIt">
-<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/><link rel=prev href=http://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/><link rel=next href=http://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":" CentOS7安装并使用MySQL","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql\/"},"genre":"posts","keywords":"MySQL, 学习","wordcount":2096,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql\/","datePublished":"2018-12-07T17:41:58+08:00","dateModified":"2018-12-07T17:41:58+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
-<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
-<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu>
-<div class=menu-inner><a class=menu-item href=/> 主页 </a><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql/><link rel=prev href=http://yuguocong.cn/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/><link rel=next href=http://yuguocong.cn/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":" CentOS7安装并使用MySQL","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql\/"},"genre":"posts","keywords":"MySQL, 学习","wordcount":2096,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/centos7%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8mysql\/","datePublished":"2018-12-07T17:41:58+08:00","dateModified":"2018-12-07T17:41:58+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":''==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:''==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>主页 </a><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a>
-</div>
-</div>
-</div>
-</header><header class=mobile id=header-mobile>
-<div class=header-container>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu-toggle id=menu-toggle-mobile>
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class=menu id=menu-mobile><div class=search-wrapper>
-<div class="search mobile" id=search-mobile>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</div>
-<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
-取消
-</a>
-</div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a></div>
-</div>
-</header>
-<div class="search-dropdown desktop">
-<div id=search-dropdown-desktop></div>
-</div>
-<div class="search-dropdown mobile">
-<div id=search-dropdown-mobile></div>
-</div>
-<main class=main>
-<div class=container><div class=toc id=toc-auto>
-<h2 class=toc-title>目录</h2>
-<div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX"> CentOS7安装并使用MySQL</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/mysql/><i class="far fa-folder fa-fw"></i>MySQL</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2018-12-07>2018-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2096 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept>
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
-</div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
-<ul>
-<li><a href=#1状态查看-灰色>1.状态查看-灰色</a></li>
-<li><a href=#2错误2002>2.错误：2002</a></li>
-<li><a href=#3错误service-failed>3.错误：service failed</a></li>
-<li><a href=#4错误登录问题>4.错误：登录问题</a></li>
-<li><a href=#5修改密码>5.修改密码</a></li>
-</ul>
-<ul>
-<li><a href=#mysql57httpsblogcsdnnetw20228396articledetails70143500><a href=https://blog.csdn.net/w20228396/article/details/70143500>MySQL5.7</a></a></li>
-<li><a href=#mysql80httpsstackoverflowcomquestions50177216how-to-grant-all-privileges-to-root-user-in-mysql-8-0><a href=https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0>MySQL8.0</a></a></li>
-</ul>
-<ul>
-<li><a href=#1导入数据出错>1.导入数据出错</a></li>
-</ul>
-</nav></div>
-</div><div class=content id=content><blockquote>
-<p>MySQL 在 CentOS 上的安装和使用</p>
-</blockquote>
-<h1 id=yum-安装>yum 安装</h1>
-<p>date: 2018-12-9 21:57:59
-update: 2018-12-9 21:57:59 1.首先找到官网 yum 的地址：<a href=https://dev.mysql.com/downloads/repo/yum/ target=_blank rel="noopener noreffer">https://dev.mysql.com/downloads/repo/yum/</a>，找到 redhat 的版本<strong>Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package</strong>,并复制 download 的地址，然后下载下来：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-</code></pre></div><p>2.进行 rpm 解包并安装 mysql-server</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>rpm -ivh mysql-community-release-el7-5.noarch.rpm
-yum update
-yum install mysql-server
-</code></pre></div><p>3.修改权限</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>chown mysql:mysql -R /var/lib/mysql
-</code></pre></div><p>4.然后就可以启动 mysql 了。。</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>systemctl start mysqld
-</code></pre></div><h1 id=问题记录>问题记录</h1>
-<p>当然，看着上面好像很爽，很快的样子，但是没想到接下来坑还是很多的。都有点怀疑自己了，到现在装个 mysql 还这么多问题。关键是，网上的解决办法，都是什么乱七八糟的。</p>
-<h2 id=1状态查看-灰色>1.状态查看-灰色</h2>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=err>➜</span>  <span class=p>~</span> <span class=n>systemctl</span> <span class=n>status</span> <span class=n>mysqld</span>
-<span class=err>●</span> <span class=n>mysqld</span><span class=p>.</span><span class=n>service</span> <span class=p>-</span> <span class=n>MySQL</span> <span class=n>Server</span>
-   <span class=n>Loaded</span><span class=err>:</span> <span class=n>loaded</span> <span class=p>(/</span><span class=n>usr</span><span class=p>/</span><span class=n>lib</span><span class=p>/</span><span class=n>systemd</span><span class=p>/</span><span class=n>system</span><span class=p>/</span><span class=n>mysqld</span><span class=p>.</span><span class=n>service</span><span class=p>;</span> <span class=n>enabled</span><span class=p>;</span> <span class=n>vendor</span> <span class=n>preset</span><span class=err>:</span> <span class=n>disabled</span><span class=p>)</span>
-   <span class=n>Active</span><span class=err>:</span> <span class=n>inactive</span> <span class=p>(</span><span class=n>dead</span><span class=p>)</span>
-     <span class=n>Docs</span><span class=err>:</span> <span class=n>man</span><span class=err>:</span><span class=n>mysqld</span><span class=p>(</span><span class=n>8</span><span class=p>)</span>
-           <span class=n>http</span><span class=err>:</span><span class=p>//</span><span class=n>dev</span><span class=p>.</span><span class=n>mysql</span><span class=p>.</span><span class=n>com</span><span class=p>/</span><span class=n>doc</span><span class=p>/</span><span class=n>refman</span><span class=p>/</span><span class=n>en</span><span class=p>/</span><span class=nb>using-systemd</span><span class=p>.</span><span class=n>html</span>
-
-<span class=err>➜</span>  <span class=p>~</span> <span class=nb>ps </span><span class=n>ajx</span> <span class=p>|</span> <span class=n>grep</span> <span class=n>mysql</span>
- <span class=n>1768</span>  <span class=n>1784</span>  <span class=n>1784</span>  <span class=n>1784</span> <span class=p>?</span>           <span class=p>-</span><span class=n>1</span> <span class=n>Ssl</span>    <span class=n>999</span>   <span class=n>0</span><span class=err>:</span><span class=n>19</span> <span class=n>mysqld</span>
-</code></pre></div><p>1.看了一下版本号，没错是 8.0：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~ mysqladmin --version
-mysqladmin  Ver 8.0.13 <span class=k>for</span> Linux on x86_64 <span class=o>(</span>MySQL Community Server - GPL<span class=o>)</span>
-</code></pre></div><p>2.然后 mysql 连一波，出问题，连不上：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~ mysql
-ERROR <span class=m>2002</span> <span class=o>(</span>HY000<span class=o>)</span>: Can<span class=s1>&#39;t connect to local MySQL server through socket &#39;</span>/var/lib/mysql/mysql.sock<span class=err>&#39;</span> <span class=o>(</span>2<span class=o>)</span>
-</code></pre></div><p>看样子是没有这个 socket，应该是位置不对，于是<code>sudo find / -name mysql.sock </code>赶紧搜一下，什么都没有，没有办法，重启一下试试吧。 3.重启</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~ sudo systemctl restart mysqld
-Job <span class=k>for</span> mysqld.service failed because the control process exited with error code. See <span class=s2>&#34;systemctl status mysqld.service&#34;</span> and <span class=s2>&#34;journalctl -xe&#34;</span> <span class=k>for</span> details.
-</code></pre></div><p>不行，换种方式重启看看：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~ service mysqld start
-Redirecting to /bin/systemctl start mysqld.service
-<span class=o>====</span> AUTHENTICATING FOR org.freedesktop.systemd1.manage-units <span class=o>===</span>
-Authentication is required to manage system services or units.
-Authenticating as: root
-Password:
-polkit-agent-helper-1: pam_authenticate failed: Authentication <span class=nv>failure</span>
-<span class=o>====</span> AUTHENTICATION <span class=nv>FAILED</span> <span class=o>===</span>
-Failed to start mysqld.service: Access denied
-See system logs and <span class=s1>&#39;systemctl status mysqld.service&#39;</span> <span class=k>for</span> details.
-</code></pre></div><h2 id=2错误2002>2.错误：2002</h2>
-<p>错误详情：
-ERROR 2002 (HY000): Can&rsquo;t connect to local MySQL server through socket &lsquo;/var/lib/mysql/mysql.sock&rsquo; (2)</p>
-<p>这个错误网上找了一下，有看起来还可以的处理:<a href=http://blog.51cto.com/pengjc/1861088 target=_blank rel="noopener noreffer">http://blog.51cto.com/pengjc/1861088</a> 。但是实际上我打开都没有这个文件，搜也没有搜到，于是放弃，这个问题应该不算个问题，先放着解决别的。</p>
-<h2 id=3错误service-failed>3.错误：service failed</h2>
-<p>错误详情：
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX"> CentOS7安装并使用MySQL</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/mysql/><i class="far fa-folder fa-fw"></i>MySQL</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2018-12-07>2018-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2096 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#1状态查看-灰色>1.状态查看-灰色</a></li><li><a href=#2错误2002>2.错误：2002</a></li><li><a href=#3错误service-failed>3.错误：service failed</a></li><li><a href=#4错误登录问题>4.错误：登录问题</a></li><li><a href=#5修改密码>5.修改密码</a></li></ul><ul><li><a href=#mysql57httpsblogcsdnnetw20228396articledetails70143500><a href=https://blog.csdn.net/w20228396/article/details/70143500>MySQL5.7</a></a></li><li><a href=#mysql80httpsstackoverflowcomquestions50177216how-to-grant-all-privileges-to-root-user-in-mysql-8-0><a href=https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0>MySQL8.0</a></a></li></ul><ul><li><a href=#1导入数据出错>1.导入数据出错</a></li></ul></nav></div></div><div class=content id=content><blockquote><p>MySQL 在 CentOS 上的安装和使用</p></blockquote><h1 id=yum-安装>yum 安装</h1><p>date: 2018-12-9 21:57:59
+update: 2018-12-9 21:57:59 1.首先找到官网 yum 的地址：<a href=https://dev.mysql.com/downloads/repo/yum/ target=_blank rel="noopener noreffer">https://dev.mysql.com/downloads/repo/yum/</a>，找到 redhat 的版本<strong>Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package</strong>,并复制 download 的地址，然后下载下来：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+</span></span></code></pre></div><p>2.进行 rpm 解包并安装 mysql-server</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>rpm -ivh mysql-community-release-el7-5.noarch.rpm
+</span></span><span class=line><span class=cl>yum update
+</span></span><span class=line><span class=cl>yum install mysql-server
+</span></span></code></pre></div><p>3.修改权限</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>chown mysql:mysql -R /var/lib/mysql
+</span></span></code></pre></div><p>4.然后就可以启动 mysql 了。。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>systemctl start mysqld
+</span></span></code></pre></div><h1 id=问题记录>问题记录</h1><p>当然，看着上面好像很爽，很快的样子，但是没想到接下来坑还是很多的。都有点怀疑自己了，到现在装个 mysql 还这么多问题。关键是，网上的解决办法，都是什么乱七八糟的。</p><h2 id=1状态查看-灰色>1.状态查看-灰色</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=line><span class=cl><span class=err>➜</span>  <span class=p>~</span> <span class=n>systemctl</span> <span class=n>status</span> <span class=n>mysqld</span>
+</span></span><span class=line><span class=cl><span class=err>●</span> <span class=n>mysqld</span><span class=p>.</span><span class=n>service</span> <span class=p>-</span> <span class=n>MySQL</span> <span class=n>Server</span>
+</span></span><span class=line><span class=cl>   <span class=n>Loaded</span><span class=err>:</span> <span class=n>loaded</span> <span class=p>(/</span><span class=n>usr</span><span class=p>/</span><span class=n>lib</span><span class=p>/</span><span class=n>systemd</span><span class=p>/</span><span class=n>system</span><span class=p>/</span><span class=n>mysqld</span><span class=p>.</span><span class=n>service</span><span class=p>;</span> <span class=n>enabled</span><span class=p>;</span> <span class=n>vendor</span> <span class=n>preset</span><span class=err>:</span> <span class=n>disabled</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>   <span class=n>Active</span><span class=err>:</span> <span class=n>inactive</span> <span class=p>(</span><span class=n>dead</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>     <span class=n>Docs</span><span class=err>:</span> <span class=n>man</span><span class=err>:</span><span class=n>mysqld</span><span class=p>(</span><span class=n>8</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>           <span class=n>http</span><span class=err>:</span><span class=p>//</span><span class=n>dev</span><span class=p>.</span><span class=n>mysql</span><span class=p>.</span><span class=n>com</span><span class=p>/</span><span class=n>doc</span><span class=p>/</span><span class=n>refman</span><span class=p>/</span><span class=n>en</span><span class=p>/</span><span class=nb>using-systemd</span><span class=p>.</span><span class=n>html</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=err>➜</span>  <span class=p>~</span> <span class=nb>ps </span><span class=n>ajx</span> <span class=p>|</span> <span class=n>grep</span> <span class=n>mysql</span>
+</span></span><span class=line><span class=cl> <span class=n>1768</span>  <span class=n>1784</span>  <span class=n>1784</span>  <span class=n>1784</span> <span class=p>?</span>           <span class=p>-</span><span class=n>1</span> <span class=n>Ssl</span>    <span class=n>999</span>   <span class=n>0</span><span class=err>:</span><span class=n>19</span> <span class=n>mysqld</span>
+</span></span></code></pre></div><p>1.看了一下版本号，没错是 8.0：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~ mysqladmin --version
+</span></span><span class=line><span class=cl>mysqladmin  Ver 8.0.13 <span class=k>for</span> Linux on x86_64 <span class=o>(</span>MySQL Community Server - GPL<span class=o>)</span>
+</span></span></code></pre></div><p>2.然后 mysql 连一波，出问题，连不上：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~ mysql
+</span></span><span class=line><span class=cl>ERROR <span class=m>2002</span> <span class=o>(</span>HY000<span class=o>)</span>: Can<span class=s1>&#39;t connect to local MySQL server through socket &#39;</span>/var/lib/mysql/mysql.sock<span class=err>&#39;</span> <span class=o>(</span>2<span class=o>)</span>
+</span></span></code></pre></div><p>看样子是没有这个 socket，应该是位置不对，于是<code>sudo find / -name mysql.sock </code>赶紧搜一下，什么都没有，没有办法，重启一下试试吧。 3.重启</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~ sudo systemctl restart mysqld
+</span></span><span class=line><span class=cl>Job <span class=k>for</span> mysqld.service failed because the control process exited with error code. See <span class=s2>&#34;systemctl status mysqld.service&#34;</span> and <span class=s2>&#34;journalctl -xe&#34;</span> <span class=k>for</span> details.
+</span></span></code></pre></div><p>不行，换种方式重启看看：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~ service mysqld start
+</span></span><span class=line><span class=cl>Redirecting to /bin/systemctl start mysqld.service
+</span></span><span class=line><span class=cl><span class=o>====</span> AUTHENTICATING FOR org.freedesktop.systemd1.manage-units <span class=o>===</span>
+</span></span><span class=line><span class=cl>Authentication is required to manage system services or units.
+</span></span><span class=line><span class=cl>Authenticating as: root
+</span></span><span class=line><span class=cl>Password:
+</span></span><span class=line><span class=cl>polkit-agent-helper-1: pam_authenticate failed: Authentication <span class=nv>failure</span>
+</span></span><span class=line><span class=cl><span class=o>====</span> AUTHENTICATION <span class=nv>FAILED</span> <span class=o>===</span>
+</span></span><span class=line><span class=cl>Failed to start mysqld.service: Access denied
+</span></span><span class=line><span class=cl>See system logs and <span class=s1>&#39;systemctl status mysqld.service&#39;</span> <span class=k>for</span> details.
+</span></span></code></pre></div><h2 id=2错误2002>2.错误：2002</h2><p>错误详情：
+ERROR 2002 (HY000): Can&rsquo;t connect to local MySQL server through socket &lsquo;/var/lib/mysql/mysql.sock&rsquo; (2)</p><p>这个错误网上找了一下，有看起来还可以的处理:<a href=http://blog.51cto.com/pengjc/1861088 target=_blank rel="noopener noreffer">http://blog.51cto.com/pengjc/1861088</a> 。但是实际上我打开都没有这个文件，搜也没有搜到，于是放弃，这个问题应该不算个问题，先放着解决别的。</p><h2 id=3错误service-failed>3.错误：service failed</h2><p>错误详情：
 Job for mysqld.service failed because the control process exited with error code. See &ldquo;systemctl status mysqld.service&rdquo; and &ldquo;journalctl -xe&rdquo; for details.
 看了一下网上的解决办法，说是由于权限的问题：<a href=https://www.cnblogs.com/ivictor/p/5146247.html target=_blank rel="noopener noreffer">https://www.cnblogs.com/ivictor/p/5146247.html</a> ，通过命令<code>chown mysql.mysql /var/run/mysqld/</code>，但是问题还是没有解决。  
-看了一下<a href=https://stackoverflow.com/questions/42317139/job-for-mysqld-service-failed-see-systemctl-status-mysqld-service target=_blank rel="noopener noreffer">stackoverflow</a>上面的说法，先通过<code>tail -f /var/log/mysqld.log</code>查看一下,，但是我的这个问题不是因为没有权限，</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~  tail /var/log/mysqld.log
-2018-12-07T09:13:21.651467Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010119<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Aborting
-2018-12-07T09:13:21.655750Z <span class=m>0</span> <span class=o>[</span>System<span class=o>]</span> <span class=o>[</span>MY-010910<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> /usr/sbin/mysqld: Shutdown <span class=nb>complete</span> <span class=o>(</span>mysqld 8.0.13<span class=o>)</span>  MySQL Community Server - GPL.
-2018-12-07T09:15:40.466437Z <span class=m>0</span> <span class=o>[</span>System<span class=o>]</span> <span class=o>[</span>MY-010116<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> /usr/sbin/mysqld <span class=o>(</span>mysqld 8.0.13<span class=o>)</span> starting as process <span class=m>12759</span>
-2018-12-07T09:15:40.965670Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-012681<span class=o>]</span> <span class=o>[</span>InnoDB<span class=o>]</span> mmap<span class=o>(</span><span class=m>137428992</span> bytes<span class=o>)</span> failed<span class=p>;</span> errno <span class=m>12</span>
-2018-12-07T09:15:40.965740Z <span class=m>1</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-012956<span class=o>]</span> <span class=o>[</span>InnoDB<span class=o>]</span> Cannot allocate memory <span class=k>for</span> the buffer pool
-2018-12-07T09:15:40.965766Z <span class=m>1</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-012930<span class=o>]</span> <span class=o>[</span>InnoDB<span class=o>]</span> Plugin initialization aborted with error Generic error.
-2018-12-07T09:15:40.965794Z <span class=m>1</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010334<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Failed to initialize DD Storage Engine
-2018-12-07T09:15:40.965949Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010020<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Data Dictionary initialization failed.
-2018-12-07T09:15:40.965977Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010119<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Aborting
-2018-12-07T09:15:40.966835Z <span class=m>0</span> <span class=o>[</span>System<span class=o>]</span> <span class=o>[</span>MY-010910<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> /usr/sbin/mysqld: Shutdown <span class=nb>complete</span> <span class=o>(</span>mysqld 8.0.13<span class=o>)</span>  MySQL Community Server - GPL.
-</code></pre></div><p>搜了一下这个问题：
+看了一下<a href=https://stackoverflow.com/questions/42317139/job-for-mysqld-service-failed-see-systemctl-status-mysqld-service target=_blank rel="noopener noreffer">stackoverflow</a>上面的说法，先通过<code>tail -f /var/log/mysqld.log</code>查看一下,，但是我的这个问题不是因为没有权限，</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~  tail /var/log/mysqld.log
+</span></span><span class=line><span class=cl>2018-12-07T09:13:21.651467Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010119<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Aborting
+</span></span><span class=line><span class=cl>2018-12-07T09:13:21.655750Z <span class=m>0</span> <span class=o>[</span>System<span class=o>]</span> <span class=o>[</span>MY-010910<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> /usr/sbin/mysqld: Shutdown <span class=nb>complete</span> <span class=o>(</span>mysqld 8.0.13<span class=o>)</span>  MySQL Community Server - GPL.
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.466437Z <span class=m>0</span> <span class=o>[</span>System<span class=o>]</span> <span class=o>[</span>MY-010116<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> /usr/sbin/mysqld <span class=o>(</span>mysqld 8.0.13<span class=o>)</span> starting as process <span class=m>12759</span>
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.965670Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-012681<span class=o>]</span> <span class=o>[</span>InnoDB<span class=o>]</span> mmap<span class=o>(</span><span class=m>137428992</span> bytes<span class=o>)</span> failed<span class=p>;</span> errno <span class=m>12</span>
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.965740Z <span class=m>1</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-012956<span class=o>]</span> <span class=o>[</span>InnoDB<span class=o>]</span> Cannot allocate memory <span class=k>for</span> the buffer pool
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.965766Z <span class=m>1</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-012930<span class=o>]</span> <span class=o>[</span>InnoDB<span class=o>]</span> Plugin initialization aborted with error Generic error.
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.965794Z <span class=m>1</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010334<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Failed to initialize DD Storage Engine
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.965949Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010020<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Data Dictionary initialization failed.
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.965977Z <span class=m>0</span> <span class=o>[</span>ERROR<span class=o>]</span> <span class=o>[</span>MY-010119<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> Aborting
+</span></span><span class=line><span class=cl>2018-12-07T09:15:40.966835Z <span class=m>0</span> <span class=o>[</span>System<span class=o>]</span> <span class=o>[</span>MY-010910<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> /usr/sbin/mysqld: Shutdown <span class=nb>complete</span> <span class=o>(</span>mysqld 8.0.13<span class=o>)</span>  MySQL Community Server - GPL.
+</span></span></code></pre></div><p>搜了一下这个问题：
 <code>[ERROR] [MY-012681] [InnoDB] mmap(137428992 bytes) failed; errno 12</code>
-看样子是内存映射出错，再通过命令<code>journalctl -xe</code>看一下,同时也找到了原因：原来是<strong>swap 分区是 0(<a href=https://blog.csdn.net/sxyandapp/article/details/77091007%29, target=_blank rel="noopener noreffer">https://blog.csdn.net/sxyandapp/article/details/77091007),</a>于是一阵操作：</strong></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~ free -m
-/dev/vda1            /                    ext4       noatime,acl,user_xattr <span class=m>1</span> <span class=m>1</span>
-              total        used        free      shared  buff/cache   available
-Mem:            <span class=m>992</span>         <span class=m>516</span>         <span class=m>304</span>           <span class=m>0</span>         <span class=m>171</span>         <span class=m>321</span>
-Swap:             <span class=m>0</span>           <span class=m>0</span>           <span class=m>0</span>
-
-➜  ~ dd <span class=k>if</span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span>/swap <span class=nv>bs</span><span class=o>=</span>1M <span class=nv>count</span><span class=o>=</span><span class=m>512</span>
-dd: failed to open ‘/swap’: Permission denied
-
-➜  ~ sudo dd <span class=k>if</span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span>/swap <span class=nv>bs</span><span class=o>=</span>1M <span class=nv>count</span><span class=o>=</span><span class=m>512</span>
-512+0 records in
-512+0 records out
-<span class=m>536870912</span> bytes <span class=o>(</span><span class=m>537</span> MB<span class=o>)</span> copied, 4.01658 s, <span class=m>134</span> MB/s
-
-➜  ~ sudo mkswap /swap
-Setting up swapspace version 1, <span class=nv>size</span> <span class=o>=</span> <span class=m>524284</span> KiB
-no label, <span class=nv>UUID</span><span class=o>=</span>9bbac588-e6ee-4b1c-a398-4ac460ad476a
-
-➜  ~ sudo swapon /swap
-swapon: /swap: insecure permissions 0644, <span class=m>0600</span> suggested.
-
-➜  ~ free -m
-              total        used        free      shared  buff/cache   available
-Mem:            <span class=m>992</span>         <span class=m>516</span>          <span class=m>64</span>           <span class=m>0</span>         <span class=m>410</span>         <span class=m>317</span>
-Swap:           <span class=m>511</span>           <span class=m>0</span>         <span class=m>511</span>
-
-
-vi /etc/fstab
-<span class=c1>#在其中添加如下一行,保证下次系统启动后，此swap分区被自动加载，需要修改系统的fstab文件</span>
-/swap swap swap defaults <span class=m>0</span> <span class=m>0</span>
-</code></pre></div><p>之后再重启就好了。</p>
-<h2 id=4错误登录问题>4.错误：登录问题</h2>
-<p>错误详情：
-error: &lsquo;Access denied for user &lsquo;root&rsquo;@&lsquo;localhost&rsquo; (using password: NO)&rsquo;</p>
-<p>这个其实是密码的问题，没有设置密码的时候，mysql 会生成一个临时的密码，通过命令：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>➜  ~ sudo grep <span class=s1>&#39;temporary password&#39;</span> /var/log/mysqld.log
-2018-12-07T09:08:22.908621Z <span class=m>5</span> <span class=o>[</span>Note<span class=o>]</span> <span class=o>[</span>MY-010454<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> A temporary password is generated <span class=k>for</span> root@localhost: TdqPeZ-n<span class=p>;</span>4Ah
-</code></pre></div><p>可以看到生成的临时密码，然后用临时密码登录即可。</p>
-<h2 id=5修改密码>5.修改密码</h2>
-<p>可能因为 8.0 的版本，修改的密码不能过于简单，并且命令好像也有些不一样了，用的是``</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>ALTER USER <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;localhost&#39;</span> IDENTIFIED BY <span class=s1>&#39;MyNewPass&#39;</span><span class=p>;</span>
-</code></pre></div><p>看到一个别人的回答：
+看样子是内存映射出错，再通过命令<code>journalctl -xe</code>看一下,同时也找到了原因：原来是<strong>swap 分区是 0(<a href=https://blog.csdn.net/sxyandapp/article/details/77091007%29 target=_blank rel="noopener noreffer">https://blog.csdn.net/sxyandapp/article/details/77091007)</a>,于是一阵操作：</strong></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~ free -m
+</span></span><span class=line><span class=cl>/dev/vda1            /                    ext4       noatime,acl,user_xattr <span class=m>1</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl>              total        used        free      shared  buff/cache   available
+</span></span><span class=line><span class=cl>Mem:            <span class=m>992</span>         <span class=m>516</span>         <span class=m>304</span>           <span class=m>0</span>         <span class=m>171</span>         <span class=m>321</span>
+</span></span><span class=line><span class=cl>Swap:             <span class=m>0</span>           <span class=m>0</span>           <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>➜  ~ dd <span class=k>if</span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span>/swap <span class=nv>bs</span><span class=o>=</span>1M <span class=nv>count</span><span class=o>=</span><span class=m>512</span>
+</span></span><span class=line><span class=cl>dd: failed to open ‘/swap’: Permission denied
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>➜  ~ sudo dd <span class=k>if</span><span class=o>=</span>/dev/zero <span class=nv>of</span><span class=o>=</span>/swap <span class=nv>bs</span><span class=o>=</span>1M <span class=nv>count</span><span class=o>=</span><span class=m>512</span>
+</span></span><span class=line><span class=cl>512+0 records in
+</span></span><span class=line><span class=cl>512+0 records out
+</span></span><span class=line><span class=cl><span class=m>536870912</span> bytes <span class=o>(</span><span class=m>537</span> MB<span class=o>)</span> copied, 4.01658 s, <span class=m>134</span> MB/s
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>➜  ~ sudo mkswap /swap
+</span></span><span class=line><span class=cl>Setting up swapspace version 1, <span class=nv>size</span> <span class=o>=</span> <span class=m>524284</span> KiB
+</span></span><span class=line><span class=cl>no label, <span class=nv>UUID</span><span class=o>=</span>9bbac588-e6ee-4b1c-a398-4ac460ad476a
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>➜  ~ sudo swapon /swap
+</span></span><span class=line><span class=cl>swapon: /swap: insecure permissions 0644, <span class=m>0600</span> suggested.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>➜  ~ free -m
+</span></span><span class=line><span class=cl>              total        used        free      shared  buff/cache   available
+</span></span><span class=line><span class=cl>Mem:            <span class=m>992</span>         <span class=m>516</span>          <span class=m>64</span>           <span class=m>0</span>         <span class=m>410</span>         <span class=m>317</span>
+</span></span><span class=line><span class=cl>Swap:           <span class=m>511</span>           <span class=m>0</span>         <span class=m>511</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>vi /etc/fstab
+</span></span><span class=line><span class=cl><span class=c1>#在其中添加如下一行,保证下次系统启动后，此swap分区被自动加载，需要修改系统的fstab文件</span>
+</span></span><span class=line><span class=cl>/swap swap swap defaults <span class=m>0</span> <span class=m>0</span>
+</span></span></code></pre></div><p>之后再重启就好了。</p><h2 id=4错误登录问题>4.错误：登录问题</h2><p>错误详情：
+error: &lsquo;Access denied for user &lsquo;root&rsquo;@&rsquo;localhost&rsquo; (using password: NO)&rsquo;</p><p>这个其实是密码的问题，没有设置密码的时候，mysql 会生成一个临时的密码，通过命令：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>➜  ~ sudo grep <span class=s1>&#39;temporary password&#39;</span> /var/log/mysqld.log
+</span></span><span class=line><span class=cl>2018-12-07T09:08:22.908621Z <span class=m>5</span> <span class=o>[</span>Note<span class=o>]</span> <span class=o>[</span>MY-010454<span class=o>]</span> <span class=o>[</span>Server<span class=o>]</span> A temporary password is generated <span class=k>for</span> root@localhost: TdqPeZ-n<span class=p>;</span>4Ah
+</span></span></code></pre></div><p>可以看到生成的临时密码，然后用临时密码登录即可。</p><h2 id=5修改密码>5.修改密码</h2><p>可能因为 8.0 的版本，修改的密码不能过于简单，并且命令好像也有些不一样了，用的是``</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ALTER USER <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;localhost&#39;</span> IDENTIFIED BY <span class=s1>&#39;MyNewPass&#39;</span><span class=p>;</span>
+</span></span></code></pre></div><p>看到一个别人的回答：
 <img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#align=left&display=inline&height=148&originHeight=148&originWidth=695&status=done&width=695" data-srcset="https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#align=left&display=inline&height=148&originHeight=148&originWidth=695&status=done&width=695, https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#align=left&display=inline&height=148&originHeight=148&originWidth=695&status=done&width=695 1.5x, https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#align=left&display=inline&height=148&originHeight=148&originWidth=695&status=done&width=695 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#align=left&display=inline&height=148&originHeight=148&originWidth=695&status=done&width=695" title="https://cdn.nlark.com/yuque/0/2018/png/187932/1544177770052-39cd9fe0-1c11-4059-be21-08de2d19446b.png#align=left&display=inline&height=148&originHeight=148&originWidth=695&status=done&width=695">
-应该是后面才改的？</p>
-<h1 id=6外网连接-mysql>6.外网连接 mysql</h1>
-<p>由于两台服务器的版本有点不一样，修改外网连接也有点不一样。</p>
-<h2 id=mysql57httpsblogcsdnnetw20228396articledetails70143500><a href=https://blog.csdn.net/w20228396/article/details/70143500 target=_blank rel="noopener noreffer">MySQL5.7</a></h2>
-<p>1.修改配置文件</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1>#修改配置文件</span>
-sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf   <span class=c1># bind-address=127.0.0.1 修改成 bind-address=0.0.0.0</span>
-
-<span class=c1># 重启服务</span>
-service mysql restart
-
-<span class=c1># 添加远程连接mysql的账号</span>
-&gt; grant all on *.* to root@<span class=s1>&#39;%&#39;</span> identified by <span class=s1>&#39;123456&#39;</span><span class=p>;</span>
-&gt; flush privileges<span class=p>;</span>
-<span class=c1>#</span>
-*.*          第一个*表示库，第二个*表示表<span class=p>;</span> *.*对全部数据库的全部表授权，so.ok 表示只对so这个库中的ok表授权
-root        表示要给哪个用户授权，这个用户可以是存在的用户，也可以是不存在的
-<span class=s1>&#39;%&#39;</span>          表示允许远程连接的IP地址，%代表允许所有IP连接
-</code></pre></div><h2 id=mysql80httpsstackoverflowcomquestions50177216how-to-grant-all-privileges-to-root-user-in-mysql-8-0><a href=https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0 target=_blank rel="noopener noreffer">MySQL8.0</a></h2>
-<p>8.0 的版本总结的对权限的管理严格很多，毕竟数据很重要，只有安全才能放心。尝试过上述方式，但是连接不上。最终在 Stack Overflow 上找到了办法。</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>CREATE USER <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;%&#39;</span> IDENTIFIED BY <span class=s1>&#39;root&#39;</span><span class=p>;</span>
-GRANT ALL PRIVILEGES ON *.* TO <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;%&#39;</span> WITH GRANT OPTION<span class=p>;</span>
-</code></pre></div><p>但是修改之后还是会有问题，出现了 2059 错误：  
+应该是后面才改的？</p><h1 id=6外网连接-mysql>6.外网连接 mysql</h1><p>由于两台服务器的版本有点不一样，修改外网连接也有点不一样。</p><h2 id=mysql57httpsblogcsdnnetw20228396articledetails70143500><a href=https://blog.csdn.net/w20228396/article/details/70143500 target=_blank rel="noopener noreffer">MySQL5.7</a></h2><p>1.修改配置文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#修改配置文件</span>
+</span></span><span class=line><span class=cl>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf   <span class=c1># bind-address=127.0.0.1 修改成 bind-address=0.0.0.0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 重启服务</span>
+</span></span><span class=line><span class=cl>service mysql restart
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 添加远程连接mysql的账号</span>
+</span></span><span class=line><span class=cl>&gt; grant all on *.* to root@<span class=s1>&#39;%&#39;</span> identified by <span class=s1>&#39;123456&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>&gt; flush privileges<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl>*.*          第一个*表示库，第二个*表示表<span class=p>;</span> *.*对全部数据库的全部表授权，so.ok 表示只对so这个库中的ok表授权
+</span></span><span class=line><span class=cl>root        表示要给哪个用户授权，这个用户可以是存在的用户，也可以是不存在的
+</span></span><span class=line><span class=cl><span class=s1>&#39;%&#39;</span>          表示允许远程连接的IP地址，%代表允许所有IP连接
+</span></span></code></pre></div><h2 id=mysql80httpsstackoverflowcomquestions50177216how-to-grant-all-privileges-to-root-user-in-mysql-8-0><a href=https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0 target=_blank rel="noopener noreffer">MySQL8.0</a></h2><p>8.0 的版本总结的对权限的管理严格很多，毕竟数据很重要，只有安全才能放心。尝试过上述方式，但是连接不上。最终在 Stack Overflow 上找到了办法。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>CREATE USER <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;%&#39;</span> IDENTIFIED BY <span class=s1>&#39;root&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>GRANT ALL PRIVILEGES ON *.* TO <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;%&#39;</span> WITH GRANT OPTION<span class=p>;</span>
+</span></span></code></pre></div><p>但是修改之后还是会有问题，出现了 2059 错误：  
 <img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#align=left&display=inline&height=129&originHeight=129&originWidth=586&status=done&width=586" data-srcset="https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#align=left&display=inline&height=129&originHeight=129&originWidth=586&status=done&width=586, https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#align=left&display=inline&height=129&originHeight=129&originWidth=586&status=done&width=586 1.5x, https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#align=left&display=inline&height=129&originHeight=129&originWidth=586&status=done&width=586 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#align=left&display=inline&height=129&originHeight=129&originWidth=586&status=done&width=586" title="https://cdn.nlark.com/yuque/0/2018/png/187932/1544449883818-59e9985f-7a74-47f5-954e-4e8aa80ced7c.png#align=left&display=inline&height=129&originHeight=129&originWidth=586&status=done&width=586">
-解决方式可以采用修改密码为简单密码：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>SET GLOBAL validate_password.policy<span class=o>=</span>0<span class=p>;</span>
-ALTER USER <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;%&#39;</span> IDENTIFIED WITH mysql_native_password BY <span class=s1>&#39;12345678&#39;</span><span class=p>;</span>
-</code></pre></div><h1 id=使用过程问题>使用过程问题</h1>
-<h2 id=1导入数据出错>1.导入数据出错</h2>
-<p>错误代码：</p>
-<pre tabindex=0><code>mysql&gt; LOAD DATA LOCAL INFILE '/home/mianhk/pet.txt' INTO TABLE pet;
+解决方式可以采用修改密码为简单密码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>SET GLOBAL validate_password.policy<span class=o>=</span>0<span class=p>;</span>
+</span></span><span class=line><span class=cl>ALTER USER <span class=s1>&#39;root&#39;</span>@<span class=s1>&#39;%&#39;</span> IDENTIFIED WITH mysql_native_password BY <span class=s1>&#39;12345678&#39;</span><span class=p>;</span>
+</span></span></code></pre></div><h1 id=使用过程问题>使用过程问题</h1><h2 id=1导入数据出错>1.导入数据出错</h2><p>错误代码：</p><pre tabindex=0><code>mysql&gt; LOAD DATA LOCAL INFILE &#39;/home/mianhk/pet.txt&#39; INTO TABLE pet;
 ERROR 1148 (42000): The used command is not allowed with this MySQL version
 
-mysql&gt; LOAD DATA INFILE '/home/mianhk/pet.txt' INTO TABLE pet;
+mysql&gt; LOAD DATA INFILE &#39;/home/mianhk/pet.txt&#39; INTO TABLE pet;
 ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it ca
 nnot execute this statement
 
-mysql&gt; LOAD DATA INFILE '/home/mianhk/pet.txt' INTO TABLE pet LINES TERMINATED BY '\r\n';
+mysql&gt; LOAD DATA INFILE &#39;/home/mianhk/pet.txt&#39; INTO TABLE pet LINES TERMINATED BY &#39;\r\n&#39;;
 ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it ca
 nnot execute this statement
 </code></pre><p>原因：
-secure_file_priv 设置了指定目录，需要在指定的目录下进行数据导出。</p>
-<pre tabindex=0><code>mysql&gt; show variables like '%secure%';
+secure_file_priv 设置了指定目录，需要在指定的目录下进行数据导出。</p><pre tabindex=0><code>mysql&gt; show variables like &#39;%secure%&#39;;
 +--------------------------+-----------------------+
 | Variable_name            | Value                 |
 +--------------------------+-----------------------+
 | require_secure_transport | OFF                   |
 | secure_file_priv         | /var/lib/mysql-files/ |+--------------------------+-----------------------+
 2 rows in set (0.01 sec)
-</code></pre><p>数据导入需要注意的:</p>
-<ul>
-<li>空值要用 <code>\N</code>  代替，而不能直接使用空</li>
-<li>分隔符一般用 <code>tab</code></li>
-<li>注意换行符</li>
-</ul>
-<h1 id=总结>总结</h1>
-<p>总之，感觉之前 windows 和 ubuntu 下都没有这么麻烦，这里总结一下吧，感觉以后会用的很多，不想踩坑了。</p>
-<h1 id=参考>参考：</h1>
-<p><a href=https://juejin.im/entry/5af5d2786fb9a07aaf3547cc target=_blank rel="noopener noreffer">MySQL8.0.11 连接错误 2059 解决方法</a>
+</code></pre><p>数据导入需要注意的:</p><ul><li>空值要用 <code>\N</code>  代替，而不能直接使用空</li><li>分隔符一般用 <code>tab</code></li><li>注意换行符</li></ul><h1 id=总结>总结</h1><p>总之，感觉之前 windows 和 ubuntu 下都没有这么麻烦，这里总结一下吧，感觉以后会用的很多，不想踩坑了。</p><h1 id=参考>参考：</h1><p><a href=https://juejin.im/entry/5af5d2786fb9a07aaf3547cc target=_blank rel="noopener noreffer">MySQL8.0.11 连接错误 2059 解决方法</a>
 <a href=https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0 target=_blank rel="noopener noreffer">How to grant all privileges to root user in MySQL 8.0</a>
-<a href=https://www.cnblogs.com/echo-coding/p/9172636.html target=_blank rel="noopener noreffer">centos mysql 初探 &ndash; 配置、基本操作及问题</a></p></div><div class=post-footer id=post-footer>
-<div class=post-info>
-<div class=post-info-line>
-<div class=post-info-mod>
-<span>更新于 2018-12-07</span>
-</div>
-<div class=post-info-license></div>
-</div>
-<div class=post-info-line>
-<div class=post-info-md></div>
-<div class=post-info-share>
-<span></span>
-</div>
-</div>
-</div>
-<div class=post-info-more>
-<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/mysql/>MySQL</a>,&nbsp;<a href=/tags/%E5%AD%A6%E4%B9%A0/>学习</a></section>
-<section>
-<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
-</section>
-</div>
-<div class=post-nav><a href=/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/ class=prev rel=prev title= 使用语雀编辑器写静态博客><i class="fas fa-angle-left fa-fw"></i> 使用语雀编辑器写静态博客</a>
-<a href=/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/ class=next rel=next title=2018年终总结>2018年终总结<i class="fas fa-angle-right fa-fw"></i></a></div>
-</div>
-</article></div>
-</main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
-</div>
-</footer></div>
-<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw"></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw"></i>
-</a>
-</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
-</html>
+<a href=https://www.cnblogs.com/echo-coding/p/9172636.html target=_blank rel="noopener noreffer">centos mysql 初探 &ndash; 配置、基本操作及问题</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2018-12-07</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/mysql/>MySQL</a>,&nbsp;<a href=/tags/%E5%AD%A6%E4%B9%A0/>学习</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/yuque/%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/ class=prev rel=prev title= 使用语雀编辑器写静态博客><i class="fas fa-angle-left fa-fw"></i> 使用语雀编辑器写静态博客</a>
+<a href=/posts/yuque/2018%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/ class=next rel=next title=2018年终总结>2018年终总结<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>

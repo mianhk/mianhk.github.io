@@ -1,128 +1,19 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="noodp">
-<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>Hexo折腾笔记 - mianhk's notes</title><meta name=Description content><meta property="og:title" content="Hexo折腾笔记">
-<meta property="og:description" content="博客基本架构 如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。 对应工具 语雀：编写博客 腾讯云云函数: webhook 解析更新文">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-08-13T20:45:04+08:00">
-<meta property="article:modified_time" content="2019-08-13T20:45:04+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Hexo折腾笔记">
-<meta name=twitter:description content="博客基本架构 如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。 对应工具 语雀：编写博客 腾讯云云函数: webhook 解析更新文">
-<meta name=application-name content="LoveIt">
-<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/><link rel=prev href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/><link rel=next href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Hexo折腾笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0\/"},"genre":"posts","keywords":"Hexo, 博客","wordcount":2700,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0\/","datePublished":"2019-08-13T20:45:04+08:00","dateModified":"2019-08-13T20:45:04+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
-<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
-<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu>
-<div class=menu-inner><a class=menu-item href=/> 主页 </a><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>Hexo折腾笔记 - mianhk's notes</title><meta name=Description content><meta property="og:title" content="Hexo折腾笔记"><meta property="og:description" content="博客基本架构 如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。 对应工具 语雀：编写博客 腾讯云云函数: webhook 解析更新文"><meta property="og:type" content="article"><meta property="og:url" content="http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-08-13T20:45:04+08:00"><meta property="article:modified_time" content="2019-08-13T20:45:04+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hexo折腾笔记"><meta name=twitter:description content="博客基本架构 如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。 对应工具 语雀：编写博客 腾讯云云函数: webhook 解析更新文"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/><link rel=prev href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/><link rel=next href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Hexo折腾笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0\/"},"genre":"posts","keywords":"Hexo, 博客","wordcount":2700,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0\/","datePublished":"2019-08-13T20:45:04+08:00","dateModified":"2019-08-13T20:45:04+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":''==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:''==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>主页 </a><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a>
-</div>
-</div>
-</div>
-</header><header class=mobile id=header-mobile>
-<div class=header-container>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu-toggle id=menu-toggle-mobile>
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class=menu id=menu-mobile><div class=search-wrapper>
-<div class="search mobile" id=search-mobile>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</div>
-<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
-取消
-</a>
-</div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a></div>
-</div>
-</header>
-<div class="search-dropdown desktop">
-<div id=search-dropdown-desktop></div>
-</div>
-<div class="search-dropdown mobile">
-<div id=search-dropdown-mobile></div>
-</div>
-<main class=main>
-<div class=container><div class=toc id=toc-auto>
-<h2 class=toc-title>目录</h2>
-<div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">Hexo折腾笔记</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%B7%A5%E5%85%B7/><i class="far fa-folder fa-fw"></i>工具</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-08-13>2019-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2700 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept>
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
-</div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
-<ul>
-<li><a href=#博客基本架构>博客基本架构</a></li>
-<li><a href=#对应工具>对应工具</a></li>
-<li><a href=#2019-5-12>2019-5-12</a></li>
-<li><a href=#2018-12-24>2018-12-24</a>
-<ul>
-<li><a href=#hexo-添加分类>Hexo 添加分类</a></li>
-<li><a href=#添加背景图片>添加背景图片</a></li>
-<li><a href=#使用-hexo-neat-进行压缩以增加页面速度>使用 hexo-neat 进行压缩以增加页面速度</a></li>
-</ul>
-</li>
-</ul>
-</nav></div>
-</div><div class=content id=content><h2 id=博客基本架构>博客基本架构</h2>
-<p>如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。</p>
-<h2 id=对应工具>对应工具</h2>
-<p>语雀：编写博客
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">Hexo折腾笔记</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%B7%A5%E5%85%B7/><i class="far fa-folder fa-fw"></i>工具</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-08-13>2019-08-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2700 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#博客基本架构>博客基本架构</a></li><li><a href=#对应工具>对应工具</a></li><li><a href=#2019-5-12>2019-5-12</a></li><li><a href=#2018-12-24>2018-12-24</a><ul><li><a href=#hexo-添加分类>Hexo 添加分类</a></li><li><a href=#添加背景图片>添加背景图片</a></li><li><a href=#使用-hexo-neat-进行压缩以增加页面速度>使用 hexo-neat 进行压缩以增加页面速度</a></li></ul></li></ul></nav></div></div><div class=content id=content><h2 id=博客基本架构>博客基本架构</h2><p>如下图所示，博客更新只需要在语雀上发布对应的文章即可，剩下的工作都会自动化进行。</p><h2 id=对应工具>对应工具</h2><p>语雀：编写博客
 腾讯云云函数: webhook 解析更新文档推送至 github 私有仓库
 travis-ci：当私有仓库有更新时，通过 hexo 生成静态页面，并推送至 mianhk.github.io 仓库
-cloud-flare：网页 CDN</p>
-<h2 id=2019-5-12>2019-5-12</h2>
-<blockquote>
-<p>没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看 C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github 始终是一个好的选择，于是入了 Hexo 的坑。。折腾的过程心情总是有些复杂，在激动和 mmp 之间徘徊，虽然很多问题在 wiki 和 issue 里都有，但还是想总结一下自己亲自踩的坑。</p>
-</blockquote>
-<p>修改语雀自动同步，不用再本地编辑和推送了，见：
-<a href=https://www.yuguocong.cn/yuque/mwklk2.html target=_blank rel="noopener noreffer">https://www.yuguocong.cn/yuque/mwklk2.html</a></p>
-<p>更换了主题：<a href=https://github.com/aircloud/hexo-theme-aircloud target=_blank rel="noopener noreffer">Aircloud</a></p>
-<h2 id=2018-12-24>2018-12-24</h2>
-<h3 id=hexo-添加分类>Hexo 添加分类</h3>
-<p>在文件中使用<code>categories</code>，然后配置<code>themes/_config.yml</code>文件：</p>
-<pre tabindex=0><code>menu:
+cloud-flare：网页 CDN</p><h2 id=2019-5-12>2019-5-12</h2><blockquote><p>没错，这几天又开始折腾一下博客了，最近的节奏天天白天待在实验室怼论文，晚上看 C++，时间安排比较紧凑，就觉得更需要阶段性的总结吧，所以又来写博客了，github 始终是一个好的选择，于是入了 Hexo 的坑。。折腾的过程心情总是有些复杂，在激动和 mmp 之间徘徊，虽然很多问题在 wiki 和 issue 里都有，但还是想总结一下自己亲自踩的坑。</p></blockquote><p>修改语雀自动同步，不用再本地编辑和推送了，见：
+<a href=https://www.yuguocong.cn/yuque/mwklk2.html target=_blank rel="noopener noreffer">https://www.yuguocong.cn/yuque/mwklk2.html</a></p><p>更换了主题：<a href=https://github.com/aircloud/hexo-theme-aircloud target=_blank rel="noopener noreffer">Aircloud</a></p><h2 id=2018-12-24>2018-12-24</h2><h3 id=hexo-添加分类>Hexo 添加分类</h3><p>在文件中使用<code>categories</code>，然后配置<code>themes/_config.yml</code>文件：</p><pre tabindex=0><code>menu:
   home: /
   #categories: /categories/
   archives: /archives/
@@ -131,16 +22,13 @@ cloud-flare：网页 CDN</p>
   movies: /movies
   friends: /categories/friends
   about: /categories/about
-</code></pre><h3 id=添加背景图片>添加背景图片</h3>
-<p>使用插件 jquery-backstretch，编辑文件<code>/themes/next/layout/_layout.swig</code>,将下面的代码添加到最后面 body 的前面:</p>
-<pre tabindex=0><code>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js&quot;&gt;&lt;/script&gt;;
+</code></pre><h3 id=添加背景图片>添加背景图片</h3><p>使用插件 jquery-backstretch，编辑文件<code>/themes/next/layout/_layout.swig</code>,将下面的代码添加到最后面 body 的前面:</p><pre tabindex=0><code>&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js&#34;&gt;&lt;/script&gt;;
   &lt;script&gt;
-  $(&quot;body&quot;).backstretch(&quot;http://blog-1252063226.cosbj.myqcloud.com/network/20181224194730.png&quot;);
+  $(&#34;body&#34;).backstretch(&#34;http://blog-1252063226.cosbj.myqcloud.com/network/20181224194730.png&#34;);
   &lt;/script&gt;
 
 &lt;/body&gt;
-</code></pre><p>但是好像没有效果，于是在文件<code>themes\next\source\css_custom\custom.styl</code>中添加了如下：</p>
-<pre tabindex=0><code>body {
+</code></pre><p>但是好像没有效果，于是在文件<code>themes\next\source\css_custom\custom.styl</code>中添加了如下：</p><pre tabindex=0><code>body {
     background:url(https://source.unsplash.com/random/1600x900);
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -155,24 +43,21 @@ cloud-flare：网页 CDN</p>
     opacity: 0.8;
     min-height: 500px;
 }
-</code></pre><h3 id=使用-hexo-neat-进行压缩以增加页面速度>使用 hexo-neat 进行压缩以增加页面速度</h3>
-<p>采用<code>hexo-neat</code>进行压缩，插件地址为：https://github.com/rozbo/hexo-neat，使用步骤为：</p>
-<pre tabindex=0><code>#安装hexo-neat
+</code></pre><h3 id=使用-hexo-neat-进行压缩以增加页面速度>使用 hexo-neat 进行压缩以增加页面速度</h3><p>采用<code>hexo-neat</code>进行压缩，插件地址为：https://github.com/rozbo/hexo-neat，使用步骤为：</p><pre tabindex=0><code>#安装hexo-neat
 $ npm install hexo-neat --save
-</code></pre><p>添加配置到根目录下的<code>_config.yml</code>，在最后加上(这里跟别人的有一些改动，因为有一些配置出了问题，找了很久，但是还是没有解决，干脆就不折腾了):</p>
-<pre tabindex=0><code># hexo-neat
+</code></pre><p>添加配置到根目录下的<code>_config.yml</code>，在最后加上(这里跟别人的有一些改动，因为有一些配置出了问题，找了很久，但是还是没有解决，干脆就不折腾了):</p><pre tabindex=0><code># hexo-neat
 # 博文压缩
 neat_enable: true
 # 压缩html
 neat_html:
   enable: true
   exclude:
-    - '**/*.html'
+    - &#39;**/*.html&#39;
 # 压缩css
 neat_css:
   enable: true
   exclude:
-    - '**/*.min.css'
+    - &#39;**/*.min.css&#39;
 # 压缩js
 neat_js:
   enable: true
@@ -180,19 +65,10 @@ neat_js:
   output:
   compress:
   exclude:
-    - '**/*.min.js'
-    - '**/jquery.fancybox.pack.js'
-    - '**/index.js'
-</code></pre><p>不用再做其他的改动，压缩前后的对比为：</p>
-<p><img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717" data-srcset="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717, https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717 1.5x, https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717" title="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717"></p>
-<p><img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117" data-srcset="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117, https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117 1.5x, https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117" title="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117"></p>
-<h5 id=主页文章添加阴影效果>主页文章添加阴影效果</h5>
-<h5 id=在网站底部加上访问量>在网站底部加上访问量</h5>
-<h5 id=添加热度>添加热度</h5>
-<h5 id=网站底部字数统计>网站底部字数统计</h5>
-<h5 id=修改代码块自定义样式>修改``代码块自定义样式</h5>
-<p>打开<code>\themes\next\source\css\_custom\custom.styl</code>,向里面加入：(颜色可以自己定义):</p>
-<pre tabindex=0><code>// Custom styles.
+    - &#39;**/*.min.js&#39;
+    - &#39;**/jquery.fancybox.pack.js&#39;
+    - &#39;**/index.js&#39;
+</code></pre><p>不用再做其他的改动，压缩前后的对比为：</p><p><img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717" data-srcset="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717, https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717 1.5x, https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717" title="https://cdn.nlark.com/yuque/0/2019/png/187932/1557751534763-6f377175-946d-4f32-bc8e-1cbaf76c4355.png#align=left&display=inline&height=179&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=717&size=0&status=done&style=none&width=717"></p><p><img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117" data-srcset="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117, https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117 1.5x, https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117" title="https://cdn.nlark.com/yuque/0/2019/jpeg/187932/1557751534766-e8651cdc-63b9-40d7-979c-f796aabb328a.jpeg#align=left&display=inline&height=407&margin=%5Bobject%20Object%5D&originHeight=407&originWidth=1117&size=0&status=done&style=none&width=1117"></p><h5 id=主页文章添加阴影效果>主页文章添加阴影效果</h5><h5 id=在网站底部加上访问量>在网站底部加上访问量</h5><h5 id=添加热度>添加热度</h5><h5 id=网站底部字数统计>网站底部字数统计</h5><h5 id=修改代码块自定义样式>修改``代码块自定义样式</h5><p>打开<code>\themes\next\source\css\_custom\custom.styl</code>,向里面加入：(颜色可以自己定义):</p><pre tabindex=0><code>// Custom styles.
 code {
     color: #ff7600;
     background: #fbf7f8;
@@ -207,18 +83,13 @@ code {
 .highlight, code, pre {
     border: 1px solid #d6d6d6;
 }
-</code></pre><h5 id=添加访问量>添加访问量</h5>
-<p>打开<code>\themes\next\layout\_partials\footer.swig</code>文件,搜索<code>&lt;div class="copyright"></code>，在这个<code>div</code>标签前边加上如下代码:</p>
-<pre tabindex=0><code>&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>然后再在合适的位置添加如下代码，放在 footer.swig 文件的末尾:</p>
-<pre tabindex=0><code>&lt;div class=&quot;powered-by&quot;&gt;
-&lt;i class=&quot;fa fa-user-md&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;
-  本站访客数:&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;
+</code></pre><h5 id=添加访问量>添加访问量</h5><p>打开<code>\themes\next\layout\_partials\footer.swig</code>文件,搜索<code>&lt;div class="copyright"></code>，在这个<code>div</code>标签前边加上如下代码:</p><pre tabindex=0><code>&lt;script async src=&#34;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&#34;&gt;&lt;/script&gt;
+</code></pre><p>然后再在合适的位置添加如下代码，放在 footer.swig 文件的末尾:</p><pre tabindex=0><code>&lt;div class=&#34;powered-by&#34;&gt;
+&lt;i class=&#34;fa fa-user-md&#34;&gt;&lt;/i&gt;&lt;span id=&#34;busuanzi_container_site_uv&#34;&gt;
+  本站访客数:&lt;span id=&#34;busuanzi_value_site_uv&#34;&gt;&lt;/span&gt;
 &lt;/span&gt;
 &lt;/div&gt;
-</code></pre><h5 id=设置博文内链接为蓝色>设置博文内链接为蓝色</h5>
-<p>通过路径：<code>themes\next\source\css\_common\components\post\</code>,打开<code>post.styl</code>文件，在文件中添加，如下字段：</p>
-<pre tabindex=0><code>.post-body p a{
+</code></pre><h5 id=设置博文内链接为蓝色>设置博文内链接为蓝色</h5><p>通过路径：<code>themes\next\source\css\_common\components\post\</code>,打开<code>post.styl</code>文件，在文件中添加，如下字段：</p><pre tabindex=0><code>.post-body p a{
       color: #0593d3;
       border-bottom: none;
       &amp;:hover {
@@ -226,68 +97,36 @@ code {
         text-decoration: underline;
       }
     }
-</code></pre><h5 id=设置文章末尾本文结束标记>设置文章末尾”本文结束”标记</h5>
-<h5 id=显示每篇文章字数>显示每篇文章字数</h5>
-<h5 id=文章末尾添加版权说明>文章末尾添加版权说明</h5>
-<p>直接修改<code>主题配置文件</code>，定位到<code>post_copyright</code>，将<code>enable</code>由<code>false</code>改为<code>true</code>即可。</p>
-<pre tabindex=0><code># Declare license on posts
+</code></pre><h5 id=设置文章末尾本文结束标记>设置文章末尾”本文结束”标记</h5><h5 id=显示每篇文章字数>显示每篇文章字数</h5><h5 id=文章末尾添加版权说明>文章末尾添加版权说明</h5><p>直接修改<code>主题配置文件</code>，定位到<code>post_copyright</code>，将<code>enable</code>由<code>false</code>改为<code>true</code>即可。</p><pre tabindex=0><code># Declare license on posts
 post_copyright:
   enable: true
   license: CC BY-NC-SA 3.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/3.0/
-</code></pre><h5 id=实现-fork-me-on-github>实现 fork me on github</h5>
-<p>在右上角或者左上角实现 fork me on github。
-点击<a href=https://blog.github.com/2008-12-19-github-ribbons/ target=_blank rel="noopener noreffer">这里</a>挑选自己喜欢的样式，并复制代码。 例如，我是复制如下代码：</p>
-<pre tabindex=0><code>&lt;a href=&quot;https://github.com/you&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; left: 0; border: 0;&quot; src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png&quot; alt=&quot;Fork me on GitHub&quot;&gt;&lt;/a&gt;
-</code></pre><p>粘贴刚才复制的代码到<code>themes/next/layout/_layout.swig</code>文件中(放在<code>&lt;div class="headband">&lt;/div></code>的下面)，并把<code>href</code>标签改为 github 地址：</p>
-<h5 id=修改文章底部的号标签>修改文章底部的#号标签</h5>
-<p>修改模板<code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel="tag">#</code>，将其中的 <code>#</code>换成<code>&lt;i class="fa fa-tag">&lt;/i></code></p>
-<h5 id=添加搜索功能>添加搜索功能</h5>
-<p>安装 <code>hexo-generator-searchdb</code>，在站点的根目录下执行以下命令：</p>
-<pre tabindex=0><code>npm install hexo-generator-searchdb --save
-</code></pre><p>编辑 <code>站点配置文件</code> （站点根目录下），新增以下内容到任意位置：</p>
-<pre tabindex=0><code>search:
+</code></pre><h5 id=实现-fork-me-on-github>实现 fork me on github</h5><p>在右上角或者左上角实现 fork me on github。
+点击<a href=https://blog.github.com/2008-12-19-github-ribbons/ target=_blank rel="noopener noreffer">这里</a>挑选自己喜欢的样式，并复制代码。 例如，我是复制如下代码：</p><pre tabindex=0><code>&lt;a href=&#34;https://github.com/you&#34;&gt;&lt;img style=&#34;position: absolute; top: 0; left: 0; border: 0;&#34; src=&#34;https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png&#34; alt=&#34;Fork me on GitHub&#34;&gt;&lt;/a&gt;
+</code></pre><p>粘贴刚才复制的代码到<code>themes/next/layout/_layout.swig</code>文件中(放在<code>&lt;div class="headband">&lt;/div></code>的下面)，并把<code>href</code>标签改为 github 地址：</p><h5 id=修改文章底部的号标签>修改文章底部的#号标签</h5><p>修改模板<code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel="tag">#</code>，将其中的 <code>#</code>换成<code>&lt;i class="fa fa-tag">&lt;/i></code></p><h5 id=添加搜索功能>添加搜索功能</h5><p>安装 <code>hexo-generator-searchdb</code>，在站点的根目录下执行以下命令：</p><pre tabindex=0><code>npm install hexo-generator-searchdb --save
+</code></pre><p>编辑 <code>站点配置文件</code> （站点根目录下），新增以下内容到任意位置：</p><pre tabindex=0><code>search:
   path: search.xml
   field: post
   format: html
   limit: 10000
-</code></pre><p>编辑 <code>主题配置文件</code> （主题目录下），启用本地搜索功能：</p>
-<pre tabindex=0><code># Local search
+</code></pre><p>编辑 <code>主题配置文件</code> （主题目录下），启用本地搜索功能：</p><pre tabindex=0><code># Local search
 local_search:
   enable: true
-</code></pre><h5 id=图床修改>图床修改</h5>
-<p>由于以前都是直接使用的 github 私人仓库做的图床，但是有时候就是访问不到，因为博客是采用双部署的，可能 coding 上的已经是外链了被屏蔽了，所以还是得想点别的办法了。
+</code></pre><h5 id=图床修改>图床修改</h5><p>由于以前都是直接使用的 github 私人仓库做的图床，但是有时候就是访问不到，因为博客是采用双部署的，可能 coding 上的已经是外链了被屏蔽了，所以还是得想点别的办法了。
 看到网上说的各种，其实都还是有点问题，最终发现最近的腾讯对象存储，发现还真的可以。
 软件名：picgo
 链接：<a href=https://sspai.com/post/42310 target=_blank rel="noopener noreffer">https://sspai.com/post/42310</a>
-使用方法：<a href=https://github.com/Molunerfinn/PicGo/wiki/%E8%AF%A6%E7%BB%86%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8#v5%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E target=_blank rel="noopener noreffer">https://github.com/Molunerfinn/PicGo/wiki/详细窗口的使用#v5 版本说明</a></p>
-<h5 id=next-主题个性化之自动更换背景图片>Next 主题个性化之自动更换背景图片</h5>
-<p><a href=https://blog.csdn.net/mango_haoming/article/details/78473243 target=_blank rel="noopener noreffer">https://blog.csdn.net/mango_haoming/article/details/78473243</a></p>
-<h5 id=修改主题yilia已取消>修改主题：yilia（已取消）</h5>
-<p><a href=https://github.com/litten/hexo-theme-yilia target=_blank rel="noopener noreffer">https://github.com/litten/hexo-theme-yilia</a></p>
-<h5 id=2018-4-22-加入畅言评论已取消>2018-4-22 加入畅言评论（已取消）</h5>
-<p>详见：<a href=https://blog.csdn.net/lcyaiym/article/details/76762074 target=_blank rel="noopener noreffer">https://blog.csdn.net/lcyaiym/article/details/76762074</a></p>
-<h5 id=2018-4-10-加入豆瓣读书和电影>2018-4-10 加入豆瓣读书和电影</h5>
-<p>详细见：<a href=https://github.com/mythsman/hexo-douban target=_blank rel="noopener noreffer">https://github.com/mythsman/hexo-douban</a></p>
-<h5 id=页面中文无法显示的问题>页面中文无法显示的问题</h5>
-<p>这种中文问题，基本上都是编码的问题，但是开始各种都没找到原因，改了 language 里面的配置文件，最后发现是文件的编码，需要改成&rsquo;无 bom 的 utf-8 的编码格式 '</p>
-<h5 id=主界面无法显示-categories-和-tags-的问题>主界面无法显示 categories 和 tags 的问题</h5>
-<p>这个问题真的是搞的有点久，因为基本上都被人忽略了，也可能很多人都没遇到而我恰好遇到了吧，不懂前端的我只能对于这种玄学问题强行百度了。
-解决办法：将 categories 和 tags 目录下的 index 文件分别改成：</p>
-<pre tabindex=0><code>categories:
-type: &quot;categories&quot;
-layout: &quot;categories&quot;
+使用方法：<a href=https://github.com/Molunerfinn/PicGo/wiki/%E8%AF%A6%E7%BB%86%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8#v5%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E target=_blank rel="noopener noreffer">https://github.com/Molunerfinn/PicGo/wiki/详细窗口的使用#v5 版本说明</a></p><h5 id=next-主题个性化之自动更换背景图片>Next 主题个性化之自动更换背景图片</h5><p><a href=https://blog.csdn.net/mango_haoming/article/details/78473243 target=_blank rel="noopener noreffer">https://blog.csdn.net/mango_haoming/article/details/78473243</a></p><h5 id=修改主题yilia已取消>修改主题：yilia（已取消）</h5><p><a href=https://github.com/litten/hexo-theme-yilia target=_blank rel="noopener noreffer">https://github.com/litten/hexo-theme-yilia</a></p><h5 id=2018-4-22-加入畅言评论已取消>2018-4-22 加入畅言评论（已取消）</h5><p>详见：<a href=https://blog.csdn.net/lcyaiym/article/details/76762074 target=_blank rel="noopener noreffer">https://blog.csdn.net/lcyaiym/article/details/76762074</a></p><h5 id=2018-4-10-加入豆瓣读书和电影>2018-4-10 加入豆瓣读书和电影</h5><p>详细见：<a href=https://github.com/mythsman/hexo-douban target=_blank rel="noopener noreffer">https://github.com/mythsman/hexo-douban</a></p><h5 id=页面中文无法显示的问题>页面中文无法显示的问题</h5><p>这种中文问题，基本上都是编码的问题，但是开始各种都没找到原因，改了 language 里面的配置文件，最后发现是文件的编码，需要改成&rsquo;无 bom 的 utf-8 的编码格式 '</p><h5 id=主界面无法显示-categories-和-tags-的问题>主界面无法显示 categories 和 tags 的问题</h5><p>这个问题真的是搞的有点久，因为基本上都被人忽略了，也可能很多人都没遇到而我恰好遇到了吧，不懂前端的我只能对于这种玄学问题强行百度了。
+解决办法：将 categories 和 tags 目录下的 index 文件分别改成：</p><pre tabindex=0><code>categories:
+type: &#34;categories&#34;
+layout: &#34;categories&#34;
 tags:
-type: &quot;tags&quot;
-layout: &quot;tags&quot;
-</code></pre><p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。</p>
-<h5 id=绑定-gitpages-到自己的域名>绑定 gitpages 到自己的域名</h5>
-<p>打开<a href=https://education.github.com/ target=_blank rel="noopener noreffer">学生包</a>，通过教育邮箱申请之后，可以在 package 中找到那么 namecheap，注册通过 GitHub 进入，可以直接申请域名，会自动绑定到我们的 gitpage，不过还需要一点点修改，就是把 cname 的 www 改成我们的 gitpage 页面，就可以了。。</p>
-<h5 id=采用-coding-和-gitpages-双部署>采用 coding 和 gitpages 双部署</h5>
-<p>采用双部署的原因是国内访问 github 的速度有时候太感人了，有些人直接打不开，搞得有点尴尬，于是看到了网上所说的双部署，将默认的国内地址解析到 coding 的 pages 服务上，其他的绑定到 gitpage 上，这样国内的访问速度就快了。
+type: &#34;tags&#34;
+layout: &#34;tags&#34;
+</code></pre><p>折腾完又不早了，希望以后好好看书，好好编程吧，最近没有什么特别大的梦想，只想安静的学习。。。</p><h5 id=绑定-gitpages-到自己的域名>绑定 gitpages 到自己的域名</h5><p>打开<a href=https://education.github.com/ target=_blank rel="noopener noreffer">学生包</a>，通过教育邮箱申请之后，可以在 package 中找到那么 namecheap，注册通过 GitHub 进入，可以直接申请域名，会自动绑定到我们的 gitpage，不过还需要一点点修改，就是把 cname 的 www 改成我们的 gitpage 页面，就可以了。。</p><h5 id=采用-coding-和-gitpages-双部署>采用 coding 和 gitpages 双部署</h5><p>采用双部署的原因是国内访问 github 的速度有时候太感人了，有些人直接打不开，搞得有点尴尬，于是看到了网上所说的双部署，将默认的国内地址解析到 coding 的 pages 服务上，其他的绑定到 gitpage 上，这样国内的访问速度就快了。
 具体的 coding pages 的搭建就不写了，在 coding 网站中建好仓库后，在我们本地的 config 文件后面的 push repository 加上 coding page 仓库的地址就可以了。
-具体的 cname 记录和 A 记录如下图：</p>
-<p>** Reference: **
+具体的 cname 记录和 A 记录如下图：</p><p>** Reference: **
 <a href=https://tding.top/archives/12c6c559.html target=_blank rel="noopener noreffer">域名操作</a>
 <a href=https://hexo.io/zh-cn/docs/ target=_blank rel="noopener noreffer">Hexo 文档</a>
 <a href=http://theme-next.iissnan.com/getting-started.html target=_blank rel="noopener noreffer">Next 主题文档</a>
@@ -297,41 +136,6 @@ layout: &quot;tags&quot;
 <a href=http://www.tianguolangzi.com/2018/01/17/hexo%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/ target=_blank rel="noopener noreffer">修改背景图片</a>
 <a href=https://xyzardq.github.io/2016/11/02/Hexo%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8A%9F%E8%83%BD/ target=_blank rel="noopener noreffer">Hexo 添加分类</a>
 <a href=https://segmentfault.com/a/1190000017797561 target=_blank rel="noopener noreffer">云端写作，自动部署</a>
-<a href=https://luan.ma/post/yuque2blog/ target=_blank rel="noopener noreffer">静态博客使用语雀编辑器</a></p>
-</div><div class=post-footer id=post-footer>
-<div class=post-info>
-<div class=post-info-line>
-<div class=post-info-mod>
-<span>更新于 2019-08-13</span>
-</div>
-<div class=post-info-license></div>
-</div>
-<div class=post-info-line>
-<div class=post-info-md></div>
-<div class=post-info-share>
-<span></span>
-</div>
-</div>
-</div>
-<div class=post-info-more>
-<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/hexo/>Hexo</a>,&nbsp;<a href=/tags/%E5%8D%9A%E5%AE%A2/>博客</a></section>
-<section>
-<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
-</section>
-</div>
-<div class=post-nav><a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/ class=prev rel=prev title=go语言基础学习(4)><i class="fas fa-angle-left fa-fw"></i>go语言基础学习(4)</a>
-<a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/ class=next rel=next title=go语言基础学习(3)>go语言基础学习(3)<i class="fas fa-angle-right fa-fw"></i></a></div>
-</div>
-</article></div>
-</main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
-</div>
-</footer></div>
-<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw"></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw"></i>
-</a>
-</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
-</html>
+<a href=https://luan.ma/post/yuque2blog/ target=_blank rel="noopener noreffer">静态博客使用语雀编辑器</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2019-08-13</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/hexo/>Hexo</a>,&nbsp;<a href=/tags/%E5%8D%9A%E5%AE%A2/>博客</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A04/ class=prev rel=prev title=go语言基础学习(4)><i class="fas fa-angle-left fa-fw"></i>go语言基础学习(4)</a>
+<a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/ class=next rel=next title=go语言基础学习(3)>go语言基础学习(3)<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>

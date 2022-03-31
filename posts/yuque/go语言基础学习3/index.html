@@ -1,218 +1,30 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="noodp">
-<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>go语言基础学习(3) - mianhk's notes</title><meta name=Description content><meta property="og:title" content="go语言基础学习(3)">
-<meta property="og:description" content="配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。 一.Go 语言变量、函数 1.变量的初始化 可以通">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-09-12T20:45:04+08:00">
-<meta property="article:modified_time" content="2019-09-12T20:45:04+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="go语言基础学习(3)">
-<meta name=twitter:description content="配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。 一.Go 语言变量、函数 1.变量的初始化 可以通">
-<meta name=application-name content="LoveIt">
-<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/><link rel=prev href=http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/><link rel=next href=http://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"go语言基础学习(3)","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03\/"},"genre":"posts","keywords":"golang, 学习","wordcount":912,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03\/","datePublished":"2019-09-12T20:45:04+08:00","dateModified":"2019-09-12T20:45:04+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
-<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
-<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu>
-<div class=menu-inner><a class=menu-item href=/> 主页 </a><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>go语言基础学习(3) - mianhk's notes</title><meta name=Description content><meta property="og:title" content="go语言基础学习(3)"><meta property="og:description" content="配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。 一.Go 语言变量、函数 1.变量的初始化 可以通"><meta property="og:type" content="article"><meta property="og:url" content="http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-09-12T20:45:04+08:00"><meta property="article:modified_time" content="2019-09-12T20:45:04+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="go语言基础学习(3)"><meta name=twitter:description content="配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。 一.Go 语言变量、函数 1.变量的初始化 可以通"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03/><link rel=prev href=http://yuguocong.cn/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/><link rel=next href=http://yuguocong.cn/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"go语言基础学习(3)","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03\/"},"genre":"posts","keywords":"golang, 学习","wordcount":912,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A03\/","datePublished":"2019-09-12T20:45:04+08:00","dateModified":"2019-09-12T20:45:04+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":''==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:''==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>主页 </a><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a>
-</div>
-</div>
-</div>
-</header><header class=mobile id=header-mobile>
-<div class=header-container>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu-toggle id=menu-toggle-mobile>
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class=menu id=menu-mobile><div class=search-wrapper>
-<div class="search mobile" id=search-mobile>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</div>
-<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
-取消
-</a>
-</div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a></div>
-</div>
-</header>
-<div class="search-dropdown desktop">
-<div id=search-dropdown-desktop></div>
-</div>
-<div class="search-dropdown mobile">
-<div id=search-dropdown-mobile></div>
-</div>
-<main class=main>
-<div class=container><div class=toc id=toc-auto>
-<h2 class=toc-title>目录</h2>
-<div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">go语言基础学习(3)</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/golang/><i class="far fa-folder fa-fw"></i>Golang</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-09-12>2019-09-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 912 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept>
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
-</div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
-<ul>
-<li><a href=#1变量的初始化>1.变量的初始化</a></li>
-<li><a href=#2go-语言的基本类型>2.Go 语言的基本类型</a></li>
-<li><a href=#3类型转换>3.类型转换</a></li>
-<li><a href=#4函数有多返回值>4.函数有多返回值</a></li>
-</ul>
-<ul>
-<li><a href=#1go-语言中的循环只有-for>1.Go 语言中的循环只有 for</a></li>
-<li><a href=#2if-语句>2.if 语句</a></li>
-<li><a href=#3switch-语句>3.switch 语句</a></li>
-<li><a href=#4defer-语句>4.defer 语句</a></li>
-</ul>
-<ul>
-<li><a href=#1-fmtprintln函数中的执行顺序问题>1. fmt.Println()函数中的执行顺序问题</a></li>
-<li><a href=#2切片的容量扩展问题>2.切片的容量扩展问题</a></li>
-</ul>
-</nav></div>
-</div><div class=content id=content><p>配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。</p>
-<h1 id=一go-语言变量函数>一.Go 语言变量、函数</h1>
-<h2 id=1变量的初始化>1.变量的初始化</h2>
-<ul>
-<li>可以通过 <code>var a int</code>  或者采用 <code>a:=3</code>  省略变量的类型，Go 语言会自动推导变量的类型。</li>
-</ul>
-<h2 id=2go-语言的基本类型>2.Go 语言的基本类型</h2>
-<ul>
-<li>多了一个 rune 类型，教程里没有仔细介绍，也很少使用，之后再注意。</li>
-</ul>
-<h2 id=3类型转换>3.类型转换</h2>
-<ul>
-<li>Go 语言中不同类型的项之间需要显示转换，没有隐式类型转换。</li>
-</ul>
-<h2 id=4函数有多返回值>4.函数有多返回值</h2>
-<h1 id=二go-语言中的流程控制>二.Go 语言中的流程控制</h1>
-<h2 id=1go-语言中的循环只有-for>1.Go 语言中的循环只有 for</h2>
-<ul>
-<li>所有的循环都采用 for 来实现，for 的使用与 C++类似，但是 for 后面不需要小括号，一定需要大括号。</li>
-<li>可以在 for 循环中定义变量，但作用于只在 for 循环中。</li>
-<li>需要注意的是，Go 语言只有后置++，没有前置++。</li>
-<li>另外，for 语句中可以有空项，但是分号要写上。</li>
-<li>当 for 用来写 while 循环时，可以直接采用 <code>for i&lt;100{}</code> ，不需要写上全部分号。</li>
-</ul>
-<h2 id=2if-语句>2.if 语句</h2>
-<ul>
-<li>if 语句表达式外不需要小括号，但是一定需要大括号，这点与 for 语句的使用是类似的。</li>
-<li>可以在 if 语句中执行一个简单的语句，分号隔开后再加判断语句。</li>
-<li>同样，else 后面也需要大括号</li>
-</ul>
-<h2 id=3switch-语句>3.switch 语句</h2>
-<ul>
-<li>Go 语言的 switch 中的 case 可以不是常量，也可以不是整数。</li>
-<li>Switch 中的 case 语句，自带 break，不需要再写 break。</li>
-</ul>
-<h2 id=4defer-语句>4.defer 语句</h2>
-<ul>
-<li>defer 语句会推迟到外层函数执行结束后执行。</li>
-<li>defer 语句会压栈，当有多个 defer 语句时，后面的 defer 语句会先执行。</li>
-</ul>
-<h1 id=三slice>三.slice</h1>
-<ul>
-<li>切片就像数组的引用，改变切片会改变底层的值</li>
-<li>切片的默认行为，可以不写完整的上下限，切片默认有上下限</li>
-<li>只是截取切片是不会改变切片大小的</li>
-<li>切片的长度就是它所包含的元素个数，容量是从它的第一个元素开始数，到其底层数组元素末尾的个数</li>
-<li>切片的零值是  <code>nil</code></li>
-</ul>
-<h1 id=四主要问题记录>四.主要问题记录</h1>
-<h2 id=1-fmtprintln函数中的执行顺序问题>1. fmt.Println()函数中的执行顺序问题</h2>
-<p>当 Println()中打印多个函数的执行结果时，Println()会先顺序调用每个函数，将其结果保存，之后再顺序打印。例子如下：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
-
-<span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
-
-<span class=kd>func</span> <span class=nf>add</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span><span class=nx>y</span> <span class=kt>int</span><span class=p>)</span> <span class=kt>int</span><span class=p>{</span>
-	<span class=nx>sum</span><span class=o>:=</span><span class=nx>x</span><span class=o>+</span><span class=nx>y</span>
-	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>sum</span><span class=p>)</span>
-	<span class=k>return</span> <span class=nx>sum</span>
-<span class=p>}</span>
-
-<span class=kd>func</span> <span class=nf>main</span><span class=p>(){</span>
-	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nf>add</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>),</span><span class=nf>add</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>))</span>
-<span class=p>}</span>
-</code></pre></div><p>执行结果为：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=mi>3</span>
-<span class=mi>5</span>
-<span class=mi>3</span> <span class=mi>5</span>
-</code></pre></div><h2 id=2切片的容量扩展问题>2.切片的容量扩展问题</h2>
-<p>类似于 C++中的 vector，切片的容量扩展，大部分时候也是采用 2 倍扩展，但是也有稍许的差别，在学习过程中无意发现，查看源码可以看到 append 的实现。就 int 而言，当元素个数小于 20 时，当 slice 的容量不够时，继续 append 会将 cap+1，超过 20 后才会 cap*2。</p>
-</div><div class=post-footer id=post-footer>
-<div class=post-info>
-<div class=post-info-line>
-<div class=post-info-mod>
-<span>更新于 2019-09-12</span>
-</div>
-<div class=post-info-license></div>
-</div>
-<div class=post-info-line>
-<div class=post-info-md></div>
-<div class=post-info-share>
-<span></span>
-</div>
-</div>
-</div>
-<div class=post-info-more>
-<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/golang/>Golang</a>,&nbsp;<a href=/tags/%E5%AD%A6%E4%B9%A0/>学习</a></section>
-<section>
-<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
-</section>
-</div>
-<div class=post-nav><a href=/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/ class=prev rel=prev title=Hexo折腾笔记><i class="fas fa-angle-left fa-fw"></i>Hexo折腾笔记</a>
-<a href=/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/ class=next rel=next title=MySQL45讲总结>MySQL45讲总结<i class="fas fa-angle-right fa-fw"></i></a></div>
-</div>
-</article></div>
-</main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
-</div>
-</footer></div>
-<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw"></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw"></i>
-</a>
-</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
-</html>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">go语言基础学习(3)</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/golang/><i class="far fa-folder fa-fw"></i>Golang</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-09-12>2019-09-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 912 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#1变量的初始化>1.变量的初始化</a></li><li><a href=#2go-语言的基本类型>2.Go 语言的基本类型</a></li><li><a href=#3类型转换>3.类型转换</a></li><li><a href=#4函数有多返回值>4.函数有多返回值</a></li></ul><ul><li><a href=#1go-语言中的循环只有-for>1.Go 语言中的循环只有 for</a></li><li><a href=#2if-语句>2.if 语句</a></li><li><a href=#3switch-语句>3.switch 语句</a></li><li><a href=#4defer-语句>4.defer 语句</a></li></ul><ul><li><a href=#1-fmtprintln函数中的执行顺序问题>1. fmt.Println()函数中的执行顺序问题</a></li><li><a href=#2切片的容量扩展问题>2.切片的容量扩展问题</a></li></ul></nav></div></div><div class=content id=content><p>配置了 Ubuntu 相关编程环境，学习 Go 语言基础内容，主要是跟着官方教程走一遍，对比 C++的一些不同点学习。</p><h1 id=一go-语言变量函数>一.Go 语言变量、函数</h1><h2 id=1变量的初始化>1.变量的初始化</h2><ul><li>可以通过 <code>var a int</code>  或者采用 <code>a:=3</code>  省略变量的类型，Go 语言会自动推导变量的类型。</li></ul><h2 id=2go-语言的基本类型>2.Go 语言的基本类型</h2><ul><li>多了一个 rune 类型，教程里没有仔细介绍，也很少使用，之后再注意。</li></ul><h2 id=3类型转换>3.类型转换</h2><ul><li>Go 语言中不同类型的项之间需要显示转换，没有隐式类型转换。</li></ul><h2 id=4函数有多返回值>4.函数有多返回值</h2><h1 id=二go-语言中的流程控制>二.Go 语言中的流程控制</h1><h2 id=1go-语言中的循环只有-for>1.Go 语言中的循环只有 for</h2><ul><li>所有的循环都采用 for 来实现，for 的使用与 C++类似，但是 for 后面不需要小括号，一定需要大括号。</li><li>可以在 for 循环中定义变量，但作用于只在 for 循环中。</li><li>需要注意的是，Go 语言只有后置++，没有前置++。</li><li>另外，for 语句中可以有空项，但是分号要写上。</li><li>当 for 用来写 while 循环时，可以直接采用 <code>for i&lt;100{}</code> ，不需要写上全部分号。</li></ul><h2 id=2if-语句>2.if 语句</h2><ul><li>if 语句表达式外不需要小括号，但是一定需要大括号，这点与 for 语句的使用是类似的。</li><li>可以在 if 语句中执行一个简单的语句，分号隔开后再加判断语句。</li><li>同样，else 后面也需要大括号</li></ul><h2 id=3switch-语句>3.switch 语句</h2><ul><li>Go 语言的 switch 中的 case 可以不是常量，也可以不是整数。</li><li>Switch 中的 case 语句，自带 break，不需要再写 break。</li></ul><h2 id=4defer-语句>4.defer 语句</h2><ul><li>defer 语句会推迟到外层函数执行结束后执行。</li><li>defer 语句会压栈，当有多个 defer 语句时，后面的 defer 语句会先执行。</li></ul><h1 id=三slice>三.slice</h1><ul><li>切片就像数组的引用，改变切片会改变底层的值</li><li>切片的默认行为，可以不写完整的上下限，切片默认有上下限</li><li>只是截取切片是不会改变切片大小的</li><li>切片的长度就是它所包含的元素个数，容量是从它的第一个元素开始数，到其底层数组元素末尾的个数</li><li>切片的零值是  <code>nil</code></li></ul><h1 id=四主要问题记录>四.主要问题记录</h1><h2 id=1-fmtprintln函数中的执行顺序问题>1. fmt.Println()函数中的执行顺序问题</h2><p>当 Println()中打印多个函数的执行结果时，Println()会先顺序调用每个函数，将其结果保存，之后再顺序打印。例子如下：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>add</span><span class=p>(</span><span class=nx>x</span><span class=p>,</span><span class=nx>y</span> <span class=kt>int</span><span class=p>)</span> <span class=kt>int</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>sum</span><span class=o>:=</span><span class=nx>x</span><span class=o>+</span><span class=nx>y</span>
+</span></span><span class=line><span class=cl>	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>sum</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=nx>sum</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nf>add</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>),</span><span class=nf>add</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>执行结果为：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=mi>3</span>
+</span></span><span class=line><span class=cl><span class=mi>5</span>
+</span></span><span class=line><span class=cl><span class=mi>3</span> <span class=mi>5</span>
+</span></span></code></pre></div><h2 id=2切片的容量扩展问题>2.切片的容量扩展问题</h2><p>类似于 C++中的 vector，切片的容量扩展，大部分时候也是采用 2 倍扩展，但是也有稍许的差别，在学习过程中无意发现，查看源码可以看到 append 的实现。就 int 而言，当元素个数小于 20 时，当 slice 的容量不够时，继续 append 会将 cap+1，超过 20 后才会 cap*2。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2019-09-12</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/golang/>Golang</a>,&nbsp;<a href=/tags/%E5%AD%A6%E4%B9%A0/>学习</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/yuque/hexo%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/ class=prev rel=prev title=Hexo折腾笔记><i class="fas fa-angle-left fa-fw"></i>Hexo折腾笔记</a>
+<a href=/posts/yuque/mysql45%E8%AE%B2%E6%80%BB%E7%BB%93/ class=next rel=next title=MySQL45讲总结>MySQL45讲总结<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>

@@ -1,230 +1,57 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="noodp">
-<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>【Git】Git使用总结 - mianhk's notes</title><meta name=Description content><meta property="og:title" content="【Git】Git使用总结">
-<meta property="og:description" content="配置 user 信息 git config --global user.name 'your_name' git config --global user.email 'your_email' git config --local #local只对某个仓库有效 git config --global #global对当前用户的所有仓库有效 git config --system #对系统所有登录用户有效，">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-05-26T10:24:53+08:00">
-<meta property="article:modified_time" content="2019-05-26T10:24:53+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="【Git】Git使用总结">
-<meta name=twitter:description content="配置 user 信息 git config --global user.name 'your_name' git config --global user.email 'your_email' git config --local #local只对某个仓库有效 git config --global #global对当前用户的所有仓库有效 git config --system #对系统所有登录用户有效，">
-<meta name=application-name content="LoveIt">
-<meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/><link rel=prev href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/><link rel=next href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"【Git】Git使用总结","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93\/"},"genre":"posts","wordcount":991,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93\/","datePublished":"2019-05-26T10:24:53+08:00","dateModified":"2019-05-26T10:24:53+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head>
-<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':''==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:''==='dark')&&document.body.setAttribute('theme','dark')</script>
-<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu>
-<div class=menu-inner><a class=menu-item href=/> 主页 </a><a class=menu-item href=/posts/> 文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>【Git】Git使用总结 - mianhk's notes</title><meta name=Description content><meta property="og:title" content="【Git】Git使用总结"><meta property="og:description" content="配置 user 信息 git config --global user.name 'your_name' git config --global user.email 'your_email' git config --local #local只对某个仓库有效 git config --global #global对当前用户的所有仓库有效 git config --system #对系统所有登录用户有效，"><meta property="og:type" content="article"><meta property="og:url" content="http://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-05-26T10:24:53+08:00"><meta property="article:modified_time" content="2019-05-26T10:24:53+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="【Git】Git使用总结"><meta name=twitter:description content="配置 user 信息 git config --global user.name 'your_name' git config --global user.email 'your_email' git config --local #local只对某个仓库有效 git config --global #global对当前用户的所有仓库有效 git config --system #对系统所有登录用户有效，"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/yuque/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/><link rel=prev href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/><link rel=next href=http://yuguocong.cn/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"【Git】Git使用总结","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/yuque\/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93\/"},"genre":"posts","wordcount":1047,"url":"http:\/\/yuguocong.cn\/posts\/yuque\/git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93\/","datePublished":"2019-05-26T10:24:53+08:00","dateModified":"2019-05-26T10:24:53+08:00","publisher":{"@type":"Organization","name":"mianhk"},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":''==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:''==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>主页 </a><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a>
-</div>
-</div>
-</div>
-</header><header class=mobile id=header-mobile>
-<div class=header-container>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="mianhk's notes">mianhk's notes</a>
-</div>
-<div class=menu-toggle id=menu-toggle-mobile>
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class=menu id=menu-mobile><div class=search-wrapper>
-<div class="search mobile" id=search-mobile>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</div>
-<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
-取消
-</a>
-</div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
-</a></div>
-</div>
-</header>
-<div class="search-dropdown desktop">
-<div id=search-dropdown-desktop></div>
-</div>
-<div class="search-dropdown mobile">
-<div id=search-dropdown-mobile></div>
-</div>
-<main class=main>
-<div class=container><div class=toc id=toc-auto>
-<h2 class=toc-title>目录</h2>
-<div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">【Git】Git使用总结</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-05-26>2019-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 991 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept>
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
-</div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
-<ul>
-<li><a href=#配置-user-信息>配置 user 信息</a></li>
-</ul>
-<ul>
-<li><a href=#删除分支>删除分支</a></li>
-<li><a href=#修改-commit-的-message>修改 commit 的 message</a></li>
-<li><a href=#整理多个-commit-为-1-个>整理多个 commit 为 1 个</a></li>
-<li><a href=#比较暂存区和-head-所含文件的差异>比较暂存区和 HEAD 所含文件的差异</a></li>
-<li><a href=#比较工作区和暂存区的区别>比较工作区和暂存区的区别</a></li>
-<li><a href=#让暂存区恢复成和-head-一样>让暂存区恢复成和 HEAD 一样</a></li>
-<li><a href=#工作区的文件恢复成暂存区一样>工作区的文件恢复成暂存区一样</a></li>
-<li><a href=#取消暂存区部分文件的修改>取消暂存区部分文件的修改</a></li>
-<li><a href=#消除最近的几次提交>消除最近的几次提交</a></li>
-<li><a href=#看不同提交的指定文件的差异>看不同提交的指定文件的差异</a></li>
-<li><a href=#正确删除文件的方法>正确删除文件的方法</a></li>
-<li><a href=#开发临时加塞紧急任务处理方式>开发临时加塞紧急任务处理方式</a></li>
-<li><a href=#git-的备份>Git 的备份</a></li>
-</ul>
-<ul>
-<li><a href=#同步含有git的文件夹及问题解决>同步含有git的文件夹及问题解决</a></li>
-</ul>
-</nav></div>
-</div><div class=content id=content><h2 id=配置-user-信息>配置 user 信息</h2>
-<pre tabindex=0><code>git config --global user.name 'your_name'
-git config --global user.email 'your_email'
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">【Git】Git使用总结</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-05-26>2019-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1047 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#配置-user-信息>配置 user 信息</a></li></ul><ul><li><a href=#删除分支>删除分支</a></li><li><a href=#修改-commit-的-message>修改 commit 的 message</a></li><li><a href=#整理多个-commit-为-1-个>整理多个 commit 为 1 个</a></li><li><a href=#比较暂存区和-head-所含文件的差异>比较暂存区和 HEAD 所含文件的差异</a></li><li><a href=#比较工作区和暂存区的区别>比较工作区和暂存区的区别</a></li><li><a href=#让暂存区恢复成和-head-一样>让暂存区恢复成和 HEAD 一样</a></li><li><a href=#工作区的文件恢复成暂存区一样>工作区的文件恢复成暂存区一样</a></li><li><a href=#取消暂存区部分文件的修改>取消暂存区部分文件的修改</a></li><li><a href=#消除最近的几次提交>消除最近的几次提交</a></li><li><a href=#看不同提交的指定文件的差异>看不同提交的指定文件的差异</a></li><li><a href=#正确删除文件的方法>正确删除文件的方法</a></li><li><a href=#开发临时加塞紧急任务处理方式>开发临时加塞紧急任务处理方式</a></li><li><a href=#git-的备份>Git 的备份</a></li></ul><ul><li><a href=#同步含有git的文件夹及问题解决>同步含有git的文件夹及问题解决</a></li></ul></nav></div></div><div class=content id=content><h2 id=配置-user-信息>配置 user 信息</h2><pre tabindex=0><code>git config --global user.name &#39;your_name&#39;
+git config --global user.email &#39;your_email&#39;
 
 git config --local  #local只对某个仓库有效
 git config --global  #global对当前用户的所有仓库有效
 git config --system  #对系统所有登录用户有效，一般不用没什么意义
 
 git config --global --list #显示配置项
-</code></pre><p>local 比 global 优先级要高</p>
-<h1 id=给文件重命名>给文件重命名</h1>
-<pre tabindex=0><code class=language-git data-lang=git>#原来的使用：
+</code></pre><p>local 比 global 优先级要高</p><h1 id=给文件重命名>给文件重命名</h1><pre tabindex=0><code class=language-git data-lang=git>#原来的使用：
 mv readme readme.md
 git add readme.md
 git rm readme
 #直接使用
 git mv readme readme.md
-</code></pre><h1 id=查看-gitlog>查看 gitlog</h1>
-<pre tabindex=0><code class=language-git data-lang=git>git log #只显示当前分支
+</code></pre><h1 id=查看-gitlog>查看 gitlog</h1><pre tabindex=0><code class=language-git data-lang=git>git log #只显示当前分支
 git log --all --graph #可以看所有的分支
 git log --oneline --all -n4 #一行显示所有分支最近的4个
-</code></pre><h1 id=git-目录>.git 目录</h1>
-<p>HEAD：整个仓库正在工作的分支
+</code></pre><h1 id=git-目录>.git 目录</h1><p>HEAD：整个仓库正在工作的分支
 config：存放仓库本地的配置信息，记录 user 等信息
 refs：
-objects：包括文件夹和 pack</p>
-<h1 id=committree-和-blob-之间的关系>commit、tree 和 blob 之间的关系</h1>
-<p><img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132" data-srcset="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132, https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132 1.5x, https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132" title=image.png>
-一个 commit 对应一棵 tree，每个文件夹对应一个 tree</p>
-<h1 id=分离头指针>分离头指针</h1>
-<p>表示某个变更没有基于某个 branch，在切换分支的时候，这些变更很有可能会被 git 当做垃圾清理，所以如果认为这些变更有用的话，一定要与某个 branch 绑定才能得到保留。</p>
-<h1 id=head-和-branch>HEAD 和 branch</h1>
-<p>切换分支时，HEAD 指向会发生变化。</p>
-<pre tabindex=0><code class=language-git data-lang=git>git diff HEAD HEAD^  #与上一次HEAD比较
+objects：包括文件夹和 pack</p><h1 id=committree-和-blob-之间的关系>commit、tree 和 blob 之间的关系</h1><p><img class=lazyload src=/svg/loading.min.svg data-src="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132" data-srcset="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132, https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132 1.5x, https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132 2x" data-sizes=auto alt="https://cdn.nlark.com/yuque/0/2019/png/187932/1558841650988-46fcccb5-6359-4112-8808-e60284941018.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=681&originWidth=1132&size=170368&status=done&style=none&width=1132" title=image.png>
+一个 commit 对应一棵 tree，每个文件夹对应一个 tree</p><h1 id=分离头指针>分离头指针</h1><p>表示某个变更没有基于某个 branch，在切换分支的时候，这些变更很有可能会被 git 当做垃圾清理，所以如果认为这些变更有用的话，一定要与某个 branch 绑定才能得到保留。</p><h1 id=head-和-branch>HEAD 和 branch</h1><p>切换分支时，HEAD 指向会发生变化。</p><pre tabindex=0><code class=language-git data-lang=git>git diff HEAD HEAD^  #与上一次HEAD比较
 git diff HEAD HEAD^^ #与上上次进行比较
 git diff HEAD HEAD^3 #与上上上次进行比较
-</code></pre><h1 id=常用场景>常用场景</h1>
-<h2 id=删除分支>删除分支</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git branch -d '分支名'  #清除分支的命令
-git branch -D '分支名'  #确信清除没有影响，采用D清除
-</code></pre><h2 id=修改-commit-的-message>修改 commit 的 message</h2>
-<p>在维护自己的分支的时候，还没有提交的时候</p>
-<pre tabindex=0><code class=language-git data-lang=git>git commit --amend   #修改最新的commit的message
-git rebase -i 'commit id'  #修改更久的commit的message
+</code></pre><h1 id=常用场景>常用场景</h1><h2 id=删除分支>删除分支</h2><pre tabindex=0><code class=language-git data-lang=git>git branch -d &#39;分支名&#39;  #清除分支的命令
+git branch -D &#39;分支名&#39;  #确信清除没有影响，采用D清除
+</code></pre><h2 id=修改-commit-的-message>修改 commit 的 message</h2><p>在维护自己的分支的时候，还没有提交的时候</p><pre tabindex=0><code class=language-git data-lang=git>git commit --amend   #修改最新的commit的message
+git rebase -i &#39;commit id&#39;  #修改更久的commit的message
   然后按照提示进行修改
-</code></pre><h2 id=整理多个-commit-为-1-个>整理多个 commit 为 1 个</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git rebase -i 'commit-id'  # commit-id为最久的想合并的
-</code></pre><h2 id=比较暂存区和-head-所含文件的差异>比较暂存区和 HEAD 所含文件的差异</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git diff --cached  #表示暂存区和HEAD的区别
-</code></pre><h2 id=比较工作区和暂存区的区别>比较工作区和暂存区的区别</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git diff #默认比较的是工作区和暂存区的区别
+</code></pre><h2 id=整理多个-commit-为-1-个>整理多个 commit 为 1 个</h2><pre tabindex=0><code class=language-git data-lang=git>git rebase -i &#39;commit-id&#39;  # commit-id为最久的想合并的
+</code></pre><h2 id=比较暂存区和-head-所含文件的差异>比较暂存区和 HEAD 所含文件的差异</h2><pre tabindex=0><code class=language-git data-lang=git>git diff --cached  #表示暂存区和HEAD的区别
+</code></pre><h2 id=比较工作区和暂存区的区别>比较工作区和暂存区的区别</h2><pre tabindex=0><code class=language-git data-lang=git>git diff #默认比较的是工作区和暂存区的区别
 git diff --文件名 #比较文件
-</code></pre><h2 id=让暂存区恢复成和-head-一样>让暂存区恢复成和 HEAD 一样</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git reset HEAD #将暂存区所有的变更恢复成HEAD
-</code></pre><h2 id=工作区的文件恢复成暂存区一样>工作区的文件恢复成暂存区一样</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git checkout -- '文件名'
-</code></pre><h2 id=取消暂存区部分文件的修改>取消暂存区部分文件的修改</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git reset HEAD --'文件名'  # 将暂存区某一文件恢复成HEAD
-</code></pre><h2 id=消除最近的几次提交>消除最近的几次提交</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git reset --hard 'commit-id' #慎用
-</code></pre><h2 id=看不同提交的指定文件的差异>看不同提交的指定文件的差异</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git diff 'branch1' 'branch2' -- '文件名'
-git diff 'commit-id1' 'commit-id2' -- '文件名'
-</code></pre><h2 id=正确删除文件的方法>正确删除文件的方法</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git rm '文件名'
-</code></pre><h2 id=开发临时加塞紧急任务处理方式>开发临时加塞紧急任务处理方式</h2>
-<pre tabindex=0><code class=language-git data-lang=git>git stash
+</code></pre><h2 id=让暂存区恢复成和-head-一样>让暂存区恢复成和 HEAD 一样</h2><pre tabindex=0><code class=language-git data-lang=git>git reset HEAD #将暂存区所有的变更恢复成HEAD
+</code></pre><h2 id=工作区的文件恢复成暂存区一样>工作区的文件恢复成暂存区一样</h2><pre tabindex=0><code class=language-git data-lang=git>git checkout -- &#39;文件名&#39;
+</code></pre><h2 id=取消暂存区部分文件的修改>取消暂存区部分文件的修改</h2><pre tabindex=0><code class=language-git data-lang=git>git reset HEAD --&#39;文件名&#39;  # 将暂存区某一文件恢复成HEAD
+</code></pre><h2 id=消除最近的几次提交>消除最近的几次提交</h2><pre tabindex=0><code class=language-git data-lang=git>git reset --hard &#39;commit-id&#39; #慎用
+</code></pre><h2 id=看不同提交的指定文件的差异>看不同提交的指定文件的差异</h2><pre tabindex=0><code class=language-git data-lang=git>git diff &#39;branch1&#39; &#39;branch2&#39; -- &#39;文件名&#39;
+git diff &#39;commit-id1&#39; &#39;commit-id2&#39; -- &#39;文件名&#39;
+</code></pre><h2 id=正确删除文件的方法>正确删除文件的方法</h2><pre tabindex=0><code class=language-git data-lang=git>git rm &#39;文件名&#39;
+</code></pre><h2 id=开发临时加塞紧急任务处理方式>开发临时加塞紧急任务处理方式</h2><pre tabindex=0><code class=language-git data-lang=git>git stash
 git stash apply
 或者 git stach pop  #两者区别是会丢掉
-</code></pre><h2 id=git-的备份>Git 的备份</h2>
-<ul>
-<li>哑协议：不显示进度条</li>
-<li>智能协议：</li>
-</ul>
-<h1 id=tips>Tips</h1>
-<h2 id=同步含有git的文件夹及问题解决>同步含有git的文件夹及问题解决</h2>
-<p>同步含有 git 的文件夹真的有点烦，由于没有注意同步结果，只是一直在看 travis 构建结果，结果半天没有发现问题，后来发现了也不知道怎么解决，看远程仓库的代码是一个关联的文件夹形式，表示这是一个 git 的文件夹，但是点不开，本地的也没有上传。</p>
-</div><div class=post-footer id=post-footer>
-<div class=post-info>
-<div class=post-info-line>
-<div class=post-info-mod>
-<span>更新于 2019-05-26</span>
-</div>
-<div class=post-info-license></div>
-</div>
-<div class=post-info-line>
-<div class=post-info-md></div>
-<div class=post-info-share>
-<span></span>
-</div>
-</div>
-</div>
-<div class=post-info-more>
-<section class=post-tags></section>
-<section>
-<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
-</section>
-</div>
-<div class=post-nav><a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ class=prev rel=prev title=go语言学习(2)-极客时间><i class="fas fa-angle-left fa-fw"></i>go语言学习(2)-极客时间</a>
-<a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/ class=next rel=next title=【Golang】go语言学习(1)-初识切片>【Golang】go语言学习(1)-初识切片<i class="fas fa-angle-right fa-fw"></i></a></div>
-</div>
-</article></div>
-</main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
-</div>
-</footer></div>
-<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw"></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw"></i>
-</a>
-</div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
-</html>
+</code></pre><h2 id=git-的备份>Git 的备份</h2><ul><li>哑协议：不显示进度条</li><li>智能协议：</li></ul><h1 id=tips>Tips</h1><h2 id=同步含有git的文件夹及问题解决>同步含有git的文件夹及问题解决</h2><p>同步含有 git 的文件夹真的有点烦，由于没有注意同步结果，只是一直在看 travis 构建结果，结果半天没有发现问题，后来发现了也不知道怎么解决，看远程仓库的代码是一个关联的文件夹形式，表示这是一个 git 的文件夹，但是点不开，本地的也没有上传。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2019-05-26</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02-%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/ class=prev rel=prev title=go语言学习(2)-极客时间><i class="fas fa-angle-left fa-fw"></i>go语言学习(2)-极客时间</a>
+<a href=/posts/yuque/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/ class=next rel=next title=【Golang】go语言学习(1)-初识切片>【Golang】go语言学习(1)-初识切片<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
