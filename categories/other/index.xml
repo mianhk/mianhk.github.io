@@ -2,10 +2,10 @@
 &lt;p>Redis设计与实现，以及关于Redis使用的总结&lt;/p>
 &lt;/blockquote></description></item><item><title>jupyter-notebook安装和问题解决</title><link>http://yuguocong.cn/posts/use_of_jupyter/</link><pubDate>Thu, 26 Apr 2018 11:36:57 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/use_of_jupyter/</guid><description>&lt;blockquote>
 &lt;p>jupyter notebook折腾日记&lt;/p>
-&lt;/blockquote></description></item><item><title>生活随笔</title><link>http://yuguocong.cn/posts/life_random/</link><pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/life_random/</guid><description>&lt;blockquote>
-&lt;p>生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。&lt;/p>
 &lt;/blockquote></description></item><item><title>阶段性生活思考</title><link>http://yuguocong.cn/posts/redo-mylife/</link><pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/redo-mylife/</guid><description><![CDATA[<h2 id="why-title">why title</h2>
 <blockquote>
 <p>生活就是要不断的思考,不是吗?</p>
 </blockquote>
-<!-- raw HTML omitted -->]]></description></item><item><title>Linux的fork使用</title><link>http://yuguocong.cn/posts/use_of_fork/</link><pubDate>Thu, 15 Mar 2018 22:48:01 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/use_of_fork/</guid><description>Linux的fork使用 fork函数可以算是Linux里有点不好明白的函数了，调用一次，返回两次，虽然在平时的写法中，有基本固定的写法，但是</description></item><item><title>20天学习Java视频笔记</title><link>http://yuguocong.cn/posts/20days_java/</link><pubDate>Thu, 09 Mar 2017 12:55:17 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/20days_java/</guid><description>面向对象编程(二) 封装（private） 匿名对象使用的方式：只调用一次 注意，封装只是私有的一种表现形式。不私有也能封装。 构造函数 构造函数和一</description></item></channel></rss>
+<!-- raw HTML omitted -->]]></description></item><item><title>生活随笔</title><link>http://yuguocong.cn/posts/life_random/</link><pubDate>Tue, 24 Apr 2018 20:40:26 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/life_random/</guid><description>&lt;blockquote>
+&lt;p>生活有时候看的一些书，一些视频，有些想法，专门找个文件记录一下吧。&lt;/p>
+&lt;/blockquote></description></item><item><title>Linux的fork使用</title><link>http://yuguocong.cn/posts/use_of_fork/</link><pubDate>Thu, 15 Mar 2018 22:48:01 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/use_of_fork/</guid><description>Linux的fork使用 fork函数可以算是Linux里有点不好明白的函数了，调用一次，返回两次，虽然在平时的写法中，有基本固定的写法，但是</description></item><item><title>20天学习Java视频笔记</title><link>http://yuguocong.cn/posts/20days_java/</link><pubDate>Thu, 09 Mar 2017 12:55:17 +0800</pubDate><author>作者</author><guid>http://yuguocong.cn/posts/20days_java/</guid><description>面向对象编程(二) 封装（private） 匿名对象使用的方式：只调用一次 注意，封装只是私有的一种表现形式。不私有也能封装。 构造函数 构造函数和一</description></item></channel></rss>
