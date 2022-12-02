@@ -1,0 +1,89 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>牛客网刷题总结-剑指offer(1) - mianhk's notes</title><meta name=Description content><meta property="og:title" content="牛客网刷题总结-剑指offer(1)"><meta property="og:description" content="说在前面：刷题真的是一件残酷的事情，就好比以前大学的时候只剩两天就考试了，刚刚看了一遍就开始先做题一样的感觉，面对无数的套路，幸运的时候还能"><meta property="og:type" content="article"><meta property="og:url" content="http://yuguocong.cn/posts/algorithm/nowcoder-sword-to-offer1/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2017-10-15T21:26:46+08:00"><meta property="article:modified_time" content="2017-10-15T21:26:46+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="牛客网刷题总结-剑指offer(1)"><meta name=twitter:description content="说在前面：刷题真的是一件残酷的事情，就好比以前大学的时候只剩两天就考试了，刚刚看了一遍就开始先做题一样的感觉，面对无数的套路，幸运的时候还能"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://yuguocong.cn/posts/algorithm/nowcoder-sword-to-offer1/><link rel=prev href=http://yuguocong.cn/posts/language/cpp/effective-cpp-1/><link rel=next href=http://yuguocong.cn/posts/tools/installation_of_two_system_on_win7/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"牛客网刷题总结-剑指offer(1)","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/yuguocong.cn\/posts\/algorithm\/nowcoder-sword-to-offer1\/"},"genre":"posts","keywords":"C\u002b\u002b, 剑指offer, 牛客网","wordcount":932,"url":"http:\/\/yuguocong.cn\/posts\/algorithm\/nowcoder-sword-to-offer1\/","datePublished":"2017-10-15T21:26:46+08:00","dateModified":"2017-10-15T21:26:46+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"mianhk"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":""==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:""==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>主页 </a><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="mianhk's notes">mianhk's notes</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/ title>主页</a><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">牛客网刷题总结-剑指offer(1)</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/mianhk title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>mianhk</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%88%B7%E9%A2%98/><i class="far fa-folder fa-fw"></i>刷题</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2017-10-15>2017-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 932 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><ul><li></li></ul></li></ul></nav></div></div><div class=content id=content><blockquote><p>说在前面：刷题真的是一件残酷的事情，就好比以前大学的时候只剩两天就考试了，刚刚看了一遍就开始先做题一样的感觉，面对无数的套路，幸运的时候还能庆幸自己能发现他们的套路。。
+刷题的开始总是艰难的，希望有一天我能以上帝视角看清这些芸芸众生的时候，还能想起来当年我不止一次的一道题怼了一晚上照样白怼。</p></blockquote><h4 id=t1二维数组的查找>T1：二维数组的查找</h4><blockquote><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p></blockquote><p>这里一般的思路肯定是，从行或者列开始找，根据递增的顺序，找到行或者列之后再判断列或者行，知道找到为止。最好的方法是，从左下角或者右上角开始找。原因是：这样的一行和一列的顺序是不一样的，这样我们找一行的时候没有就可以直接找下一行，充分利用递增的顺序，减少循环的次数。
+其他的就是循环的写法了，关于数组，一定注意的是不要越界，这真的是我的痛啊，日常越界一百遍。<em>^</em>^_</p><pre tabindex=0><code>class Solution {
+public:
+    bool Find(int target, vector&lt;vector&lt;int&gt; &gt; array) {
+        bool found=false;
+        if(array.size()==0 ||array[0].size()==0)
+            return found;
+        for(int i=array[0].size()-1;i&gt;=0;--i){
+            if(target&gt;=array[0][i]){
+                for(int j=0;j!=array.size();++j){
+                    if(target==array[j][i])
+                        found=true;
+                }
+            }
+            else
+                continue;
+        }
+        return found;
+    }
+};
+</code></pre><h4 id=t2替换空格>T2：替换空格</h4><blockquote><p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p></blockquote><p>替换的过程是，先找到这个空格，正常想法是，从前往后找，然后遇到就开始替换。但是注意到<em>对于一般题目，最直观的解法总不是最好的</em>，都是需要多从<strong>时间复杂度和空间复杂度想一想</strong>。就这个题目而言，直接从前往后替换，因为替换后的字符比原来多2个，所以每次替换我们都需要将后面的字符串向后移2个，这无疑会增加复杂度。一个很好的办法是：先统计空格的个数，计算出替换后的字符串长度，然后从后往前开始替换，这样就减少了移动的复杂度。</p><pre tabindex=0><code>class Solution {
+public:
+    void replaceSpace(char *str,int length) {
+        if(length&lt;=0)
+            return;
+        int move_length=0;
+        int original_length=0;
+        for(int i=0;str[i]!=&#39;\0&#39;;++i){
+            ++original_length;
+            if(str[i]==&#39; &#39;)
+                ++move_length;
+        }
+        int new_length=original_length+2*move_length;
+        if(new_length&gt;length)
+            return;
+        str[new_length]=&#39;\0&#39;;
+        while(original_length&gt;0){
+            --original_length;
+            if(str[original_length]==&#39; &#39;){
+                str[--new_length]=&#39;0&#39;;
+                str[--new_length]=&#39;2&#39;;
+                str[--new_length]=&#39;%&#39;;
+            }
+            else
+                str[--new_length]=str[original_length];
+        }
+
+    }
+};
+</code></pre><h4 id=t3从尾到头打印链表>T3:从尾到头打印链表</h4><blockquote><p>输入一个链表，从尾到头打印链表每个节点的值。</p></blockquote><p>链表我们一般都是从头到尾处理的，要从尾到头打印，这里想到一个数据结构：<strong>栈</strong>，后入先出的特点。从头到尾遍历链表，并把节点的值存入栈中，再从栈一一弹出即可。</p><pre tabindex=0><code>/**
+*  struct ListNode {
+*        int val;
+*        struct ListNode *next;
+*        ListNode(int x) :
+*              val(x), next(NULL) {
+*        }
+*  };
+*/
+class Solution {
+public:
+    vector&lt;int&gt; printListFromTailToHead(ListNode* head) {
+        stack&lt;int&gt; stack;
+        vector&lt;int&gt; result;
+        while(head!=nullptr){
+            stack.push(head-&gt;val);
+            head=head-&gt;next;
+        }
+        while(stack.size()!=0){
+            result.push_back(stack.top());
+            stack.pop();
+        }
+        return result;
+    }
+};
+</code></pre></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2017-10-15</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=http://yuguocong.cn/posts/algorithm/nowcoder-sword-to-offer1/ data-title=牛客网刷题总结-剑指offer(1)><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://yuguocong.cn/posts/algorithm/nowcoder-sword-to-offer1/ data-title=牛客网刷题总结-剑指offer(1) data-ralateuid=https://weibo.com/u/3024507693><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=http://yuguocong.cn/posts/algorithm/nowcoder-sword-to-offer1/ data-title=牛客网刷题总结-剑指offer(1)><i class="fab fa-evernote fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/c++/>C++</a>,&nbsp;<a href=/tags/%E5%89%91%E6%8C%87offer/>剑指offer</a>,&nbsp;<a href=/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/>牛客网</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/language/cpp/effective-cpp-1/ class=prev rel=prev title="《effective C++》from line 1 to line 12"><i class="fas fa-angle-left fa-fw"></i>《effective C++》from line 1 to line 12</a>
+<a href=/posts/tools/installation_of_two_system_on_win7/ class=next rel=next title=win7下安装Ubuntu双系统>win7下安装Ubuntu双系统<i class="fas fa-angle-right fa-fw"></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.107.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2018 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/mianhk target=_blank>mianhk</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript src=/lib/sharer/sharer.min.js></script><script type=text/javascript src=/lib/katex/katex.min.js></script><script type=text/javascript src=/lib/katex/auto-render.min.js></script><script type=text/javascript src=/lib/katex/copy-tex.min.js></script><script type=text/javascript src=/lib/katex/mhchem.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
