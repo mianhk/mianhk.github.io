@@ -29,7 +29,7 @@ description = ""
 
 ### (1)嵌入在struct中使用
 
-```
+```Go
 type Counter struct{
 	mu sync.Mutex
 	Count int
