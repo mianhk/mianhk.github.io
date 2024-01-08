@@ -1,12 +1,12 @@
-+++
-title = "2020年总结"
-urlname = "xzxhcvsd"
-date = "2020-12-26T17:30:02+08:00"
-categories = ["生活"]
-tags = ["生活", "日常总结"]
-description = ""
-+++
-
+---
+title: 2020年终总结
+categories:
+- life
+tag:
+- 2020
+- summary
+date: "2020-12-26"
+---
 
 
 

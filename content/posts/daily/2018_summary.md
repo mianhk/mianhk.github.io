@@ -1,12 +1,12 @@
-+++
-title = "2018年终总结"
-urlname = "ws11rq"
-date = "2018-12-16T19:02:22+08:00"
-categories = ["life"]
-tags = ["生活", "总结"]
-description = ""
-+++
-
+---
+title: 2018年终总结
+categories:
+- life
+tag:
+- 2018
+- summary
+date: "2018-12-16"
+---
 
 > 2018 年总结。
 

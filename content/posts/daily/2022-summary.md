@@ -4,7 +4,7 @@ categories:
 - life
 tag:
 - 2022
-- sumary
+- summary
 date: "2022-12-30"
 ---
 

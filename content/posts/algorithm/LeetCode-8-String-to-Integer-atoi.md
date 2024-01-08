@@ -1,10 +1,11 @@
-+++
-title = "LeetCode-8-String to Integer (atoi)"
-date = "2018-01-09T22:24:41+08:00"
-categories = ["刷题"]
-tags = ["C++", "LeetCode"]
-description = ""
-+++
+---
+title: LeetCode-8-String to Integer (atoi)
+categories:
+  - 刷题
+tags:
+  - LeetCode
+  - CPP
+---
 
 ### 8.String to Integer (atoi)
 > Implement atoi to convert a string to an integer.
